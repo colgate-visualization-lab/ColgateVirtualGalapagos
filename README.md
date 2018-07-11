@@ -8,12 +8,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+The only prerequisites for this project are a local web server and a web browser.
 
-```
-Some tool for hosting a local web server
-A web browser
-```
+* [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb?hl=en)
 
 ### Installing
 
@@ -28,7 +25,8 @@ Launch your local web server with the root as the starting folder, then launch t
 ## Built With
 
 * [Bootstrap](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Responsive Image Maps](https://maven.apache.org/) - Dependency Management
+* [Responsive Image Maps](https://maven.apache.org/) - Plugin used
+* [Brackets](https://brackets.io) - IDE used
 
 ## Contributing
 
