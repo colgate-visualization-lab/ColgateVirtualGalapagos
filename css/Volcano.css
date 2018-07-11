@@ -1,0 +1,48 @@
+/* Style for a bordered image */
+.img-bordered {
+  border:6px groove #545565;
+  background-color: black;
+}
+
+/* Style for positioning stuff over container */
+/* Container needed to position the button. Adjust the width as needed */
+.container-new {
+  position: relative;
+}
+
+/* Make the image responsive */
+.container-new img {
+  width: 100%;
+  height: auto;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.container-new .btn1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+/* Style the button and place it in the middle of the container/image */
+.container-new .btn2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(100%, -50%);
+  -ms-transform: translate(100%, -50%);
+}
+
+/* Style the button and place it in the middle of the container/image */
+.container-new .btn3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(300%, -50%);
+  -ms-transform: translate(300%, -50%);
+}
+
+.container-new .btn:hover {
+  background-color: black;
+}
