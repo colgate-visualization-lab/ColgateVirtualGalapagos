@@ -18,7 +18,7 @@ function drop(ev) {
   var img_text = ev.target.id.slice(4, ev.target.id.length-1);
   if (labeltext == img_text){
     var src = ev.target.src;
-    ev.target.src = "images/drag_drop_tectonics/" + ev.target.id.slice(4, ev.target.id.length) + "correct.png";
+    ev.target.src = "../images/drag_drop_tectonics/" + ev.target.id.slice(4, ev.target.id.length) + "correct.png";
     label_cache.style.display = "none";
   } else {
     alert("Try again!")
