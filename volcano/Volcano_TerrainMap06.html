@@ -20,7 +20,8 @@
     <div class="container"><img id="gemap" src="../images/ge_map.png" class="img-fluid img-bordered" alt="Responsive image"></div>
     <div class="container" >
       <button class="btn btn-primary" onclick="ToggleDates()">Toggle Dates</button>
-      <a href="Volcano_PlumePlacement01.html" class="btn btn-primary">Next</a>
+      <a href="Volcano_SouthAmerica01.html" class="btn btn-secondary">Back</a>
+      <a href="Volcano_PlumePlacement01.html" class="btn btn-secondary">Next</a>
     </div>
     
     <!-- Optional JavaScript -->
@@ -33,7 +34,17 @@
     <script src="../js/virtualgalapagos/fieldbook.js"></script>
     <script src="../js/virtualgalapagos/overlay.js"></script>
     <script src="../js/virtualgalapagos/toolbar.js"></script>
-    <script src="../js/Volcano_TerrainMap06.js"></script>
+    <script>
+      var tog = false;
+      function ToggleDates() {
+        if  (tog) {
+          document.getElementById("gemap").src="../images/ge_map.png";
+        } else {
+          document.getElementById("gemap").src="../images/ge_map_volcdates.png";
+        }
+        tog = !tog;
+      }
+    </script>
     
   </body>
 </html>
