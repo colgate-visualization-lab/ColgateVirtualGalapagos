@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/Volcano.css">
-    <link rel="stylesheet" href="css/Overlay.css">
-    <link rel="stylesheet" href="css/Fieldbook.css">
-    <link rel="stylesheet" href="css/Toolbar.css">
+    <link rel="stylesheet" href="../css/Volcano.css">
+    <link rel="stylesheet" href="../css/Overlay.css">
+    <link rel="stylesheet" href="../css/Fieldbook.css">
+    <link rel="stylesheet" href="../css/Toolbar.css">
 
     <title>Volcano_PlatesGame01</title>
   </head>
@@ -22,18 +22,18 @@
 	  <div class="container">
         <div class="row">
           <div class="col-sm container-overlay">
-            <img ondrop="drop(event)" ondragover="allowDrop(event)" id="img_convergent1" src="images/drag_drop_tectonics/convergent.png" class="img-bordered" width="100%" draggable="false">
+            <img ondrop="drop(event)" ondragover="allowDrop(event)" id="img_convergent1" src="../images/drag_drop_tectonics/convergent.png" class="img-bordered" width="100%" draggable="false">
           </div>
           <div class="col-sm" >
-            <img ondrop="drop(event)" ondragover="allowDrop(event)" id="img_convergent2" src="images/drag_drop_tectonics/convergent2.png" class="img-bordered" width="100%" draggable="false">
+            <img ondrop="drop(event)" ondragover="allowDrop(event)" id="img_convergent2" src="../images/drag_drop_tectonics/convergent2.png" class="img-bordered" width="100%" draggable="false">
           </div>
         </div>
         <div class="row">
           <div class="col-sm" >
-            <img ondrop="drop(event)" ondragover="allowDrop(event)" id="img_divergent1" src="images/drag_drop_tectonics/divergent.png" class="img-bordered" width="100%" draggable="false">
+            <img ondrop="drop(event)" ondragover="allowDrop(event)" id="img_divergent1" src="../images/drag_drop_tectonics/divergent.png" class="img-bordered" width="100%" draggable="false">
           </div>
           <div class="col-sm" >
-            <img ondrop="drop(event)" ondragover="allowDrop(event)" id="img_transform1" src="images/drag_drop_tectonics/transform.png" class="img-bordered" width="100%" draggable="false">
+            <img ondrop="drop(event)" ondragover="allowDrop(event)" id="img_transform1" src="../images/drag_drop_tectonics/transform.png" class="img-bordered" width="100%" draggable="false">
           </div>
         </div>
         <div class="row">
@@ -63,17 +63,18 @@
       <button type="button" class="btn" onclick="off('plates')">Back</button>
       </div>
     </div>
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../js/jquery-3.2.1.min.js" ></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap-4.0.0.js"></script>
     
     <!-- Custom scripts -->
-    <script src="js/virtualgalapagos/fieldbook_modular.js"></script>
-    <script src="js/virtualgalapagos/overlay.js"></script>
-    <script src="js/virtualgalapagos/Toolbar.js"></script>
-    <script src="js/virtualgalapagos/plates_game.js"></script>
+    <script src="../js/virtualgalapagos/fieldbook_modular.js"></script>
+    <script src="../js/virtualgalapagos/overlay.js"></script>
+    <script src="../js/virtualgalapagos/toolbar.js"></script>
+    <script src="../js/virtualgalapagos/plates_game.js"></script>
   </body>
 </html>
 
