@@ -43,7 +43,7 @@
 }
 
 .fieldbook_ta {
-  background: url(http://i.stack.imgur.com/ynxjD.png) repeat-y;
+  background: url("../images/fieldbookbg.png") repeat-y;
   overflow: auto;
   width: 100%;
   height: 150px;
