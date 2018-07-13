@@ -5,6 +5,7 @@ var dropArray = [];
 var dragArray = [];
 // stores the drag and drop pairings
 var ddDict;
+var ddType;
 
 initDD();
 
@@ -55,9 +56,19 @@ function drop(ev) {
   
   var dropTargets = ddDict[label_cache.id];
   if (dropTargets.includes(ev.target.id)){
-    label_cache.innerHTML = label_cache.innerHTML + " - " + ev.target.id;
-    disableDrag(label_cache);
-    disableDrop(ev.target);
+    dropMatch(label_cache, ev.target);
+  }
+}
+
+function dropMatch(drag, drop){
+  if (ddType=="map_ages") {
+    drag.innerHTML = drag.innerHTML + " - " + drop.id;
+    disableDrag(drag);
+    disableDrop(drop);
+  } else if (ddType=="plates_game"){
+    var src = drop.src;
+    drop.src = "../images/drag_drop_tectonics/" + drop.id.slice(4, drop.id.length) + "correct.png";
+    drag.style.display = "none";          
   }
 }
 
@@ -74,7 +85,8 @@ function disableDrop(dropE){
 }
 
 function setDD(name){
-  if (name == "map_ages"){
+  ddType = name;
+  if (ddType == "map_ages"){
     ddDict = {
       "7000001": ["Fernandina", "Isabela"],
       "7000002": ["Fernandina", "Isabela"],
@@ -84,6 +96,13 @@ function setDD(name){
       "2300000": ["Santa Cruz"],
       "3300000": ["Espanola"],
       "4000000": ["San Cristobal"],
+    };
+  } else if (ddType == "plates_game"){
+    ddDict = {
+      "convergent1": ["img_convergent1", "img_convergent2"],
+      "convergent2": ["img_convergent1", "img_convergent2"],
+      "divergent1": ["img_divergent1"],
+      "transform1": ["img_transform1"],
     };
   }
 }
