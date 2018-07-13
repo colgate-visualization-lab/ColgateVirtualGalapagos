@@ -15,15 +15,15 @@
 
 .overlay_inner {
     position: absolute;
-    top: 50%;
+    top: 15%;
     left: 50%;
-	max-width: 40%;
+	max-width: 55%;
     font-size: 25px;
-    text-shadow: 2px 2px 4px #000000;
-    color: white;
-    background-color: black;
+/*    text-shadow: 2px 2px 4px #000000;*/
+    color: black;
+    background-color: white;
     display: inline;
     padding: 0.5rem;
-    transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,0%);
+    -ms-transform: translate(-50%,0%);
 }
