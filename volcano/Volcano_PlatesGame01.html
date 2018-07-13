@@ -22,31 +22,31 @@
 	  <div class="container">
         <div class="row">
           <div class="col-sm container-overlay">
-            <img ondrop="drop(event)" ondragover="allowDrop(event)" id="img_convergent1" src="../images/drag_drop_tectonics/convergent.png" class="img-bordered" width="100%" draggable="false">
+            <img id="img_convergent1" src="../images/drag_drop_tectonics/convergent.png" class="img-bordered dd-drop" width="100%">
           </div>
           <div class="col-sm" >
-            <img ondrop="drop(event)" ondragover="allowDrop(event)" id="img_convergent2" src="../images/drag_drop_tectonics/convergent2.png" class="img-bordered" width="100%" draggable="false">
+            <img id="img_convergent2" src="../images/drag_drop_tectonics/convergent2.png" class="img-bordered dd-drop" width="100%">
           </div>
         </div>
         <div class="row">
           <div class="col-sm" >
-            <img ondrop="drop(event)" ondragover="allowDrop(event)" id="img_divergent1" src="../images/drag_drop_tectonics/divergent.png" class="img-bordered" width="100%" draggable="false">
+            <img id="img_divergent1" src="../images/drag_drop_tectonics/divergent.png" class="img-bordered dd-drop" width="100%">
           </div>
           <div class="col-sm" >
-            <img ondrop="drop(event)" ondragover="allowDrop(event)" id="img_transform1" src="../images/drag_drop_tectonics/transform.png" class="img-bordered" width="100%" draggable="false">
+            <img id="img_transform1" src="../images/drag_drop_tectonics/transform.png" class="img-bordered dd-drop" width="100%">
           </div>
         </div>
         <div class="row">
-          <div class="col-sm" id="convergent1" draggable="true" ondragstart="drag(event)" style="cursor: move;" >
+          <div class="col-sm dd-drag" id="convergent1">
             Convergent
           </div>
-          <div class="col-sm" id="convergent2" draggable="true" ondragstart="drag(event)" style="cursor: move;" >
+          <div class="col-sm dd-drag" id="convergent2">
             Convergent
           </div>
-          <div class="col-sm" id="divergent1" draggable="true" ondragstart="drag(event)" style="cursor: move;" >
+          <div class="col-sm dd-drag" id="divergent1">
             Divergent
           </div>
-          <div class="col-sm" id="transform1" draggable="true" ondragstart="drag(event)" style="cursor: move;" >
+          <div class="col-sm dd-drag" id="transform1">
             Transform
           </div>
         </div>
@@ -75,7 +75,7 @@
     <script src="../js/virtualgalapagos/overlay.js"></script>
     <script src="../js/virtualgalapagos/toolbar.js"></script>
     <script src="../js/virtualgalapagos/drag_drop.js"></script>
-    <script src="../js/virtualgalapagos/plates_game.js"></script>
+    <script>setDD("plates_game");</script>
   </body>
 </html>
 
