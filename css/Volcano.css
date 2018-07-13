@@ -47,6 +47,16 @@
   background-color: black;
 }
 
+.nav_title {
+  color: white;
+  margin-right: 15px;
+}
+
+.vg_navbar{
+  margin-bottom: 10px;
+  z-index: 6;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
