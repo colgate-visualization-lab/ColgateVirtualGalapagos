@@ -3,7 +3,8 @@ var pageNumber = -1
 var numPages = 11;
 var innerDiv;
 var overlayDiv;
-var myHeading = document.querySelector('h1');
+var fb_on = false;
+
 initFieldbook();
 
 function initFieldbook() {
@@ -34,16 +35,21 @@ function initFieldbook() {
 	setPage(1);
 }
 
+// toggle Fieldbook on and off
+function toggleFB(){
+	if (fb_on){
+		saveAndClose();
+	} else {
+		fieldbookOn();
+	}
+	fb_on = !fb_on;
+}
+
 // sets up and displays persistent fieldbook button
 function initFieldbookButton(){
-	var fb_button = document.createElement('BUTTON');
-	fb_button.className = 'btn btn-primary';
-	fb_button.id = 'fieldbook_button';
-	fb_button.appendChild(document.createTextNode('Fieldbook'));
-	fb_button.onclick = function () { 
-    	fieldbookOn(); 
+  document.getElementById("fb_button").onclick = function () { 
+    	toggleFB(); 
     };
-	document.body.appendChild(fb_button);
 }
 
 function setPage(number){
