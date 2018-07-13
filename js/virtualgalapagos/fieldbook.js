@@ -110,7 +110,7 @@ function createNavBars(){
 	for (i = 0; i < divArray.length; i++){
 		var inner_div = divArray[i];
 		var save_btn = document.createElement('BUTTON');
-		save_btn.className = 'btn btn-secondary btn-sm';
+		save_btn.className = 'btn btn-light btn-sm';
 		save_btn.appendChild(document.createTextNode('Save and Close'))
 		save_btn.onclick = function () { 
 			saveAndClose();
@@ -122,19 +122,19 @@ function createNavBars(){
 //			discardAndClose();
 //		};
 		var back_btn = document.createElement('BUTTON');
-		back_btn.className = 'btn btn-secondary btn-sm';
+		back_btn.className = 'btn btn-light btn-sm';
 		back_btn.appendChild(document.createTextNode('Back'))
 		back_btn.onclick = function () { 
 			setPage(pageNumber-1); 
 		};
 		var next_btn = document.createElement('BUTTON');
-		next_btn.className = 'btn btn-secondary btn-sm';
+		next_btn.className = 'btn btn-light btn-sm';
 		next_btn.appendChild(document.createTextNode('Next'))
 		next_btn.onclick = function () { 
 			setPage(pageNumber+1); 
 		};
 		var home_btn = document.createElement('BUTTON');
-		home_btn.className = 'btn btn-secondary btn-sm';
+		home_btn.className = 'btn btn-light btn-sm';
 		home_btn.appendChild(document.createTextNode('Home'))
 		home_btn.onclick = function () { 
 			setPage(1); 
