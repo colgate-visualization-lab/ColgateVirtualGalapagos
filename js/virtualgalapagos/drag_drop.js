@@ -36,7 +36,7 @@ function initDrags(){
     drags[i].ondragstart = function (){
       drag(event);
     }
-    drags[i].style = "cursor: move; border-style: solid;";
+    drags[i].style = "cursor: move; border-style: solid; border-color: #007bff;";
   } 
 }
 
