@@ -15,9 +15,11 @@
 
 .overlay_inner {
     position: absolute;
+    overflow-y: scroll;
     top: 15%;
     left: 50%;
 	max-width: 55%;
+    max-height: 75%;
     font-size: 25px;
 /*    text-shadow: 2px 2px 4px #000000;*/
     color: black;
