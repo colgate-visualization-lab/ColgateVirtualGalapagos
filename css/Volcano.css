@@ -1,6 +1,6 @@
 /* Style for a bordered image */
 .img-bordered {
-  border:6px groove #545565;
+  border:7px solid #007bff;
   background-color: black;
 }
 
