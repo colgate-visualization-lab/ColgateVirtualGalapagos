@@ -57,10 +57,13 @@ function drop(ev) {
   var dropTargets = ddDict[label_cache.id];
   if (dropTargets.includes(ev.target.id)){
     dropMatch(label_cache, ev.target);
+  } else {
+    alert("That's not a match! Try again.");
   }
 }
 
 function dropMatch(drag, drop){
+  alert("You got it!");
   if (ddType=="map_ages") {
     drag.innerHTML = drag.innerHTML + " - " + drop.id;
     disableDrag(drag);
