@@ -45,6 +45,15 @@
 
 
 		</style>
+      
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="../../css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="../../css/Volcano.css">
+        <link rel="stylesheet" href="../../css/Fieldbook.css">
+        <link rel="stylesheet" href="../../css/Toolbar.css">
+      
 				<!--[if !IE]><!-->
 		<script type="text/javascript" src="Volcano_Exploration02data/lib/jquery-2.1.1.min.js"></script>
 		<!--<![endif]-->
@@ -176,6 +185,17 @@
 		</script>
 	</head>
 	<body>
+        <!-- Navbar Layout -->
+        <nav class="navbar sticky-top navbar-light bg-primary" style="z-index: 6">
+          <form class="form-inline">
+            <h4 class="nav_title">Colgate Virtual Galapagos</h4>
+            <a href="Volcano_MainMenu01.html" id="home_button" class="btn btn-light" style="margin-left: 10px;" >Home</a>
+            <button id="fb_button" class="btn btn-light" style="margin-left: 10px;" type="button">Fieldbook</button>
+            <button id="tb_button" class="btn btn-light" style="margin-left: 10px;" type="button">Toolbar</button>
+            <a href="Volcano_Exploration03.html" class="btn btn-light" style="margin-left: 10px;">Next</a>
+          </form>
+          <a style="color: white">About Us</a>
+        </nav>      
 		<div id="container">
 
 			<div id="tourDIV">
@@ -211,5 +231,23 @@
 				</script>
 			</div>
 		</div>
-	</body>
+      
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <span class="text-muted">Colgate Virtual Galapagos is designed and built by students and faculty at <a href="https://www.colgate.edu/">Colgate University</a>.</span>
+        </div>
+      </footer>
+      
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="../../js/jquery-3.2.1.min.js" ></script>
+      <script src="../../js/popper.min.js"></script>
+      <script src="../../js/bootstrap-4.0.0.js"></script>
+
+      <!-- Custom scripts -->
+      <script src="../../js/virtualgalapagos/fieldbook.js"></script>
+      <script src="../../js/virtualgalapagos/toolbar.js"></script>
+      <script src="../../js/virtualgalapagos/overlay.js"></script>
+  </body>
 </html>
