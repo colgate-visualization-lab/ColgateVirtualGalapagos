@@ -28,10 +28,13 @@
     </nav>
     
     <div class="container"><img src="../images/ge_map.png" class="img-fluid img-bordered" alt="Responsive image"></div>
-    <div class="container" >
+    <div id="main" class="container" >
       <button type="button" class="btn btn-primary" onclick="on()">What's a hypothesis?</button>
       <a href="Volcano_TerrainMap03.html" class="btn btn-primary">Back</a>
       <a href="Volcano_TerrainMapAges01.html" class="btn btn-primary">Next</a>
+      <audio id="player">
+        <source id="player_src" type="audio/mpeg"/>
+      </audio>
     </div>
     <div id="overlay">
       <div class="overlay_inner">A Hypothesis is a tentative reason to explain why something happens. It is usually backed up by evidence DATA that you have observed or collected beforehand. A hypothesis can be tested by gathering further data or more observations. If the tests agree with your idea, it supports your hypothesis. If the results of the test disagree with your idea, then it refutes your hypothesis indicating that it isn't quite right and needs to be adjusted. If you’re hypothesis isn’t quite right that’s okay. Part of science is testing to see what doesn’t work and then retesting.<br>
@@ -56,5 +59,6 @@
     <script src="../js/virtualgalapagos/fieldbook.js"></script>
     <script src="../js/virtualgalapagos/overlay.js"></script>
     <script src="../js/virtualgalapagos/toolbar.js"></script>
+    <script src="../js/virtualgalapagos/audiocontroller.js"></script>
   </body>
 </html>

@@ -36,9 +36,12 @@
 			<area target="" style="cursor: zoom-in;" alt="Santa Cruz" title="Santa Cruz" onclick="on('santacruz')" coords="2911,1352,227" shape="circle">
 		</map>
     </div>
-	 <div class="container" >
+	 <div id="main" class="container" >
         <a href="Volcano_TerrainMap02.html" class="btn btn-primary">Back</a>
         <a href="Volcano_TerrainMap04.html" class="btn btn-primary">Next</a>
+        <audio id="player">
+          <source id="player_src" type="audio/mpeg"/>
+        </audio>
       </div>
 	  <div id="overlay">
 		  <div class="overlay_inner" id="fernandina_inner" style="display: none">
@@ -74,5 +77,6 @@
     <script src="../js/virtualgalapagos/fieldbook.js"></script>
     <script src="../js/virtualgalapagos/overlay.js"></script>
     <script src="../js/virtualgalapagos/toolbar.js"></script>
+    <script src="../js/virtualgalapagos/audiocontroller.js"></script>
   </body>
 </html>
