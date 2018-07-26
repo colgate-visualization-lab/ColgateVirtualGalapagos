@@ -1,3 +1,5 @@
+// PAGES SHOULD ALWAYS HAVE BG TRACK ASSIGNED OR AN AUDIO TRACK OF SAME NAME AS PARENT PAGE
+
 var paused = false;
 var bg_track;
 var player;
@@ -47,7 +49,7 @@ function setBGTrack(){
 
 function setupControls(){
   var playpause_btn = document.createElement('BUTTON');
-  playpause_btn.className = 'btn btn-primary';
+  playpause_btn.className = 'btn btn-dark';
   playpause_btn.appendChild(document.createTextNode('Pause'))
   // replace manual style assignment with proper CSS class
   playpause_btn.style = "width: 100px;"
@@ -57,7 +59,7 @@ function setupControls(){
   document.getElementById("main").appendChild(playpause_btn);
   
   var rewind_btn = document.createElement('BUTTON');
-  rewind_btn.className = 'btn btn-primary';
+  rewind_btn.className = 'btn btn-dark';
   rewind_btn.appendChild(document.createTextNode('Rewind 10s'))
   // replace manual style assignment with proper CSS class
   rewind_btn.style = "width: 100px; margin-left: 5px;"
