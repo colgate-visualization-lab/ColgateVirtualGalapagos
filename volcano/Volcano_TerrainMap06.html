@@ -27,10 +27,13 @@
     </nav>
     
     <div class="container"><img id="gemap" src="../images/ge_map.png" class="img-fluid img-bordered" alt="Responsive image"></div>
-    <div class="container" >
+    <div id="main" class="container" >
       <button class="btn btn-primary" onclick="ToggleDates()">Toggle Dates</button>
       <a href="Volcano_SouthAmerica01.html" class="btn btn-primary">Back</a>
       <a href="Volcano_PlumePlacement01.html" class="btn btn-primary">Next</a>
+      <audio id="player">
+        <source id="player_src" type="audio/mpeg"/>
+      </audio>
     </div>
     
     <!-- Footer -->
@@ -61,6 +64,7 @@
         tog = !tog;
       }
     </script>
+    <script src="../js/virtualgalapagos/audiocontroller.js"></script>
     
   </body>
 </html>
