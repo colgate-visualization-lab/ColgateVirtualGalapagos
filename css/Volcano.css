@@ -80,3 +80,18 @@ body {
   line-height: 60px; /* Vertically center the text there */
   background-color: #f5f5f5;
 }
+
+
+/* VG Layout Elements */
+#control_bar{
+  padding:10px;
+  border: red;
+}
+
+#audio_control{
+  padding: inherit;
+}
+
+#nav_control{
+  padding: inherit;
+}
