@@ -33,7 +33,7 @@ function initAudioPlayer(){
   src.id = "player_src";
   src.type = "audio/mpeg";
   player.appendChild(src);
-  document.getElementById("main").appendChild(src);
+  document.getElementById("audio_control").appendChild(src);
   bg_track = src.src;
 }
 
@@ -56,7 +56,7 @@ function setupControls(){
   playpause_btn.onclick = function () { 
       playPause();
   };
-  document.getElementById("main").appendChild(playpause_btn);
+  document.getElementById("audio_control").appendChild(playpause_btn);
   
   var rewind_btn = document.createElement('BUTTON');
   rewind_btn.className = 'btn btn-dark';
@@ -66,7 +66,7 @@ function setupControls(){
   rewind_btn.onclick = function () { 
       rewind(10);
   };
-  document.getElementById("main").appendChild(rewind_btn);
+  document.getElementById("audio_control").appendChild(rewind_btn);
   
   // set global variables
   playpause = playpause_btn;
