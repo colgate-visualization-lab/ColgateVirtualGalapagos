@@ -53,7 +53,6 @@ function drag(ev) {
 function drop(ev) {
   ev.preventDefault();
   var data = ev.dataTransfer.getData("text");
-  
   var dropTargets = ddDict[label_cache.id];
   if (dropTargets.includes(ev.target.id)){
     dropMatch(label_cache, ev.target);
@@ -64,18 +63,14 @@ function drop(ev) {
 
 function dropMatch(drag, drop){
   alert("You got it!");
-  if (ddType=="map_ages") {
-    drag.innerHTML = drag.innerHTML + " - " + drop.id;
-    disableDrag(drag);
-    disableDrop(drop);
-  } else if (ddType=="plates_game"){
-    var src = drop.src;
-    drop.src = "../images/drag_drop_tectonics/" + drop.id.slice(4, drop.id.length) + "correct.png";
-    drag.style.display = "none";          
-  }
+
+  drag.innerHTML = drag.innerHTML.strike();
+  disableDrag(drag);
+  disableDrop(drop);
 }
 
 function disableDrag(dragE){
+  console.log("hello");
   dragE.draggable = false;
 }
 
