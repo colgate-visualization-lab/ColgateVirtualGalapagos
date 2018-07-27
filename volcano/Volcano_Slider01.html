@@ -26,21 +26,30 @@
         <button id="fb_button" class="btn btn-light" style="margin-left: 10px;" type="button">Fieldbook</button>
         <button id="tb_button" class="btn btn-light" style="margin-left: 10px;" type="button">Toolbar</button>
       </form>
-      <audio id="player">
-        <source id="player_src" type="audio/mpeg"/>
-      </audio>
     </nav>
     
-    <div class="container-fluid">
-      <a href="Volcano_TerrainMap02.html" class="btn btn-primary">Back</a>
-	   <div class="img-comp-container">
-        <div class="img-comp-img">
-          <img src="../images/ferd.jpg" height="775" width="1000">
+    <!--  VIRTUAL GALAPAGOS LAYOUT   -->
+    <div id="main" class="container">
+      <div id="content" class="container">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+            <img src="../images/ferd.jpg" height="775" width="1000">
+          </div>
+          <div class="img-comp-img img-comp-overlay">
+            <img src="../images/SantaCruz_resized.png" height="775" width="1000">
+          </div>
         </div>
-        <div class="img-comp-img img-comp-overlay">
-          <img src="../images/SantaCruz_resized.png" height="775" width="1000">
+      </div>
+      <div id="control_bar" class="container row justify-content-md-center">
+        <div id="nav_control">
+          <a href="Volcano_TerrainMap02.html" class="btn btn-primary">Back</a>
         </div>
+        <div id="audio_control">
+          <audio id="player">
+            <source id="player_src" type="audio/mpeg"/>
+          </audio>
         </div>
+      </div>
     </div>
     
     <!-- Footer -->
