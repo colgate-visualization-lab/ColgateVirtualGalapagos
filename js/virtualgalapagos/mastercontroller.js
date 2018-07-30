@@ -70,6 +70,6 @@ function movePage(shift){
   window.location.href = "/" + document.location.pathname.split("/").splice(1)[0] + "/volcano/" + pageList[idx+shift] + ".html";
 }
 
-function enableNext(){
+function pageDone(){
   next_btn.disabled = false;
 }
