@@ -1,4 +1,5 @@
 var pageList; 
+var next_btn;
 dev_mode = false;
 
 init();
@@ -20,7 +21,7 @@ function init(){
 // create back and next buttons
 function setupControlBar(){
   var back_btn = document.createElement('BUTTON');
-  back_btn.className = 'btn btn-primary';
+  back_btn.className = 'btn btn-dark';
   back_btn.onclick = function () { 
       back();
   };
@@ -30,9 +31,11 @@ function setupControlBar(){
   back_btn.appendChild(icon);
   document.getElementById("nav_control").appendChild(back_btn);
   
-  var next_btn = document.createElement('BUTTON');
-  next_btn.className = 'btn btn-primary';
+  next_btn = document.createElement('BUTTON');
+  next_btn.className = 'btn btn-dark';
   next_btn.style = "margin-left: 5px;";
+  // Button disabled until user done with page
+  next_btn.disabled = true;
   next_btn.onclick = function () { 
       next();
   };
@@ -68,5 +71,5 @@ function movePage(shift){
 }
 
 function enableNext(){
-    
+  next_btn.disabled = false;
 }
