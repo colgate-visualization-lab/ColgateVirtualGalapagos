@@ -32,18 +32,18 @@
       <div id="content" class="container">
         <div class="row">
           <div class="col-sm container-overlay">
-            <img id="img_convergent1" src="../images/volcano/plates_game/convergent.png" class="dd-drop" width="100%">
+            <img id="img_convergent1" src="../images/volcano/plates_game/convergent.png" draggable="false" class="dd-drop" width="100%">
           </div>
           <div class="col-sm" >
-            <img id="img_convergent2" src="../images/volcano/plates_game/convergent2.png" class="dd-drop" width="100%">
+            <img id="img_convergent2" src="../images/volcano/plates_game/convergent2.png" draggable="false" class="dd-drop" width="100%">
           </div>
         </div>
         <div class="row">
           <div class="col-sm" >
-            <img id="img_divergent1" src="../images/volcano/plates_game/divergent.png" class="dd-drop" width="100%">
+            <img id="img_divergent1" src="../images/volcano/plates_game/divergent.png" draggable="false" class="dd-drop" width="100%">
           </div>
           <div class="col-sm" >
-            <img id="img_transform1" src="../images/volcano/plates_game/transform.png" class="dd-drop" width="100%">
+            <img id="img_transform1" src="../images/volcano/plates_game/transform.png" draggable="false" class="dd-drop" width="100%">
           </div>
         </div>
         <div class="row">
@@ -63,7 +63,7 @@
       </div>
       <div id="control_bar" class="container row justify-content-md-center">
         <div id="nav_control">
-          <button class="btn btn-primary" onclick="on('plates')">?</button>
+          <button class="btn btn-dark" onclick="on('plates')"><i class="material-icons">help_outline</i></button>
         </div>
         <div id="audio_control">
           <audio id="player">
@@ -78,7 +78,7 @@
       <div id='plates_inner' class="overlay_inner"><b>Divergent</b>: two plates move away from each other<br>
         <b>Convergent</b>: two plates move toward each other and collide, creating subduction zones or mountain building events<br>
         <b>Transform</b>: two plates slide past each other in opposite directions<br>
-      <button type="button" class="btn" onclick="off('plates')">Back</button>
+      <button type="button" class="btn" onclick="off('plates')"><i class="material-icons">arrow_back</i></button>
       </div>
     </div>
     
