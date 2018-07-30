@@ -63,7 +63,8 @@ function movePage(shift){
     page = path[1];
   }
   var idx = pageList.indexOf(page.substr(0, page.length-5));
-  window.location.href = "/ColgateVirtualGalapagos/volcano/" + pageList[idx+shift] + ".html";
+  console.log();
+  window.location.href = "/" + document.location.pathname.split("/").splice(1)[0] + "/volcano/" + pageList[idx+shift] + ".html";
 }
 
 function enableNext(){
