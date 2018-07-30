@@ -81,6 +81,21 @@ function setupControls(){
   rewind_btn.appendChild(icon);
   document.getElementById("audio_control").appendChild(rewind_btn);
   
+  if (dev_mode){
+    var skip_btn = document.createElement('BUTTON');
+    skip_btn.className = 'btn btn-dark';
+    // replace manual style assignment with proper CSS class
+    skip_btn.style = "margin-left: 5px;"
+    skip_btn.onclick = function () { 
+        player.currentTime = player.duration-1;
+    };
+    icon = document.createElement("i");
+    icon.className = "material-icons";
+    icon.innerHTML = "skip_next";
+    skip_btn.appendChild(icon);
+    document.getElementById("audio_control").appendChild(skip_btn); 
+  }
+  
   // set global variables
   playpause = playpause_btn;
 }
@@ -117,6 +132,6 @@ function setTrack(filename){
 }
 
 function trackDone(){
-  enableNext();
+  pageDone();
   rewind(player.duration);
 }
