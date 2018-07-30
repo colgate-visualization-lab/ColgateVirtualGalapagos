@@ -1,6 +1,7 @@
 // PAGES SHOULD ALWAYS HAVE BG TRACK ASSIGNED OR AN AUDIO TRACK OF SAME NAME AS PARENT PAGE
 
-var paused = false;
+var dev_mode = true;
+var paused = true;
 var bg_track;
 var player;
 var src;
@@ -21,7 +22,14 @@ function init(){
   setupControls();
   
   // autoplay background audio
-  playPause();
+  player.oncanplay = function() {
+    playPause();
+  };
+  
+  // setup listener for when audio is done playing
+  player.onended = function() {
+    trackDone();
+  };
 }
 
 
@@ -77,7 +85,6 @@ function setupControls(){
   playpause = playpause_btn;
 }
 
-
 // toggle play/pause
 function playPause(){
   if (paused){
@@ -107,4 +114,9 @@ function rewind(time){
 function setTrack(filename){
   src.src = "../audio/volcano/" + filename + ".mp3";
   player.load();
+}
+
+function trackDone(){
+  enableNext();
+  rewind(player.duration);
 }
