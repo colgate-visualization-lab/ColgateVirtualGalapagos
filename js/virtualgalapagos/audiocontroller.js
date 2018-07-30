@@ -50,22 +50,27 @@ function setBGTrack(){
 function setupControls(){
   var playpause_btn = document.createElement('BUTTON');
   playpause_btn.className = 'btn btn-dark';
-  playpause_btn.appendChild(document.createTextNode('Pause'))
   // replace manual style assignment with proper CSS class
-  playpause_btn.style = "width: 100px;"
   playpause_btn.onclick = function () { 
       playPause();
   };
+  var icon = document.createElement("i");
+  icon.className = "material-icons";
+  icon.innerHTML = "pause";
+  playpause_btn.appendChild(icon);
   document.getElementById("audio_control").appendChild(playpause_btn);
   
   var rewind_btn = document.createElement('BUTTON');
   rewind_btn.className = 'btn btn-dark';
-  rewind_btn.appendChild(document.createTextNode('Rewind 10s'))
   // replace manual style assignment with proper CSS class
-  rewind_btn.style = "width: 100px; margin-left: 5px;"
+  rewind_btn.style = "margin-left: 5px;"
   rewind_btn.onclick = function () { 
       rewind(10);
   };
+  icon = document.createElement("i");
+  icon.className = "material-icons";
+  icon.innerHTML = "replay_10";
+  rewind_btn.appendChild(icon);
   document.getElementById("audio_control").appendChild(rewind_btn);
   
   // set global variables
@@ -77,20 +82,20 @@ function setupControls(){
 function playPause(){
   if (paused){
     play();
-    playpause.innerHTML = "Pause";
   } else {
     pause();
-    playpause.innerHTML = "Play";
   }
   paused = !paused;
 }
 
 function play(){
   player.play();
+  playpause.getElementsByTagName("i")[0].innerHTML = "pause";
 }
 
 function pause(){
   player.pause();
+  playpause.getElementsByTagName("i")[0].innerHTML = "play_arrow";
 }
 
 function rewind(time){
