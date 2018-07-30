@@ -1,19 +1,28 @@
 var pageList; 
 var next_btn;
+var pageName;
 dev_mode = false;
 
 init();
 
 function init(){
+  // grab page name
+  // NEEDS REFACTOR
+  pageName = grabPageName();
+  pageName = pageName.substr(0, pageName.length-5);
+  
   // initialize page list
   pageList = ["Volcano_TerrainMap01", "panotour/Volcano_Exploration01", "panotour/Volcano_Exploration02", "panotour/Volcano_Exploration03", "panotour/Volcano_Exploration04", "panotour/Volcano_Exploration05", "Volcano_TerrainMap02", "Volcano_TerrainMap03", "Volcano_TerrainMap04", "Volcano_TerrainMapAges01", "Volcano_TerrainMapAges02", "Volcano_OtherVolcanoes01", "Volcano_TectonicPlateWhiteboard01", "Volcano_TectonicPlates01", "Volcano_PlatesGame01", "Volcano_TectonicPlates02", "Volcano_MantlePlumesWhiteboard01", "Volcano_SouthAmerica01", "Volcano_TerrainMap06", "Volcano_PlumePlacement01", "Volcano_PlumesYes01", "Volcano_PlumesNo01", "Volcano_WhereNext01", "Volcano_MainMenu01"];
+  
+  // setup progress storage
+  initProgress();
   
   // setup control bar
   setupControlBar();
   
   //  dev mode
   if (dev_mode){
-      enableNext();
+      pageDone();
   }
 }
 
@@ -35,7 +44,9 @@ function setupControlBar(){
   next_btn.className = 'btn btn-dark';
   next_btn.style = "margin-left: 5px;";
   // Button disabled until user done with page
-  next_btn.disabled = true;
+  if (localStorage.getItem(pageName) == "false"){
+    next_btn.disabled = true; 
+  }
   next_btn.onclick = function () { 
       next();
   };
@@ -44,6 +55,16 @@ function setupControlBar(){
   icon.innerHTML = "arrow_forward";
   next_btn.appendChild(icon);
   document.getElementById("nav_control").appendChild(next_btn);
+}
+
+function grabPageName(){
+  var path = window.location.pathname;
+  path = path.split("/").splice(-2);
+  if (path[0] != "volcano"){
+    return path.join('/');
+  } else {
+    return path[1];
+  }
 }
 
 // go to next page
@@ -57,19 +78,28 @@ function back(){
 }
 
 function movePage(shift){
-  var path = window.location.pathname;
-  path = path.split("/").splice(-2);
-  var page;
-  if (path[0] != "volcano"){
-    page = path.join('/');
-  } else {
-    page = path[1];
-  }
-  var idx = pageList.indexOf(page.substr(0, page.length-5));
-  console.log();
+  var idx = pageList.indexOf(pageName);
   window.location.href = "/" + document.location.pathname.split("/").splice(1)[0] + "/volcano/" + pageList[idx+shift] + ".html";
 }
 
 function pageDone(){
   next_btn.disabled = false;
+  localStorage.setItem(pageName, "true");
+}
+
+function initProgress(){
+  if (localStorage.getItem("initProgress") != "true"){
+    for (i = 0; i < pageList.length; i++){
+      localStorage.setItem(pageList[i], "false");
+      
+      //temporary band-aid for 360 pages
+      if (pageList[i].includes("Exploration")) {
+        localStorage.setItem(pageList[i], "true");
+      }
+    }
+    localStorage.setItem("initProgress", "true");
+  }
+//  for (i = 0; i < pageList.length; i++){
+//    console.log(pageList[i] + "   " + localStorage.getItem(pageList[i], false));
+//  }
 }
