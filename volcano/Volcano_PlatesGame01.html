@@ -20,11 +20,11 @@
     <!-- Navbar Layout -->
     <nav class="navbar vg_navbar sticky-top navbar-light bg-primary">
       <form class="form-inline">
-        <h4 class="nav_title">Colgate Virtual Galapagos</h4>
-        <a href="Volcano_MainMenu01.html" id="home_button" class="btn btn-light" style="margin-left: 10px;" ><i class="material-icons">home</i></a>
+        <a href="Volcano_TerrainMap01.html" id="home_button" class="btn btn-light" style="margin-left: 10px;" ><i class="material-icons">home</i></a>
         <button id="fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i class="material-icons">book</i></button>
         <button id="tb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i class="material-icons">menu</i></button>
       </form>
+      <h4 class="nav_title">Colgate Virtual Galapagos</h4>
     </nav>
     
     <!--  VIRTUAL GALAPAGOS LAYOUT   -->
@@ -64,8 +64,6 @@
       <div id="control_bar" class="container row justify-content-md-center">
         <div id="nav_control">
           <button class="btn btn-primary" onclick="on('plates')">?</button>
-          <a href="Volcano_TectonicPlates01.html" class="btn btn-primary">Back</a>
-          <a href="Volcano_TectonicPlates02.html" class="btn btn-primary">Next</a>
         </div>
         <div id="audio_control">
           <audio id="player">
@@ -104,6 +102,7 @@
     <script src="../js/virtualgalapagos/drag_drop.js"></script>
     <script>setDD("plates_game");</script>
     <script src="../js/virtualgalapagos/audiocontroller.js"></script>
+    <script src="../js/virtualgalapagos/mastercontroller.js"></script>
   </body>
 </html>
 
