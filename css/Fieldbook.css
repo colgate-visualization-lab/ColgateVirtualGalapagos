@@ -10,6 +10,8 @@
     background-color: rgba(0,0,0,0.3); /* Black background with opacity */
     z-index: 3; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
+  
+    overflow: scroll;
 }
 
 #fb_overlay_inner {
@@ -26,6 +28,7 @@
 	max-width: 100%;
     transform: translate(-50%,0%);
     -ms-transform: translate(-50%, 0%);
+
 }
 
 #fb_navbar {
