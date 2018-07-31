@@ -6,6 +6,7 @@ var dragArray = [];
 // stores the drag and drop pairings
 var ddDict;
 var ddType;
+var drag_count;
 
 initDD();
 
@@ -38,6 +39,8 @@ function initDrags(){
     }
     drags[i].style = "cursor: move; border-style: solid; border-color: #007bff;";
   } 
+  // NEEDS REFACTOR
+  drag_count = dragArray.length;
 }
 
 function allowDrop(ev) {
@@ -70,8 +73,13 @@ function dropMatch(drag, drop){
 }
 
 function disableDrag(dragE){
-  console.log("hello");
   dragE.draggable = false;
+  // check if user is done with DD module
+  // could use refactor
+  drag_count--;
+  if (drag_count <= 0){
+    pageDone("dragdrop");
+  }
 }
 
 function disableDrop(dropE){

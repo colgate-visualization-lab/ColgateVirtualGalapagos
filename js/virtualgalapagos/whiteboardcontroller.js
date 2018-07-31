@@ -1,7 +1,7 @@
 // TEMPORARY CODE, THIS CAN ALL BE MERGED WITH AUDIOCONTROLLER 
 
 var dev_mode = true;
-var paused = true;
+var paused = false;
 var player;
 var src;
 var playpause;
@@ -99,6 +99,6 @@ function rewind(time){
 }
 
 function trackDone(){
-  pageDone();
+  pageDone("whiteboard");
   rewind(player.duration);
 }
