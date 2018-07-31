@@ -59,7 +59,6 @@ function setBGTrack(){
 function setupControls(){
   var playpause_btn = document.createElement('BUTTON');
   playpause_btn.className = 'btn btn-dark';
-  // replace manual style assignment with proper CSS class
   playpause_btn.onclick = function () { 
       playPause();
   };
@@ -71,8 +70,6 @@ function setupControls(){
   
   var rewind_btn = document.createElement('BUTTON');
   rewind_btn.className = 'btn btn-dark';
-  // replace manual style assignment with proper CSS class
-  rewind_btn.style = "margin-left: 5px;"
   rewind_btn.onclick = function () { 
       rewind(10);
   };
@@ -85,8 +82,6 @@ function setupControls(){
   if (dev_mode){
     var skip_btn = document.createElement('BUTTON');
     skip_btn.className = 'btn btn-dark';
-    // replace manual style assignment with proper CSS class
-    skip_btn.style = "margin-left: 5px;"
     skip_btn.onclick = function () { 
         player.currentTime = player.duration-1;
     };
