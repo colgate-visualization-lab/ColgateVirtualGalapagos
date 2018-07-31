@@ -1,6 +1,7 @@
 var pageList; 
 var next_btn;
 var pageName;
+var page_type = "default";
 dev_mode = false;
 
 init();
@@ -44,7 +45,7 @@ function setupControlBar(){
   next_btn.className = 'btn btn-dark';
   next_btn.style = "margin-left: 5px;";
   // Button disabled until user done with page
-  if (localStorage.getItem(pageName) == "false"){
+  if (localStorage.getItem(pageName) == "false" && !dev_mode){
     next_btn.disabled = true; 
   }
   next_btn.onclick = function () { 
@@ -82,24 +83,18 @@ function movePage(shift){
   window.location.href = "/" + document.location.pathname.split("/").splice(1)[0] + "/volcano/" + pageList[idx+shift] + ".html";
 }
 
-function pageDone(){
-  next_btn.disabled = false;
-  localStorage.setItem(pageName, "true");
+function pageDone(type){
+  if (type == page_type){
+    next_btn.disabled = false;
+    localStorage.setItem(pageName, "true"); 
+  }
 }
 
 function initProgress(){
   if (localStorage.getItem("initProgress") != "true"){
     for (i = 0; i < pageList.length; i++){
       localStorage.setItem(pageList[i], "false");
-      
-      //temporary band-aid for 360 pages
-      if (pageList[i].includes("Exploration")) {
-        localStorage.setItem(pageList[i], "true");
-      }
     }
     localStorage.setItem("initProgress", "true");
   }
-//  for (i = 0; i < pageList.length; i++){
-//    console.log(pageList[i] + "   " + localStorage.getItem(pageList[i], false));
-//  }
 }
