@@ -139,6 +139,13 @@ function createNavBars(){
 		home_btn.onclick = function () { 
 			setPage(1); 
 		};
+        var clear_btn = document.createElement('BUTTON');
+		clear_btn.className = 'btn btn-light btn-sm';
+		clear_btn.appendChild(document.createTextNode('Clear'))
+		clear_btn.onclick = function () { 
+			clearFieldbook();
+		};
+		inner_div.appendChild(clear_btn);
 		inner_div.appendChild(home_btn);
 		inner_div.appendChild(save_btn);
 //		inner_div.appendChild(discard_btn);
