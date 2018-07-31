@@ -1,7 +1,8 @@
 // PAGES SHOULD ALWAYS HAVE BG TRACK ASSIGNED OR AN AUDIO TRACK OF SAME NAME AS PARENT PAGE
 
 var dev_mode = true;
-var paused = true;
+// setting this to true will autoplay audio
+var paused = false;
 var bg_track;
 var player;
 var src;
@@ -127,11 +128,27 @@ function rewind(time){
 }
 
 function setTrack(filename){
-  src.src = "../audio/volcano/" + filename + ".mp3";
+  var prefix;
+  if (grabPageName().includes("panotour")){
+    prefix = "../../audio/volcano/";
+  } else {
+    prefix = "../audio/volcano/";
+  }
+  src.src = prefix + filename + ".mp3";
   player.load();
 }
 
 function trackDone(){
-  pageDone();
+  pageDone("default");
   rewind(player.duration);
+}
+
+function grabPageName(){
+  var path = window.location.pathname;
+  path = path.split("/").splice(-2);
+  if (path[0] != "volcano"){
+    return path.join('/');
+  } else {
+    return path[1];
+  }
 }
