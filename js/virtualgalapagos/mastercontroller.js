@@ -2,7 +2,7 @@ var pageList;
 var next_btn;
 var pageName;
 var page_type = "default";
-dev_mode = false;
+dev_mode = true;
 
 init();
 
