@@ -1,8 +1,9 @@
 var pageList; 
 var next_btn;
 var pageName;
-var page_type = "default";
-dev_mode = false;
+var dev_mode = false;
+// this needs a refactor
+var done_flags = [];
 
 init();
 
@@ -19,7 +20,12 @@ function init(){
   initProgress();
   
   // setup control bar
-  setupControlBar();
+  if (pageList.includes(pageName)){
+    setupControlBar();
+  } else {
+    next_btn =  document.getElementById("next_btn");
+    updateNext();
+  }
   
   //  dev mode
   if (dev_mode){
@@ -84,10 +90,8 @@ function movePage(shift){
 }
 
 function pageDone(type){
-  if (type == page_type){
-    next_btn.disabled = false;
-    localStorage.setItem(pageName, "true"); 
-  }
+  next_btn.disabled = false;
+  localStorage.setItem(pageName, "true"); 
 }
 
 function initProgress(){
@@ -97,4 +101,27 @@ function initProgress(){
     }
     localStorage.setItem("initProgress", "true");
   }
+}
+
+function updateNext(){
+  if (localStorage.getItem(pageName) != "true" && !dev_mode){
+    next_btn.disabled = true; 
+  }
+}
+
+function addFlag(name){
+  done_flags[name] = false;
+  console.log("Adding flag of type: " + name);
+}
+
+function flagDone(name){
+  console.log("Flag of type: " + name + " done");
+  done_flags[name] = true;
+  keys = Object.keys(done_flags);
+  for (i = 0; i < keys.length ; i++) { 
+    if (done_flags[keys[i]] == false){
+      return;
+    }
+  }
+  pageDone();
 }

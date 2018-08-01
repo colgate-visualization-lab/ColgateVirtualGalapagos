@@ -31,6 +31,9 @@ function init(){
   player.onended = function() {
     trackDone();
   };
+  
+  
+  addFlag("audio");
 }
 
 
@@ -134,7 +137,7 @@ function setTrack(filename){
 }
 
 function trackDone(){
-  pageDone("default");
+  flagDone("audio");
   rewind(player.duration);
 }
 
