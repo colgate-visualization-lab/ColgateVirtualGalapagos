@@ -13,6 +13,7 @@ initDD();
 function initDD(){
   initDrops();
   initDrags();
+  addFlag("dragdrop");
 }
 
 function initDrops(){
@@ -78,7 +79,7 @@ function disableDrag(dragE){
   // could use refactor
   drag_count--;
   if (drag_count <= 0){
-    pageDone("dragdrop");
+    flagDone("dragdrop");
   }
 }
 
