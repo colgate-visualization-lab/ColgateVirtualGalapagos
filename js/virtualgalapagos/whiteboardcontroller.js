@@ -25,6 +25,8 @@ function init(){
   player.onended = function() {
     trackDone();
   };
+  
+  addFlag("whiteboard");
 }
 
 function setupControls(){
@@ -99,6 +101,6 @@ function rewind(time){
 }
 
 function trackDone(){
-  pageDone("whiteboard");
+  flagDone("whiteboard");
   rewind(player.duration);
 }
