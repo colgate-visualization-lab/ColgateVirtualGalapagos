@@ -32,7 +32,6 @@ function init(){
     trackDone();
   };
   
-  
   addFlag("audio");
 }
 
@@ -126,13 +125,17 @@ function rewind(time){
 }
 
 function setTrack(filename){
+  console.log("setting audio track to: " + filename);
   var prefix;
   if (grabPageName().includes("panotour")){
     prefix = "../../audio/volcano/";
   } else {
     prefix = "../audio/volcano/";
   }
-  src.src = prefix + filename + ".mp3";
+  if (src.src != prefix + filename + ".mp3"){
+    console.log("Set audio track to: " + filename);
+    src.src = prefix + filename + ".mp3";
+  }
   player.load();
 }
 
