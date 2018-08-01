@@ -2,7 +2,6 @@ var pageList;
 var next_btn;
 var pageName;
 var dev_mode = false;
-// this needs a refactor
 var done_flags = [];
 
 init();
