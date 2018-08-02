@@ -2,7 +2,7 @@
 
 var dev_mode = true;
 // setting this to true will autoplay audio
-var paused = false;
+var paused = true;
 var bg_track;
 var player;
 var src;
@@ -24,7 +24,7 @@ function init(){
   
   // autoplay background audio
   player.oncanplay = function() {
-    playPause();
+//    playPause();
   };
   
   // setup listener for when audio is done playing
@@ -66,7 +66,7 @@ function setupControls(){
   };
   var icon = document.createElement("i");
   icon.className = "material-icons";
-  icon.innerHTML = "pause";
+  icon.innerHTML = "play_arrow";
   playpause_btn.appendChild(icon);
   document.getElementById("audio_control").appendChild(playpause_btn);
   
@@ -105,17 +105,18 @@ function playPause(){
   } else {
     pause();
   }
-  paused = !paused;
 }
 
 function play(){
   player.play();
   playpause.getElementsByTagName("i")[0].innerHTML = "pause";
+  paused = false;
 }
 
 function pause(){
   player.pause();
   playpause.getElementsByTagName("i")[0].innerHTML = "play_arrow";
+  paused = true;
 }
 
 function rewind(time){
@@ -141,6 +142,7 @@ function setTrack(filename){
 
 function trackDone(){
   flagDone("audio");
+  playPause();
   rewind(player.duration);
 }
 
