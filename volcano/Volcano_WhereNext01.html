@@ -10,11 +10,10 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/Volcano.css">
-    <link rel="stylesheet" href="../css/Overlay.css">
     <link rel="stylesheet" href="../css/Fieldbook.css">
     <link rel="stylesheet" href="../css/Toolbar.css">
 
-    <title>Volcano_PlatesGame01</title>
+    <title>Volcano_TerrainMap06</title>
   </head>
   <body>
     <!-- Navbar Layout -->
@@ -30,55 +29,16 @@
     <!--  VIRTUAL GALAPAGOS LAYOUT   -->
     <div id="main" class="container">
       <div id="content" class="container">
-        <div class="row">
-          <div class="col-sm container-overlay">
-            <img id="img_convergent1" src="../images/volcano/plates_game/convergent.png" draggable="false" class="dd-drop" width="100%">
-          </div>
-          <div class="col-sm" >
-            <img id="img_convergent2" src="../images/volcano/plates_game/convergent2.png" draggable="false" class="dd-drop" width="100%">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm" >
-            <img id="img_divergent1" src="../images/volcano/plates_game/divergent.png" draggable="false" class="dd-drop" width="100%">
-          </div>
-          <div class="col-sm" >
-            <img id="img_transform1" src="../images/volcano/plates_game/transform.png" draggable="false" class="dd-drop" width="100%">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm dd-drag" id="convergent1">
-            Convergent
-          </div>
-          <div class="col-sm dd-drag" id="convergent2">
-            Convergent
-          </div>
-          <div class="col-sm dd-drag" id="divergent1">
-            Divergent
-          </div>
-          <div class="col-sm dd-drag" id="transform1">
-            Transform
-          </div>
-        </div>
+        <img id="gemap" src="../images/ge_map.png" class="img-fluid img-bordered" alt="Responsive image">
       </div>
       <div id="control_bar" class="container row justify-content-md-center">
         <div id="nav_control">
-          <button class="btn btn-primary" onclick="on('plates')"><i class="material-icons">help_outline</i></button>
         </div>
         <div id="audio_control">
           <audio id="player">
-          <source id="player_src" type="audio/mpeg"/>
+            <source id="player_src" type="audio/mpeg"/>
           </audio>
         </div>
-      </div>
-    </div>
-    
-    <!-- Overlay Layout -->
-    <div id="overlay">
-      <div id='plates_inner' class="overlay_inner"><b>Divergent</b>: two plates move away from each other<br>
-        <b>Convergent</b>: two plates move toward each other and collide, creating subduction zones or mountain building events<br>
-        <b>Transform</b>: two plates slide past each other in opposite directions<br>
-      <button type="button" class="btn" onclick="off('plates')"><i class="material-icons">arrow_back</i></button>
       </div>
     </div>
     
@@ -100,10 +60,6 @@
     <script src="../js/virtualgalapagos/overlay.js"></script>
     <script src="../js/virtualgalapagos/toolbar.js"></script>
     <script src="../js/virtualgalapagos/mastercontroller.js"></script>
-    <script src="../js/virtualgalapagos/drag_drop.js"></script>
-    <script>setDD("plates_game");</script>
-    <script src="../js/virtualgalapagos/audiocontroller.js"></script>
-    
+    <script src="../js/virtualgalapagos/audiocontroller.js"></script>    
   </body>
 </html>
-

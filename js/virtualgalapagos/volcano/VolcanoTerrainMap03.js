@@ -10,6 +10,7 @@ init();
 function init(){
   addFlag("island_clicks");
   
+  // setup listener for audio playback end
   document.getElementById("player").onended = function() {
     trackDone();
     enableOptional();
@@ -45,10 +46,6 @@ function off(name) {
     flagDone("island_clicks");
     enableOptional();
   }
-}
-
-function bgAudioListener(){
-  enableOptional();
 }
 
 function enableOptional(){
