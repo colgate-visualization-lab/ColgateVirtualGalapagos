@@ -98,6 +98,8 @@ function initProgress(){
     for (i = 0; i < pageList.length; i++){
       localStorage.setItem(pageList[i], "false");
     }
+    // special cases
+    localStorage.setItem("TerrainMap03", "false");
     localStorage.setItem("initProgress", "true");
   }
 }
