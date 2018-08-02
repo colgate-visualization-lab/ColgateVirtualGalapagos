@@ -95,6 +95,7 @@ function pageDone(type){
 
 function initProgress(){
   if (localStorage.getItem("initProgress") != "true"){
+    alert("Setting up progress storage");
     for (i = 0; i < pageList.length; i++){
       localStorage.setItem(pageList[i], "false");
     }

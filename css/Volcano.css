@@ -44,6 +44,10 @@
   z-index: 6;
 }
 
+#tb_button {
+  display: none;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
