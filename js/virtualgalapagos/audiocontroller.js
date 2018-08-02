@@ -134,7 +134,6 @@ function setTrack(filename){
     prefix = "../audio/volcano/";
   }
   if (src.src != prefix + filename + ".mp3"){
-    console.log("Set audio track to: " + filename);
     src.src = prefix + filename + ".mp3";
   }
   player.load();
