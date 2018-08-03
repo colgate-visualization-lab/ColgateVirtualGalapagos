@@ -169,7 +169,7 @@ function addLink(parent, textcontent, pagenum){
     	setPage(pagenum); 
     };
 	link.onmouseover = function () {
-		link.style = "color: red;";
+		link.style = "color: #808A80;";
 	}
 	link.onmouseout = function() {
 		link.style = "color: white;";
