@@ -1,7 +1,7 @@
 var pageList; 
 var next_btn;
 var pageName;
-var dev_mode = true;
+var dev_mode = false;
 var done_flags = [];
 
 init();
@@ -95,7 +95,7 @@ function pageDone(type){
 
 function initProgress(){
   if (localStorage.getItem("initProgress") != "true"){
-    alert("Setting up progress storage");
+    alert("DEV MESSAGE PLEASE IGNORE - Setting up progress storage.");
     for (i = 0; i < pageList.length; i++){
       localStorage.setItem(pageList[i], "false");
     }
