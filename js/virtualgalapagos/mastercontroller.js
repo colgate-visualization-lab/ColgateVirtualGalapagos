@@ -1,7 +1,7 @@
 var pageList; 
 var next_btn;
 var pageName;
-var dev_mode = false;
+var dev_mode = true;
 var done_flags = [];
 
 init();
@@ -35,32 +35,41 @@ function init(){
 
 // create back and next buttons
 function setupControlBar(){
-  var back_btn = document.createElement('BUTTON');
-  back_btn.className = 'btn btn-dark';
-  back_btn.onclick = function () { 
-      back();
-  };
-  var icon = document.createElement("i");
-  icon.className = "material-icons";
-  icon.innerHTML = "arrow_back";
-  back_btn.appendChild(icon);
-  document.getElementById("nav_control").appendChild(back_btn);
+  var idx = pageList.indexOf(pageName);
   
-  next_btn = document.createElement('BUTTON');
-  next_btn.className = 'btn btn-dark';
-  next_btn.style = "margin-left: 5px;";
-  // Button disabled until user done with page
-  if (localStorage.getItem(pageName) == "false" && !dev_mode){
-    next_btn.disabled = true; 
+  // first page doesn't need back button
+  if (idx>0){
+    var back_btn = document.createElement('BUTTON');
+    back_btn.className = 'btn btn-dark';
+    back_btn.onclick = function () { 
+        back();
+    };
+    var icon = document.createElement("i");
+    icon.className = "material-icons";
+    icon.innerHTML = "arrow_back";
+    back_btn.appendChild(icon);
+    document.getElementById("nav_control").appendChild(back_btn);
+  }  
+  
+  // last page doesn't need next button
+  if (idx<pageList.length-1){  
+    next_btn = document.createElement('BUTTON');
+    next_btn.className = 'btn btn-dark';
+    next_btn.style = "margin-left: 5px;";
+    // Button disabled until user done with page
+    if (localStorage.getItem(pageName) == "false" && !dev_mode){
+      next_btn.disabled = true; 
+    }
+    next_btn.onclick = function () { 
+        next();
+    };
+    var icon = document.createElement("i");
+    icon.className = "material-icons";
+    icon.innerHTML = "arrow_forward";
+    next_btn.appendChild(icon);
+    document.getElementById("nav_control").appendChild(next_btn);
   }
-  next_btn.onclick = function () { 
-      next();
-  };
-  var icon = document.createElement("i");
-  icon.className = "material-icons";
-  icon.innerHTML = "arrow_forward";
-  next_btn.appendChild(icon);
-  document.getElementById("nav_control").appendChild(next_btn);
+  
 }
 
 function grabPageName(){
