@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../css/Volcano.css">
     <link rel="stylesheet" href="../css/Fieldbook.css">
     <link rel="stylesheet" href="../css/Toolbar.css">
-    <link rel="stylesheet" href="../css/Volcano_Slider01.css">
+    <link rel="stylesheet" href="../css/twentytwenty.css">
     
 
     <title>Slider</title>
@@ -27,11 +27,16 @@
       </form>
       <h4 class="nav_title">Colgate Virtual Galapagos</h4>
     </nav>
-    <h1>SLIDER</h1>
     
     <!--  VIRTUAL GALAPAGOS LAYOUT   -->
     <div id="main" class="container">
       <div id="content" class="container">
+        <div id="container1" class="twentytwenty-container">
+         <!-- The before image is first -->
+         <img src="../images/SantaCruz_resized.png" />
+         <!-- The after image is last -->
+         <img src="../images/ferd.jpg" />
+        </div>
       </div>
       <div id="control_bar" class="container row justify-content-md-center">
         <div id="nav_control">
@@ -65,7 +70,16 @@
     <script src="../js/virtualgalapagos/toolbar.js"></script>
     <script src="../js/virtualgalapagos/mastercontroller.js"></script>
     <script src="../js/virtualgalapagos/audiocontroller.js"></script>
-    <script src="../js/virtualgalapagos/volcano/Volcano_Slider01.js"></script>
+    <script src="../js/libs/jquery.event.move.js"></script>
+    <script src="../js/libs/jquery.twentytwenty.js"></script>
+    <script>
+    $(function(){
+      $(".twentytwenty-container").twentytwenty({
+        before_label: 'Fernandina', // Set a custom before label
+        after_label: 'Santa Cruz', // Set a custom after label
+      });
+    })
+    </script>
     
   </body>
 </html>
