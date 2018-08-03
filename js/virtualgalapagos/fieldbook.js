@@ -113,7 +113,7 @@ function createNavBars(){
 		save_btn.className = 'btn btn-light btn-sm';
 		save_btn.appendChild(document.createTextNode('Save and Close'))
 		save_btn.onclick = function () { 
-			saveAndClose();
+			toggleFB();
 		};
 //		var discard_btn = document.createElement('BUTTON');
 //		discard_btn.className = 'btn btn-secondary';
