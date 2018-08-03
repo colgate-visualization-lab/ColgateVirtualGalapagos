@@ -24,8 +24,9 @@ Launch your local web server with the root as the starting folder, then launch t
 
 ## Built With
 
-* [Bootstrap](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Responsive Image Maps](https://maven.apache.org/) - Plugin used
+* [Bootstrap](https://getbootstrap.com/) - The web framework used
+* [Responsive Image Maps](http://mattstow.com/experiment/responsive-image-maps/rwd-image-maps.html) - Plugin used
+* [Twentytwenty](https://github.com/zurb/twentytwenty/) - Plugin used
 * [Brackets](https://brackets.io) - IDE used
 
 ## Contributing
@@ -41,5 +42,4 @@ See also the list of [contributors](https://github.com/your/project/contributors
 ## Acknowledgments
 
 * Colgate University
-* NASC
 * All the scientists whose materials and/or interviews were used with their permissions
