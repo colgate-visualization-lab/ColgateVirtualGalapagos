@@ -3,6 +3,7 @@ var next_btn;
 var pageName;
 var dev_mode = true;
 var done_flags = [];
+var idx;
 
 init();
 
@@ -35,7 +36,7 @@ function init(){
 
 // create back and next buttons
 function setupControlBar(){
-  var idx = pageList.indexOf(pageName);
+  idx = pageList.indexOf(pageName);
   
   // first page doesn't need back button
   if (idx>0){
@@ -93,13 +94,14 @@ function back(){
 }
 
 function movePage(shift){
-  var idx = pageList.indexOf(pageName);
   window.location.href = "/" + document.location.pathname.split("/").splice(1)[0] + "/volcano/" + pageList[idx+shift] + ".html";
 }
 
 function pageDone(type){
-  next_btn.disabled = false;
-  localStorage.setItem(pageName, "true"); 
+  if(idx<pageList.length-1){
+    next_btn.disabled = false;
+    localStorage.setItem(pageName, "true"); 
+  }
 }
 
 function initProgress(){
