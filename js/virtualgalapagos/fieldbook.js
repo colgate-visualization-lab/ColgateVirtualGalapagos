@@ -111,7 +111,10 @@ function createNavBars(){
 		var inner_div = divArray[i];
 		var save_btn = document.createElement('BUTTON');
 		save_btn.className = 'btn btn-light btn-sm';
-		save_btn.appendChild(document.createTextNode('Save and Close'))
+        var icon = document.createElement("i");
+        icon.className = "material-icons";
+        icon.innerHTML = "close";
+        save_btn.appendChild(icon);
 		save_btn.onclick = function () { 
 			toggleFB();
 		};
@@ -123,19 +126,28 @@ function createNavBars(){
 //		};
 		var back_btn = document.createElement('BUTTON');
 		back_btn.className = 'btn btn-light btn-sm';
-		back_btn.appendChild(document.createTextNode('Back'))
+		icon = document.createElement("i");
+        icon.className = "material-icons";
+        icon.innerHTML = "arrow_back";
+        back_btn.appendChild(icon);
 		back_btn.onclick = function () { 
 			setPage(pageNumber-1); 
 		};
 		var next_btn = document.createElement('BUTTON');
 		next_btn.className = 'btn btn-light btn-sm';
-		next_btn.appendChild(document.createTextNode('Next'))
+		icon = document.createElement("i");
+        icon.className = "material-icons";
+        icon.innerHTML = "arrow_forward";
+        next_btn.appendChild(icon);
 		next_btn.onclick = function () { 
 			setPage(pageNumber+1); 
 		};
 		var home_btn = document.createElement('BUTTON');
 		home_btn.className = 'btn btn-light btn-sm';
-		home_btn.appendChild(document.createTextNode('Home'))
+		icon = document.createElement("i");
+        icon.className = "material-icons";
+        icon.innerHTML = "home";
+        home_btn.appendChild(icon);
 		home_btn.onclick = function () { 
 			setPage(1); 
 		};
@@ -147,10 +159,10 @@ function createNavBars(){
 		};
 		inner_div.appendChild(clear_btn);
 		inner_div.appendChild(home_btn);
-		inner_div.appendChild(save_btn);
-//		inner_div.appendChild(discard_btn);
 		inner_div.appendChild(back_btn);
+//		inner_div.appendChild(discard_btn);
 		inner_div.appendChild(next_btn);
+		inner_div.appendChild(save_btn);
 	}
 }
 
