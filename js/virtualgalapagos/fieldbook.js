@@ -157,7 +157,7 @@ function createNavBars(){
 		clear_btn.onclick = function () { 
 			clearFieldbook();
 		};
-		inner_div.appendChild(clear_btn);
+//		inner_div.appendChild(clear_btn);
 		inner_div.appendChild(home_btn);
 		inner_div.appendChild(back_btn);
 //		inner_div.appendChild(discard_btn);
@@ -279,12 +279,12 @@ function populateDivs() {
 	row_div.className ='row';
 	var col_div = document.createElement('DIV');
 	col_div.className = 'col';
-	addSubtitle(col_div, 'Santa Cruz');
+	addSubtitle(col_div, 'Fernandina');
 	col_div.appendChild(textArea.cloneNode(true));
 	row_div.appendChild(col_div);
 	col_div = document.createElement('DIV');
 	col_div.className = 'col';
-	addSubtitle(col_div, 'Fernandina');
+	addSubtitle(col_div, 'Santa Cruz');
 	col_div.appendChild(textArea.cloneNode(true));
 	row_div.appendChild(col_div);
 	curr_div.appendChild(row_div);
