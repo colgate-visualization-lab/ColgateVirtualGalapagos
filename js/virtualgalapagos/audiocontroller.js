@@ -32,6 +32,7 @@ function init(){
     trackDone();
   };
   
+  // add flag to mastercontroller system
   addFlag("audio");
 }
 
@@ -58,6 +59,8 @@ function setBGTrack(){
   }
 }
 
+// add audio controls (play/pause,rewind) to page
+// depends on page following layout system
 function setupControls(){
   var playpause_btn = document.createElement('BUTTON');
   playpause_btn.className = 'btn btn-dark';
@@ -125,6 +128,7 @@ function rewind(time){
   player.currentTime = Math.max(curr_time - time, 0);
 }
 
+// needs to be reworked when more modules are added to not be hardcoded to volcano folder
 function setTrack(filename){
   console.log("setting audio track to: " + filename);
   var prefix;
@@ -139,6 +143,7 @@ function setTrack(filename){
   player.load();
 }
 
+// track finish event listener, clears master controller flag
 function trackDone(){
   flagDone("audio");
   playPause();
