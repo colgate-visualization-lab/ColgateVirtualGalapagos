@@ -2,9 +2,11 @@ var bar_on = false;
 initToolbar();
 
 function initToolbar(){
+  // find FB button in virtualgalapagos layout
   document.getElementById("tb_button").onclick = function () { 
       toggleTB(); 
   };
+  // setup layout elements for toolbar sidebar
   setupSideBar();
 }
 
@@ -47,6 +49,7 @@ function setupSideBar(){
   document.body.appendChild(sidenav);
 }
 
+// helped function to add text content with link
 function addLink(parent, destination, text){
   var link = document.createElement("a");
   link.appendChild(document.createTextNode(text));

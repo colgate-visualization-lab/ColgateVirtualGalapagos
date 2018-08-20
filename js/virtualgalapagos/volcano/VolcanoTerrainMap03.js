@@ -8,6 +8,7 @@ init();
 
 
 function init(){
+  // add flag to master controller system
   addFlag("island_clicks");
   
   // setup listener for audio playback end
@@ -16,11 +17,13 @@ function init(){
     enableOptional();
   };
   
+  // enable optional button if user has already completed page
   if (localStorage.getItem("TerrainMap03") == "true") {
     document.getElementById("opt_audio").disabled = false;
   }
 }
 
+// enable overlay and audio if optional narration is on
 function on(name) {
   if (name=="santacruz"){
     if (opt_on){

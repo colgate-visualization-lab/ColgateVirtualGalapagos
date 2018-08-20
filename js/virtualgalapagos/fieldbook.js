@@ -52,6 +52,7 @@ function initFieldbookButton(){
     };
 }
 
+// sets the current active page of the fieldbook
 function setPage(number){
 	// validate page number
 	if (number > (numPages-1) || number < 0 || number == pageNumber){
@@ -72,6 +73,7 @@ function saveAndClose(){
 	fieldbookOff();
 }
 
+// unused
 function discardAndClose(){
 	fieldbookOff();
 }
@@ -93,7 +95,7 @@ function savePage() {
 	}
 }
 
-
+// unused, dev method for clearing local storage
 function clearFieldbook(){
   localStorage.clear();
 }
@@ -106,6 +108,7 @@ function createDivs(){
 	} 
 }
 
+// create the (mostly) identical navigational buttons for each fb page
 function createNavBars(){
 	for (i = 0; i < divArray.length; i++){
 		var inner_div = divArray[i];
@@ -166,6 +169,7 @@ function createNavBars(){
 	}
 }
 
+// helper method for creating text content
 function addSubtitle(parent, textcontent){
 	var subtitle = document.createElement('p');
 	subtitle.appendChild(document.createTextNode(textcontent));
@@ -173,6 +177,7 @@ function addSubtitle(parent, textcontent){
 	parent.appendChild(subtitle);
 }
 
+// helped method for creating text content with links
 function addLink(parent, textcontent, pagenum){
 	var link = document.createElement('p');
 	link.appendChild(document.createTextNode(textcontent));
@@ -189,7 +194,8 @@ function addLink(parent, textcontent, pagenum){
 	parent.appendChild(link);
 }
 
-
+// hardcoded method for creating fieldbook content
+// layout changes happen here, and in the future needs a system for handling multiple different fb layouts
 function populateDivs() {
 	// case for page 1
 	var curr_div = divArray[0];
@@ -349,6 +355,7 @@ function addDivs(){
 	}
 }
 
+// pulls text box content saved in browser storage to ensure user doesn't lose their work
 function updatePages(){
 	for (i = 0; i < divArray.length; i++){
 		var textareaArray = divArray[i].getElementsByTagName('textarea');
