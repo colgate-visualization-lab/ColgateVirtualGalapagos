@@ -16,6 +16,7 @@ function initDD(){
   addFlag("dragdrop");
 }
 
+// find all drop elements on page and add to drop array
 function initDrops(){
   var drops = document.getElementsByClassName("dd-drop");
   for (i = 0; i < drops.length ; i++) { 
@@ -30,6 +31,7 @@ function initDrops(){
   } 
 }
 
+// find all drag elements on page and add to drag array
 function initDrags(){
   var drags = document.getElementsByClassName("dd-drag");
   for (i = 0; i < drags.length ; i++) { 
@@ -44,16 +46,20 @@ function initDrags(){
   drag_count = dragArray.length;
 }
 
+// required to drag/drop functionality
 function allowDrop(ev) {
   ev.preventDefault();
 
 }
 
+// drag event required for drag/drop functionality
 function drag(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
   label_cache = ev.target;
 }
 
+// event for handling drops
+// checks drag drop dictionary to identify matches
 function drop(ev) {
   ev.preventDefault();
   var data = ev.dataTransfer.getData("text");
@@ -65,6 +71,7 @@ function drop(ev) {
   }
 }
 
+// called when a succesful drag/drop match happens
 function dropMatch(drag, drop){
   alert("You got it!");
 
@@ -73,6 +80,7 @@ function dropMatch(drag, drop){
   disableDrop(drop);
 }
 
+// disables elements after they've been matched
 function disableDrag(dragE){
   dragE.draggable = false;
   // check if user is done with DD module
@@ -91,6 +99,7 @@ function disableDrop(dropE){
   dropE.style = "cursor: default";
 }
 
+// hardcoded implementation of drag drop matches for each page
 function setDD(name){
   ddType = name;
   if (ddType == "map_ages"){
