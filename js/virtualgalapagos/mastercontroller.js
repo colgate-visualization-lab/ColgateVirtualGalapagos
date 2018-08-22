@@ -94,7 +94,7 @@ function back(){
 }
 
 function movePage(shift){
-  window.location.href = "/" + document.location.pathname.split("/").splice(1)[0] + "/volcano/" + pageList[idx+shift] + ".html";
+  window.location.href = "/" + document.location.pathname.split("/").splice(1)[0] + "/" + pageList[idx+shift] + ".html";
 }
 
 function pageDone(type){
