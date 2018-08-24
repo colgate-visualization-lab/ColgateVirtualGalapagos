@@ -4,7 +4,7 @@ Colgate Virtual Galapagos is an interactive digital learning module in developme
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. The live version of Colgate Virtual Galapagos is available at http://virtualgalapagos.colgate.edu .
 
 ### Prerequisites
 
@@ -41,5 +41,9 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 ## Acknowledgments
 
-* Colgate University
+This project could not happen without the funding and/or support from the following organizations.
+
+* Colgate University Geology Department
+* NASC
+* McGill University's Lab Without Borders
 * All the scientists whose materials and/or interviews were used with their permissions
