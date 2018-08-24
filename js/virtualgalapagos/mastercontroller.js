@@ -1,7 +1,7 @@
 var pageList; 
 var next_btn;
 var pageName;
-var dev_mode = false;
+var dev_mode = true;
 var done_flags = [];
 var idx;
 
