@@ -60,6 +60,6 @@ function enableOptional(){
 
 function narrationOn(){
   opt_on = true;
-  setTrack("Volcano_TerrainMap03opt");
+  setTrack("Volcano_TerrainMap03_opt");
   play();
 }
