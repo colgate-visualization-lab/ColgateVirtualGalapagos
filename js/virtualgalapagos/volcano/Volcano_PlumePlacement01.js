@@ -63,13 +63,13 @@ function setState(num){
     document.getElementById("pp").style.display = "none";
     document.getElementById("pp_no").style.display = "block";
     document.getElementById("pp_yes").style.display = "none";
-    setTrack("Volcano_PlumesNo01");
+    setTrack("Volcano_PlumeNo01");
     play();
   } else if (state == 3) {
     document.getElementById("pp").style.display = "none";
     document.getElementById("pp_no").style.display = "none";
     document.getElementById("pp_yes").style.display = "block";
-    setTrack("Volcano_PlumesYes01");
+    setTrack("Volcano_PlumeYes01");
     play();
   }
 }
