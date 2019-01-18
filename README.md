@@ -24,7 +24,7 @@ Launch your local web server with the root as the starting folder, then launch t
 
 ## Built With
 
-* [Bootstrap](https://getbootstrap.com/) - The web framework used
+* [Bootstrap](https://getbootstrap.com/) - Web framework used
 * [Responsive Image Maps](http://mattstow.com/experiment/responsive-image-maps/rwd-image-maps.html) - Plugin used
 * [Twentytwenty](https://github.com/zurb/twentytwenty/) - Plugin used
 * [Brackets](https://brackets.io) - IDE used
@@ -36,8 +36,6 @@ Feel free to send in any pull requests.
 ## Authors
 
 * **Caio Brighenti** - *Lead Developer* - [CaioBrighenti](https://github.com/CaioBrighenti)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## Acknowledgments
 
