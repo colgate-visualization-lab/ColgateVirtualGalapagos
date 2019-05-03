@@ -4,7 +4,7 @@ Colgate Virtual Galapagos is an interactive digital learning module in developme
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. The live version of Colgate Virtual Galapagos is available at http://virtualgalapagos.colgate.edu .
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. The live version of Colgate Virtual Galapagos is available [here](http://virtualgalapagos.colgate.edu).
 
 ### Prerequisites
 
@@ -35,7 +35,8 @@ Feel free to send in any pull requests.
 
 ## Authors
 
-* **Caio Brighenti** - *Lead Developer* - [CaioBrighenti](https://github.com/CaioBrighenti)
+* **Daniel Gathogo** - [dgathogo](https://github.com/dgathogo)
+* **Caio Brighenti** - [CaioBrighenti](https://github.com/CaioBrighenti)
 
 ## Acknowledgments
 
