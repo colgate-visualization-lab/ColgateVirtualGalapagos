@@ -27,7 +27,7 @@ Launch your local web server with the root as the starting folder, then launch t
 * [Bootstrap](https://getbootstrap.com/) - Web framework used
 * [Responsive Image Maps](http://mattstow.com/experiment/responsive-image-maps/rwd-image-maps.html) - Plugin used
 * [Twentytwenty](https://github.com/zurb/twentytwenty/) - Plugin used
-* [Brackets](https://brackets.io) - IDE used
+
 
 ## Contributing
 
