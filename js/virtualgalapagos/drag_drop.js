@@ -40,7 +40,7 @@ function initDrags(){
     drags[i].ondragstart = function (){
       drag(event);
     }
-    drags[i].style = "cursor: move; border-style: solid; border-color: #007bff;";
+    drags[i].style = "cursor: move; border:2px solid #343a40; border-radius: 10px;text-align: center;";
   } 
   // NEEDS REFACTOR
   drag_count = dragArray.length;
@@ -74,7 +74,6 @@ function drop(ev) {
 // called when a succesful drag/drop match happens
 function dropMatch(drag, drop){
   alert("You got it!");
-
   drag.innerHTML = drag.innerHTML.strike();
   disableDrag(drag);
   disableDrop(drop);
