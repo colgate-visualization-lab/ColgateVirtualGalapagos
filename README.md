@@ -1,6 +1,6 @@
 # ColgateVirtualGalapagos
 
-Colgate Virtual Galapagos is an interactive digital learning module in development by students and faculty from Colgate University. The goal of the project is to teach children science in an innovative way through the lens of the Galapagos Islands. For details contact cbrighenti@colgate.edu or eweaver@colgate.edu.
+Colgate Virtual Galapagos is an interactive digital learning module in development by students and faculty from Colgate University. The goal of the project is to teach children science in an innovative way through the lens of the Galapagos Islands. For details contact dgathogo@colgate.edu or eweaver@colgate.edu.
 
 ## Getting Started
 
@@ -16,8 +16,8 @@ The only prerequisites for this project are a local web server and a web browser
 
 Download or clone the repository
 
-```
-git clone https://github.com/CaioBrighenti/ColgateVirtualGalapagos.git
+```bash
+git clone https://github.com/dgathogo/ColgateVirtualGalapagos.git
 ```
 
 Launch your local web server with the root as the starting folder, then launch the appropriate module by starting index.html
@@ -27,7 +27,6 @@ Launch your local web server with the root as the starting folder, then launch t
 * [Bootstrap](https://getbootstrap.com/) - Web framework used
 * [Responsive Image Maps](http://mattstow.com/experiment/responsive-image-maps/rwd-image-maps.html) - Plugin used
 * [Twentytwenty](https://github.com/zurb/twentytwenty/) - Plugin used
-
 
 ## Contributing
 
