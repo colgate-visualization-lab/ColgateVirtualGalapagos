@@ -29,8 +29,9 @@
 
 /* Style for a bordered image */
 .img-bordered {
-  border:7px solid #007bff;
-  background-color: black;
+  border:5px solid #343a40;
+  border-radius: 25px;
+/*  background-color: black;*/
 }
 
 /* Navbar Style */
