@@ -1,4 +1,5 @@
 'use strict'
+
 var pageName = grabPageName();
 
 function grabPageName(){
