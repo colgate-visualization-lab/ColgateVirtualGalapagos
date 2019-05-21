@@ -21,7 +21,7 @@ function initDD(){
 // find all drop elements on page and add to drop array
 function initDrops(){
   var drops = document.getElementsByClassName("dd-drop");
-  for (i = 0; i < drops.length ; i++) { 
+  for (var i = 0; i < drops.length ; i++) { 
     dropArray.push(drops[i]);
     drops[i].ondrop = function () { 
       drop(event);
@@ -36,7 +36,7 @@ function initDrops(){
 // find all drag elements on page and add to drag array
 function initDrags(){
   var drags = document.getElementsByClassName("dd-drag");
-  for (i = 0; i < drags.length ; i++) { 
+  for (var i = 0; i < drags.length ; i++) { 
     dragArray.push(drags[i]);
     drags[i].draggable = true;
     drags[i].ondragstart = function (){
