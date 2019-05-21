@@ -1,3 +1,5 @@
+"use strict"
+
 // 1=default,2=wrong,3=right
 var state = 1;
 var mapEnabled = false;

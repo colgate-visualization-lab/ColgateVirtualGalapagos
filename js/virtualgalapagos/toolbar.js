@@ -1,3 +1,5 @@
+"use strict"
+
 var bar_on = false;
 initToolbar();
 
