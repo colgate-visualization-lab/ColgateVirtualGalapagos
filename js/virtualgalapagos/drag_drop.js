@@ -1,3 +1,5 @@
+"use strict"
+
 // stores the currently active drag element
 var label_cache;
 // stores all drag and drop elements on page

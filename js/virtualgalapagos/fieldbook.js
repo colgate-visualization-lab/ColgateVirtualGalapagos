@@ -1,3 +1,5 @@
+"use strict"
+
 var divArray = [];
 var pageNumber = -1
 var numPages = 11;
