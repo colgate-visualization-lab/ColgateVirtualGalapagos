@@ -109,7 +109,7 @@ function pageDone(type){
 function initProgress(){
   if (localStorage.getItem("initProgress") != "true"){
     alert("DEV MESSAGE PLEASE IGNORE - Setting up progress storage.");
-    for (i = 0; i < pageList.length; i++){
+    for (var i = 0; i < pageList.length; i++){
       localStorage.setItem(pageList[i], "false");
     }
     // special cases
@@ -134,7 +134,7 @@ function flagDone(name){
   console.log("Flag of type: " + name + " done");
   done_flags[name] = true;
   keys = Object.keys(done_flags);
-  for (i = 0; i < keys.length ; i++) { 
+  for (var i = 0; i < keys.length ; i++) { 
     if (done_flags[keys[i]] == false){
       return;
     }
