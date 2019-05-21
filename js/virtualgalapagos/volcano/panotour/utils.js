@@ -1,8 +1,8 @@
 'use strict'
 
-var pageName = grabPageName();
+var currentPage = getPageName();
 
-function grabPageName(){
+function getPageName(){
     var path = window.location.pathname;
     path = path.split("/").splice(-2);
     path = path[1].split(".");
@@ -51,36 +51,32 @@ function accessStdVr(curScene, curTime){
 
     setTimeout(function(){ loadPlayer(false, curScene, curTime); }, 100);
 }
+// debugger
 function loadPlayer(isWebVr, curScene, curTime) {
     if (isWebVr) {
         embedpano({
-            id:"krpanoSWFObject"
-            ,xml: pageName + "data/" + pageName + "_vr.xml"
-            ,target:"panoDIV"
-            ,passQueryParameters:true
-            ,bgcolor:"#000000"
-            ,html5:"only+webgl"
-            ,focus: false
-            ,vars:{skipintro:true,norotation:true,startscene:curScene,starttime:curTime}
+            id:"krpanoSWFObject",
+            xml: currentPage + "data/" + currentPage + "_vr.xml",
+            target:"panoDIV",
+            passQueryParameters:true,
+            bgcolor:"#000000",
+            html5:"only+webgl",
+            focus: false,
+            vars:{skipintro:true,norotation:true,startscene:curScene,starttime:curTime}
         });
     } else {
         
         var isBot = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);
         embedpano({
-            id:"krpanoSWFObject"
-
-            ,swf: pageName + "data/" + pageName + ".swf"
-
-            ,target:"panoDIV"
-            ,passQueryParameters:true
-            ,bgcolor:"#000000"
-            ,focus: false
-            ,html5:isBot ? "always" : "prefer"
-            ,vars:{startscene:curScene,starttime:curTime}
-
-            ,localfallback:"flash"
-
-
+            id:"krpanoSWFObject",
+            swf: currentPage + "data/" + currentPage + ".swf",
+            target:"panoDIV",
+            passQueryParameters:true,
+            bgcolor:"#000000",
+            focus: false,
+            html5:isBot ? "always" : "prefer",
+            vars:{startscene:curScene,starttime:curTime},
+            localfallback:"flash"
         });
     }
     //apply focus on the visit if not embedded into an iframe
