@@ -1,3 +1,5 @@
+"use strict"
+
 // needs elegant way to check button status when bg audio finishes playing
 
 var ferd_click = false;
