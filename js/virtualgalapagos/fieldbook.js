@@ -92,7 +92,7 @@ function fieldbookOff(){
 // Saves any textarea content from currently activate page into web storage
 function savePage() {
 	var textareaArray = divArray[pageNumber].getElementsByTagName('textarea');
-	for (i = 0; i < textareaArray.length; i++){
+	for ( var i = 0; i < textareaArray.length; i++){
 		localStorage.setItem('inner'+pageNumber+'textarea'+i, textareaArray[i].value);
 	}
 }
@@ -103,7 +103,7 @@ function clearFieldbook(){
 }
 
 function createDivs(){
-	for (i = 0; i < numPages; i++) { 
+	for (var i = 0; i < numPages; i++) { 
     	var inner_div = document.createElement('div');
 		inner_div.id = 'fb_overlay_inner';
 		divArray.push(inner_div);
@@ -112,7 +112,7 @@ function createDivs(){
 
 // create the (mostly) identical navigational buttons for each fb page
 function createNavBars(){
-	for (i = 0; i < divArray.length; i++){
+	for (var i = 0; i < divArray.length; i++){
 		var inner_div = divArray[i];
 		var save_btn = document.createElement('BUTTON');
 		save_btn.className = 'btn btn-light btn-sm';
@@ -202,7 +202,7 @@ function populateDivs() {
 	// case for page 1
 	var curr_div = divArray[0];
 	var inner_header = document.createTextNode('Table of Contents');
-	inner_header.id = 'inner_div_header' + i;
+	// inner_header.id = 'inner_div_header' + i;
 	curr_div.appendChild(inner_header);
 	var textArea = document.createElement('textarea');
 	textArea.className = 'fieldbook_ta';
@@ -224,7 +224,7 @@ function populateDivs() {
 	// case for page 2
 	curr_div = divArray[1]
 	var inner_header = document.createTextNode('Volcano');
-	inner_header.id = 'inner_div_header' + i;
+	// inner_header.id = 'inner_div_header' + i;
 	curr_div.appendChild(inner_header);
 	addLink(curr_div, 'Sierra Negra Caldera',2);
 	addLink(curr_div, 'Coastal Isabela',3);
@@ -240,7 +240,7 @@ function populateDivs() {
 	// case for page 3
 	curr_div = divArray[2];
 	var inner_header = document.createTextNode('Sierra Negra Caldera');
-	inner_header.id = 'inner_div_header' + i;
+	// inner_header.id = 'inner_div_header' + i;
 	curr_div.appendChild(inner_header);
 	addSubtitle(curr_div, 'OBSERVATIONS');
 	curr_div.appendChild(textArea.cloneNode(true));
@@ -248,7 +248,7 @@ function populateDivs() {
 	// case for page 4
 	curr_div = divArray[3];
 	var inner_header = document.createTextNode('Coastal Isabela');
-	inner_header.id = 'inner_div_header' + i;
+	// inner_header.id = 'inner_div_header' + i;
 	curr_div.appendChild(inner_header);
 	addSubtitle(curr_div, 'OBSERVATIONS');
 	curr_div.appendChild(textArea.cloneNode(true));
@@ -256,7 +256,7 @@ function populateDivs() {
 	// case for page 5
 	curr_div = divArray[4];
 	var inner_header = document.createTextNode('Santa Cruz');
-	inner_header.id = 'inner_div_header' + i;
+	// inner_header.id = 'inner_div_header' + i;
 	curr_div.appendChild(inner_header);
 	addSubtitle(curr_div, 'OBSERVATIONS');
 	curr_div.appendChild(textArea.cloneNode(true));
@@ -264,7 +264,7 @@ function populateDivs() {
 	// case for page 6
 	curr_div = divArray[5];
 	var inner_header = document.createTextNode('Plazas');
-	inner_header.id = 'inner_div_header' + i;
+	// inner_header.id = 'inner_div_header' + i;
 	curr_div.appendChild(inner_header);
 	addSubtitle(curr_div, 'OBSERVATIONS');
 	curr_div.appendChild(textArea.cloneNode(true));
@@ -272,7 +272,7 @@ function populateDivs() {
 	// case for page 7
 	curr_div = divArray[6];
 	var inner_header = document.createTextNode('Galapagos Map');
-	inner_header.id = 'inner_div_header' + i;
+	// inner_header.id = 'inner_div_header' + i;
 	curr_div.appendChild(inner_header);
 	addSubtitle(curr_div, 'OBSERVATIONS');
 	curr_div.appendChild(textArea.cloneNode(true));
@@ -280,7 +280,7 @@ function populateDivs() {
 	// case for page 8
 	curr_div = divArray[7];
 	var inner_header = document.createTextNode('Santa Cruz vs. Fernandina');
-	inner_header.id = 'inner_div_header' + i;
+	// inner_header.id = 'inner_div_header' + i;
 	curr_div.appendChild(inner_header);
 	addSubtitle(curr_div, 'OBSERVATIONS');
 	var row_div = document.createElement('DIV');
@@ -300,7 +300,7 @@ function populateDivs() {
 	// case for page 9
 	curr_div = divArray[8];
 	var inner_header = document.createTextNode('Hypothesis');
-	inner_header.id = 'inner_div_header' + i;
+	// inner_header.id = 'inner_div_header' + i;
 	curr_div.appendChild(inner_header);
 	addSubtitle(curr_div, 'First Draft of Hypothesis');
 	curr_div.appendChild(textArea.cloneNode(true));
@@ -310,7 +310,7 @@ function populateDivs() {
 	// case for page 10
 	curr_div = divArray[9];
 	var inner_header = document.createTextNode('Volcano Comparisons');
-	inner_header.id = 'inner_div_header' + i;
+	// inner_header.id = 'inner_div_header' + i;
 	curr_div.appendChild(inner_header);
 	addSubtitle(curr_div, 'OBSERVATIONS');
 	var row_div = document.createElement('DIV');
@@ -343,7 +343,7 @@ function populateDivs() {
 	// case for page 11
 	curr_div = divArray[10];
 	var inner_header = document.createTextNode('Tectonic Plates');
-	inner_header.id = 'inner_div_header' + i;
+	// inner_header.id = 'inner_div_header' + i;
 	curr_div.appendChild(inner_header);
 	addSubtitle(curr_div, 'Observations');
 	curr_div.appendChild(textArea.cloneNode(true));	
@@ -351,7 +351,7 @@ function populateDivs() {
 }
 
 function addDivs(){
-	for (i = 0; i < divArray.length; i++){
+	for (var i = 0; i < divArray.length; i++){
 		overlayDiv.appendChild(divArray[i]);
 		divArray[i].style.display = "none";
 	}
@@ -359,9 +359,9 @@ function addDivs(){
 
 // pulls text box content saved in browser storage to ensure user doesn't lose their work
 function updatePages(){
-	for (i = 0; i < divArray.length; i++){
+	for (var i = 0; i < divArray.length; i++){
 		var textareaArray = divArray[i].getElementsByTagName('textarea');
-		for (k = 0; k < textareaArray.length; k++){
+		for (var k = 0; k < textareaArray.length; k++){
 			textareaArray[k].value = localStorage.getItem('inner'+i+'textarea'+k);
 		}
 	}
