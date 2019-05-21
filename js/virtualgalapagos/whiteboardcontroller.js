@@ -1,3 +1,5 @@
+"use strict"
+
 // TEMPORARY CODE, THIS CAN ALL BE MERGED WITH AUDIOCONTROLLER 
 
 var dev_mode = true;
