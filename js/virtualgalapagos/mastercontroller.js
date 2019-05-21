@@ -1,3 +1,5 @@
+"use strict"
+
 var pageList; 
 var next_btn;
 var pageName;
