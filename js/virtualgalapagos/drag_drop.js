@@ -10,7 +10,6 @@
 // dragdrop.initDrops();
 // 
 
-// TODO: check adding 'dragdrop' flag
 
 function DragDrop(ddDict) {
   if (!new.target){
