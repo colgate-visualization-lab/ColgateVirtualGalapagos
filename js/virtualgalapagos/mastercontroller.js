@@ -133,7 +133,7 @@ function addFlag(name){
 function flagDone(name){
   console.log("Flag of type: " + name + " done");
   done_flags[name] = true;
-  keys = Object.keys(done_flags);
+  var keys = Object.keys(done_flags);
   for (var i = 0; i < keys.length ; i++) { 
     if (done_flags[keys[i]] == false){
       return;
