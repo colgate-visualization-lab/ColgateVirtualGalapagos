@@ -7,5 +7,5 @@ var ddDict = {
 
 
 dragdrop = new DragDrop(ddDict);
-dragdrop.initDrops();
 dragdrop.initDrags();
+dragdrop.initDrops();
