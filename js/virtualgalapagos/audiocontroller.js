@@ -1,4 +1,5 @@
 "use strict"
+import {MasterController} from './mastercontroller.js';
 //
 // How to use this module
 // HTML page must use the layout template
@@ -8,32 +9,32 @@
 // player = new AudioPlayer()
 // player.start();
 
-function AudioPlayer(){
-  if (!new.target){
-    return new AudioPlayer();
+class AudioPlayer extends MasterController{
+  constructor(){
+    super();
+    if (!new.target){
+      return new AudioPlayer();
+    }
+  
+    this.paused = true; // autoplay audio
+    this.playpause;
+    var player = document.getElementById("player");
+    player.load();
+  
+      // autoplay background audio
+    player.oncanplay = function() {
+      // playPause();
+    };
+      
+      // setup listener for when audio is done playing
+    player.onended = function() {
+      trackDone();
+    };
   }
   
-  this.dev_mode = true; // add skip button
-
-  this.paused = true; // autoplay audio
-  this.playpause;
-  var player = document.getElementById("player");
-  player.load();
-  var page_obj = this;
-
-    // autoplay background audio
-  player.oncanplay = function() {
-    // playPause();
-  };
-    
-    // setup listener for when audio is done playing
-  player.onended = function() {
-    trackDone();
-  };
-
   // add audio controls (play/pause,rewind) to page
   // depends on page following layout system
-  this.start = function (){
+  start (){
     var playpause_btn = document.createElement('BUTTON');
     playpause_btn.className = 'btn btn-dark';
     playpause_btn.onclick = function () { 
@@ -56,7 +57,7 @@ function AudioPlayer(){
     rewind_btn.appendChild(icon);
     document.getElementById("audio_control").appendChild(rewind_btn);
     
-    if (dev_mode){
+    if (this.dev_mode){
       var skip_btn = document.createElement('BUTTON');
       skip_btn.className = 'btn btn-dark';
       skip_btn.onclick = function () { 
@@ -76,34 +77,34 @@ function AudioPlayer(){
   }
 
   // toggle play/pause
-  function playPause (){
-    if (page_obj.paused){
+  playPause (){
+    if (this.paused){
       play();
     } else {
       pause();
     }
   }
 
-  function play(){
+  play(){
     player.play();
-    page_obj.playpause.getElementsByTagName("i")[0].innerHTML = "pause";
-    page_obj.paused = false;
+    this.playpause.getElementsByTagName("i")[0].innerHTML = "pause";
+    this.paused = false;
   }
 
-  function pause(){
+  pause(){
     player.pause();
-    page_obj.playpause.getElementsByTagName("i")[0].innerHTML = "play_arrow";
-    page_obj.paused = true;
+    this.playpause.getElementsByTagName("i")[0].innerHTML = "play_arrow";
+    this.paused = true;
   }
 
-  function rewind(time){
+  static rewind(time){
     var curr_time = player.currentTime;
     player.currentTime = Math.max(curr_time - time, 0);   // prevent underflow
   }
 
   // track finish event listener, clears master controller flag
-  function trackDone(){
-    flagDone("audio");
+  trackDone(){
+    MasterController.flagDone("audio");
     playPause();
     rewind(player.duration);
   }
