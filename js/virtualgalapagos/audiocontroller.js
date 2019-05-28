@@ -1,8 +1,8 @@
 "use strict"
 //
 // How to use this module
-// 
-// must include the following "import {AudioPlayer} from '../audiocontroller.js';" in the module's audiocontroller
+// HTML page must use the layout template
+// must include the following "import {AudioPlayer} from 'FILEPATH/audiocontroller.js';" in the module's audiocontroller
 // pages must have a background track assigned with id player_src
 // 
 // player = new AudioPlayer()
