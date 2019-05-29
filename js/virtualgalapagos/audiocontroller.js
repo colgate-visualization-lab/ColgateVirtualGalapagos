@@ -10,11 +10,14 @@ import {MasterController} from './mastercontroller.js';
 // player.start();
 
 class AudioPlayer{
-  constructor(){
-    super();
+  constructor(mastercontroller){
+    if (!mastercontroller instanceof MasterController){
+      throw "MasterController must be instantiated";
+    }
     if (!new.target){
       return new AudioPlayer();
     }
+    this.mastercontroller = mastercontroller;
   
     this.paused = true; // autoplay audio
     this.playpause;
@@ -104,7 +107,7 @@ class AudioPlayer{
 
   // track finish event listener, clears master controller flag
   trackDone(){
-    flagDone("audio");
+    this.mastercontroller.flagDone("audio");
     playPause();
     rewind(player.duration);
   }
