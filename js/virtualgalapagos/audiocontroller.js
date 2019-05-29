@@ -9,7 +9,7 @@ import {MasterController} from './mastercontroller.js';
 // player = new AudioPlayer()
 // player.start();
 
-class AudioPlayer extends MasterController{
+class AudioPlayer{
   constructor(){
     super();
     if (!new.target){
@@ -104,7 +104,7 @@ class AudioPlayer extends MasterController{
 
   // track finish event listener, clears master controller flag
   trackDone(){
-    MasterController.flagDone("audio");
+    flagDone("audio");
     playPause();
     rewind(player.duration);
   }

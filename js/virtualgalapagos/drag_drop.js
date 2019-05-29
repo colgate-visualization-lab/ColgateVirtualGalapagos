@@ -11,25 +11,26 @@
 // 
 
 
-function DragDrop(ddDict) {
-  if (!new.target){
-    return new DragDrop(ddDict);
+class DragDrop{
+  constructor(ddDict) {
+    if (!new.target){
+      return new DragDrop(ddDict);
+    }
+    this.ddDict = ddDict; // all drag and drop pairings
+    
+    this.active_element;
+    
+    this.dropArray = [];
+    this.dragArray = [];
+    this.drag_count;
   }
-  this.ddDict = ddDict; // all drag and drop pairings
-  
-  this.active_element;
-  
-  this.dropArray = [];
-  this.dragArray = [];
-  this.drag_count;
 
-  this.initDrops = function (){
-    var page_obj = this;
+  initDrops (){
     var drops = document.getElementsByClassName("dd-drop");
     for (var i = 0; i < drops.length ; i++) { 
       this.dropArray.push(drops[i]);
       drops[i].ondrop = function () { 
-        drop(event, page_obj);
+        drop(event);
       };
       drops[i].ondragover = function () { 
         allowDrop(event);
@@ -39,14 +40,13 @@ function DragDrop(ddDict) {
   }
 
   // find all drag elements on page and add to drag array
-  this.initDrags = function (){
-    var page_obj = this;
+  initDrags (){
     var drags = document.getElementsByClassName("dd-drag");
     for (var i = 0; i < drags.length ; i++) { 
       this.dragArray.push(drags[i]);
       drags[i].draggable = true;
       drags[i].ondragstart = function (){
-        drag(event, page_obj);
+        drag(event);
       }
       drags[i].style = "cursor: move; border:2px solid #343a40; border-radius: 10px;text-align: center;";
     } 
@@ -54,47 +54,47 @@ function DragDrop(ddDict) {
   }
 
   // required to drag/drop functionality
-  function allowDrop(ev) {
+  allowDrop(ev) {
     ev.preventDefault();
   }
 
   // drag event required for drag/drop functionality
-  function drag (ev, page_obj) {
+  drag (ev) {
     ev.dataTransfer.setData("text", ev.target.id);
-    page_obj.active_element = ev.target;
+    this.active_element = ev.target;
   }
 
   // event for handling drops
   // checks drag drop dictionary to identify matches
-  function drop(ev, page_obj) {
+  drop(ev) {
     ev.preventDefault();
-    var dropTargets = page_obj.ddDict[page_obj.active_element.id];
+    var dropTargets = this.ddDict[this.active_element.id];
     if (dropTargets.includes(ev.target.id)){
-      dropMatch(page_obj.active_element, ev.target, page_obj);
+      dropMatch(this.active_element, ev.target);
     } else {
       alert("That's not a match! Try again.");
     }
   }
 
   // called when a succesful drag/drop match happens
-  function dropMatch(drag, drop, page_obj){
+  dropMatch(drag, drop){
     alert("You got it!");
     drag.innerHTML = drag.innerHTML.strike();
-    disableDrag(drag, page_obj);
+    disableDrag(drag);
     disableDrop(drop);
   }
 
   // disables elements after they've been matched
-  function disableDrag(dragE, page_obj){
+  disableDrag(dragE){
     dragE.draggable = false;
     // check if user is done with DD module
-    page_obj.drag_count--;
-    if (page_obj.drag_count <= 0){
+    this.drag_count--;
+    if (this.drag_count <= 0){
       flagDone("dragdrop");
     }
   }
 
-  function disableDrop(dropE){
+  disableDrop(dropE){
     dropE.ondrop = function () { 
     };
     dropE.ondragover = function () { 
