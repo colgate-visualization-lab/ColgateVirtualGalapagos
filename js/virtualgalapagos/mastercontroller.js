@@ -1,28 +1,29 @@
 "use strict"
 
 class MasterController {
-  dev_mode = true;
   constructor(pageList, pageName) {
     if (!new.target) {
       return new MasterController();
     }
+    this.dev_mode = true;
     this.pageList = pageList;
     this.pageName = pageName;
     this.next_btn;
     this.done_flags = [];
     this.idx;
     if (this.pageList.includes(pageName)) {
-      setupControlBar();
+      this.setupControlBar();
     }
     else {
       this.next_btn = document.getElementById("next_btn");
-      updateNext();
+      this.updateNext();
     }
     //  dev mode
-    if (dev_mode) {
-      pageDone();
+    if (this.dev_mode) {
+      this.pageDone();
     }
   }
+
   init() {
       if (localStorage.getItem("initProgress") != "true") {
         alert("DEV MESSAGE PLEASE IGNORE - Setting up progress storage.");
@@ -35,9 +36,11 @@ class MasterController {
         localStorage.setItem("initProgress", "true");
       }
     }
+
     // create back and next buttons
   setupControlBar() {
-    this.idx = this.pageList.indexOf(pageName);
+    console.log("here")
+    this.idx = this.pageList.indexOf(this.pageName);
     // first page doesn't need back button
     if (this.idx > 0) {
       var back_btn = document.createElement('BUTTON');
@@ -57,7 +60,7 @@ class MasterController {
       btn.className = 'btn btn-dark';
       btn.style = "margin-left: 5px;";
       // Button disabled until user done with page
-      if (localStorage.getItem(pageName) == "false" && !dev_mode) {
+      if (localStorage.getItem(this.pageName) == "false" && !this.dev_mode) {
         btn.disabled = true;
       }
       btn.onclick = function () {
@@ -71,46 +74,46 @@ class MasterController {
       document.getElementById("nav_control").appendChild(this.next_btn);
     }
   }
-     updateNext() {
-      if (localStorage.getItem(pageName) != "true" && !this.dev_mode) {
-        this.next_btn.disabled = true;
-      }
+  updateNext() {
+    if (localStorage.getItem(this.pageName) != "true" && !this.dev_mode) {
+      this.next_btn.disabled = true;
     }
-    // go to next page
-    next() {
-      movePage(1);
-    }
-    // go to previous page
-    back() {
-      movePage(-1);
-    }
-    movePage(shift) {
-      window.location.href = "/" + document.location.pathname.split("/").splice(1)[0] + "/" + this.pageList[this.idx + shift] + ".html";
-    }
-    //
-    addFlag(name) {
-      this.done_flags[name] = false;
-      console.log("Adding flag of type: " + name);
-    }
+  }
+  // go to next page
+  next() {
+    movePage(1);
+  }
+  // go to previous page
+  back() {
+    movePage(-1);
+  }
+  movePage(shift) {
+    window.location.href = "/" + document.location.pathname.split("/").splice(1)[0] + "/" + this.pageList[this.idx + shift] + ".html";
+  }
+  //
+  addFlag(name) {
+    this.done_flags[name] = false;
+    console.log("Adding flag of type: " + name);
+  }
 
-    flagDone(name) {
-      console.log("Flag of type: " + name + " done");
-      this.done_flags[name] = true;
-      var keys = Object.keys(this.done_flags);
-      for (var i = 0; i < keys.length; i++) {
-        if (this.done_flags[keys[i]] == false) {
-          return;
-        }
+  flagDone(name) {
+    console.log("Flag of type: " + name + " done");
+    this.done_flags[name] = true;
+    var keys = Object.keys(this.done_flags);
+    for (var i = 0; i < keys.length; i++) {
+      if (this.done_flags[keys[i]] == false) {
+        return;
       }
-      pageDone();
     }
+    pageDone();
+  }
 
-    pageDone() {
-      if (this.idx < this.pageList.length - 1) {
-        this.next_btn.disabled = false;
-        localStorage.setItem(this.pageName, "true");
-      }
+  pageDone() {
+    if (this.idx < this.pageList.length - 1) {
+      this.next_btn.disabled = false;
+      localStorage.setItem(this.pageName, "true");
     }
+  }
 }
 export{MasterController};
 

@@ -21,17 +21,17 @@ class AudioPlayer{
   
     this.paused = true; // autoplay audio
     this.playpause;
-    var player = document.getElementById("player");
-    player.load();
+    this.player = document.getElementById("player");
+    this.player.load();
   
       // autoplay background audio
-    player.oncanplay = function() {
+    this.player.oncanplay = function() {
       // playPause();
     };
       
       // setup listener for when audio is done playing
-    player.onended = function() {
-      trackDone();
+    this.player.onended = function() {
+      this.trackDone();
     };
   }
   
@@ -64,8 +64,8 @@ class AudioPlayer{
       var skip_btn = document.createElement('BUTTON');
       skip_btn.className = 'btn btn-dark';
       skip_btn.onclick = function () { 
-        if (player.currentTime > 0) {
-          player.currentTime = player.duration-1;
+        if (this.player.currentTime > 0) {
+          this.player.currentTime = this.player.duration-1;
         }
       };
       icon = document.createElement("i");
@@ -82,34 +82,34 @@ class AudioPlayer{
   // toggle play/pause
   playPause (){
     if (this.paused){
-      play();
+      this.play();
     } else {
-      pause();
+      this.pause();
     }
   }
 
   play(){
-    player.play();
+    // this.player.play();
     this.playpause.getElementsByTagName("i")[0].innerHTML = "pause";
     this.paused = false;
   }
 
   pause(){
-    player.pause();
+    // this.player.pause();
     this.playpause.getElementsByTagName("i")[0].innerHTML = "play_arrow";
     this.paused = true;
   }
 
-  static rewind(time){
-    var curr_time = player.currentTime;
-    player.currentTime = Math.max(curr_time - time, 0);   // prevent underflow
+  rewind(time){
+    var curr_time = this.player.currentTime;
+    this.player.currentTime = Math.max(curr_time - time, 0);   // prevent underflow
   }
 
   // track finish event listener, clears master controller flag
   trackDone(){
     this.mastercontroller.flagDone("audio");
-    playPause();
-    rewind(player.duration);
+    this.playPause();
+    this.rewind(this.player.duration);
   }
 }
 
