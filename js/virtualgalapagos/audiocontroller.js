@@ -38,10 +38,11 @@ class AudioPlayer{
   // add audio controls (play/pause,rewind) to page
   // depends on page following layout system
   start (){
+    var playerobj = this;
     var playpause_btn = document.createElement('BUTTON');
     playpause_btn.className = 'btn btn-dark';
-    playpause_btn.onclick = function () { 
-        playPause();
+    playpause_btn.onclick = function (){
+      AudioPlayer.playPause(playerobj);
     };
     var icon = document.createElement("i");
     icon.className = "material-icons";
@@ -52,7 +53,7 @@ class AudioPlayer{
     var rewind_btn = document.createElement('BUTTON');
     rewind_btn.className = 'btn btn-dark';
     rewind_btn.onclick = function () { 
-        rewind(10);
+        AudioPlayer.rewind(10, playerobj);
     };
     icon = document.createElement("i");
     icon.className = "material-icons";
@@ -80,29 +81,29 @@ class AudioPlayer{
   }
 
   // toggle play/pause
-  playPause (){
-    if (this.paused){
-      this.play();
+  static playPause (obj){
+    if (obj.paused){
+      obj.play();
     } else {
-      this.pause();
+      obj.pause();
     }
   }
 
   play(){
-    // this.player.play();
+    this.player.play();
     this.playpause.getElementsByTagName("i")[0].innerHTML = "pause";
     this.paused = false;
   }
 
   pause(){
-    // this.player.pause();
+    this.player.pause();
     this.playpause.getElementsByTagName("i")[0].innerHTML = "play_arrow";
     this.paused = true;
   }
 
-  rewind(time){
-    var curr_time = this.player.currentTime;
-    this.player.currentTime = Math.max(curr_time - time, 0);   // prevent underflow
+  static rewind(time, playerobj){
+    var curr_time = playerobj.player.currentTime;
+    playerobj.player.currentTime = Math.max(curr_time - time, 0);   // prevent underflow
   }
 
   // track finish event listener, clears master controller flag
