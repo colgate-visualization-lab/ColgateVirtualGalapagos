@@ -17,15 +17,12 @@ class VolcanoMasterController extends MasterController {
         } else {
           return path[1];
         }
+      }
 }
 
 // initialize page list
 
 
-var controller = new MasterController(pageList, pageName);
+var controller = new VolcanoMasterController(pageList, pageName);
 controller.init();
 controller.start();
-
-
-
-  }
