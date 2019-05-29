@@ -1,6 +1,7 @@
 "use strict"
 
 import {MasterController} from '../mastercontroller';
+import {VolcanoAudioPlayer} from './volcano_audiocontroller';
 
 class VolcanoMasterController extends MasterController {
     constructor(){
@@ -26,3 +27,5 @@ class VolcanoMasterController extends MasterController {
 var controller = new VolcanoMasterController(pageList, pageName);
 controller.init();
 controller.start();
+var audiocontroller = new VolcanoAudioPlayer(controller); 
+audiocontroller.start();
