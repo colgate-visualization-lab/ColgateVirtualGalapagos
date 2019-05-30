@@ -12,11 +12,13 @@ class VolcanoMasterController extends MasterController {
         var path = window.location.pathname;
         path = path.split("/").splice(-2);
         if (path[0] != "volcano"){
-          throw "This is not in volcano module";
-        } else {
-          path = path[1].split(".");
-          return path[0];
+          path = path.join("/");
         }
+        else{
+          path = path[1];
+        }
+        path = path.split(".");
+        return path[0];
       }
 }
 
@@ -27,6 +29,5 @@ var pageList = ["Volcano_TerrainMap01", "panotour/Volcano_Exploration01", "panot
 
 var controller = new VolcanoMasterController(pageList, pageName);
 controller.init();
-// controller.start();
 var audiocontroller = new VolcanoAudioPlayer(controller); 
 audiocontroller.start();
