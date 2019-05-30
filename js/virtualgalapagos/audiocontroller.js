@@ -38,7 +38,7 @@ class AudioPlayer{
   // add audio controls (play/pause,rewind) to page
   // depends on page following layout system
   start (){
-    var playerobj = this;
+    var playerobj = this; // for use in event handlers
     var playpause_btn = document.createElement('BUTTON');
     playpause_btn.className = 'btn btn-dark';
     playpause_btn.onclick = function (){
@@ -76,12 +76,12 @@ class AudioPlayer{
       document.getElementById("audio_control").appendChild(skip_btn); 
     }
     
-    // set global variables
     this.playpause = playpause_btn;
   }
 
   // toggle play/pause
   static playPause (obj){
+    debugger;
     if (obj.paused){
       obj.play();
     } else {
@@ -90,13 +90,11 @@ class AudioPlayer{
   }
 
   play(){
-    this.player.play();
     this.playpause.getElementsByTagName("i")[0].innerHTML = "pause";
     this.paused = false;
   }
 
   pause(){
-    this.player.pause();
     this.playpause.getElementsByTagName("i")[0].innerHTML = "play_arrow";
     this.paused = true;
   }
