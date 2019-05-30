@@ -81,7 +81,6 @@ class AudioPlayer{
 
   // toggle play/pause
   static playPause (obj){
-    debugger;
     if (obj.paused){
       obj.play();
     } else {
