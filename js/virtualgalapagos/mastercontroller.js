@@ -39,14 +39,14 @@ class MasterController {
 
     // create back and next buttons
   setupControlBar() {
-    console.log("here")
+    var controllerObj = this;
     this.idx = this.pageList.indexOf(this.pageName);
     // first page doesn't need back button
     if (this.idx > 0) {
       var back_btn = document.createElement('BUTTON');
       back_btn.className = 'btn btn-dark';
       back_btn.onclick = function () {
-        back();
+        MasterController.back(controllerObj);
       };
       var icon = document.createElement("i");
       icon.className = "material-icons";
@@ -64,7 +64,7 @@ class MasterController {
         btn.disabled = true;
       }
       btn.onclick = function () {
-        next();
+        MasterController.next(controllerObj);
       };
       var icon = document.createElement("i");
       icon.className = "material-icons";
@@ -80,15 +80,15 @@ class MasterController {
     }
   }
   // go to next page
-  next() {
-    movePage(1);
+  static next(controllerObj) {
+    MasterController.movePage(1,controllerObj);
   }
   // go to previous page
-  back() {
-    movePage(-1);
+  static back(controllerObj) {
+    MasterController.movePage(-1,controllerObj);
   }
-  movePage(shift) {
-    window.location.href = "/" + document.location.pathname.split("/").splice(1)[0] + "/" + this.pageList[this.idx + shift] + ".html";
+  static movePage(shift, controllerObj) {
+    window.location.href = "/" + document.location.pathname.split("/").splice(1)[0] + "/" + controllerObj.pageList[controllerObj.idx + shift] + ".html";
   }
   //
   addFlag(name) {
