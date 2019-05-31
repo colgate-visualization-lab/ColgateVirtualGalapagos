@@ -10,7 +10,7 @@ import {MasterController} from './mastercontroller.js';
 // player.start();
 
 class AudioPlayer{
-  constructor(mastercontroller){
+  constructor(player, mastercontroller){
     if (!mastercontroller instanceof MasterController){
       throw "MasterController must be instantiated";
     }
@@ -21,7 +21,7 @@ class AudioPlayer{
   
     this.paused = true; // autoplay audio
     this.playpause;
-    this.player = document.getElementById("player");
+    this.player = player; 
     this.player.load();
   
       // autoplay background audio
