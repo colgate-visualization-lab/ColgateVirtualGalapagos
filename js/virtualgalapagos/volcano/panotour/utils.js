@@ -51,7 +51,7 @@ function accessStdVr(curScene, curTime){
 
     setTimeout(function(){ loadPlayer(false, curScene, curTime); }, 100);
 }
-// debugger
+
 function loadPlayer(isWebVr, curScene, curTime) {
     if (isWebVr) {
         embedpano({

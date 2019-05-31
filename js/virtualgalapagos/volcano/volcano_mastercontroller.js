@@ -1,10 +1,10 @@
 "use strict"
 // 
+// Entry point of all pages in Volcano module
+// 
 // Initializes all controllers in a page in the Volcano module and subsequent submodules
 // 
-// 
-// 
-// 
+// Create and import any additional controllers
 // 
 // 
 // 
@@ -70,7 +70,6 @@ var ddList = [
 ];
 var ddObj = ddList.filter(ddList => (ddList.Name === pageName));
 if (ddObj) {
-  debugger
   var dragdrop = new VolcanoDragDrop(ddObj[0].ddDict, controller);
   dragdrop.initDrops();
   dragdrop.initDrags();
