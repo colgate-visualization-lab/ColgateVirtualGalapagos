@@ -11,7 +11,7 @@
 import {MasterController} from "./mastercontroller.js";
 
 class Fieldbook {
-	constructor(pages, mastercontroller){
+	constructor(pages, numPages, mastercontroller){
 		if (!mastercontroller instanceof MasterController){
 			throw "MasterController must be instantiated";
 		}
@@ -21,6 +21,7 @@ class Fieldbook {
 		this.mastercontroller = mastercontroller;
 		this.divArray = [];
 		this.pagesArray = pages;
+		this.numPages = numPages;
 		this.innerDiv;
 		this.overlayDiv;
 		this.fb_on = false;
@@ -63,8 +64,8 @@ class Fieldbook {
 	}
 
 	createDivs(){
-		var numPages = this.pagesArray.length
-		for (var i = 0; i < numPages; i++) { 
+		// var numPages = this.numPages;
+		for (var i = 0; i < this.numPages; i++) { 
 			var inner_div = document.createElement('div');
 			inner_div.id = 'fb_overlay_inner';
 			this.divArray.push(inner_div);
@@ -74,7 +75,8 @@ class Fieldbook {
 	// create the (mostly) identical navigational buttons for each fb page
 	createNavBars(){
 		var fb_obj = this;
-		for (var i = 0; i < this.divArray.length; i++){
+		var len = this.divArray.length;
+		for (var i = 0; i < len; i++){
 			var inner_div = this.divArray[i];
 			var save_btn = document.createElement('BUTTON');
 			save_btn.className = 'btn btn-light btn-sm';
@@ -152,9 +154,10 @@ class Fieldbook {
 	}
 
 	setPage(number){
+		debugger
 		// validate page number
-		var numPages = this.pagesArray.length;
-		if (number > (numPages-1) || number < 0 || number === Fieldbook.pageNumber){
+		// var numPages = this.pagesArray.length;
+		if (number > (this.numPages-1) || number < 0 || number === Fieldbook.pageNumber){
 			return;
 		}
 		//hide and store active page
