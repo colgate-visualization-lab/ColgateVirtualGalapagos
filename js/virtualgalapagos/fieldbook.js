@@ -36,11 +36,12 @@ class Fieldbook {
 		throw "Must override this method in the submodule";
 		// over ride this method for each submodule
 	}
-	start(){
+	// supply the fb_page num used by the current page
+	start(currentPage){
 		this.createNavBars();
 		this.addDivs();
 		this.updatePages();
-		this.setPage(1); // TODO : reimplement using array
+		this.setPage(currentPage);
 	}
 
 	setUp(){
