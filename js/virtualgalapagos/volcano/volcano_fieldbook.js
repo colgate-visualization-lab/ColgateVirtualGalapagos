@@ -3,8 +3,8 @@
 import {Fieldbook} from "../fieldbook.js"
 
 class VolcanoFieldbook extends Fieldbook{
-    constructor(pages, mastercontroller){
-        super(pages, mastercontroller);
+    constructor(fbPageList, numPages, mastercontroller){
+        super(fbPageList,numPages, mastercontroller);
     }
 
     // layout changes happen here, and in the future needs a system for handling multiple different fb layouts

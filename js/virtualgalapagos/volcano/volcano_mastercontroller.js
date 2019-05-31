@@ -92,8 +92,8 @@ var fbpages = {
   "Volcano_TerrainMap03": 7,
   "Volcano_TerrainMap04": 8,
   }
-debugger
-var fbcontroller = new VolcanoFieldbook(fbpages, controller);
+
+var fbcontroller = new VolcanoFieldbook(fbpages, 11, controller);
 fbcontroller.init();
 fbcontroller.updatePages();
 fbcontroller.start();
