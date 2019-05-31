@@ -95,5 +95,5 @@ var fbpages = {
 
 var fbcontroller = new VolcanoFieldbook(fbpages, 11, controller);
 fbcontroller.init();
-fbcontroller.updatePages();
+fbcontroller.populateDivs();
 fbcontroller.start();
