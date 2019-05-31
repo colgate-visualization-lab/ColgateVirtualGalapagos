@@ -9,7 +9,6 @@ class VolcanoFieldbook extends Fieldbook{
 
     // layout changes happen here, and in the future needs a system for handling multiple different fb layouts
     populateDivs() {
-        // case for page 1
         var curr_div = this.divArray[0];
         var inner_header = document.createTextNode('Table of Contents');
         // inner_header.id = 'inner_div_header' + i;
@@ -18,17 +17,17 @@ class VolcanoFieldbook extends Fieldbook{
         textArea.className = 'fieldbook_ta';
         textArea.rows = 1;
         textArea.cols = 1;
-        addSubtitle(curr_div,'General');
-        addSubtitle(curr_div,'Volcano');
-        addSubtitle(curr_div,'Iguana');
-        addSubtitle(curr_div,'Island Life Cycle');
-        addSubtitle(curr_div,'Eruption');
-        addSubtitle(curr_div,'Wildlife');
-        addSubtitle(curr_div,'Darwin and Finches');
-        addSubtitle(curr_div,'Ocean Currents');
-        addSubtitle(curr_div,'CDF and CDRS');
-        addSubtitle(curr_div,'Dynamic Island');
-        addSubtitle(curr_div,'Pink Iguana?');
+        Fieldbook.addSubtitle(curr_div,'General');
+        Fieldbook.addSubtitle(curr_div,'Volcano');
+        Fieldbook.addSubtitle(curr_div,'Iguana');
+        Fieldbook.addSubtitle(curr_div,'Island Life Cycle');
+        Fieldbook.addSubtitle(curr_div,'Eruption');
+        Fieldbook.addSubtitle(curr_div,'Wildlife');
+        Fieldbook.addSubtitle(curr_div,'Darwin and Finches');
+        Fieldbook.addSubtitle(curr_div,'Ocean Currents');
+        Fieldbook.addSubtitle(curr_div,'CDF and CDRS');
+        Fieldbook.addSubtitle(curr_div,'Dynamic Island');
+        Fieldbook.addSubtitle(curr_div,'Pink Iguana?');
         
         
         // case for page 2
@@ -36,15 +35,15 @@ class VolcanoFieldbook extends Fieldbook{
         var inner_header = document.createTextNode('Volcano');
         // inner_header.id = 'inner_div_header' + i;
         curr_div.appendChild(inner_header);
-        addLink(curr_div, 'Sierra Negra Caldera',2);
-        addLink(curr_div, 'Coastal Isabela',3);
-        addLink(curr_div, 'Santa Cruz',4);
-        addLink(curr_div, 'Plazas',5);
-        addLink(curr_div, 'Galapagos Map',6);
-        addLink(curr_div, 'Santa Cruz vs. Fernandina',7);
-        addLink(curr_div, 'Hypothesis',8);
-        addLink(curr_div, 'Volcano Comparisons',9);
-        addLink(curr_div, 'Tectonic Plates',10);
+        Fieldbook.addLink(curr_div, 'Sierra Negra Caldera',2, this);
+        Fieldbook.addLink(curr_div, 'Coastal Isabela',3, this);
+        Fieldbook.addLink(curr_div, 'Santa Cruz',4, this);
+        Fieldbook.addLink(curr_div, 'Plazas',5, this);
+        Fieldbook.addLink(curr_div, 'Galapagos Map',6, this);
+        Fieldbook.addLink(curr_div, 'Santa Cruz vs. Fernandina',7, this);
+        Fieldbook.addLink(curr_div, 'Hypothesis',8, this);
+        Fieldbook.addLink(curr_div, 'Volcano Comparisons',9, this);
+        Fieldbook.addLink(curr_div, 'Tectonic Plates',10, this);
         
         
         // case for page 3
@@ -52,7 +51,7 @@ class VolcanoFieldbook extends Fieldbook{
         var inner_header = document.createTextNode('Sierra Negra Caldera');
         // inner_header.id = 'inner_div_header' + i;
         curr_div.appendChild(inner_header);
-        addSubtitle(curr_div, 'OBSERVATIONS');
+        Fieldbook.addSubtitle(curr_div, 'OBSERVATIONS');
         curr_div.appendChild(textArea.cloneNode(true));
         
         // case for page 4
@@ -60,7 +59,7 @@ class VolcanoFieldbook extends Fieldbook{
         var inner_header = document.createTextNode('Coastal Isabela');
         // inner_header.id = 'inner_div_header' + i;
         curr_div.appendChild(inner_header);
-        addSubtitle(curr_div, 'OBSERVATIONS');
+        Fieldbook.addSubtitle(curr_div, 'OBSERVATIONS');
         curr_div.appendChild(textArea.cloneNode(true));
         
         // case for page 5
@@ -68,7 +67,7 @@ class VolcanoFieldbook extends Fieldbook{
         var inner_header = document.createTextNode('Santa Cruz');
         // inner_header.id = 'inner_div_header' + i;
         curr_div.appendChild(inner_header);
-        addSubtitle(curr_div, 'OBSERVATIONS');
+        Fieldbook.addSubtitle(curr_div, 'OBSERVATIONS');
         curr_div.appendChild(textArea.cloneNode(true));
         
         // case for page 6
@@ -76,7 +75,7 @@ class VolcanoFieldbook extends Fieldbook{
         var inner_header = document.createTextNode('Plazas');
         // inner_header.id = 'inner_div_header' + i;
         curr_div.appendChild(inner_header);
-        addSubtitle(curr_div, 'OBSERVATIONS');
+        Fieldbook.addSubtitle(curr_div, 'OBSERVATIONS');
         curr_div.appendChild(textArea.cloneNode(true));
         
         // case for page 7
@@ -84,7 +83,7 @@ class VolcanoFieldbook extends Fieldbook{
         var inner_header = document.createTextNode('Galapagos Map');
         // inner_header.id = 'inner_div_header' + i;
         curr_div.appendChild(inner_header);
-        addSubtitle(curr_div, 'OBSERVATIONS');
+        Fieldbook.addSubtitle(curr_div, 'OBSERVATIONS');
         curr_div.appendChild(textArea.cloneNode(true));
         
         // case for page 8
@@ -92,17 +91,17 @@ class VolcanoFieldbook extends Fieldbook{
         var inner_header = document.createTextNode('Santa Cruz vs. Fernandina');
         // inner_header.id = 'inner_div_header' + i;
         curr_div.appendChild(inner_header);
-        addSubtitle(curr_div, 'OBSERVATIONS');
+        Fieldbook.addSubtitle(curr_div, 'OBSERVATIONS');
         var row_div = document.createElement('DIV');
         row_div.className ='row';
         var col_div = document.createElement('DIV');
         col_div.className = 'col';
-        addSubtitle(col_div, 'Fernandina');
+        Fieldbook.addSubtitle(col_div, 'Fernandina');
         col_div.appendChild(textArea.cloneNode(true));
         row_div.appendChild(col_div);
         col_div = document.createElement('DIV');
         col_div.className = 'col';
-        addSubtitle(col_div, 'Santa Cruz');
+        Fieldbook.addSubtitle(col_div, 'Santa Cruz');
         col_div.appendChild(textArea.cloneNode(true));
         row_div.appendChild(col_div);
         curr_div.appendChild(row_div);
@@ -112,9 +111,9 @@ class VolcanoFieldbook extends Fieldbook{
         var inner_header = document.createTextNode('Hypothesis');
         // inner_header.id = 'inner_div_header' + i;
         curr_div.appendChild(inner_header);
-        addSubtitle(curr_div, 'First Draft of Hypothesis');
+        Fieldbook.addSubtitle(curr_div, 'First Draft of Hypothesis');
         curr_div.appendChild(textArea.cloneNode(true));
-        addSubtitle(curr_div, 'Second Draft of Hypothesis');
+        Fieldbook.addSubtitle(curr_div, 'Second Draft of Hypothesis');
         curr_div.appendChild(textArea.cloneNode(true));
         
         // case for page 10
@@ -122,17 +121,17 @@ class VolcanoFieldbook extends Fieldbook{
         var inner_header = document.createTextNode('Volcano Comparisons');
         // inner_header.id = 'inner_div_header' + i;
         curr_div.appendChild(inner_header);
-        addSubtitle(curr_div, 'OBSERVATIONS');
+        Fieldbook.addSubtitle(curr_div, 'OBSERVATIONS');
         var row_div = document.createElement('DIV');
         row_div.className ='row';
         var col_div = document.createElement('DIV');
         col_div.className = 'col';
-        addSubtitle(col_div, 'Galapagos');
+        Fieldbook.addSubtitle(col_div, 'Galapagos');
         col_div.appendChild(textArea.cloneNode(true));
         row_div.appendChild(col_div);
         col_div = document.createElement('DIV');
         col_div.className = 'col';
-        addSubtitle(col_div, 'Hawaii');
+        Fieldbook.addSubtitle(col_div, 'Hawaii');
         col_div.appendChild(textArea.cloneNode(true));
         row_div.appendChild(col_div);
         curr_div.appendChild(row_div);
@@ -140,12 +139,12 @@ class VolcanoFieldbook extends Fieldbook{
         row_div.className ='row';
         var col_div = document.createElement('DIV');
         col_div.className = 'col';
-        addSubtitle(col_div, 'Japan');
+        Fieldbook.addSubtitle(col_div, 'Japan');
         col_div.appendChild(textArea.cloneNode(true));
         row_div.appendChild(col_div);
         col_div = document.createElement('DIV');
         col_div.className = 'col';
-        addSubtitle(col_div, 'Central America');
+        Fieldbook.addSubtitle(col_div, 'Central America');
         col_div.appendChild(textArea.cloneNode(true));
         row_div.appendChild(col_div);
         curr_div.appendChild(row_div);
@@ -155,7 +154,7 @@ class VolcanoFieldbook extends Fieldbook{
         var inner_header = document.createTextNode('Tectonic Plates');
         // inner_header.id = 'inner_div_header' + i;
         curr_div.appendChild(inner_header);
-        addSubtitle(curr_div, 'Observations');
+        Fieldbook.addSubtitle(curr_div, 'Observations');
         curr_div.appendChild(textArea.cloneNode(true));	 
     }
 }
