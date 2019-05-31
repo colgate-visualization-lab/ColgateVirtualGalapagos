@@ -56,9 +56,9 @@ class Fieldbook {
 	// toggle Fieldbook on and off
 	toggleFB(){
 		if (this.fb_on){
-			saveAndClose();
+			this.saveAndClose();
 		} else {
-			fieldbookOn();
+			this.fieldbookOn();
 		}
 		this.fb_on = !this.fb_on;
 	}
@@ -154,7 +154,6 @@ class Fieldbook {
 	}
 
 	setPage(number){
-		debugger
 		// validate page number
 		// var numPages = this.pagesArray.length;
 		if (number > (this.numPages-1) || number < 0 || number === Fieldbook.pageNumber){
@@ -186,7 +185,7 @@ class Fieldbook {
 	
 	// Saves any textarea content from currently activate page into web storage
 	savePage() {
-		var textareaArray = divArray[Fieldbook.pageNumber].getElementsByTagName('textarea');
+		var textareaArray = this.divArray[Fieldbook.pageNumber].getElementsByTagName('textarea');
 		var len = textareaArray.length;
 		for ( var i = 0; i < len; i++){
 			localStorage.setItem('inner'+Fieldbook.pageNumber+'textarea'+i, textareaArray[i].value);
@@ -198,246 +197,33 @@ class Fieldbook {
 	  localStorage.clear();
 	}
 
+	// helper method for creating text content
+	static addSubtitle(parent, textcontent){
+		var subtitle = document.createElement('p');
+		subtitle.appendChild(document.createTextNode(textcontent));
+		subtitle.className = 'fieldbook_textcontent';
+		parent.appendChild(subtitle);
+	}
+
+	// helped method for creating text content with links
+	static addLink(parent, textcontent, pagenum, fbObj){
+		var link = document.createElement('p');
+		link.appendChild(document.createTextNode(textcontent));
+		link.className = 'fieldbook_link';
+		link.onclick = function () { 
+			fbObj.setPage(pagenum); 
+		};
+		link.onmouseover = function () {
+			link.style = "color: #808A80;";
+		}
+		link.onmouseout = function() {
+			link.style = "color: white;";
+		}
+		parent.appendChild(link);
+	}
+
 }
 
 Fieldbook.pageNumber = -1;
 
 export {Fieldbook}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var divArray = [];
-// var pageNumber = -1
-// var numPages = 11;
-// var innerDiv;
-// var overlayDiv;
-// var fb_on = false;
-
-// initFieldbook();
-
-// function initFieldbook() {
-// 	// create and display fieldbook button
-// 	initFieldbookButton();
-	
-// 	// create overlay div
-// 	overlayDiv = document.createElement('div');
-// 	overlayDiv.id = 'fb_overlay';
-// 	document.body.append(overlayDiv);
-	
-// 	// create each div for this module's fieldbook
-// 	createDivs();
-	
-// 	// populate each div with the apporpriate elements
-// 	populateDivs();
-	
-// 	// add the navbar to each of the inner divs
-// 	createNavBars();
-	
-// 	// add each of the divs to the page body
-// 	addDivs();
-	
-// 	// update page contents
-// 	updatePages();
-	
-// 	// set active page
-// 	setPage(1);
-// }
-
-// // toggle Fieldbook on and off
-// function toggleFB(){
-// 	if (fb_on){
-// 		saveAndClose();
-// 	} else {
-// 		fieldbookOn();
-// 	}
-// 	fb_on = !fb_on;
-// }
-
-// // sets up and displays persistent fieldbook button
-// function initFieldbookButton(){
-//   document.getElementById("fb_button").onclick = function () { 
-//     	toggleFB(); 
-//     };
-// }
-
-// // sets the current active page of the fieldbook
-// function setPage(number){
-// 	// validate page number
-// 	if (number > (numPages-1) || number < 0 || number == pageNumber){
-// 		return;
-// 	}
-// 	//hide and store active page
-// 	if (pageNumber!=-1){
-// 		savePage();
-// 		divArray[pageNumber].style.display = 'none';
-// 	}
-// 	// setup new active page
-// 	divArray[number].style.display = 'block';
-// 	pageNumber = number;
-// }
-
-// function saveAndClose(){
-// 	savePage();
-// 	fieldbookOff();
-// }
-
-// // unused
-// function discardAndClose(){
-// 	fieldbookOff();
-// }
-
-// function fieldbookOn() {
-// 	updatePages();
-// 	overlayDiv.style.display = "block";
-// }
-
-// function fieldbookOff(){
-// 	overlayDiv.style.display = "none";
-// }
-
-// // Saves any textarea content from currently activate page into web storage
-// function savePage() {
-// 	var textareaArray = divArray[pageNumber].getElementsByTagName('textarea');
-// 	for ( var i = 0; i < textareaArray.length; i++){
-// 		localStorage.setItem('inner'+pageNumber+'textarea'+i, textareaArray[i].value);
-// 	}
-// }
-
-// // unused, dev method for clearing local storage
-// function clearFieldbook(){
-//   localStorage.clear();
-// }
-
-// // function createDivs(){
-// // 	for (var i = 0; i < numPages; i++) { 
-// //     	var inner_div = document.createElement('div');
-// // 		inner_div.id = 'fb_overlay_inner';
-// // 		divArray.push(inner_div);
-// // 	} 
-// // }
-
-// // create the (mostly) identical navigational buttons for each fb page
-// function createNavBars(){
-// 	for (var i = 0; i < divArray.length; i++){
-// 		var inner_div = divArray[i];
-// 		var save_btn = document.createElement('BUTTON');
-// 		save_btn.className = 'btn btn-light btn-sm';
-//         var icon = document.createElement("i");
-//         icon.className = "material-icons";
-//         icon.innerHTML = "close";
-//         save_btn.appendChild(icon);
-// 		save_btn.onclick = function () { 
-// 			toggleFB();
-// 		};
-// //		var discard_btn = document.createElement('BUTTON');
-// //		discard_btn.className = 'btn btn-secondary';
-// //		discard_btn.appendChild(document.createTextNode('Discard'))
-// //		discard_btn.onclick = function () { 
-// //			discardAndClose();
-// //		};
-// 		var back_btn = document.createElement('BUTTON');
-// 		back_btn.className = 'btn btn-light btn-sm';
-// 		icon = document.createElement("i");
-//         icon.className = "material-icons";
-//         icon.innerHTML = "arrow_back";
-//         back_btn.appendChild(icon);
-// 		back_btn.onclick = function () { 
-// 			setPage(pageNumber-1); 
-// 		};
-// 		var next_btn = document.createElement('BUTTON');
-// 		next_btn.className = 'btn btn-light btn-sm';
-// 		icon = document.createElement("i");
-//         icon.className = "material-icons";
-//         icon.innerHTML = "arrow_forward";
-//         next_btn.appendChild(icon);
-// 		next_btn.onclick = function () { 
-// 			setPage(pageNumber+1); 
-// 		};
-// 		var home_btn = document.createElement('BUTTON');
-// 		home_btn.className = 'btn btn-light btn-sm';
-// 		icon = document.createElement("i");
-//         icon.className = "material-icons";
-//         icon.innerHTML = "home";
-//         home_btn.appendChild(icon);
-// 		home_btn.onclick = function () { 
-// 			setPage(1); 
-// 		};
-//         var clear_btn = document.createElement('BUTTON');
-// 		clear_btn.className = 'btn btn-light btn-sm';
-// 		clear_btn.appendChild(document.createTextNode('Clear'))
-// 		clear_btn.onclick = function () { 
-// 			clearFieldbook();
-// 		};
-// //		inner_div.appendChild(clear_btn);
-// 		inner_div.appendChild(home_btn);
-// 		inner_div.appendChild(back_btn);
-// //		inner_div.appendChild(discard_btn);
-// 		inner_div.appendChild(next_btn);
-// 		inner_div.appendChild(save_btn);
-// 	}
-// }
-
-// // helper method for creating text content
-// function addSubtitle(parent, textcontent){
-// 	var subtitle = document.createElement('p');
-// 	subtitle.appendChild(document.createTextNode(textcontent));
-// 	subtitle.className = 'fieldbook_textcontent';
-// 	parent.appendChild(subtitle);
-// }
-
-// // helped method for creating text content with links
-// function addLink(parent, textcontent, pagenum){
-// 	var link = document.createElement('p');
-// 	link.appendChild(document.createTextNode(textcontent));
-// 	link.className = 'fieldbook_link';
-// 	link.onclick = function () { 
-//     	setPage(pagenum); 
-//     };
-// 	link.onmouseover = function () {
-// 		link.style = "color: #808A80;";
-// 	}
-// 	link.onmouseout = function() {
-// 		link.style = "color: white;";
-// 	}
-// 	parent.appendChild(link);
-// }
-
-// function addDivs(){
-// 	for (var i = 0; i < divArray.length; i++){
-// 		overlayDiv.appendChild(divArray[i]);
-// 		divArray[i].style.display = "none";
-// 	}
-// }
-
-// // pulls text box content saved in browser storage to ensure user doesn't lose their work
-// function updatePages(){
-// 	for (var i = 0; i < divArray.length; i++){
-// 		var textareaArray = divArray[i].getElementsByTagName('textarea');
-// 		for (var k = 0; k < textareaArray.length; k++){
-// 			textareaArray[k].value = localStorage.getItem('inner'+i+'textarea'+k);
-// 		}
-// 	}
-// }
-
