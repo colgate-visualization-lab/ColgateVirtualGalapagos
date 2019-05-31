@@ -205,7 +205,7 @@ class Fieldbook {
 		parent.appendChild(subtitle);
 	}
 
-	// helped method for creating text content with links
+	// helper method for creating text content with links
 	static addLink(parent, textcontent, pagenum, fbObj){
 		var link = document.createElement('p');
 		link.appendChild(document.createTextNode(textcontent));
