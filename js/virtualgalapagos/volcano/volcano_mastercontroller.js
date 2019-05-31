@@ -92,8 +92,12 @@ var fbpages = {
   "Volcano_TerrainMap03": 7,
   "Volcano_TerrainMap04": 8,
   }
+var currentPage = fbpages[pageName];
+if (currentPage == null){
+  currentPage = 1;
+}
 
 var fbcontroller = new VolcanoFieldbook(fbpages, 11, controller);
 fbcontroller.init();
 fbcontroller.populateDivs();
-fbcontroller.start();
+fbcontroller.start(currentPage);
