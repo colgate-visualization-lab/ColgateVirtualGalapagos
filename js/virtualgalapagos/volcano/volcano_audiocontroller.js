@@ -3,8 +3,8 @@
 import {AudioPlayer} from '../audiocontroller.js';
 
 class VolcanoAudioPlayer extends AudioPlayer{
-    constructor(master_controller){
-        super(master_controller);
+    constructor(player, master_controller){
+        super(player, master_controller);
         this.src = document.getElementById("player_src");
     }
     // if no track assigned, looks for track based on filename
