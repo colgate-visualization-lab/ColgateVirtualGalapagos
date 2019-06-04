@@ -33,7 +33,7 @@ class AudioPlayer{
     this.player.onended = function() {
       this.trackDone();
     };
-  }xcz
+  }
   // add audio controls (play/pause,rewind) to page
   // depends on page following layout system
   start (){
