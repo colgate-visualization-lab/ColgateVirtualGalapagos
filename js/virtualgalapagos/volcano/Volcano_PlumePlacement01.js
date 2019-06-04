@@ -1,4 +1,5 @@
 "use strict"
+// TODO Check audio for correct/wrong answers
 
 // 1=default,2=wrong,3=right
 function plumeplacement(mastercontroller, audiocontroller){
