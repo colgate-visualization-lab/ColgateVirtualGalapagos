@@ -19,6 +19,7 @@ class AudioPlayer{
     }
     this.mastercontroller = mastercontroller;
   
+    this.dev_mode = mastercontroller.dev_mode;
     this.paused = true; // autoplay audio
     this.playpause;
     this.player = player; 
@@ -64,8 +65,8 @@ class AudioPlayer{
       var skip_btn = document.createElement('BUTTON');
       skip_btn.className = 'btn btn-dark';
       skip_btn.onclick = function () { 
-        if (this.player.currentTime > 0) {
-          this.player.currentTime = this.player.duration-1;
+        if (playerobj.player.currentTime > 0) {
+          playerobj.player.currentTime = playerobj.player.duration-1;
         }
       };
       icon = document.createElement("i");
@@ -90,11 +91,13 @@ class AudioPlayer{
   play(){
     this.playpause.getElementsByTagName("i")[0].innerHTML = "pause";
     this.paused = false;
+    this.player.play();
   }
 
   pause(){
     this.playpause.getElementsByTagName("i")[0].innerHTML = "play_arrow";
     this.paused = true;
+    this.player.pause();
   }
 
   static rewind(time, playerobj){
@@ -105,8 +108,8 @@ class AudioPlayer{
   // track finish event listener, clears master controller flag
   trackDone(){
     this.mastercontroller.flagDone("audio");
-    this.playPause();
-    this.rewind(this.player.duration);
+    AudioPlayer.playPause(this);
+    AudioPlayer.rewind(this.player.duration, this);
   }
 }
 
