@@ -14,14 +14,14 @@ class VolcanoAudioPlayer extends AudioPlayer{
             var filename = window.location.pathname;
             filename = filename.split("/").pop();
             filename = filename.substr(0, filename.length-5);
-            setTrack(filename);
+            this.setTrack(filename);
         }
     }
     
     setTrack(filename){
         console.log("setting audio track to: " + filename);
         var prefix;
-        if (grabPageName().includes("panotour")){
+        if (this.grabPageName().includes("panotour")){
             prefix = "../../audio/volcano/";
         } else {
             prefix = "../audio/volcano/";
