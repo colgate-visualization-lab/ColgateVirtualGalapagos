@@ -33,13 +33,13 @@
       <div id="content" class="container-fluid">
         <img src="../images/volcano/terrain_map_03.png" class="img-bordered img-fluid" usemap="#terrain03-map">
         <map name="terrain03-map">
-            <area target="" style="cursor: zoom-in;" alt="Fernandina" title="Fernandina" onclick="on('fernandina');" coords="1729,1031,1811,1005,1863,995,1914,1041,1935,1103,1940,1165,1924,1211,1888,1247,1832,1247,1765,1247,1703,1242,1667,1165,1652,1098,1646,1041" shape="poly">
-            <area target="" style="cursor: zoom-in;" alt="Santa Cruz" title="Santa Cruz" onclick="on('santacruz')" coords="3001,1128,3021,1185,3047,1242,3088,1298,3109,1350,3104,1417,3088,1463,3037,1510,2965,1540,2893,1540,2821,1520,2759,1484,2718,1448,2707,1376,2712,1319,2738,1273,2810,1252,2882,1236,2944,1226,2965,1164" shape="poly">
+            <area id="on_fernandina" target="" style="cursor: zoom-in;" alt="Fernandina" title="Fernandina" coords="1729,1031,1811,1005,1863,995,1914,1041,1935,1103,1940,1165,1924,1211,1888,1247,1832,1247,1765,1247,1703,1242,1667,1165,1652,1098,1646,1041" shape="poly">
+            <area id="on_santacruz" target="" style="cursor: zoom-in;" alt="Santa Cruz" title="Santa Cruz" coords="3001,1128,3021,1185,3047,1242,3088,1298,3109,1350,3104,1417,3088,1463,3037,1510,2965,1540,2893,1540,2821,1520,2759,1484,2718,1448,2707,1376,2712,1319,2738,1273,2810,1252,2882,1236,2944,1226,2965,1164" shape="poly">
         </map>
       </div>
       <div id="control_bar" class="container row justify-content-md-center">
         <div id="nav_control">
-          <button id="opt_audio" onclick="narrationOn();" class="btn btn-primary" type=button disabled=true><i class="material-icons">hearing</i></button>
+          <button id="opt_audio" class="btn btn-primary" type=button disabled=true><i class="material-icons">hearing</i></button>
         </div>
         <div id="audio_control">
           <audio id="player">
@@ -54,12 +54,12 @@
       <div class="overlay_inner" id="fernandina_inner" style="display: none">
         <img src="../images/ferd.jpg" class="img-fluid img_popup">
         <br>
-        <button type="button" class="btn" onclick="off('fernandina')"><i class="material-icons md-dark">close</i></button>
+        <button id="off_fernandina" type="button" class="btn"><i class="material-icons md-dark">close</i></button>
       </div>
       <div class="overlay_inner" id="santacruz_inner" style="display: none">
         <img src="../images/SantaCruz_Color.png" class="img-fluid img_popup">
         <br>
-        <button type="button" class="btn" onclick="off('santacruz')"><i class="material-icons md-dark">close</i></button>
+        <button id="off_santacruz" type="button" class="btn"><i class="material-icons md-dark">close</i></button>
       </div>
     </div>
     

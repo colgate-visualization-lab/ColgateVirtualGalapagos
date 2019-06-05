@@ -119,3 +119,7 @@ if (pageName==="Volcano_PlumePlacement01"){
   plumeplacement(controller, audiocontroller);
 }
 
+// TerrainMap03
+if (pageName==="Volcano_TerrainMapo3"){
+  terrainmap(controller, audiocontroller);
+}
