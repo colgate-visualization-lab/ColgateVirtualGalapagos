@@ -25,15 +25,15 @@ class MasterController {
   }
 
   init() {
-      if (localStorage.getItem("initProgress") != "true") {
+      if (MasterController.getItem("initProgress") != "true") {
         alert("DEV MESSAGE PLEASE IGNORE - Setting up progress storage.");
         for (var i = 0; i < this.pageList.length; i++) {
-          localStorage.setItem(this.pageList[i], "false");
+          MasterController.storeItem(this.pageList[i], "false");
         }
         // special cases
-        localStorage.setItem("TerrainMap03", "false");
-        localStorage.setItem("PlumePlacement01", "false");
-        localStorage.setItem("initProgress", "true");
+        MasterController.storeItem("TerrainMap03", "false");
+        MasterController.storeItem("PlumePlacement01", "false");
+        MasterController.storeItem("initProgress", "true");
       }
     }
 
@@ -60,7 +60,7 @@ class MasterController {
       btn.className = 'btn btn-dark';
       btn.style = "margin-left: 5px;";
       // Button disabled until user done with page
-      if (localStorage.getItem(this.pageName) == "false" && !this.dev_mode) {
+      if (MasterController.getItem(this.pageName) == "false" && !this.dev_mode) {
         btn.disabled = true;
       }
       btn.onclick = function () {
@@ -75,7 +75,7 @@ class MasterController {
     }
   }
   updateNext() {
-    if (localStorage.getItem(this.pageName) != "true" && !this.dev_mode) {
+    if (MasterController.getItem(this.pageName) != "true" && !this.dev_mode) {
       this.next_btn.disabled = true;
     }
   }
@@ -111,8 +111,16 @@ class MasterController {
   pageDone() {
     if (this.idx < this.pageList.length - 1) {
       this.next_btn.disabled = false;
-      localStorage.setItem(this.pageName, "true");
+      MasterController.storeItem(this.pageName, "true");
     }
+  }
+  
+  // api to persist items in storage, can be expanded to use a database etc
+  static storeItem(key, value){
+    localStorage.setItem(key, value);
+  }
+  static getItem(key){
+    return localStorage.getItem(key);
   }
 }
 export{MasterController};
