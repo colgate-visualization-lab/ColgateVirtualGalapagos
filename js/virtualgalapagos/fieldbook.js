@@ -149,7 +149,7 @@ class Fieldbook {
 			var textareaArray = this.divArray[i].getElementsByTagName('textarea');
 			var arrlen = textareaArray.length;
 			for (var k = 0; k < arrlen ; k++){
-				textareaArray[k].value = localStorage.getItem('inner'+i+'textarea'+k);
+				textareaArray[k].value = MasterController.getItem('inner'+i+'textarea'+k);
 			}
 		}
 	}
@@ -189,13 +189,8 @@ class Fieldbook {
 		var textareaArray = this.divArray[Fieldbook.pageNumber].getElementsByTagName('textarea');
 		var len = textareaArray.length;
 		for ( var i = 0; i < len; i++){
-			localStorage.setItem('inner'+Fieldbook.pageNumber+'textarea'+i, textareaArray[i].value);
+			MasterController.storeItem('inner'+Fieldbook.pageNumber+'textarea'+i, textareaArray[i].value);
 		}
-	}
-	
-	// dev method for clearing local storage
-	clearFieldbook(){
-	  localStorage.clear();
 	}
 
 	// helper method for creating text content

@@ -1,5 +1,7 @@
 "use strict"
 
+import { MasterController } from "../mastercontroller.js";
+
 // needs elegant way to check button status when bg audio finishes playing
 function terrainmap(mastercontroller, audiocontroller) {
   var ferd_click = false;
@@ -42,7 +44,7 @@ function terrainmap(mastercontroller, audiocontroller) {
     };
     
     // enable optional button if user has already completed page
-    if (localStorage.getItem("TerrainMap03") == "true") {
+    if (MasterController.getItem("TerrainMap03") == "true") {
       document.getElementById("opt_audio").disabled = false;
     }
   }
@@ -79,7 +81,7 @@ function terrainmap(mastercontroller, audiocontroller) {
   function enableOptional(){
     if (controller.done_flags["island_clicks"] && controller.done_flags["audio"]){
       document.getElementById("opt_audio").disabled = false;
-      localStorage.setItem("TerrainMap03", "true");
+      MasterController.storeItem("TerrainMap03", "true");
     }
   }
 
@@ -89,3 +91,5 @@ function terrainmap(mastercontroller, audiocontroller) {
     player.play();
   }
 }
+
+export {terrainmap};
