@@ -11,6 +11,7 @@ import {MasterController} from '../mastercontroller.js';
 import {VolcanoAudioPlayer} from './volcano_audiocontroller.js';
 import {VolcanoDragDrop} from './volcano_dragdrop.js'
 import {VolcanoFieldbook} from './volcano_fieldbook.js'
+import {VolcanoToolbar} from './volcano_toolbar.js'
 
 class VolcanoMasterController extends MasterController {
     constructor(pageList, pageName){
@@ -40,6 +41,11 @@ var pageList = ["Volcano_TerrainMap01", "panotour/Volcano_Exploration01", "panot
 var controller = new VolcanoMasterController(pageList, pageName);
 controller.init();
 
+//
+var toolbar = new VolcanoToolbar();
+toolbar.initToolbar();
+
+
 // Audiocontroller
 var player = document.getElementById("player");
 if (player !== null) { //page has audio set up
@@ -47,7 +53,7 @@ if (player !== null) { //page has audio set up
   audiocontroller.start();
   audiocontroller.setBGTrack();
 }
-// debugger
+
 // Fieldbook
 var fbpages = {
   "Volcano_Compare360": 7,
@@ -112,3 +118,4 @@ if (ddObj.length !== 0) {
 if (pageName==="Volcano_PlumePlacement01"){
   plumeplacement(controller, audiocontroller);
 }
+
