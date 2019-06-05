@@ -1,4 +1,7 @@
 "use strict"
+
+import { MasterController } from "../mastercontroller.js";
+
 // TODO Check audio for correct/wrong answers
 
 // 1=default,2=wrong,3=right
@@ -24,7 +27,7 @@ function plumeplacement(mastercontroller, audiocontroller){
     };
     
     // enable map if user already completed page previously
-    if (localStorage.getItem("PlumePlacement01") == "true"){
+    if (MasterController.getItem("PlumePlacement01") == "true"){
       enableMap();
     }
     document.getElementById("leftOption").onclick = function(){
@@ -59,7 +62,7 @@ function plumeplacement(mastercontroller, audiocontroller){
 
   function enableMap(){
     mapEnabled = true;
-    localStorage.setItem("PlumePlacement01", "true");
+    MasterController.storeItem("PlumePlacement01", "true");
     document.getElementsByName("image-map")[0].style.display = "block;";
   }
 
@@ -95,3 +98,4 @@ function plumeplacement(mastercontroller, audiocontroller){
     }
   }
 }
+export {plumeplacement};
