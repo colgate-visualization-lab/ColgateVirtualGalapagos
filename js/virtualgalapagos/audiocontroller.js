@@ -25,14 +25,15 @@ class AudioPlayer{
     this.player = player; 
     this.player.load();
   
+    var audiocontroller = this; // needed to setup listeners
       // autoplay background audio
     this.player.oncanplay = function() {
-      // playPause();
+      AudioPlayer.playPause(audiocontroller);
     };
-      
-      // setup listener for when audio is done playing
+
+    // setup listener for when audio is done playing
     this.player.onended = function() {
-      this.trackDone();
+      audiocontroller.trackDone();
     };
   }
   // add audio controls (play/pause,rewind) to page
