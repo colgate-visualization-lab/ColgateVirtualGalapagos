@@ -12,6 +12,8 @@ import {VolcanoAudioPlayer} from './volcano_audiocontroller.js';
 import {VolcanoDragDrop} from './volcano_dragdrop.js'
 import {VolcanoFieldbook} from './volcano_fieldbook.js'
 import {VolcanoToolbar} from './volcano_toolbar.js'
+import {plumeplacement} from './Volcano_PlumePlacement01.js'
+import {terrainmap} from './Volcano_TerrainMap03.js'
 
 class VolcanoMasterController extends MasterController {
     constructor(pageList, pageName){
@@ -41,7 +43,7 @@ var pageList = ["Volcano_TerrainMap01", "panotour/Volcano_Exploration01", "panot
 var controller = new VolcanoMasterController(pageList, pageName);
 controller.init();
 
-//
+// Toolbar for side navigation
 var toolbar = new VolcanoToolbar();
 toolbar.initToolbar();
 
