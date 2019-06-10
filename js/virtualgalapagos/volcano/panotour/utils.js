@@ -107,3 +107,9 @@ function isVRModeRequested() {
     }
     return false;
 }
+
+if (isVRModeRequested()){
+    accessWebVr();
+}else{
+    accessStdVr();
+}
