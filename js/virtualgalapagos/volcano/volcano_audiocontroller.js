@@ -1,8 +1,8 @@
 "use strict"
 
-import {AudioPlayer} from '../audiocontroller.js';
+import {AudioController} from '../audiocontroller.js';
 
-class VolcanoAudioPlayer extends AudioPlayer{
+class VolcanoAudioController extends AudioController{
     constructor(player, master_controller){
         super(player, master_controller);
         this.src = document.getElementById("player_src");
@@ -21,7 +21,7 @@ class VolcanoAudioPlayer extends AudioPlayer{
     setTrack(filename){
         console.log("setting audio track to: " + filename);
         var prefix;
-        if (VolcanoAudioPlayer.grabPageName().includes("panotour")){
+        if (VolcanoAudioController.grabPageName().includes("panotour")){
             prefix = "../../audio/volcano/";
         } else {
             prefix = "../audio/volcano/";
@@ -41,5 +41,5 @@ class VolcanoAudioPlayer extends AudioPlayer{
         }
     }
 }
-export {VolcanoAudioPlayer}
+export {VolcanoAudioController}
 
