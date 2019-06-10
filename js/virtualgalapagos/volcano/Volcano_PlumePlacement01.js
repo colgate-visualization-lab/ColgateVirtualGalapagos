@@ -2,8 +2,6 @@
 
 import { MasterController } from "../mastercontroller.js";
 
-// TODO Check audio for correct/wrong answers
-
 // 1=default,2=wrong,3=right
 function plumeplacement(mastercontroller, audiocontroller){
   var state = 1;
