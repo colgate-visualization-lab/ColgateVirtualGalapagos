@@ -78,7 +78,6 @@ function plumeplacement(mastercontroller, audiocontroller){
       document.getElementById("pp_no").style.display = "block";
       document.getElementById("pp_yes").style.display = "none";
       player.setTrack("Volcano_PlumeNo01");
-      debugger
       player.play();
     } else if (state == 3) {
       document.getElementById("pp").style.display = "none";
