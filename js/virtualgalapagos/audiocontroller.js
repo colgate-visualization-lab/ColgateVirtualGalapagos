@@ -27,9 +27,9 @@ class AudioController{
   
     var audiocontroller = this; // needed to setup listeners
       // autoplay background audio
-    this.player.oncanplay = function() {
-      AudioController.playPause(audiocontroller);
-    };
+    // this.player.oncanplay = function() {
+    //   AudioController.playPause(audiocontroller);
+    // };
 
     // setup listener for when audio is done playing
     this.player.onended = function() {
