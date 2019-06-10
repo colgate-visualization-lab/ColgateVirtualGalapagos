@@ -3,19 +3,19 @@ import {MasterController} from './mastercontroller.js';
 //
 // How to use this module
 // HTML page must use the layout template
-// must include the following "import {AudioPlayer} from 'FILEPATH/audiocontroller.js';" in the module's audiocontroller
+// must include the following "import {AudioController} from 'FILEPATH/audiocontroller.js';" in the module's audiocontroller
 // pages must have a background track assigned with id player_src
 // 
-// player = new AudioPlayer()
+// player = new AudioController()
 // player.start();
 
-class AudioPlayer{
+class AudioController{
   constructor(player, mastercontroller){
     if (!mastercontroller instanceof MasterController){
       throw "MasterController must be instantiated";
     }
     if (!new.target){
-      return new AudioPlayer();
+      return new AudioController();
     }
     this.mastercontroller = mastercontroller;
   
@@ -28,7 +28,7 @@ class AudioPlayer{
     var audiocontroller = this; // needed to setup listeners
       // autoplay background audio
     this.player.oncanplay = function() {
-      AudioPlayer.playPause(audiocontroller);
+      AudioController.playPause(audiocontroller);
     };
 
     // setup listener for when audio is done playing
@@ -43,7 +43,7 @@ class AudioPlayer{
     var playpause_btn = document.createElement('BUTTON');
     playpause_btn.className = 'btn btn-dark';
     playpause_btn.onclick = function (){
-      AudioPlayer.playPause(playerobj);
+      AudioController.playPause(playerobj);
     };
     var icon = document.createElement("i");
     icon.className = "material-icons";
@@ -54,7 +54,7 @@ class AudioPlayer{
     var rewind_btn = document.createElement('BUTTON');
     rewind_btn.className = 'btn btn-dark';
     rewind_btn.onclick = function () { 
-        AudioPlayer.rewind(10, playerobj);
+        AudioController.rewind(10, playerobj);
     };
     icon = document.createElement("i");
     icon.className = "material-icons";
@@ -109,9 +109,9 @@ class AudioPlayer{
   // track finish event listener, clears master controller flag
   trackDone(){
     this.mastercontroller.flagDone("audio");
-    AudioPlayer.playPause(this);
-    AudioPlayer.rewind(this.player.duration, this);
+    AudioController.playPause(this);
+    AudioController.rewind(this.player.duration, this);
   }
 }
 
-export{AudioPlayer};
+export{AudioController};
