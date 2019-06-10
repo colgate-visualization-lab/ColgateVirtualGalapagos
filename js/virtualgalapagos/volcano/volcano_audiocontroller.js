@@ -26,8 +26,8 @@ class VolcanoAudioController extends AudioController{
         } else {
             prefix = "../audio/volcano/";
         }
-        if (this.src.src != prefix + filename + ".mp3"){
-            this.src.src = prefix + filename + ".mp3";
+        if (this.player.src != prefix + filename + ".mp3"){
+            this.player.src = prefix + filename + ".mp3";
         }
     }
     
