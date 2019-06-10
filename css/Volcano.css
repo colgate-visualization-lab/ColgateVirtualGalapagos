@@ -46,7 +46,7 @@
 }
 
 #tb_button {
-  display: none;
+  display: flex;
 }
 
 /* Sticky footer styles
