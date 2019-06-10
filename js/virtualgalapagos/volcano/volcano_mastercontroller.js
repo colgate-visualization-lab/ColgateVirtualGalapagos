@@ -8,7 +8,7 @@
 // 
 
 import {MasterController} from '../mastercontroller.js';
-import {VolcanoAudioPlayer} from './volcano_audiocontroller.js';
+import {VolcanoAudioController} from './volcano_audiocontroller.js';
 import {VolcanoDragDrop} from './volcano_dragdrop.js'
 import {VolcanoFieldbook} from './volcano_fieldbook.js'
 import {VolcanoToolbar} from './volcano_toolbar.js'
@@ -51,7 +51,7 @@ toolbar.initToolbar();
 // Audiocontroller
 var player = document.getElementById("player");
 if (player !== null) { //page has audio set up
-  var audiocontroller = new VolcanoAudioPlayer(player, controller); 
+  var audiocontroller = new VolcanoAudioController(player, controller); 
   audiocontroller.start();
   audiocontroller.setBGTrack();
 }
