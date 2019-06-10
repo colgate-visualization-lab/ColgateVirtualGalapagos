@@ -21,7 +21,7 @@ class VolcanoAudioPlayer extends AudioPlayer{
     setTrack(filename){
         console.log("setting audio track to: " + filename);
         var prefix;
-        if (this.grabPageName().includes("panotour")){
+        if (VolcanoAudioPlayer.grabPageName().includes("panotour")){
             prefix = "../../audio/volcano/";
         } else {
             prefix = "../audio/volcano/";
@@ -31,7 +31,7 @@ class VolcanoAudioPlayer extends AudioPlayer{
         }
     }
     
-    grabPageName(){
+    static grabPageName(){
         var path = window.location.pathname;
         path = path.split("/").splice(-2);
         if (path[0] != "volcano"){
