@@ -3,11 +3,11 @@
 import { MasterController } from "../mastercontroller.js";
 
 // 1=default,2=wrong,3=right
-function plumeplacement(mastercontroller, audiocontroller){
+function plumeplacement(mastercontroller, avcontroller){
   var state = 1;
   var mapEnabled = false;
   var controller = mastercontroller;
-  var player = audiocontroller;
+  var player = avcontroller;
   init();
 
   function init(){
