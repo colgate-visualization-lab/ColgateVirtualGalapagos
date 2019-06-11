@@ -8,7 +8,7 @@
 // 
 
 import {MasterController} from '../mastercontroller.js';
-import {VolcanoAudioController} from './volcano_audiocontroller.js';
+import {VolcanoAVController} from './volcano_avcontroller.js';
 import {VolcanoDragDrop} from './volcano_dragdrop.js'
 import {VolcanoFieldbook} from './volcano_fieldbook.js'
 import {VolcanoToolbar} from './volcano_toolbar.js'
@@ -51,9 +51,9 @@ toolbar.initToolbar();
 // Audiocontroller
 var player = document.getElementById("player");
 if (player !== null) { //page has audio set up
-  var audiocontroller = new VolcanoAudioController(player, controller); 
-  audiocontroller.start();
-  audiocontroller.setBGTrack();
+  var avcontroller = new VolcanoAVController(player, controller); 
+  avcontroller.start();
+  avcontroller.setBGTrack();
 }
 
 // Fieldbook
@@ -118,10 +118,10 @@ if (ddObj.length !== 0) {
 
 // Plumeplacement
 if (pageName==="Volcano_PlumePlacement01"){
-  plumeplacement(controller, audiocontroller);
+  plumeplacement(controller, avcontroller);
 }
 
 // TerrainMap03
 if (pageName==="Volcano_TerrainMapo3"){
-  terrainmap(controller, audiocontroller);
+  terrainmap(controller, avcontroller);
 }
