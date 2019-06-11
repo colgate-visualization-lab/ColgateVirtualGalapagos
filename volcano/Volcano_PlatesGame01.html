@@ -64,7 +64,7 @@
       </div>
       <div id="control_bar" class="container row justify-content-md-center">
         <div id="nav_control">
-          <button class="btn btn-primary" onclick="on('plates')"><i class="material-icons">help_outline</i></button>
+          <button id="overlayOn" class="btn btn-primary"><i class="material-icons">help_outline</i></button>
         </div>
         <div id="av_control">
           <audio id="player">
@@ -76,10 +76,10 @@
     
     <!-- Overlay Layout -->
     <div id="overlay">
-      <div id='plates_inner' class="overlay_inner"><b>Divergent</b>: two plates move away from each other<br>
+      <div id='overlay_inner' class="overlay_inner"><b>Divergent</b>: two plates move away from each other<br>
         <b>Convergent</b>: two plates move toward each other and collide, creating subduction zones or mountain building events<br>
         <b>Transform</b>: two plates slide past each other in opposite directions<br>
-      <button type="button" class="btn" onclick="off('plates')"><i class="material-icons">close</i></button>
+      <button id="overlayOff" type="button" class="btn" ><i class="material-icons">close</i></button>
       </div>
     </div>
     
