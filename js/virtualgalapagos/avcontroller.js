@@ -1,5 +1,5 @@
 'use strict'
-import { MasterController } from './masterController.js'
+// import { MasterController } from './masterController.js'
 //
 // How to use this module
 // HTML page must use the layout template
@@ -11,9 +11,6 @@ import { MasterController } from './masterController.js'
 
 class AVController {
   constructor (player, avType, masterController) {
-    if (!(masterController instanceof MasterController)) {
-      throw new Error('masterController must be instantiated')
-    }
     if (!new.target) {
       return new AVController()
     }
@@ -78,7 +75,7 @@ class AVController {
       document.getElementById('av_control').appendChild(skipBtn)
     }
 
-    this.playPauseBtn = playPauseBtn
+    this.playPause = playPauseBtn
   }
 
   // toggle play/pause
