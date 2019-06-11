@@ -1,11 +1,19 @@
 'use strict'
 
-function on (name) {
-  document.getElementById('overlay').style.display = 'block'
-  document.getElementById(name + '_inner').style.display = 'block'
+document.getElementById('overlayOn').onclick = function () {
+  overlayOn()
+}
+// todo: Volcano_TerrainMap02 does not have an off button.
+document.getElementById('overlayOff').onclick = function () {
+  overlayOff()
 }
 
-function off (name) {
+function overlayOn () {
+  document.getElementById('overlay').style.display = 'block'
+  document.getElementById('overlay_inner').style.display = 'block'
+}
+
+function overlayOff () {
   document.getElementById('overlay').style.display = 'none'
-  document.getElementById(name + '_inner').style.display = 'none'
+  document.getElementById('overlay_inner').style.display = 'none'
 }
