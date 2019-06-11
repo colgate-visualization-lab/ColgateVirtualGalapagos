@@ -97,6 +97,7 @@ if (player !== null) { // page has av set up
   } else {
     avType = 'audio'
   }
+
   var avController = new VolcanoAVController(player, avType, masterController)
   avController.start()
   avController.setBGTrack()
