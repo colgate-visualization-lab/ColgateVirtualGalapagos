@@ -10,15 +10,15 @@ import {MasterController} from './mastercontroller.js';
 // player.start();
 
 class AVController{
-  constructor(player, mastercontroller){
+  constructor(player, av_type, mastercontroller){
     if (!mastercontroller instanceof MasterController){
       throw "MasterController must be instantiated";
     }
     if (!new.target){
       return new AVController();
     }
+    this.av_type = av_type;
     this.mastercontroller = mastercontroller;
-  
     this.dev_mode = mastercontroller.dev_mode;
     this.paused = true; // autoplay audio
     this.playpause;
@@ -35,6 +35,7 @@ class AVController{
     this.player.onended = function() {
       avcontroller.trackDone();
     };
+    this.mastercontroller.addFlag("audio_video");
   }
   // add audio controls (play/pause,rewind) to page
   // depends on page following layout system
@@ -108,7 +109,7 @@ class AVController{
 
   // track finish event listener, clears master controller flag
   trackDone(){
-    this.mastercontroller.flagDone("audio");
+    this.mastercontroller.flagDone("audio_video");
     AVController.playPause(this);
     AVController.rewind(this.player.duration, this);
   }

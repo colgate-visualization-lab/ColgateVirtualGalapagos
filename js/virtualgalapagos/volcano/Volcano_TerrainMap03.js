@@ -79,7 +79,7 @@ function terrainmap(mastercontroller, avcontroller) {
   }
 
   function enableOptional(){
-    if (controller.done_flags["island_clicks"] && controller.done_flags["audio"]){
+    if (controller.done_flags["island_clicks"] && controller.done_flags["audio_video"]){
       document.getElementById("opt_audio").disabled = false;
       MasterController.storeItem("TerrainMap03", "true");
     }
