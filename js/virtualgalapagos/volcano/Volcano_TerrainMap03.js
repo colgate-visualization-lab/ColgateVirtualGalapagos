@@ -3,12 +3,12 @@
 import { MasterController } from "../mastercontroller.js";
 
 // needs elegant way to check button status when bg audio finishes playing
-function terrainmap(mastercontroller, audiocontroller) {
+function terrainmap(mastercontroller, avcontroller) {
   var ferd_click = false;
   var sc_click = false;
   var opt_on = false;
   var controller = mastercontroller;
-  var player = audiocontroller;
+  var player = avcontroller;
 
   init();
 
