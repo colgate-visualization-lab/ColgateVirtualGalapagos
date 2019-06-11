@@ -1,11 +1,7 @@
 'use strict'
 
+import { DragDrop } from '../dragdrop.js'
 
-import {DragDrop} from '../dragdrop.js'
-
-class VolcanoDragDrop extends DragDrop{
-    constructor(ddDict, mastercontroller){
-        super(ddDict,mastercontroller);
-    }
+class VolcanoDragDrop extends DragDrop {
 }
-export {VolcanoDragDrop}
+export { VolcanoDragDrop }
