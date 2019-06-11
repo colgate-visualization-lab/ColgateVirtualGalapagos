@@ -49,7 +49,7 @@ class AVController{
     icon.className = "material-icons";
     icon.innerHTML = "play_arrow";
     playpause_btn.appendChild(icon);
-    document.getElementById("audio_control").appendChild(playpause_btn);
+    document.getElementById("av_control").appendChild(playpause_btn);
     
     var rewind_btn = document.createElement('BUTTON');
     rewind_btn.className = 'btn btn-dark';
@@ -60,7 +60,7 @@ class AVController{
     icon.className = "material-icons";
     icon.innerHTML = "replay_10";
     rewind_btn.appendChild(icon);
-    document.getElementById("audio_control").appendChild(rewind_btn);
+    document.getElementById("av_control").appendChild(rewind_btn);
     
     if (this.dev_mode){
       var skip_btn = document.createElement('BUTTON');
@@ -74,7 +74,7 @@ class AVController{
       icon.className = "material-icons";
       icon.innerHTML = "skip_next";
       skip_btn.appendChild(icon);
-      document.getElementById("audio_control").appendChild(skip_btn); 
+      document.getElementById("av_control").appendChild(skip_btn); 
     }
     
     this.playpause = playpause_btn;
