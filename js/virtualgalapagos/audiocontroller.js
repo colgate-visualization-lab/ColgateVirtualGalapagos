@@ -3,19 +3,19 @@ import {MasterController} from './mastercontroller.js';
 //
 // How to use this module
 // HTML page must use the layout template
-// must include the following "import {AudioController} from 'FILEPATH/audiocontroller.js';" in the module's audiocontroller
+// must include the following "import {AVController} from 'FILEPATH/avcontroller.js';" in the module's avcontroller
 // pages must have a background track assigned with id player_src
 // 
-// player = new AudioController()
+// player = new AVController()
 // player.start();
 
-class AudioController{
+class AVController{
   constructor(player, mastercontroller){
     if (!mastercontroller instanceof MasterController){
       throw "MasterController must be instantiated";
     }
     if (!new.target){
-      return new AudioController();
+      return new AVController();
     }
     this.mastercontroller = mastercontroller;
   
@@ -25,15 +25,15 @@ class AudioController{
     this.player = player; 
     this.player.load();
   
-    var audiocontroller = this; // needed to setup listeners
+    var avcontroller = this; // needed to setup listeners
       // autoplay background audio
     // this.player.oncanplay = function() {
-    //   AudioController.playPause(audiocontroller);
+    //   AVController.playPause(avcontroller);
     // };
 
     // setup listener for when audio is done playing
     this.player.onended = function() {
-      audiocontroller.trackDone();
+      avcontroller.trackDone();
     };
   }
   // add audio controls (play/pause,rewind) to page
@@ -43,7 +43,7 @@ class AudioController{
     var playpause_btn = document.createElement('BUTTON');
     playpause_btn.className = 'btn btn-dark';
     playpause_btn.onclick = function (){
-      AudioController.playPause(playerobj);
+      AVController.playPause(playerobj);
     };
     var icon = document.createElement("i");
     icon.className = "material-icons";
@@ -54,7 +54,7 @@ class AudioController{
     var rewind_btn = document.createElement('BUTTON');
     rewind_btn.className = 'btn btn-dark';
     rewind_btn.onclick = function () { 
-        AudioController.rewind(10, playerobj);
+        AVController.rewind(10, playerobj);
     };
     icon = document.createElement("i");
     icon.className = "material-icons";
@@ -109,9 +109,9 @@ class AudioController{
   // track finish event listener, clears master controller flag
   trackDone(){
     this.mastercontroller.flagDone("audio");
-    AudioController.playPause(this);
-    AudioController.rewind(this.player.duration, this);
+    AVController.playPause(this);
+    AVController.rewind(this.player.duration, this);
   }
 }
 
-export{AudioController};
+export{AVController};
