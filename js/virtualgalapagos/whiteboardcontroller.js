@@ -42,7 +42,7 @@ function setupControls(){
   icon.className = "material-icons";
   icon.innerHTML = "pause";
   playpause_btn.appendChild(icon);
-  document.getElementById("audio_control").appendChild(playpause_btn);
+  document.getElementById("av_control").appendChild(playpause_btn);
   
   var rewind_btn = document.createElement('BUTTON');
   rewind_btn.className = 'btn btn-dark';
@@ -55,7 +55,7 @@ function setupControls(){
   icon.className = "material-icons";
   icon.innerHTML = "replay_10";
   rewind_btn.appendChild(icon);
-  document.getElementById("audio_control").appendChild(rewind_btn);
+  document.getElementById("av_control").appendChild(rewind_btn);
   
   if (dev_mode){
     var skip_btn = document.createElement('BUTTON');
@@ -69,7 +69,7 @@ function setupControls(){
     icon.className = "material-icons";
     icon.innerHTML = "skip_next";
     skip_btn.appendChild(icon);
-    document.getElementById("audio_control").appendChild(skip_btn); 
+    document.getElementById("av_control").appendChild(skip_btn); 
   }
   
   // set global variables
