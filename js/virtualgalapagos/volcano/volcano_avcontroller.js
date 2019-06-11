@@ -3,8 +3,8 @@
 import {AVController} from '../avcontroller.js';
 
 class VolcanoAVController extends AVController{
-    constructor(player, master_controller){
-        super(player, master_controller);
+    constructor(player, av_type, master_controller){
+        super(player, av_type, master_controller);
         this.src = document.getElementById("player_src");
     }
     // if no track assigned, looks for track based on filename
@@ -19,15 +19,19 @@ class VolcanoAVController extends AVController{
     }
     
     setTrack(filename){
-        console.log("setting audio track to: " + filename);
+        console.log("setting track to: " + filename);
         var prefix;
         if (VolcanoAVController.grabPageName().includes("panotour")){
-            prefix = "../../audio/volcano/";
+            prefix = "../../" + this.av_type + "/volcano/";
         } else {
-            prefix = "../audio/volcano/";
+            prefix = "../" + this.av_type + "/volcano/";
         }
-        if (this.player.src != prefix + filename + ".mp3"){
-            this.player.src = prefix + filename + ".mp3";
+        if (this.av_type === "video"){
+            this.player.src = prefix + filename + ".mp4";
+        } else if (this.av_type === "audio"){
+            this.player.src = prefix + filename + ".mp3"
+        } else {
+            throw "Source type unsupported";
         }
     }
     
