@@ -4,7 +4,7 @@
   "description": "Colgate Virtual Galapagos is an interactive digital learning module in development by students and faculty from Colgate University. The goal of the project is to teach children science in an innovative way through the lens of the Galapagos Islands. For details contact dgathogo@colgate.edu or eweaver@colgate.edu.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-promise": "^4.1.1",
-    "eslint-plugin-standard": "^4.0.0"
+    "eslint-plugin-standard": "^4.0.0",
+    "jasmine": "^3.4.0"
   }
 }
