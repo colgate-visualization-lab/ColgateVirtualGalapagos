@@ -22,6 +22,13 @@ git clone https://github.com/dgathogo/ColgateVirtualGalapagos.git
 
 Launch your local web server with the root as the starting folder, then launch the appropriate module by starting index.html
 
+### Testing
+
+Run 
+``` bash
+npm test
+```
+
 ## Built With
 
 * [Bootstrap](https://getbootstrap.com/) - Web framework used
