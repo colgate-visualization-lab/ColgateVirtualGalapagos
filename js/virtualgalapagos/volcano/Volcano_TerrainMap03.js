@@ -34,8 +34,8 @@ function terrainmap (mastercontroller, avcontroller) {
       on('santacruz')
     }
 
-    document.getElementById('off_santacruz').onclick = function () {
-      off('santacruz')
+    document.getElementById('off_fernandina').onclick = function () {
+      off('fernandina')
     }
 
     document.getElementById('off_santacruz').onclick = function () {
@@ -50,13 +50,13 @@ function terrainmap (mastercontroller, avcontroller) {
 
   // enable overlay and audio if optional narration is on
   function on (name) {
-    if (name === 'on_santacruz') {
+    if (name === 'santacruz') {
+      scClick = true
       if (optionalOn) {
         player.setTrack('Volcano_SantaCruz01_01')
         player.play()
       }
-      scClick = true
-    } else if (name === 'on_fernandina') {
+    } else if (name === 'fernandina') {
       ferdClick = true
       if (optionalOn) {
         player.setTrack('Volcano_Fernandina01_opt')
@@ -68,7 +68,6 @@ function terrainmap (mastercontroller, avcontroller) {
   }
 
   function off (name) {
-    name = name.split('_')[1]
     document.getElementById('overlay').style.display = 'none'
     document.getElementById(name + '_inner').style.display = 'none'
     if (scClick && ferdClick) {
