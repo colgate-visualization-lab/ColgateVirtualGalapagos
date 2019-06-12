@@ -24,7 +24,7 @@ class MasterController {
   }
 
   init () {
-    if (MasterController.getItem('initProgress') != 'true') {
+    if (MasterController.getItem('initProgress') !== 'true') {
       alert('DEV MESSAGE PLEASE IGNORE - Setting up progress storage.')
       for (var i = 0; i < this.pageList.length; i++) {
         MasterController.storeItem(this.pageList[i], 'false')

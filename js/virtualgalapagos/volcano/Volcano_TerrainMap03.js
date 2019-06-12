@@ -43,7 +43,7 @@ function terrainmap (mastercontroller, avcontroller) {
     }
 
     // enable optional button if user has already completed page
-    if (MasterController.getItem('TerrainMap03') == 'true') {
+    if (MasterController.getItem('TerrainMap03') === 'true') {
       document.getElementById('opt_audio').disabled = false
     }
   }

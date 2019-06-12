@@ -128,7 +128,7 @@ var krpanoplugin = function()
 	}
 
 
-	function play_via_touch_workaround(event)
+	function play_via_touch_workaround()
 	{
 		if (video)
 		{
