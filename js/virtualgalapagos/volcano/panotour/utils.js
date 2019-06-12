@@ -23,6 +23,7 @@ function readDeviceOrientation () {
   // scroll to top
   window.scrollTo(0, 0)
 }
+
 jQuery(document).ready(function () {
   if (/(iphone|ipod|ipad|android|iemobile|webos|fennec|blackberry|kindle|series60|playbook|opera\smini|opera\smobi|opera\stablet|symbianos|palmsource|palmos|blazer|windows\sce|windows\sphone|wp7|bolt|doris|dorothy|gobrowser|iris|maemo|minimo|netfront|semc-browser|skyfire|teashark|teleca|uzardweb|avantgo|docomo|kddi|ddipocket|polaris|eudoraweb|opwv|plink|plucker|pie|xiino|benq|playbook|bb|cricket|dell|bb10|nintendo|up.browser|playstation|tear|mib|obigo|midp|mobile|tablet)/.test(navigator.userAgent.toLowerCase())) {
     if (/iphone/.test(navigator.userAgent.toLowerCase()) && window.self === window.top) {
@@ -44,6 +45,7 @@ function accessWebVr (curScene, curTime) {
 
   setTimeout(function () { loadPlayer(true, curScene, curTime) }, 100)
 }
+
 function accessStdVr (curScene, curTime) {
   unloadPlayer()
 
@@ -81,23 +83,27 @@ function loadPlayer (isWebVr, curScene, curTime) {
     kpanotour.Focus.applyFocus()
   }
 }
+
 function unloadPlayer () {
   if (jQuery('#krpanoSWFObject')) {
     removepano('krpanoSWFObject')
   }
 }
-var currentPanotourPlayer = null
-function getCurrentTourPlayer () {
-  if (currentPanotourPlayer == null) {
-    currentPanotourPlayer = document.getElementById('krpanoSWFObject')
-  }
-  return currentPanotourPlayer
-}
+
+// var currentPanotourPlayer = null
+//
+// function getCurrentTourPlayer () {
+//   if (currentPanotourPlayer == null) {
+//     currentPanotourPlayer = document.getElementById('krpanoSWFObject')
+//   }
+//   return currentPanotourPlayer
+// }
+
 function isVRModeRequested () {
   var querystr = window.location.search.substring(1)
   var params = querystr.split('&')
   for (var i = 0; i < params.length; i++) {
-    if (params[i].toLowerCase() == 'vr') {
+    if (params[i].toLowerCase() === 'vr') {
       return true
     }
   }
