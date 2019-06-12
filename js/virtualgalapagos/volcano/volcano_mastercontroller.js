@@ -128,6 +128,6 @@ if (pageName === 'Volcano_PlumePlacement01') {
 }
 
 // TerrainMap03
-if (pageName === 'Volcano_TerrainMapo3') {
+if (pageName === 'Volcano_TerrainMap03') {
   terrainmap(masterController, avController)
 }
