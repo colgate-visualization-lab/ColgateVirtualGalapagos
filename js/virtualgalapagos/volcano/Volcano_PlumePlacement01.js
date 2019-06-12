@@ -25,7 +25,7 @@ function plumeplacement (mastercontroller, avcontroller) {
     }
 
     // enable map if user already completed page previously
-    if (MasterController.getItem('PlumePlacement01') == 'true') {
+    if (MasterController.getItem('PlumePlacement01') === 'true') {
       enableMap()
     }
     document.getElementById('leftOption').onclick = function () {
