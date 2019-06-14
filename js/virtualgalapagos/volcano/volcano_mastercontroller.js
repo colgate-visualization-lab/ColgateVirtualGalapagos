@@ -17,6 +17,10 @@ import { plumeplacement } from './Volcano_PlumePlacement01.js'
 import { terrainmap } from './Volcano_TerrainMap03.js'
 
 class VolcanoMasterController extends MasterController {
+  constructor (pageList, pageName) {
+    super(pageList, pageName, 'volcano')
+  }
+
   static grabPageName () {
     var path = window.location.pathname
     path = path.split('/').splice(-2)
