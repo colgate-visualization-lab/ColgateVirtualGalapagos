@@ -1,7 +1,9 @@
+/* eslint-disable */
 /*
 	krpano Basic/Simplified HTML5 Videoplayer Plugin
 	- for krpano 1.19
 */
+
 var krpanoplugin = function()
 {
 	var local = this;
