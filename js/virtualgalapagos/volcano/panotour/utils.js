@@ -1,6 +1,6 @@
-/* eslint-disable no-undef */
 'use strict'
 
+import { removepano, embedpano } from '../../../libs/krpano.js'
 var currentPage = getPageName()
 
 function getPageName () {
