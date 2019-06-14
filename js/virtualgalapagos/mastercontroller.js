@@ -1,7 +1,7 @@
 'use strict'
 
 class MasterController {
-  constructor (pageList, pageName) {
+  constructor (pageList, pageName, moduleName) {
     if (!new.target) {
       return new MasterController()
     }
@@ -11,7 +11,11 @@ class MasterController {
     this.nextBtn = null
     this.done_flags = []
     this.idx = -1
-    if (this.pageList.includes(pageName)) {
+    this.pageName = pageName
+    this.moduleName = moduleName
+
+    console.log(this.pageName)
+    if (this.pageList.includes(this.pageName)) {
       this.setupControlBar()
     } else {
       this.nextBtn = document.getElementById('nextBtn')
