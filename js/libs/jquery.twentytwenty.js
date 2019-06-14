@@ -1,3 +1,4 @@
+/* eslint-disable */
 (function($){
 
   $.fn.twentytwenty = function(options) {
