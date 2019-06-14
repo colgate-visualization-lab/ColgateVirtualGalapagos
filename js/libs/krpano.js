@@ -1,4 +1,5 @@
-﻿/*
+﻿/* eslint-disable */
+/*
 	krpano Embedding Script
 	krpano 1.19-pr16 (build 2018-04-04)
 */
