@@ -1,19 +1,36 @@
 'use strict'
+function init () {
+  var overlayOn = document.getElementById('overlayOn')
+  var overlayOff = document.getElementById('overlayOff')
+  var overlay = document.getElementById('overlay')
+  var overlayInner = document.getElementById('overlay_inner')
 
-document.getElementById('overlayOn').onclick = function () {
-  overlayOn()
-}
-// todo: Volcano_TerrainMap02 does not have an off button.
-document.getElementById('overlayOff').onclick = function () {
-  overlayOff()
+  if (overlayOn) {
+    overlayOn.onclick = function () {
+      switchOn()
+    }
+  }
+  if (overlayOff) {
+    overlayOff.onclick = function () {
+      switchOff()
+    }
+  }
+  // When the user clicks anywhere outside of the overlay, close it
+  window.onclick = function (event) {
+    if (event.target === overlay) {
+      switchOff()
+    }
+  }
+
+  function switchOn () {
+    overlay.style.display = 'block'
+    overlayInner.style.display = 'block'
+  }
+
+  function switchOff () {
+    overlay.style.display = 'none'
+    overlayInner.style.display = 'none'
+  }
 }
 
-function overlayOn () {
-  document.getElementById('overlay').style.display = 'block'
-  document.getElementById('overlay_inner').style.display = 'block'
-}
-
-function overlayOff () {
-  document.getElementById('overlay').style.display = 'none'
-  document.getElementById('overlay_inner').style.display = 'none'
-}
+init()
