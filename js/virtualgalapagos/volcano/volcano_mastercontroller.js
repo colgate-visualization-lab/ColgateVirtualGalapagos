@@ -8,6 +8,7 @@
 //
 
 import { MasterController } from '../mastercontroller.js'
+import { overlay } from '../overlay.js'
 import { VolcanoAVController } from './volcano_avcontroller.js'
 import { VolcanoDragDrop } from './volcano_dragdrop.js'
 import { VolcanoFieldbook } from './volcano_fieldbook.js'
@@ -81,8 +82,12 @@ var ddList = [
 // whiteboard videos
 var videolist = ['Volcano_MantlePlumesWhiteboard01', 'Volcano_TectonicPlateWhiteboard01']
 
+// init controllers
 var masterController = new VolcanoMasterController(pageList, pageName)
 masterController.init()
+
+// overlay
+overlay()
 
 // Toolbar for side navigation
 var toolbar = new VolcanoToolbar()
