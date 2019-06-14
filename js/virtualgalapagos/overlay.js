@@ -1,5 +1,6 @@
 'use strict'
-function init () {
+
+function overlay () {
   var overlayOn = document.getElementById('overlayOn')
   var overlayOff = document.getElementById('overlayOff')
   var overlay = document.getElementById('overlay')
@@ -32,5 +33,4 @@ function init () {
     overlayInner.style.display = 'none'
   }
 }
-
-init()
+export { overlay }
