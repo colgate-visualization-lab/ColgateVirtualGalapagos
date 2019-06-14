@@ -110,6 +110,29 @@ class AVController {
     AVController.playPause(this)
     AVController.rewind(this.player.duration, this)
   }
+
+  // if no track assigned, looks for track based on filename
+  setBGTrack () {
+    var bgTrack = this.src.src
+    if (bgTrack === '') {
+      var filename = window.location.pathname
+      filename = filename.split('/').pop()
+      filename = filename.substr(0, filename.length - 5)
+      this.setTrack(filename)
+    }
+  }
+
+  setTrack (filename) {
+    console.log('setting track to: ' + filename)
+    var prefix = '../' + this.avType + '/' + this.masterController.moduleName + '/'
+    if (this.avType === 'video') {
+      this.player.src = prefix + filename + '.mp4'
+    } else if (this.avType === 'audio') {
+      this.player.src = prefix + filename + '.mp3'
+    } else {
+      throw new Error('Source type unsupported')
+    }
+  }
 }
 
 export { AVController }
