@@ -4,11 +4,12 @@
 // TODO: disable links not yet unlocked within a module
 // Visibility  controlled in Volcano.css
 class Toolbar {
-  constructor () {
+  constructor (links) {
     if (!new.target) {
       return new Toolbar()
     }
     this.bar_on = false
+    this.links = links
   }
 
   initToolbar () {
@@ -53,17 +54,19 @@ class Toolbar {
     sidenav.appendChild(header)
 
     // create links
-    Toolbar.addLink(sidenav, 'Link 1')
-    Toolbar.addLink(sidenav, 'Link 2')
-    Toolbar.addLink(sidenav, 'Link 3')
+    var length = this.links.length
+    for (var i = 0; i < length; i++) {
+      Toolbar.addLink(this.links[i], sidenav)
+    }
 
     document.body.appendChild(sidenav)
   }
 
   // helper function to add text content with link
-  static addLink (parent, text) {
+  static addLink (obj, parent) {
     var link = document.createElement('a')
-    link.appendChild(document.createTextNode(text))
+    link.appendChild(document.createTextNode(obj.text))
+    link.setAttribute('href', obj.url)
     link.style = 'color: white;'
     parent.appendChild(link)
   }

@@ -5,7 +5,7 @@ class MasterController {
     if (!new.target) {
       return new MasterController()
     }
-    this.dev_mode = true
+    this.dev_mode = false
     this.pageList = pageList
     this.pageName = pageName
     this.nextBtn = null
@@ -14,7 +14,6 @@ class MasterController {
     this.pageName = pageName
     this.moduleName = moduleName
 
-    console.log(this.pageName)
     if (this.pageList.includes(this.pageName)) {
       this.setupControlBar()
     } else {
@@ -33,10 +32,6 @@ class MasterController {
       for (var i = 0; i < this.pageList.length; i++) {
         MasterController.storeItem(this.pageList[i], 'false')
       }
-      // special cases
-      MasterController.storeItem('TerrainMap03', 'false')
-      MasterController.storeItem('PlumePlacement01', 'false')
-      MasterController.storeItem('initProgress', 'true')
     }
   }
 
