@@ -12,7 +12,7 @@ import { overlay } from '../overlay.js'
 import { VolcanoAVController } from './volcano_avcontroller.js'
 import { VolcanoDragDrop } from './volcano_dragdrop.js'
 import { VolcanoFieldbook } from './volcano_fieldbook.js'
-import { VolcanoToolbar } from './volcano_toolbar.js'
+// import { VolcanoToolbar } from './volcano_toolbar.js'
 import { plumeplacement } from './Volcano_PlumePlacement01.js'
 import { terrainmap } from './Volcano_TerrainMap03.js'
 
@@ -107,8 +107,8 @@ masterController.init()
 overlay()
 
 // Toolbar for side navigation
-var toolbar = new VolcanoToolbar(toolbarLinks)
-toolbar.initToolbar()
+// var toolbar = new VolcanoToolbar(toolbarLinks)
+// toolbar.initToolbar()
 
 // AVcontroller
 var player = document.getElementById('player')
