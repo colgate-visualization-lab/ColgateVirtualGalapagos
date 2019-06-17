@@ -89,21 +89,12 @@ var ddList = [
     }
   }
 ]
-
-var toolbarLinks = [
-  { text: 'Link 1', url: '#' },
-  { text: 'Link 1', url: '#' },
-  { text: 'Link 1', url: '#' },
-  { text: 'Link 1', url: '#' },
-  { text: 'Link 1', url: '#' },
-  { text: 'Link 1', url: '#' },
-  { text: 'Link 1', url: '#' },
-  { text: 'Link 1', url: '#' },
-  { text: 'Link 1', url: '#' },
-  { text: 'Link 1', url: '#' },
-  { text: 'Link 1', url: '#' },
-  { text: 'Link 1', url: '#' }
-]
+var toolbarLinks = []
+for (var i = 0; i < pageList.length; i++) {
+  var url = '/volcano/' + pageList[i] + '.html'
+  var text = pageList[i].split(/[_/]/)
+  toolbarLinks.push({ text: text[text.length - 1], url: url })
+}
 
 // whiteboard videos
 var videolist = ['Volcano_MantlePlumesWhiteboard01', 'Volcano_TectonicPlateWhiteboard01']
