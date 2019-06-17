@@ -20,6 +20,13 @@ class VolcanoMasterController extends MasterController {
   constructor (pageList, pageName) {
     super(pageList, pageName, 'volcano')
   }
+  init () {
+    super.init()
+    // special cases
+    MasterController.storeItem('TerrainMap03', 'false')
+    MasterController.storeItem('PlumePlacement01', 'false')
+    MasterController.storeItem('initProgress', 'true')
+  }
 
   static grabPageName () {
     var path = window.location.pathname
@@ -83,6 +90,21 @@ var ddList = [
   }
 ]
 
+var toolbarLinks = [
+  { text: 'Link 1', url: '#' },
+  { text: 'Link 1', url: '#' },
+  { text: 'Link 1', url: '#' },
+  { text: 'Link 1', url: '#' },
+  { text: 'Link 1', url: '#' },
+  { text: 'Link 1', url: '#' },
+  { text: 'Link 1', url: '#' },
+  { text: 'Link 1', url: '#' },
+  { text: 'Link 1', url: '#' },
+  { text: 'Link 1', url: '#' },
+  { text: 'Link 1', url: '#' },
+  { text: 'Link 1', url: '#' }
+]
+
 // whiteboard videos
 var videolist = ['Volcano_MantlePlumesWhiteboard01', 'Volcano_TectonicPlateWhiteboard01']
 
@@ -94,7 +116,7 @@ masterController.init()
 overlay()
 
 // Toolbar for side navigation
-var toolbar = new VolcanoToolbar()
+var toolbar = new VolcanoToolbar(toolbarLinks)
 toolbar.initToolbar()
 
 // AVcontroller
