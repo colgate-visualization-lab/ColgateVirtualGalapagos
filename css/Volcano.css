@@ -45,8 +45,8 @@
   z-index: 6;
 }
 
-#tb_button {
-  display: flex;
+#tb_button { /* hide sidebar button*/
+  display: none;
 }
 
 /* Sticky footer styles
