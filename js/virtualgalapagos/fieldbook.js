@@ -30,6 +30,13 @@ class Fieldbook {
   init () {
     this.setUp()
     this.createDivs()
+    var clearBtn = document.getElementById('clear_fb_button')
+    if (this.mastercontroller.dev_mode) {
+      clearBtn.style.display = 'flex'
+    }
+    clearBtn.onclick = function () {
+      Fieldbook.clearFieldbook()
+    }
   }
 
   populateDivs () {
@@ -216,6 +223,10 @@ class Fieldbook {
       link.style = 'color: white;'
     }
     parent.appendChild(link)
+  }
+
+  static clearFieldbook () {
+    MasterController.clearStorage()
   }
 }
 
