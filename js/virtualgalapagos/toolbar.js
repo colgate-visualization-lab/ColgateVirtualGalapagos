@@ -4,19 +4,24 @@
 // TODO: disable links not yet unlocked within a module
 // Visibility  controlled in Volcano.css
 class Toolbar {
-  constructor (links) {
+  constructor (links, mastercontroller) {
     if (!new.target) {
       return new Toolbar()
     }
     this.bar_on = false
     this.links = links
+    this.mastercontroller = mastercontroller
   }
 
   initToolbar () {
     // debugger
     var obj = this
-    // find FB button in virtualgalapagos layout
-    document.getElementById('tb_button').onclick = function () {
+    // find FB button in virtualgalapagos layout\
+    var toolbarBtn = document.getElementById('tb_button')
+    if (this.mastercontroller.dev_mode) {
+      toolbarBtn.style.display = 'flex'
+    }
+    toolbarBtn.onclick = function () {
       obj.toggleTB()
     }
     // setup layout elements for toolbar sidebar
