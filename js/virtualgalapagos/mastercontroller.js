@@ -5,7 +5,7 @@ class MasterController {
     if (!new.target) {
       return new MasterController()
     }
-    this.dev_mode = false
+    this.dev_mode = true
     this.pageList = pageList
     this.pageName = pageName
     this.nextBtn = null
