@@ -120,5 +120,9 @@ class MasterController {
   static getItem (key) {
     return localStorage.getItem(key)
   }
+
+  static clearStorage () {
+    localStorage.clear()
+  }
 }
 export { MasterController }
