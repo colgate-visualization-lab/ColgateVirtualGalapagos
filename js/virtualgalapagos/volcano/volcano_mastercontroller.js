@@ -89,6 +89,8 @@ var ddList = [
     }
   }
 ]
+
+// sidebar navigation
 var toolbarLinks = []
 for (var i = 0; i < pageList.length; i++) {
   var url = '/volcano/' + pageList[i] + '.html'
