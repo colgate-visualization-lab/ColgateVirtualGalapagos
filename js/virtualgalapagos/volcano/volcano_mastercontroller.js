@@ -15,6 +15,7 @@ import { VolcanoFieldbook } from './volcano_fieldbook.js'
 import { VolcanoToolbar } from './volcano_toolbar.js'
 import { plumeplacement } from './Volcano_PlumePlacement01.js'
 import { terrainmap } from './Volcano_TerrainMap03.js'
+import { terrainMapToggle } from './Volcano_TerrainMap06.js'
 
 class VolcanoMasterController extends MasterController {
   constructor (pageList, pageName) {
@@ -154,4 +155,9 @@ if (pageName === 'Volcano_PlumePlacement01') {
 // TerrainMap03
 if (pageName === 'Volcano_TerrainMap03') {
   terrainmap(masterController, avController)
+}
+
+// TerrainMap06
+if (pageName === 'Volcano_TerrainMap06') {
+  terrainMapToggle()
 }
