@@ -28,7 +28,9 @@ class MasterController {
 
   init () {
     if (MasterController.getItem('initProgress') !== 'true') {
-      alert('DEV MESSAGE PLEASE IGNORE - Setting up progress storage.')
+      if (this.dev_mode) {
+        alert('Setting up progress storage.')
+      }
       for (var i = 0; i < this.pageList.length; i++) {
         MasterController.storeItem(this.pageList[i], 'false')
       }
@@ -122,6 +124,7 @@ class MasterController {
   }
 
   static clearStorage () {
+    alert('Cleared storage')
     localStorage.clear()
   }
 }
