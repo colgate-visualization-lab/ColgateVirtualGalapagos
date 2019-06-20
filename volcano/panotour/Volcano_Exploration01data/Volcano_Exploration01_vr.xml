@@ -78,7 +78,7 @@
   <!-- Group Group 11 : 1 panoramas -->
   
 
-<!-- **** @PanoName="Caldera_EndTrail_FinalLoop" @PanoFile="V:/Virtual Galapagos/Composited_Renders/Caldera_EndTrail_FinalLoop.mp4" **** -->
+<!-- **** @PanoName="caldera_endtrail" @PanoFile="V:/Virtual Galapagos/Composited_Renders/caldera_endtrail.mp4" **** -->
 <!-- **** Width="4096px" Height="2048px" **** -->
 <scene name="pano10"
        heading="0"
@@ -95,7 +95,7 @@
        full360="true"
        video="true"
        onstart="pano10OnStart();"
-       scenevideourl="%FIRSTXML%/caldera_endtrail/caldera_endtrail_finalloop.mp4"
+       scenevideourl="%FIRSTXML%/caldera_endtrail/caldera_endtrail.mp4"
        scenevideolowresurl=""
        scenevideoloop="true"
        scenevideoposterurl="%FIRSTXML%/caldera_endtrail/frame.jpg"
