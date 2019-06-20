@@ -82,7 +82,7 @@
 <!-- **** Width="4096px" Height="2048px" **** -->
 <scene name="pano10"
        heading="0"
-       thumburl="%FIRSTXML%/plazacliff3_final_lo_10/thumbnail.jpg"
+       thumburl="%FIRSTXML%/plazacliff/thumbnail.jpg"
 
        backgroundsound="blank.mp3"
        backgroundsoundloops="1"
@@ -95,11 +95,11 @@
        full360="true"
        video="true"
        onstart="pano10OnStart();"
-       scenevideourl="%FIRSTXML%/plazacliff3_final_lo_10/plazacliff3_final_loop.mp4"
+       scenevideourl="%FIRSTXML%/plazacliff/plazacliff.mp4"
        scenevideolowresurl=""
        scenevideoloop="true"
-       scenevideoposterurl="%FIRSTXML%/plazacliff3_final_lo_10/frame.jpg"
-       scenevideolowresposterurl="%FIRSTXML%/plazacliff3_final_lo_10/framelowres.jpg"
+       scenevideoposterurl="%FIRSTXML%/plazacliff/frame.jpg"
+       scenevideolowresposterurl="%FIRSTXML%/plazacliff/framelowres.jpg"
        scenevideopausedonstart="false"
        hasiphonesound="false"
        scenevideomute="false"
@@ -125,7 +125,7 @@
           hlookat="0.000000"
           vlookat="0.000000"/>
 
-    <preview url="%FIRSTXML%/plazacliff3_final_lo_10/preview.jpg" type="CUBESTRIP" striporder="FRBLUD" />
+    <preview url="%FIRSTXML%/plazacliff/preview.jpg" type="CUBESTRIP" striporder="FRBLUD" />
 
 
     <image hfov="360" vfov="180" devices="panovideosupport.and.no-html5.or.panovideosupport.and.html5.and.desktop.or.panovideosupport.and.html5.and.no-ie">
