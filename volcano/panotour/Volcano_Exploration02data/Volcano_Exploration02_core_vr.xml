@@ -534,8 +534,8 @@ stopautorotation();
 	onloaded="videointerface_setup_interface(get(name));"
 	onvideoready="videointerface_videoready();"
 
-videourl="%FIRSTXML%/caldara_shotfive_fin_10/caldara_shotfive_finalloop_2.mp4"
-posterurl="%FIRSTXML%/caldara_shotfive_fin_10/frame.jpg"
+videourl="%FIRSTXML%/caldera_shotfive/caldera_shotfive.mp4"
+posterurl="%FIRSTXML%/caldera_shotfive/frame.jpg"
 	autoresume="true"
 	preferredformat.chrome="mp4"
 	preferredformat.firefox="webm"
