@@ -76,11 +76,11 @@
   <!-- Group Group 11 : 1 panoramas -->
   
 
-<!-- **** @PanoName="Caldara_EndTrail_FinalLoop" @PanoFile="V:/Virtual Galapagos/Composited_Renders/Caldara_EndTrail_FinalLoop.mp4" **** -->
+<!-- **** @PanoName="Caldera_EndTrail_FinalLoop" @PanoFile="V:/Virtual Galapagos/Composited_Renders/Caldera_EndTrail_FinalLoop.mp4" **** -->
 <!-- **** Width="4096px" Height="2048px" **** -->
 <scene name="pano10"
        heading="0"
-       thumburl="%FIRSTXML%/caldara_endtrail_fin_10/thumbnail.jpg"
+       thumburl="%FIRSTXML%/caldera_endtrail/thumbnail.jpg"
        backgroundsound=""
        backgroundsoundloops="0"
        haslocalsounds="false"
@@ -92,11 +92,11 @@
        full360="true"
        video="true"
        onstart="pano10OnStart();"
-       scenevideourl="%FIRSTXML%/caldara_endtrail_fin_10/caldara_endtrail_finalloop.mp4"
+       scenevideourl="%FIRSTXML%/caldera_endtrail/caldera_endtrail_finalloop.mp4"
        scenevideolowresurl=""
        scenevideoloop="true"
-       scenevideoposterurl="%FIRSTXML%/caldara_endtrail_fin_10/frame.jpg"
-       scenevideolowresposterurl="%FIRSTXML%/caldara_endtrail_fin_10/framelowres.jpg"
+       scenevideoposterurl="%FIRSTXML%/caldera_endtrail/frame.jpg"
+       scenevideolowresposterurl="%FIRSTXML%/caldera_endtrail/framelowres.jpg"
        scenevideopausedonstart="false"
        hasiphonesound="false"
        scenevideomute="false"
@@ -122,7 +122,7 @@
           hlookat="0.000000"
           vlookat="0.000000"/>
 
-    <preview url="%FIRSTXML%/caldara_endtrail_fin_10/preview.jpg" type="CUBESTRIP" striporder="FRBLUD" />
+    <preview url="%FIRSTXML%/caldera_endtrail/preview.jpg" type="CUBESTRIP" striporder="FRBLUD" />
 
 
     <image hfov="360" vfov="180" devices="panovideosupport.and.no-html5.or.panovideosupport.and.html5.and.desktop.or.panovideosupport.and.html5.and.no-ie">

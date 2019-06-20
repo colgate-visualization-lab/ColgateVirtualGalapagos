@@ -80,7 +80,7 @@
 <!-- **** Width="4096px" Height="2048px" **** -->
 <scene name="pano10"
        heading="0"
-       thumburl="%FIRSTXML%/cactus_2_finalloop00_10/thumbnail.jpg"
+       thumburl="%FIRSTXML%/cactus/thumbnail.jpg"
        backgroundsound=""
        backgroundsoundloops="0"
        haslocalsounds="false"
@@ -92,11 +92,11 @@
        full360="true"
        video="true"
        onstart="pano10OnStart();"
-       scenevideourl="%FIRSTXML%/cactus_2_finalloop00_10/cactus_2_finalloop0000.mp4"
+       scenevideourl="%FIRSTXML%/cactus/cactus.mp4"
        scenevideolowresurl=""
        scenevideoloop="true"
-       scenevideoposterurl="%FIRSTXML%/cactus_2_finalloop00_10/frame.jpg"
-       scenevideolowresposterurl="%FIRSTXML%/cactus_2_finalloop00_10/framelowres.jpg"
+       scenevideoposterurl="%FIRSTXML%/cactus/frame.jpg"
+       scenevideolowresposterurl="%FIRSTXML%/cactus/framelowres.jpg"
        scenevideopausedonstart="false"
        hasiphonesound="false"
        scenevideomute="false"
@@ -122,7 +122,7 @@
           hlookat="0.000000"
           vlookat="0.000000"/>
 
-    <preview url="%FIRSTXML%/cactus_2_finalloop00_10/preview.jpg" type="CUBESTRIP" striporder="FRBLUD" />
+    <preview url="%FIRSTXML%/cactus/preview.jpg" type="CUBESTRIP" striporder="FRBLUD" />
 
 
     <image hfov="360" vfov="180" devices="panovideosupport.and.no-html5.or.panovideosupport.and.html5.and.desktop.or.panovideosupport.and.html5.and.no-ie">

@@ -534,8 +534,8 @@ stopautorotation();
 	onloaded="videointerface_setup_interface(get(name));"
 	onvideoready="videointerface_videoready();"
 
-videourl="%FIRSTXML%/caldara_endtrail_fin_10/caldara_endtrail_finalloop.mp4"
-posterurl="%FIRSTXML%/caldara_endtrail_fin_10/frame.jpg"
+videourl="%FIRSTXML%/caldera_endtrail/caldera_endtrail.mp4"
+posterurl="%FIRSTXML%/caldera_endtrail/frame.jpg"
 	autoresume="true"
 	preferredformat.chrome="mp4"
 	preferredformat.firefox="webm"
