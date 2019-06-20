@@ -76,11 +76,11 @@
   <!-- Group Group 11 : 1 panoramas -->
   
 
-<!-- **** @PanoName="StillWater1_Color" @PanoFile="V:/Virtual Galapagos/Composited_Renders/StillWater1_Color.mp4" **** -->
+<!-- **** @PanoName="stillwater" @PanoFile="V:/Virtual Galapagos/Composited_Renders/stillwater.mp4" **** -->
 <!-- **** Width="4096px" Height="2048px" **** -->
 <scene name="pano10"
        heading="0"
-       thumburl="%FIRSTXML%/stillwater1_color_10/thumbnail.jpg"
+       thumburl="%FIRSTXML%/stillwater/thumbnail.jpg"
        backgroundsound=""
        backgroundsoundloops="0"
        haslocalsounds="false"
@@ -92,11 +92,11 @@
        full360="true"
        video="true"
        onstart="pano10OnStart();"
-       scenevideourl="%FIRSTXML%/stillwater1_color_10/stillwater1_color.mp4"
+       scenevideourl="%FIRSTXML%/stillwater/stillwater.mp4"
        scenevideolowresurl=""
        scenevideoloop="true"
-       scenevideoposterurl="%FIRSTXML%/stillwater1_color_10/frame.jpg"
-       scenevideolowresposterurl="%FIRSTXML%/stillwater1_color_10/framelowres.jpg"
+       scenevideoposterurl="%FIRSTXML%/stillwater/frame.jpg"
+       scenevideolowresposterurl="%FIRSTXML%/stillwater/framelowres.jpg"
        scenevideopausedonstart="false"
        hasiphonesound="false"
        scenevideomute="false"
@@ -122,7 +122,7 @@
           hlookat="0.000000"
           vlookat="0.000000"/>
 
-    <preview url="%FIRSTXML%/stillwater1_color_10/preview.jpg" type="CUBESTRIP" striporder="FRBLUD" />
+    <preview url="%FIRSTXML%/stillwater/preview.jpg" type="CUBESTRIP" striporder="FRBLUD" />
 
 
     <image hfov="360" vfov="180" devices="panovideosupport.and.no-html5.or.panovideosupport.and.html5.and.desktop.or.panovideosupport.and.html5.and.no-ie">

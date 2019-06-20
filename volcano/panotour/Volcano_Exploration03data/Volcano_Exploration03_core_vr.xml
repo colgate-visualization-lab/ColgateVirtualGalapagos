@@ -534,8 +534,8 @@ stopautorotation();
 	onloaded="videointerface_setup_interface(get(name));"
 	onvideoready="videointerface_videoready();"
 
-videourl="%FIRSTXML%/stillwater1_color_10/stillwater1_color.mp4"
-posterurl="%FIRSTXML%/stillwater1_color_10/frame.jpg"
+videourl="%FIRSTXML%/stillwater/stillwater.mp4"
+posterurl="%FIRSTXML%/stillwater/frame.jpg"
 	autoresume="true"
 	preferredformat.chrome="mp4"
 	preferredformat.firefox="webm"
