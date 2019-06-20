@@ -534,8 +534,8 @@ stopautorotation();
 	onloaded="videointerface_setup_interface(get(name));"
 	onvideoready="videointerface_videoready();"
 
-videourl="%FIRSTXML%/cactus_2_finalloop00_10/cactus_2_finalloop0000.mp4"
-posterurl="%FIRSTXML%/cactus_2_finalloop00_10/frame.jpg"
+videourl="%FIRSTXML%/cactus/cactus.mp4"
+posterurl="%FIRSTXML%/cactus/frame.jpg"
 	autoresume="true"
 	preferredformat.chrome="mp4"
 	preferredformat.firefox="webm"

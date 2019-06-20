@@ -534,8 +534,8 @@ stopautorotation();
 	onloaded="videointerface_setup_interface(get(name));"
 	onvideoready="videointerface_videoready();"
 
-videourl="%FIRSTXML%/calderacactusloop_10/calderacactusloop.mp4"
-posterurl="%FIRSTXML%/calderacactusloop_10/frame.jpg"
+videourl="%FIRSTXML%/calderacactus/calderacactus.mp4"
+posterurl="%FIRSTXML%/calderacactus/frame.jpg"
 	autoresume="true"
 	preferredformat.chrome="mp4"
 	preferredformat.firefox="webm"

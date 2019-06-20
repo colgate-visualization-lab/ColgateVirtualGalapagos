@@ -534,8 +534,8 @@ stopautorotation();
 	onloaded="videointerface_setup_interface(get(name));"
 	onvideoready="videointerface_videoready();"
 
-videourl="%FIRSTXML%/plazacliff3_final_lo_10/plazacliff3_final_loop.mp4"
-posterurl="%FIRSTXML%/plazacliff3_final_lo_10/frame.jpg"
+videourl="%FIRSTXML%/plazacliff/plazacliff.mp4"
+posterurl="%FIRSTXML%/plazacliff/frame.jpg"
 	autoresume="true"
 	preferredformat.chrome="mp4"
 	preferredformat.firefox="webm"
