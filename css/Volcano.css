@@ -58,6 +58,7 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  background-color: antiquewhite
 }
 .footer {
   position: absolute;
@@ -66,7 +67,6 @@ body {
   /* Set the fixed height of the footer here */
   height: 60px;
   line-height: 60px; /* Vertically center the text there */
-  background-color: #f5f5f5;
 }
 
 
@@ -83,7 +83,15 @@ body {
 #nav_control{
   padding: inherit;
 }
+#navbar {
+  background-color: #821019
+}
 
 #control_bar .btn{
   margin-left: 5px;
+}
+
+h2#page_title {
+  text-shadow: 4px 2px 10px white;
+  color: black
 }
