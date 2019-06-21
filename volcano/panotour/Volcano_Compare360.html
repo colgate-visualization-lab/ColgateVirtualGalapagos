@@ -102,8 +102,74 @@
 					</noscript>
 				</div>
 
-				<script type="text/javascript" src="../../js/libs/krpano.js" type="module"></script>
+        <script type="text/javascript" src="../../js/libs/krpano.js"></script>
 				<script src="../../js/virtualgalapagos/volcano/panotour/utils.js"></script>
+				<script>
+					function accessWebVr (curScene, curTime) {
+						unloadPlayer()
+						setTimeout(function () { loadPlayer(true, curScene, curTime) }, 100)
+					}
+
+					function accessStdVr (curScene, curTime) {
+						unloadPlayer()
+						setTimeout(function () { loadPlayer(false, curScene, curTime) }, 100)
+					}
+
+					function loadPlayer (isWebVr, curScene, curTime) {
+						if (isWebVr) {
+							embedpano({
+							id: 'krpanoSWFObject',
+							xml: 'Volcano_Compare360data/Volcano_Compare360_vr.xml',
+							target: 'panoDIV',
+							passQueryParameters: true,
+							bgcolor: '#000000',
+							html5: 'only+webgl',
+							focus: false,
+							vars: { skipintro: true, norotation: true, startscene: curScene, starttime: curTime }
+							})
+						} else {
+							var isBot = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent)
+							embedpano({
+							id: 'krpanoSWFObject',
+							swf: 'Volcano_Compare360data/Volcano_Compare360.swf',
+							target: 'panoDIV',
+							passQueryParameters: true,
+							bgcolor: '#000000',
+							focus: false,
+							html5: isBot ? 'always' : 'prefer',
+							vars: { startscene: curScene, starttime: curTime },
+							localfallback: 'flash'
+							})
+						}
+						// apply focus on the visit if not embedded into an iframe
+						if (top.location === self.location) {
+							kpanotour.Focus.applyFocus()
+						}
+					}
+
+					function unloadPlayer () {
+						if (jQuery('#krpanoSWFObject')) {
+							removepano('krpanoSWFObject')
+						}
+					}
+
+					function isVRModeRequested () {
+						var querystr = window.location.search.substring(1)
+						var params = querystr.split('&')
+						for (var i = 0; i < params.length; i++) {
+							if (params[i].toLowerCase() === 'vr') {
+							return true
+							}
+						}
+						return false
+					}
+
+					if (isVRModeRequested()) {
+						accessWebVr()
+					} else {
+						accessStdVr()
+					}
+				</script>
 			</div>
 		</div>
       
@@ -113,6 +179,12 @@
           <span class="text-muted">Colgate Virtual Galapagos is designed and built by students and faculty at <a href="https://www.colgate.edu/">Colgate University</a>.</span>
         </div>
       </footer>
+      
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="../../js/jquery-3.2.1.min.js" ></script>
+      <script src="../../js/popper.min.js"></script>
+      <script src="../../js/bootstrap-4.0.0.js"></script>
       
       <!-- Custom scripts -->
       <script src="../../js/virtualgalapagos/fieldbook.js" type="module"></script>
