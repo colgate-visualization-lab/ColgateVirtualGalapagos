@@ -535,7 +535,7 @@ stopautorotation();
 	onvideoready="videointerface_videoready();"
 
 videourl="%FIRSTXML%/calderacactus/calderacactus.mp4"
-posterurl="%FIRSTXML%/calderacactus/frame.jpg"
+posterurl="%FIRSTXML%/calderacactus/frame.png"
 	autoresume="true"
 	preferredformat.chrome="mp4"
 	preferredformat.firefox="webm"
@@ -1057,7 +1057,7 @@ posterurl="%FIRSTXML%/calderacactus/frame.jpg"
 			enabled="false" />
 
 		<layer name="webvr_button_image"
-			align="center" url="%FIRSTXML%/thumbnail.jpg"
+			align="center" url="%FIRSTXML%/thumbnail.png"
 			y="20" edge="top"
 			width="240" height="120"
 			alpha="0.8"

@@ -82,7 +82,7 @@
 <!-- **** Width="4096px" Height="2048px" **** -->
 <scene name="pano10"
        heading="0"
-       thumburl="%FIRSTXML%/calderacactus/thumbnail.jpg"
+       thumburl="%FIRSTXML%/calderacactus/thumbnail.png"
 
        backgroundsound="blank.mp3"
        backgroundsoundloops="1"
@@ -98,8 +98,8 @@
        scenevideourl="%FIRSTXML%/calderacactus/calderacactus.mp4"
        scenevideolowresurl=""
        scenevideoloop="true"
-       scenevideoposterurl="%FIRSTXML%/calderacactus/frame.jpg"
-       scenevideolowresposterurl="%FIRSTXML%/calderacactus/framelowres.jpg"
+       scenevideoposterurl="%FIRSTXML%/calderacactus/frame.png"
+       scenevideolowresposterurl="%FIRSTXML%/calderacactus/framelowres.png"
        scenevideopausedonstart="false"
        hasiphonesound="false"
        scenevideomute="false"
