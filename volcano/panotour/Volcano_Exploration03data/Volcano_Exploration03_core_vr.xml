@@ -535,7 +535,7 @@ stopautorotation();
 	onvideoready="videointerface_videoready();"
 
 videourl="%FIRSTXML%/stillwater/stillwater.mp4"
-posterurl="%FIRSTXML%/stillwater/frame.jpg"
+posterurl="%FIRSTXML%/stillwater/frame.png"
 	autoresume="true"
 	preferredformat.chrome="mp4"
 	preferredformat.firefox="webm"
@@ -1057,7 +1057,7 @@ posterurl="%FIRSTXML%/stillwater/frame.jpg"
 			enabled="false" />
 
 		<layer name="webvr_button_image"
-			align="center" url="%FIRSTXML%/thumbnail.jpg"
+			align="center" url="%FIRSTXML%/thumbnail.png"
 			y="20" edge="top"
 			width="240" height="120"
 			alpha="0.8"
