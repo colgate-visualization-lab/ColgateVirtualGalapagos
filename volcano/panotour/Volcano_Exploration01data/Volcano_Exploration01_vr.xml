@@ -82,7 +82,7 @@
 <!-- **** Width="4096px" Height="2048px" **** -->
 <scene name="pano10"
        heading="0"
-       thumburl="%FIRSTXML%/caldera_endtrail/thumbnail.jpg"
+       thumburl="%FIRSTXML%/caldera_endtrail/thumbnail.png"
 
        backgroundsound="blank.mp3"
        backgroundsoundloops="1"
@@ -98,8 +98,8 @@
        scenevideourl="%FIRSTXML%/caldera_endtrail/caldera_endtrail.mp4"
        scenevideolowresurl=""
        scenevideoloop="true"
-       scenevideoposterurl="%FIRSTXML%/caldera_endtrail/frame.jpg"
-       scenevideolowresposterurl="%FIRSTXML%/caldera_endtrail/framelowres.jpg"
+       scenevideoposterurl="%FIRSTXML%/caldera_endtrail/frame.png"
+       scenevideolowresposterurl="%FIRSTXML%/caldera_endtrail/framelowres.png"
        scenevideopausedonstart="false"
        hasiphonesound="false"
        scenevideomute="false"
