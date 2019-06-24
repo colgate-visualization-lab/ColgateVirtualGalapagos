@@ -82,7 +82,7 @@
 <!-- **** Width="4096px" Height="2048px" **** -->
 <scene name="pano10"
        heading="0"
-       thumburl="%FIRSTXML%/cactus/thumbnail.jpg"
+       thumburl="%FIRSTXML%/cactus/thumbnail.png"
 
        backgroundsound="blank.mp3"
        backgroundsoundloops="1"
@@ -98,8 +98,8 @@
        scenevideourl="%FIRSTXML%/cactus/cactus.mp4"
        scenevideolowresurl=""
        scenevideoloop="true"
-       scenevideoposterurl="%FIRSTXML%/cactus/frame.jpg"
-       scenevideolowresposterurl="%FIRSTXML%/cactus/framelowres.jpg"
+       scenevideoposterurl="%FIRSTXML%/cactus/frame.png"
+       scenevideolowresposterurl="%FIRSTXML%/cactus/framelowres.png"
        scenevideopausedonstart="false"
        hasiphonesound="false"
        scenevideomute="false"
