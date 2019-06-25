@@ -95,3 +95,7 @@ h2#page_title {
   text-shadow: 4px 2px 10px white;
   color: black
 }
+#page_title {
+  color: white;
+  font-size: 20pt
+}
