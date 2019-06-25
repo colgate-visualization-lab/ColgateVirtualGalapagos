@@ -2,7 +2,7 @@
 // adds a sidebar nav to move easily within a module
 // needs completion to add links for each module that extends it.
 // TODO: disable links not yet unlocked within a module
-// Visibility  controlled in Volcano.css
+// Visibility  controlled in main.css
 class Toolbar {
   constructor (links, mastercontroller) {
     if (!new.target) {
