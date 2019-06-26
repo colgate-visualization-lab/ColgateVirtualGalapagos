@@ -1,8 +1,8 @@
 'use strict'
 //
-// Entry point of all pages in Volcano module
+// Entry point of all pages in this module
 //
-// Initializes all controllers in a page in the Volcano module and subsequent submodules
+// Initializes all controllers in a page in the this module and subsequent submodules
 //
 // Create and import any additional controllers
 //
@@ -16,7 +16,7 @@ import { IguanaToolbar } from './iguana_toolbar.js'
 
 class IguanaMasterController extends MasterController {
   constructor (pageList, pageName) {
-    super(pageList, pageName, 'volcano')
+    super(pageList, pageName, 'iguana')
   }
   init () {
     super.init()
@@ -29,7 +29,7 @@ class IguanaMasterController extends MasterController {
   static grabPageName () {
     var path = window.location.pathname
     path = path.split('/').splice(-2)
-    if (path[0] !== 'iguana') { // submodules in the volcano module
+    if (path[0] !== 'iguana') { // submodules in the this module
       path = path.join('/')
     } else {
       path = path[1]
