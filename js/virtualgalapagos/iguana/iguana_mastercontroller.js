@@ -127,10 +127,10 @@ if (player !== null) { // page has av set up
 // Fieldbook
 var currentPage = fbPages[pageName]
 if (currentPage == null) {
-  currentPage = 1
+  currentPage = 0
 }
 
-var fbController = new IguanaFieldbook(fbPages, 11, masterController)
+var fbController = new IguanaFieldbook(fbPages, 8, masterController)
 fbController.init()
 fbController.populateDivs()
 fbController.start(currentPage)

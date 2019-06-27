@@ -123,7 +123,7 @@ class Fieldbook {
       icon.innerHTML = 'home'
       homeBtn.appendChild(icon)
       homeBtn.onclick = function () {
-        fbObj.setPage(1)
+        fbObj.setPage(0)
       }
 
       var clearBtn = document.createElement('BUTTON')
