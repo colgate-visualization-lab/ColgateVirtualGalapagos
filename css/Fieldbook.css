@@ -23,7 +23,6 @@
 /*    text-shadow: 2px 2px 4px #000000;*/
     color: white;
     background-color: #007bff;
-    display: inline;
     padding: 0.5rem;
 	max-width: 100%;
     transform: translate(-50%,0%);
