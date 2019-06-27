@@ -50,21 +50,21 @@ var pageList = ['Volcano_TerrainMap01', 'panotour/Volcano_Exploration01', 'panot
 
 // Pages and associated fieldbook pages
 var fbPages = {
-  'Volcano_Compare360': 7,
-  'panotour/Volcano_Exploration01': 2,
-  'panotour/Volcano_Exploration02': 2,
-  'panotour/Volcano_Exploration03': 3,
-  'panotour/Volcano_Exploration04': 4,
-  'panotour/Volcano_Exploration05': 5,
-  'Volcano_OtherVolcanoes01': 9,
-  'Volcano_PlatesGame01': 10,
-  'Volcano_Slider01': 7,
-  'Volcano_TectonicPlates01': 10,
-  'Volcano_TectonicPlates02': 10,
-  'Volcano_TectonicPlateWhiteboard01': 10,
-  'Volcano_TerrainMap02': 6,
-  'Volcano_TerrainMap03': 7,
-  'Volcano_TerrainMap04': 8
+  'Volcano_Compare360': 6,
+  'panotour/Volcano_Exploration01': 1,
+  'panotour/Volcano_Exploration02': 1,
+  'panotour/Volcano_Exploration03': 2,
+  'panotour/Volcano_Exploration04': 3,
+  'panotour/Volcano_Exploration05': 4,
+  'Volcano_OtherVolcanoes01': 8,
+  'Volcano_PlatesGame01': 9,
+  'Volcano_Slider01': 6,
+  'Volcano_TectonicPlates01': 9,
+  'Volcano_TectonicPlates02': 9,
+  'Volcano_TectonicPlateWhiteboard01': 9,
+  'Volcano_TerrainMap02': 5,
+  'Volcano_TerrainMap03': 6,
+  'Volcano_TerrainMap04': 7
 }
 
 // Drag and drop pages and associated dictionaries
@@ -131,10 +131,10 @@ if (player !== null) { // page has av set up
 // Fieldbook
 var currentPage = fbPages[pageName]
 if (currentPage == null) {
-  currentPage = 1
+  currentPage = 0
 }
 
-var fbController = new VolcanoFieldbook(fbPages, 11, masterController)
+var fbController = new VolcanoFieldbook(fbPages, 10, masterController)
 fbController.init()
 fbController.populateDivs()
 fbController.start(currentPage)
