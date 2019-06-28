@@ -43,24 +43,20 @@ class IguanaMasterController extends MasterController {
 var pageName = IguanaMasterController.grabPageName()
 
 // List of pages in module in order
-var pageList = ['panotour/Iguana_Endemic01', 'Iguana_Carried01', 'Iguana_Carried02', 'panotour/Iguana_Pumice01', 'panotour/Iguana_Comparison01', 'panotour/Iguana_Comparison02', 'Iguana_Comparison03', 'panotour/Iguana_PhyloTree01', 'Iguana_PhyloTree02', 'Iguana_PhyloTree05', 'panotour/Iguana_Evolution01', 'Iguana_Evolution02', 'Iguana_Evolution03', 'panotour/Iguana_Evolution04', 'Iguana_Evolution05', 'panotour/Iguana_Scales01', 'panotour/Iguana_Scales02', 'panotour/Iguana_Scales03', 'Iguana_PhyloTree06', 'panotour/Iguana_PinkIggy01']
+var pageList = ['panotour/Iguana_Endemic01', 'Iguana_Carried01', 'Iguana_Carried02', 'panotour/Iguana_Pumice01', 'Iguana_Pumice02', 'panotour/Iguana_Comparison01', 'panotour/Iguana_Comparison02', 'Iguana_Comparison03', 'panotour/Iguana_PhyloTree01', 'Iguana_PhyloTree02', 'Iguana_PhyloTree05', 'panotour/Iguana_Evolution01', 'Iguana_Evolution02', 'Iguana_Evolution03', 'panotour/Iguana_Evolution04', 'Iguana_Evolution05', 'panotour/Iguana_Scales01', 'panotour/Iguana_Scales02', 'panotour/Iguana_Scales03', 'Iguana_PhyloTree06', 'panotour/Iguana_PinkIggy01']
 // Pages and associated fieldbook pages
 var fbPages = {
-  // 'Volcano_Compare360': 7,
-  // 'panotour/Volcano_Exploration01': 2,
-  // 'panotour/Volcano_Exploration02': 2,
-  // 'panotour/Volcano_Exploration03': 3,
-  // 'panotour/Volcano_Exploration04': 4,
-  // 'panotour/Volcano_Exploration05': 5,
-  // 'Volcano_OtherVolcanoes01': 9,
-  // 'Volcano_PlatesGame01': 10,
-  // 'Volcano_Slider01': 7,
-  // 'Volcano_TectonicPlates01': 10,
-  // 'Volcano_TectonicPlates02': 10,
-  // 'Volcano_TectonicPlateWhiteboard01': 10,
-  // 'Volcano_TerrainMap02': 6,
-  // 'Volcano_TerrainMap03': 7,
-  // 'Volcano_TerrainMap04': 8
+  'Iguana_Carried02': 2,
+  'panotour/Iguana_Pumice01': 3,
+  'Iguana_Pumice02': 3,
+  'panotour/Iguana_Comparison02': 4,
+  'Iguana_Comparison03': 4,
+  'Iguana_PhyloTree05': 5,
+  'Iguana_PhyloTree06': 5,
+  'Iguana_Evolution03': 6,
+  'panotour/Iguana_Evolution04': 6,
+  'panotour/Iguana_Scales02': 7,
+  'panotour/Iguana_Scales03': 7
 }
 
 // Drag and drop pages and associated dictionaries
