@@ -184,6 +184,15 @@ class Fieldbook {
 
   fieldbookOn () {
     this.updatePages()
+    var bcCanvas = document.getElementById('bcPaintCanvas')
+    if (bcCanvas !== null) {
+      // Todo : Calculate the height of the canvas from the parent
+      var margin = 20
+      bcCanvas.setAttribute('width', '600px')
+      bcCanvas.setAttribute('height', '300px')
+      bcCanvas.style.marginLeft = margin + 'px'
+      bcCanvas.style.marginTop = margin + 'px'
+    }
     this.overlayDiv.style.display = 'block'
   }
 
