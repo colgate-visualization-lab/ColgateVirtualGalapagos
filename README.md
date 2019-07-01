@@ -52,3 +52,7 @@ This project could not happen without the funding and/or support from the follow
 * NASC
 * McGill University's Lab Without Borders
 * All the scientists whose materials and/or interviews were used with their permissions
+
+###TODO
+
+- save canvas across pages fieldbook
