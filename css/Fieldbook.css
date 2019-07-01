@@ -15,16 +15,16 @@
 }
 
 #fb_overlay_inner {
-    position: absolute;
+    position: relative;
     top: 10%;
     left: 50%;
-	  width: 600px;
+	  width: 75%;
     font-size: 25px;
-/*    text-shadow: 2px 2px 4px #000000;*/
+    text-shadow: 2px 2px 4px #000000;
     color: white;
     background-color: #007bff;
     padding: 0.5rem;
-	max-width: 100%;
+	  max-width: 100%;
     transform: translate(-50%,0%);
     -ms-transform: translate(-50%, 0%);
 

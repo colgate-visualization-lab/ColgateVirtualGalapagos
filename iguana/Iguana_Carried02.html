@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="../css/Fieldbook.css">
   <link rel="stylesheet" href="../css/Toolbar.css">
+  <link rel="stylesheet" href="../css/bcPaint.css">
+  <link rel="stylesheet" href="../css/bcPaint.mobile.css">
   <link rel="icon" href="../images/png-32x32.png" type="image/png" />
 
   <title>Colgate Virtual Galapagos</title>
@@ -39,6 +41,7 @@
   <!--  VIRTUAL GALAPAGOS LAYOUT   -->
   <div id="main" class="container-fluid">
     <div id="content" class="container-fluid">
+        <div id="bcPaint"></div>
     </div>
     <div id="control_bar" class="container row justify-content-md-center">
       <div id="nav_control">
@@ -75,6 +78,20 @@
   <script src="../js/virtualgalapagos/iguana/iguana_mastercontroller.js" type="module"></script>
   <script src="../js/virtualgalapagos/avcontroller.js" type="module"></script>
   <script src="../js/virtualgalapagos/iguana/iguana_avcontroller.js" type="module"></script>
+  <script src="../js/libs/bcPaint.js"></script>
+  <script>
+    $(function () {
+      $('#bcPaint').bcPaint();
+    });
+  </script>
+  <script src="../js/libs/bcPaint.js"></script>
+  <script>
+    $(function(){
+  
+      $('#bcPaint').bcPaint();
+    
+    });
+  </script>
 
 </body>
 
