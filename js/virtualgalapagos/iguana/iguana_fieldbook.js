@@ -67,9 +67,12 @@ class IguanaFieldbook extends Fieldbook {
     innerHeader = document.createTextNode('Phylogenetic Tree')
     currentDiv.appendChild(innerHeader)
     Fieldbook.addSubtitle(currentDiv, 'Drawing of Tree')
-    rowDiv = document.createElement('CANVAS')
-    rowDiv.setAttribute('id', 'draw')
-    currentDiv.appendChild(rowDiv)
+    var mainDiv = document.createElement('DIV')
+    var canvas = document.createElement('CANVAS')
+    mainDiv.classList = 'container'
+    canvas.setAttribute('id', 'draw')
+    mainDiv.appendChild(canvas)
+    currentDiv.appendChild(mainDiv)
 
     // case for page 7
     currentDiv = this.divArray[6]
