@@ -56,4 +56,4 @@ This project could not happen without the funding and/or support from the follow
 ###TODO
 
 - save canvas across pages fieldbook
-- track mouse with resizing window
+- complete slider for comparisons
