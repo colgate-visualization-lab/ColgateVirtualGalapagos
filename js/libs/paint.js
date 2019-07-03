@@ -27,15 +27,27 @@ function redraw () {
   }
 }
 
+function resizeCanvasToDisplaySize (canvas) {
+  // look up the size the canvas is being displayed
+  var width = canvas.clientWidth
+  var height = canvas.clientHeight
+
+  // If the resolution does not match change it
+  if (canvas.width !== width || canvas.height !== height) {
+    canvas.width = width
+    canvas.height = height
+    return true
+  }
+
+  return false
+}
+
 function init () {
   canvas = $('#draw')
-  canvas.attr({
-    width: window.innerWidth,
-    height: window.innerHeight
-  })
   ctx = canvas[0].getContext('2d')
 
   function mouseEvent (e) {
+    resizeCanvasToDisplaySize(canvas[0])
     brush.x = e.offsetX
     brush.y = e.offsetY
 
@@ -129,7 +141,6 @@ function init () {
   }, false)
 
   // Prevent scrolling on touch event
-  // Prevent scrolling when touching the canvas
   document.body.addEventListener('touchstart', function (e) {
     if (e.target === canvas[0]) {
       e.preventDefault()
