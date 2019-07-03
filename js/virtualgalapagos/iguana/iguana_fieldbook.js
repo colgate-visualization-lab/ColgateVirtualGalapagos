@@ -6,7 +6,7 @@ class IguanaFieldbook extends Fieldbook {
   // layout changes happen here, and in the future needs a system for handling multiple different fb layouts
   populateDivs () {
     var currentDiv = this.divArray[0]
-    var innerHeader = document.createTextNode('Volcano')
+    var innerHeader = document.createTextNode('Iguana')
     var textArea = document.createElement('textarea')
     textArea.className = 'fieldbook_ta'
     textArea.rows = 1
