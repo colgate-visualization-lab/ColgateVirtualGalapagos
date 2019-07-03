@@ -30,8 +30,8 @@
 
 /* Style for a bordered image */
 .img-bordered {
-  border:5px solid #343a40;
-  border-radius: 25px;
+  border:2px solid #343a40;
+  border-radius: 10px;
 /*  background-color: black;*/
 }
 
