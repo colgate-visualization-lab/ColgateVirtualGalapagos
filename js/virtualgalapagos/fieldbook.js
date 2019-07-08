@@ -9,6 +9,7 @@
 //
 
 import { MasterController } from './mastercontroller.js'
+import { saveCanvas } from '../libs/paint.js'
 
 class Fieldbook {
   constructor (pages, numPages, mastercontroller) {
@@ -200,12 +201,16 @@ class Fieldbook {
     this.overlayDiv.style.display = 'none'
   }
 
-  // Saves any textarea content from currently activate page into web storage
+  // Saves any content from currently activate page into web storage
   savePage () {
     var textareaArray = this.divArray[Fieldbook.pageNumber].getElementsByTagName('textarea')
     var len = textareaArray.length
     for (var i = 0; i < len; i++) {
       MasterController.storeItem('inner' + Fieldbook.pageNumber + 'textarea' + i, textareaArray[i].value)
+    }
+    var canvas = document.getElementById('draw')
+    if (canvas !== null) {
+      saveCanvas()
     }
   }
 
