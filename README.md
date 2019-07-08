@@ -54,6 +54,4 @@ This project could not happen without the funding and/or support from the follow
 * All the scientists whose materials and/or interviews were used with their permissions
 
 ###TODO
-
-- save canvas across pages fieldbook
 - complete slider for comparisons
