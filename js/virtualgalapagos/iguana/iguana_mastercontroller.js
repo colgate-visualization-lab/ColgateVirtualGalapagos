@@ -14,6 +14,7 @@ import { IguanaDragDrop } from './iguana_dragdrop.js'
 import { IguanaFieldbook } from './iguana_fieldbook.js'
 import { IguanaToolbar } from './iguana_toolbar.js'
 import { CustomCanvas } from '../../libs/paint.js'
+import { evolution } from './Iguana_Evolution03.js'
 
 class IguanaMasterController extends MasterController {
   constructor (pageList, pageName) {
@@ -144,4 +145,8 @@ var drawElt = document.getElementById('draw')
 if (drawElt !== null) {
   var canvas = new CustomCanvas()
   canvas.init()
+}
+
+if (pageName === 'Iguana_Evolution03') {
+  evolution(masterController, avController)
 }
