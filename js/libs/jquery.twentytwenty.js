@@ -61,6 +61,7 @@
           afterImg.css("clip", "rect(0,"+offset.w+","+offset.h+","+offset.cw+")");
     	}
         container.css("height", offset.h);
+        container.css("max-width", offset.w);
       };
 
       var adjustSlider = function(pct) {
