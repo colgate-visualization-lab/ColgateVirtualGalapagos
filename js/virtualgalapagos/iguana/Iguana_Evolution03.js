@@ -3,7 +3,8 @@
 import { MasterController } from '../mastercontroller.js'
 
 function evolution (mastercontroller, avcontroller) {
-  var mapEnabled = false
+  // TODO : Make sure user is done clicking through all areas before enabling map
+  var mapEnabled = true
   var controller = mastercontroller
   var player = avcontroller
   init()
@@ -41,29 +42,18 @@ function evolution (mastercontroller, avcontroller) {
   }
 
   function adaptation (area) {
-    console.log(area)
-    // if (mapEnabled) {
-    //   document.getElementById('modal')
-    //   player.setTrack(area)
-    // } else {
-    //   alert('Hold on! Finish listening to the audio first.')
-    // }
+    if (mapEnabled) {
+      document.getElementById('modalImage').src = '../images/iguana/' + area + '.png'
+      document.getElementById('modalHeader').innerText = 'Adaptation of marine iguana: ' + area
+      player.setTrack(area)
+    } else {
+      alert('Hold on! Finish listening to the audio first.')
+    }
   }
 
   function enableMap () {
     mapEnabled = true
-    MasterController.storeItem('PlumePlacement01', 'true')
-    document.getElementsByName('image-map')[0].style.display = 'block;'
-  }
-
-  function ppAudioDone () {
-    if (state === 1 && !mapEnabled) {
-      enableMap()
-    } else if (state === 2) {
-      setState(1)
-    } else if (state === 3) {
-      controller.flagDone('plumeplacement')
-    }
+    MasterController.storeItem('Evolution03', 'true')
   }
 }
 export { evolution }
