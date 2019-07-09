@@ -55,3 +55,4 @@ This project could not happen without the funding and/or support from the follow
 
 ###TODO
 - complete slider for comparisons
+- fix bugs on redraw fn in CustomCanvas
