@@ -13,7 +13,6 @@ import { IguanaAVController } from './iguana_avcontroller.js'
 import { IguanaDragDrop } from './iguana_dragdrop.js'
 import { IguanaFieldbook } from './iguana_fieldbook.js'
 import { IguanaToolbar } from './iguana_toolbar.js'
-import { CustomCanvas } from '../../libs/paint.js'
 import { evolution } from './Iguana_Evolution03.js'
 
 class IguanaMasterController extends MasterController {
@@ -139,12 +138,6 @@ if (ddObj.length !== 0) {
   var dragdrop = new IguanaDragDrop(ddObj[0].ddDict, masterController)
   dragdrop.initDrops()
   dragdrop.initDrags()
-}
-
-var drawElt = document.getElementById('draw')
-if (drawElt !== null) {
-  var canvas = new CustomCanvas()
-  canvas.init()
 }
 
 if (pageName === 'Iguana_Evolution03') {
