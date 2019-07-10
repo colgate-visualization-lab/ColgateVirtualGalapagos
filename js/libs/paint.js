@@ -1,11 +1,14 @@
 'use strict'
 var strokes = []
+
 function saveToLocalStorage () {
+  console.log('heere')
   localStorage.setItem('canvas_strokes', JSON.stringify(strokes))
 }
 
 function paintCanvas () {
   var canvas
+  var canvasElement
   var ctx
   var currentStroke = null
   var brush = {
@@ -17,6 +20,20 @@ function paintCanvas () {
   }
 
   init()
+
+  function resizeCanvasToDisplaySize () {
+    // look up the size the canvas is being displayed
+    var width = canvasElement.clientWidth
+    var height = canvasElement.clientHeight
+
+    // If the resolution does not match change it
+    if (canvasElement.width !== width || canvasElement.height !== height) {
+      canvasElement.width = width
+      canvasElement.height = height
+      return true
+    }
+    return false
+  }
 
   function redraw () {
     ctx.clearRect(0, 0, canvas.width(), canvas.height())
@@ -36,27 +53,13 @@ function paintCanvas () {
     }
   }
 
-  function resizeCanvasToDisplaySize (canvas) {
-  // look up the size the canvas is being displayed
-    var width = canvas.clientWidth
-    var height = canvas.clientHeight
-
-    // If the resolution does not match change it
-    if (canvas.width !== width || canvas.height !== height) {
-      canvas.width = width
-      canvas.height = height
-      return true
-    }
-
-    return false
-  }
-
   function init () {
     canvas = $('#draw')
-    ctx = canvas[0].getContext('2d')
+    canvasElement = document.getElementById('draw')
+    ctx = canvasElement.getContext('2d')
 
     function mouseEvent (e) {
-      resizeCanvasToDisplaySize(canvas[0])
+      resizeCanvasToDisplaySize()
       brush.x = e.offsetX
       brush.y = e.offsetY
 
@@ -92,7 +95,8 @@ function paintCanvas () {
     // check if localstorage has an array of strokes saved
 
     var savedStrokes = localStorage.getItem('canvas_strokes')
-    if (savedStrokes === undefined) {
+    // debugger
+    if (savedStrokes !== undefined) {
       strokes = JSON.parse(savedStrokes)
       redraw()
     }
@@ -102,7 +106,7 @@ function paintCanvas () {
       saveToLocalStorage()
     })
     $('#save-btn').click(function () {
-      window.open(canvas[0].toDataURL())
+      window.open(canvasElement.toDataURL())
     })
     $('#undo-btn').click(function () {
       strokes.pop()
@@ -121,7 +125,7 @@ function paintCanvas () {
     })
 
     // bind touch actions
-    canvas[0].addEventListener('touchstart', function (e) {
+    canvasElement.addEventListener('touchstart', function (e) {
     // mousePos = getTouchPos(canvas, e)
     // brush.x = mousePos.x
     // brush.x = 3
@@ -130,44 +134,45 @@ function paintCanvas () {
         clientX: touch.clientX,
         clientY: touch.clientY
       })
-      canvas[0].dispatchEvent(mouseEvent)
+      canvasElement.dispatchEvent(mouseEvent)
     }, false)
 
-    canvas[0].addEventListener('touchend', function (e) {
+    canvasElement.addEventListener('touchend', function (e) {
       var touch = e.changedTouches[0]
       var mouseEvent = new MouseEvent('mouseup', {
         clientX: touch.clientX,
         clientY: touch.clientY
       })
-      canvas[0].dispatchEvent(mouseEvent)
+      canvasElement.dispatchEvent(mouseEvent)
     }, false)
 
-    canvas[0].addEventListener('touchmove', function (e) {
+    canvasElement.addEventListener('touchmove', function (e) {
       var touch = e.touches[0]
       var mouseEvent = new MouseEvent('mousemove', {
         clientX: touch.clientX,
         clientY: touch.clientY
       })
-      canvas[0].dispatchEvent(mouseEvent)
+      canvasElement.dispatchEvent(mouseEvent)
     }, false)
 
     // Prevent scrolling on touch event
     document.body.addEventListener('touchstart', function (e) {
-      if (e.target === canvas[0]) {
+      if (e.target === canvasElement) {
         e.preventDefault()
       }
     }, false)
     document.body.addEventListener('touchend', function (e) {
-      if (e.target === canvas[0]) {
+      if (e.target === canvasElement) {
         e.preventDefault()
       }
     }, false)
     document.body.addEventListener('touchmove', function (e) {
-      if (e.target === canvas[0]) {
+      if (e.target === canvasElement) {
         e.preventDefault()
       }
     }, false)
   }
 }
+$(paintCanvas)
 
 export { paintCanvas, saveToLocalStorage as saveCanvas }
