@@ -70,6 +70,7 @@ class IguanaFieldbook extends Fieldbook {
     var mainDiv = document.createElement('DIV')
     var canvas = document.createElement('CANVAS')
     mainDiv.classList = 'container'
+    mainDiv.setAttribute('id', 'draw-container')
     canvas.setAttribute('id', 'draw')
     mainDiv.appendChild(canvas)
     currentDiv.appendChild(mainDiv)
