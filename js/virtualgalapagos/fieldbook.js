@@ -9,7 +9,7 @@
 //
 
 import { MasterController } from './mastercontroller.js'
-import { CustomCanvas } from '../libs/paint.js'
+import { saveCanvas } from '../libs/paint.js'
 
 class Fieldbook {
   constructor (pages, numPages, mastercontroller) {
@@ -210,7 +210,7 @@ class Fieldbook {
     }
     var canvas = document.getElementById('draw')
     if (canvas !== null) {
-      // CustomCanvas.savePage()
+      saveCanvas()
     }
   }
 
