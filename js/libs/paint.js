@@ -1,171 +1,173 @@
 'use strict'
+var strokes = []
+function saveToLocalStorage () {
+  localStorage.setItem('canvas_strokes', JSON.stringify(strokes))
+}
 
-class CustomCanvas {
-  constructor () {
-    // this.strokes
-    this.canvas = $('#draw')
-    this.ctx = this.canvas[0].getContext('2d')
-    this.currentStroke = null
-    this.brush = {
-      x: 0,
-      y: 0,
-      color: '#000000',
-      size: 5,
-      down: false
-    }
-    var savedStrokes = localStorage.getItem('canvas_strokes')
-    if (savedStrokes !== undefined) {
-      this.strokes = JSON.parse(savedStrokes)
-    } else {
-      this.strokes = []
-    }
-    this.redraw()
+function paintCanvas () {
+  var canvas
+  var ctx
+  var currentStroke = null
+  var brush = {
+    x: 0,
+    y: 0,
+    color: '#000000',
+    size: 5,
+    down: false
   }
 
-  redraw () {
-    this.ctx.clearRect(0, 0, this.canvas.width(), this.canvas.height())
-    this.ctx.lineCap = 'round'
+  init()
 
-    for (var i = 0; i < this.strokes.length; i++) {
-      var s = this.strokes[i]
-      this.ctx.strokeStyle = s.color
-      this.ctx.lineWidth = s.size
-      this.ctx.beginPath()
-      this.ctx.moveTo(s.points[0].x, s.points[0].y)
+  function redraw () {
+    ctx.clearRect(0, 0, canvas.width(), canvas.height())
+    ctx.lineCap = 'round'
+
+    for (var i = 0; i < strokes.length; i++) {
+      var s = strokes[i]
+      ctx.strokeStyle = s.color
+      ctx.lineWidth = s.size
+      ctx.beginPath()
+      ctx.moveTo(s.points[0].x, s.points[0].y)
       for (var j = 0; j < s.points.length; j++) {
         var p = s.points[j]
-        this.ctx.lineTo(p.x, p.y)
+        ctx.lineTo(p.x, p.y)
       }
-      this.ctx.stroke()
+      ctx.stroke()
     }
   }
 
-  resizeCanvasToDisplaySize () {
-  // look up the size the this.canvas is being displayed
-    var width = this.canvas.clientWidth
-    var height = this.canvas.clientHeight
+  function resizeCanvasToDisplaySize (canvas) {
+  // look up the size the canvas is being displayed
+    var width = canvas.clientWidth
+    var height = canvas.clientHeight
 
     // If the resolution does not match change it
-    if (this.canvas.width !== width || this.canvas.height !== height) {
-      this.canvas.width = width
-      this.canvas.height = height
+    if (canvas.width !== width || canvas.height !== height) {
+      canvas.width = width
+      canvas.height = height
       return true
     }
 
     return false
   }
 
-  savePage () {
-    localStorage.setItem('canvas_strokes', JSON.stringify(this.strokes))
-  }
+  function init () {
+    canvas = $('#draw')
+    ctx = canvas[0].getContext('2d')
 
-  init () {
-    var object = this
     function mouseEvent (e) {
-      object.resizeCanvasToDisplaySize(object.canvas[0])
-      object.brush.x = e.offsetX
-      object.brush.y = e.offsetY
+      resizeCanvasToDisplaySize(canvas[0])
+      brush.x = e.offsetX
+      brush.y = e.offsetY
 
-      object.currentStroke.points.push({
-        x: object.brush.x,
-        y: object.brush.y
+      currentStroke.points.push({
+        x: brush.x,
+        y: brush.y
 
       })
 
-      object.redraw()
+      redraw()
     }
-    object.canvas.mousedown(function (e) {
-      object.brush.down = true
+    canvas.mousedown(function (e) {
+      brush.down = true
 
-      object.currentStroke = {
-        color: object.brush.color,
-        size: object.brush.size,
+      currentStroke = {
+        color: brush.color,
+        size: brush.size,
         points: []
       }
-      object.strokes.push(object.currentStroke)
+      strokes.push(currentStroke)
 
       mouseEvent(e)
     }).mouseup(function (e) {
-      object.brush.down = false
+      brush.down = false
 
       mouseEvent(e)
 
-      object.currentStroke = null
+      currentStroke = null
     }).mousemove(function (e) {
-      if (object.brush.down) { mouseEvent(e) }
+      if (brush.down) { mouseEvent(e) }
     })
 
-    // check if localstorage has an array of this.strokes saved
+    // check if localstorage has an array of strokes saved
+
+    var savedStrokes = localStorage.getItem('canvas_strokes')
+    if (savedStrokes === undefined) {
+      strokes = JSON.parse(savedStrokes)
+      redraw()
+    }
 
     // buttons
     $('#save-to-local-storage').click(function () {
-      this.saveToLocalStorage()
+      saveToLocalStorage()
     })
     $('#save-btn').click(function () {
-      window.open(this.canvas[0].toDataURL())
+      window.open(canvas[0].toDataURL())
     })
     $('#undo-btn').click(function () {
-      this.strokes.pop()
-      this.redraw()
+      strokes.pop()
+      redraw()
     })
     $('#clear-btn').click(function () {
-      this.strokes = []
-      this.redraw()
+      strokes = []
+      redraw()
     })
 
     $('#color-picker').on('input', function () {
-      this.brush.color = this.value
+      brush.color = this.value
     })
     $('#brush-size').on('input', function () {
-      this.brush.size = this.value
+      brush.size = this.value
     })
 
     // bind touch actions
-    this.canvas[0].addEventListener('touchstart', function (e) {
+    canvas[0].addEventListener('touchstart', function (e) {
+    // mousePos = getTouchPos(canvas, e)
+    // brush.x = mousePos.x
+    // brush.x = 3
       var touch = e.touches[0]
       var mouseEvent = new MouseEvent('mousedown', {
         clientX: touch.clientX,
         clientY: touch.clientY
       })
-      this.canvas[0].dispatchEvent(mouseEvent)
+      canvas[0].dispatchEvent(mouseEvent)
     }, false)
 
-    this.canvas[0].addEventListener('touchend', function (e) {
+    canvas[0].addEventListener('touchend', function (e) {
       var touch = e.changedTouches[0]
       var mouseEvent = new MouseEvent('mouseup', {
         clientX: touch.clientX,
         clientY: touch.clientY
       })
-      this.canvas[0].dispatchEvent(mouseEvent)
+      canvas[0].dispatchEvent(mouseEvent)
     }, false)
 
-    this.canvas[0].addEventListener('touchmove', function (e) {
+    canvas[0].addEventListener('touchmove', function (e) {
       var touch = e.touches[0]
       var mouseEvent = new MouseEvent('mousemove', {
         clientX: touch.clientX,
         clientY: touch.clientY
       })
-      this.canvas[0].dispatchEvent(mouseEvent)
+      canvas[0].dispatchEvent(mouseEvent)
     }, false)
 
     // Prevent scrolling on touch event
     document.body.addEventListener('touchstart', function (e) {
-      if (e.target === this.canvas[0]) {
+      if (e.target === canvas[0]) {
         e.preventDefault()
       }
     }, false)
     document.body.addEventListener('touchend', function (e) {
-      if (e.target === this.canvas[0]) {
+      if (e.target === canvas[0]) {
         e.preventDefault()
       }
     }, false)
     document.body.addEventListener('touchmove', function (e) {
-      if (e.target === this.canvas[0]) {
+      if (e.target === canvas[0]) {
         e.preventDefault()
       }
     }, false)
-    // resizethis.CanvasToDisplaySize(this.canvas[0])
   }
 }
 
-export { CustomCanvas }
+export { paintCanvas, saveToLocalStorage as saveCanvas }
