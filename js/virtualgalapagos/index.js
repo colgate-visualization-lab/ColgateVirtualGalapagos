@@ -3,18 +3,42 @@
 import { Toolbar } from './toolbar.js'
 import { MasterController } from './mastercontroller.js'
 
-var masterController = new MasterController([], '', '')
-var mysteries = {
-  mystery1: [
-    { text: 'volcano', url: 'volcano/Volcano_TerrainMap01.html' },
-    { text: 'iguana', url: 'iguana/panotour/Iguana_Endemic01.html' }
-  ]
-}
-var toolbarLinks = getToolbarLinks()
+function init () {
+  var masterController = new MasterController([], '', '')
+  var toolbarLinks = []
+  var modules
+  var moduleMappings = {
+    'volcano': 'volcano/Volcano_TerrainMap01.html',
+    'iguana': 'iguana/panotour/Iguana_Endemic01.html'
+  }
+  getModules('mystery1')
+  getToolbarLinks(modules)
+  var toolbar = new Toolbar(toolbarLinks, masterController)
+  toolbar.initToolbar()
+  function getToolbarLinks (modules) {
+    modules.forEach(element => {
+      toolbarLinks.push({ text: element, url: moduleMappings[element] })
+    })
+  }
+  function getModules (mystery) {
+    switch (mystery) {
+      case 'mystery1':
+        modules = ['volcano', 'iguana']
+        break
+      case 'mystery2':
+        modules = ['volcano']
+        break
+      default:
+        modules = []
+    }
+  }
 
-var toolbar = new Toolbar(toolbarLinks, masterController)
-toolbar.initToolbar()
+  document.getElementById('mystery1').onclick() = function () {
+  getModules('mystery1')
+  }
 
-function getToolbarLinks () {
-  
+document.getElementById('mystery2').onclick() = function () {
+  getModules('mystery2')
 }
+}
+$(init)
