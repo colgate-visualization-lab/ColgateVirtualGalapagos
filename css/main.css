@@ -101,11 +101,8 @@ h2#page_title {
 }
 #page_title {
   color: white;
-  font-size: 20pt
+  font-size: 30pt
 }
 #container1 {
   margin: auto
-}
-#content {
-  /* margin: auto */
 }
