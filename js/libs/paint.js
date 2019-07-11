@@ -93,7 +93,6 @@ function paintCanvas () {
     })
 
     // check if localstorage has an array of strokes saved
-    debugger 
     var savedStrokes = localStorage.getItem('canvas_strokes')
     if (savedStrokes !== null) {
       strokes = JSON.parse(savedStrokes)
