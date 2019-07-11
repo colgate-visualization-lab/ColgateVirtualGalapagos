@@ -1,5 +1,5 @@
 'use strict'
-var strokes = []
+var strokes
 
 function saveToLocalStorage () {
   console.log('heere')
@@ -93,12 +93,13 @@ function paintCanvas () {
     })
 
     // check if localstorage has an array of strokes saved
-
+    debugger 
     var savedStrokes = localStorage.getItem('canvas_strokes')
-    // debugger
-    if (savedStrokes !== undefined) {
+    if (savedStrokes !== null) {
       strokes = JSON.parse(savedStrokes)
       redraw()
+    } else {
+      strokes = []
     }
 
     // buttons
