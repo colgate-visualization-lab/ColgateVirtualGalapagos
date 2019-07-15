@@ -106,3 +106,6 @@ h2#page_title {
 #container1 {
   margin: auto
 }
+.jumbotron {
+  background-color: rgb(20, 160, 148)
+}

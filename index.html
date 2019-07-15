@@ -10,97 +10,109 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <!-- Custom Styling -->
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="/css/Toolbar.css">
   <link rel="icon" href="images/png-32x32.png" type="image/png" />
 
   <title>Colgate Virtual Galapagos</title>
 </head>
 
 <body>
-  <div class="jumbotron bg-primary">
+  <div class="jumbotron">
     <div>
       <a href="/" id="page_title" class="nav_title">Virtual Galapagos</a>
     </div>
-  </div>
-  <ul class="nav nav-pills nav-justified">
+    <br>
+    <ul class="nav nav-pills nav-justified">
       <li class="nav-item">
-        <a class="nav-link active" data-toggle="pill" href="#home">Home</a>
+        <a id="home" class="nav-link active" href="#home">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="pill" href="#mysteries">Mysteries</a>
+        <a id="mysteries" class="nav-link" href="#mysteries">Mysteries</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="pill" href="#about">About</a>
+        <a id="about" class="nav-link" href="#about">About</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" data-toggle="pill" href="#contact">Contact us</a>
+        <a id="contact" class="nav-link" href="#contact">Contact us</a>
       </li>
     </ul>
+  </div>
 
   <div class="tab-content">
-      <div id="home" class="tab-pane fade in active container">
-        <h3>HOME</h3>
-        <p>Place holder content</p>
-      </div>
-      <div id="mysteries" class="tab-pane fade container-fluid">
-        <h3>Menu 1</h3>
-        <div class="text-center">
-          <img src="./images/homepage.png" class="img-fluid img-bordered" usemap="#image-map">
-        </div>
-        <map name="image-map">
-          <area id="mystery1" target="" alt="" title="mystery1" href=""
-            coords="390,367,438,342,446,311,497,295,514,275,533,297,553,334,587,367,595,395,601,462,637,496,662,521,699,549,724,566,730,605,721,655,738,669,755,655,778,674,794,708,814,736,794,781,780,820,738,854,710,854,674,871,618,894,567,879,491,874,474,846,446,817,458,793,497,742,539,706,587,698,620,700,646,678,654,655,604,613,584,597,575,557,522,524,497,487,497,456,488,417,486,386,469,369,415,386"
-            shape="poly">
-        </map>
-      </div>
-      <div id="about" class="tab-pane fade container">
-        <h3>About</h3>
-        <p>Welcome to Colgate Virtual Galapagos, a digital learning module currently in development by students, staff, and
-          faculty at Colgate University.</p>
-        <p>The primary objective of the Virtual Galapagos Project is to construct a digital educational experience for children
-          around the globe to learn about science through the lens of the Galapagos Islands. Our project differs
-          from many existing informal science efforts, in that students encounter concepts from multiple disciplines, with
-          an emphasis on geology and evolutionary biology. Most importantly, the Virtual Galapagos resource is designed to
-          inspire students to pursue careers in science by leading users toward sophisticated scientific concepts,
-          culminating in results from recent research efforts in the Galapagos and highlighting contributions from leading
-          Galapagos scientists and conservationists.</p>
-        <p>The project blends a set of intersecting storylines that lead users through modules, each focused on fundamental
-          concepts critical for understanding the development of the Galapagos Archipelago and its unique flora and fauna.
-          For instance, students are given the opportunity to explore how the volcanic islands develop and subside, how
-          species colonize the islands, the genetic relationship between land and marine iguanas, how currents shape life on
-          the Galapagos, how adaptive radiation occurs, as illustrated by Galapagos finches. We employ many types of
-          interactive mechanisms to engage users intellectually, as well as images and 360&deg video collected last year in
-          the islands, whiteboard animations, interviews with research scientists, and suggestions for experiments students
-          can do on their own as complements to the resource’s content. A set of narrators guide the users through the
-          experience, while allowing students freedom to select their specific exploration path. </p>
-        <p>So far, we have one functional and mostly finished module to serve as a prototype. This module introduces
-          students to the basics behind how volcanoes. To see this module, <a href="volcano/Volcano_TerrainMap01.html">
-            click here.</a> This is an open source project welcoming contributions, and the source code is available <a
-            href="https://github.com/CaioBrighenti/ColgateVirtualGalapagos"> here on GitHub</a>.</p>
-        <p>Once this pilot phase of the project is operational, we will begin to incorporate contributions from Galapagos
-          naturalist guides and residents, as well, making the outreach project a truly grassroots effort, built by people
-          who work and live in the archipelago. </p>
-        <p>Because this resource is intended to be accessible to a wide range of audiences, we are collaborating with the
-          SolarSPELL team at Arizona State University to host the digital resource on portable, ruggedized, solar-powered
-          equipment that can generate a local wireless server that anyone nearby can connect to without needing internet
-          connection. Consequently, students lacking reliable Internet access will be able to use both the Virtual Galapagos
-          resource and a digital library of supporting material. </p>
-        <p>The Virtual Galapagos Project is funded through support from NASC, Colgate’s Geology Department, and a
-          collaborative grant from the Office of Science and Society at McGill University’s Labs Without Borders. </p>
-      </div>
-      <div id="contact" class="tab-pane fade container">
-          <h3>Contact us</h3>
-          <p>Place holder content.</p>
-        </div>
+    <div id="home" class="show tab-pane fade active container">
+      <h3>HOME</h3>
+      <p>Place holder content</p>
     </div>
+    <div id="mysteries" class="tab-pane fade container-fluid">
+      <div class="text-center">
+        <img src="./images/homepage.png" class="img-fluid img-bordered" usemap="#image-map">
+      </div>
+      <map name="image-map">
+        <area id="mystery1" target="" alt="" title="mystery1" href=""
+          coords="390,367,438,342,446,311,497,295,514,275,533,297,553,334,587,367,595,395,601,462,637,496,662,521,699,549,724,566,730,605,721,655,738,669,755,655,778,674,794,708,814,736,794,781,780,820,738,854,710,854,674,871,618,894,567,879,491,874,474,846,446,817,458,793,497,742,539,706,587,698,620,700,646,678,654,655,604,613,584,597,575,557,522,524,497,487,497,456,488,417,486,386,469,369,415,386"
+          shape="poly">
+      </map>
+    </div>
+    <div id="about" class="tab-pane fade container">
+      <h3>About</h3>
+      <p>Welcome to Colgate Virtual Galapagos, a digital learning module currently in development by students, staff,
+        and
+        faculty at Colgate University.</p>
+      <p>The primary objective of the Virtual Galapagos Project is to construct a digital educational experience for
+        children
+        around the globe to learn about science through the lens of the Galapagos Islands. Our project differs
+        from many existing informal science efforts, in that students encounter concepts from multiple disciplines, with
+        an emphasis on geology and evolutionary biology. Most importantly, the Virtual Galapagos resource is designed to
+        inspire students to pursue careers in science by leading users toward sophisticated scientific concepts,
+        culminating in results from recent research efforts in the Galapagos and highlighting contributions from leading
+        Galapagos scientists and conservationists.</p>
+      <p>The project blends a set of intersecting storylines that lead users through modules, each focused on
+        fundamental
+        concepts critical for understanding the development of the Galapagos Archipelago and its unique flora and fauna.
+        For instance, students are given the opportunity to explore how the volcanic islands develop and subside, how
+        species colonize the islands, the genetic relationship between land and marine iguanas, how currents shape life
+        on
+        the Galapagos, how adaptive radiation occurs, as illustrated by Galapagos finches. We employ many types of
+        interactive mechanisms to engage users intellectually, as well as images and 360&deg video collected last year
+        in
+        the islands, whiteboard animations, interviews with research scientists, and suggestions for experiments
+        students
+        can do on their own as complements to the resource’s content. A set of narrators guide the users through the
+        experience, while allowing students freedom to select their specific exploration path. </p>
+      <p>So far, we have one functional and mostly finished module to serve as a prototype. This module introduces
+        students to the basics behind how volcanoes. To see this module, <a href="volcano/Volcano_TerrainMap01.html">
+          click here.</a> This is an open source project welcoming contributions, and the source code is available <a
+          href="https://github.com/CaioBrighenti/ColgateVirtualGalapagos"> here on GitHub</a>.</p>
+      <p>Once this pilot phase of the project is operational, we will begin to incorporate contributions from Galapagos
+        naturalist guides and residents, as well, making the outreach project a truly grassroots effort, built by people
+        who work and live in the archipelago. </p>
+      <p>Because this resource is intended to be accessible to a wide range of audiences, we are collaborating with the
+        SolarSPELL team at Arizona State University to host the digital resource on portable, ruggedized, solar-powered
+        equipment that can generate a local wireless server that anyone nearby can connect to without needing internet
+        connection. Consequently, students lacking reliable Internet access will be able to use both the Virtual
+        Galapagos
+        resource and a digital library of supporting material. </p>
+      <p>The Virtual Galapagos Project is funded through support from NASC, Colgate’s Geology Department, and a
+        collaborative grant from the Office of Science and Society at McGill University’s Labs Without Borders. </p>
+    </div>
+    <div id="contact" class="tab-pane fade container">
+      <h3>Contact us</h3>
+      <p>Place holder content.</p>
+    </div>
+  </div>
 
   </div>
-  
+
+  <div id="sidenav" class="sidenav">
+    <a id="closebtn" href="javascript:void(0)" class="closebtn">&times;</a>
+  </div>
+
 
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-        <a href="volcano/Volcano_TerrainMap01.html" class="btn btn-dark">Volcano</a>
-  <a href="iguana/panotour/Iguana_Endemic01.html" class="btn btn-dark">Iguana</a>
+      <a href="volcano/Volcano_TerrainMap01.html" class="btn btn-dark">Volcano</a>
+      <a href="iguana/panotour/Iguana_Endemic01.html" class="btn btn-dark">Iguana</a>
       <span class="text-muted">Designed and built by students and faculty at <a href="https://www.colgate.edu/">Colgate
           University</a>.</span>
     </div>
@@ -111,20 +123,8 @@
   <script src="./js/jquery-3.2.1.min.js"></script>
   <script src="./js/popper.min.js"></script>
   <script src="./js/bootstrap-4.0.0.js"></script>
-  
-  <script src="./js/virtualgalapagos/index.js"></script>
-  <script src="./js/virtualgalapagos/toolbar.js" type="module"></script>
-  <script src="./js/virtualgalapagos/mastercontroller.js" type="module"></script>
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script> -->
+
+  <script src="./js/virtualgalapagos/index.js" type="module"></script>
 </body>
 
 </html>
