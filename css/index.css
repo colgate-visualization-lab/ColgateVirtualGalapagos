@@ -1,0 +1,23 @@
+body {
+  position: relative; 
+}
+header {
+  padding: 100px 0 50px;
+  background:rgb(20, 160, 148)
+}
+section {
+  padding-top:50px;
+  padding-bottom:50px;
+  padding-left: 5%
+}
+#homepage-img {
+  height: 100%;
+  width: 100%;
+}
+.carousel-inner img {
+  width: 100%;
+  height: 100%;
+}
+section#about{
+  padding-right: 5%;
+}
