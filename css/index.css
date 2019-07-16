@@ -8,7 +8,8 @@ header {
 section {
   padding-top:50px;
   padding-bottom:50px;
-  padding-left: 5%
+  padding-left: 5%;
+  padding-right: 5%
 }
 #homepage-img {
   height: 100%;
@@ -17,7 +18,4 @@ section {
 .carousel-inner img {
   width: 100%;
   height: 100%;
-}
-section#about{
-  padding-right: 5%;
 }
