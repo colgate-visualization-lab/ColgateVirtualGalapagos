@@ -109,3 +109,17 @@ h2#page_title {
 .jumbotron {
   background-color: rgb(20, 160, 148)
 }
+#mystery-content {
+  position: relative;
+  text-align: left;
+}
+.centered {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  font-size: 2vw;
+}
+.nav-link {
+  color: rgb(247, 9, 148);
+  font-weight: bolder;
+}
