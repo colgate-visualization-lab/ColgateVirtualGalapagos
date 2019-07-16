@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tour start="node5" appversion="6.0.5" apprev="17333">
+  <panorama id="node5">
+    <input leveltileurl="tiles/node5/cf_%c/l_%l/c_%x/tile_%y.jpg" overlap="1" width="1024" levelingpitch="0" levelingroll="0" leveltilesize="510" height="1024" levelbiashidpi="1.000" levelbias="0.400">
+      <level width="1024" height="1024" predecode="0" preload="0"/>
+      <level width="512" height="512" predecode="0" preload="0"/>
+      <level width="256" height="256" predecode="1" preload="1"/>
+      <preview color="0x808080" strip="1"/>
+      <video format="equirectangular" startonload="1" endaction="loop" startmutedmobile="0">
+        <source url="videos/Compare360.mp4"/>
+      </video>
+    </input>
+    <view fovmode="0" pannorth="0">
+      <start tilt="0" projection="4" pan="0" fov="70"/>
+      <flyin tilt="-90" projection="9" pan="0" fov="170"/>
+      <min fovpixel="2" tilt="-90" pan="0"/>
+      <max scaletofit="1" tilt="90" pan="360" fov="120" fovstereographic="270" fovfisheye="360"/>
+    </view>
+    <userdata title="" description="" latitude="" copyright="" comment="" tags="Pano2VR6" longitude="" datetime="" source="" info="" author="" customnodeid=""/>
+    <hotspots width="180" wordwrap="1" height="20">
+      <label textalpha="1" bordercolor="0x000000" enabled="1" width="180" border="1" borderradius="1" background="1" wordwrap="1" backgroundcolor="0xffffff" backgroundalpha="1" borderalpha="1" textcolor="0x000000" height="20"/>
+      <polystyle bordercolor="0x0000ff" mode="0" backgroundcolor="0x0000ff" backgroundalpha="0.25098" borderalpha="1" handcursor="1"/>
+    </hotspots>
+    <media/>
+    <transition zoomout="0" enabled="1" blendcolor="0x000000" zoomspeed="2" softedge="0" blendtime="1" zoomin="0" zoomfov="20" type="crossdissolve" zoomoutpause="1"/>
+    <animation useinautorotation="0" animsequence="Animation01" syncanimationwithvideo="0"/>
+    <control hideabout="0" dblclickfullscreen="0" lockedkeyboardzoom="0" invertwheel="0" invertcontrol="1" simulatemass="1" contextfullscreen="1" sensitivity="8" rubberband="0" contextprojections="0" lockedwheel="0" speedwheel="1" lockedmouse="0" lockedkeyboard="0"/>
+  </panorama>
+  <masternode>
+    <userdata title="" description="" latitude="" copyright="" comment="" tags="" longitude="" datetime="" source="" info="" author="" customnodeid=""/>
+  </masternode>
+</tour>

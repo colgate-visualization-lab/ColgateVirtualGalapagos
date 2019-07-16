@@ -1,58 +1,79 @@
-var bar_on = false;
-initToolbar();
+'use strict'
+// adds a sidebar nav to move easily within a module
+// needs completion to add links for each module that extends it.
+// TODO: disable links not yet unlocked within a module
+// Visibility  controlled in main.css
+class Toolbar {
+  constructor (links, mastercontroller) {
+    if (!new.target) {
+      return new Toolbar()
+    }
+    this.bar_on = false
+    this.links = links
+    this.mastercontroller = mastercontroller
+  }
 
-function initToolbar(){
-  // find FB button in virtualgalapagos layout
-  document.getElementById("tb_button").onclick = function () { 
-      toggleTB(); 
-  };
-  // setup layout elements for toolbar sidebar
-  setupSideBar();
-}
+  initToolbar () {
+    // debugger
+    var obj = this
+    // find FB button in virtualgalapagos layout\
+    var toolbarBtn = document.getElementById('tb_button')
+    if (this.mastercontroller.dev_mode) {
+      toolbarBtn.style.display = 'flex'
+    }
+    toolbarBtn.onclick = function () {
+      obj.toggleTB()
+    }
+    // setup layout elements for toolbar sidebar
+    this.setupSideBar()
+  }
 
-function toggleTB(){
-	if (bar_on){
-		closeNav();
-	} else {
-		openNav();
-	}
-	bar_on = !bar_on;
-}
+  toggleTB () {
+    if (this.bar_on) {
+      this.closeNav()
+    } else {
+      this.openNav()
+    }
+    this.bar_on = !this.bar_on
+  }
 
-/* Set the width of the side navigation to 250px */
-function openNav() {
-    document.getElementById("sidenav").style.width = "250px";
-}
+  /* Set the width of the side navigation to 250px */
+  openNav () {
+    document.getElementById('sidenav').style.width = '250px'
+  }
 
-/* Set the width of the side navigation to 0 */
-function closeNav() {
-    document.getElementById("sidenav").style.width = "0";
-}
+  /* Set the width of the side navigation to 0 */
+  closeNav () {
+    document.getElementById('sidenav').style.width = '0'
+  }
 
-function setupSideBar(){
-  var sidenav = document.createElement("div");
-  sidenav.id = "sidenav";
-  sidenav.className = "sidenav";
-  
-  // create header
-  var header = document.createElement("h1");
-  header.style = "color: white; padding: 32px 8px 8px 32px;"
-  header.appendChild(document.createTextNode("TOOLBAR"));
-  sidenav.appendChild(header);
-  
-  // create links
-  addLink(sidenav, "temp", "Link 1");
-  addLink(sidenav, "temp", "Link 2");
-  addLink(sidenav, "temp", "Link 3");
-  
-  
-  document.body.appendChild(sidenav);
-}
+  setupSideBar () {
+    var sidenav = document.createElement('div')
+    sidenav.id = 'sidenav'
+    sidenav.className = 'sidenav'
 
-// helped function to add text content with link
-function addLink(parent, destination, text){
-  var link = document.createElement("a");
-  link.appendChild(document.createTextNode(text));
-  link.style = 'color: white;';
-  parent.appendChild(link);
+    // create header
+    var header = document.createElement('h1')
+    header.style = 'color: white; padding: 32px 8px 8px 32px;'
+    header.appendChild(document.createTextNode('TOOLBAR'))
+    sidenav.appendChild(header)
+
+    // create links
+    var length = this.links.length
+    for (var i = 0; i < length; i++) {
+      Toolbar.addLink(this.links[i], sidenav)
+    }
+
+    document.body.appendChild(sidenav)
+  }
+
+  // helper function to add text content with link
+  static addLink (obj, parent) {
+    var link = document.createElement('a')
+    link.appendChild(document.createTextNode(obj.text))
+    link.setAttribute('href', obj.url)
+    link.style = 'color: white;'
+    parent.appendChild(link)
+  }
 }
+export { Toolbar }

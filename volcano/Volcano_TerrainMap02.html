@@ -1,75 +1,89 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/Volcano.css">
-    <link rel="stylesheet" href="../css/Fieldbook.css">
-    <link rel="stylesheet" href="../css/Overlay.css">
-    <link rel="stylesheet" href="../css/Toolbar.css">
-    <link rel="icon" href="../images/png-32x32.png" type="image/png"/>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Colgate Virtual Galapagos</title>
-  </head>
-  <body>
-    <!-- Navbar Layout -->
-    <nav class="navbar vg_navbar sticky-top navbar-light bg-primary">
-      <form class="form-inline">
-        <a href="Volcano_TerrainMap01.html" id="home_button" class="btn btn-light" style="margin-left: 10px;" ><i class="material-icons">home</i></a>
-        <button id="fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i class="material-icons">book</i></button>
-        <button id="tb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i class="material-icons">menu</i></button>
-      </form>
-      <h4 class="nav_title">Colgate Virtual Galapagos</h4>
-    </nav>
-  
-    <!--  VIRTUAL GALAPAGOS LAYOUT   -->
-    <div id="main" class="container-fluid">
-      <div id="content" class="container-fluid">
-        <img src="../images/volcano/terrain_map.png" class="img-fluid img-bordered" alt="Responsive image">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/Fieldbook.css">
+  <link rel="stylesheet" href="../css/Overlay.css">
+  <link rel="stylesheet" href="../css/Toolbar.css">
+  <link rel="icon" href="../images/png-32x32.png" type="image/png" />
+
+  <title>Colgate Virtual Galapagos</title>
+</head>
+
+<body>
+  <!-- Navbar Layout -->
+  <nav id="navbar" class="navbar vg_navbar sticky-top navbar-light">
+    <form class="form-inline">
+      <a href="Volcano_TerrainMap01.html" id="home_button" class="btn btn-light" style="margin-left: 10px;"><i
+          class="material-icons">home</i></a>
+      <button id="fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
+          class="material-icons">book</i></button>
+      <button id="tb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
+          class="material-icons">menu</i></button>
+      <button id="clear_fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
+          class="material-icons">delete</i></button>
+    </form>
+    <div>
+      <a href="/" id="page_title" class="nav_title">Virtual Galapagos</a>
+    </div>
+  </nav>
+
+  <!--  VIRTUAL GALAPAGOS LAYOUT   -->
+  <div id="main" class="container-fluid">
+    <div id="content" class="container-fluid text-center">
+      <img src="../images/volcano/terrain_map.png" class="img-fluid img-bordered" alt="Responsive image">
+    </div>
+    <div id="control_bar" class="container row justify-content-md-center">
+      <div id="nav_control">
+        <a href="Volcano_Slider01.html" class="btn btn-primary"><i class="material-icons">zoom_in</i></a>
       </div>
-      <div id="control_bar" class="container row justify-content-md-center">
-        <div id="nav_control">
-          <a href="Volcano_Slider01.html" class="btn btn-primary"><i class="material-icons">zoom_in</i></a>  
-        </div>
-        <div id="audio_control">
-          <audio id="player">
-            <source id="player_src" type="audio/mpeg"/>
-          </audio>
-        </div>
+      <div id="av_control">
+        <audio id="player">
+          <source id="player_src" type="audio/mpeg" />
+        </audio>
       </div>
     </div>
-    
-    <div id="overlay">
-      <div id="slider_inner" class="overlay_inner">
-		<button type="button" class="btn" onclick="off('slider')">Back</button>
-      </div>
-	</div>
-    
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted">Colgate Virtual Galapagos is designed and built by students and faculty at <a href="https://www.colgate.edu/">Colgate University</a>.</span>
-      </div>
-    </footer>
-    
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../js/jquery-3.2.1.min.js" ></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap-4.0.0.js"></script>
-	  
-	<!-- Custom scripts -->
-    <script src="../js/virtualgalapagos/fieldbook.js"></script>
-    <script>setPage(6);</script>
-    <script src="../js/virtualgalapagos/overlay.js"></script>
-    <script src="../js/virtualgalapagos/toolbar.js"></script>
-    <script src="../js/virtualgalapagos/mastercontroller.js"></script>
-    <script src="../js/virtualgalapagos/audiocontroller.js"></script>
-  </body>
+  </div>
+
+  <div id="overlay">
+    <div id="slider_inner" class="overlay_inner">
+      <button id="overlayOn" type="button" class="btn">Back</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <span class="text-muted">Designed and built by students and faculty at <a href="https://www.colgate.edu/">Colgate
+          University</a>.</span>
+    </div>
+  </footer>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="../js/jquery-3.2.1.min.js"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/bootstrap-4.0.0.js"></script>
+
+  <!-- Custom scripts -->
+  <script src="../js/virtualgalapagos/fieldbook.js" type="module"></script>
+  <script src="../js/virtualgalapagos/volcano/volcano_fieldbook.js" type="module"></script>
+  <script src="../js/virtualgalapagos/overlay.js" type="module"></script>
+  <script src="../js/virtualgalapagos/toolbar.js" type="module"></script>
+  <script src="../js/virtualgalapagos/volcano/volcano_toolbar.js" type="module"></script>
+  <script src="../js/virtualgalapagos/mastercontroller.js" type="module"></script>
+  <script src="../js/virtualgalapagos/volcano/volcano_mastercontroller.js" type="module"></script>
+  <script src="../js/virtualgalapagos/avcontroller.js" type="module"></script>
+  <script src="../js/virtualgalapagos/volcano/volcano_avcontroller.js" type="module"></script>
+</body>
+
 </html>

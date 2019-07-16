@@ -1,0 +1,111 @@
+/* Google Icons
+-------------------------------------------------- */
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: "liga";
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom CSS
+-------------------------------------------------- */
+
+/* Style for a bordered image */
+.img-bordered {
+  border:2px solid #343a40;
+  border-radius: 10px;
+  margin: auto
+/*  background-color: black;*/
+}
+
+/* Navbar Style */
+.nav_title {
+  color: white;
+  margin-right: 15px;
+}
+
+.vg_navbar{
+  margin-bottom: 10px;
+  z-index: 6;
+}
+
+#tb_button { /* hide sidebar button*/
+  display: none;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */ 
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  background-color: antiquewhite 
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+
+/* VG Layout Elements */
+#control_bar{
+  padding:10px;
+  border: red;
+}
+
+#av_control{
+  padding: inherit;
+  margin: auto
+}
+
+#nav_control{
+  padding: inherit;
+  margin: auto
+}
+#navbar {
+  background-color: rgb(20, 160, 148)
+}
+
+#control_bar .btn{
+  margin-left: 5px;
+}
+
+h2#page_title {
+  text-shadow: 4px 2px 10px white;
+  color: black
+}
+#page_title {
+  color: white;
+  font-size: 30pt
+}
+#container1 {
+  margin: auto
+}
+.jumbotron {
+  background-color: rgb(20, 160, 148)
+}
