@@ -6,7 +6,7 @@
     <level preload="1" predecode="1" height="256" width="256"/>
     <preview color="0x808080" strip="1"/>
     <video startmutedmobile="0" startonload="1" endaction="loop" format="equirectangular">
-      <source url="videos/IguanaComparison.mp4"/>
+      <source url="../../../videos/panotour/IguanaComparison.mp4"/>
     </video>
   </input>
   <view fovmode="0" pannorth="0">
