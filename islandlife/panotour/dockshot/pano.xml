@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panorama apprev="17333" appversion="6.0.5" id="node1">
+  <input levelbiashidpi="1.000" width="1024" levelbias="0.400" overlap="1" leveltileurl="tiles/node1/cf_%c/l_%l/c_%x/tile_%y.jpg" levelingroll="0" leveltilesize="510" levelingpitch="0" height="1024">
+    <level width="1024" predecode="0" height="1024" preload="0"/>
+    <level width="512" predecode="0" height="512" preload="0"/>
+    <level width="256" predecode="1" height="256" preload="1"/>
+    <preview color="0x808080" strip="1"/>
+    <video endaction="loop" startonload="1" startmutedmobile="0" format="equirectangular">
+      <source url="videos/DockShotOne_Final Loop.mp4"/>
+    </video>
+  </input>
+  <view pannorth="0" fovmode="0">
+    <start pan="0" tilt="0" fov="70" projection="4"/>
+    <flyin pan="0" tilt="-90" fov="170" projection="9"/>
+    <min pan="0" tilt="-90" fovpixel="2"/>
+    <max pan="360" tilt="90" fov="120" fovfisheye="360" scaletofit="1" fovstereographic="270"/>
+  </view>
+  <userdata author="" info="" longitude="" latitude="" source="" datetime="" description="" tags="Island Life Cycle" copyright="" comment="" title="" customnodeid=""/>
+  <hotspots width="180" height="20" wordwrap="1">
+    <label enabled="1" width="180" textalpha="1" border="1" background="1" borderradius="1" borderalpha="1" textcolor="0x000000" backgroundcolor="0xffffff" height="20" bordercolor="0x000000" backgroundalpha="1" wordwrap="1"/>
+    <polystyle mode="0" borderalpha="1" handcursor="1" backgroundcolor="0x0000ff" bordercolor="0x0000ff" backgroundalpha="0.25098"/>
+  </hotspots>
+  <media/>
+  <transition softedge="0" enabled="1" zoomin="0" zoomfov="20" blendcolor="0x000000" zoomspeed="2" zoomout="0" blendtime="1" zoomoutpause="1" type="crossdissolve"/>
+  <animation useinautorotation="0" syncanimationwithvideo="0" animsequence="Animation01"/>
+  <control speedwheel="1" contextfullscreen="1" hideabout="0" invertwheel="0" lockedmouse="0" sensitivity="8" lockedwheel="0" simulatemass="1" invertcontrol="1" lockedkeyboardzoom="0" contextprojections="0" rubberband="0" lockedkeyboard="0" dblclickfullscreen="0"/>
+</panorama>
