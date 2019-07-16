@@ -20,7 +20,7 @@
 // deltaY:    Distance the finger has moved since last event.
 // velocityX:
 // velocityY: Average velocity over last few events.
-
+/* eslint-disable */
 
 (function(fn) {
 	if (typeof define === 'function' && define.amd) {
