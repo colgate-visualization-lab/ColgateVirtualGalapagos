@@ -1,9 +1,36 @@
-function on(name) {
-    document.getElementById("overlay").style.display = "block";
-	document.getElementById(name + "_inner").style.display = "block";
-}
+'use strict'
 
-function off(name) {
-    document.getElementById("overlay").style.display = "none";
-	document.getElementById(name + "_inner").style.display = "none";
+function overlay () {
+  var overlayOn = document.getElementById('overlayOn')
+  var overlayOff = document.getElementById('overlayOff')
+  var overlay = document.getElementById('overlay')
+  var overlayInner = document.getElementById('overlay_inner')
+
+  if (overlayOn) {
+    overlayOn.onclick = function () {
+      switchOn()
+    }
+  }
+  if (overlayOff) {
+    overlayOff.onclick = function () {
+      switchOff()
+    }
+  }
+  // When the user clicks anywhere outside of the overlay, close it
+  window.onclick = function (event) {
+    if (event.target === overlay) {
+      switchOff()
+    }
+  }
+
+  function switchOn () {
+    overlay.style.display = 'block'
+    overlayInner.style.display = 'block'
+  }
+
+  function switchOff () {
+    overlay.style.display = 'none'
+    overlayInner.style.display = 'none'
+  }
 }
+export { overlay }

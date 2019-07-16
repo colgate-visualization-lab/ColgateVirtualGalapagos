@@ -1,79 +1,98 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/Volcano.css">
-    <link rel="stylesheet" href="../css/Fieldbook.css">
-    <link rel="stylesheet" href="../css/Toolbar.css">
-    <link rel="icon" href="../images/png-32x32.png" type="image/png"/>
-	  
-    <title>Colgate Virtual Galapagos</title>
-  </head>
-  <body>
-    <!-- Navbar Layout -->
-    <nav class="navbar vg_navbar sticky-top navbar-light bg-primary">
-      <form class="form-inline"> 
-        <a href="Volcano_TerrainMap01.html" id="home_button" class="btn btn-light" style="margin-left: 10px;" ><i class="material-icons">home</i></a>
-        <button id="fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i class="material-icons">book</i></button>
-        <button id="tb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i class="material-icons">menu</i></button>
-      </form>
-      <h4 class="nav_title">Colgate Virtual Galapagos</h4>
-    </nav>
-    
-    <!--  VIRTUAL GALAPAGOS LAYOUT   -->
-    <div id="main" class="container">
-      <div id="content" class="container">
-        <h2>Where is the mantle plume?</h2>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/Fieldbook.css">
+  <link rel="stylesheet" href="../css/Toolbar.css">
+  <link rel="icon" href="../images/png-32x32.png" type="image/png" />
+
+  <title>Colgate Virtual Galapagos</title>
+</head>
+
+<body>
+  <!-- Navbar Layout -->
+  <nav id="navbar" class="navbar vg_navbar sticky-top navbar-light">
+    <form class="form-inline">
+      <a href="Volcano_TerrainMap01.html" id="home_button" class="btn btn-light" style="margin-left: 10px;"><i
+          class="material-icons">home</i></a>
+      <button id="fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
+          class="material-icons">book</i></button>
+      <button id="tb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
+          class="material-icons">menu</i></button>
+      <button id="clear_fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
+          class="material-icons">delete</i></button>
+    </form>
+    <div>
+      <a href="/" id="page_title" class="nav_title">Virtual Galapagos</a>
+    </div>
+  </nav>
+
+  <!--  VIRTUAL GALAPAGOS LAYOUT   -->
+  <div id="main" class="container-fluid">
+    <div id="content" class="container-fluid">
+      <h2>Where is the mantle plume?</h2>
+      <div class="text-center">
         <img id="pp" class="img-fluid img-bordered" src="../images/volcano/terrain_map_plume.png" usemap="#image-map">
         <img id="pp_yes" class="img-fluid img-bordered" src="../images/volcano/terrain_map_plume_yes.png">
         <img id="pp_no" class="img-fluid img-bordered" src="../images/volcano/terrain_map_plume_no.png">
-        <map name="image-map">
-          <area target="" alt="PlumePlacement01" title="PlumePlacement01" onclick="leftSelect();" coords="888,263,240,721,151,1356,307,1670,528,1840,757,1975,977,2043,1206,2085,1384,2107,1732,2047,1948,1962,2169,1865,2279,1746,2411,1611,2495,1475,2529,1348,2576,1178,2572,1005,2529,886,2487,742,2351,551,2029,348,1821,280,1601,203,1321,178,1037,208,642,343,507,449,375,555,269,665,134,877,112,1000,112,1161,167,1407" shape="poly">
-          <area target="" alt="PlumePlacement02" title="PlumePlacement02" onclick="rightSelect();" coords="3424,394,3208,432,2962,555,2796,657,2741,733,2682,848,2635,962,2580,1094,2597,1212,2618,1348,2665,1492,2720,1623,2809,1691,2894,1776,3051,1869,3208,1924,3348,1941,3496,1958,3661,1967,3751,1958,3890,1903,4001,1852,4111,1755,4259,1632,4353,1454,4382,1394,4454,1229,4476,1089,4433,962,4395,869,4340,784,4259,665,4149,564,4039,483,3920,428,3746,377,3619,369,3458,360" shape="poly">
-        </map>
       </div>
-      <div id="control_bar" class="container row justify-content-md-center">
-        <div id="nav_control">
-        </div>
-        <div id="audio_control">
-          <audio id="player">
-            <source id="player_src" type="audio/mpeg"/>
-          </audio>
-        </div>
+      <map name="image-map">
+        <area id=leftOption target="" alt="PlumePlacement01" title="PlumePlacement01" coords="479,532,442"
+          shape="circle">
+        <area id=rightOption target="" alt="PlumePlacement02" title="PlumePlacement02" coords="1385,521,427"
+          shape="circle">
+      </map>
+    </div>
+    <div id="control_bar" class="container row justify-content-md-center">
+      <div id="nav_control">
+      </div>
+      <div id="av_control">
+        <audio id="player">
+          <source id="player_src" type="audio/mpeg" />
+        </audio>
       </div>
     </div>
-    
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted">Colgate Virtual Galapagos is designed and built by students and faculty at <a href="https://www.colgate.edu/">Colgate University</a>.</span>
-      </div>
-    </footer>
-    
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../js/jquery-3.2.1.min.js" ></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap-4.0.0.js"></script>
-    
-    <!-- Responsive Image Maps -->
-	<script src="../js/libs/jquery.rwdImageMaps.min.js"></script>
-	<script>$('img[usemap]').rwdImageMaps();</script>
-    
-   <!-- Custom scripts -->
-    <script src="../js/virtualgalapagos/fieldbook.js"></script>
-    <script src="../js/virtualgalapagos/overlay.js"></script>
-    <script src="../js/virtualgalapagos/toolbar.js"></script>
-    <script src="../js/virtualgalapagos/mastercontroller.js"></script>
-    <script src="../js/virtualgalapagos/audiocontroller.js"></script>
-    <script src="../js/virtualgalapagos/volcano/Volcano_PlumePlacement01.js"></script>
-    
-  </body>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <span class="text-muted">Designed and built by students and faculty at <a href="https://www.colgate.edu/">Colgate
+          University</a>.</span>
+    </div>
+  </footer>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="../js/jquery-3.2.1.min.js"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/bootstrap-4.0.0.js"></script>
+
+  <!-- Responsive Image Maps -->
+  <script src="../js/libs/jquery.rwdImageMaps.min.js"></script>
+  <script>$('img[usemap]').rwdImageMaps();</script>
+
+  <!-- Custom scripts -->
+  <script src="../js/virtualgalapagos/fieldbook.js" type="module"></script>
+  <script src="../js/virtualgalapagos/volcano/volcano_fieldbook.js" type="module"></script>
+  <script src="../js/virtualgalapagos/overlay.js" type="module"></script>
+  <script src="../js/virtualgalapagos/toolbar.js" type="module"></script>
+  <script src="../js/virtualgalapagos/volcano/volcano_toolbar.js" type="module"></script>
+  <script src="../js/virtualgalapagos/mastercontroller.js" type="module"></script>
+  <script src="../js/virtualgalapagos/volcano/volcano_mastercontroller.js" type="module"></script>
+  <script src="../js/virtualgalapagos/avcontroller.js" type="module"></script>
+  <script src="../js/virtualgalapagos/volcano/volcano_avcontroller.js" type="module"></script>
+  <script src="../js/virtualgalapagos/volcano/Volcano_PlumePlacement01.js" type="module"></script>
+
+</body>
+
 </html>
