@@ -11,50 +11,102 @@
   <!-- Custom Styling -->
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="/css/Toolbar.css">
+  <link href="css/index.css" rel="stylesheet">
   <link rel="icon" href="images/png-32x32.png" type="image/png" />
 
   <title>Colgate Virtual Galapagos</title>
 </head>
 
-<body>
-  <div class="jumbotron">
-    <div>
-      <a href="/" id="page_title" class="nav_title">Virtual Galapagos</a>
-    </div>
-    <br>
-    <ul class="nav nav-pills nav-justified">
-      <li class="nav-item">
-        <a id="home" class="nav-link active" href="#home">Home</a>
-      </li>
-      <li class="nav-item">
-        <a id="mysteries" class="nav-link" href="#mysteries">Mysteries</a>
-      </li>
-      <li class="nav-item">
-        <a id="about" class="nav-link" href="#about">About</a>
-      </li>
-      <li class="nav-item">
-        <a id="contact" class="nav-link" href="#contact">Contact us</a>
-      </li>
-    </ul>
-  </div>
+</head>
 
-  <div class="tab-content">
-    <div id="home" class="show tab-pane fade active container">
-      <h3>HOME</h3>
-      <p>Place holder content</p>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="/">Virtual Galapagos</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#mysteries">Mysteries</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+      </ul>
+  </nav>
+
+  <header class="text-white">
+    <div class="container text-center">
+      <h1>Welcome to Virtual Galapagos</h1>
+      <!-- <p class="lead">Place holder content</p> -->
     </div>
-    <div id="mysteries" class="tab-pane fade container-fluid">
-      <div class="text-center">
-        <img src="./images/homepage.png" class="img-fluid img-bordered" usemap="#image-map">
+  </header>
+
+  <section id="home">
+    <div id="slideshow" class="carousel slide" data-ride="carousel">
+      <ul class="carousel-indicators">
+        <li data-target="#slideshow" data-slide-to="0" class="active"></li>
+        <li data-target="#slideshow" data-slide-to="1"></li>
+        <li data-target="#slideshow" data-slide-to="2"></li>
+      </ul>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="images/volcano/terrain_map.png" class="img-fluid img-bordered" alt="Galapagos" width="1100" height="500">
+          <div class="carousel-caption">
+            <!-- <h3>Santa Cruz</h3> -->
+            <p>Map of the Galapagos Islands</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="images/iguana/LandIguanaRock.png" class="img-fluid img-bordered" alt="Land Iguana" width="1100" height="500">
+          <div class="carousel-caption">
+            <!-- <h3>Isabela</h3> -->
+            <p>Land Iguana</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="images/iguana/MarineIguanaWithBabies.png" class="img-fluid img-bordered" alt="Marine Iguanas" width="1100" height="500">
+          <div class="carousel-caption">
+            <!-- <h3>Fernandina</h3> -->
+            <p>Marine Iguanas</p>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#slideshow" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#slideshow" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+  </section>
+
+  <section id="mysteries">
+    <div class="container-fluid">
+      <h1>Mysteries</h1>
+      <div class=" mx-auto">
+        <img id="homepage-img" src="./images/homepage.png" class="img-fluid img-bordered" usemap="#image-map">
       </div>
       <map name="image-map">
-        <area id="mystery1" target="" alt="" title="mystery1" href=""
+        <area id="mystery1" target="" alt="" title="Mystery 1" href="mysteries/mystery1.html" data-toggle="tooltip"
           coords="390,367,438,342,446,311,497,295,514,275,533,297,553,334,587,367,595,395,601,462,637,496,662,521,699,549,724,566,730,605,721,655,738,669,755,655,778,674,794,708,814,736,794,781,780,820,738,854,710,854,674,871,618,894,567,879,491,874,474,846,446,817,458,793,497,742,539,706,587,698,620,700,646,678,654,655,604,613,584,597,575,557,522,524,497,487,497,456,488,417,486,386,469,369,415,386"
           shape="poly">
       </map>
     </div>
-    <div id="about" class="tab-pane fade container">
-      <h3>About</h3>
+  </section>
+
+  <section id="about">
+    <div class="container-fluid">
+      <h1>About</h1>
       <p>Welcome to Colgate Virtual Galapagos, a digital learning module currently in development by students, staff,
         and
         faculty at Colgate University.</p>
@@ -95,36 +147,43 @@
       <p>The Virtual Galapagos Project is funded through support from NASC, Colgate’s Geology Department, and a
         collaborative grant from the Office of Science and Society at McGill University’s Labs Without Borders. </p>
     </div>
-    <div id="contact" class="tab-pane fade container">
-      <h3>Contact us</h3>
-      <p>Place holder content.</p>
+  </section>
+  <section id="contact">
+    <div class="container-fluid ">
+      <h1>Contact</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante
+        dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce
+        nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti
+        sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+
+      <p> sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In
+        scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas
+        porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula
+        lacinia aliquet. Mauris ipsum.</p>
+      <p>Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class
+        aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia,
+        urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut
+        fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam.
+        Etiam ultrices. Suspendisse in justo eu magna luctus suscipit.</p>
+      <p>Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet. Donec lacus nunc, viverra nec, blandit vel, egestas et, augue. Vestibulum tincidunt malesuada tellus. Ut ultrices ultrices enim. Curabitur sit amet mauris. Morbi in dui quis est pulvinar ullamcorper. Nulla facilisi. Integer lacinia sollicitudin massa.</p>
     </div>
-  </div>
-
-  </div>
-
-  <div id="sidenav" class="sidenav">
-    <a id="closebtn" href="javascript:void(0)" class="closebtn">&times;</a>
-  </div>
-
+  </section>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="py-5">
     <div class="container">
-      <a href="volcano/Volcano_TerrainMap01.html" class="btn btn-dark">Volcano</a>
-      <a href="iguana/panotour/Iguana_Endemic01.html" class="btn btn-dark">Iguana</a>
-      <span class="text-muted">Designed and built by students and faculty at <a href="https://www.colgate.edu/">Colgate
-          University</a>.</span>
+      <p id="footer" class="m-0 text-center text-muted"></p>
     </div>
   </footer>
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="./js/jquery-3.2.1.min.js"></script>
-  <script src="./js/popper.min.js"></script>
-  <script src="./js/bootstrap-4.0.0.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="js/bootstrap-4.0.0.js"></script>
 
-  <script src="./js/virtualgalapagos/index.js" type="module"></script>
+  <!-- Custom JavaScript for this theme -->
+  <script src="js/virtualgalapagos/index.js"></script>
+
 </body>
 
 </html>
