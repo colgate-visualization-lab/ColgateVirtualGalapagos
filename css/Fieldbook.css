@@ -1,5 +1,5 @@
 #fb_overlay {
-    position: fixed; /* Sit on top of the page content */
+    position: absolute; /* Sit on top of the page content */
     display: none; /* Hidden by default */
     width: 100%; /* Full width (cover the whole page) */
     height: 100%; /* Full height (cover the whole page) */
@@ -8,24 +8,23 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.3); /* Black background with opacity */
-    z-index: 3; /* Specify a stack order in case you're using a different order for other elements */
+    z-index: 5; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
   
     overflow: scroll;
 }
 
 #fb_overlay_inner {
-    position: absolute;
+    position: relative;
     top: 10%;
     left: 50%;
-	width: 600px;
+	  width: 75%;
     font-size: 25px;
-/*    text-shadow: 2px 2px 4px #000000;*/
+    text-shadow: 1px 1px 2px #000000;
     color: white;
     background-color: #007bff;
-    display: inline;
     padding: 0.5rem;
-	max-width: 100%;
+	  max-width: 100%;
     transform: translate(-50%,0%);
     -ms-transform: translate(-50%, 0%);
 
@@ -46,7 +45,6 @@
 }
 
 .fieldbook_ta {
-/*  background: url("../images/fieldbookbg.png") repeat-y;*/
   overflow: auto;
   width: 100%;
   height: 150px;
@@ -63,4 +61,8 @@
 
 .fieldbook_link {
 	font-size: 18px;
+}
+
+#clear_fb_button {
+  display: none;
 }
