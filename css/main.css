@@ -74,13 +74,16 @@ body {
 
 /* VG Layout Elements */
 #control_bar{
-  padding:10px;
+  padding-right:10px;
   border: red;
 }
 
 #av_control{
-  padding: inherit;
-  margin: auto
+  padding: 5px;
+  margin: auto;
+  z-index: 6;
+  /* bottom: 30px; */
+  /* position: absolute; */
 }
 
 #nav_control{
@@ -91,7 +94,7 @@ body {
   background-color: rgb(20, 160, 148)
 }
 
-#control_bar .btn{
+.btn{
   margin-left: 5px;
 }
 
@@ -122,4 +125,9 @@ h2#page_title {
 .nav-link {
   color: rgb(247, 9, 148);
   font-weight: bolder;
+}
+footer {
+  z-index: 10;
+  bottom: 10px;
+  /* background-color: aqua; */
 }
