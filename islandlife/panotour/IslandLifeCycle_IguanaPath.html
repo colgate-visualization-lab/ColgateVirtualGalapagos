@@ -18,15 +18,32 @@
   <link rel="stylesheet" href="../../css/Toolbar.css">
   <link rel="stylesheet" href="../../css/paint.css">
   <link rel="icon" href="../../images/png-32x32.png" type="image/png" />
-  <link rel="stylesheet" href="../../css/islandlife.css">
+  <link rel="stylesheet" href="../../css/pano.css">
 
   <title>Colgate Virtual Galapagos</title>
 </head>
 
 <body>
+  <div id="main" style="width:100%;height:100%;overflow:hidden;">
+    <br>Loading...<br><br>
+
+    <script type="text/javascript" src="../../js/libs/pano2vr_player.js"></script>
+    <script type="text/javascript">
+
+      // create the panorama player with the content
+      pano = new pano2vrPlayer("main");
+      // load the configuration
+
+      window.addEventListener("load", function () {
+        pano.readConfigUrlAsync("iguanapath/pano.xml");
+      });
+    </script>
+    <noscript>
+      <p><b>Please enable Javascript!</b></p>
+    </noscript>
+
     <!-- Navbar Layout -->
-    <nav id="" class="navbar vg_navbar sticky-top navbar-light" style = "background-color: rgb(20, 160, 148);"> 
-      <!--navbar class doesn't work here-->
+    <nav id="" class="navbar vg_navbar sticky-top navbar-light">
       <form class="form-inline">
         <a href="IslandLifeCycle_Start01.html" id="home_button" class="btn btn-light" style="margin-left: 10px;"><i
             class="material-icons">home</i></a>
@@ -37,35 +54,17 @@
         <button id="clear_fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
             class="material-icons">delete</i></button>
       </form>
-      <div>
-        <a href="/" id="page_title" class="nav_title">Virtual Galapagos</a>
-      </div>
-  </nav>
-  
-    <!--  VIRTUAL GALAPAGOS LAYOUT   -->
-    <div id="main" class="container-fluid">
-      <div id="content" class="container-fluid text-center">
-        <div class = "row-img">
-          <div class = "column-img">
-            <img src="../../images/islandlife/BoobiesDiving.png" alt="Responsive image" id="boobie-diving">
-            <img src="../../images/islandlife/StillWater.png" alt="Responsive image" id="still-water">
+      <h2 id="page_title" class="nav_title">Place Holder</h4>
+        <div id="control_bar" class=" row justify-content-md-center">
+          <div id="nav_control">
           </div>
-          <div class = "column-img">
-            <img src="../../images/islandlife/IguanaPath.png" alt="Responsive image" id="iguana-path">
-            <img src="../../images/islandlife/CalderaShotOne.png" alt="Responsive image" id="caldera-shot1">
+          <div id="av_control">
+            <audio id="player">
+              <source id="player_src" type="audio/mpeg" />
+            </audio>
           </div>
         </div>
-      </div>
-      <div id="control_bar" class="container row justify-content-md-center">
-        <div id="nav_control">
-        </div>
-        <div id="av_control">
-          <audio id="player">
-            <source id="player_src" type="audio/mpeg" />
-          </audio>
-        </div>
-      </div>
-    </div>
+    </nav>
 
     <!-- Footer -->
     <footer class="footer">
