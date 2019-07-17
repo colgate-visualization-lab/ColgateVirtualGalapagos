@@ -36,7 +36,11 @@ class IguanaMasterController extends MasterController {
 var pageName = IguanaMasterController.grabPageName()
 
 // List of pages in module in order
+<<<<<<< HEAD
 var pageList = ['panotour/IslandLifeCycle_Start01', 'IslandLifeCycle_IslandTimeline01', 'panotour/IslandLifeCycle_Fernandina01', 'panotour/IslandLifeCycle_Fernandina02', 'IslandLifeCycle_Fernandina03', 'panotour/IslandLifeCycle_Fernandina04', 'IslandLifeCycle_Fernandina05', 'IslandLifeCycle_SeamountsWhiteboard01', 'IslandLifeCycle_SeamountsIdentification01', 'IslandLifeCycle_Seamounts04', 'IslandLifeCycle_Seamounts02']
+=======
+var pageList = ['IslandLifeCycle_Start01', 'IslandLifeCycle_SeamountsWhiteboard01', 'IslandLifeCycle_SeamountsIdentification01', 'IslandLifeCycle_Seamounts04', 'IslandLifeCycle_Seamounts02']
+>>>>>>> a0673d39dc331429655995817ccd9f9e83c187fc
 // Pages and associated fieldbook pages
 
 // sidebar navigation
@@ -59,6 +63,7 @@ overlay()
 var toolbar = new IguanaToolbar(toolbarLinks, masterController)
 toolbar.initToolbar()
 
+<<<<<<< HEAD
 // AVcontroller
 var player = document.getElementById('player')
 if (player !== null) { // page has av set up
@@ -73,3 +78,5 @@ if (player !== null) { // page has av set up
   avController.start()
   avController.setBGTrack()
 }
+=======
+>>>>>>> a0673d39dc331429655995817ccd9f9e83c187fc
