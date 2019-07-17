@@ -62,16 +62,6 @@ body {
   margin-bottom: 60px;
   background-color: antiquewhite 
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
-}
-
-
 /* VG Layout Elements */
 #control_bar{
   padding-right:10px;
@@ -127,7 +117,12 @@ h2#page_title {
   font-weight: bolder;
 }
 footer {
-  z-index: 10;
-  bottom: 10px;
-  /* background-color: aqua; */
+  position: absolute;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+#main {
+  position: relative;
 }
