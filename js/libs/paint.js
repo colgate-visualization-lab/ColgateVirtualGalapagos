@@ -56,6 +56,9 @@ function paintCanvas () {
   function init () {
     canvas = $('#draw')
     canvasElement = document.getElementById('draw')
+    if (canvasElement === null) {
+      return
+    }
     ctx = canvasElement.getContext('2d')
 
     function mouseEvent (e) {
