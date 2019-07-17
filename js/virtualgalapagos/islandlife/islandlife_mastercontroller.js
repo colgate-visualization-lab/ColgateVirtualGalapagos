@@ -63,7 +63,6 @@ overlay()
 var toolbar = new IguanaToolbar(toolbarLinks, masterController)
 toolbar.initToolbar()
 
-<<<<<<< HEAD
 // AVcontroller
 var player = document.getElementById('player')
 if (player !== null) { // page has av set up
@@ -78,5 +77,3 @@ if (player !== null) { // page has av set up
   avController.start()
   avController.setBGTrack()
 }
-=======
->>>>>>> a0673d39dc331429655995817ccd9f9e83c187fc
