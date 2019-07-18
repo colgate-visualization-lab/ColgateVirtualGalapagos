@@ -24,7 +24,7 @@ class VolcanoMasterController extends MasterController {
   init () {
     super.init()
     // special cases
-    MasterController.storeItem('TerrainMap03', 'false')
+    // MasterController.storeItem('TerrainMap03', 'false')
     MasterController.storeItem('PlumePlacement01', 'false')
     MasterController.storeItem('initProgress', 'true')
   }
