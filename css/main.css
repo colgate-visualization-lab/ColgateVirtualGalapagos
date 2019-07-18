@@ -62,25 +62,18 @@ body {
   margin-bottom: 60px;
   background-color: antiquewhite 
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
-}
-
-
 /* VG Layout Elements */
 #control_bar{
-  padding:10px;
+  padding-right:10px;
   border: red;
 }
 
 #av_control{
-  padding: inherit;
-  margin: auto
+  padding: 5px;
+  margin: auto;
+  z-index: 6;
+  /* bottom: 30px; */
+  /* position: absolute; */
 }
 
 #nav_control{
@@ -91,7 +84,7 @@ body {
   background-color: rgb(20, 160, 148)
 }
 
-#control_bar .btn{
+.btn{
   margin-left: 5px;
 }
 
@@ -122,4 +115,14 @@ h2#page_title {
 .nav-link {
   color: rgb(247, 9, 148);
   font-weight: bolder;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+#main {
+  position: relative;
 }
