@@ -70,10 +70,7 @@ body {
 
 #av_control{
   padding: 5px;
-  margin: auto;
-  z-index: 6;
-  /* bottom: 30px; */
-  /* position: absolute; */
+  text-align: center;
 }
 
 #nav_control{
@@ -122,7 +119,9 @@ footer {
   margin: auto;
   left: 0;
   right: 0;
+  z-index: 6;
 }
 #main {
   position: relative;
+  padding-bottom: 1%;
 }
