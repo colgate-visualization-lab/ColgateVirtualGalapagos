@@ -22,7 +22,7 @@
 
 <body>
   <!-- Navbar Layout -->
-  <nav id="main" class="navbar vg_navbar sticky-top navbar-light bg-primary">
+  <nav id="navbar" class="navbar vg_navbar sticky-top navbar-light">
     <form class="form-inline">
       <a href="/mysteries/mystery1.html" id="home_button" class="btn btn-light" style="margin-left: 10px;"><i
           class="material-icons">home</i></a>
@@ -33,8 +33,12 @@
       <button id="clear_fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
           class="material-icons">delete</i></button>
     </form>
-    <div>
-      <a href="/" id="page_title" class="nav_title">Virtual Galapagos</a>
+    <h3 id="page_title" class="nav_title">Virtual Galapagos</h3>
+    <div id="control_bar" class=" row justify-content-md-center">
+      <div id="nav_control">
+          <a href="Volcano_TerrainMap02.html" class="btn btn-dark"><i class="material-icons">arrow_back</i></a>
+          <a id="nextBtn" href="panotour/Volcano_Compare360.html" class="btn btn-dark"><i class="material-icons">arrow_forward</i></a>
+      </div>
     </div>
   </nav>
 
@@ -50,11 +54,7 @@
     </div>
     <div id="control_bar" class="container row justify-content-md-center">
       <div id="nav_control">
-        <a href="Volcano_TerrainMap02.html" class="btn btn-dark"><i class="material-icons">arrow_back</i></a>
-        <a id="nextBtn" href="panotour/Volcano_Compare360.html" class="btn btn-dark"><i
-            class="material-icons">arrow_forward</i></a>
       </div>
-     
     </div>
   </div>
 
