@@ -125,3 +125,12 @@ footer {
   position: relative;
   padding-bottom: 1%;
 }
+.carousel-caption {
+  color: rgb(185, 30, 30)
+}
+.dd-drag {
+  background: grey;
+  border: solid;
+  color: white;
+  padding: 0.5em; 
+}

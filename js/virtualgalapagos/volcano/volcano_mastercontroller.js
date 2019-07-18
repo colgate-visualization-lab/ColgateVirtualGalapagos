@@ -140,12 +140,12 @@ fbController.populateDivs()
 fbController.start(currentPage)
 
 // Dragdrop controller
-var ddObj = ddList.filter(ddList => (ddList.name === pageName))
-if (ddObj.length !== 0) {
-  var dragdrop = new VolcanoDragDrop(ddObj[0].ddDict, masterController)
-  dragdrop.initDrops()
-  dragdrop.initDrags()
-}
+// var ddObj = ddList.filter(ddList => (ddList.name === pageName))
+// if (ddObj.length !== 0) {
+//   var dragdrop = new VolcanoDragDrop(ddObj[0].ddDict, masterController)
+//   dragdrop.initDrops()
+//   dragdrop.initDrags()
+// }
 
 // Plumeplacement
 if (pageName === 'Volcano_PlumePlacement01') {
