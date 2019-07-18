@@ -9,9 +9,13 @@
 
 import { MasterController } from '../mastercontroller.js'
 import { overlay } from '../overlay.js'
+import { IslandLifeAVController } from './islandlife_avcontroller.js'
+import { IslandLifeFieldbook } from './islandlife_fieldbook.js'
 import { IslandLifeToolbar } from './islandlife_toolbar.js'
 
-class IguanaMasterController extends MasterController {
+
+
+class IslandLifeMasterController extends MasterController {
   constructor (pageList, pageName) {
     super(pageList, pageName, 'islandlife')
   }
@@ -33,12 +37,13 @@ class IguanaMasterController extends MasterController {
 }
 
 // Mastercontroller
-var pageName = IguanaMasterController.grabPageName()
+var pageName = IslandLifeMasterController.grabPageName()
 
 // List of pages in module in order
 var pageList = ['panotour/IslandLifeCycle_Start01', 'IslandLifeCycle_IslandTimeline01', 
   'panotour/IslandLifeCycle_Fernandina01', 'panotour/IslandLifeCycle_Fernandina02', 
   'IslandLifeCycle_Fernandina03', 'panotour/IslandLifeCycle_Fernandina04', 'IslandLifeCycle_Fernandina05', 
+  'IslandLifeCycle_Colonization01',
   'IslandLifeCycle_SeamountsWhiteboard01', 'IslandLifeCycle_SeamountsIdentification01', 'IslandLifeCycle_Seamounts04', 
   'IslandLifeCycle_Seamounts02']
 // Pages and associated fieldbook pages
@@ -53,14 +58,14 @@ for (var i = 0; i < pageList.length; i++) {
 
 
 // init controllers
-var masterController = new IguanaMasterController(pageList, pageName)
+var masterController = new IslandLifeMasterController(pageList, pageName)
 masterController.init()
 
 // overlay
 overlay()
 
 // Toolbar for side navigation
-var toolbar = new IguanaToolbar(toolbarLinks, masterController)
+var toolbar = new IslandLifeToolbar(toolbarLinks, masterController)
 toolbar.initToolbar()
 
 // AVcontroller
@@ -77,3 +82,14 @@ if (player !== null) { // page has av set up
   avController.start()
   avController.setBGTrack()
 }
+
+// Fieldbook
+var currentPage = fbPages[pageName]
+if (currentPage == null) {
+  currentPage = 0
+}
+
+var fbController = new IslandLifeFieldbook(fbPages, 8, masterController)
+fbController.init()
+fbController.populateDivs()
+fbController.start(currentPage)
