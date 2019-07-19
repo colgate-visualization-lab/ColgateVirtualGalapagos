@@ -83,10 +83,10 @@ var ddList = [
   {
     name: 'Volcano_PlatesGame01',
     ddDict: {
-      'convergent1': ['img_convergent1', 'img_convergent2'],
-      'convergent2': ['img_convergent1', 'img_convergent2'],
-      'divergent1': ['img_divergent1'],
-      'transform1': ['img_transform1']
+      'convergent1': ['Image 1', 'Image 2'],
+      'convergent2': ['Image 1', 'Image 2'],
+      'divergent1': ['Image 3'],
+      'transform1': ['Image 4']
     }
   }
 ]
@@ -140,12 +140,12 @@ fbController.populateDivs()
 fbController.start(currentPage)
 
 // Dragdrop controller
-// var ddObj = ddList.filter(ddList => (ddList.name === pageName))
-// if (ddObj.length !== 0) {
-//   var dragdrop = new VolcanoDragDrop(ddObj[0].ddDict, masterController)
-//   dragdrop.initDrops()
-//   dragdrop.initDrags()
-// }
+var ddObj = ddList.filter(ddList => (ddList.name === pageName))
+if (ddObj.length !== 0) {
+  var dragdrop = new VolcanoDragDrop(ddObj[0].ddDict, masterController)
+  dragdrop.initDrops()
+  dragdrop.initDrags()
+}
 
 // Plumeplacement
 if (pageName === 'Volcano_PlumePlacement01') {
