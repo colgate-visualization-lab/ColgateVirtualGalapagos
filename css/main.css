@@ -70,10 +70,7 @@ body {
 
 #av_control{
   padding: 5px;
-  margin: auto;
-  z-index: 6;
-  /* bottom: 30px; */
-  /* position: absolute; */
+  text-align: center;
 }
 
 #nav_control{
@@ -122,7 +119,63 @@ footer {
   margin: auto;
   left: 0;
   right: 0;
+  z-index: 6;
 }
 #main {
   position: relative;
+  padding-bottom: 1%;
+}
+.carousel-caption {
+  color: rgb(185, 30, 30)
+}
+.dd-drag {
+  background: grey;
+  border: solid;
+  color: white;
+  padding: 0.5em; 
+}
+
+/* The snackbar - position it at the top and in the middle of the screen */
+#snackbar {
+  visibility:hidden ; /*Hidden by default. */
+  min-width: 250px; /*Set a default minimum width */
+  margin-left: -125px; /*Divide value of min-width by 2 */
+  background-color: rgb(28, 203, 226);
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 6; 
+  left: 50%; /* Center the snackbar */
+  top: 60px; /* 60px from the bottom */
+}
+
+#snackbar.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 60px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 60px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {top: 60px; opacity: 0;} 
+  to {top: 0; opacity: 1;}
+}
+
+@keyframes fadeout {
+  from {top: 60px; opacity: 0;}
+  to {top: 0; opacity: 1;}
 }
