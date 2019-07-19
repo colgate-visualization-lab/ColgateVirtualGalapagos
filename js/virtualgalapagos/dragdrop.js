@@ -80,16 +80,26 @@ class DragDrop {
     if (dropTargets.includes(ev.target.id)) {
       pageObj.dropMatch(pageObj.activeElement, ev.target)
     } else {
-      alert("That's not a match! Try again.")
+      DragDrop.showAlert("That's not a match! Try again.", 'red')
     }
   }
 
   // called when a succesful drag/drop match happens
   dropMatch (drag, drop) {
-    alert('You got it!')
-    drag.innerHTML = drag.innerHTML.strike()
+    DragDrop.showAlert('You got it!', 'blue')
+    drag.innerText = drop.id + ' - ' + drag.innerText
     this.disableDrag(drag)
     this.disableDrop(drop)
+  }
+
+  static showAlert (msg, color) {
+    var bar = document.getElementById('snackbar')
+    bar.innerHTML = msg
+    bar.className = 'show'
+    bar.style.backgroundColor = color
+
+    // disappear after 3 seconds
+    setTimeout(function () { bar.className = bar.className.replace('show', '') }, 3000)
   }
 
   // disables elements after they've been matched
