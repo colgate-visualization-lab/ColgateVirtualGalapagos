@@ -43,7 +43,9 @@ var pageName = IslandLifeMasterController.grabPageName()
 var pageList = ['panotour/IslandLifeCycle_Start01', 'IslandLifeCycle_IslandTimeline01', 
   'panotour/IslandLifeCycle_Fernandina01', 'panotour/IslandLifeCycle_Fernandina02', 
   'IslandLifeCycle_Fernandina03', 'panotour/IslandLifeCycle_Fernandina04', 'IslandLifeCycle_Fernandina05', 
-  'IslandLifeCycle_Colonization01',
+  'IslandLifeCycle_Colonization01', 'panotour/IslandLifeCycle_Fernandina06', 'panotour/IslandLifeCycle_SantaCruz01', 
+  'IslandLifeCycle_SantaCruz360s01', 'panotour/IslandLifeCycle_Espanola01', 'panotour/IslandLifeCycle_Espanola03',
+  'panotour/IslandLifeCycle_ContractionWhiteboard01', 'IslandLifeCycle_Espanola02',
   'IslandLifeCycle_SeamountsWhiteboard01', 'IslandLifeCycle_SeamountsIdentification01', 'IslandLifeCycle_Seamounts04', 
   'IslandLifeCycle_Seamounts02']
 // Pages and associated fieldbook pages
