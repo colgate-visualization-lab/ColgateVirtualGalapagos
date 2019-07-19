@@ -1,0 +1,47 @@
+.container-img {
+    top: 12%;
+    left: 18%;
+    position: fixed;
+    text-align: center;
+    z-index: -1;
+}
+
+.container-2 {
+    position: relative;
+    text-align: center;
+}
+
+.white-box {
+    background-color: white;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    padding: 80px 50px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.box-1 {
+    top: 10%;
+    right: 10%;
+}
+
+.img-on-board {
+    position: absolute;
+    width: 40%;
+}
+
+#PitCraterLedge {
+    top: 2%;
+    left: 3%;
+}
+
+#cactus {
+    bottom: 2%;
+    right: 30%;
+}
+
+#tortoise {
+    top: 2%;
+    right: 3%;
+}
