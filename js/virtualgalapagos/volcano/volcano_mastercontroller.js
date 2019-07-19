@@ -83,10 +83,10 @@ var ddList = [
   {
     name: 'Volcano_PlatesGame01',
     ddDict: {
-      'convergent1': ['img_convergent1', 'img_convergent2'],
-      'convergent2': ['img_convergent1', 'img_convergent2'],
-      'divergent1': ['img_divergent1'],
-      'transform1': ['img_transform1']
+      'convergent1': ['Image 1', 'Image 2'],
+      'convergent2': ['Image 1', 'Image 2'],
+      'divergent1': ['Image 3'],
+      'transform1': ['Image 4']
     }
   }
 ]
