@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../css/Toolbar.css">
   <link rel="stylesheet" href="../css/paint.css">
   <link rel="icon" href="../images/png-32x32.png" type="image/png" />
+  <link rel="stylesheet" href="../css/islandlife/colonization.css">
 
   <title>Colgate Virtual Galapagos</title>
 </head>
@@ -36,7 +37,21 @@
       <a href="/" id="page_title" class="nav_title">Virtual Galapagos</a>
     </div>
   </nav>
+  <div>
+    <div draggable="true" ondragstart="drag(event)" id="drag1">Breaks Sea Level</div>
+    <div draggable="true" ondragstart="drag(event)" id="drag2">Seeds</div>
+    <div draggable="true" ondragstart="drag(event)" id="drag3">Birds</div>
+    <div draggable="true" ondragstart="drag(event)" id="drag4">Iguanas</div>
+    <div draggable="true" ondragstart="drag(event)" id="drag5">Lava Animals</div>
+    <div draggable="true" ondragstart="drag(event)" id="drag6">Soil</div>
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 
+  </div>
   <!--  VIRTUAL GALAPAGOS LAYOUT   -->
   <div id="main" class="container-fluid">
     <div id="content" class="container-fluid text-center">
@@ -76,7 +91,8 @@
   <script src="../../js/virtualgalapagos/islandlife/islandlife_mastercontroller.js" type="module"></script>
   <script src="../../js/virtualgalapagos/avcontroller.js" type="module"></script>
   <script src="../../js/virtualgalapagos/islandlife/islandlife_avcontroller.js" type="module"></script>
- <script src="../../js/libs/paint.js" type="module"></script>
+  <script src="../../js/libs/paint.js" type="module"></script>
+  <script src="../js/virtualgalapagos/islandlife/islandlife_colonization.js"></script>
 
 </body>
 
