@@ -1,0 +1,8 @@
+#div1, #div2, #div3, #div4, #div5, #div6 {
+    float: left;
+    width: 100px;
+    height: 35px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+  }
