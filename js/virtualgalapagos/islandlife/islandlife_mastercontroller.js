@@ -45,10 +45,16 @@ var pageList = ['panotour/IslandLifeCycle_Start01', 'IslandLifeCycle_IslandTimel
   'IslandLifeCycle_Fernandina03', 'panotour/IslandLifeCycle_Fernandina04', 'IslandLifeCycle_Fernandina05', 
   'IslandLifeCycle_Colonization01', 'panotour/IslandLifeCycle_Fernandina06', 'panotour/IslandLifeCycle_SantaCruz01', 
   'IslandLifeCycle_SantaCruz360s01', 'panotour/IslandLifeCycle_Espanola01', 'panotour/IslandLifeCycle_Espanola03',
-  'panotour/IslandLifeCycle_ContractionWhiteboard01', 'IslandLifeCycle_Espanola02',
-  'IslandLifeCycle_SeamountsWhiteboard01', 'IslandLifeCycle_SeamountsIdentification01', 'IslandLifeCycle_Seamounts04', 
-  'IslandLifeCycle_Seamounts02']
+  'IslandLifeCycle_Seamounts02','panotour/IslandLifeCycle_ContractionWhiteboard01', 'IslandLifeCycle_Espanola02',
+  'IslandLifeCycle_SeamountsWhiteboard01', 'IslandLifeCycle_SeamountsIdentification01', 'IslandLifeCycle_Seamounts04']
 // Pages and associated fieldbook pages
+
+var fbPages = {
+  'panotour/IslandLifeCycle_Start01': 2,
+  'IslandLifeCycle_IslandTimeline01': 3,
+  'IslandLifeCycle_Colonization01': 4,
+  'IslandLifeCycle_SantaCruz360s01': 5
+}
 
 // sidebar navigation
 var toolbarLinks = []
@@ -70,28 +76,13 @@ overlay()
 var toolbar = new IslandLifeToolbar(toolbarLinks, masterController)
 toolbar.initToolbar()
 
-// AVcontroller
-var player = document.getElementById('player')
-if (player !== null) { // page has av set up
-  var avType
-  if (videolist.includes(pageName)) {
-    avType = 'video'
-  } else {
-    avType = 'audio'
-  }
-
-  var avController = new IslandLifeAVController(player, avType, masterController)
-  avController.start()
-  avController.setBGTrack()
-}
-
 // Fieldbook
 var currentPage = fbPages[pageName]
 if (currentPage == null) {
   currentPage = 0
 }
 
-var fbController = new IslandLifeFieldbook(fbPages, 8, masterController)
+var fbController = new IslandLifeFieldbook(fbPages, 6, masterController)
 fbController.init()
 fbController.populateDivs()
 fbController.start(currentPage)
