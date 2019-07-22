@@ -53,6 +53,9 @@ function paintCanvas () {
   }
   function initButtons () {
     var rootElement = document.getElementById('draw')
+    if (rootElement === null) {
+      return
+    }
     var canvas = document.createElement('CANVAS')
     canvas.setAttribute('id', 'drawCanvas')
     var container = document.createElement('DIV')
