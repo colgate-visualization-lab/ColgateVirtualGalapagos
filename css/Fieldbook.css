@@ -10,7 +10,6 @@
     background-color: rgba(0,0,0,0.3); /* Black background with opacity */
     z-index: 5; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
-  
     overflow: scroll;
 }
 
@@ -22,7 +21,7 @@
     font-size: 25px;
     text-shadow: 1px 1px 2px #000000;
     color: white;
-    background-color: #007bff;
+    background-color: #219fc5a8;
     padding: 0.5rem;
 	  max-width: 100%;
     transform: translate(-50%,0%);
@@ -32,16 +31,6 @@
 
 #fb_navbar {
     background-color: black;
-}
-
-
-#fieldbook_button {
-  transition: margin-left .5s;
-  position: fixed;
-  z-index: 2;
-  background-color: red;
-  top: 5%; 
-  left: 3%;
 }
 
 .fieldbook_ta {
