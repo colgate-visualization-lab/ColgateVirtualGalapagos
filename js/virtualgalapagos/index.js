@@ -1,6 +1,9 @@
 'use strict'
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b0fffbcc632b6193614c522f6d86f5477a25cb2c
 =======
 >>>>>>> b0fffbcc632b6193614c522f6d86f5477a25cb2c
 var link = "https://www.colgate.edu"
@@ -15,6 +18,7 @@ footer.appendChild(element)
 
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip(); 
+<<<<<<< HEAD
 <<<<<<< HEAD
 });
 =======
@@ -97,6 +101,9 @@ function init () {
 }
 $(init)
 >>>>>>> a0673d39dc331429655995817ccd9f9e83c187fc
+=======
+});
+>>>>>>> b0fffbcc632b6193614c522f6d86f5477a25cb2c
 =======
 });
 >>>>>>> b0fffbcc632b6193614c522f6d86f5477a25cb2c
