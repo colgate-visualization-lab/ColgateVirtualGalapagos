@@ -101,7 +101,7 @@ class Fieldbook {
       backBtn.className = 'btn btn-light btn-sm'
       icon = document.createElement('i')
       icon.className = 'material-icons'
-      icon.innerHTML = 'arrow_back'
+      icon.innerHTML = 'arrow_back_ios'
       backBtn.appendChild(icon)
       backBtn.onclick = function () {
         fbObj.setPage(Fieldbook.pageNumber - 1)
@@ -111,7 +111,7 @@ class Fieldbook {
       nextBtn.className = 'btn btn-light btn-sm'
       icon = document.createElement('i')
       icon.className = 'material-icons'
-      icon.innerHTML = 'arrow_forward'
+      icon.innerHTML = 'arrow_forward_ios'
       nextBtn.appendChild(icon)
       nextBtn.onclick = function () {
         fbObj.setPage(Fieldbook.pageNumber + 1)
@@ -121,7 +121,7 @@ class Fieldbook {
       homeBtn.className = 'btn btn-light btn-sm'
       icon = document.createElement('i')
       icon.className = 'material-icons'
-      icon.innerHTML = 'home'
+      icon.innerHTML = 'subdirectory_arrow_left'
       homeBtn.appendChild(icon)
       homeBtn.onclick = function () {
         fbObj.setPage(0)
@@ -134,9 +134,11 @@ class Fieldbook {
         fbObj.clearFieldbook()
       }
 
-      innerDiv.appendChild(homeBtn)
-      innerDiv.appendChild(backBtn)
-      innerDiv.appendChild(nextBtn)
+      if (i !== 0) {
+        innerDiv.appendChild(homeBtn)
+        if (i !== 1) { innerDiv.appendChild(backBtn) }
+        if (i !== len - 1) { innerDiv.appendChild(nextBtn) }
+      }
       innerDiv.appendChild(saveBtn)
     }
   }
