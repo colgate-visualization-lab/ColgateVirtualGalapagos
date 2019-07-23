@@ -13,7 +13,7 @@ import { CurrentsAVController } from './currents_avcontroller.js'
 import { CurrentsFieldbook } from './currents_fieldbook.js'
 import { CurrentsToolbar } from './currents_toolbar.js'
 
-class IguanaMasterController extends MasterController {
+class CurrentsMasterController extends MasterController {
   constructor (pageList, pageName) {
     super(pageList, pageName, 'currents')
   }
@@ -39,7 +39,7 @@ class IguanaMasterController extends MasterController {
 }
 
 // Mastercontroller
-var pageName = IguanaMasterController.grabPageName()
+var pageName = CurrentsMasterController.grabPageName()
 
 // List of pages in module in order
 var pageList = ['panotour/Currents_Intro01', 'Currents_Intro02', 'Currents_HowCurrentsFormWhiteboard01', 'Currents_MYOCDemo01', 'Currents_EndIntro01', 'panotour/Currents_ClimateObs01', 'panotour/Currents_ClimateObs02', 'panotour/Currents_ClimateData01', 'panotour/Currents_ClimateData02', 'panotour/Currents_ClimateData03', 'Currents_ClimateData04', 'Currents_GraphWhiteboard01', 'panotour/Currents_ClimateData05', 'panotour/Currents_ClimateObs03', 'panotour/Currents_Hypothesis01', 'Currents_ClimateWhiteboard01', 'panotour/Currents_EndClimate01', 'Currents_Upwelling01', 'Currents_UpwellingWhiteboard01', 'Currents_ElNino01', 'panotour/Currents_EndElNino01', 'Currents_Migration01', 'Currents_Migration03', 'Currents_Tracking01', 'Currents_Tracking02', 'Currents_Tracking03', 'Currents_EndTurtles01', 'Currents_TempDemo01', 'Currents_EndDemo01', 'Currents_EndModule01']
@@ -82,7 +82,7 @@ for (var i = 0; i < pageList.length; i++) {
 var videolist = ['Currents_HowCurrentsFormWhiteboard01', 'Currents_GraphWhiteboard01', 'Currents_UpwellingWhiteboard01', 'Currents_ClimateWhiteboard01']
 
 // init controllers
-var masterController = new IguanaMasterController(pageList, pageName)
+var masterController = new CurrentsMasterController(pageList, pageName)
 masterController.init()
 
 // overlay
