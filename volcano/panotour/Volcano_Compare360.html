@@ -44,7 +44,7 @@
     <!-- Navbar Layout -->
     <nav id="" class="navbar vg_navbar sticky-top navbar-light">
       <form class="form-inline">
-        <a href="../Volcano_TerrainMap01.html" id="home_button" class="btn btn-light" style="margin-left: 10px;"><i
+        <a href="/mysteries/mystery1.html" id="home_button" class="btn btn-light" style="margin-left: 10px;"><i
             class="material-icons">home</i></a>
         <button id="fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
             class="material-icons">book</i></button>
@@ -60,20 +60,18 @@
             <a id="nextBtn" href="../Volcano_TerrainMap03.html" class="btn btn-dark"><i
                 class="material-icons">arrow_forward</i></a>
           </div>
-          <div id="av_control">
-            <audio id="player">
-              <source id="player_src" type="audio/mpeg" />
-            </audio>
-          </div>
         </div>
     </nav>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="py-5">
+      <div id="av_control">
+        <audio id="player">
+          <source id="player_src" type="audio/mpeg" />
+        </audio>
+      </div>
       <div class="container">
-        <span class="text-muted">Designed and built by students and faculty at <a
-            href="https://www.colgate.edu/">Colgate
-            University</a>.</span>
+        <p id="footer" class="m-0 text-center text-muted"></p>
       </div>
     </footer>
   </div>
@@ -85,6 +83,7 @@
   <script src="../../js/bootstrap-4.0.0.js"></script>
 
   <!-- Custom scripts -->
+  <script src="/js/virtualgalapagos/index.js"></script>
   <script src="../../js/virtualgalapagos/fieldbook.js" type="module"></script>
   <script src="../../js/virtualgalapagos/volcano/volcano_fieldbook.js" type="module"></script>
   <script src="../../js/virtualgalapagos/overlay.js" type="module"></script>
