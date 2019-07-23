@@ -47,7 +47,6 @@ class AVController {
     icon.className = 'material-icons'
     icon.innerHTML = 'play_arrow'
     playPauseBtn.appendChild(icon)
-    document.getElementById('av_control').appendChild(playPauseBtn)
 
     var rewindBtn = document.createElement('BUTTON')
     rewindBtn.className = 'btn btn-dark'
@@ -59,6 +58,7 @@ class AVController {
     icon.innerHTML = 'replay_10'
     rewindBtn.appendChild(icon)
     document.getElementById('av_control').appendChild(rewindBtn)
+    document.getElementById('av_control').appendChild(playPauseBtn)
 
     if (this.dev_mode) {
       var skipBtn = document.createElement('BUTTON')
