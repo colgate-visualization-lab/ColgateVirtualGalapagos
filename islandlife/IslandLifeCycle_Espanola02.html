@@ -24,7 +24,7 @@
   <!-- Navbar Layout -->
   <nav id="navbar" class="navbar vg_navbar sticky-top navbar-light">
     <form class="form-inline">
-      <a href="panotour/IslandLifeCycle_Start01.html" id="home_button" class="btn btn-light" style="margin-left: 10px;"><i
+      <a href="/mysteries/mystery1.html" id="home_button" class="btn btn-light" style="margin-left: 10px;"><i
           class="material-icons">home</i></a>
       <button id="fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
           class="material-icons">book</i></button>
@@ -33,8 +33,10 @@
       <button id="clear_fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
           class="material-icons">delete</i></button>
     </form>
-    <div>
-      <a href="/" id="page_title" class="nav_title">Virtual Galapagos</a>
+    <h3 id="page_title" class="nav_title">Virtual Galapagos</h3>
+    <div id="control_bar" class=" row justify-content-md-center">
+      <div id="nav_control">
+      </div>
     </div>
   </nav>
 
@@ -43,9 +45,7 @@
     <div id="content" class="container-fluid text-center">
       <img src="../images/islandlife/wooden_board.png" class="img-fluid img-bordered" alt="Responsive image" style= "width: 100%; height: auto;">
     </div>
-    <div id="control_bar" class="container row justify-content-md-center">
-      <div id="nav_control">
-      </div>
+    <div class="container text-center">
       <div id="av_control">
         <audio id="player">
           <source id="player_src" type="audio/mpeg" />
@@ -55,10 +55,9 @@
   </div>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="py-5">
     <div class="container">
-      <span class="text-muted">Designed and built by students and faculty at <a href="https://www.colgate.edu/">Colgate
-          University</a>.</span>
+      <p id="footer" class="m-0 text-center text-muted"></p>
     </div>
   </footer>
 
@@ -69,6 +68,7 @@
   <script src="../js/bootstrap-4.0.0.js"></script>
 
   <!-- Custom scripts -->
+  <script src="/js/virtualgalapagos/index.js"></script>
   <script src="../../js/virtualgalapagos/fieldbook.js" type="module"></script>
   <script src="../../js/virtualgalapagos/islandlife/islandlife_fieldbook.js" type="module"></script>
   <script src="../../js/virtualgalapagos/overlay.js" type="module"></script>
