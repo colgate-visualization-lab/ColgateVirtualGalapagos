@@ -20,7 +20,7 @@
 
 <body>
   <!-- Navbar Layout -->
-  <nav id="navbar" class="navbar vg_navbar sticky-top navbar-light" style="z-index: 6">
+  <nav id="navbar" class="navbar vg_navbar sticky-top navbar-light">
     <form class="form-inline">
       <a href="/mysteries/mystery1.html" id="home_button" class="btn btn-light" style="margin-left: 10px;"><i
           class="material-icons">home</i></a>
@@ -38,11 +38,19 @@
     </div>
   </nav>
 
-  <!-- VIRTUAL GALAPAGOS LAYOUT -->
+  <!--  VIRTUAL GALAPAGOS LAYOUT   -->
   <div id="main" class="container-fluid">
-    <div id="content" class="container-fluid">
-      <img src="/images/homepage/map.png" class="img-fluid img-bordered" alt="Responsive image">
+    <div id="content" class="container-fluid text-center">
+      <img id="gemap" src="../images/volcano/terrain_map_dates.png" class="img-fluid img-bordered" alt="Responsive image">
     </div>
+    <div class="text-center container">
+      <div id="av_control">
+        <audio id="player">
+          <source id="player_src" type="audio/mpeg" />
+        </audio>
+      </div>
+    </div>
+  </div>
   </div>
 
   <!-- Footer -->
@@ -58,7 +66,7 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/bootstrap-4.0.0.js"></script>
 
-    <!-- Custom scripts -->
+  <!-- Custom scripts -->
   <script src="/js/virtualgalapagos/index.js"></script>
   <script src="../js/virtualgalapagos/fieldbook.js" type="module"></script>
   <script src="../js/virtualgalapagos/volcano/volcano_fieldbook.js" type="module"></script>
@@ -67,7 +75,8 @@
   <script src="../js/virtualgalapagos/volcano/volcano_toolbar.js" type="module"></script>
   <script src="../js/virtualgalapagos/mastercontroller.js" type="module"></script>
   <script src="../js/virtualgalapagos/volcano/volcano_mastercontroller.js" type="module"></script>
-
+  <script src="../js/virtualgalapagos/avcontroller.js" type="module"></script>
+  <script src="../js/virtualgalapagos/volcano/volcano_avcontroller.js" type="module"></script>
 </body>
 
 </html>
