@@ -15,7 +15,6 @@ import { VolcanoFieldbook } from './volcano_fieldbook.js'
 import { VolcanoToolbar } from './volcano_toolbar.js'
 import { plumeplacement } from './Volcano_PlumePlacement01.js'
 import { terrainmap } from './Volcano_TerrainMap03.js'
-import { terrainMapToggle } from './Volcano_TerrainMap06.js'
 
 class VolcanoMasterController extends MasterController {
   constructor (pageList, pageName) {
@@ -46,7 +45,7 @@ class VolcanoMasterController extends MasterController {
 var pageName = VolcanoMasterController.grabPageName()
 
 // List of pages in module in order
-var pageList = ['Volcano_TerrainMap01', 'panotour/Volcano_Exploration01', 'panotour/Volcano_Exploration02', 'panotour/Volcano_Exploration03', 'panotour/Volcano_Exploration04', 'panotour/Volcano_Exploration05', 'Volcano_TerrainMap02', 'Volcano_TerrainMap03', 'Volcano_TerrainMap04', 'Volcano_TerrainMapAges01', 'Volcano_TerrainMapAges02', 'Volcano_OtherVolcanoes01', 'Volcano_TectonicPlateWhiteboard01', 'Volcano_TectonicPlates01', 'Volcano_PlatesGame01', 'Volcano_TectonicPlates02', 'Volcano_MantlePlumesWhiteboard01', 'Volcano_SouthAmerica01', 'Volcano_TerrainMap06', 'Volcano_PlumePlacement01', 'Volcano_WhereNext01', 'Volcano_MainMenu01']
+var pageList = ['Volcano_TerrainMap01', 'panotour/Volcano_Exploration01', 'panotour/Volcano_Exploration02', 'panotour/Volcano_Exploration03', 'panotour/Volcano_Exploration04', 'panotour/Volcano_Exploration05', 'Volcano_TerrainMap02', 'Volcano_TerrainMap03', 'Volcano_TerrainMap04', 'Volcano_TerrainMapAges01', 'Volcano_TerrainMapAges02', 'Volcano_OtherVolcanoes01', 'Volcano_TectonicPlateWhiteboard01', 'Volcano_TectonicPlates01', 'Volcano_PlatesGame01', 'Volcano_TectonicPlates02', 'Volcano_MantlePlumesWhiteboard01', 'Volcano_SouthAmerica01', 'Volcano_TerrainMap06', 'Volcano_TerrainMapEruptionDates01', 'Volcano_PlumePlacement01', 'Volcano_WhereNext01', 'Volcano_MainMenu01']
 
 // Pages and associated fieldbook pages
 var fbPages = {
@@ -155,9 +154,4 @@ if (pageName === 'Volcano_PlumePlacement01') {
 // TerrainMap03
 if (pageName === 'Volcano_TerrainMap03') {
   terrainmap(masterController, avController)
-}
-
-// TerrainMap06
-if (pageName === 'Volcano_TerrainMap06') {
-  terrainMapToggle()
 }
