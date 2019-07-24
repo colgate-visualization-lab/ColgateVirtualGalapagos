@@ -46,7 +46,7 @@ var pageList = ['panotour/IslandLifeCycle_Start01', 'IslandLifeCycle_IslandTimel
   'IslandLifeCycle_Colonization01', 'panotour/IslandLifeCycle_Fernandina06', 'panotour/IslandLifeCycle_SantaCruz01', 
   'IslandLifeCycle_SantaCruz360s01', 'panotour/IslandLifeCycle_Espanola01', 'panotour/IslandLifeCycle_Espanola03',
   'IslandLifeCycle_Seamounts02','panotour/IslandLifeCycle_ContractionWhiteboard01', 'IslandLifeCycle_Espanola02',
-  'IslandLifeCycle_SeamountsWhiteboard01', 'IslandLifeCycle_SeamountsIdentification01', 'IslandLifeCycle_Seamounts04']
+  'IslandLifeCycle_SeamountsWhiteboard01', 'IslandLifeCycle_SeamountsIdentification01', 'panotour/IslandLifeCycle_Seamounts04']
 // Pages and associated fieldbook pages
 
 var fbPages = {
