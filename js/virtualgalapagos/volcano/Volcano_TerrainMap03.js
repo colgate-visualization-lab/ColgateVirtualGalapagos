@@ -9,6 +9,7 @@ function terrainmap (mastercontroller, avcontroller) {
   var optionalOn = false
   var controller = mastercontroller
   var player = avcontroller
+  var toggleBtn = document.getElementById('toggle_btn')
 
   init()
 
@@ -21,9 +22,8 @@ function terrainmap (mastercontroller, avcontroller) {
       player.trackDone()
       enableOptional()
     }
-
-    document.getElementById('opt_audio').onclick = function () {
-      narrationOn()
+    toggleBtn.onclick = function () {
+      toggleNarration()
     }
 
     document.getElementById('on_fernandina').onclick = function () {
@@ -41,11 +41,6 @@ function terrainmap (mastercontroller, avcontroller) {
     document.getElementById('off_santacruz').onclick = function () {
       off('santacruz')
     }
-
-    // enable optional button if user has already completed page
-    if (MasterController.getItem('TerrainMap03') === 'true') {
-      document.getElementById('opt_audio').disabled = false
-    }
   }
 
   // enable overlay and audio if optional narration is on
@@ -53,13 +48,13 @@ function terrainmap (mastercontroller, avcontroller) {
     if (name === 'santacruz') {
       scClick = true
       if (optionalOn) {
-        player.setTrack('Volcano_SantaCruz01_01')
+        player.setTrack('Volcano_SantaCruz01')
         player.play()
       }
     } else if (name === 'fernandina') {
       ferdClick = true
       if (optionalOn) {
-        player.setTrack('Volcano_Fernandina01_opt')
+        player.setTrack('Volcano_Fernandina01')
         player.play()
       }
     }
@@ -78,15 +73,16 @@ function terrainmap (mastercontroller, avcontroller) {
 
   function enableOptional () {
     if (controller.done_flags['island_clicks'] && controller.done_flags['audio_video']) {
-      document.getElementById('opt_audio').disabled = false
       MasterController.storeItem('TerrainMap03', 'true')
     }
   }
-
-  function narrationOn () {
-    optionalOn = true
-    player.setTrack('Volcano_TerrainMap03_opt')
-    player.play()
+  function toggleNarration () {
+    if (optionalOn) {
+      toggleBtn.firstChild.textContent = 'check_box_outline_blank'
+    } else {
+      toggleBtn.firstChild.textContent = 'check_box'
+    }
+    optionalOn = !optionalOn
   }
 }
 
