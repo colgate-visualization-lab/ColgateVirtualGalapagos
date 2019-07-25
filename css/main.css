@@ -128,6 +128,11 @@ footer {
 .carousel-caption {
   color: rgb(185, 30, 30)
 }
+.img-layered {
+  position: absolute;
+  top: inherit;
+  left: 0;
+}
 .dd-drag {
   background: grey;
   border: solid;
