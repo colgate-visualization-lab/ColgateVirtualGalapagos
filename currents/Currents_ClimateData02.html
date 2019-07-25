@@ -5,9 +5,6 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="mobile-web-app-capable" content="yes" />
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -18,61 +15,49 @@
   <link rel="stylesheet" href="/css/Toolbar.css">
   <link rel="stylesheet" href="/css/paint.css">
   <link rel="icon" href="/images/png-32x32.png" type="image/png" />
-  <link rel="stylesheet" href="/css/pano.css">
 
   <title>Colgate Virtual Galapagos</title>
 </head>
 
 <body>
-  <div id="main" style="width:100%;height:100%;overflow:hidden;">
-    <br>Loading...<br><br>
+  <!-- Navbar Layout -->
+  <nav id="navbar" class="navbar vg_navbar sticky-top navbar-light">
+    <form class="form-inline">
+      <a href="/mysteries/mystery1.html" id="home_button" class="btn btn-light" style="margin-left: 10px;"><i
+          class="material-icons">home</i></a>
+      <button id="fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
+          class="material-icons">book</i></button>
+      <button id="tb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
+          class="material-icons">menu</i></button>
+      <button id="clear_fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
+          class="material-icons">delete</i></button>
+    </form>
+    <h3 id="page_title" class="nav_title">Virtual Galapagos</h3>
+    <div id="control_bar" class=" row justify-content-md-center">
+      <div id="nav_control">
+      </div>
+    </div>
+  </nav>
 
-    <script type="text/javascript" src="/js/libs/pano2vr_player.js"></script>
-    <script type="text/javascript">
-
-      // create the panorama player with the content
-      pano = new pano2vrPlayer("main");
-      // load the configuration
-
-      window.addEventListener("load", function () {
-        pano.readConfigUrlAsync("shorewaves/pano.xml");
-      });
-    </script>
-    <noscript>
-      <p><b>Please enable Javascript!</b></p>
-    </noscript>
-
-    <!-- Navbar Layout -->
-    <nav id="" class="navbar vg_navbar sticky-top navbar-light">
-      <form class="form-inline">
-        <a href="/mysteries/mystery1.html" id="home_button" class="btn btn-light" style="margin-left: 10px;"><i
-            class="material-icons">home</i></a>
-        <button id="fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
-            class="material-icons">book</i></button>
-        <button id="tb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
-            class="material-icons">menu</i></button>
-        <button id="clear_fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
-            class="material-icons">delete</i></button>
-      </form>
-      <h2 id="page_title" class="nav_title">Isabela</h4>
-        <div id="control_bar" class=" row justify-content-md-center">
-          <div id="nav_control">
-          </div>
-        </div>
-    </nav>
-
-    <!-- Footer -->
-    <footer class="py-5">
+  <!--  VIRTUAL GALAPAGOS LAYOUT   -->
+  <div id="main" class="container-fluid">
+    <div id="content" class="container-fluid">
+    </div>
+    <div class="container text-center">
       <div id="av_control">
         <audio id="player">
           <source id="player_src" type="audio/mpeg" />
         </audio>
       </div>
-      <div class="container">
-        <p id="footer" class="m-0 text-center text-muted"></p>
-      </div>
-    </footer>
+    </div>
   </div>
+
+  <!-- Footer -->
+  <footer class="py-5">
+    <div class="container">
+      <p id="footer" class="m-0 text-center text-muted"></p>
+    </div>
+  </footer>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -92,6 +77,7 @@
   <script src="/js/virtualgalapagos/avcontroller.js" type="module"></script>
   <script src="/js/virtualgalapagos/currents/currents_avcontroller.js" type="module"></script>
   <script src="/js/libs/paint.js" type="module"></script>
+
 </body>
 
 </html>
