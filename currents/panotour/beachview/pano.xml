@@ -6,7 +6,7 @@
     <level width="256" preload="1" height="256" predecode="1"/>
     <preview strip="1" color="0x808080"/>
     <video endaction="loop" startmutedmobile="0" format="equirectangular" startonload="1">
-      <source url="/videos/panotour/BeachView.mp4"/>
+      <source url="/videos/panotour/currents/BeachView.mp4"/>
     </video>
   </input>
   <view fovmode="0" pannorth="0">
