@@ -39,19 +39,23 @@
       </div>
     </div>
   </nav>
-  <div>
-    <div draggable="true" ondragstart="drag(event)" id="drag1">Breaks Sea Level</div>
-    <div draggable="true" ondragstart="drag(event)" id="drag2">Seeds</div>
-    <div draggable="true" ondragstart="drag(event)" id="drag3">Birds</div>
-    <div draggable="true" ondragstart="drag(event)" id="drag4">Iguanas</div>
-    <div draggable="true" ondragstart="drag(event)" id="drag5">Lava Animals</div>
-    <div draggable="true" ondragstart="drag(event)" id="drag6">Soil</div>
-    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-    <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-    <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-    <div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-    <div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  <div class="drag-drop-area">
+    <div id ="drag-area">
+      <div draggable="true" ondragstart="drag(event)" id="drag1">Breaks Sea Level</div>
+      <div draggable="true" ondragstart="drag(event)" id="drag2">Seeds</div>
+      <div draggable="true" ondragstart="drag(event)" id="drag3">Birds</div>
+      <div draggable="true" ondragstart="drag(event)" id="drag4">Iguanas</div>
+      <div draggable="true" ondragstart="drag(event)" id="drag5">Lava Animals</div>
+      <div draggable="true" ondragstart="drag(event)" id="drag6">Soil</div>
+    </div>
+    <div id="drop-area">
+      <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
   </div>
   <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;"></canvas>
   <!--  VIRTUAL GALAPAGOS LAYOUT   -->
