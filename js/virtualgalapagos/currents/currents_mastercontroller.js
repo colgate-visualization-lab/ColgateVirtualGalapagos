@@ -12,6 +12,7 @@ import { overlay } from '../overlay.js'
 import { CurrentsAVController } from './currents_avcontroller.js'
 import { CurrentsFieldbook } from './currents_fieldbook.js'
 import { CurrentsToolbar } from './currents_toolbar.js'
+import { endSectionInit } from './endSection.js'
 
 class CurrentsMasterController extends MasterController {
   constructor (pageList, pageName) {
@@ -117,3 +118,9 @@ var fbController = new CurrentsFieldbook(fbPages, 9, masterController)
 fbController.init()
 fbController.populateDivs()
 fbController.start(currentPage)
+
+var endSections = ['Currents_EndClimate01', 'Currents_EndTurtles01', 'Currents_EndDemo01', 'Currents_EndElNino01']
+
+if (endSections.includes(pageName)) {
+  endSectionInit(masterController)
+}
