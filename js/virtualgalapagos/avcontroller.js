@@ -23,10 +23,6 @@ class AVController {
     this.player.load()
 
     var avcontroller = this // needed to setup listeners
-    // autoplay background audio
-    // this.player.oncanplay = function() {
-    //   AVController.playPause(avcontroller);
-    // };
 
     // setup listener for when audio is done playing
     this.player.onended = function () {
