@@ -119,7 +119,7 @@ footer {
   margin: auto;
   left: 0;
   right: 0;
-  z-index: 6;
+  z-index: 1;
 }
 #main {
   position: relative;
