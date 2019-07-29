@@ -64,6 +64,7 @@ for (var i = 0; i < pageList.length; i++) {
   toolbarLinks.push({ text: text[text.length - 1], url: url })
 }
 
+var videolist = []
 
 // init controllers
 var masterController = new IslandLifeMasterController(pageList, pageName)
@@ -75,6 +76,21 @@ overlay()
 // Toolbar for side navigation
 var toolbar = new IslandLifeToolbar(toolbarLinks, masterController)
 toolbar.initToolbar()
+
+// AVcontroller
+var player = document.getElementById('player')
+if (player !== null) { // page has av set up
+  var avType
+  if (videolist.includes(pageName)) {
+    avType = 'video'
+  } else {
+    avType = 'audio'
+  }
+
+  var avController = new IslandLifeAVController(player, avType, masterController)
+  avController.start()
+  avController.setBGTrack()
+}
 
 // Fieldbook
 var currentPage = fbPages[pageName]
