@@ -7,7 +7,7 @@
       <level height="256" preload="1" width="256" predecode="1"/>
       <preview strip="1" color="0x808080"/>
       <video startonload="1" startmutedmobile="0" format="equirectangular" endaction="loop">
-        <source url="../../../videos/panotour/islandlife/TortoiseFront_FinalLoop0000.mp4"/>
+        <source url="../../../videos/panotour/islandlife/TortoiseFront.mp4"/>
       </video>
     </input>
     <view fovmode="0" pannorth="0">
