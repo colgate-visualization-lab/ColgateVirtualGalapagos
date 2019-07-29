@@ -24,6 +24,17 @@ class Toolbar {
     toolbarBtn.onclick = function () {
       obj.toggleTB()
     }
+
+    var closeBtn = document.createElement('BUTTON')
+    closeBtn.className = 'btn btn-light btn-sm float-right'
+    var icon = document.createElement('i')
+    icon.className = 'material-icons'
+    icon.innerHTML = 'close'
+    closeBtn.appendChild(icon)
+    closeBtn.onclick = function () {
+      obj.toggleTB()
+    }
+    this.closeBtn = closeBtn
     // setup layout elements for toolbar sidebar
     this.setupSideBar()
   }
@@ -56,6 +67,7 @@ class Toolbar {
     var header = document.createElement('h1')
     header.style = 'color: white; padding: 32px 8px 8px 32px;'
     header.appendChild(document.createTextNode('TOOLBAR'))
+    sidenav.appendChild(this.closeBtn)
     sidenav.appendChild(header)
 
     // create links
