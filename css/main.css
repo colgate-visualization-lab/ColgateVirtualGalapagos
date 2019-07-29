@@ -61,7 +61,7 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
   background-color: antiquewhite 
-}
+} 
 /* VG Layout Elements */
 #control_bar{
   padding-right:10px;
@@ -71,6 +71,7 @@ body {
 #av_control{
   padding: 5px;
   text-align: center;
+  z-index: 6;
 }
 
 #nav_control{
@@ -113,7 +114,7 @@ h2#page_title {
   color: rgb(247, 9, 148);
   font-weight: bolder;
 }
-footer {
+.pano-footer {
   position: absolute;
   bottom: 0;
   margin: auto;
@@ -127,6 +128,11 @@ footer {
 }
 .carousel-caption {
   color: rgb(185, 30, 30)
+}
+.img-layered {
+  position: absolute;
+  top: inherit;
+  left: 0;
 }
 .dd-drag {
   background: grey;
