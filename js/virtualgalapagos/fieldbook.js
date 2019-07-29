@@ -101,7 +101,7 @@ class Fieldbook {
       backBtn.className = 'btn btn-light btn-sm'
       icon = document.createElement('i')
       icon.className = 'material-icons'
-      icon.innerHTML = 'arrow_back_ios'
+      icon.innerHTML = 'chevron_left'
       backBtn.appendChild(icon)
       backBtn.onclick = function () {
         fbObj.setPage(Fieldbook.pageNumber - 1)
@@ -111,7 +111,7 @@ class Fieldbook {
       nextBtn.className = 'btn btn-light btn-sm'
       icon = document.createElement('i')
       icon.className = 'material-icons'
-      icon.innerHTML = 'arrow_forward_ios'
+      icon.innerHTML = 'chevron_right'
       nextBtn.appendChild(icon)
       nextBtn.onclick = function () {
         fbObj.setPage(Fieldbook.pageNumber + 1)
