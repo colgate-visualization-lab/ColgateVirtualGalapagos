@@ -44,6 +44,7 @@ class MasterController {
     // first page doesn't need back button
     if (this.idx > 0) {
       var backBtn = document.createElement('BUTTON')
+      backBtn.setAttribute('id', 'backBtn')
       backBtn.className = 'btn btn-dark'
       backBtn.onclick = function () {
         MasterController.back(controllerObj)
@@ -57,6 +58,7 @@ class MasterController {
     // last page doesn't need next button
     if (this.idx < this.pageList.length - 1) {
       var btn = document.createElement('BUTTON')
+      btn.setAttribute('id', 'nextBtn')
       btn.className = 'btn btn-dark'
       btn.style = 'margin-left: 5px;'
       // Button disabled until user done with page
