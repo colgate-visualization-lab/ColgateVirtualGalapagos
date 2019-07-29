@@ -40,24 +40,30 @@
     </div>
   </nav>
   <div class="drag-drop-area">
-    <div id ="drag-area">
-      <div draggable="true" ondragstart="drag(event)" id="drag1">Breaks Sea Level</div>
-      <div draggable="true" ondragstart="drag(event)" id="drag2">Seeds</div>
-      <div draggable="true" ondragstart="drag(event)" id="drag3">Birds</div>
-      <div draggable="true" ondragstart="drag(event)" id="drag4">Iguanas</div>
-      <div draggable="true" ondragstart="drag(event)" id="drag5">Lava Animals</div>
-      <div draggable="true" ondragstart="drag(event)" id="drag6">Soil</div>
+    <div id ="drag-area" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <p draggable="true" ondragstart="drag(event)" id="drag1">Breaks Sea Level</p>
+      <p draggable="true" ondragstart="drag(event)" id="drag2">Seeds</p>
+      <p draggable="true" ondragstart="drag(event)" id="drag3">Birds</p>
+      <p draggable="true" ondragstart="drag(event)" id="drag4">Iguanas</p>
+      <p draggable="true" ondragstart="drag(event)" id="drag5">Lava Animals</p>
+      <p draggable="true" ondragstart="drag(event)" id="drag6">Soil</p>
     </div>
     <div id="drop-area">
-      <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-      <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-      <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-      <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-      <div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-      <div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" class="dropbox"></div>
+      <div class="arrow">&#8594;</div>
+      <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)" class="dropbox"></div>
+      <div class="arrow">&#8594;</div>
+      <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)" class="dropbox"></div>
+      <div class="arrow">&#8594;</div>
+      <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)" class="dropbox"></div>
+      <div class="arrow">&#8594;</div>
+      <div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)" class="dropbox"></div>
+      <div class="arrow">&#8594;</div>
+      <div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)" class="dropbox"></div>
     </div>
+    <canvas id="myCanvas" width=1500 height=500 style="border:1px solid #000000;"></canvas>
   </div>
-  <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;"></canvas>
+
   <!--  VIRTUAL GALAPAGOS LAYOUT   -->
   <div id="main" class="container-fluid">
     <div id="content" class="container-fluid text-center">

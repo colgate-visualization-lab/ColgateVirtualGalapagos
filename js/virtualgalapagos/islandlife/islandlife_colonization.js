@@ -12,9 +12,20 @@ function drop(ev) {
     ev.target.appendChild(document.getElementById(data));
 }
 
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-ctx.beginPath();
-ctx.moveTo(20, 20);
-ctx.bezierCurveTo(20, 100, 200, 100, 200, 20);
-ctx.stroke();
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+
+var imgTag = new Image();
+var x = 0;
+var y = canvas.height;
+
+canvas.onclick = animate;
+imgTag.src = "../../../images/islandlife/island.png"; 
+imgTag.style.width = "20%";
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);  
+  ctx.drawImage(imgTag, x, y);                      
+  y -= 4;
+  if (y > 100) requestAnimationFrame(animate)       
+}

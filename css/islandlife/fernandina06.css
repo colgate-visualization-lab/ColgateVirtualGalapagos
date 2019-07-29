@@ -45,3 +45,35 @@
     top: 2%;
     right: 3%;
 }
+
+.modal-backdrop {
+    z-index: -1;
+}
+.carousel-item img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+.close {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    z-index: 6;
+}
+
+.close:hover,
+.close:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#espanola-imgs {
+    top: 10%;
+    left: 10%;
+}
