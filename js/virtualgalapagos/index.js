@@ -12,3 +12,18 @@ footer.appendChild(element)
 $(document).ready(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
+/* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
+var prevScrollpos = window.pageYOffset
+var navbar = document.getElementById('navbar')
+var height = navbar.offsetHeight
+console.log(height)
+window.onscroll = function () {
+  var currentScrollPos = window.pageYOffset
+  if (prevScrollpos > currentScrollPos) {
+    navbar.style.top = '0'
+  } else {
+    navbar.style.top = '-' + height + 'px'
+  }
+  prevScrollpos = currentScrollPos
+}
