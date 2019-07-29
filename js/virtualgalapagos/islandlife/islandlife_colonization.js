@@ -16,7 +16,7 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
 var imgTag = new Image();
-var x = 0;
+var x = canvas.width/5;
 var y = canvas.height;
 
 canvas.onclick = animate;
@@ -27,5 +27,5 @@ function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);  
   ctx.drawImage(imgTag, x, y);                      
   y -= 4;
-  if (y > 100) requestAnimationFrame(animate)       
+  if (y > 50) requestAnimationFrame(animate)       
 }
