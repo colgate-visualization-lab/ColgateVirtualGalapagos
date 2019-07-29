@@ -92,7 +92,8 @@ h2#page_title {
 }
 #page_title {
   color: white;
-  font-size: 30pt
+  font-size: 30pt; /*fall back font size*/
+  font-size: 4vmin;
 }
 #container1 {
   margin: auto
