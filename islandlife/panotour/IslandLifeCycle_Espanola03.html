@@ -11,24 +11,6 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="../../css/bootstrap.min.css">
-  <style>
-    .modal-backdrop {
-      z-index: -1;
-    }
-    .carousel-item img {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 62%;
-    }
-    .container-img {
-      top: 15%;
-      left: 20%;
-      position: fixed;
-      text-align: center;
-      z-index: -1;
-    }
-  </style>
   <!-- Custom CSS -->
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="../../css/Fieldbook.css">
@@ -36,6 +18,7 @@
   <link rel="stylesheet" href="../../css/paint.css">
   <link rel="icon" href="../../images/png-32x32.png" type="image/png" />
   <link rel="stylesheet" href="../../css/pano.css">
+  <link rel="stylesheet" href="../../css/islandlife/fernandina06.css">
 
   <title>Colgate Virtual Galapagos</title>
 </head>
@@ -76,8 +59,12 @@
           <div id="nav_control">
           </div>
         </div>
-        <a href="#lightbox" data-toggle="modal"><img src="../../images/islandlife/wooden_board.png" alt="Responsive image" class="container-img"></a>
+        <div class="container-img" id="board">
+            <img src="../../images/islandlife/wooden_board.png" alt="Responsive image">
+            <a href="#lightbox" data-toggle="modal" onclick="setTimeout(function() { closeBoard(); }, 1000);"><div class="white-box" id="espanola-imgs">Espanola Images</div></a>
+        </div>
         <div class="modal carousel slide" id="lightbox" data-ride="carousel" style="position: fixed; z-index: -1; left: 5%; top:5%">
+          <span class="close cursor" onclick="closeModal()">&times;</span>
           <ol class="carousel-indicators">
             <li data-target="#lightbox" data-slide-to="0" class="active"></li>
             <li data-target="#lightbox" data-slide-to="1"></li>
@@ -179,7 +166,18 @@
   <script src="../../js/virtualgalapagos/islandlife/islandlife_mastercontroller.js" type="module"></script>
   <script src="../../js/virtualgalapagos/avcontroller.js" type="module"></script>
   <script src="../../js/virtualgalapagos/islandlife/islandlife_avcontroller.js" type="module"></script>
- <script src="../../js/libs/paint.js" type="module"></script>
+  <script src="../../js/libs/paint.js" type="module"></script>
+  <script> 
+  function closeModal() {
+    document.getElementById("board").style.removeProperty("display");
+    document.getElementById("lightbox").style.display = "none";
+  }
+
+  function closeBoard(){
+    document.getElementById("board").style.display = "none";
+  }
+  </script>
+  
 </body>
 
 </html>
