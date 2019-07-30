@@ -191,3 +191,14 @@ img.map, map area{
   from {top: 60px; opacity: 0;}
   to {top: 0; opacity: 1;}
 }
+
+/* Make image response to screen size */
+.img-responsive {
+  width: 70%; 
+  height: auto;
+}
+@media screen and (max-width: 1300px), (min-width: 2000px)  {
+  .img-responsive {
+    width: 100%;
+    height: auto;
+  }

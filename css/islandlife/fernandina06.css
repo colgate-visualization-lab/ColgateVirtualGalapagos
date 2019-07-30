@@ -1,7 +1,4 @@
 .container-img {
-    top: 10%;
-    left: 20%;
-    position: fixed;
     text-align: center;
     z-index: -1;
 }
@@ -23,37 +20,31 @@
 
 .box-1 {
     top: 10%;
-    right: 10%;
+    right: 20%;
 }
 
 .img-on-board {
     position: absolute;
-    width: 40%;
+    width: 25%;
 }
 
 #PitCraterLedge {
     top: 2%;
-    left: 3%;
+    left: 20%;
 }
 
 #cactus {
     bottom: 2%;
-    right: 30%;
+    right: 35%;
 }
 
 #tortoise {
     top: 2%;
-    right: 3%;
+    right: 20%;
 }
 
 .modal-backdrop {
     z-index: -1;
-}
-.carousel-item img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
 }
 
 .close {
@@ -75,5 +66,5 @@
 
 #espanola-imgs {
     top: 10%;
-    left: 10%;
+    left: 25%;
 }
