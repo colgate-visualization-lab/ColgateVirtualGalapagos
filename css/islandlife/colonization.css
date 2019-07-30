@@ -17,7 +17,7 @@
 #drag-area {
   margin-left: 60%;
   width: 20vw; 
-  height: 200px; 
+  height: 10vw; 
   border: 1px solid black;
   display: inline-block;
 }
@@ -52,4 +52,8 @@
   font-size: 5vw;
   position: relative;
   bottom: 10px;
+}
+
+#myCanvas {
+  width: 100%; 
 }
