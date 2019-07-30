@@ -8,7 +8,7 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.3); /* Black background with opacity */
-    z-index: 5; /* Specify a stack order in case you're using a different order for other elements */
+    z-index: 10; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
     overflow: scroll;
 }
@@ -38,7 +38,8 @@
   width: 100%;
   height: 150px;
   resize: none;
-  font: normal 14px verdana;
+  font-size: 18px;
+  font: verdana;
   line-height: 25px;
   padding: 2px 10px;
   border: solid 1px #ddd;
@@ -54,4 +55,16 @@
 
 #clear_fb_button {
   display: none;
+}
+@media (max-width: 1000px){
+  #fb_overlay_inner {
+    font-size: 16px;
+  }
+  .fieldbook_link, .fieldbook_textcontent {
+    font-size: 13px;
+  }
+  .fieldbook_ta {
+    font-size: 13px;
+    line-height: 18px;
+  }
 }
