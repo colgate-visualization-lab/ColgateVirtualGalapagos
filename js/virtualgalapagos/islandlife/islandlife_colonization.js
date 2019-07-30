@@ -16,16 +16,17 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
 var imgTag = new Image();
-var x = canvas.width/5;
+canvas.height = canvas.width/3;
+var x = 0;
 var y = canvas.height;
 
 canvas.onclick = animate;
 imgTag.src = "../../../images/islandlife/island.png"; 
-imgTag.style.width = "20%";
 
 function animate() {
+    console.log(imgTag.width);
   ctx.clearRect(0, 0, canvas.width, canvas.height);  
-  ctx.drawImage(imgTag, x, y);                      
+  ctx.drawImage(imgTag, x, y, 200, 100);                      
   y -= 4;
-  if (y > 50) requestAnimationFrame(animate)       
+  if (y > 10) requestAnimationFrame(animate)       
 }
