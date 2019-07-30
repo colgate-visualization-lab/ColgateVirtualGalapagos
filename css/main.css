@@ -24,11 +24,8 @@
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }
-@media (max-width: 1000px){
-  .material-icons {
-    font-size: 16px;
-  }
-}
+
+
 
 /* Custom CSS
 -------------------------------------------------- */
@@ -198,13 +195,25 @@ img.map, map area{
 }
 
 /* Make image response to screen size */
-.img-responsive, .img-fluid {
+.img-responsive {
   width: 70%; 
   height: auto;
 }
 @media screen and (max-width: 1300px), (min-width: 2000px)  {
-  .img-responsive, .img-fluid {
+  .img-responsive{
     width: 100%;
     height: auto;
+  }
+}
+/* mobile devices*/
+@media (max-width: 1000px){
+  .material-icons {
+    font-size: 16px;
+  }
+  .nav-link {
+    font-size: 1rem
+  }
+  .centered {
+    top: 10%;
   }
 }
