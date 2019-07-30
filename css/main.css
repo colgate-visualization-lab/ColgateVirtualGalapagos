@@ -114,6 +114,7 @@ h2#page_title {
 .nav-link {
   color: rgb(247, 9, 148);
   font-weight: bolder;
+  font-size: 2rem
 }
 .pano-footer {
   position: absolute;
