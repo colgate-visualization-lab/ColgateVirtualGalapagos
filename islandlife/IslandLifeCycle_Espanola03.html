@@ -5,65 +5,50 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="mobile-web-app-capable" content="yes" />
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="../../css/main.css">
-  <link rel="stylesheet" href="../../css/Fieldbook.css">
-  <link rel="stylesheet" href="../../css/Toolbar.css">
-  <link rel="stylesheet" href="../../css/paint.css">
-  <link rel="icon" href="../../images/png-32x32.png" type="image/png" />
-  <link rel="stylesheet" href="../../css/pano.css">
-  <link rel="stylesheet" href="../../css/islandlife/fernandina06.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/Fieldbook.css">
+  <link rel="stylesheet" href="../css/Toolbar.css">
+  <link rel="stylesheet" href="../css/paint.css">
+  <link rel="icon" href="../images/png-32x32.png" type="image/png" />
+  <link rel="stylesheet" href="../css/islandlife/fernandina06.css">
 
   <title>Colgate Virtual Galapagos</title>
 </head>
 
 <body>
-  <div id="main" style="width:100%;height:100%;overflow:hidden;">
-    <br>Loading...<br><br>
+  <!-- Navbar Layout -->
+  <nav id="navbar" class="navbar vg_navbar sticky-top navbar-light">
+    <form class="form-inline">
+      <a href="/mysteries/mystery1.html" id="home_button" class="btn btn-light" style="margin-left: 10px;"><i
+          class="material-icons">home</i></a>
+      <button id="fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
+          class="material-icons">book</i></button>
+      <button id="tb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
+          class="material-icons">menu</i></button>
+      <button id="clear_fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
+          class="material-icons">delete</i></button>
+    </form>
+    <h3 id="page_title" class="nav_title">Virtual Galapagos</h3>
+    <div id="control_bar" class=" row justify-content-md-center">
+      <div id="nav_control">
+      </div>
+    </div>
+  </nav>
 
-    <script type="text/javascript" src="../../js/libs/pano2vr_player.js"></script>
-    <script type="text/javascript">
-
-      // create the panorama player with the content
-      pano = new pano2vrPlayer("main");
-      // load the configuration
-
-      window.addEventListener("load", function () {
-        pano.readConfigUrlAsync("plazacliff3/pano.xml");
-      });
-    </script>
-    <noscript>
-      <p><b>Please enable Javascript!</b></p>
-    </noscript>
-
-    <!-- Navbar Layout -->
-    <nav id="" class="navbar vg_navbar sticky-top navbar-light">
-      <form class="form-inline">
-        <a href="/mysteries/mystery1.html" id="home_button" class="btn btn-light" style="margin-left: 10px;"><i
-            class="material-icons">home</i></a>
-        <button id="fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
-            class="material-icons">book</i></button>
-        <button id="tb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
-            class="material-icons">menu</i></button>
-        <button id="clear_fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
-            class="material-icons">delete</i></button>
-      </form>
-      <h2 id="page_title" class="nav_title" style="margin-left: 20%">Virtual Galapagos</h4>
-        <div id="control_bar" class=" row justify-content-md-center" style="margin-left: 20%">
-          <div id="nav_control">
-          </div>
-        </div>
+  <!--  VIRTUAL GALAPAGOS LAYOUT   -->
+  <div id="main" class="container-fluid">
+    <div id="content" class="container-fluid text-center">
         <div class="container-img" id="board">
-            <img src="../../images/islandlife/wooden_board.png" alt="Responsive image">
-            <a href="#lightbox" data-toggle="modal" onclick="setTimeout(function() { closeBoard(); }, 1000);"><div class="white-box" id="espanola-imgs">Espanola Images</div></a>
+          <img src="../../images/islandlife/wooden_board.png" alt="Responsive image" class="img-fluid img-bordered">
+          <a href="#lightbox" data-toggle="modal" onclick="setTimeout(function() { closeBoard(); }, 1000);"><div class="white-box" id="espanola-imgs">Espanola Images</div></a>
         </div>
-        <div class="modal carousel slide" id="lightbox" data-ride="carousel" style="position: fixed; z-index: -1; left: 5%; top:5%">
+
+        <div class="modal carousel slide" id="lightbox" data-ride="carousel" style="position: fixed; left: 5%; top:5%">
           <span class="close cursor" onclick="closeModal()">&times;</span>
           <ol class="carousel-indicators">
             <li data-target="#lightbox" data-slide-to="0" class="active"></li>
@@ -83,7 +68,7 @@
             <li data-target="#lightbox" data-slide-to="14"></li>
           </ol>
 
-          <div class="carousel-inner">
+          <div class="carousel-inner img-responsive" style="margin-left: auto; margin-right: auto; margin-top: auto; margin-bottom: auto; width: 60%">
             <div class="carousel-item active">
               <img class="img-fluid img-bordered" src="../../images/islandlife/Slide 16/EspBeach3.JPG" alt="...">
             </div>
@@ -134,24 +119,27 @@
             <span class="carousel-control-next-icon"></span>
           </a>
         </div>
-    </nav>
-
-    <!-- Footer -->
-    <footer class="py-5 pano-footer">
+    </div>
+    <div class="container text-center">
       <div id="av_control">
         <audio id="player">
           <source id="player_src" type="audio/mpeg" />
         </audio>
       </div>
-        <p id="footer" class="m-0 text-center text-muted"></p>
-    </footer>
+    </div>
   </div>
+
+  <!-- Footer -->
+  <footer class="py-5">
+    <p id="footer" class="m-0 text-center text-muted"></p>
+  </footer>
+
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="../../js/jquery-3.2.1.min.js"></script>
-  <script src="../../js/popper.min.js"></script>
-  <script src="../../js/bootstrap-4.0.0.js"></script>
+  <script src="../js/jquery-3.2.1.min.js"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/bootstrap-4.0.0.js"></script>
 
   <!-- Custom scripts -->
   <script src="/js/virtualgalapagos/index.js"></script>
@@ -166,16 +154,15 @@
   <script src="../../js/virtualgalapagos/islandlife/islandlife_avcontroller.js" type="module"></script>
   <script src="../../js/libs/paint.js" type="module"></script>
   <script> 
-  function closeModal() {
-    document.getElementById("board").style.removeProperty("display");
-    document.getElementById("lightbox").style.display = "none";
-  }
-
-  function closeBoard(){
-    document.getElementById("board").style.display = "none";
-  }
-  </script>
+    function closeModal() {
+      document.getElementById("board").style.removeProperty("display");
+      document.getElementById("lightbox").style.display = "none";
+    }
   
+    function closeBoard(){
+      document.getElementById("board").style.display = "none";
+    }
+  </script>
 </body>
 
 </html>
