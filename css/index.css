@@ -115,7 +115,7 @@ a[data-toggle="collapse"] {
     transform: translateY(-50%);
 }
 
-.sublink {
+#mystery1 a {
     font-size: 0.9em !important;
     padding-left: 50px !important;
     background: 	#1164ff;
@@ -174,7 +174,7 @@ a.article:hover {
     MEDIAQUERIES
 ----------------------------------------------------- */
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     #sidebar {
         margin-left: -250px;
     }
