@@ -15,9 +15,9 @@
 }
 
 #drag-area {
-  margin-left: 60%;
-  width: 20vw; 
-  height: 10vw; 
+  margin-left: 70%;
+  width: 25vw; 
+  height: 5vw; 
   border: 1px solid black;
   display: inline-block;
 }
