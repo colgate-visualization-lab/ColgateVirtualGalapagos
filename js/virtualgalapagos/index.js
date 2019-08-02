@@ -1,4 +1,5 @@
 'use strict'
+
 var link = 'https://www.colgate.edu'
 var element = document.createElement('a')
 element.setAttribute('href', link)
@@ -10,5 +11,10 @@ footer.innerText = 'Copyright \u00A9 ' + date.getFullYear() + ', '
 footer.appendChild(element)
 
 $(document).ready(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
+
+});
+

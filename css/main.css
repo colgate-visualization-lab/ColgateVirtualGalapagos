@@ -187,12 +187,15 @@ h2#page_title {
 }
 
 /* Make image response to screen size */
-.img-responsive {
+.img-fluid {
   width: 70%; 
   height: auto;
 }
-@media screen and (max-width: 1300px), (min-width: 2000px)  {
-  .img-responsive {
+@media screen and (max-width: 1300px) {
+  .img-fluid {
     width: 100%;
     height: auto;
   }
+}
+
+
