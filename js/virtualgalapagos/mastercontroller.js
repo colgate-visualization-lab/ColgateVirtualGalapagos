@@ -46,13 +46,10 @@ class MasterController {
       var backBtn = document.createElement('BUTTON')
       backBtn.setAttribute('id', 'backBtn')
       backBtn.className = 'btn btn-dark'
+      backBtn.innerHTML = "BACK"
       backBtn.onclick = function () {
         MasterController.back(controllerObj)
       }
-      var icon = document.createElement('i')
-      icon.className = 'material-icons'
-      icon.innerHTML = 'arrow_back'
-      backBtn.appendChild(icon)
       document.getElementById('nav_control').appendChild(backBtn)
     }
     // last page doesn't need next button
@@ -61,6 +58,7 @@ class MasterController {
       btn.setAttribute('id', 'nextBtn')
       btn.className = 'btn btn-dark'
       btn.style = 'margin-left: 5px;'
+      btn.innerHTML = "NEXT"
       // Button disabled until user done with page
       if (MasterController.getItem(this.pageName) === 'false' && !this.dev_mode) {
         btn.disabled = true
@@ -68,10 +66,6 @@ class MasterController {
       btn.onclick = function () {
         MasterController.next(controllerObj)
       }
-      icon = document.createElement('i')
-      icon.className = 'material-icons'
-      icon.innerHTML = 'arrow_forward'
-      btn.appendChild(icon)
       this.nextBtn = btn
       document.getElementById('nav_control').appendChild(this.nextBtn)
     }
