@@ -1,13 +1,12 @@
 'use strict'
-//create sidebar
+
+class NavigationBar {
+    constructor(){}
+}
 
 function createSideBar(){
     //Sidebar 
-    var side_bar = document.createElement("nav")
-    side_bar.classList.add("active")
-    side_bar.id = "sidebar"
-    var body = document.body
-    body.appendChild(side_bar)
+    var side_bar = document.getElementById("sidebar")
 
     //Side bar Header
     var sidebar_header = document.createElement("div")
@@ -69,12 +68,65 @@ function createSubList(id, parent_node, map){
     parent_node.appendChild(child)
 }
 
+function createTopNav(){
+    var topnav = document.getElementById('topnav-container')
+
+    //Create button to toggle side navigation 
+    var sidebar_button = document.createElement('button')
+    sidebar_button.id = "sidebarCollapse"
+    sidebar_button.className = "btn btn-info active"
+    sidebar_button.setAttribute('type', "button")
+    var icon = document.createElement('i')
+    icon.className = "fas fa-align-left"
+    sidebar_button.appendChild(icon)
+    var btn_title = document.createElement('span')
+    btn_title.innerHTML = "Backpack"
+    sidebar_button.appendChild(icon)
+    sidebar_button.appendChild(btn_title)
+ 
+
+    //Button when screen size is small
+    var topnav_btn = document.createElement('button')
+    topnav_btn.className = "btn btn-dark d-inline-block d-lg-none ml-auto" 
+    topnav_btn.setAttribute('type', "button")
+    topnav_btn.setAttribute('data-toggle', 'collapse')
+    topnav_btn.setAttribute('data-target', '#navbarSupportedContent')
+    topnav_btn.setAttribute('aria-controls', 'navbarSupportedContent')
+    topnav_btn.setAttribute('aria-expanded', 'false')
+    topnav_btn.setAttribute('aria-label', "Toggle navigation")
+    var topnav_icon = document.createElement('i')
+    topnav_icon.className = "fas fa-align-justify"
+    topnav_btn.appendChild(topnav_icon)
+
+    //Content of top navigation bar 
+    var nav_content = document.getElementById("navbarSupportedContent")
+    var content_to_link_map = {'Mystery': 'index.html', 'About': 'homepage/about.html', 'Help': '#', 'Gallery': '#'}
+    var content_list = document.createElement('ul')
+    content_list.className = "nav navbar-nav ml-auto"
+    var active = true
+    for (var key in content_to_link_map){
+        var element = document.createElement('li')
+        element.className = "nav-item"
+        if (active) {
+            element.className += " active"
+            active = false
+        }
+        var link = document.createElement('a')
+        link.className = "nav-link"
+        link.href = content_to_link_map[key]
+        link.innerHTML = key
+        element.appendChild(link)
+        content_list.appendChild(element)
+    }
+    nav_content.appendChild(content_list)
+
+    topnav.insertBefore(topnav_btn, nav_content)
+    topnav.insertBefore(sidebar_button, topnav_btn)
+}
+
 $(document).ready(function () {
     createSideBar()
-    $("#sidebar").mCustomScrollbar({
-        theme: "minimal"
-    });
-
+    createTopNav()
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar, #content').toggleClass('active');
         $('.collapse.in').toggleClass('in');
