@@ -26,7 +26,6 @@
 }
 
 
-
 /* Custom CSS
 -------------------------------------------------- */
 
@@ -36,21 +35,6 @@
   border-radius: 10px;
   margin: auto
 /*  background-color: black;*/
-}
-
-/* Navbar Style */
-.nav_title {
-  color: white;
-  margin-right: 15px;
-}
-
-.vg_navbar{
-  margin-bottom: 10px;
-  z-index: 6;
-}
-
-#tb_button { /* hide sidebar button*/
-  display: none;
 }
 
 /* Sticky footer styles
@@ -79,9 +63,6 @@ body {
 #nav_control{
   padding: inherit;
   margin: auto
-}
-#navbar {
-  background-color: rgb(20, 160, 148)
 }
 
 .btn{
@@ -114,9 +95,7 @@ h2#page_title {
   font-size: 2vw;
 }
 .nav-link {
-  color: rgb(247, 9, 148);
-  font-weight: bolder;
-  font-size: 2rem
+  color: rgb(0, 0, 0);
 }
 .pano-footer {
   position: absolute;
@@ -149,6 +128,9 @@ img.map, map area{
   outline: none;
 }
 
+.red{
+  color: red !important
+}
 /* The snackbar - position it at the top and in the middle of the screen */
 #snackbar {
   visibility:hidden ; /*Hidden by default. */
