@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="../css/index.css">
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
@@ -29,16 +29,14 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div id="topnav-container" class="container-fluid">
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <a class="navbar-brand" href="index.html" style="margin-left: auto">
-                            <img src="images/homepage/Virtual Galapagos Boobie Julia.png" alt="" style="width: 20%">
-                        </a>  
                     </div>
                 </div>
             </nav>
+        <!--Content-->
         </div>
     </div>
 
-  <!-- Optional JavaScript -->
+    <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="../js/jquery-3.2.1.min.js"></script>
   <script src="../js/popper.min.js"></script>
@@ -47,9 +45,15 @@
   <!-- jQuery Custom Scroller CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
-  <!-- Custom scripts -->
-  <script src="js/virtualgalapagos/index.js"></script>
+    <!--  Responsive Image Map  -->
+  <script src="/js/libs/jquery.rwdImageMaps.min.js"></script>
+  <script>$('img[usemap]').rwdImageMaps();</script>
+
+    <!-- Custom scripts -->
+<script type="module" src="../js/virtualgalapagos/homepage/homepage.js"></script>
 
 </body>
 
 </html>
+
+

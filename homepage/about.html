@@ -29,14 +29,11 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div id="topnav-container" class="container-fluid">
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <a class="navbar-brand" href="../index.html" style="margin-left: auto">
-                            <img src="../images/homepage/bird_logo.png" alt="" style="width: 20%">
-                        </a>  
                     </div>
                 </div>
             </nav>
-
-            <section id="about">
+            <!--Content-->
+            <section>
                 <div class="container-fluid">
                   <h1>About</h1>
                   <p>Welcome to Colgate Virtual Galapagos, a digital learning module currently in development by students, staff,
@@ -59,7 +56,7 @@
                     collaborative grant from the Office of Science and Society at McGill University’s Labs Without Borders.</p>
                 </div>
               </section>
-              <section id="contact">
+              <section>
                 <div class="container-fluid ">
                   <h1>Contact</h1>
                   <p><span class="font-weight-bold">Karen Harpp</span> <br> Professor of Geology, Colgate University <br> kharpp@colgate.edu</p>
@@ -68,7 +65,7 @@
                     jeakin@colgate.edu</p>
                 </div>
               </section>
-              <section id="credits">
+              <section>
                 <div class="container-fluid ">
                   <h1>Credits</h1>
                   <p><span class="font-weight-bold">Caio Brighenti ‘20</span>, Computer Science and Peace and Conflict Studies <br> cbrighenti@colgate.edu, <span class="font-italic">Programming</span></p>
@@ -94,10 +91,11 @@
                   <p><span class="font-weight-bold">Phil Worfel</span>, <br> Philworfel@gmail.com, <span class="font-italic">Planetarium Content Creation</span></p>
                 </div>
               </section>
+
         </div>
     </div>
 
-  <!-- Optional JavaScript -->
+    <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="../js/jquery-3.2.1.min.js"></script>
   <script src="../js/popper.min.js"></script>
@@ -106,9 +104,35 @@
   <!-- jQuery Custom Scroller CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
-  <!-- Custom scripts -->
-  <script src="../js/virtualgalapagos/index.js"></script>
+    <!--  Responsive Image Map  -->
+  <script src="/js/libs/jquery.rwdImageMaps.min.js"></script>
+  <script>$('img[usemap]').rwdImageMaps();</script>
+
+    <!-- Custom scripts -->
+<script type="module" src="../js/virtualgalapagos/homepage/homepage.js"></script>
 
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
