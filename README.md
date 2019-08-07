@@ -41,6 +41,7 @@ Feel free to send in any pull requests.
 
 ## Authors
 
+* **Tam Nguyen** - [tmnguyen1307](https://github.com/tmnguyen1307)
 * **Daniel Gathogo** - [dgathogo](https://github.com/dgathogo)
 * **Caio Brighenti** - [CaioBrighenti](https://github.com/CaioBrighenti)
 
