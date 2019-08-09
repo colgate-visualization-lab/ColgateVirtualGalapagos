@@ -43,11 +43,7 @@ html {
   position: relative;
   min-height: 100%;
 }
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-  background-color: antiquewhite 
-} 
+
 /* VG Layout Elements */
 #control_bar{
   padding-right:10px;
@@ -69,15 +65,6 @@ body {
   margin-left: 5px;
 }
 
-h2#page_title {
-  text-shadow: 4px 2px 10px white;
-  color: black
-}
-#page_title {
-  color: white;
-  font-size: 30pt; /*fall back font size*/
-  font-size: 4vmin;
-}
 #container1 {
   margin: auto
 }
@@ -94,9 +81,7 @@ h2#page_title {
   left: 5%;
   font-size: 2vw;
 }
-.nav-link {
-  color: rgb(0, 0, 0);
-}
+
 .pano-footer {
   position: absolute;
   bottom: 0;
@@ -105,13 +90,16 @@ h2#page_title {
   right: 0;
   z-index: 6;
 }
+
 #main {
   position: relative;
   padding-bottom: 1%;
 }
+
 .carousel-caption {
   color: rgb(185, 30, 30)
 }
+
 .img-layered {
   position: absolute;
   top: inherit;
@@ -128,9 +116,15 @@ img.map, map area{
   outline: none;
 }
 
-.red{
-  color: red !important
+.mystery-1-link{
+  color: blue !important;
+  margin-left: 15%;
 }
+
+.mystery-1-link:hover {
+  color: red !important;
+}
+
 /* The snackbar - position it at the top and in the middle of the screen */
 #snackbar {
   visibility:hidden ; /*Hidden by default. */
@@ -178,13 +172,18 @@ img.map, map area{
 
 /* Make image response to screen size */
 .img-fluid {
-  width: 70%; 
+  width: 80%; 
   height: auto;
 }
+
 @media screen and (max-width: 1300px) {
   .img-fluid {
     width: 100%;
     height: auto;
+  }
+
+  .mystery-1-link {
+    margin-left: 0%;
   }
 }
 /* mobile devices*/
@@ -192,8 +191,8 @@ img.map, map area{
   .material-icons {
     font-size: 16px;
   }
-  .nav-link {
-    font-size: 1rem
+  .mystery-1-link {
+    margin-left: 0%;
   }
   .centered {
     top: 10%;
