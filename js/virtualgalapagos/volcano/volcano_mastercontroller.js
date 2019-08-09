@@ -15,6 +15,7 @@ import { VolcanoFieldbook } from './volcano_fieldbook.js'
 import { VolcanoToolbar } from './volcano_toolbar.js'
 import { plumeplacement } from './Volcano_PlumePlacement01.js'
 import { terrainmap } from './Volcano_TerrainMap03.js'
+import { VolcanoNavigationBar } from './volcano_navbar.js'
 
 class VolcanoMasterController extends MasterController {
   constructor (pageList, pageName) {
@@ -155,3 +156,8 @@ if (pageName === 'Volcano_PlumePlacement01') {
 if (pageName === 'Volcano_TerrainMap03') {
   terrainmap(masterController, avController)
 }
+
+
+var nav_bar = new VolcanoNavigationBar()
+nav_bar.init()
+nav_bar.setupLink()
