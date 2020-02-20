@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panorama id="node1" apprev="17333" appversion="6.0.5">
+  <input height="1024" leveltilesize="510" leveltileurl="tiles/node1/cf_%c/l_%l/c_%x/tile_%y.jpg" levelbiashidpi="1.000" levelingpitch="0" width="1024" overlap="1" levelbias="0.400" levelingroll="0">
+    <level height="1024" preload="0" predecode="0" width="1024"/>
+    <level height="512" preload="0" predecode="0" width="512"/>
+    <level height="256" preload="1" predecode="1" width="256"/>
+    <preview strip="1" color="0x808080"/>
+    <video startonload="1" startmutedmobile="0" format="equirectangular" endaction="loop">
+      <source url="/videos/panotour/currents/BoatRide.mp4"/>
+    </video>
+  </input>
+  <view fovmode="0" pannorth="0">
+    <start fov="70" tilt="0" pan="0" projection="4"/>
+    <flyin fov="170" tilt="-90" pan="0" projection="9"/>
+    <min tilt="-90" pan="0" fovpixel="2"/>
+    <max fov="120" fovfisheye="360" tilt="90" fovstereographic="270" pan="360" scaletofit="1"/>
+  </view>
+  <userdata source="" latitude="" copyright="" longitude="" title="" datetime="" info="" customnodeid="" description="" comment="" tags="Currents CC" author=""/>
+  <hotspots wordwrap="1" height="20" width="180">
+    <label background="1" backgroundcolor="0xffffff" wordwrap="1" height="20" textalpha="1" bordercolor="0x000000" enabled="1" borderradius="1" width="180" backgroundalpha="1" border="1" borderalpha="1" textcolor="0x000000"/>
+    <polystyle backgroundcolor="0x0000ff" mode="0" bordercolor="0x0000ff" handcursor="1" backgroundalpha="0.25098" borderalpha="1"/>
+  </hotspots>
+  <media/>
+  <transition zoomspeed="2" blendcolor="0x000000" enabled="1" zoomout="0" blendtime="1" zoomfov="20" zoomoutpause="1" softedge="0" zoomin="0" type="crossdissolve"/>
+  <animation animsequence="Animation01" useinautorotation="0" syncanimationwithvideo="0"/>
+  <control invertcontrol="1" sensitivity="8" lockedkeyboardzoom="0" hideabout="0" invertwheel="0" lockedkeyboard="0" simulatemass="1" lockedwheel="0" speedwheel="1" contextprojections="0" lockedmouse="0" rubberband="0" dblclickfullscreen="0" contextfullscreen="1"/>
+</panorama>
