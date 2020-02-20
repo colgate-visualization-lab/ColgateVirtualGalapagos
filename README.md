@@ -22,6 +22,13 @@ git clone https://github.com/dgathogo/ColgateVirtualGalapagos.git
 
 Launch your local web server with the root as the starting folder, then launch the appropriate module by starting index.html
 
+### Testing
+
+Run 
+``` bash
+npm test
+```
+
 ## Built With
 
 * [Bootstrap](https://getbootstrap.com/) - Web framework used
@@ -46,3 +53,7 @@ This project could not happen without the funding and/or support from the follow
 * NASC
 * McGill University's Lab Without Borders
 * All the scientists whose materials and/or interviews were used with their permissions
+
+###TODO
+- complete slider for comparisons
+- fix bugs on redraw fn in CustomCanvas
