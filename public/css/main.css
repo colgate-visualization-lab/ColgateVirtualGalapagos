@@ -1,0 +1,200 @@
+/* Google Icons
+-------------------------------------------------- */
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: "liga";
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* Custom CSS
+-------------------------------------------------- */
+
+/* Style for a bordered image */
+.img-bordered {
+  border:2px solid #343a40;
+  border-radius: 10px;
+  margin: auto
+/*  background-color: black;*/
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */ 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+/* VG Layout Elements */
+#control_bar{
+  padding-right:10px;
+  border: red;
+}
+
+#av_control{
+  padding: 5px;
+  text-align: center;
+  z-index: 6;
+}
+
+#nav_control{
+  padding: inherit;
+  margin: auto
+}
+
+.btn{
+  margin-left: 5px;
+}
+
+#container1 {
+  margin: auto
+}
+.jumbotron {
+  background-color: rgb(20, 160, 148)
+}
+#mystery-content {
+  position: relative;
+  text-align: left;
+}
+.centered {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  font-size: 2vw;
+}
+
+.pano-footer {
+  position: absolute;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
+  z-index: 6;
+}
+
+#main {
+  position: relative;
+  padding-bottom: 1%;
+}
+
+.carousel-caption {
+  color: rgb(185, 30, 30)
+}
+
+.img-layered {
+  position: absolute;
+  top: inherit;
+  left: 0;
+}
+.dd-drag {
+  background: grey;
+  border: solid;
+  color: white;
+  padding: 0.5em; 
+}
+/* hide outline of image map areas*/
+img.map, map area{
+  outline: none;
+}
+
+.mystery-1-link{
+  color: blue !important;
+  margin-left: 15%;
+}
+
+.mystery-1-link:hover {
+  color: red !important;
+}
+
+/* The snackbar - position it at the top and in the middle of the screen */
+#snackbar {
+  visibility:hidden ; /*Hidden by default. */
+  min-width: 250px; /*Set a default minimum width */
+  margin-left: -125px; /*Divide value of min-width by 2 */
+  background-color: rgb(28, 203, 226);
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 6; 
+  left: 50%; /* Center the snackbar */
+  top: 60px; /* 60px from the bottom */
+}
+
+#snackbar.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 60px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 60px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {top: 60px; opacity: 0;} 
+  to {top: 0; opacity: 1;}
+}
+
+@keyframes fadeout {
+  from {top: 60px; opacity: 0;}
+  to {top: 0; opacity: 1;}
+}
+
+/* Make image response to screen size */
+.img-fluid {
+  width: 80%; 
+  height: auto;
+}
+
+@media screen and (max-width: 1300px) {
+  .img-fluid {
+    width: 100%;
+    height: auto;
+  }
+
+  .mystery-1-link {
+    margin-left: 0%;
+  }
+}
+/* mobile devices*/
+@media (max-width: 1000px){
+  .material-icons {
+    font-size: 16px;
+  }
+  .mystery-1-link {
+    margin-left: 0%;
+  }
+  .centered {
+    top: 10%;
+  }
+}

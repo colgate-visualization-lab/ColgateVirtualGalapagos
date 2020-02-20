@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panorama id="node1" appversion="6.0.5" apprev="17333">
+  <input width="1024" leveltileurl="tiles/node1/cf_%c/l_%l/c_%x/tile_%y.jpg" levelbiashidpi="1.000" levelingpitch="0" leveltilesize="510" overlap="1" levelbias="0.400" height="1024" levelingroll="0">
+    <level width="1024" height="1024" preload="0" predecode="0"/>
+    <level width="512" height="512" preload="0" predecode="0"/>
+    <level width="256" height="256" preload="1" predecode="1"/>
+    <preview strip="1" color="0x808080"/>
+    <video startmutedmobile="0" startonload="1" format="equirectangular" endaction="loop">
+      <source url="../../../videos/panotour/iguana/IguanaPath.mp4"/>
+    </video>
+  </input>
+  <view fovmode="0" pannorth="0">
+    <start fov="70" projection="4" pan="0" tilt="0"/>
+    <flyin fov="170" projection="9" pan="0" tilt="-90"/>
+    <min fovpixel="2" pan="0" tilt="-90"/>
+    <max fov="120" fovstereographic="270" scaletofit="1" fovfisheye="360" pan="360" tilt="90"/>
+  </view>
+  <userdata source="" tags="IguanasWebVersion" datetime="" customnodeid="" latitude="" info="" description="" longitude="" copyright="" author="" comment="" title=""/>
+  <hotspots width="180" wordwrap="1" height="20">
+    <label width="180" borderalpha="1" enabled="1" textcolor="0x000000" bordercolor="0x000000" background="1" wordwrap="1" backgroundcolor="0xffffff" backgroundalpha="1" height="20" border="1" borderradius="1" textalpha="1"/>
+    <polystyle borderalpha="1" bordercolor="0x0000ff" mode="0" backgroundcolor="0x0000ff" backgroundalpha="0.25098" handcursor="1"/>
+  </hotspots>
+  <media/>
+  <transition blendcolor="0x000000" enabled="1" type="crossdissolve" zoomspeed="2" zoomfov="20" zoomoutpause="1" zoomin="0" zoomout="0" softedge="0" blendtime="1"/>
+  <animation syncanimationwithvideo="0" useinautorotation="0" animsequence="Animation01"/>
+  <control lockedwheel="0" dblclickfullscreen="0" lockedkeyboard="0" invertwheel="0" hideabout="0" simulatemass="1" lockedkeyboardzoom="0" sensitivity="8" contextfullscreen="1" rubberband="0" speedwheel="1" lockedmouse="0" invertcontrol="1" contextprojections="0"/>
+</panorama>
