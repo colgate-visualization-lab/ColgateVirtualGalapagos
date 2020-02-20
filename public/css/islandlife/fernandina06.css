@@ -1,0 +1,70 @@
+.container-img {
+    text-align: center;
+    z-index: -1;
+}
+
+.container-2 {
+    position: relative;
+    text-align: center;
+}
+
+.white-box {
+    background-color: white;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    padding: 80px 50px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.box-1 {
+    top: 10%;
+    right: 20%;
+}
+
+.img-on-board {
+    position: absolute;
+    width: 25%;
+}
+
+#PitCraterLedge {
+    top: 2%;
+    left: 20%;
+}
+
+#cactus {
+    bottom: 2%;
+    right: 35%;
+}
+
+#tortoise {
+    top: 2%;
+    right: 20%;
+}
+
+.modal-backdrop {
+    z-index: -1;
+}
+
+.close {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    z-index: 6;
+}
+
+.close:hover,
+.close:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#espanola-imgs {
+    top: 10%;
+    left: 25%;
+}
