@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/Fieldbook.css">
+  <link rel="stylesheet" href="/css/Toolbar.css">
+  <link rel="stylesheet" href="/css/paint.css">
+  <link rel="icon" href="/images/png-32x32.png" type="image/png" />
+
+  <title>Colgate Virtual Galapagos</title>
+</head>
+
+<body>
+  <!-- Navbar Layout -->
+  <nav id="navbar" class="navbar vg_navbar sticky-top navbar-light">
+    <form class="form-inline">
+      <a href="/mysteries/mystery1.html" id="home_button" class="btn btn-light" style="margin-left: 10px;"><i
+          class="material-icons">home</i></a>
+      <button id="fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
+          class="material-icons">book</i></button>
+      <button id="tb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
+          class="material-icons">menu</i></button>
+      <button id="clear_fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
+          class="material-icons">delete</i></button>
+    </form>
+    <h3 id="page_title" class="nav_title">Virtual Galapagos</h3>
+    <div id="control_bar" class=" row justify-content-md-center">
+      <div id="nav_control">
+      </div>
+    </div>
+  </nav>
+
+  <!--  VIRTUAL GALAPAGOS LAYOUT   -->
+  <div id="main" class="container-fluid">
+    <div id="content" class="container-fluid text-center">
+      <img src="/images/currents/boats.png" class="img-fluid img-bordered" alt="Responsive image">
+    </div>
+    <div class="container text-center">
+      <div id="av_control">
+        <audio id="player">
+          <source id="player_src" type="audio/mpeg" />
+        </audio>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-5">
+      <p id="footer" class="m-0 text-center text-muted"></p>
+  </footer>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="/js/jquery-3.2.1.min.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap-4.0.0.js"></script>
+
+  <!-- Custom scripts -->
+  <script src="/js/virtualgalapagos/index.js"></script>
+  <script src="/js/virtualgalapagos/fieldbook.js" type="module"></script>
+  <script src="/js/virtualgalapagos/currents/currents_fieldbook.js" type="module"></script>
+  <script src="/js/virtualgalapagos/overlay.js" type="module"></script>
+  <script src="/js/virtualgalapagos/toolbar.js" type="module"></script>
+  <script src="/js/virtualgalapagos/currents/currents_toolbar.js" type="module"></script>
+  <script src="/js/virtualgalapagos/mastercontroller.js" type="module"></script>
+  <script src="/js/virtualgalapagos/currents/currents_mastercontroller.js" type="module"></script>
+  <script src="/js/virtualgalapagos/avcontroller.js" type="module"></script>
+  <script src="/js/virtualgalapagos/currents/currents_avcontroller.js" type="module"></script>
+  <script src="/js/libs/paint.js" type="module"></script>
+
+</body>
+
+</html>
