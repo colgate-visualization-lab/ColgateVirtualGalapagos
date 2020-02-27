@@ -23,7 +23,7 @@ a:focus {
 
 .navbar {
     padding: 0px 10px;
-    background: gray;
+    background: rgb(85, 255, 255);
     border: none;
     border-radius: 0;
     margin-bottom: 40px;
