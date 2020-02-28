@@ -182,6 +182,9 @@ a.article:hover {
   margin-left: auto;
   margin-right: auto;
   display: block;
+  border: 10px solid transparent;
+  padding:15px;
+  border-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQi9FBtxkeaTlEcKujvUqW6INXjpR4KqQGN83CQEPQ8qTfcKcpy) 30 stretch;
 }
 #sticky {
     width:100%;
