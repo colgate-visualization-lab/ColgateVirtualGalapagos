@@ -3,7 +3,9 @@
 body{
     font-family: 'Poppins', sans-serif;
     background: #000000;
-    min-height: 100%;
+    height: 100vh;
+    position:relative;
+
 }
 
 p {
@@ -165,10 +167,10 @@ a.article:hover {
     padding: 40px;
     min-height: 100vh;
     transition: all 0.3s;
-    position: absolute;
+    position: relative;
     top: 0;
     right: 0;
-   
+    
 }
 
 #content.active {
@@ -181,6 +183,19 @@ a.article:hover {
   margin-right: auto;
   display: block;
 }
+#sticky {
+    width:100%;
+    height:70px;
+    padding-top:0px;
+    background:rgb(255, 255, 255);
+    color:rgb(0, 0, 0);
+    font-weight:bold;
+    font-size:24px;
+    text-align:center;
+    position:relative; /*Here's what sticks it*/
+            /*to the bottom of the body/page*/
+    left:0;            /*and to the left of the body/page.*/
+  }
 
 /* ---------------------------------------------------
     MEDIAQUERIES
