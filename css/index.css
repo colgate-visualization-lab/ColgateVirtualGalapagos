@@ -1,96 +1,47 @@
-
- 
-.video-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-section {
-    padding: 20px;
-    margin: 15px;
-    z-index: 1;
-}
-#homepage-img {
-  max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  border: 10px solid transparent;
-  padding:1px;
-  border-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQi9FBtxkeaTlEcKujvUqW6INXjpR4KqQGN83CQEPQ8qTfcKcpy) 30 stretch;
-}
-.bs-example{
+.parentdiv {
+  height: 100vh;
+  background-image: url(https://c.pxhere.com/photos/68/e9/forest_nature_outdoors_path_trees_woods-1170198.jpg!d);
+  background-size: cover;
+ }
+ .topsection {
+  position: relative;
+  height: 10vh;
+ }
+ .navbarclass {
     margin: 20px;
     position: absolute;
-}
-#Picture {
-    position: relative;
-}
-.ribbon {
-    top: 0;
-    right: 0;
-    z-index: 2;
-    position: absolute;
-}
-#header-img {
-    width: 100%;
-    position: absolute;
-    height: 100%;
-    z-index: 1;
-}
-.penis {
-  background-color: grey;
-  height: 20vh;
-}
-.bigpenis {
-  height: 100vh;
-  background-color: pink;
-}
-.penis2{
-  background-color: blue;
-  height: 50%;
-  z-index: 1;
-}
-.penis3{
-  background-color: orange;
-  height: 60vh;
-}
-.penis4{
-  background-color: aquamarine;
-  height: 20vh;
-}
-.mystery {
-  background-image: url(/images/currents/wooden_board.png);
+ }
+ .logoclass {
+  position: absolute;
+  width: 10%;
   height: 100%;
-  width: 75%;
-  margin-right: auto;
-  margin-left: auto;
-}
-.section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-.superpenis {
+  top: 0%;
+  right: 2%;
+ }
+ .bannerpart {
+  height: 10vh;
+  padding-bottom: 5px;
+  position: relative;
+ }
+ .textdiv {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 10%;
+ }
+ .textpart {
+  fill: burlywood;
+ }
+ .mainsection {
+  height: 80vh;
+  padding-bottom: 20px;
+ }
+ .mapimage {
  display: block;
  max-height: 100%;
- margin-left: auto;
- margin-right: auto;
+ margin: 0 auto;
+ width: 90%;
  border: 10px solid transparent;
  border-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQi9FBtxkeaTlEcKujvUqW6INXjpR4KqQGN83CQEPQ8qTfcKcpy) 30 stretch;
-}
-.meow {
-  text-align: center;
-  font-size: 70px;
-  color: burlywood;
-}
-.ribbon {
-  position: relative;
-  margin-left: 75%;
-  display: block;
-}
+ }
+ 
