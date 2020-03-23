@@ -6,10 +6,12 @@
  .topsection {
   position: relative;
   height: 10vh;
+  min-height: 90px;
  }
  .navbarclass {
-    margin: 20px;
-    position: absolute;
+   margin: 20px;
+   position: absolute;
+   opacity: 0.9;
  }
  .logoclass {
   position: absolute;
@@ -37,6 +39,7 @@
   padding-bottom: 20px;
  }
  .mapimage {
+ opacity: 0.9;
  display: block;
  max-height: 100%;
  margin: 0 auto;
