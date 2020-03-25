@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server",
+    "build": "webpack --config webpack.config.prod.js"
   },
   "repository": {
     "type": "git",
@@ -15,9 +16,31 @@
   "bugs": {
     "url": "https://github.com/colgate-visualization-lab/ColgateVirtualGalapagos/issues"
   },
+  "browserslist": "> 1%, last 2 versions",
   "homepage": "https://github.com/colgate-visualization-lab/ColgateVirtualGalapagos#readme",
   "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/preset-stage-2": "^7.8.3",
+    "autoprefixer": "^9.7.5",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.4.2",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.0.1",
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^1.1.3",
+    "url-loader": "^4.0.0",
     "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "core-js": "^3.6.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.1.2",
+    "regenerator-runtime": "^0.13.5"
   }
 }
