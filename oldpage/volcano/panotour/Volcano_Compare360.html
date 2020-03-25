@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="mobile-web-app-capable" content="yes" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/Fieldbook.css">
+  <link rel="stylesheet" href="../../css/Toolbar.css">
+  <link rel="icon" href="../../images/png-32x32.png" type="image/png" />
+  <link rel="stylesheet" href="../../css/pano.css">
+
+  <title>Colgate Virtual Galapagos</title>
+</head>
+
+<body>
+  <div id="main" style="width:100%;height:100%;overflow:hidden;">
+    <br>Loading...<br><br>
+
+    <script type="text/javascript" src="../../js/libs/pano2vr_player.js"></script>
+    <script type="text/javascript">
+
+      // create the panorama player with the content
+      pano = new pano2vrPlayer("main");
+      // load the configuration
+
+      window.addEventListener("load", function () {
+        pano.readConfigUrlAsync("compare360/pano.xml");
+      });
+    </script>
+    <noscript>
+      <p><b>Please enable Javascript!</b></p>
+    </noscript>
+
+    <!-- Navbar Layout -->
+    <nav id="" class="navbar vg_navbar sticky-top navbar-light">
+      <form class="form-inline">
+        <a href="/mysteries/mystery1.html" id="home_button" class="btn btn-light" style="margin-left: 10px;"><i
+            class="material-icons">home</i></a>
+        <button id="fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
+            class="material-icons">book</i></button>
+        <button id="tb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
+            class="material-icons">menu</i></button>
+        <button id="clear_fb_button" class="btn btn-light" style="margin-left: 10px;" type="button"><i
+            class="material-icons">delete</i></button>
+      </form>
+      <h2 id="page_title" class="nav_title">Isabela</h4>
+        <div id="control_bar" class=" row justify-content-md-center">
+          <div id="nav_control">
+            <a href="../Volcano_Slider01.html" class="btn btn-dark"><i class="material-icons">arrow_back</i></a>
+            <a id="nextBtn" href="../Volcano_TerrainMap03.html" class="btn btn-dark"><i
+                class="material-icons">arrow_forward</i></a>
+          </div>
+        </div>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="py-5 pano-footer">
+      <div id="av_control">
+        <audio id="player">
+          <source id="player_src" type="audio/mpeg" />
+        </audio>
+      </div>
+        <p id="footer" class="m-0 text-center text-muted"></p>
+    </footer>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="../../js/jquery-3.2.1.min.js"></script>
+  <script src="../../js/popper.min.js"></script>
+  <script src="../../js/bootstrap-4.0.0.js"></script>
+
+  <!-- Custom scripts -->
+  <script src="/js/virtualgalapagos/index.js"></script>
+  <script src="../../js/virtualgalapagos/fieldbook.js" type="module"></script>
+  <script src="../../js/virtualgalapagos/volcano/volcano_fieldbook.js" type="module"></script>
+  <script src="../../js/virtualgalapagos/overlay.js" type="module"></script>
+  <script src="../../js/virtualgalapagos/toolbar.js" type="module"></script>
+  <script src="../../js/virtualgalapagos/volcano/volcano_toolbar.js" type="module"></script>
+  <script src="../../js/virtualgalapagos/mastercontroller.js" type="module"></script>
+  <script src="../../js/virtualgalapagos/volcano/volcano_mastercontroller.js" type="module"></script>
+  <script src="../../js/virtualgalapagos/avcontroller.js" type="module"></script>
+  <script src="../../js/virtualgalapagos/volcano/volcano_avcontroller.js" type="module"></script>
+
+</body>
+
+</html>

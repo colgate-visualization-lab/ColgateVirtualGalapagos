@@ -1,0 +1,22 @@
+/* exploration01 */
+@-ms-viewport { width: device-width; }
+@media only screen and (min-device-width: 800px) { html { overflow:hidden; } }
+* { padding: 0; margin: 0; }
+html { height: 100%; }
+body { height: 100%; overflow:hidden; }
+div#container { height: 100%; min-height: 100%; width: 100%; margin: 0 auto; }
+div#tourDIV {
+    height:100%;
+    overflow:hidden;
+    position: relative;
+}
+div#panoDIV {
+    height:100%;
+    position:relative;
+    overflow:hidden;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
