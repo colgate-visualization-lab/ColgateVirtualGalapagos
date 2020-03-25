@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panorama appversion="6.0.5" id="node1" apprev="17333">
+  <input leveltilesize="510" height="1024" overlap="1" width="1024" leveltileurl="tiles/node1/cf_%c/l_%l/c_%x/tile_%y.jpg" levelbiashidpi="1.000" levelbias="0.400" levelingroll="0" levelingpitch="0">
+    <level preload="0" predecode="0" height="1024" width="1024"/>
+    <level preload="0" predecode="0" height="512" width="512"/>
+    <level preload="1" predecode="1" height="256" width="256"/>
+    <preview color="0x808080" strip="1"/>
+    <video startmutedmobile="0" startonload="1" endaction="loop" format="equirectangular">
+      <source url="../../../videos/panotour/iguana/IguanaComparison.mp4"/>
+    </video>
+  </input>
+  <view fovmode="0" pannorth="0">
+    <start tilt="0" projection="4" pan="0" fov="70"/>
+    <flyin tilt="-90" projection="9" pan="0" fov="170"/>
+    <min tilt="-90" fovpixel="2" pan="0"/>
+    <max tilt="90" fovstereographic="270" fovfisheye="360" pan="360" scaletofit="1" fov="120"/>
+  </view>
+  <userdata tags="Iguanas Color Corrected" copyright="" comment="" author="" source="" info="" latitude="" longitude="" title="" description="" datetime="" customnodeid=""/>
+  <hotspots height="20" width="180" wordwrap="1">
+    <label height="20" background="1" borderalpha="1" width="180" borderradius="1" backgroundcolor="0xffffff" bordercolor="0x000000" textalpha="1" wordwrap="1" textcolor="0x000000" enabled="1" backgroundalpha="1" border="1"/>
+    <polystyle mode="0" borderalpha="1" handcursor="1" backgroundcolor="0x0000ff" bordercolor="0x0000ff" backgroundalpha="0.25098"/>
+  </hotspots>
+  <media/>
+  <transition blendtime="1" zoomspeed="2" blendcolor="0x000000" type="crossdissolve" zoomoutpause="1" zoomin="0" softedge="0" enabled="1" zoomfov="20" zoomout="0"/>
+  <animation animsequence="Animation01" syncanimationwithvideo="0" useinautorotation="0"/>
+  <control speedwheel="1" contextfullscreen="1" sensitivity="8" lockedkeyboardzoom="0" rubberband="0" invertcontrol="1" hideabout="0" lockedwheel="0" contextprojections="0" invertwheel="0" lockedkeyboard="0" simulatemass="1" lockedmouse="0" dblclickfullscreen="0"/>
+</panorama>
