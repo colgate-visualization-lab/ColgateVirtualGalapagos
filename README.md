@@ -21,14 +21,18 @@ npm install
 
 ## Running the project 
 
-Run ```bash
+Run 
+```bash
 npm start
-``` to start the dev server. Project will be running at http://localhost:9000/
+``` 
+to start the dev server. Project will be running at http://localhost:9000/
 To change the port, go to webpack.config.js file 
 
-Run ```bash
+Run 
+```bash
 npm run build
-``` to run the production version of the website. 
+``` 
+to run the production version of the website. 
 
 
 ## Contributing
