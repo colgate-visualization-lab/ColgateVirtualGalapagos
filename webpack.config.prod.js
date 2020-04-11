@@ -4,8 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     mode: 'production', 
-    entry = './src/index.js', 
-    output = {
+    entry: './src/index.js', 
+    output: {
         path: path.resolve(__dirname, 'dist'), 
         filename: 'bundle.js', 
         publicPath: ''
@@ -38,6 +38,10 @@ module.exports = {
             {
                 test: /\.(png|jpe?g|gif)$/, 
                 loader: 'url-loader?name=images/[name].[ext]'
+            }, 
+            {
+                test: /\.mp4$/, 
+                loader: 'file-loader?name=videos/[name].[ext]'
             }
         ]
     }, 
