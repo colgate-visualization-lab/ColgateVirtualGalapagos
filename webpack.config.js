@@ -8,7 +8,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'), 
         filename: 'bundle.js', 
-        publicPath: ''
+        publicPath: '/'
     }, 
     devtool: 'cheap-module-eval-source-map', 
     module: {
@@ -38,6 +38,10 @@ module.exports = {
             {
                 test: /\.(png|jpe?g|gif)$/, 
                 loader: 'url-loader?name=images/[name].[ext]'
+            }, 
+            {
+                test: /\.mp4$/, 
+                loader: 'file-loader?name=videos/[name].[ext]'
             }
         ]
     }, 
@@ -51,6 +55,8 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
-        port: 9000
-      }
+        port: 9000, 
+        historyApiFallback: true, 
+        hot: true
+    }
 }
