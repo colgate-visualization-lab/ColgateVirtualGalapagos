@@ -1,5 +1,28 @@
+html {
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 body {
     margin: 0; 
     padding: 0;  
     font-family: 'Open Sans', sans-serif;
+    background-color: black;
+    color: white; 
 }
+
+:global a {
+    text-decoration: none;
+    color: white; 
+}
+
+:global a:hover {
+    text-decoration: none;
+    color: moccasin; 
+}
+
+
