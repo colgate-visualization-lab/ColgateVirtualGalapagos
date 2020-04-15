@@ -6,21 +6,45 @@ import ImageMapper from 'react-image-mapper'
 import MAP from '/Users/giancarloarcese/ColgateVirtualGalapagos/src/components/ImageMaps.js'
 
 class Homepage extends Component {
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             count: 'nothing'
+        }
+    }
+    
+enterArea() {
+    this.setState({
+        count: 'something'
+    })
+    console.log(this.state.count)
+}
+leaveArea() {
+    this.setState({
+        count: 'back to nothing'
+    })
+    console.log(this.state.count)
+}
     render(){
-        const animation = " animated slideInRight"
-       
-          
+        const animation = "animated slideInRight"
         return (
-            
-                <div className={classes.Map + animation}>
+        <div className="container">
+            <div className={animation}>
                 <ImageMapper 
                 src={MapImg}
-                width={700}
+                width={1000}
                 imgWidth={1920}
                 map={MAP}
-                
+                onMouseEnter={area => this.enterArea(area)}
+				onMouseLeave={area => this.leaveArea(area)}
                 />
-                </div>
+                <h1 className={classes.Mapheader}> This is {this.state.count}</h1>
+            </div>
+        </div>
+          
+          
+              
                 /* <img src={MapImg} className={classes.Map + animation} useMap="#image-map"/> 
                 <map name="image-map">
                     <area 
