@@ -45,6 +45,7 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
+    "react-image-mapper": "0.0.15",
     "react-router-dom": "^5.1.2",
     "regenerator-runtime": "^0.13.5"
   }
