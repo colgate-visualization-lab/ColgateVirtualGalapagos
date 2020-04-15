@@ -1,0 +1,36 @@
+.Modal {
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    padding: 2em;
+    background: #ffffff;
+}
+
+.Modal:target {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.Modal:not(:target) {
+    display: none;
+}
+
+.ModalClose {
+    color: #aaa;
+    line-height: 50px;
+    font-size: 80%;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 70px;
+    text-decoration: none;
+}
+
+.ModalClose:hover {
+    color: black;
+}
