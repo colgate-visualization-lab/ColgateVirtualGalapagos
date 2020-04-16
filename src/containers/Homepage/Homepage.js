@@ -3,35 +3,48 @@ import classes from './Homepage.css'
 import Footer from '../../components/Footer/Footer'
 import MapImg from '../../assets/homepage/homepage.png'
 import ImageMapper from 'react-image-mapper'
-import MAP from '/Users/giancarloarcese/ColgateVirtualGalapagos/src/components/ImageMaps.js'
-
-
-
+import MAP from '../../components/ImageMap/ImageMaps.js'
 
 class Homepage extends Component {
     constructor(props) {
         super(props)
     
         this.state = {
-           
-             msg: 'Click on the highlighted island to travel to the next module!'
+             msg: 'Click on the highlighted island to travel to the next module!',
+             lockingValue: 1
         }
     }
-    
 enterArea(area) {
-    this.setState({
-        msg: `${area.name}`
+    let unlock = `${area._id}`
+    let lockValue = this.state.lockingValue
+    if(unlock <= lockValue){
+        this.setState({
+            msg: `${area._id}`
     })
+}
+    else { 
+        this.setState({
+            msg: "this is locked"
+        })
+    }
 }
 leaveArea() {
     this.setState({
         msg: 'Click on the highlighted island to travel to the next module!'
     })
 }
+unlockModules = (event) => {
+    this.setState({ 
+        lockingValue: event.target.id },() => {
+      console.log(this.state.lockingValue)
+    });
+  }
     render(){
         const animation = "animated slideInRight"
+        const {msg} = this.state
         return (
         <div className="container">
+            <button id="5" onClick={this.unlockModules}>ClickMe</button>
             <div className={animation}>
                 <ImageMapper 
                 src={MapImg}
@@ -42,7 +55,7 @@ leaveArea() {
                 onMouseEnter={area => this.enterArea(area)}
 				onMouseLeave={() => this.leaveArea()}
                 />
-                <h1 className={classes.Mapheader}>{this.state.msg}</h1>
+                <h1 className={classes.Mapheader}>{msg}</h1>
             </div>
         </div>  
         )
@@ -50,3 +63,9 @@ leaveArea() {
 }
 
 export default Homepage
+// export const unlockModules = (event) => {
+//     this.setState({ 
+//         lockingValue: event.target.id },() => {
+//       console.log(this.state.lockingValue)
+//     });
+//   }
