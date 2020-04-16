@@ -19,7 +19,7 @@ enterArea(area) {
     let lockValue = this.state.lockingValue
     if(unlock <= lockValue){
         this.setState({
-            msg: `${area._id}`
+            msg: `${area.name}`
     })
 }
     else { 
@@ -44,7 +44,7 @@ unlockModules = (event) => {
         const {msg} = this.state
         return (
         <div className="container">
-            <button id="5" onClick={this.unlockModules}>ClickMe</button>
+            <button id="5" onClick={this.unlockModules}>Unlock Modules</button>
             <div className={animation}>
                 <ImageMapper 
                 src={MapImg}
