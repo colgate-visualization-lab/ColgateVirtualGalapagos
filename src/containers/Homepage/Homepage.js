@@ -4,6 +4,8 @@ import Footer from '../../components/Footer/Footer'
 import MapImg from '../../assets/homepage/homepage.png'
 import ImageMapper from 'react-image-mapper'
 import MAP from '../../components/ImageMap/ImageMaps.js'
+import { Redirect } from 'react-router'
+import {Link} from 'react-router-dom'
 
 class Homepage extends Component {
     constructor(props) {
@@ -11,6 +13,8 @@ class Homepage extends Component {
     
         this.state = {
              msg: 'Click on the highlighted island to travel to the next module!',
+             route: false,
+             link: ""
         }
     }
 enterArea(area) {
@@ -18,7 +22,8 @@ enterArea(area) {
     let lockValue = this.props.lockValue
     if(unlock <= lockValue){
         this.setState({
-            msg: `${area.name}`
+            msg: `${area.name}`,
+            link: `${area.href}`
     })
 }
     else { 
@@ -32,9 +37,19 @@ leaveArea() {
         msg: 'Click on the highlighted island to travel to the next module!'
     })
 }
+enterModule(area) {
+    let unlock = `${area._id}`
+    let lockValue = this.props.lockValue
+    if(unlock <= lockValue) {
+    this.setState ({route: true})
+}}
+   
     render(){
         const animation = "animated slideInRight"
-        const {msg} = this.state
+        const {msg, route, link} = this.state
+        if (route) {
+            return <Redirect to={link}/>
+        }
         return (
         <div className="container">
             <div className={animation}>
@@ -45,7 +60,8 @@ leaveArea() {
                 map={MAP}
                 fillColor={"rgba(0, 246, 255, 0.33)"}
                 onMouseEnter={area => this.enterArea(area)}
-				onMouseLeave={() => this.leaveArea()}
+                onMouseLeave={() => this.leaveArea()}
+                onClick={(area) => this.enterModule(area)}
                 />
                 <h1 className={classes.Mapheader}>{msg}</h1>
             </div>
