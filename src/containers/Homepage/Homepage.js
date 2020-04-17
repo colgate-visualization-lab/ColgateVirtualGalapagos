@@ -11,12 +11,11 @@ class Homepage extends Component {
     
         this.state = {
              msg: 'Click on the highlighted island to travel to the next module!',
-             lockingValue: 1
         }
     }
 enterArea(area) {
     let unlock = `${area._id}`
-    let lockValue = this.state.lockingValue
+    let lockValue = this.props.lockValue
     if(unlock <= lockValue){
         this.setState({
             msg: `${area.name}`
@@ -33,18 +32,11 @@ leaveArea() {
         msg: 'Click on the highlighted island to travel to the next module!'
     })
 }
-unlockModules = (event) => {
-    this.setState({ 
-        lockingValue: event.target.id },() => {
-      console.log(this.state.lockingValue)
-    });
-  }
     render(){
         const animation = "animated slideInRight"
         const {msg} = this.state
         return (
         <div className="container">
-            <button id="5" onClick={this.unlockModules}>Unlock Modules</button>
             <div className={animation}>
                 <ImageMapper 
                 src={MapImg}
