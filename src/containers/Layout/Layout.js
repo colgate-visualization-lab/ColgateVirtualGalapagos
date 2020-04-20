@@ -1,16 +1,23 @@
-import React, {Fragment} from 'react'
+import React, { Component, Fragment } from 'react'
 import NavBar from '../../components/Navigation/NavBar/NavBar'
 import Modal from '../../components/UI/Modal/Modal'
+import Backpack from '../Backpack/Backpack'
 
-const layout = (props) => {
-    return (
-    <Fragment>
-        <NavBar />
-        <main>
-            {props.children}
-            <Modal />
-        </main>
-    </Fragment>
-)}
+class Layout extends Component {
 
-export default layout
+    render(){
+        return (
+        <Fragment>
+            <NavBar />
+            <main>
+                {this.props.children}
+                <Modal>
+                    <Backpack />
+                </Modal>
+            </main>
+        </Fragment>
+        )
+    }
+}
+
+export default Layout
