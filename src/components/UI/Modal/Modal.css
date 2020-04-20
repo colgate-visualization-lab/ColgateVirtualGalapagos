@@ -1,18 +1,31 @@
 .Modal {
-    width: 400px;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0; 
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+.Modal >div {
+    width: 70vw;
+    height: 90vh;
     position: absolute;
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
     padding: 2em;
-    background: #ffffff;
+    background-image: url('../../../assets/homepage/backpack_background.jpg');
+    background-size: cover;
 }
 
 .Modal:target {
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
+    z-index: 500;
 }
 
 .Modal:not(:target) {
