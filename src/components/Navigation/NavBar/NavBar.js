@@ -7,7 +7,7 @@ import Backpack from '../../../assets/homepage/backpack.png'
 
 const navbar = () => {
     return (
-        <Navbar expand='lg' fill>
+        <Navbar expand='lg'>
             <NavLink to='/home'>
                 <Navbar.Brand>
                     <LogoImage className={classes.Logo}/>
@@ -22,7 +22,7 @@ const navbar = () => {
             <NavLink to="/authorization">
                 <Nav.Item className={classes.NavItem}>Sign In</Nav.Item>
             </NavLink>
-            <a href="#open-modal">
+            <a href="#open-backpack">
                 <Nav.Item>
                     <img src={Backpack} alt="Backpack" className={classes.Backpack}/>
                 </Nav.Item>
