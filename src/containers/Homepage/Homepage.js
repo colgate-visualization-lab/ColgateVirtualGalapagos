@@ -1,10 +1,9 @@
-import React, { Component, Fragment } from "react"
+import React, { Component } from "react"
 import classes from './Homepage.css'
 import MapImg from '../../assets/homepage/homepage.png'
 import ImageMapper from 'react-image-mapper'
 import MAP from '../../components/ImageMap/ImageMaps.js'
 import { Redirect } from 'react-router'
-import {Link} from 'react-router-dom'
 
 class Homepage extends Component {
     constructor(props) {
@@ -16,15 +15,15 @@ class Homepage extends Component {
              link: ""
         }
     }
-enterArea(area) {
-    let unlock = `${area._id}`
-    let lockValue = this.props.lockValue
-    if(unlock <= lockValue){
-        this.setState({
-            msg: `${area.name}`,
-            link: `${area.href}`
-    })
-}
+    enterArea(area) {
+        let unlock = `${area._id}`
+        let lockValue = this.props.lockValue
+        if(unlock <= lockValue){
+            this.setState({
+                msg: `${area.name}`,
+                link: `${area.href}`
+        })
+    }
     else { 
         this.setState({
             msg: "this is locked"
@@ -55,14 +54,14 @@ enterModule(area) {
                 <ImageMapper 
                 src={MapImg}
                 width={1100}
-                imgWidth={1920}
+                imgWidth={1910}
                 map={MAP}
                 fillColor={"rgba(0, 246, 255, 0.33)"}
                 onMouseEnter={area => this.enterArea(area)}
                 onMouseLeave={() => this.leaveArea()}
                 onClick={(area) => this.enterModule(area)}
                 />
-                <h1 className={classes.Mapheader}>{msg}</h1>
+                <p className={classes.Mapheader}>{msg}</p>
             </div>
         </div>  
         )
