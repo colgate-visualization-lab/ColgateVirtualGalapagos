@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from "react"
 import classes from './Homepage.css'
-import MapImg from '../../assets/homepage/homepage.png'
 import ImageMapper from 'react-image-mapper'
 import MAP from '../../components/ImageMap/ImageMaps.js'
 import { Redirect } from 'react-router'
-import {Link} from 'react-router-dom'
+import MapFernandina from '/Users/giancarloarcese/ColgateVirtualGalapagos/src/assets/MapFernandina.png'
 
 class Homepage extends Component {
     constructor(props) {
@@ -22,7 +21,7 @@ enterArea(area) {
     if(unlock <= lockValue){
         this.setState({
             msg: `${area.name}`,
-            link: `${area.href}`
+            link: `${area.id}`
     })
 }
     else { 
@@ -46,6 +45,7 @@ enterModule(area) {
     render(){
         const animation = "animated slideInRight"
         const {msg, route, link} = this.state
+        const {MapImg} = this.props
         if (route) {
             return <Redirect to={link}/>
         }
