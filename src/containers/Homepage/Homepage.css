@@ -4,6 +4,7 @@
     height: 100px;
     width: 100%;
     margin: auto;
-    bottom: -100;
+    top: 50px; 
     z-index: 1;
+    font-size: large;
 }
