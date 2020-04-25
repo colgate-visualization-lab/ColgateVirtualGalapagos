@@ -3,7 +3,8 @@ import classes from './Homepage.css'
 import ImageMapper from 'react-image-mapper'
 import MAP from '../../components/ImageMap/ImageMaps.js'
 import { Redirect } from 'react-router'
-import MapFernandina from '/Users/giancarloarcese/ColgateVirtualGalapagos/src/assets/MapFernandina.png'
+import BackgroundVideo from '/Users/giancarloarcese/ColgateVirtualGalapagos/src/components/BackgroundVideo/BackgroundVideo.js'
+import backgroundImage from '/Users/giancarloarcese/ColgateVirtualGalapagos/src/assets/P3153499.png'
 
 class Homepage extends Component {
     constructor(props) {
@@ -12,49 +13,70 @@ class Homepage extends Component {
         this.state = {
              msg: 'Click on the highlighted island to travel to the next module!',
              route: false,
-             link: ""
+             link: "",
+             width: 0
         }
     }
+//Image Map States & Handlers
 enterArea(area) {
     let unlock = `${area._id}`
     let lockValue = this.props.lockValue
-    if(unlock <= lockValue){
-        this.setState({
-            msg: `${area.name}`,
-            link: `${area.id}`
-    })
-}
-    else { 
-        this.setState({
-            msg: "this is locked"
-        })
+if(unlock <= lockValue){
+    this.setState({msg: `${area.name}`,link: `${area.id}`})
+    }
+else { 
+    this.setState({msg: "this is locked"})
     }
 }
 leaveArea() {
-    this.setState({
-        msg: 'Click on the highlighted island to travel to the next module!'
-    })
+    this.setState({msg: 'Click on the highlighted island to travel to the next module!'})
 }
 enterModule(area) {
     let unlock = `${area._id}`
     let lockValue = this.props.lockValue
-    if(unlock <= lockValue) {
-    this.setState ({route: true})
-}}
-   
-    render(){
-        const animation = "animated slideInRight"
-        const {msg, route, link} = this.state
-        const {MapImg} = this.props
-        if (route) {
-            return <Redirect to={link}/>
-        }
+if (unlock <= lockValue) {
+        this.setState ({route: true})
+    }
+}
+//<ImmageMapper> cannot be styled with css, so these methods update a width state for responsivness
+updateDimensions = () => {
+    let windowWidth = window.innerWidth
+if (windowWidth > 1500) {
+  this.setState({ width: window.innerWidth -500})
+    }
+else if (windowWidth > 1300) {
+    this.setState({ width: window.innerWidth -400})
+    }
+else if (windowWidth > 1100) {
+    this.setState({ width: window.innerWidth -300})
+    }   
+else {
+    this.setState({ width: window.innerWidth -50})
+    }
+}
+componentDidMount() {
+  window.addEventListener('resize', this.updateDimensions);
+  this.updateDimensions()
+}
+componentWillUnmount() {
+  window.removeEventListener('resize', this.updateDimensions);
+}
+    
+render(){
+    const animation = "animated slideInRight"
+    const {msg, route, link, width} = this.state
+    const {MapImg} = this.props
+    if (route) {
+        return <Redirect to={link}/>
+            }
         return (
-        <div className="container">
-            <div className={animation}>
+        <Fragment>
+            <img src={backgroundImage} className={classes.videoSubstitute} alt="" /> {/*Background Image for Mobile Divices */}
+            <BackgroundVideo />
+            <div className={`${animation} ${classes.containerFix}`}>
                 <ImageMapper 
                 src={MapImg}
-                width={1100}
+                width={width}
                 imgWidth={1920}
                 map={MAP}
                 fillColor={"rgba(0, 246, 255, 0.33)"}
@@ -62,17 +84,10 @@ enterModule(area) {
                 onMouseLeave={() => this.leaveArea()}
                 onClick={(area) => this.enterModule(area)}
                 />
-                <h1 className={classes.Mapheader}>{msg}</h1>
             </div>
-        </div>  
+            <h1 className={classes.Mapheader} style={{width: `${width}px`}}>{msg}</h1>
+        </Fragment>
         )
     }
 }
-
 export default Homepage
-// export const unlockModules = (event) => {
-//     this.setState({ 
-//         lockingValue: event.target.id },() => {
-//       console.log(this.state.lockingValue)
-//     });
-//   }
