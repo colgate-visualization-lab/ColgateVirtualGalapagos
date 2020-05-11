@@ -1,6 +1,6 @@
 import React from 'react'
-import video from '/Users/giancarloarcese/ColgateVirtualGalapagos/src/assets/tropicalbeachloopextended.mp4'
-import classes from '/Users/giancarloarcese/ColgateVirtualGalapagos/src/components/BackgroundVideo/BackgroundVideo.css'
+import video from '../../assets/tropicalbeachloopextended.mp4'
+import classes from '../BackgroundVideo/BackgroundVideo.css'
 
 function BackgroundVideo() {
     return (               
