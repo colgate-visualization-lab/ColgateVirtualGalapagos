@@ -3,8 +3,8 @@ import classes from './Homepage.css'
 import ImageMapper from 'react-image-mapper'
 import MAP from '../../components/ImageMap/ImageMaps.js'
 import { Redirect } from 'react-router'
-import BackgroundVideo from '/Users/giancarloarcese/ColgateVirtualGalapagos/src/components/BackgroundVideo/BackgroundVideo.js'
-import backgroundImage from '/Users/giancarloarcese/ColgateVirtualGalapagos/src/assets/P3153499.png'
+import BackgroundVideo from '../../components/BackgroundVideo/BackgroundVideo.js'
+import backgroundImage from '../../assets/P3153499.png'
 
 class Homepage extends Component {
     constructor(props) {
