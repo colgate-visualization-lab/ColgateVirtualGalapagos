@@ -1,3 +1,3 @@
-import React as 'react'
+import React from "react"
 
 
