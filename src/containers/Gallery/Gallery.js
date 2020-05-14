@@ -60,7 +60,7 @@ class Gallery extends Component {
 
   render() {
     return (
-      <div style={{ width: "80%", height: "500px", margin: "0 auto" }} onMouseOver = {this.onHoverHandler.bind(this)}>
+      <div style={{ width: "80%", height: "500px", margin: "0 auto" }}>
         <Carousel
           slides={this.slides}
           goToSlide={this.state.goToSlide}

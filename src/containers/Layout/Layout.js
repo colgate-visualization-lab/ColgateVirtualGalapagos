@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import NavBar from '../../components/Navigation/NavBar/NavBar'
 import Modal from '../../components/UI/Modal/Modal'
 import Backpack from '../Backpack/Backpack'
+import BackgroundVideo from '/Users/giancarloarcese/ColgateVirtualGalapagos/src/components/BackgroundVideo/BackgroundVideo.js'
 
 class Layout extends Component {
 
@@ -9,7 +10,8 @@ class Layout extends Component {
         return (
         <Fragment>
             <NavBar />
-            <main>
+            <main style={{height: "100vh", overflow: "hidden", position: "relative"}}>
+                {/* <BackgroundVideo /> */}
                 {this.props.children}
                 <Modal>
                     <Backpack />
