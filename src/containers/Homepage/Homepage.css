@@ -2,9 +2,29 @@
     position: absolute;
     text-align: center;
     height: 100px;
-    width: 100%;
     margin: auto;
-    top: 50px; 
+    top: 10px;
+    right: 0px;
+    left: 0px;
     z-index: 1;
-    font-size: large;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRVyATVZ36jE8NFbSvXtBkGptIDuwtcHhfD-ODGbMF-D5UlivB0&usqp=CAU");
+    background-size: cover;
+    overflow: hidden;
+}
+div.containerFix div{
+    position: absolute;
+    width: 100%;
+    top: 120px;
+    margin: auto;
+    opacity: 0.9;
+}
+.videoSubstitute {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+@media only screen and (min-width: 992px) {
+    .videoSubstitute {
+        display: none;
+    }
 }
