@@ -6,12 +6,12 @@ import SplashScreen from "./components/SplashScreen/SplashScreen"
 import SignIn from "./containers/SignIn/SignIn"
 import ModuleNav from "./components/ModuleNav/ModuleNav"
 import Gallery from "./containers/Gallery/Gallery"
+import MapFernandina from "./assets/images/homepage/MapFernandina.png"
+import MapIsabela from "./assets/images/homepage/homepage.png"
+import MapPinzon from "./assets/images/homepage/MapPinzon.png"
+import MapFloreana from "./assets/images/homepage/MapFloreana.png"
+import MapEspanola from "./assets/images/homepage/MapEspanola.png"
 //import MapSantiago from "./assets/homepage/MapSantiago.png"
-import MapFernandina from "./assets/MapFernandina.png"
-import MapIsabela from "./assets/homepage/homepage.png"
-import MapPinzon from "./assets/homepage/MapPinzon.png"
-import MapFloreana from "./assets/homepage/MapFloreana.png"
-import MapEspanola from "./assets/homepage/MapEspanola.png"
 
 class App extends Component {
 	render(){
