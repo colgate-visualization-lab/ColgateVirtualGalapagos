@@ -1,13 +1,13 @@
-import React from 'react'
-import video from '../../assets/tropicalbeachloopextended.mp4'
-import classes from '../BackgroundVideo/BackgroundVideo.css'
+import React from "react"
+import video from "../../assets/videos/homepage/tropicalbeachloopextended.mp4"
+import classes from "../BackgroundVideo/BackgroundVideo.css"
 
 function BackgroundVideo() {
-    return (               
-        <video autoPlay loop muted className={classes.bgvid}>
-        <source src={video} />
-    </video>
-    )
+	return (               
+		<video autoPlay loop muted className={classes.bgvid}>
+			<source src={video} />
+		</video>
+	)
 }
 
 export default BackgroundVideo
