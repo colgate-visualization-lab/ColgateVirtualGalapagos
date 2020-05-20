@@ -1,14 +1,31 @@
 .Backpack {
-    width: 70px; 
+    width: 70px;
     margin-left: 20px;
 }
 
 .Logo {
-    width: 15%; 
+    width: 15%;
 }
 
-.NavItem{
+.NavItem {
     display: inline-block;
-    margin: 10px 30px; 
-    width: 100%; 
+    margin: 10px 30px;
+    width: 100%;
+}
+
+.dropdown {
+    background-color: inherit;
+    border-color: black;
+}
+
+.dropdown:focus {
+    background-color: black;
+    border-color: black;
+    box-shadow: none;
+}
+
+.dropdown:hover {
+    background-color: black;
+    border-color: black;
+    box-shadow: none;
 }
