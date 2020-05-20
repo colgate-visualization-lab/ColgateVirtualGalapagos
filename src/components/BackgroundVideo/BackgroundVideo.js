@@ -1,5 +1,5 @@
 import React from "react"
-import video from "../../assets/tropicalbeachloopextended.mp4"
+import video from "../../assets/videos/homepage/tropicalbeachloopextended.mp4"
 import classes from "../BackgroundVideo/BackgroundVideo.css"
 
 function BackgroundVideo() {
