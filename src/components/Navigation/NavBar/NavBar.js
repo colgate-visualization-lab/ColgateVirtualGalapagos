@@ -1,7 +1,7 @@
 import React from "react"
 import {NavLink} from "react-router-dom"
 import classes from "./Navbar.css"
-import {Navbar, Nav} from "react-bootstrap"
+import {Navbar, Nav, Dropdown} from "react-bootstrap"
 import LogoImage from "./LogoImage/LogoImage"
 import Backpack from "../../../assets/homepage/backpack.png"
 
@@ -22,11 +22,14 @@ const navbar = () => {
 			<NavLink to="/authorization">
 				<Nav.Item className={classes.NavItem}>Sign In</Nav.Item>
 			</NavLink>
-			<a href="#open-backpack">
-				<Nav.Item>
+			<Dropdown>
+				<Dropdown.Toggle id="backpack" className={classes.dropdown}>
 					<img src={Backpack} alt="Backpack" className={classes.Backpack}/>
-				</Nav.Item>
-			</a>
+				</Dropdown.Toggle>
+				<Dropdown.Menu>
+					<Dropdown.Item><NavLink to='/fieldbook'>Fieldbook</NavLink></Dropdown.Item>
+				</Dropdown.Menu>
+			</Dropdown>
 		</Navbar>
 	)
 }
