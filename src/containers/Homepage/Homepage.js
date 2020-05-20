@@ -3,7 +3,7 @@ import classes from "./Homepage.css"
 import ImageMapper from "react-image-mapper"
 import MAP from "../../components/ImageMap/ImageMaps.js"
 import { Redirect } from "react-router"
-import BackgroundVideo from "../../components/BackgroundVideo/BackgroundVideo.js"
+//import BackgroundVideo from "../../components/BackgroundVideo/BackgroundVideo.js"
 import backgroundImage from "../../assets/P3153499.png"
 
 class Homepage extends Component {
@@ -80,7 +80,6 @@ class Homepage extends Component {
     	return (
     		<Fragment>
     			<img src={backgroundImage} className={classes.videoSubstitute} alt="" /> {/*Background Image for Mobile Divices */}
-    			<BackgroundVideo />
     			<div className={`${animation} ${classes.containerFix}`}>
     				<ImageMapper
     					src={MapImg}
