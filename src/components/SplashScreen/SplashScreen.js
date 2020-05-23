@@ -1,6 +1,6 @@
 import React, {Fragment} from "react"
 import {Link} from "react-router-dom"
-import SplashVideo from "../../assets/videos/homepage/splashvideo.mp4"
+import SplashVideo from "../../../dist/videos/splashvideo.mp4"
 import classes from "./SplashScreen.css"
 
 
