@@ -1,6 +1,8 @@
 import React from "react"
 import classes from "./ModuleNav.css"
 import ModuleNavItem from "./ModuleNavItem/ModuleNavItem"
+import backgroundimage from "../../assets/images/homepage/P3153499.png"
+
 
 const moduleNav = () => {
 	const content = [
@@ -44,11 +46,14 @@ const moduleNav = () => {
 	const items = content.map((item, index) => <ModuleNavItem key={index} title={item.title} description={item.description} background={item.background} animation={item.animation}/>)
 
 	return (
+		<div className={classes.backgroundDiv}>
+		<img src={backgroundimage} className={classes.backgroundImage} />
 		<div className={classes.wrapper}>
 			<div className={classes.cols}>
 				{items}
 			</div>
 		</div>
+		</div> 
 	)
 }
 
