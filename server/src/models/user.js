@@ -11,18 +11,6 @@ const userSchema = new mongoose.Schema({
         trim: true, 
         unique: true 
     }, 
-    email: {
-        type: String, 
-        required: true, 
-        trim: true, 
-        unique: true, 
-        lowercase: true, 
-        validate(value) {
-            if (!validator.isEmail(value)){
-                throw new Error('Not a valid email')
-            }
-        }
-    }, 
     password: {
         type: String, 
         required: true, 
@@ -62,8 +50,8 @@ userSchema.methods.generateAuthToken = async function () {
     return token 
 }
 
-userSchema.statics.findByCredentials = async (email, password) => {
-    const user = await User.findOne({email})
+userSchema.statics.findByCredentials = async (username, password) => {
+    const user = await User.findOne({username})
 
     if (!user) {
         throw new Error('Unable to login')

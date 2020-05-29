@@ -1,5 +1,7 @@
 import React, {Component} from "react"
 import {Route, Switch} from "react-router-dom"
+import axios from 'axios'
+
 import Homepage from "./containers/Homepage/Homepage"
 import Layout from "./containers/Layout/Layout"
 import SplashScreen from "./components/SplashScreen/SplashScreen"
@@ -14,6 +16,14 @@ import MapEspanola from "./assets/images/homepage/MapEspanola.png"
 //import MapSantiago from "./assets/homepage/MapSantiago.png"
 
 class App extends Component {
+	componentDidMount(){
+		axios.post('localhost:3000/users/login', {
+			"username":"joe", 
+			"password": "joe123e"
+		}).then(response => console.log(response))
+		.catch(error => console.log(error))
+	}
+
 	render(){
 		return (
 			<div>
