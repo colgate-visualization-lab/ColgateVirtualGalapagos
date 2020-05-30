@@ -12,7 +12,6 @@ import MapPinzon from "./assets/images/homepage/MapPinzon.png"
 import MapFloreana from "./assets/images/homepage/MapFloreana.png"
 import MapEspanola from "./assets/images/homepage/MapEspanola.png"
 import VolcanoeIframe from "./components/VolcanoeIframe/VolcanoeIframe"
-import SplitImage from "./components/SplitImage/SplitImage"
 
 class App extends Component {
 	render(){
@@ -35,7 +34,6 @@ class App extends Component {
 						<Route path="/isabella" exact component={ModuleNav}/>
 						<Route path="/gallery" exact component={Gallery}/>
 						<Route path="/VolcanoeMod" exact component={VolcanoeIframe} />
-						<Route path="/thesplitimage" exact component={SplitImage} />
 					</Layout>
 				</Switch>
 			</div>
