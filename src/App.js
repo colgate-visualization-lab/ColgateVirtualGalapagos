@@ -12,6 +12,7 @@ import MapPinzon from "./assets/images/homepage/MapPinzon.png"
 import MapFloreana from "./assets/images/homepage/MapFloreana.png"
 import MapEspanola from "./assets/images/homepage/MapEspanola.png"
 import VolcanoeIframe from "./components/VolcanoeIframe/VolcanoeIframe"
+import VolcanoModule from "./containers/VolcanoModule/VolcanoModule"
 
 class App extends Component {
 	render(){
@@ -33,7 +34,8 @@ class App extends Component {
 							render={(props) => <Homepage {...props} lockValue={5} MapImg={MapPinzon} />}/>
 						<Route path="/isabella" exact component={ModuleNav}/>
 						<Route path="/gallery" exact component={Gallery}/>
-						<Route path="/VolcanoeMod" exact component={VolcanoeIframe} />
+						<Route path="/volcanoemod" exact component={VolcanoModule} />
+						<Route path="/VolcanoeI" exact component={VolcanoeIframe} />
 					</Layout>
 				</Switch>
 			</div>
