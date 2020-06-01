@@ -1,0 +1,11 @@
+export { default as Image1 } from "./TerrainMap-Labelled.png";
+export { default as magnifyingGlass } from "./magnifying-glass-1010537_1920.png";
+// export { default as Image3 } from "";
+// export { default as Image4 } from "";
+// export { default as Image5 } from "";
+// export { default as Image6 } from "";
+// export { default as Image7 } from "";
+// export { default as Image8 } from "";
+// export { default as Image9 } from "";
+// export { default as Image10 } from "";
+// export { default as Image11 } from "";
