@@ -9,7 +9,7 @@ const moduleNav = () => {
 			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.", 
 			"background": "url(https://source.unsplash.com/collection/1155333/1600x900)", 
 			"animation": " animated slideInDown",
-			"link": "/home"
+			"link": "/volcanoemod"
 		}, 
 
 		{"title": "Volcano", 
@@ -49,7 +49,7 @@ const moduleNav = () => {
 	]
 
 	const items = content.map((item, index) => <ModuleNavItem key={index} title={item.title} description={item.description} background={item.background} animation={item.animation} link={item.link}/>)
-	const item = content.map((linking) => linking.title)
+
 	return (
 		<div className={classes.backgroundDiv}>
 		<img src={backgroundimage} className={classes.backgroundImage} />
