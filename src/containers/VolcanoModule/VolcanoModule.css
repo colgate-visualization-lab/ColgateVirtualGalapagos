@@ -1,0 +1,25 @@
+.divClass {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.imgClass {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+.buttonClassnext {
+    position: absolute;
+    right: 10%;
+    bottom: 15%;
+    z-index: 1;
+}
+.buttonClassback {
+    position: absolute;
+    left: 10%;
+    bottom: 15%;
+    z-index: 1;
+}
+.notVisible {
+    visibility: hidden;
+}
