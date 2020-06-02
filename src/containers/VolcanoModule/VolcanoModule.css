@@ -23,11 +23,26 @@
 .notVisible {
     visibility: hidden;
 }
-.temporaryclass{
+.slide2Image {
     position: absolute;
-     height: auto;
-      width: 5%;
-      z-index: 1;
-       left: 0;
-       top: 0;
+    height: auto;
+    width: 5%;
+    z-index: 1;
+    left: 0;
+    top: 0;
+}
+.slide4Button {
+    position: absolute;
+    z-index: 1;
+    left: 30%;
+    bottom: 30%
+}
+.popUp {
+    position: absolute;
+    z-index: 2;
+    background-color: orange;
+    font-size: 25px;
+    width: 80%;
+    margin: auto;
+    top: 50%;
 }
