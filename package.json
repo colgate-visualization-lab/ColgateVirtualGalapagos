@@ -36,7 +36,7 @@
     "url-loader": "^4.0.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.9",
@@ -50,6 +50,7 @@
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
     "react-flip-page": "^1.6.0",
+    "react-iframe": "^1.8.0",
     "react-image-mapper": "0.0.15",
     "react-router-dom": "^5.1.2",
     "react-spring": "^8.0.27",

@@ -1,9 +1,13 @@
 import React from "react"
 import classes from "../ModuleNav.css"
+import {Link} from "react-router-dom"
+
 
 const moduleNavItem = (props) => {
+
 	return (
 		<div className={classes.col + props.animation} onTouchStart={() => this.classList.toggle("hover")}>
+			<Link to={props.link}>
 			<div className={classes.container}>
 				<div className={classes.front} style={{backgroundImage: props.background}}>
 					<div className={classes.inner}>
@@ -16,6 +20,7 @@ const moduleNavItem = (props) => {
 					</div>
 				</div>
 			</div>
+			</Link>
 		</div>
 	)
 }
