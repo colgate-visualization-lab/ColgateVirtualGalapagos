@@ -10,8 +10,7 @@ class Layout extends Component {
 		return (
 			<Fragment>
 				<NavBar />
-				<main style={{height: "100vh", overflow: "hidden", position: "relative"}}>
-					{/* <BackgroundVideo /> */}
+				<main style={{height: "100%", overflow: "hidden", position: "relative", flex: "1"}}>
 					{this.props.children}
 					<Modal>
 						<Backpack />
