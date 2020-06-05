@@ -1,6 +1,8 @@
 html {
     scroll-behavior: smooth;
     -ms-overflow-style: none;
+    height: 100vh;
+    width: 100vw;
 }
 
 ::-webkit-scrollbar {
@@ -13,8 +15,9 @@ body {
     font-family: 'Open Sans', sans-serif;
     background-color: black;
     color: white; 
+    height: 100vh;
+    width: 100vw;
 }
-
 :global a {
     text-decoration: none;
     color: white; 

@@ -20,8 +20,11 @@
     bottom: 15%;
     z-index: 1;
 }
-.notVisible {
-    visibility: hidden;
+.audioPlayer{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
 }
 .slide2Image {
     position: absolute;

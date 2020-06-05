@@ -1,5 +1,7 @@
 import React, {Component} from "react"
 import {Route, Switch} from "react-router-dom"
+import axios from 'axios'
+
 import Homepage from "./containers/Homepage/Homepage"
 import Layout from "./containers/Layout/Layout"
 import SplashScreen from "./components/SplashScreen/SplashScreen"
@@ -13,11 +15,19 @@ import MapFloreana from "./assets/images/homepage/MapFloreana.png"
 import MapEspanola from "./assets/images/homepage/MapEspanola.png"
 import VolcanoeIframe from "./components/VolcanoeIframe/VolcanoeIframe"
 import VolcanoModule from "./containers/VolcanoModule/VolcanoModule"
+import Test from "./containers/Test/Test.js"
 
 class App extends Component {
+	componentDidMount(){
+		axios.post('localhost:3000/users/login', {
+			"username":"joe", 
+			"password": "joe123e"
+		}).then(response => console.log(response))
+		.catch(error => console.log(error))
+	}
+	
 	render(){
 		return (
-			<div>
 				<Switch>
 					<Route path="/" exact component={SplashScreen}/>
 					<Route path="/authorization" component={SignIn}/>
@@ -38,7 +48,6 @@ class App extends Component {
 						<Route path="/VolcanoeI" exact component={VolcanoeIframe} />
 					</Layout>
 				</Switch>
-			</div>
 		)
 	}
 }
