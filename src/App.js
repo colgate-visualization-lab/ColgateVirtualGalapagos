@@ -1,21 +1,22 @@
-import React, {Component} from "react"
+import React, {Component, Suspense, lazy} from "react"
 import {Route, Switch} from "react-router-dom"
 import axios from 'axios'
 
-import Homepage from "./containers/Homepage/Homepage"
 import Layout from "./containers/Layout/Layout"
-import SplashScreen from "./components/SplashScreen/SplashScreen"
 import SignIn from "./containers/SignIn/SignIn"
-import ModuleNav from "./components/ModuleNav/ModuleNav"
-import Gallery from "./containers/Gallery/Gallery"
+import LoadingScreen from "./containers/LoadingScreen/LoadingScreen"
 import MapFernandina from "./assets/images/homepage/MapFernandina.png"
 import MapIsabela from "./assets/images/homepage/homepage.png"
 import MapPinzon from "./assets/images/homepage/MapPinzon.png"
 import MapFloreana from "./assets/images/homepage/MapFloreana.png"
 import MapEspanola from "./assets/images/homepage/MapEspanola.png"
-import VolcanoeIframe from "./components/VolcanoeIframe/VolcanoeIframe"
-import VolcanoModule from "./containers/VolcanoModule/VolcanoModule"
-import Test from "./containers/Test/Test.js"
+
+const Homepage = lazy(() => import("./containers/Homepage/Homepage"));
+const SplashScreen = lazy(() => import("./components/SplashScreen/SplashScreen"));
+const ModuleNav = lazy(() => import("./components/ModuleNav/ModuleNav"));
+const Gallery = lazy(() => import("./containers/Gallery/Gallery"));
+const VolcanoModule = lazy(() => import("./containers/VolcanoModule/VolcanoModule"));
+
 
 class App extends Component {
 	componentDidMount(){
@@ -29,6 +30,7 @@ class App extends Component {
 	render(){
 		return (
 				<Switch>
+					<Suspense fallback={<LoadingScreen />}>
 					<Route path="/" exact component={SplashScreen}/>
 					<Route path="/authorization" component={SignIn}/>
 					<Layout>
@@ -45,8 +47,8 @@ class App extends Component {
 						<Route path="/isabella" exact component={ModuleNav}/>
 						<Route path="/gallery" exact component={Gallery}/>
 						<Route path="/volcanoemod" exact component={VolcanoModule} />
-						<Route path="/VolcanoeI" exact component={VolcanoeIframe} />
 					</Layout>
+					</Suspense>
 				</Switch>
 		)
 	}
