@@ -2,28 +2,66 @@
     position: relative;
     height: 100%;
     width: 100%;
+    background-color: royalblue
+}
+div.divClassSpecial div{
+    position: absolute;
+    max-height: 100%;
+    background-color: royalblue;
+    margin: auto;
 }
 .imgClass {
     position: absolute;
     height: 100%;
-    width: 100%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    border-width:15px;
+    border-image:url(http://blogrope.com/wp-content/uploads/2013/06/003-wood-melamine-subttle-pattern-background-pat.jpg) 30 30 stretch;
+    -moz-border-image: url(http://blogrope.com/wp-content/uploads/2013/06/003-wood-melamine-subttle-pattern-background-pat.jpg) 30 30 stretch;
+    -ms-border-image: url(http://blogrope.com/wp-content/uploads/2013/06/003-wood-melamine-subttle-pattern-background-pat.jpg) 30 30 stretch;
+    -o-border-image: url(http://blogrope.com/wp-content/uploads/2013/06/003-wood-melamine-subttle-pattern-background-pat.jpg) 30 30 stretch;
+    border-style:solid;
 }
-.buttonClassnext {
-    position: absolute;
-    right: 10%;
-    bottom: 15%;
-    z-index: 1;
-}
-.buttonClassback {
-    position: absolute;
-    left: 10%;
-    bottom: 15%;
-    z-index: 1;
-}
+.buttonClass {
+    border-top: 1px solid #97d2f7;
+    background: #65a9d7;
+    background:linear-gradient(to bottom, #4c3e9c 5%, #65a9d7 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#4c3e9c), to(#65a9d7));
+    background: -webkit-linear-gradient(top, #4c3e9c, #65a9d7);
+    background: -moz-linear-gradient(top, #4c3e9c, #65a9d7);
+    background: -ms-linear-gradient(top, #4c3e9c, #65a9d7);
+    background: -o-linear-gradient(top, #4c3e9c, #65a9d7);
+    padding: 10px 20px; 
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
+    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    box-shadow: rgba(0,0,0,1) 0 1px 0;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    color: white;
+    font-size: 18px;
+    font-family: Georgia, Serif;
+    text-decoration: none;
+    vertical-align: middle;
+    }
+ .buttonClass:hover {
+    border-top-color: #4e2978;
+    background: #4e2978;
+    color: #ccc;
+    }
+ .buttonClass:active {
+    border-top-color: #571b5c;
+    background: #571b5c;
+    }
+ .buttonClass:focus {outline:0;}
 .audioPlayer{
     position: absolute;
-    left: 0;
-    top: 0;
+    top: 5px;
+    left: 10px;
+    opacity: 0.75;
     z-index: 1;
 }
 .slide2Image {
@@ -49,3 +87,84 @@
     margin: auto;
     top: 50%;
 }
+.imgNext {
+    position: absolute;
+    width: 10%;
+    right: 20px;
+    bottom: 20px;
+}
+.imgNext:hover {
+    position: absolute;
+    width: 10%;
+    right: 20px;
+    bottom: 20px;
+    opacity: 0.7;
+}
+.imgNext:active {
+    position: absolute;
+    width: 10%;
+    right: 20px;
+    bottom: 20px;
+    opacity: 0.7;
+    vertical-align: top;
+    padding: 8px 13px 6px;
+}
+.imgBack {
+    position: absolute;
+    width: 10%;
+    left: 20px;
+    bottom: 20px;
+}
+.imgBack:hover {
+    position: absolute;
+    width: 10%;
+    left: 20px;
+    bottom: 20px;
+    opacity: 0.7;
+}
+.imgBack:active {
+    position: absolute;
+    width: 10%;
+    right: 20px;
+    bottom: 20px;
+    opacity: 0.7;
+    vertical-align: top;
+    padding: 8px 13px 6px;
+}
+.Magnifying {
+    position: absolute;
+    left: 30%;
+    bottom: 30%;
+    width: 10%;
+}
+.button55 {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 200px;
+}
+.button4 {
+    position: absolute;
+    left: 20%;
+    bottom: 20%;
+}
+audio:hover
+{
+-webkit-transform: scale(1.05);
+-moz-transform: scale(1.05);
+transform: scale(1.05);
+}
+audio:focus {
+    outline: 0
+}
+audio
+{
+-webkit-transition:all 0.5s linear;
+-moz-transition:all 0.5s linear;
+-o-transition:all 0.5s linear;
+transition:all 0.5s linear;
+-moz-border-radius:7px 7px 7px 7px ;
+-webkit-border-radius:7px 7px 7px 7px ;
+border-radius:7px 7px 7px 7px ;
+}
+
