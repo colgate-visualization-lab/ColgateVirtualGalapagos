@@ -12,7 +12,7 @@ import ImageMapper from "react-image-mapper"
 class VolcanoeModule extends Component {
     constructor(props) {
         super(props)
-        this.headerRef = React.createRef();
+        this.headerRef2 = React.createRef();
         this.state = {
              slideIndex: -4,
              progressIndex: -4,
@@ -24,24 +24,6 @@ class VolcanoeModule extends Component {
              height: 0
         }
     }
- //<ImmageMapper> cannot be styled with css, so these methods update a width state for responsivness
- updateDimensions = () => {
-    this.setState({height: this.headerRef.current.clientHeight * 1.762 })
-}
-// componentDidMount() {
-//     // window.addEventListener("resize", this.updateDimensions)
-//     // this.updateDimensions()
-//      console.log("yo");
-    
-// }
-
-// componentWillUnmount() {
-//     window.removeEventListener("resize", this.updateDimensions)
-// }
-genericFunction() {
-    window.addEventListener("resize", this.updateDimensions)
-    this.updateDimensions();
-}
 nextSlide() {
     if (this.state.progressIndex == -4) {
         this.setState({slideIndex: -3, progressIndex: -3});
@@ -100,13 +82,18 @@ optionalThree() {
         setTimeout(() => this.refs.audio.play(), 1)
     }
 }
+updateDimensions = () => {
+    this.setState({height: this.headerRef2.current.clientWidth })
+}
 imageFunction(area) {
     let decision = `${area.id}`
     if (decision > 1) {
-        setTimeout(() => this.nextSlide(),1)
+        setTimeout(() => this.nextSlide(),1);
+        window.removeEventListener("resize", this.updateDimensions)
     }
     else {
-        setTimeout(() => this.optionalThree(),1)
+        setTimeout(() => this.optionalThree(),1);
+        window.removeEventListener("resize", this.updateDimensions)
     }
 }
     render() {
@@ -115,7 +102,7 @@ imageFunction(area) {
             return (
                 <div className={classes.divClass}>
                     <img style={{height: "auto", width: "70%"}} src={logo} />
-                    <button onClick={() => this.setState({slideIndex: 16, progressIndex: 16})}>Dev Button</button>
+                    <button onClick={() => this.setState({slideIndex: 18, progressIndex: 18})}>Dev Button</button>
                     <button style={{position: "absolute", right: "15%", bottom: "15%"}} className={classes.buttonClass} onClick={() => this.nextSlide()}>Enter Volcano Module</button>
                 </div>
             )
@@ -253,7 +240,6 @@ imageFunction(area) {
         else if (slideIndex == 6) {
             return (
                 <div className={classes.divClass}>
-                    {/* Audio is Missing, using placeholder */}
                     <audio className={classes.audioPlayer} controls controlsList="nodownload" ref="audio" src={terrainMapAges1} onEnded={() => this.reveal()}/>
                     <img className={classes.imgClass} src={TerrainMap} />
                     <h1 style={{position: "absolute", top: "0", left: "0"}}>Drag and Drop Activity</h1>
@@ -363,11 +349,10 @@ imageFunction(area) {
         }
         else if (slideIndex == 16) {
             return (
-                <div className={classes.divClass}>
-                    {/* Audio missing */}
-                    <audio className={classes.audioPlayer} controls controlsList="nodownload" ref="audio" src={plumePlacement1} onEnded={() => this.reveal()}/>
+                <div className={classes.divClass} ref={this.randomRef}>
+                    <audio className={classes.audioPlayer} controls controlsList="nodownload" ref="audio" src={plumePlacement1} onEnded={() => {this.reveal();}}/>
                     <img className={classes.imgClass} src={eruptionDates} />
-                    <img style={completed} src={Next} className={classes.imgNext} onClick={() => {this.nextSlide(); this.genericFunction()}} />
+                    <img style={completed} src={Next} className={classes.imgNext} onClick={() => {this.nextSlide(); window.addEventListener("resize", this.updateDimensions)}} />
                     <img style={completed} src={Back} className={classes.imgBack} onClick={() => this.prevSlide()} />
                 </div>
             )
@@ -376,20 +361,17 @@ imageFunction(area) {
             return (
                 <div className={classes.divClass} ref={this.headerRef}>
                     <audio className={classes.audioPlayer} controls controlsList="nodownload" ref="audio" src={plumePlacement1} onEnded={() => {this.reveal(); this.updateDimensions()}}/>
-                    <div className={classes.divClassSpecial} style={completed}>
+                    <img className={classes.imgClass} src={TerrainMap} ref={this.headerRef2}/>
+                    <div className={classes.divClass17} style={completed}>
                     <ImageMapper 
                         src = { TerrainOval }
     					width = { height }
     					imgWidth = { 1588 }
     					map = { MAP }
     					fillColor = { "rgba(0, 246, 255, 0.33)" }
-    					// onMouseEnter = { area => this.enterArea(area) }
-    					// onMouseLeave = {() => this.leaveArea()}
     					onClick = {(area) => this.imageFunction(area)}
     				/> 
                     </div>
-                    {/* <img style={{position: "absolute", width: "50%", right: "0"}} src={oval} onClick={() => this.optionalThree()}/>
-                    <img style={{position: "absolute", width: "50%", left: "0"}} src={oval} onClick={() => this.nextSlide()} /> */}
                     <div style={{zIndex: "1", position: "absolute", top: "0", left: "0"}}>Pick a circle.</div>
                 </div>
             )
@@ -400,7 +382,7 @@ imageFunction(area) {
                     <audio className={classes.audioPlayer} controls controlsList="nodownload" ref="audio" src={plumeNo1} onEnded={() => this.reveal()}/>
                     <img className={classes.imgClass} src={TerrainOvalWrong} />
                     <h1 style={{zIndex: "1", position: "absolute", top: "0", left: "0"}}>That was wrong Dummy! Click back and try again.</h1>
-                    <img style={completed} src={Back} className={classes.imgBack} onClick={() => this.setState({slideIndex: 17})} />
+                    <img style={completed} src={Back} className={classes.imgBack} onClick={() => {this.setState({slideIndex: 17}); window.addEventListener("resize", this.updateDimensions)}} />
                 </div>
             )
         }
@@ -411,7 +393,7 @@ imageFunction(area) {
                     <img className={classes.imgClass} src={TerrainOvalCorrect} />
                     <h1 style={{zIndex: "1", position: "absolute", top: "0", left: "0"}}>That's Correct!!!!!</h1>
                     <img style={completed} src={Next} className={classes.imgNext} onClick={() => this.nextSlide()} />
-                    <img style={completed} src={Back} className={classes.imgBack} onClick={() => this.prevSlide()} />
+                    <img style={completed} src={Back} className={classes.imgBack} onClick={() => {this.prevSlide(); window.addEventListener("resize", this.updateDimensions); setTimeout(() => this.updateDimensions(),1)}} />
                 </div>
             )
         }

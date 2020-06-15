@@ -4,12 +4,6 @@
     width: 100%;
     background-color: royalblue
 }
-div.divClassSpecial div{
-    position: absolute;
-    max-height: 100%;
-    background-color: royalblue;
-    margin: auto;
-}
 .imgClass {
     position: absolute;
     height: 100%;
@@ -46,47 +40,44 @@ div.divClassSpecial div{
     font-family: Georgia, Serif;
     text-decoration: none;
     vertical-align: middle;
-    }
+}
  .buttonClass:hover {
     border-top-color: #4e2978;
     background: #4e2978;
     color: #ccc;
-    }
+}
  .buttonClass:active {
     border-top-color: #571b5c;
     background: #571b5c;
-    }
- .buttonClass:focus {outline:0;}
+}
+.buttonClass:focus {outline:0;}
 .audioPlayer{
     position: absolute;
     top: 5px;
     left: 10px;
     opacity: 0.75;
-    z-index: 1;
-}
-.slide2Image {
-    position: absolute;
-    height: auto;
-    width: 5%;
-    z-index: 1;
-    left: 0;
-    top: 0;
-}
-.slide4Button {
-    position: absolute;
-    z-index: 1;
-    left: 30%;
-    bottom: 30%
-}
-.popUp {
-    position: absolute;
     z-index: 2;
-    background-color: orange;
-    font-size: 25px;
-    width: 80%;
-    margin: auto;
-    top: 50%;
 }
+audio:hover
+{
+-webkit-transform: scale(1.05);
+-moz-transform: scale(1.05);
+transform: scale(1.05);
+}
+audio:focus {
+    outline: 0
+}
+audio
+{
+-webkit-transition:all 0.5s linear;
+-moz-transition:all 0.5s linear;
+-o-transition:all 0.5s linear;
+transition:all 0.5s linear;
+-moz-border-radius:7px 7px 7px 7px ;
+-webkit-border-radius:7px 7px 7px 7px ;
+border-radius:7px 7px 7px 7px ;
+}
+
 .imgNext {
     position: absolute;
     width: 10%;
@@ -131,6 +122,36 @@ div.divClassSpecial div{
     vertical-align: top;
     padding: 8px 13px 6px;
 }
+.slide2Image {
+    position: absolute;
+    height: auto;
+    width: 5%;
+    z-index: 1;
+    left: 0;
+    top: 0;
+}
+.slide4Button {
+    position: absolute;
+    z-index: 1;
+    left: 30%;
+    bottom: 30%
+}
+div.divClass17  div{
+    position: absolute;
+    max-height: 100%;
+    background-color: royalblue;
+    margin: auto;
+    top: 15px
+}
+.popUp {
+    position: absolute;
+    z-index: 2;
+    background-color: orange;
+    font-size: 25px;
+    width: 80%;
+    margin: auto;
+    top: 50%;
+}
 .Magnifying {
     position: absolute;
     left: 30%;
@@ -147,24 +168,5 @@ div.divClassSpecial div{
     position: absolute;
     left: 20%;
     bottom: 20%;
-}
-audio:hover
-{
--webkit-transform: scale(1.05);
--moz-transform: scale(1.05);
-transform: scale(1.05);
-}
-audio:focus {
-    outline: 0
-}
-audio
-{
--webkit-transition:all 0.5s linear;
--moz-transition:all 0.5s linear;
--o-transition:all 0.5s linear;
-transition:all 0.5s linear;
--moz-border-radius:7px 7px 7px 7px ;
--webkit-border-radius:7px 7px 7px 7px ;
-border-radius:7px 7px 7px 7px ;
 }
 
