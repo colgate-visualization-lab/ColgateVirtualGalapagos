@@ -134,7 +134,7 @@ border-radius:7px 7px 7px 7px ;
     position: absolute;
     z-index: 1;
     left: 30%;
-    bottom: 30%
+    bottom: 20%
 }
 div.divClass17  div{
     position: absolute;
@@ -146,17 +146,36 @@ div.divClass17  div{
 .popUp {
     position: absolute;
     z-index: 2;
-    background-color: orange;
+    background-color: grey;
+    opacity: 0.9;
     font-size: 25px;
     width: 80%;
-    margin: auto;
-    top: 50%;
+    height: 50%;
+    left: 10%;
+    right: 10%;
+    top: 20%;
+}
+.slideFiveX{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 6%
+}
+.slideFiveX:active{
+   width: 5%
 }
 .Magnifying {
     position: absolute;
-    left: 30%;
-    bottom: 30%;
-    width: 10%;
+    left: 20%;
+    bottom: 25%;
+    width: 5%;
+}
+.Magnifying, .slideFiveX:hover {
+    opacity: 0.7;
+}
+.Magnifying:active {
+    opacity: 0.7;
+    width: 4.75%;
 }
 .button55 {
     position: absolute;
@@ -169,4 +188,18 @@ div.divClass17  div{
     left: 20%;
     bottom: 20%;
 }
-
+.slide67one {
+    position: absolute;
+    left: 20%;
+    bottom: 15%;
+}
+.slide67two {
+    position: absolute;
+    left: 20%;
+    bottom: 10%;
+}
+.slide67three {
+    position: absolute;
+    left: 20%;
+    bottom: 5%;
+}
