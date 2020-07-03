@@ -2,9 +2,9 @@
     position: relative;
     height: 100%;
     width: 100%;
-    background-color: royalblue
+    background-color: blue;
 }
-.imgClass {
+.mainContent {
     position: absolute;
     height: 100%;
     margin: auto;
@@ -17,6 +17,9 @@
     -ms-border-image: url(http://blogrope.com/wp-content/uploads/2013/06/003-wood-melamine-subttle-pattern-background-pat.jpg) 30 30 stretch;
     -o-border-image: url(http://blogrope.com/wp-content/uploads/2013/06/003-wood-melamine-subttle-pattern-background-pat.jpg) 30 30 stretch;
     border-style:solid;
+}
+.mainContent:focus {
+    outline: 0;
 }
 .buttonClass {
     border-top: 1px solid #97d2f7;
@@ -51,92 +54,53 @@
     background: #571b5c;
 }
 .buttonClass:focus {outline:0;}
-.audioPlayer{
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    opacity: 0.75;
-    z-index: 2;
-}
-audio:hover
-{
--webkit-transform: scale(1.05);
--moz-transform: scale(1.05);
-transform: scale(1.05);
-}
-audio:focus {
-    outline: 0
-}
-audio
-{
--webkit-transition:all 0.5s linear;
--moz-transition:all 0.5s linear;
--o-transition:all 0.5s linear;
-transition:all 0.5s linear;
--moz-border-radius:7px 7px 7px 7px ;
--webkit-border-radius:7px 7px 7px 7px ;
-border-radius:7px 7px 7px 7px ;
-}
-
-.imgNext {
-    position: absolute;
-    width: 10%;
-    right: 20px;
-    bottom: 20px;
-}
-.imgNext:hover {
-    position: absolute;
-    width: 10%;
-    right: 20px;
-    bottom: 20px;
-    opacity: 0.7;
-}
-.imgNext:active {
-    position: absolute;
-    width: 10%;
-    right: 20px;
-    bottom: 20px;
-    opacity: 0.7;
-    vertical-align: top;
-    padding: 8px 13px 6px;
-}
 .imgBack {
     position: absolute;
-    width: 10%;
-    left: 20px;
-    bottom: 20px;
-}
-.imgBack:hover {
-    position: absolute;
-    width: 10%;
-    left: 20px;
-    bottom: 20px;
-    opacity: 0.7;
-}
-.imgBack:active {
-    position: absolute;
-    width: 10%;
-    right: 20px;
-    bottom: 20px;
-    opacity: 0.7;
-    vertical-align: top;
-    padding: 8px 13px 6px;
-}
-.slide2Image {
-    position: absolute;
-    height: auto;
-    width: 5%;
+    width: 160px;
+    left: 10px;
     z-index: 1;
-    left: 0;
-    top: 0;
+    bottom: 20px;
 }
-.slide4Button {
+.imgNext {
+    position: absolute;
+    width: 160px;
+    right: 10px;
+    z-index: 1;
+    bottom: 20px;
+}
+.imgBack:hover, .imgNext:hover {
+    opacity: 0.7;
+}
+.imgBack:active, .imgNext:active {
+    width: 140px;
+}
+.imgBackslide10 {
+    position: absolute;
+    width: 140px;
+    left: 5px;
+    z-index: 1;
+    bottom: 20px;
+}
+.imgNextslide10 {
+    position: absolute;
+    width: 140px;
+    right: 5px;
+    z-index: 1;
+    bottom: 20px;
+}
+.imgBackslide10:hover, .imgNextslide10:hover {
+    opacity: 0.7;
+}
+.imgBackslide10:active, .imgNextslide10:active {
+    width: 130px;
+}
+.slide9Button {
     position: absolute;
     z-index: 1;
     left: 30%;
     bottom: 20%
 }
-div.divClass17  div{
+div.imageMapperDivClass  div{
     position: absolute;
     max-height: 100%;
     background-color: royalblue;
@@ -155,13 +119,13 @@ div.divClass17  div{
     right: 10%;
     top: 20%;
 }
-.slideFiveX{
+.slide9button {
     position: absolute;
     right: 0;
     bottom: 0;
     width: 6%
 }
-.slideFiveX:active{
+.slide9button:active {
    width: 5%
 }
 .Magnifying {
@@ -177,29 +141,523 @@ div.divClass17  div{
     opacity: 0.7;
     width: 4.75%;
 }
-.button55 {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    width: 200px;
-}
 .button4 {
     position: absolute;
-    left: 20%;
     bottom: 20%;
+    right: 50%;
 }
-.slide67one {
+.slide103one {
     position: absolute;
     left: 20%;
     bottom: 15%;
 }
-.slide67two {
+.slide103two {
     position: absolute;
     left: 20%;
     bottom: 10%;
 }
-.slide67three {
+.slide103three {
     position: absolute;
     left: 20%;
     bottom: 5%;
+}
+.slide15_drop1{
+    position: absolute;
+    height: 80%;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 0;
+}
+.slide15_drop2{
+    position: absolute;
+    height: 80%;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 0;
+}
+.slide15_drop3{
+    position: absolute;
+    height: 80%;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 0
+}
+.slide15_drop4{
+    position: absolute;
+    height: 80%;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 0;
+}
+.slide15_drag1_ready{
+    position: absolute;
+    width: 7.5%;
+    left: 35%;
+    top: 0;
+    background-color: orange;
+    border-style: solid;
+    border-width: 1px;
+    z-index: 10;
+    overflow: hidden;
+    text-align: center;
+}
+.slide15_drag2_ready{
+    position: absolute;
+    width: 7.5%;
+    left: 42.5%;
+    top: 0;
+    background-color: orange;
+    border-style: solid;
+    border-width: 1px;
+    z-index: 4;
+    overflow: hidden;
+    text-align: center;
+}
+.slide15_drag3_ready{
+    position: absolute;
+    width: 7.5%;
+    left: 50%;
+    top: 0;
+    background-color: orange;
+    border-style: solid;
+    border-width: 1px;
+    z-index: 4;
+    overflow: hidden;
+    text-align: center;
+}
+.slide15_drag4_ready{
+    position: absolute;
+    width: 7.5%;
+    left: 57.5%;
+    top: 0;
+    background-color: orange;
+    border-style: solid;
+    border-width: 1px;
+    z-index: 4;
+    overflow: hidden;
+    text-align: center;
+}
+.slide15_drag1{
+    position: absolute;
+    width: 7.5%;
+    left: 35%;
+    top: 0;
+    background-color: orange;
+    border-style: solid;
+    border-width: 1px;
+    opacity: 0.7;
+    text-align: center;
+}
+.slide15_drag2{
+    position: absolute;
+    width: 7.5%;
+    left: 42.5%;
+    top: 0;
+    background-color: orange;
+    border-style: solid;
+    border-width: 1px;
+    opacity: 0.7;
+    text-align: center;
+}
+.slide15_drag3{
+    position: absolute;
+    width: 7.5%;
+    left: 50%;
+    top: 0;
+    background-color: orange;
+    border-style: solid;
+    border-width: 1px;
+    opacity: 0.7;
+    text-align: center;
+}
+.slide15_drag4{
+    position: absolute;
+    width: 7.5%;
+    left: 57.5%;
+    top: 0;
+    background-color: orange;
+    border-style: solid;
+    border-width: 1px;
+    opacity: 0.7;
+    text-align: center;
+}
+.slide15_drop1_div{
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    top: 0;
+    right: -5%;
+}
+.slide15_drop2_div{
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    top: 0;
+    left: -5%;
+}
+.slide15_drop3_div{
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    bottom: 0;
+    right: -5%;
+}
+.slide15_drop4_div{
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    bottom: 0;
+    left: -5%;
+}
+.slide15_drop1_h1 {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 20%;
+    text-align: center;
+    font-size: 35px;
+    z-index: 2;
+}
+.slide15_drop2_h1 {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 20%;
+    text-align: center;
+    font-size: 35px;
+    z-index: 2;
+}
+.slide15_drop3_h1 {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 20%;
+    text-align: center;
+    font-size: 35px;
+    z-index: 2;
+}
+.slide15_drop4_h1 {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 20%;
+    text-align: center;
+    font-size: 35px;
+    z-index: 2;
+}
+.dnd1{
+    position: absolute;
+    width: 10.5%;
+    height: 4.1%;
+    top: 35.5%;
+    right: 36.5%;
+    background-color: red;
+    z-index: 3;
+}
+.yo1{
+    position: absolute;
+    width: 10.5%;
+    height: 4.1%;
+    top: 35.5%;
+    right: 36.5%;
+    z-index: 3;
+    text-align: center;
+    overflow: hidden;
+}
+.dnd2{
+    position: absolute;
+    width: 10.5%;
+    height: 4.1%;
+    top: 53%;
+    right: 27%;
+    background-color: orange;
+    z-index: 3;
+}
+.yo2{
+    position: absolute;
+    width: 10.5%;
+    height: 4.1%;
+    top: 53%;
+    right: 27%;
+    z-index: 3;
+    text-align: center;
+    overflow: hidden;
+}
+.dnd3{
+    position: absolute;
+    width: 10.5%;
+    height: 4.1%;
+    top: 64.5%;
+    right: 4.5%;
+    background-color: yellow;
+    z-index: 3;
+}
+.yo3{
+    position: absolute;
+    width: 10.5%;
+    height: 4.1%;
+    top: 64.5%;
+    right: 4.5%;
+    text-align: center;
+    z-index: 3;
+    overflow: hidden;
+}
+.dnd4{
+    position: absolute;
+    width: 10.5%;
+    height: 4.1%;
+    top: 94.75%;
+    right: 15%;
+    background-color: green;
+    z-index: 3;
+}
+.yo4{
+    position: absolute;
+    width: 10.5%;
+    height: 4.1%;
+    top: 94.75%;
+    right: 15%;
+    text-align: center;
+    z-index: 3;
+    overflow: hidden;
+}
+.dnd5{
+    position: absolute;
+    width: 10.5%;
+    height: 4.1%;
+    top: 76.5%;
+    right: 61%;
+    background-color:blue;
+    z-index: 3;
+}
+.yo5{
+    position: absolute;
+    width: 10.5%;
+    height: 4.1%;
+    top: 76.5%;
+    right: 61%;
+    text-align: center;
+    z-index: 3;
+    overflow: hidden;
+}
+.dnd6{
+    position: absolute;
+    width: 10.5%;
+    height: 4.1%;
+    top: 37.5%;
+    right: 75.5%;
+    background-color: purple;
+    z-index: 3;
+}
+.yo6{
+    position: absolute;
+    width: 10.5%;
+    height: 4.1%;
+    top: 37.5%;
+    right: 75.5%;
+    text-align:  center;
+    z-index: 3;
+    overflow: hidden;
+}
+.test {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    z-Index: 4;
+    background-Color: pink;
+}
+.test2{
+    position: absolute;
+    height: calc(100% - 30px);
+    width: calc(100% - 30px);
+    left: 50%;
+    transform: translate(-50%) translateY(-50%);;
+    top: 50%;
+    z-index: 5;
+}
+/* Resize panel css */
+.container {
+    position: relative;
+    margin: auto;
+    height: 100%;
+    display: flex;
+    flex-flow: nowrap column;
+    overflow:hidden;
+    border-width:15px;
+    background-color: blue;
+    border-image:url(http://blogrope.com/wp-content/uploads/2013/06/003-wood-melamine-subttle-pattern-background-pat.jpg) 30 30 stretch;
+    -moz-border-image: url(http://blogrope.com/wp-content/uploads/2013/06/003-wood-melamine-subttle-pattern-background-pat.jpg) 30 30 stretch;
+    -ms-border-image: url(http://blogrope.com/wp-content/uploads/2013/06/003-wood-melamine-subttle-pattern-background-pat.jpg) 30 30 stretch;
+    -o-border-image: url(http://blogrope.com/wp-content/uploads/2013/06/003-wood-melamine-subttle-pattern-background-pat.jpg) 30 30 stretch;
+    border-style:solid;
+}
+
+.panel {    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dndSidebar {
+    position: absolute;
+    width: 300px;
+    height: 100%;
+    left: 0;
+    background-color: blue;
+    border: 2px solid black;
+
+}
+.dndMain {
+    position: relative;
+    overflow: hidden;
+    width: calc(100% - 300px);
+    left: 300px;
+    height: 100%;
+    background-color: blue;
+}
+.body {
+    position: relative;
+    background: gray;
+    flex-grow: 3;
+    display: flex;
+    flex-flow: row nowrap;
+    background-image: url(../../assets/VolcanoModule/Images/SantaCruz_Color.png);
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: left top
+}
+
+.sideBarResizeContainer {
+    width: 30%;
+}
+.sidebar {
+    position: relative;
+    background: lightpink;
+    width: 400px;
+    width:100%;
+    box-sizing: border-box;
+    text-align: center;
+    flex-grow: 1;
+}
+.withMargin {
+    margin: 0
+}
+.customHandle {
+    cursor: ew-resize;
+    width: 10px;
+    height: 100px;
+    margin: 0px -5px;
+    background: lightblue;
+    border: 2px solid gray;
+    border-radius: 2px;
+    text-align: center;
+    z-index: 99999;
+    overflow: hidden;
+    display: flex;
+    align-items: center ;
+}
+
+.customResizeBorder {
+    cursor: ew-resize;
+    width: 5px;
+    background: gray;
+    display: flex;
+    z-index: 99999;
+    align-items: center ;
+    align-content: center ;
+    justify-content: center;
+    overflow: visible;
+
+}
+/* end sizebar css */
+.duck3{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top:0;
+    left: 0;
+    z-index: 400;
+    background-color: red;
+    background-image: url(../../assets/VolcanoModule/Images/ferd.png);
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: left top
+}
+.slide10_dnd {
+    flex-grow: 2;
+    width: 125px;
+    background-color: orange;
+    text-align: center;
+    border-style: solid;
+    border-width: 1px;
+}
+.slide10bigh1 {
+    position: absolute;
+    top: 0;
+    width: 35%;
+    height: 25%;
+    left: 32.5%;
+    text-align: center;
+    font-size: 16px;
+    font-size: 2vw;
+    overflow: hidden;
+}
+.leftDiv {
+    position: absolute;
+    height: 100%;
+    width: 128px;
+    left: 0;
+    background-color: blue;
+}
+.rightDiv {
+    position: absolute;
+    height: 100%;
+    width: 128px;
+    right: 0;
+    background-color: blue;
+}
+.mainDiv  {
+    position: absolute;
+    height: 100%;
+    width: calc(100% - 256px);
+    left: 128px;
+    background-color: blue;
+}
+.slide8Button {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+}
+.slide10dragclass {
+    flex-grow: 2;
+    width: 125px;
+    background-color: orange;
+    text-align: center;
+    border-style: solid;
+    border-width: 1px;
+    opacity: 0.7;
+}
+.wordbank {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    top: 25%;
+    width: 250px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.wordbankheader {
+    flex: auto;
+    width: 250px;
+    flex-grow: 2;
+    text-align: center;
+}
+.slideName {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: right;
+    font-size: 16px;
 }
