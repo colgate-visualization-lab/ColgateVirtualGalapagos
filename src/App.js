@@ -10,13 +10,12 @@ import MapIsabela from "./assets/images/homepage/homepage.png"
 import MapPinzon from "./assets/images/homepage/MapPinzon.png"
 import MapFloreana from "./assets/images/homepage/MapFloreana.png"
 import MapEspanola from "./assets/images/homepage/MapEspanola.png"
+import Homepage from "./containers/Homepage/Homepage"
+import SplashScreen from "./components/SplashScreen/SplashScreen"
+import Gallery from "./containers/Gallery/Gallery"
+import ModuleNav from "./components/ModuleNav/ModuleNav"
 
-const Homepage = lazy(() => import("./containers/Homepage/Homepage"));
-const SplashScreen = lazy(() => import("./components/SplashScreen/SplashScreen"));
-const ModuleNav = lazy(() => import("./components/ModuleNav/ModuleNav"));
-const Gallery = lazy(() => import("./containers/Gallery/Gallery"));
-const VolcanoModule = lazy(() => import("./containers/VolcanoModule/VolcanoModule"));
-
+const VolcanoModule = lazy(() => import("./containers/VolcanoModule/VolcanoModule"))
 
 class App extends Component {
 	componentDidMount(){
@@ -45,8 +44,8 @@ class App extends Component {
 						<Route path="/home5" 
 							render={(props) => <Homepage {...props} lockValue={5} MapImg={MapPinzon} />}/>
 						<Route path="/isabella" exact component={ModuleNav}/>
+						<Route path="/volcanomod" exact component={VolcanoModule}/>
 						<Route path="/gallery" exact component={Gallery}/>
-						<Route path="/volcanoemod" exact component={VolcanoModule} />
 					</Layout>
 					</Suspense>
 				</Switch>

@@ -5,46 +5,46 @@ import backgroundimage from "../../assets/images/homepage/P3153499.png"
 
 const moduleNav = () => {
 	const content = [
-		{"title": "Introduction", 
+		{"title": "Volcano", 
 			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.", 
 			"background": "url(https://source.unsplash.com/collection/1155333/1600x900)", 
 			"animation": " animated slideInDown",
-			"link": "/volcanoemod"
+			"link": "/volcanomod"
 		}, 
 
 		{"title": "Volcano", 
 			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.", 
 			"background": "url(https://source.unsplash.com/collection/894/1600x900)", 
 			"animation": " animated slideInDown slow",
-			"link": "/home2"
+			"link": "/home"
 		}, 
 
 		{"title": "Iguana",
 			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.",
 			"background": "url(https://source.unsplash.com/collection/327760/1600x900)", 
 			"animation": " animated slideInDown slower",
-			"link": "/home3"
+			"link": "/home"
 		}, 
 
 		{"title": "Currents",
 			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.",
 			"background": "url(https://source.unsplash.com/collection/319663/1600x900)", 
 			"animation": " animated slideInUp",
-			"link": "/home4"
+			"link": "/home"
 		}, 
 
 		{"title": "Eruption",
 			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.",
 			"background": "url(https://source.unsplash.com/collection/1014/1600x900)", 
 			"animation": " animated slideInUp slow",
-			"link": "/"
+			"link": "/home"
 		}, 
 
 		{"title": "Island Life Cycle",
 			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.",
 			"background": "url(https://source.unsplash.com/collection/357786/1600x900)", 
 			"animation": " animated slideInUp slower",
-			"link": "/"
+			"link": "/home"
 		}
 	]
 
