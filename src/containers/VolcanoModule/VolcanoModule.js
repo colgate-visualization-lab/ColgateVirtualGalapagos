@@ -14,7 +14,7 @@ import ResizePanel from "react-resize-panel";
 import IntroVideo from "../../assets/VolcanoModule/Videos/Volcano Module Intro mp4.mp4"
 import VolcanoeIframe from "../../components/VolcanoeIframe/VolcanoeIframe"
 import AudioPlayer from "../../components/AudioPlayer/AudioPlayer"
-
+import {CSSTransition} from 'react-transition-group';
 class VolcanoeModule extends Component {
     constructor(props) {
         super(props)
@@ -223,7 +223,7 @@ slide10dnd6() {
             return (
                 <Fragment>
                     <div className={classes.leftDiv}>
-                        <button className={classes.button4} onClick={() => this.setState({slideIndex: 9, progressIndex: 9})}>Dev Button</button>
+                        <button className={classes.button4} onClick={() => this.setState({slideIndex: 12, progressIndex: 12})}>Dev Button</button>
                         <h1 className={classes.slideName}>Slide {this.state.slideIndex + 1}</h1>
                     </div>
                     <div className={classes.mainDiv}>
@@ -421,7 +421,7 @@ slide10dnd6() {
                         <img src={TerrainMap} className={classes.mainContent} />
                         <button style={audioIsDone? {} : buttonStyle} className={`${classes.buttonClass} ${classes.slide9Button}`} onClick={() => this.renderHidden()}>What's A Hypothesis?</button>
                         <div style={revealHidden} className={classes.popUp}> A <i>Hypothesis</i> is a statement that explains why something happens. It is usually backed up by evidence or data that you have observed or collected beforehand. If the data and experiments agree with your idea, it supports you hypthesis. If the results of the tests disagree with your idea, then it refutes your hypohtesis indicating that it isn't quite right. Then your hypothesis needs to be adjusted. Part of science is testing to see what doesn't work, fixing it, and then retesting.
-                            <img src={XImage} className={classes.slide9button} onClick={() => this.hideHidden()}/>
+                            <img src={XImage} className={classes.XImage} onClick={() => this.hideHidden()}/>
                         </div> 
                     </div>
                     <div className={classes.rightDiv}>
@@ -496,7 +496,7 @@ slide10dnd6() {
                         <h1 className={classes.slideName}>Slide {this.state.slideIndex + 1}</h1>
                     </div>
                     <div className={classes.mainDiv}>
-                        <img src={VolcanoCompare} className={classes.mainContent} />
+                        <img src={VolcanoCompare} className={classes.wideMainContent} />
                     </div>
                     <div className={classes.rightDiv}>
                         <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => this.nextSlide()} />
@@ -561,9 +561,9 @@ slide10dnd6() {
                         <DndDroppables dragIndex={dragIndex} dropIndex={3} answered={slide15_dnd3} text={"transform"} unlock={dnd3} src={transform} class={classes.slide15_drop3} divClass={classes.slide15_drop3_div} answerClass={classes.slide15_drop3_h1} />
                     <DndDraggables updateDragIndex={UpdateDrag4} answered={slide15_dnd4} isReady={draggable} readyClass={classes.slide15_drag4_ready} text={"Continent-Continent Convergence"} class={classes.slide15_drag4} />
                         <DndDroppables dragIndex={dragIndex} dropIndex={4} answered={slide15_dnd4} text={"Continent-Continent Convergence"} unlock={dnd4} src={convergent2fix} class={classes.slide15_drop4} divClass={classes.slide15_drop4_div} answerClass={classes.slide15_drop4_h1} />
-                    <button className={`${classes.buttonClass} ${classes.button4}`} onClick={() => this.renderHidden()}>?????</button>
+                    <button className={`${classes.buttonClass} ${classes.button4}`} onClick={() => this.renderHidden()}>Tectonic Plate Movements </button>
                     <div style={revealHidden} className={classes.popUp}><b>Divergent:</b> two plates move away from each other causing magma to rise up and form volcanoes. <br /> <b>Continent-Continent Convergence:</b> to pieces of continental crust collide causing a mountain chain to form. <br /><b>Ocean-Continent Convergence:</b> a piece of ocean crust collides with continental crust forming a subduction zone and volcanoes. <br /> <b>Transform:</b> two plates slide against each other as they move in opposite directions. 
-                        <img src={XImage} className={classes.slideFiveX} onClick={() => this.hideHidden()}/>
+                        <img src={XImage} className={classes.XImage} onClick={() => this.hideHidden()}/>
                     </div> 
                     <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => {this.nextSlide(); this.hideHidden(); this.setState({slide15_dnd1: false, slide15_dnd2: false, slide15_dnd3: false, slide15_dnd4: false, dndIndex: 0})}} />
                     <img style={audioIsDone? {} : buttonStyle} src={Back} className={classes.imgBack} onClick={() => {this.prevSlide(); this.hideHidden(); this.setState({slide15_dnd1: false, slide15_dnd2: false, slide15_dnd3: false, slide15_dnd4: false, dndIndex: 0})}} />
