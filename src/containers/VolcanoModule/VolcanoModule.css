@@ -18,6 +18,23 @@
     -o-border-image: url(http://blogrope.com/wp-content/uploads/2013/06/003-wood-melamine-subttle-pattern-background-pat.jpg) 30 30 stretch;
     border-style:solid;
 }
+.wideMainContent {
+    position: absolute;
+    width: 100%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    border-width:15px;
+    border-image:url(http://blogrope.com/wp-content/uploads/2013/06/003-wood-melamine-subttle-pattern-background-pat.jpg) 30 30 stretch;
+    -moz-border-image: url(http://blogrope.com/wp-content/uploads/2013/06/003-wood-melamine-subttle-pattern-background-pat.jpg) 30 30 stretch;
+    -ms-border-image: url(http://blogrope.com/wp-content/uploads/2013/06/003-wood-melamine-subttle-pattern-background-pat.jpg) 30 30 stretch;
+    -o-border-image: url(http://blogrope.com/wp-content/uploads/2013/06/003-wood-melamine-subttle-pattern-background-pat.jpg) 30 30 stretch;
+    border-style:solid;
+}
+.wideMainContent:focus {
+    outline: 0;
+}
 .mainContent:focus {
     outline: 0;
 }
@@ -98,7 +115,19 @@
     position: absolute;
     z-index: 1;
     left: 30%;
-    bottom: 20%
+    bottom: 20%;
+}
+.XImage {
+    height:20px;
+    width: 20px;
+    position: absolute;
+    bottom: 1%;
+    right: 1%;  
+    
+}
+.XImage:hover {
+    opacity: 0.7;
+    
 }
 div.imageMapperDivClass  div{
     position: absolute;
@@ -108,17 +137,19 @@ div.imageMapperDivClass  div{
     top: 15px
 }
 .popUp {
-    position: absolute;
-    z-index: 2;
-    background-color: grey;
-    opacity: 0.9;
-    font-size: 25px;
-    width: 80%;
-    height: 50%;
-    left: 10%;
-    right: 10%;
-    top: 20%;
+    margin: 100px auto;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.562);
+  border-radius: 5px;
+  width: 30%;
+  position: absolute;
+  z-index: 2;
+  right: 20%;
+  left:10%;
+  bottom: 80px;
 }
+
+  
 .slide9button {
     position: absolute;
     right: 0;
@@ -134,7 +165,7 @@ div.imageMapperDivClass  div{
     bottom: 25%;
     width: 5%;
 }
-.Magnifying, .slideFiveX:hover {
+.Magnifying:hover  {
     opacity: 0.7;
 }
 .Magnifying:active {
@@ -145,6 +176,7 @@ div.imageMapperDivClass  div{
     position: absolute;
     bottom: 20%;
     right: 50%;
+    left: 40%;
 }
 .slide103one {
     position: absolute;
