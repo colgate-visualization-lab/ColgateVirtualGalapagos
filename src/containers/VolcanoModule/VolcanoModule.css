@@ -114,8 +114,8 @@
 .slide9Button {
     position: absolute;
     z-index: 1;
-    left: 30%;
-    bottom: 20%;
+    left: 20%;
+    bottom: 10%;
 }
 .XImage {
     height:20px;
@@ -383,8 +383,9 @@ div.imageMapperDivClass  div{
     height: 4.1%;
     top: 35.5%;
     right: 36.5%;
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.384);
     z-index: 3;
+    opacity: 0.5;
 }
 .yo1{
     position: absolute;
@@ -394,7 +395,9 @@ div.imageMapperDivClass  div{
     right: 36.5%;
     z-index: 3;
     text-align: center;
-    overflow: hidden;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    color: orange;
+    font-weight: 700;
 }
 .dnd2{
     position: absolute;
@@ -402,8 +405,9 @@ div.imageMapperDivClass  div{
     height: 4.1%;
     top: 53%;
     right: 27%;
-    background-color: orange;
+    background-color: rgba(255, 166, 0, 0.356);
     z-index: 3;
+    opacity: 0.5;
 }
 .yo2{
     position: absolute;
@@ -413,7 +417,9 @@ div.imageMapperDivClass  div{
     right: 27%;
     z-index: 3;
     text-align: center;
-    overflow: hidden;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    color: orange;
+    font-weight: 700;
 }
 .dnd3{
     position: absolute;
@@ -421,8 +427,9 @@ div.imageMapperDivClass  div{
     height: 4.1%;
     top: 64.5%;
     right: 4.5%;
-    background-color: yellow;
+    background-color: rgba(255, 255, 0, 0.438);
     z-index: 3;
+    opacity: 0.5;
 }
 .yo3{
     position: absolute;
@@ -432,7 +439,9 @@ div.imageMapperDivClass  div{
     right: 4.5%;
     text-align: center;
     z-index: 3;
-    overflow: hidden;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    color: orange;
+    font-weight: 700;
 }
 .dnd4{
     position: absolute;
@@ -440,8 +449,9 @@ div.imageMapperDivClass  div{
     height: 4.1%;
     top: 94.75%;
     right: 15%;
-    background-color: green;
+    background-color: rgba(0, 128, 0, 0.397);
     z-index: 3;
+    opacity: 0.5;
 }
 .yo4{
     position: absolute;
@@ -451,7 +461,9 @@ div.imageMapperDivClass  div{
     right: 15%;
     text-align: center;
     z-index: 3;
-    overflow: hidden;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    color: orange;
+    font-weight: 700;
 }
 .dnd5{
     position: absolute;
@@ -459,8 +471,9 @@ div.imageMapperDivClass  div{
     height: 4.1%;
     top: 76.5%;
     right: 61%;
-    background-color:blue;
+    background-color:rgba(0, 0, 255, 0.486);
     z-index: 3;
+    opacity: 0.5;
 }
 .yo5{
     position: absolute;
@@ -470,7 +483,9 @@ div.imageMapperDivClass  div{
     right: 61%;
     text-align: center;
     z-index: 3;
-    overflow: hidden;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    color: orange;
+    font-weight: 700;
 }
 .dnd6{
     position: absolute;
@@ -478,7 +493,7 @@ div.imageMapperDivClass  div{
     height: 4.1%;
     top: 37.5%;
     right: 75.5%;
-    background-color: purple;
+    background-color: rgba(128, 0, 128, 0.486);
     z-index: 3;
 }
 .yo6{
@@ -489,7 +504,9 @@ div.imageMapperDivClass  div{
     right: 75.5%;
     text-align:  center;
     z-index: 3;
-    overflow: hidden;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    color: orange;
+    font-weight: 700;
 }
 .test {
     position: absolute;
@@ -617,8 +634,8 @@ div.imageMapperDivClass  div{
 }
 .slide10_dnd {
     flex-grow: 2;
-    width: 125px;
-    background-color: orange;
+    width: 135px;
+    background-color: rgb(0, 0, 0);
     text-align: center;
     border-style: solid;
     border-width: 1px;
@@ -628,11 +645,11 @@ div.imageMapperDivClass  div{
     top: 0;
     width: 35%;
     height: 25%;
-    left: 32.5%;
     text-align: center;
     font-size: 16px;
     font-size: 2vw;
     overflow: hidden;
+    text-shadow: 2px 2px #000000;
 }
 .leftDiv {
     position: absolute;
@@ -657,13 +674,14 @@ div.imageMapperDivClass  div{
 }
 .slide8Button {
     position: absolute;
-    top: 50%;
-    left: 40px;
+    top: 5%;
+    
+    right: 10%;
 }
 .slide10dragclass {
     flex-grow: 2;
-    width: 125px;
-    background-color: orange;
+    width: 135px;
+    background-color: rgb(4, 0, 255);
     text-align: center;
     border-style: solid;
     border-width: 1px;
@@ -675,7 +693,7 @@ div.imageMapperDivClass  div{
     flex-direction: row;
     flex-wrap: wrap;
     top: 25%;
-    width: 250px;
+    width: 270px;
     left: 0;
     right: 0;
     margin: auto;
@@ -685,6 +703,7 @@ div.imageMapperDivClass  div{
     width: 250px;
     flex-grow: 2;
     text-align: center;
+    text-shadow: 2px 2px 8px #020000;
 }
 .slideName {
     position: absolute;
