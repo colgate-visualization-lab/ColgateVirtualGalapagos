@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Back, Next, TerrainMap, magnifyingGlass, Ferd, santaCruz, VolcanoCompare, tectonicPlatesMap, convergent, convergent2, convergent2fix, divergent, transform, seaMounts, eruptionDates, TerrainOval, TerrainOvalCorrect, TerrainOvalWrong, XImage, DnDAnswers, DnD} from "../../assets/VolcanoModule/Images"
-import { terrainMap2, volcanoSlider1, volcanoCompare360, terrainMap3, fernandina1, santaCruz1, terrainMap4, terrainMapAges1, terrainMapAges2, otherVolcanoes1, tectonicPlates1, platesGame1, tectonicPlates2, southAmerica1, terrainMap6, plumePlacement1, plumeYes1, plumeNo1, whereNext1, Exploration01, Exploration02, Exploration03, Exploration04, Exploration05 } from "../../assets/VolcanoModule/Audio"
+import { terrainMap2, volcanoSlider1, eruptionAudio, volcanoCompare360, terrainMap3, fernandina1, santaCruz1, terrainMap4, terrainMapAges1, terrainMapAges2, otherVolcanoes1, tectonicPlates1, platesGame1, tectonicPlates2, southAmerica1, terrainMap6, plumePlacement1, plumeYes1, plumeNo1, whereNext1, Exploration01, Exploration02, Exploration03, Exploration04, Exploration05 } from "../../assets/VolcanoModule/Audio"
 import classes from "./VolcanoModule.css"
 import mantlePlumes from "../../assets/VolcanoModule/Videos/Final - Volcano - Mantle Plumes.mp4"
 import tectonicPlates from "../../assets/VolcanoModule/Videos/Final - Volcano - Plate Tectonics.mp4"
@@ -11,7 +11,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 import DndDraggables from "../../components/DndDraggables/DndDraggables"
 import DndDroppables from "../../components/DndDroppables/DndDroppables"
 import ResizePanel from "react-resize-panel";
-import IntroVideo from "../../assets/VolcanoModule/Videos/Volcano Module Intro mp4.mp4"
+import IntroVideo from "../../assets/VolcanoModule/Videos/VolcanoModuleIntro.mp4"
 import VolcanoeIframe from "../../components/VolcanoeIframe/VolcanoeIframe"
 import AudioPlayer from "../../components/AudioPlayer/AudioPlayer"
 import MapComponent from "../../components/MapComponent/MapComponent"
@@ -225,11 +225,11 @@ slide10dnd6() {
             return (
                 <Fragment>
                     <div className={classes.leftDiv}>
-                        <button className={classes.button4} onClick={() => this.setState({slideIndex: 12, progressIndex: 12})}>Dev Button</button>
+                        {/* <button className={classes.button4} onClick={() => this.setState({slideIndex: 19, progressIndex: 19})}>Dev Button</button> */}
                         <h1 className={classes.slideName}>Slide {this.state.slideIndex + 1}</h1>
                     </div>
                     <div className={classes.mainDiv}>
-                        <video controls controlsList="nodownload" className={classes.mainContent} onEnded={() => this.onEnded()}>
+                        <video controls controlsList="nodownload" autoPlay className={classes.mainContent} onEnded={() => this.onEnded()}>
                             <source src={IntroVideo} type="video/mp4"/>
                         </video>
                     </div>
@@ -240,7 +240,7 @@ slide10dnd6() {
             )
         }
         else if (slideIndex == 1) {
-            const Vista = "http://virtualgalapagos.colgate.edu/Volcano_360(1)/index.htm"
+            const Vista = "https://virtualgalapagos.colgate.edu/360Videos/VolcanoModule/Caldara_Endtrail/index.htm"
             return (
                 <Fragment>
                     <VolcanoeIframe src={Vista} />
@@ -253,7 +253,7 @@ slide10dnd6() {
             )
         }
         else if (slideIndex == 2) {
-            const Vista = "http://virtualgalapagos.colgate.edu/Volcano_360(2)/index.htm"
+            const Vista = "https://virtualgalapagos.colgate.edu/360Videos/VolcanoModule/Caldara_Shotfive/index.htm"
             return (
                 <Fragment>
                     <VolcanoeIframe src={Vista} />
@@ -265,7 +265,7 @@ slide10dnd6() {
             )
         }
         else if (slideIndex == 3) {
-            const Vista = "http://virtualgalapagos.colgate.edu/Volcano_360(3)/index.htm"
+            const Vista = "https://virtualgalapagos.colgate.edu/360Videos/VolcanoModule/Stillwater/index.htm"
             return (
                 <Fragment>
                     <VolcanoeIframe src={Vista} />
@@ -277,7 +277,7 @@ slide10dnd6() {
             )
         }
         else if (slideIndex == 4) {
-            const Vista = "http://virtualgalapagos.colgate.edu/Volcano_360(4)/index.htm"
+            const Vista = "https://virtualgalapagos.colgate.edu/360Videos/VolcanoModule/Cactus_Final/index.htm"
             return (
                 <Fragment>
                     <VolcanoeIframe src={Vista} />
@@ -289,7 +289,7 @@ slide10dnd6() {
             )
         }
         else if (slideIndex == 5) {
-            const Vista = "http://virtualgalapagos.colgate.edu/Volcano_360(5)/index.htm"
+            const Vista = "https://virtualgalapagos.colgate.edu/360Videos/VolcanoModule/PlazaCliff/index.htm"
             return (
                 <Fragment>
                     <VolcanoeIframe src={Vista} />
@@ -343,8 +343,8 @@ slide10dnd6() {
             )
         }
         else if (slideIndex == 7) {
-            const Vista1 = "http://virtualgalapagos.colgate.edu/Volcano_360(1)/index.htm"
-            const Vista2 = "http://virtualgalapagos.colgate.edu/Volcano_360(4)/index.htm"
+            const Vista1 = "https://virtualgalapagos.colgate.edu/360Videos/VolcanoModule/Caldara_Endtrail/index.htm"
+            const Vista2 = "https://virtualgalapagos.colgate.edu/360Videos/VolcanoModule/Cactus_Final/index.htm"
             return (
                 <Fragment>
                     <AudioPlayer src={volcanoCompare360} onEnded={() => {this.onEnded(); this.setState({audioPlaying: false})}} stopAudio={() => this.setState({audioPlaying: false})} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
@@ -443,7 +443,7 @@ slide10dnd6() {
                 <DndProvider backend={HTML5Backend}>
                     <div className={classes.dndSidebar}>
                         <h1 className={classes.slideName}>Slide {this.state.slideIndex + 1}</h1>
-                        <AudioPlayer src={terrainMap4} onEnded={() => {this.setState({draggable1: true}); this.setState({audioPlaying: false})}} stopAudio={() => this.setState({audioPlaying: false})} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
+                        <AudioPlayer src={terrainMapAges1} onEnded={() => {this.setState({draggable1: true}); this.setState({audioPlaying: false})}} stopAudio={() => this.setState({audioPlaying: false})} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
                         <img style={audioIsDone? {} : buttonStyle} src={Back} className={classes.imgBackslide10} onClick={() => { window.removeEventListener("resize", this.updateDimensions2); this.setState({dndIndex:0, slide10_dnd1: false, slide10_dnd2: false, slide10_dnd3: false, slide10_dnd4: false, slide10_dnd5: false, slide10_dnd6: false,}); this.prevSlide()}} />
                         <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNextslide10} onClick={() => { window.removeEventListener("resize", this.updateDimensions2); this.setState({dndIndex:0, slide10_dnd1: false, slide10_dnd2: false, slide10_dnd3: false, slide10_dnd4: false, slide10_dnd5: false, slide10_dnd6: false,}); this.nextSlide()}} />
                         <div className={classes.wordbank}>
@@ -477,7 +477,7 @@ slide10dnd6() {
             return (
                 <Fragment>
                     <div className={classes.leftDiv}>
-                        <AudioPlayer src={terrainMapAges1} onEnded={() => {this.onEnded(); this.setState({audioPlaying: false})}} stopAudio={() => this.setState({audioPlaying: false})} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
+                        <AudioPlayer src={terrainMapAges2} onEnded={() => {this.onEnded(); this.setState({audioPlaying: false})}} stopAudio={() => this.setState({audioPlaying: false})} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
                         <img style={audioIsDone? {} : buttonStyle} src={Back} className={classes.imgBack} onClick={() => {this.prevSlide(); this.function(); setTimeout(() => this.updateDimensions2(), 1)}}/>
                         <h1 className={classes.slideName}>Slide {this.state.slideIndex + 1}</h1>
                     </div>
@@ -515,7 +515,7 @@ slide10dnd6() {
                         <h1 className={classes.slideName}>Slide {this.state.slideIndex + 1}</h1>
                     </div>
                     <div className={classes.mainDiv}>
-                        <video controls controlsList="nodownload" className={classes.mainContent} onEnded={() => this.onEnded()}>
+                        <video controls controlsList="nodownload" autoPlay className={classes.mainContent} onEnded={() => this.onEnded()}>
                             <source src={tectonicPlates} type="video/mp4"/>
                         </video>
                     </div>
@@ -555,7 +555,7 @@ slide10dnd6() {
                 <DndProvider backend={HTML5Backend}>
                 <div className={classes.divClass}>
                 <h1 className={classes.slideName}>Slide {this.state.slideIndex + 1}</h1>
-                <AudioPlayer src={tectonicPlates1} onEnded={() => {this.setState({draggable: true}); this.setState({audioPlaying: false})}} stopAudio={() => this.setState({audioPlaying: false})} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
+                <AudioPlayer src={platesGame1} onEnded={() => {this.setState({draggable: true}); this.setState({audioPlaying: false})}} stopAudio={() => this.setState({audioPlaying: false})} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
                     <DndDraggables updateDragIndex={UpdateDrag1} answered={slide15_dnd1} isReady={draggable} readyClass={classes.slide15_drag1_ready} text={"Divergent"} class={classes.slide15_drag1} />
                         <DndDroppables dragIndex={dragIndex} dropIndex={1} answered={slide15_dnd1} text={"Divergent"} unlock={dnd1} src={divergent} class={classes.slide15_drop1} divClass={classes.slide15_drop1_div} answerClass={classes.slide15_drop1_h1} />
                     <DndDraggables updateDragIndex={UpdateDrag2} answered={slide15_dnd2} isReady={draggable} readyClass={classes.slide15_drag2_ready} text={"Ocean-Continent Convergence"} class={classes.slide15_drag2} />
@@ -599,7 +599,7 @@ slide10dnd6() {
                         <h1 className={classes.slideName}>Slide {this.state.slideIndex + 1}</h1>
                     </div>
                     <div className={classes.mainDiv}>
-                        <video controls controlsList="nodownload" className={classes.mainContent} onEnded={() => this.onEnded()}>
+                        <video controls controlsList="nodownload" autoPlay className={classes.mainContent} onEnded={() => this.onEnded()}>
                             <source src={mantlePlumes} type="video/mp4"/>
                         </video>
                     </div>
@@ -647,7 +647,7 @@ slide10dnd6() {
             return (
                 <Fragment>
                     <div className={classes.leftDiv}>
-                        <AudioPlayer src={plumePlacement1} onEnded={() => {this.onEnded(); this.setState({audioPlaying: false})}} stopAudio={() => this.setState({audioPlaying: false})} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
+                        <AudioPlayer src={eruptionAudio} onEnded={() => {this.onEnded(); this.setState({audioPlaying: false})}} stopAudio={() => this.setState({audioPlaying: false})} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
                         <img style={audioIsDone? {} : buttonStyle} src={Back} className={classes.imgBack} onClick={() => this.prevSlide()}/>
                         <h1 className={classes.slideName}>Slide {this.state.slideIndex + 1}</h1>
                     </div>
@@ -731,6 +731,7 @@ slide10dnd6() {
                     <h1 className={classes.slideName}>Slide {this.state.slideIndex + 1}</h1>
                 </div>
                 <div className={classes.mainDiv}>
+                    <h1 className={classes.lastSlide} >This is the end! Thanks for testing!</h1>
                     <img src={TerrainMap} className={classes.mainContent} />
                 </div>
                 <div className={classes.rightDiv}>
