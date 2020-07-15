@@ -16,7 +16,10 @@ const AudioPlayer = (props) => {
       player.current.seekTo(amount, 'fraction');
     }
   };
-
+  if (props.hide) {
+    return null
+  }
+  else {
   return (
     <div style={{position: "absolute", left: "0", top: "0", width: "128px", zIndex: "1000"}}>
       <ReactPlayer
@@ -37,6 +40,7 @@ const AudioPlayer = (props) => {
       />
     </div>
   );
+  }
 };
 
 export default AudioPlayer
