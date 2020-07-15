@@ -10,7 +10,7 @@ const splashScreen = () => {
 			<video autoPlay muted loop className={classes.SplashScreen}>
 				<source src={SplashVideo} type="video/mp4"/>
 			</video>
-			<Link to="/home">
+			<Link className={classes.fixLink} to="/home">
 				<div className={classes.Arrow}>
 					<div className={classes.ArrowTop}></div>
 					<div className={classes.ArrowBottom}></div>
