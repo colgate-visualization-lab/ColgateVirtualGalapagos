@@ -14,6 +14,7 @@ import ResizePanel from "react-resize-panel";
 import IntroVideo from "../../assets/VolcanoModule/Videos/Volcano Module Intro mp4.mp4"
 import VolcanoeIframe from "../../components/VolcanoeIframe/VolcanoeIframe"
 import AudioPlayer from "../../components/AudioPlayer/AudioPlayer"
+import MapComponent from "../../components/MapComponent/MapComponent"
 
 class VolcanoeModule extends Component {
     constructor(props) {
@@ -243,6 +244,7 @@ slide10dnd6() {
             return (
                 <Fragment>
                     <VolcanoeIframe src={Vista} />
+                    <MapComponent />
                     <AudioPlayer src={Exploration01} onEnded={() => {this.onEnded(); this.setState({audioPlaying: false})}} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
                     <img style={audioIsDone? {} : buttonStyle} src={Back} className={classes.imgBack} onClick={() => this.prevSlide()} />
                     <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => this.nextSlide()} />
