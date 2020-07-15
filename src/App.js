@@ -14,6 +14,7 @@ import Homepage from "./containers/Homepage/Homepage"
 import SplashScreen from "./components/SplashScreen/SplashScreen"
 import Gallery from "./containers/Gallery/Gallery"
 import ModuleNav from "./components/ModuleNav/ModuleNav"
+import VolcanoLayout from "./containers/VolcanoLayout/VolcanoLayout"
 
 const VolcanoModule = lazy(() => import("./containers/VolcanoModule/VolcanoModule"))
 
@@ -46,6 +47,7 @@ class App extends Component {
 						<Route path="/isabella" exact component={ModuleNav}/>
 						<Route path="/volcanomod" exact component={VolcanoModule}/>
 						<Route path="/gallery" exact component={Gallery}/>
+						<Route path="/volcanolayout" exact component={VolcanoLayout}/>
 					</Layout>
 					</Suspense>
 				</Switch>
