@@ -14,7 +14,7 @@ import ResizePanel from "react-resize-panel";
 import IntroVideo from "../../assets/VolcanoModule/Videos/Volcano Module Intro mp4.mp4"
 import VolcanoeIframe from "../../components/VolcanoeIframe/VolcanoeIframe"
 import AudioPlayer from "../../components/AudioPlayer/AudioPlayer"
-import {CSSTransition} from 'react-transition-group';
+
 class VolcanoeModule extends Component {
     constructor(props) {
         super(props)
@@ -219,6 +219,7 @@ slide10dnd6() {
     render() {
         const {audioPlaying, audioIsDone, randomState, slideIndex, height, revealHidden, imageChange, draggable, slide15_dnd1, slide15_dnd2, slide15_dnd3, slide15_dnd4, dragIndex, slide10_dnd1, slide10_dnd2, slide10_dnd3, slide10_dnd4, slide10_dnd5, slide10_dnd6, draggable1} = this.state
         const buttonStyle = {pointerEvents: "none", opacity: "0.3"} 
+        const animation = "animated slideInRight";
         if (slideIndex == 0) {
             return (
                 <Fragment>
@@ -557,8 +558,8 @@ slide10dnd6() {
                         <DndDroppables dragIndex={dragIndex} dropIndex={1} answered={slide15_dnd1} text={"Divergent"} unlock={dnd1} src={divergent} class={classes.slide15_drop1} divClass={classes.slide15_drop1_div} answerClass={classes.slide15_drop1_h1} />
                     <DndDraggables updateDragIndex={UpdateDrag2} answered={slide15_dnd2} isReady={draggable} readyClass={classes.slide15_drag2_ready} text={"Ocean-Continent Convergence"} class={classes.slide15_drag2} />
                         <DndDroppables dragIndex={dragIndex} dropIndex={2} answered={slide15_dnd2} text={"Ocean-Continent Convergence"}  unlock={dnd2} src={convergent} class={classes.slide15_drop2} divClass={classes.slide15_drop2_div} answerClass={classes.slide15_drop2_h1} />
-                    <DndDraggables updateDragIndex={UpdateDrag3} answered={slide15_dnd3} isReady={draggable} readyClass={classes.slide15_drag3_ready} text={"transform"} class={classes.slide15_drag3} />
-                        <DndDroppables dragIndex={dragIndex} dropIndex={3} answered={slide15_dnd3} text={"transform"} unlock={dnd3} src={transform} class={classes.slide15_drop3} divClass={classes.slide15_drop3_div} answerClass={classes.slide15_drop3_h1} />
+                    <DndDraggables updateDragIndex={UpdateDrag3} answered={slide15_dnd3} isReady={draggable} readyClass={classes.slide15_drag3_ready} text={"Transform"} class={classes.slide15_drag3} />
+                        <DndDroppables dragIndex={dragIndex} dropIndex={3} answered={slide15_dnd3} text={"Transform"} unlock={dnd3} src={transform} class={classes.slide15_drop3} divClass={classes.slide15_drop3_div} answerClass={classes.slide15_drop3_h1} />
                     <DndDraggables updateDragIndex={UpdateDrag4} answered={slide15_dnd4} isReady={draggable} readyClass={classes.slide15_drag4_ready} text={"Continent-Continent Convergence"} class={classes.slide15_drag4} />
                         <DndDroppables dragIndex={dragIndex} dropIndex={4} answered={slide15_dnd4} text={"Continent-Continent Convergence"} unlock={dnd4} src={convergent2fix} class={classes.slide15_drop4} divClass={classes.slide15_drop4_div} answerClass={classes.slide15_drop4_h1} />
                     <button className={`${classes.buttonClass} ${classes.button4}`} onClick={() => this.renderHidden()}>Tectonic Plate Movements </button>
@@ -739,3 +740,4 @@ slide10dnd6() {
 }
 
 export default VolcanoeModule
+
