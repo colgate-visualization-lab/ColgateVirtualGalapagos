@@ -12,7 +12,7 @@ const moduleNav = () => {
 			"link": "/volcanomod"
 		}, 
 
-		{"title": "Volcano", 
+		{"title": "The Ocean", 
 			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.", 
 			"background": "url(https://source.unsplash.com/collection/894/1600x900)", 
 			"animation": " animated slideInDown slow",

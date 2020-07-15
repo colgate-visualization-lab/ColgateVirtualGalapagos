@@ -181,19 +181,22 @@ div.imageMapperDivClass  div{
 .slide103one {
     position: absolute;
     left: 20%;
-    bottom: 15%;
+    bottom: 27.5%;
+    z-index: 20
 }
 .slide103two {
     position: absolute;
     left: 20%;
-    bottom: 10%;
+    bottom: 16%;
+    z-index: 20
 }
 .slide103three {
     position: absolute;
     left: 20%;
     bottom: 5%;
+    z-index: 20
 }
-.slide15_drop1{
+.slide15_drop1 {
     position: absolute;
     height: 80%;
     left: 50%;
@@ -711,4 +714,15 @@ div.imageMapperDivClass  div{
     width: 100%;
     text-align: right;
     font-size: 16px;
+}
+.lastSlide {
+    z-Index: 100;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 500px;
+    overflow: hidden;
+    top: 10%;
+    text-align: center;
 }
