@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react'
 import { Back, Next, TerrainMap, magnifyingGlass, Ferd, santaCruz, VolcanoCompare, tectonicPlatesMap, convergent, convergent2, convergent2fix, divergent, transform, seaMounts, eruptionDates, TerrainOval, TerrainOvalCorrect, TerrainOvalWrong, XImage, DnDAnswers, DnD} from "../../assets/VolcanoModule/Images"
 import { terrainMap2, volcanoSlider1, eruptionAudio, volcanoCompare360, terrainMap3, fernandina1, santaCruz1, terrainMap4, terrainMapAges1, terrainMapAges2, otherVolcanoes1, tectonicPlates1, platesGame1, tectonicPlates2, southAmerica1, terrainMap6, plumePlacement1, plumeYes1, plumeNo1, whereNext1, Exploration01, Exploration02, Exploration03, Exploration04, Exploration05 } from "../../assets/VolcanoModule/Audio"
 import classes from "./VolcanoModule.css"
-import mantlePlumes from "../../assets/VolcanoModule/Videos/Final - Volcano - Mantle Plumes.mp4"
-import tectonicPlates from "../../assets/VolcanoModule/Videos/Final - Volcano - Plate Tectonics.mp4"
+import mantlePlumes from "../../assets/VolcanoModule/Videos/VolcanoMantlePlumes.mp4"
+import tectonicPlates from "../../assets/VolcanoModule/Videos/VolcanoPlateTectonics.mp4"
 import MAP from "./ImageMap.js"
 import ImageMapper from "react-image-mapper"
 import { DndProvider } from 'react-dnd'
@@ -257,6 +257,7 @@ slide10dnd6() {
             return (
                 <Fragment>
                     <VolcanoeIframe src={Vista} />
+                    <MapComponent />
                     <AudioPlayer src={Exploration02} onEnded={() => {this.onEnded(); this.setState({audioPlaying: false})}} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
                     <img style={audioIsDone? {} : buttonStyle} src={Back} className={classes.imgBack} onClick={() => this.prevSlide()} />
                     <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => this.nextSlide()} />
@@ -269,6 +270,7 @@ slide10dnd6() {
             return (
                 <Fragment>
                     <VolcanoeIframe src={Vista} />
+                    <MapComponent />
                     <AudioPlayer src={Exploration03} onEnded={() => {this.onEnded(); this.setState({audioPlaying: false})}} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
                     <img style={audioIsDone? {} : buttonStyle} src={Back} className={classes.imgBack} onClick={() => this.prevSlide()} />
                     <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => this.nextSlide()} />
@@ -281,6 +283,7 @@ slide10dnd6() {
             return (
                 <Fragment>
                     <VolcanoeIframe src={Vista} />
+                    <MapComponent />
                     <AudioPlayer src={Exploration04} onEnded={() => {this.onEnded(); this.setState({audioPlaying: false})}} stopAudio={() => this.setState({audioPlaying: false})} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
                     <img style={audioIsDone? {} : buttonStyle} src={Back} className={classes.imgBack} onClick={() => this.prevSlide()} />
                     <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => this.nextSlide()} />
@@ -293,6 +296,7 @@ slide10dnd6() {
             return (
                 <Fragment>
                     <VolcanoeIframe src={Vista} />
+                    <MapComponent />
                     <AudioPlayer src={Exploration05} onEnded={() => {this.onEnded(); this.setState({audioPlaying: false})}} stopAudio={() => this.setState({audioPlaying: false})} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
                     <img style={audioIsDone? {} : buttonStyle} src={Back} className={classes.imgBack} onClick={() => this.prevSlide()} />
                     <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => this.nextSlide()} />

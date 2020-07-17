@@ -26,8 +26,8 @@ const navbar = () => {
 				<Dropdown.Toggle id="backpack" className={classes.dropdown}>
 					<img src={Backpack} alt="Backpack" className={classes.Backpack}/>
 				</Dropdown.Toggle>
-				<Dropdown.Menu>
-					<Dropdown.Item><NavLink to='/fieldbook'>Fieldbook</NavLink></Dropdown.Item>
+				<Dropdown.Menu className={classes.dropdownList}>
+					<Dropdown.Item className={classes.dropdownItem}><NavLink to='/fieldbook'>Fieldbook</NavLink></Dropdown.Item>
 				</Dropdown.Menu>
 			</Dropdown>
 		</Navbar>

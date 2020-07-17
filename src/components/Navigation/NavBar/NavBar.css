@@ -19,13 +19,21 @@
 }
 
 .dropdown:focus {
-    background-color: black;
-    border-color: black;
+    background-color: rgb(36, 36, 36);
+    border-color: rgb(48, 48, 48);
     box-shadow: none;
 }
 
 .dropdown:hover {
+    background-color: rgb(0, 0, 0);
+    border-color: rgb(255, 255, 255);
+    box-shadow: 1px;
+}
+
+.dropdownList{
     background-color: black;
-    border-color: black;
-    box-shadow: none;
+}
+
+.dropdownItem:hover {
+    background-color: rgb(90, 83, 69);
 }
