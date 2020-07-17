@@ -8,6 +8,7 @@
     left: 0px;
     z-index: 1;
     overflow: hidden;
+    text-shadow: 2px 2px 8px #000000;
 }
 div.containerFix div{
     position: absolute;
