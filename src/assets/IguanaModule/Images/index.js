@@ -1,1 +1,0 @@
-export {default as GalapagosGEMap} from './SouthAmericaCoast.png'

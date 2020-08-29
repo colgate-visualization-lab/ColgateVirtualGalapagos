@@ -1,7 +1,5 @@
 import React, {useState, Fragment} from 'react'
 import PropTypes from 'prop-types'
-import {ShoreWaves1 } from '../../assets/IguanaModule/Videos'
-import {GalapagosGEMap } from '../../assets/IguanaModule/Images'
 import {Back, Next} from '../../assets/VolcanoModule/Images'
 import classes from './MainContent.css'
 import ControlButtons from '../ControlButtons/ControlButtons'
@@ -19,13 +17,11 @@ const data = [
     id: '0',
     title: 'Iguana_Endemic01',
     type: 'video',
-    source: ShoreWaves1
   },
   {
     id: '1',
     title: 'Iguana_Carried01',
     type: 'image',
-    source: GalapagosGEMap
   }
 ]
 
