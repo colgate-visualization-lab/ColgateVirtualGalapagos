@@ -4,6 +4,7 @@ import { terrainMap2, volcanoSlider1, eruptionAudio, volcanoCompare360, terrainM
 import classes from "./VolcanoModule.css"
 import mantlePlumes from "../../assets/VolcanoModule/Videos/VolcanoMantlePlumes.mp4"
 import tectonicPlates from "../../assets/VolcanoModule/Videos/VolcanoPlateTectonics.mp4"
+import summaryVolcano from "../../assets/VolcanoModule/Videos/VolcanoSummary.mp4"
 import MAP from "./ImageMap.js"
 import ImageMapper from "react-image-mapper"
 import { DndProvider } from 'react-dnd'
@@ -15,8 +16,9 @@ import IntroVideo from "../../assets/VolcanoModule/Videos/VolcanoModuleIntro.mp4
 import VolcanoeIframe from "../../components/VolcanoeIframe/VolcanoeIframe"
 import AudioPlayer from "../../components/AudioPlayer/AudioPlayer"
 import MapComponent from "../../components/MapComponent/MapComponent"
+import Popup from "reactjs-popup"
 
-class VolcanoeModule extends Component {
+class VolcanoeModule extends Component { 
     constructor(props) {
         super(props)
         this.headerRef2 = React.createRef();
@@ -225,7 +227,7 @@ slide10dnd6() {
             return (
                 <Fragment>
                     <div className={classes.leftDiv}>
-                        {/* <button className={classes.button4} onClick={() => this.setState({slideIndex: 19, progressIndex: 19})}>Dev Button</button> */}
+                        <button className={classes.button4} onClick={() => this.setState({slideIndex: 12, progressIndex: 12})}>Dev Button</button>
                         <h1 className={classes.slideName}>Slide {this.state.slideIndex + 1}</h1>
                     </div>
                     <div className={classes.mainDiv}>
@@ -244,7 +246,9 @@ slide10dnd6() {
             return (
                 <Fragment>
                     <VolcanoeIframe src={Vista} />
-                    <MapComponent />
+                    <MapComponent 
+                    initialLocation={{lat: -0.781072, lng: -91.115960}}
+                    markerName={'Sierra Negra, Caldera Rim'}/>
                     <AudioPlayer src={Exploration01} onEnded={() => {this.onEnded(); this.setState({audioPlaying: false})}} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
                     <img style={audioIsDone? {} : buttonStyle} src={Back} className={classes.imgBack} onClick={() => this.prevSlide()} />
                     <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => this.nextSlide()} />
@@ -257,7 +261,9 @@ slide10dnd6() {
             return (
                 <Fragment>
                     <VolcanoeIframe src={Vista} />
-                    <MapComponent />
+                    <MapComponent location={{lat: -0.791302,
+                                            lng: -91.096232}}
+                                            markerName={'Sierra Negra, Caldera Rim'}/>
                     <AudioPlayer src={Exploration02} onEnded={() => {this.onEnded(); this.setState({audioPlaying: false})}} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
                     <img style={audioIsDone? {} : buttonStyle} src={Back} className={classes.imgBack} onClick={() => this.prevSlide()} />
                     <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => this.nextSlide()} />
@@ -270,7 +276,9 @@ slide10dnd6() {
             return (
                 <Fragment>
                     <VolcanoeIframe src={Vista} />
-                    <MapComponent />
+                    <MapComponent location={{lat: -0.962448,
+                                            lng: -90.958908}}
+                                            markerName={'Coast of Villamil'}/>
                     <AudioPlayer src={Exploration03} onEnded={() => {this.onEnded(); this.setState({audioPlaying: false})}} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
                     <img style={audioIsDone? {} : buttonStyle} src={Back} className={classes.imgBack} onClick={() => this.prevSlide()} />
                     <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => this.nextSlide()} />
@@ -283,7 +291,9 @@ slide10dnd6() {
             return (
                 <Fragment>
                     <VolcanoeIframe src={Vista} />
-                    <MapComponent />
+                    <MapComponent location={{lat: -0.756385,
+                                            lng: -90.328649}}
+                                            markerName={'Santa Cruz, Tortuga Bay'}/>
                     <AudioPlayer src={Exploration04} onEnded={() => {this.onEnded(); this.setState({audioPlaying: false})}} stopAudio={() => this.setState({audioPlaying: false})} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
                     <img style={audioIsDone? {} : buttonStyle} src={Back} className={classes.imgBack} onClick={() => this.prevSlide()} />
                     <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => this.nextSlide()} />
@@ -296,7 +306,9 @@ slide10dnd6() {
             return (
                 <Fragment>
                     <VolcanoeIframe src={Vista} />
-                    <MapComponent />
+                    <MapComponent location={{lat: -0.583869,
+                                            lng: -90.160893}}
+                                            markerName={'Plazas'}/>
                     <AudioPlayer src={Exploration05} onEnded={() => {this.onEnded(); this.setState({audioPlaying: false})}} stopAudio={() => this.setState({audioPlaying: false})} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
                     <img style={audioIsDone? {} : buttonStyle} src={Back} className={classes.imgBack} onClick={() => this.prevSlide()} />
                     <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => this.nextSlide()} />
@@ -316,9 +328,10 @@ slide10dnd6() {
                         <img src={TerrainMap} className={classes.mainContent} />
                         <img style={audioIsDone? {} : buttonStyle} src={magnifyingGlass} className={classes.Magnifying} onClick={() => {this.optionalOne(); window.addEventListener("resize", this.eventListener100); setTimeout(() => this.eventListener100(), 1)}} />
                     </div>
-                    <div className={classes.rightDiv}>
+                    <div className={classes.rightDiv}></div>
+                    {/* <div className={classes.rightDiv}>
                         <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => this.nextSlide()} />
-                    </div>
+                    </div> */}
                 </Fragment>
             )
         }
@@ -336,13 +349,20 @@ slide10dnd6() {
                             <div className={classes.body} >
                                 <ResizePanel direction="e" style={{ flexGrow: '1' }} handleClass={classes.customHandle} borderClass={classes.customResizeBorder}>
                                     <div className={`${classes.sidebar} ${classes.withMargin} ${classes.panel}`}>
-                                        <div className={classes.duck3} />
+                                        <div className={classes.duck3}/>
                                     </div>
                                 </ResizePanel>
                             </div>
                          </div>
                     </div>
-                    <div className={classes.rightDiv} />
+                    <div className={classes.rightDiv}> 
+                    <h1 className={classes.rightSantaCruz}>Santa Cruz</h1>
+                    <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => {this.setState({audioPlaying: false}); setTimeout(() => this.setState({slideIndex: 7}), 1) }} />
+                    </div> 
+                    <div className={classes.leftDiv}> 
+                    <h1 className={classes.leftFerd}>Fernandina</h1>
+                    <p className={classes.SliderInstruction}>Move slider to compare Fernandina and Santa Cruz</p>
+                    </div> 
                 </Fragment>
             )
         }
@@ -370,7 +390,7 @@ slide10dnd6() {
                     <div className={classes.leftDiv}>
                         <AudioPlayer src={terrainMap3} onEnded={() => {this.onEnded(); this.setState({audioPlaying: false})}} stopAudio={() => this.setState({audioPlaying: false})} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
                         <img style={audioIsDone? {} : buttonStyle} src={Back} className={classes.imgBack} onClick={() => this.prevSlide()}/>
-                        <h1 className={classes.slideName}>Slide {this.state.slideIndex + 1}</h1>
+                        <h1 className={classes.slideName}>ssSlide {this.state.slideIndex + 1}</h1>
                     </div>
                     <div className={classes.mainDiv}>
                         <img src={TerrainMap} className={classes.mainContent} />
@@ -392,6 +412,15 @@ slide10dnd6() {
                     </div>
                     <div className={classes.mainDiv}>
                         <img src={Ferd} className={classes.mainContent} />
+                        <Popup trigger={<button className={`${classes.dot} ${classes.dot4}`}></button>} contentStyle={{margin: "auto", padding:"20px", background: "rgba(0, 0, 0, 0.762)", borderRadius: "5px", zIndex:"2", width:"auto", position:"absolute" }} arrow={false} position="right center">
+                        <div>The sides of a volcano are called the flanks of the volcano. Lava erupts from the volcano and hardens into black basalt.</div>
+                        </Popup>
+                        <Popup trigger={<button className={`${classes.dot} ${classes.dot5}`}></button>} contentStyle={{margin: "auto", padding:"20px", background: "rgba(0, 0, 0, 0.762)", borderRadius: "5px", zIndex:"2", width:"auto", position:"absolute" }} arrow={false} position="right center">
+                        <div>Fernandina's caldera is in the middle of the island. This formed when the ground above the magma chamber collapsed after an eruption.</div>
+                        </Popup>
+                        <Popup trigger={<button className={`${classes.dot} ${classes.dot6}`}></button>} contentStyle={{margin: "auto", padding:"20px", background: "rgba(0, 0, 0, 0.762)", borderRadius: "5px", zIndex:"2", width:"auto", position:"absolute" }} arrow={false} position="right center">
+                        <div>There is very little vegetation on the island as plants have not had time to develop after the eruptions.</div>
+                        </Popup>
                     </div>
                     <div className={classes.rightDiv}>
                         <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => this.optionalTwoNext()} />
@@ -409,9 +438,18 @@ slide10dnd6() {
                     </div>
                     <div className={classes.mainDiv}>
                         <img src={santaCruz} className={classes.mainContent} />
+                        <Popup trigger={<button className={`${classes.dot} ${classes.dot7}`}></button>} contentStyle={{margin: "auto", padding:"20px", background: "rgba(0, 0, 0, 0.762)", borderRadius: "5px", zIndex:"2", width:"auto", position:"absolute" }} arrow={false} position="right center">
+                        <div>When basalt has been exposed to the elements for a long time it becomes oxidized and turns red.</div>
+                        </Popup>
+                        <Popup trigger={<button className={`${classes.dot} ${classes.dot8}`}></button>} contentStyle={{margin: "auto", padding:"20px", background: "rgba(0, 0, 0, 0.762)", borderRadius: "5px", zIndex:"2", width:"auto", position:"absolute" }} arrow={false} position="right center">
+                        <div>Since there has not been an eruption in recent history, plants have been able to develop and grow to cover most of the island.</div>
+                        </Popup>
+                        <Popup trigger={<button className={`${classes.dot} ${classes.dot9}`}></button>} contentStyle={{margin: "auto", padding:"20px", background: "rgba(0, 0, 0, 0.762)", borderRadius: "5px", zIndex:"2", width:"auto", position:"absolute" }} arrow={false} position="right center">
+                        <div>Humans have been able to move into the island and develop communities. Farming and developments take up most of the southern part of the island.</div>
+                        </Popup>
                     </div>
                     <div className={classes.rightDiv}>
-                        <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => { this.setState({audioPlaying: false}); setTimeout(() => this.setState({slideIndex: 8}), 1) }} />
+                        <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => { this.setState({audioPlaying: false}); setTimeout(() => this.setState({slideIndex: 9}), 1) }} />
                     </div>
                 </Fragment>
             )
@@ -426,8 +464,8 @@ slide10dnd6() {
                     </div>
                     <div className={classes.mainDiv}>
                         <img src={TerrainMap} className={classes.mainContent} />
-                        <button style={audioIsDone? {} : buttonStyle} className={`${classes.buttonClass} ${classes.slide9Button}`} onClick={() => this.renderHidden()}>What's A Hypothesis?</button>
-                        <div style={revealHidden} className={classes.popUp}> A <i>Hypothesis</i> is a statement that explains why something happens. It is usually backed up by evidence or data that you have observed or collected beforehand. If the data and experiments agree with your idea, it supports you hypthesis. If the results of the tests disagree with your idea, then it refutes your hypohtesis indicating that it isn't quite right. Then your hypothesis needs to be adjusted. Part of science is testing to see what doesn't work, fixing it, and then retesting.
+                        <button style={audioIsDone? {} : buttonStyle} className={`${classes.buttonClass} ${classes.slide9Button}`} onClick={() => revealHidden.visibility === "hidden" ? this.renderHidden() : this.hideHidden() }>What's A Hypothesis?</button>
+                        <div style={revealHidden} className={classes.popUp9}> A <i>Hypothesis</i> is a statement that explains why something happens. It is usually backed up by evidence or data that you have observed or collected beforehand. If the data and experiments agree with your idea, it supports you hypthesis. If the results of the tests disagree with your idea, then it refutes your hypohtesis indicating that it isn't quite right. Then your hypothesis needs to be adjusted. Part of science is testing to see what doesn't work, fixing it, and then retesting.
                             <img src={XImage} className={classes.XImage} onClick={() => this.hideHidden()}/>
                         </div> 
                     </div>
@@ -464,7 +502,7 @@ slide10dnd6() {
                         <div className={classes.test} style={{width: `${this.state.width}px`}}>
                             <img ref={this.randomRef} className={classes.mainContent} src={DnD} /> 
                             <div className={classes.test2}>
-                                <h1 style={draggable1? {visibility: "visible"}: {visibility: "hidden"}} className={classes.slide10bigh1}>Drag and drop items from the wordbank onto the islands.</h1>
+                                <h1 style={draggable1? {visibility: "visible"}: {visibility: "hidden"}} className={classes.slide10bigh1}>Drag the island ages on the right to the corresponding islands on the map</h1>
                                 <DndDroppables slide10={true} answerClass={classes.yo1} class={classes.dnd1} answered1={slide10_dnd1} dragIndex={dragIndex} dropIndex={1} unlock={dnd1} text={"1.7 Million Years"}/>
                                 <DndDroppables slide10={true} answerClass={classes.yo2} class={classes.dnd2} answered1={slide10_dnd2} dragIndex={dragIndex} dropIndex={2} unlock={dnd2} text={"2.3 Million Years"}/>
                                 <DndDroppables slide10={true} answerClass={classes.yo3} class={classes.dnd3} answered1={slide10_dnd3} dragIndex={dragIndex} dropIndex={3} unlock={dnd3} text={"4 Million Years"}/>
@@ -504,6 +542,27 @@ slide10dnd6() {
                     </div>
                     <div className={classes.mainDiv}>
                         <img src={VolcanoCompare} className={classes.wideMainContent} />
+                        <Popup trigger={<button className={`${classes.dot} ${classes.dot10}`}></button>} contentStyle={{margin: "auto", padding:"20px", background: "rgba(0, 0, 0, 0.762)", borderRadius: "5px", zIndex:"2", width:"auto", position:"absolute" }} arrow={false} position="right center">
+                        <div>The volcanoes in western Hawaii and have been dormant for hundreds of years.</div>
+                        </Popup>
+                        <Popup trigger={<button className={`${classes.dot} ${classes.dot11}`}></button>} contentStyle={{margin: "auto", padding:"20px", background: "rgba(0, 0, 0, 0.762)", borderRadius: "5px", zIndex:"2", width:"auto", position:"absolute" }} arrow={false} position="right center">
+                        <div>The Hawaiian islands get progressively older as you move west along the archipelago.</div>
+                        </Popup>
+                        <Popup trigger={<button className={`${classes.dot} ${classes.dot12}`}></button>} contentStyle={{margin: "auto", padding:"20px", background: "rgba(0, 0, 0, 0.762)", borderRadius: "5px", zIndex:"2", width:"auto", position:"absolute" }} arrow={false} position="right center">
+                        <div>Hawaii's youngest volcanoes (and some of the largest volcanoes in the world) are in the east of the archipelago!</div>
+                        </Popup>
+                        <Popup trigger={<button className={`${classes.dot} ${classes.dot13}`}></button>} contentStyle={{margin: "auto", padding:"20px", background: "rgba(0, 0, 0, 0.762)", borderRadius: "5px", zIndex:"2", width:"auto", position:"absolute" }} arrow={false} position="right center">
+                        <div>There is a large trench, or subduction zone, off the coast of Japan.</div>
+                        </Popup>
+                        <Popup trigger={<button className={`${classes.dot} ${classes.dot14}`}></button>} contentStyle={{margin: "auto", padding:"20px", background: "rgba(0, 0, 0, 0.762)", borderRadius: "5px", zIndex:"2", width:"auto", position:"absolute" }} arrow={false} position="right center">
+                        <div>Volcanoes rise high in Japan and erupt often all along the island.</div>
+                        </Popup>
+                        <Popup trigger={<button className={`${classes.dot} ${classes.dot15}`}></button>} contentStyle={{margin: "auto", padding:"20px", background: "rgba(0, 0, 0, 0.762)", borderRadius: "5px", zIndex:"2", width:"auto", position:"absolute" }} arrow={false} position="right center">
+                        <div>There is a subduction zone off the coast of Central America.</div>
+                        </Popup>
+                        <Popup trigger={<button className={`${classes.dot} ${classes.dot16}`}></button>} contentStyle={{margin: "auto", padding:"20px", background: "rgba(0, 0, 0, 0.762)", borderRadius: "5px", zIndex:"2", width:"auto", position:"absolute" }} arrow={false} position="right center">
+                        <div>Central Americas Volcanoes are located on the western coast. All along the coast volcanoes erupt regularly!</div>
+                        </Popup>
                     </div>
                     <div className={classes.rightDiv}>
                         <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => this.nextSlide()} />
@@ -568,8 +627,8 @@ slide10dnd6() {
                         <DndDroppables dragIndex={dragIndex} dropIndex={3} answered={slide15_dnd3} text={"Transform"} unlock={dnd3} src={transform} class={classes.slide15_drop3} divClass={classes.slide15_drop3_div} answerClass={classes.slide15_drop3_h1} />
                     <DndDraggables updateDragIndex={UpdateDrag4} answered={slide15_dnd4} isReady={draggable} readyClass={classes.slide15_drag4_ready} text={"Continent-Continent Convergence"} class={classes.slide15_drag4} />
                         <DndDroppables dragIndex={dragIndex} dropIndex={4} answered={slide15_dnd4} text={"Continent-Continent Convergence"} unlock={dnd4} src={convergent2fix} class={classes.slide15_drop4} divClass={classes.slide15_drop4_div} answerClass={classes.slide15_drop4_h1} />
-                    <button className={`${classes.buttonClass} ${classes.button4}`} onClick={() => this.renderHidden()}>Tectonic Plate Movements </button>
-                    <div style={revealHidden} className={classes.popUp}><b>Divergent:</b> two plates move away from each other causing magma to rise up and form volcanoes. <br /> <b>Continent-Continent Convergence:</b> to pieces of continental crust collide causing a mountain chain to form. <br /><b>Ocean-Continent Convergence:</b> a piece of ocean crust collides with continental crust forming a subduction zone and volcanoes. <br /> <b>Transform:</b> two plates slide against each other as they move in opposite directions. 
+                    <button className={`${classes.buttonClass} ${classes.button4}`} onClick={() => revealHidden.visibility === "hidden" ? this.renderHidden() : this.hideHidden() }>Tectonic Plate Movements? </button>
+                    <div style={revealHidden} className={classes.popUp15}><b>Divergent:</b> Two plates move away from each other causing magma to rise up and form volcanoes. <br /> <b>Continent-Continent Convergence:</b> Two pieces of continental crust collide causing a mountain chain to form. <br /><b>Ocean-Continent Convergence:</b> A piece of ocean crust collides with continental crust forming a subduction zone and volcanoes. <br /> <b>Transform:</b> Two plates slide against each other as they move in opposite directions. 
                         <img src={XImage} className={classes.XImage} onClick={() => this.hideHidden()}/>
                     </div> 
                     <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => {this.nextSlide(); this.hideHidden(); this.setState({slide15_dnd1: false, slide15_dnd2: false, slide15_dnd3: false, slide15_dnd4: false, dndIndex: 0})}} />
@@ -640,7 +699,7 @@ slide10dnd6() {
                     </div>
                     <div className={classes.mainDiv}>
                         <img src={TerrainMap} className={classes.mainContent} />
-                        <button style={audioIsDone? {} : buttonStyle} className={`${classes.buttonClass} ${classes.button4}`} onClick={() => this.nextSlide()}>Eruption Dates</button>
+                        <button style={audioIsDone? {} : buttonStyle} className={`${classes.buttonClass} ${classes.buttonEruption}`} onClick={() => this.nextSlide()}>Eruption Dates</button>
                     </div>
                     <div className={classes.rightDiv}>
                     </div>
@@ -735,12 +794,29 @@ slide10dnd6() {
                     <h1 className={classes.slideName}>Slide {this.state.slideIndex + 1}</h1>
                 </div>
                 <div className={classes.mainDiv}>
-                    <h1 className={classes.lastSlide} >This is the end! Thanks for testing!</h1>
                     <img src={TerrainMap} className={classes.mainContent} />
                 </div>
                 <div className={classes.rightDiv}>
+                    <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => this.nextSlide()} />
                 </div>
             </Fragment>
+            )
+        }
+        else if (slideIndex == 24) {
+            return (
+                <Fragment>
+                    <div className={classes.leftDiv}>
+                        <img style={audioIsDone? {} : buttonStyle} src={Back} className={classes.imgBack} onClick={() => this.prevSlide()} />
+                        <h1 className={classes.slideName}>Slide {this.state.slideIndex + 1}</h1>
+                    </div>
+                    <div className={classes.mainDiv}>
+                        <video controls controlsList="nodownload" autoPlay className={classes.mainContent} onEnded={() => this.onEnded()}>
+                            <source src={summaryVolcano} type="video/mp4"/>
+                        </video>
+                    </div>
+                    <div className={classes.rightDiv}>
+                    </div>
+                </Fragment>
             )
         }
     }

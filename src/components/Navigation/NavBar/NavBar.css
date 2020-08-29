@@ -37,3 +37,8 @@
 .dropdownItem:hover {
     background-color: rgb(90, 83, 69);
 }
+
+.text{
+    color: white;
+    font-size: 15px;
+}

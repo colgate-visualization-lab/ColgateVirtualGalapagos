@@ -14,7 +14,8 @@ class Homepage extends Component {
 			msg: "Click on the highlighted island to travel to the next module!",
 			route: false,
 			link: "",
-			width: 0
+			width: 0,
+			height: 0
 		}
 	}
 
@@ -44,17 +45,22 @@ class Homepage extends Component {
 
     //<ImmageMapper> cannot be styled with css, so these methods update a width state for responsivness
     updateDimensions = () => {
-    	let windowWidth = window.innerWidth
-    	if (windowWidth > 1500) {
-    		this.setState({ width: window.innerWidth - 500 })
-    	} else if (windowWidth > 1300) {
-    		this.setState({ width: window.innerWidth - 400 })
-    	} else if (windowWidth > 1100) {
-    		this.setState({ width: window.innerWidth - 300 })
-    	} else {
-    		this.setState({ width: window.innerWidth - 50 })
-    	}
-    }
+		let windowWidth = window.innerWidth
+		if (windowWidth > 1500 ) {
+			this.setState({ width: window.innerWidth - 500})
+		} else if (windowWidth > 1300) {
+			this.setState({ width: window.innerWidth - 400})
+		} else if (windowWidth > 1100) {
+			this.setState({ width: window.innerWidth - 300})
+		} else {
+			this.setState({ width: window.innerWidth - 50 })
+		} 
+		if (window.innerHeight < 515 && windowWidth > 1000){
+			this.setState({ width: window.innerWidth - 500})
+		} else if (window.innerHeight < 515){
+			this.setState({ width: window.innerWidth - 300})
+		}
+	}
 
     componentDidMount() {
     	window.addEventListener("resize", this.updateDimensions)
@@ -75,16 +81,16 @@ class Homepage extends Component {
     	}
     	return ( 
     		<Fragment >
-    			<img 
+				<img 
     				src = { backgroundImage }
     				className = { classes.videoSubstitute }
     				alt = "" 
-    			/> { /*Background Image for Mobile Divices */ } 
+    			/> { /*Background Image for Mobile Devices */ } 
     			<div className = { `${animation} ${classes.containerFix}` } >
     				<ImageMapper 
     					src = { MapImg }
-    					width = { width }
-    					imgWidth = { 1920 }
+						width = { width }
+						imgWidth = { 1920 }
     					map = { MAP }
     					fillColor = { "rgba(0, 246, 255, 0.33)" }
     					onMouseEnter = { area => this.enterArea(area) }

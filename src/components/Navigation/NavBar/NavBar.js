@@ -5,7 +5,10 @@ import {Navbar, Nav, Dropdown} from "react-bootstrap"
 import LogoImage from "./LogoImage/LogoImage"
 import Backpack from "../../../assets/images/homepage/backpack.png"
 
+
+
 const navbar = () => {
+	
 	return (
 		<Navbar expand='lg'>
 			<NavLink to='/home'>
@@ -13,6 +16,9 @@ const navbar = () => {
 					<LogoImage className={classes.Logo}/>
 				</Navbar.Brand>
 			</NavLink>
+			<Navbar.Text >
+     			 <h1 className ={classes.text}>Add instructions for each different page</h1>
+    		</Navbar.Text>
 			<NavLink to="/home">
 				<Nav.Item className={classes.NavItem}>Mysteries</Nav.Item>
 			</NavLink>
