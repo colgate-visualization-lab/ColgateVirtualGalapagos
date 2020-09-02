@@ -67,10 +67,7 @@
     "react-spring": "^8.0.27",
     "react-spring-3d-carousel": "^1.2.0",
     "react-transition-group": "^4.4.1",
-<<<<<<< HEAD
     "reactjs-popup": "^1.5.0",
-=======
->>>>>>> e012f178ff2906d4f83da76c161174f2ed8a5be7
     "regenerator-runtime": "^0.13.5",
     "uuid": "^7.0.3"
   }
