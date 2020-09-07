@@ -1,6 +1,6 @@
 import React from "react"
-import LogoImage from "../../../../assets/images/homepage/logo.png"
+import {logo} from "../../../../assets/Misc"
 
-const logoImage = (props) => <img src={LogoImage} alt="Logo Image" className={props.className}/>
+const logoImage = (props) => <img src={logo} alt="Logo Image" className={props.className}/>
 
 export default logoImage
