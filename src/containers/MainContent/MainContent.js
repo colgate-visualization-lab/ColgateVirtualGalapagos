@@ -1,6 +1,6 @@
 import React, {useState, Fragment} from 'react'
 import PropTypes from 'prop-types'
-import {Back, Next} from '../../assets/VolcanoModule/Images'
+import {Back, Next} from '../../assets/VolcanoModule'
 import classes from './MainContent.css'
 import ControlButtons from '../ControlButtons/ControlButtons'
 
