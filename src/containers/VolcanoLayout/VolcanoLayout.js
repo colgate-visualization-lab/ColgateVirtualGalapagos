@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Back, Next, TerrainMap, Ferd } from "../../assets/VolcanoModule/Images"
-import { terrainMap2, volcanoSlider1, volcanoCompare360, terrainMap3, fernandina1, santaCruz1, terrainMap4, terrainMapAges1, terrainMapAges2, otherVolcanoes1, tectonicPlates1, platesGame1, tectonicPlates2, southAmerica1, terrainMap6, plumePlacement1, plumeYes1, plumeNo1, whereNext1, Exploration01, Exploration02, Exploration03, Exploration04, Exploration05 } from "../../assets/VolcanoModule/Audio"
+import { Back, Next, TerrainMap, Ferd } from "../../assets/VolcanoModule"
+import { terrainMap2, volcanoSlider1, volcanoCompare360, terrainMap3, fernandina1, santaCruz1, terrainMap4, terrainMapAges1, terrainMapAges2, otherVolcanoes1, tectonicPlates1, platesGame1, tectonicPlates2, southAmerica1, terrainMap6, plumePlacement1, plumeYes1, plumeNo1, whereNext1, Exploration01, Exploration02, Exploration03, Exploration04, Exploration05 } from "../../assets/VolcanoModule"
 import AudioPlayer from "../../components/AudioPlayer/AudioPlayer"
 import classes from "./VolcanoLayout.css"
 import SlideContent from "../SlideContent/SlideContent"

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import logo from "../../assets/images/homepage/logo.png"
 
 class DragDrop extends Component {
     render() {
