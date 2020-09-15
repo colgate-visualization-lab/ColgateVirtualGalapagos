@@ -1,10 +1,7 @@
 import React, { Component, Fragment } from 'react'
-import { Back, Next, TerrainMap, magnifyingGlass, Ferd, santaCruz, VolcanoCompare, tectonicPlatesMap, convergent, convergent2, convergent2fix, divergent, transform, seaMounts, eruptionDates, TerrainOval, TerrainOvalCorrect, TerrainOvalWrong, XImage, DnDAnswers, DnD} from "../../assets/VolcanoModule/Images"
-import { terrainMap2, volcanoSlider1, eruptionAudio, volcanoCompare360, terrainMap3, fernandina1, santaCruz1, terrainMap4, terrainMapAges1, terrainMapAges2, otherVolcanoes1, tectonicPlates1, platesGame1, tectonicPlates2, southAmerica1, terrainMap6, plumePlacement1, plumeYes1, plumeNo1, whereNext1, Exploration01, Exploration02, Exploration03, Exploration04, Exploration05 } from "../../assets/VolcanoModule/Audio"
+import {introVideo, summaryVolcano, plateTectonics, mantlePlumes, Back, Next, TerrainMap, magnifyingGlass, Ferd, santaCruz, VolcanoCompare, tectonicPlatesMap, convergent, convergent2, convergent2fix, divergent, transform, seaMounts, eruptionDates, TerrainOval, TerrainOvalCorrect, TerrainOvalWrong, XImage, DnDAnswers, DnD,  terrainMap2, volcanoSlider1, eruptionAudio, volcanoCompare360, terrainMap3, fernandina1, santaCruz1, terrainMap4, terrainMapAges1, terrainMapAges2, otherVolcanoes1, tectonicPlates1, platesGame1, tectonicPlates2, southAmerica1, terrainMap6, plumePlacement1, plumeYes1, plumeNo1, whereNext1, Exploration01, Exploration02, Exploration03, Exploration04, Exploration05 } from "../../assets/VolcanoModule"
+// import { terrainMap2, volcanoSlider1, eruptionAudio, volcanoCompare360, terrainMap3, fernandina1, santaCruz1, terrainMap4, terrainMapAges1, terrainMapAges2, otherVolcanoes1, tectonicPlates1, platesGame1, tectonicPlates2, southAmerica1, terrainMap6, plumePlacement1, plumeYes1, plumeNo1, whereNext1, Exploration01, Exploration02, Exploration03, Exploration04, Exploration05 } from "../../assets/VolcanoModule"
 import classes from "./VolcanoModule.css"
-import mantlePlumes from "../../assets/VolcanoModule/Videos/VolcanoMantlePlumes.mp4"
-import tectonicPlates from "../../assets/VolcanoModule/Videos/VolcanoPlateTectonics.mp4"
-import summaryVolcano from "../../assets/VolcanoModule/Videos/VolcanoSummary.mp4"
 import MAP from "./ImageMap.js"
 import ImageMapper from "react-image-mapper"
 import { DndProvider } from 'react-dnd'
@@ -232,7 +229,7 @@ slide10dnd6() {
                     </div>
                     <div className={classes.mainDiv}>
                         <video controls controlsList="nodownload" autoPlay className={classes.mainContent} onEnded={() => this.onEnded()}>
-                            <source src={IntroVideo} type="video/mp4"/>
+                            <source src={introVideo} type="video/mp4"/>
                         </video>
                     </div>
                     <div className={classes.rightDiv}>
@@ -242,7 +239,7 @@ slide10dnd6() {
             )
         }
         else if (slideIndex == 1) {
-            const Vista = "https://virtualgalapagos.colgate.edu/360Videos/VolcanoModule/Caldara_Endtrail/index.htm"
+            const Vista = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Caldara_Endtrail/index.htm"
             return (
                 <Fragment>
                     <VolcanoeIframe src={Vista} />
@@ -257,7 +254,7 @@ slide10dnd6() {
             )
         }
         else if (slideIndex == 2) {
-            const Vista = "https://virtualgalapagos.colgate.edu/360Videos/VolcanoModule/Caldara_Shotfive/index.htm"
+            const Vista = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Caldara_Shotfive/index.htm"
             return (
                 <Fragment>
                     <VolcanoeIframe src={Vista} />
@@ -272,7 +269,7 @@ slide10dnd6() {
             )
         }
         else if (slideIndex == 3) {
-            const Vista = "https://virtualgalapagos.colgate.edu/360Videos/VolcanoModule/Stillwater/index.htm"
+            const Vista = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Stillwater/index.htm"
             return (
                 <Fragment>
                     <VolcanoeIframe src={Vista} />
@@ -287,7 +284,7 @@ slide10dnd6() {
             )
         }
         else if (slideIndex == 4) {
-            const Vista = "https://virtualgalapagos.colgate.edu/360Videos/VolcanoModule/Cactus_Final/index.htm"
+            const Vista = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Cactus_Final/index.htm"
             return (
                 <Fragment>
                     <VolcanoeIframe src={Vista} />
@@ -302,7 +299,7 @@ slide10dnd6() {
             )
         }
         else if (slideIndex == 5) {
-            const Vista = "https://virtualgalapagos.colgate.edu/360Videos/VolcanoModule/PlazaCliff/index.htm"
+            const Vista = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/PlazaCliff/index.htm"
             return (
                 <Fragment>
                     <VolcanoeIframe src={Vista} />
@@ -367,8 +364,8 @@ slide10dnd6() {
             )
         }
         else if (slideIndex == 7) {
-            const Vista1 = "https://virtualgalapagos.colgate.edu/360Videos/VolcanoModule/Caldara_Endtrail/index.htm"
-            const Vista2 = "https://virtualgalapagos.colgate.edu/360Videos/VolcanoModule/Cactus_Final/index.htm"
+            const Vista1 = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Caldara_Endtrail/index.htm"
+            const Vista2 = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Cactus_Final/index.htm"
             return (
                 <Fragment>
                     <AudioPlayer src={volcanoCompare360} onEnded={() => {this.onEnded(); this.setState({audioPlaying: false})}} stopAudio={() => this.setState({audioPlaying: false})} toggleAudio={() => this.toggleAudio()} playing={audioPlaying} />
@@ -579,7 +576,7 @@ slide10dnd6() {
                     </div>
                     <div className={classes.mainDiv}>
                         <video controls controlsList="nodownload" autoPlay className={classes.mainContent} onEnded={() => this.onEnded()}>
-                            <source src={tectonicPlates} type="video/mp4"/>
+                            <source src={plateTectonics} type="video/mp4"/>
                         </video>
                     </div>
                     <div className={classes.rightDiv}>

@@ -3,7 +3,7 @@ import classes from "./Homepage.css"
 import ImageMapper from "react-image-mapper"
 import MAP from "../../components/ImageMap/ImageMaps.js"
 import { Redirect } from "react-router"
-import backgroundImage from "../../assets/images/homepage/P3153499.png"
+import {MapPinzon} from "../../assets/Homepage"
 //import BackgroundVideo from "../../components/BackgroundVideo/BackgroundVideo.js"
 
 class Homepage extends Component {
@@ -82,7 +82,7 @@ class Homepage extends Component {
     	return ( 
     		<Fragment >
 				<img 
-    				src = { backgroundImage }
+    				src = { MapPinzon }
     				className = { classes.videoSubstitute }
     				alt = "" 
     			/> { /*Background Image for Mobile Devices */ } 

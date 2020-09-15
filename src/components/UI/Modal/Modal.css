@@ -17,7 +17,7 @@
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
     padding: 2em;
-    background-image: url('../../../assets/images/homepage/backpack_background.jpg');
+    background-image: url('https://virtualgalapagos.colgate.edu/assets/misc/backpack_background.jpg');
     background-size: cover;
 }
 

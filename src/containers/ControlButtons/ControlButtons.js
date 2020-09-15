@@ -1,5 +1,5 @@
 import React from 'react'
-import {Back, Next} from '../../assets/VolcanoModule/Images'
+import {Back, Next} from '../../assets/VolcanoModule'
 import classes from './ControlButtons'
 
 export default function ControlButtons(props) {
