@@ -21,7 +21,6 @@ const moduleNavItem = (props) => {
 				</div>
 			</div>
 			</Link>
-			
 		</div>
 	)
 }

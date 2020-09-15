@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
-import { Back, Next, TerrainMap, magnifyingGlass, Ferd, santaCruz, VolcanoCompare, tectonicPlatesMap, convergent, convergent2, convergent2fix, divergent, transform, seaMounts, eruptionDates, TerrainOval, TerrainOvalCorrect, TerrainOvalWrong, XImage, DnDAnswers, DnD} from "../../assets/VolcanoModule/Images"
-import { introVideo, plateTectonics, mantlePlumes} from "../../assets/VolcanoModule/Videos/index"
+import { Back, Next, TerrainMap, magnifyingGlass, Ferd, santaCruz, VolcanoCompare, tectonicPlatesMap, convergent, convergent2, convergent2fix, divergent, transform, seaMounts, eruptionDates, TerrainOval, TerrainOvalCorrect, TerrainOvalWrong, XImage, DnDAnswers, DnD} from "../../assets/VolcanoModule"
+import { introVideo, plateTectonics, mantlePlumes} from "../../assets/VolcanoModule"
 import classes from "./SlideContent.css"
 import ResizePanel from "react-resize-panel";
 import VolcanoeIframe from "../../components/VolcanoeIframe/VolcanoeIframe"

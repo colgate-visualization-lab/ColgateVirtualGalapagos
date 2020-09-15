@@ -1,9 +1,10 @@
-import React, { Fragment } from "react"
+import React from "react"
 import classes from "./ModuleNav.css"
 import ModuleNavItem from "./ModuleNavItem/ModuleNavItem"
-import backgroundimage from "../../assets/images/homepage/P3153499.png"
-import mysteryIntro from "../../assets/videos/MysteryIntro.mp4"
+import {MapPinzon} from "../../assets/Homepage"
 import IntroVideo from "../ModalVideo/ModalVideo"
+import { Fragment } from "react"
+// import mysteryIntro from "https://virtualgalapagos.colgate.edu/assets/misc/MysteryIntro.mp4"
 
 const moduleNav = () => {
 	const content = [
@@ -56,7 +57,7 @@ const moduleNav = () => {
 		<Fragment>
 		<div className={classes.backgroundDiv}>
 			<IntroVideo src="https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoModuleIntro.mp4"/>
-			<img src={backgroundimage} className={classes.backgroundImage} />
+			<img src={MapPinzon} className={classes.backgroundImage} />
 			<div className={classes.wrapper}>
 				<div className={classes.cols}>
 					{items}
