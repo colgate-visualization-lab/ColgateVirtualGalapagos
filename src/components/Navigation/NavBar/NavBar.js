@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom"
 import classes from "./Navbar.css"
 import {Navbar, Nav, Dropdown} from "react-bootstrap"
 import LogoImage from "./LogoImage/LogoImage"
-import Backpack from "../../../assets/images/homepage/backpack.png"
+import {Backpack} from "../../../assets/Misc"
 
 
 

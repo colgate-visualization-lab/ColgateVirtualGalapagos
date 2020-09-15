@@ -190,7 +190,7 @@
     flex-grow: 3;
     display: flex;
     flex-flow: row nowrap;
-    background-image: url(../../assets/VolcanoModule/Images/SantaCruz_Color.png);
+    background-image: url("https://virtualgalapagos.colgate.edu/assets/VolcanoModule/SantaCruz_Color.png");
     background-repeat: no-repeat;
     background-size: auto 100%;
     background-position: left top
@@ -247,7 +247,7 @@
     left: 0;
     z-index: 400;
     background-color: red;
-    background-image: url(../../assets/VolcanoModule/Images/ferd.png);
+    background-image: url("https://virtualgalapagos.colgate.edu/assets/VolcanoModule/ferd.png");
     background-repeat: no-repeat;
     background-size: auto 100%;
     background-position: left top

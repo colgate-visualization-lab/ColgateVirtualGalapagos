@@ -5,11 +5,12 @@ import axios from 'axios'
 import Layout from "./containers/Layout/Layout"
 import SignIn from "./containers/SignIn/SignIn"
 import LoadingScreen from "./containers/LoadingScreen/LoadingScreen"
-import MapFernandina from "./assets/images/homepage/MapFernandina.png"
-import MapIsabela from "./assets/images/homepage/homepage.png"
-import MapPinzon from "./assets/images/homepage/MapPinzon.png"
-import MapFloreana from "./assets/images/homepage/MapFloreana.png"
-import MapEspanola from "./assets/images/homepage/MapEspanola.png"
+import {MapFernadina, MapIsabela, MapPinzon, MapFloreana, MapEspanola} from "./assets/Homepage"
+// import MapFernandina from "https://virtualgalapagos.colgate.edu/assets/homepage/MapFernandina.png"
+// import MapIsabela from "https://virtualgalapagos.colgate.edu/assets/homepage/homepage.png"
+// import MapPinzon from "https://virtualgalapagos.colgate.edu/assets/homepage/MapPinzon.png"
+// import MapFloreana from "https://virtualgalapagos.colgate.edu/assets/homepage/MapFloreana.png"
+// import MapEspanola from "https://virtualgalapagos.colgate.edu/assets/homepage/MapEspanola.png"
 import Homepage from "./containers/Homepage/Homepage"
 import SplashScreen from "./components/SplashScreen/SplashScreen"
 import Gallery from "./containers/Gallery/Gallery"
@@ -35,7 +36,7 @@ class App extends Component {
 					<Suspense fallback={<LoadingScreen />}>
 					<Route path="/" exact component={SplashScreen}/>
 					<Route path="/authorization" component={SignIn}/>
-					<Layout>
+					<Layout> {/*Layout sets up navbar and the main tag that takes up the rest of the screen */}
 						<Route path="/home" 
 							render={(props) => <Homepage {...props} lockValue={1} MapImg={MapIsabela} />}/>
 						<Route path="/home2" 
@@ -45,7 +46,7 @@ class App extends Component {
 						<Route path="/home4" 
 							render={(props) => <Homepage {...props} lockValue={4} MapImg={MapEspanola} />}/>
 						<Route path="/home5" 
-							render={(props) => <Homepage {...props} lockValue={5} MapImg={MapPinzon} />}/>
+							render={(props) => <Homepage {...props} lockValue={5} MapImg={MapPinzon} />}/> {/* Each "home" unlocks new mystery */}
 						<Route path="/isabella" exact component={ModuleNav}/>
 						<Route path="/volcanomod" exact component={VolcanoModule}/>
 						<Route path="/gallery" exact component={Gallery}/>
