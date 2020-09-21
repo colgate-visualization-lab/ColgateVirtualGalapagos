@@ -4,9 +4,18 @@ import { Back, Next } from "../../assets/VolcanoModule";
 import classes from "./MainContent.css";
 import ControlButtons from "../ControlButtons/ControlButtons";
 import InteractiveImageComponent from "./components/InteractiveImageComponent";
+import {
+  ReactCompareSlider,
+  ReactCompareSliderImage,
+} from "react-compare-slider";
+import ImageSlider from "react-image-comparison-slider";
+import AudioPlayer from "../../components/AudioPlayer/AudioPlayer";
+import iguanaMysterySlide8 from "../../assets/IguanaMystery_Slide8.mp3";
 
 function MainContent(props) {
-  const [slide, setSlide] = useState(11);
+  const [slide, setSlide] = useState(7);
+  const [audioIsPlaying, setAudioIsPlaying] = useState(true);
+  const [audioIsDone, setAudioIsDone] = useState(false);
 
   const data = [
     {
@@ -61,9 +70,12 @@ function MainContent(props) {
     {
       id: "7",
       title: "Iguana_Comparison03",
-      type: "image",
-      url:
+      type: "image_comparison",
+      url1:
         "http://virtualgalapagos.colgate.edu/assets/IguanaModule/LandIguanaSmiling01.png", //slider
+      url2:
+        "http://virtualgalapagos.colgate.edu/assets/IguanaModule/MarineIguanaWithBabies.png",
+      audioSrc: iguanaMysterySlide8,
     },
     {
       id: "8",
@@ -86,10 +98,10 @@ function MainContent(props) {
       url:
         "http://virtualgalapagos.colgate.edu/assets/IguanaModule/ShoreWaves.mp4", //whiteboard
     },
-    //need to build
+    //need to build,
     {
-      id: "15",
-      title: "Iguana_Comparison05",
+      id: "14",
+      title: "Iguana_Evolution03",
       type: "interactive_image",
       url:
         "https://keep.google.com/u/1/media/v2/1Qap6axeshCXiPdl0r3vhK1-K54n1_aIV_SuJiYxsbvbDNX1835Xp9qVnw7ftrA/15VVpQTnL-CD1LG4nNx4U3BHvTdJmLjfICf5GDWtoU4SucWfcTaLFmYqDv8x1BA?accept=image/gif,image/jpeg,image/jpg,image/png,image/webp,audio/aac&sz=1600",
@@ -107,7 +119,7 @@ function MainContent(props) {
   };
 
   const content = data[slide];
-  if (content.type == "image") {
+  if (content.type === "image") {
     return (
       <div>
         <img src={content.url} className={`iguana ${classes.img}`} />
@@ -120,7 +132,7 @@ function MainContent(props) {
         />
       </div>
     );
-  } else if (content.type == "video") {
+  } else if (content.type === "video") {
     return (
       <div>
         <video src={content.url} className={classes.vid} controls />
@@ -133,7 +145,7 @@ function MainContent(props) {
         />
       </div>
     );
-  } else if (content.type == "interactive_image") {
+  } else if (content.type === "interactive_image") {
     return (
       <>
         <InteractiveImageComponent classes={classes} content={content} />
@@ -145,6 +157,55 @@ function MainContent(props) {
           prevSlide={prevSlide}
         />
       </>
+    );
+  } else if (content.type === "image_comparison") {
+    return (
+      <div
+        style={{
+          width: "80%",
+          height: "100%",
+          margin: "0 auto",
+        }}
+      >
+        <AudioPlayer
+          src={content.audioSrc}
+          onEnded={() => {
+            setAudioIsDone(true);
+          }}
+          stopAudio={() => {
+            setAudioIsPlaying(false);
+          }}
+          toggleAudio={() => {
+            setAudioIsPlaying(!audioIsPlaying);
+          }}
+          playing={audioIsPlaying}
+        />
+        {/* <div style={{ display: "flex", flexDirection: "column", flexGrow: 1 }}> */}
+        {/* <ImageSlider image1={content.url1} image2={content.url2} /> */}
+        <ReactCompareSlider
+          itemOne={
+            <ReactCompareSliderImage
+              src={content.url1}
+              alt="adult marine iguana with baby"
+            />
+          }
+          itemTwo={
+            <ReactCompareSliderImage
+              src={content.url2}
+              alt="smiling land iguana"
+            />
+          }
+          // style={{ width: "100%", flexGrow: 1 }}
+        />
+        {/* </div> */}
+        <ControlButtons
+          bottom="5%"
+          left="5%"
+          right="5%"
+          nextSlide={nextSlide}
+          prevSlide={prevSlide}
+        />
+      </div>
     );
   }
 }
