@@ -16,6 +16,7 @@ import slide15_face from "../../../assets/slide15Assets/slide15_face.mp3";
 import slide15_spikes from "../../../assets/slide15Assets/slide15_backSpikes.mp3";
 import slide15_stomach from "../../../assets/slide15Assets/slide15_stomach.mp3";
 import slide15_tail from "../../../assets/slide15Assets/slide15_tail.mp3";
+// import iguanaMysterySlide7 from "../../../assets/IguanaMystery_Slide8.mp3";
 
 const InteractiveImageComponent = (props) => {
   const [audioSrc, setAudioSrc] = useState(slide15_initial);
