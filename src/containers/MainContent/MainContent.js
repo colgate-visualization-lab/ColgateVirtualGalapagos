@@ -8,12 +8,13 @@ import {
   ReactCompareSlider,
   ReactCompareSliderImage,
 } from "react-compare-slider";
-import ImageSlider from "react-image-comparison-slider";
 import AudioPlayer from "../../components/AudioPlayer/AudioPlayer";
-import iguanaMysterySlide8 from "../../assets/IguanaMystery_Slide8.mp3";
+import { iguanaAssets } from "../../assets/IguanaModule";
+import Iframe from "../../components/VolcanoeIframe/VolcanoeIframe";
+// import Iframe from "react-iframe";
 
 function MainContent(props) {
-  const [slide, setSlide] = useState(7);
+  const [slide, setSlide] = useState(6);
   const [audioIsPlaying, setAudioIsPlaying] = useState(true);
   const [audioIsDone, setAudioIsDone] = useState(false);
 
@@ -63,9 +64,12 @@ function MainContent(props) {
     {
       id: "6",
       title: "Iguana_Comparison02",
-      type: "video",
-      url:
-        "http://virtualgalapagos.colgate.edu/assets/IguanaModule/IguanaPath.mp4", //temporary
+      type: "360_comparison",
+      url1:
+        "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Caldara_Endtrail/index.htm", //temporary
+      url2:
+        "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Cactus_Final/index.htm",
+      audioSrc: iguanaAssets.iguanaMysterySlide7,
     },
     {
       id: "7",
@@ -75,7 +79,7 @@ function MainContent(props) {
         "http://virtualgalapagos.colgate.edu/assets/IguanaModule/LandIguanaSmiling01.png", //slider
       url2:
         "http://virtualgalapagos.colgate.edu/assets/IguanaModule/MarineIguanaWithBabies.png",
-      audioSrc: iguanaMysterySlide8,
+      audioSrc: iguanaAssets.iguanaMysterySlide8,
     },
     {
       id: "8",
@@ -105,6 +109,7 @@ function MainContent(props) {
       type: "interactive_image",
       url:
         "https://keep.google.com/u/1/media/v2/1Qap6axeshCXiPdl0r3vhK1-K54n1_aIV_SuJiYxsbvbDNX1835Xp9qVnw7ftrA/15VVpQTnL-CD1LG4nNx4U3BHvTdJmLjfICf5GDWtoU4SucWfcTaLFmYqDv8x1BA?accept=image/gif,image/jpeg,image/jpg,image/png,image/webp,audio/aac&sz=1600",
+      audioSrc: {},
     },
   ];
 
@@ -148,7 +153,11 @@ function MainContent(props) {
   } else if (content.type === "interactive_image") {
     return (
       <>
-        <InteractiveImageComponent classes={classes} content={content} />
+        <InteractiveImageComponent
+          classes={classes}
+          content={content}
+          iguanaAssets={iguanaAssets}
+        />
         <ControlButtons
           bottom="5%"
           left="5%"
@@ -206,6 +215,58 @@ function MainContent(props) {
           prevSlide={prevSlide}
         />
       </div>
+    );
+  } else if (content.type === "360_comparison") {
+    return (
+      <Fragment>
+        <AudioPlayer
+          src={content.audioSrc}
+          onEnded={() => {
+            setAudioIsDone(false);
+            setAudioIsPlaying(false);
+          }}
+          stopAudio={() => setAudioIsPlaying(false)}
+          toggleAudio={() => setAudioIsPlaying(!audioIsPlaying)}
+          playing={audioIsPlaying}
+        />
+        <div
+          style={{
+            position: "absolute",
+            height: "100%",
+            width: "50%",
+            left: "0",
+          }}
+        >
+          <Iframe src={content.url1} />
+          {/* <h1
+            style={{
+              position: "absolute",
+              left: "4%",
+              bottom: "2%",
+              width: "10%",
+              textAlign: "center",
+              fontSize: "16px",
+            }}
+          ></h1> */}
+        </div>
+        <div
+          style={{
+            position: "absolute",
+            height: "100%",
+            width: "50%",
+            right: "0",
+          }}
+        >
+          <Iframe src={content.url1} />
+        </div>
+        <ControlButtons
+          bottom="5%"
+          left="5%"
+          right="5%"
+          nextSlide={nextSlide}
+          prevSlide={prevSlide}
+        />
+      </Fragment>
     );
   }
 }

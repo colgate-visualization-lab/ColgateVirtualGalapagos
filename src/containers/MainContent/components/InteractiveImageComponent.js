@@ -1,25 +1,9 @@
 import ImageMapper from "react-image-mapper";
 import AudioPlayer from "../../../components/AudioPlayer/AudioPlayer";
 import React, { useEffect, useState } from "react";
-import {
-  plumePlacement1,
-  terrainMap2,
-  tectonicPlates2,
-  southAmerica1,
-  plumeYes1,
-  Exploration01,
-} from "../../../assets/VolcanoModule";
-import { iguanaAssets } from "../../../assets/IguanaModule";
-import slide15_initial from "../../../assets/slide15Assets/slide15_initial.mp3";
-import slide15_head from "../../../assets/slide15Assets/slide15_head.mp3";
-import slide15_face from "../../../assets/slide15Assets/slide15_face.mp3";
-import slide15_spikes from "../../../assets/slide15Assets/slide15_backSpikes.mp3";
-import slide15_stomach from "../../../assets/slide15Assets/slide15_stomach.mp3";
-import slide15_tail from "../../../assets/slide15Assets/slide15_tail.mp3";
-// import iguanaMysterySlide7 from "../../../assets/IguanaMystery_Slide8.mp3";
 
 const InteractiveImageComponent = (props) => {
-  const [audioSrc, setAudioSrc] = useState(slide15_initial);
+  const [audioSrc, setAudioSrc] = useState(props.iguanaAssets.slide15_initial);
   const [audioIsPlaying, setAudioIsPlaying] = useState(true);
   const [audioIsDone, setAudioIsDone] = useState(false);
   // const toggleAudio = () => {};
@@ -42,8 +26,7 @@ const InteractiveImageComponent = (props) => {
                 1442,465,1420,462,1403,450,1386,436,1383,414,
                 1397,391,1420,377,1439,366,1454,363,1460,363,
             ],
-            // audioSrc: iguanaAssets.iguanaMystery_Slide15Head,
-            audioSrc: slide15_head,
+            audioSrc: props.iguanaAssets.slide15_head,
           },
           {
             _id: "2", name: "face", shape: "poly", 
@@ -53,8 +36,7 @@ const InteractiveImageComponent = (props) => {
                 1506,570,1506,543,1515,518,1525,498,1535,470,
                 1543,451,1563,437,1571,436,1574,436,1577,437
             ],
-            // audioSrc: iguanaAssets.iguanaMystery_Slide15Face,
-            audioSrc: slide15_face,
+            audioSrc: props.iguanaAssets.slide15_face,
           },
             {
             _id: "3", name: "tail", shape: "poly", 
@@ -64,8 +46,7 @@ const InteractiveImageComponent = (props) => {
                 528,702,545,681,551,645,551,620,517,596,479,
                 595,435,592,359,597,282,626,234,643
             ],
-            // audioSrc: iguanaAssets.iguanaMystery_Slide15Tail,
-            audioSrc: slide15_tail,
+            audioSrc: props.iguanaAssets.slide15_tail,
           },
           {
             _id: "4", name: "back_spikes", shape: "poly", 
@@ -80,8 +61,7 @@ const InteractiveImageComponent = (props) => {
                 536,564,490,589,462,591,421,592,370,592,
                 446,560,477,547
             ],
-            // audioSrc: iguanaAssets.iguanaMystery_Slide15Spikes,
-            audioSrc: slide15_spikes,
+            audioSrc: props.iguanaAssets.slide15_spikes,
           },
           {
             _id: "5", name: "stomach_general", shape: "poly", 
@@ -99,8 +79,7 @@ const InteractiveImageComponent = (props) => {
                 773,828,803,800,796,771,766,738,765,704,766,
                 688,790,677,809,664,810,644,782,626,758,602,
                 722,557,710,528,717],
-            // audioSrc: iguanaAssets.iguanaMystery_Slide15Stomach,
-            audioSrc: slide15_stomach,
+            audioSrc: props.iguanaAssets.slide15_stomach,
           },
         ],
         
