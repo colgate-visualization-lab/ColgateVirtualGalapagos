@@ -17,6 +17,7 @@ import Gallery from "./containers/Gallery/Gallery"
 import ModuleNav from "./components/ModuleNav/ModuleNav"
 import VolcanoLayout from "./containers/VolcanoLayout/VolcanoLayout"
 import IguanaModule from "./components/IguanaModule/IguanaModule"
+import ExtraSelect from "./components/ExtraSelect/ExtraSelect"
 
 const VolcanoModule = lazy(() => import("./containers/VolcanoModule/VolcanoModule"))
 
@@ -51,6 +52,7 @@ class App extends Component {
 						<Route path="/gallery" exact component={Gallery}/>
 						<Route path="/volcanolayout" exact component={VolcanoLayout}/>
 						<Route path="/iguana" exact component={IguanaModule}/>
+						<Route path="/extras" exact component={ExtraSelect}/>
 					</Layout>
 					</Suspense>
 				</Switch>
