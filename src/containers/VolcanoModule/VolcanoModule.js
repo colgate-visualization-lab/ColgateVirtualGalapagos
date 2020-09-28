@@ -9,7 +9,6 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 import DndDraggables from "../../components/DndDraggables/DndDraggables"
 import DndDroppables from "../../components/DndDroppables/DndDroppables"
 import ResizePanel from "react-resize-panel";
-import IntroVideo from "../../assets/VolcanoModule/Videos/VolcanoModuleIntro.mp4"
 import VolcanoeIframe from "../../components/VolcanoeIframe/VolcanoeIframe"
 import AudioPlayer from "../../components/AudioPlayer/AudioPlayer"
 import MapComponent from "../../components/MapComponent/MapComponent"
