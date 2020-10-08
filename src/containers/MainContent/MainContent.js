@@ -11,12 +11,14 @@ import {
 import AudioPlayer from "../../components/AudioPlayer/AudioPlayer";
 import { iguanaAssets } from "../../assets/IguanaModule";
 import Iframe from "../../components/VolcanoeIframe/VolcanoeIframe";
-import data from "../../components/IguanaData/IguanaData.js"
+import data from "../../components/IguanaData/IguanaData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
+import VideoSelector from "../../components/Slide3InteractiveVideo/VideoSelector";
+import { Button } from "@material-ui/core";
 // import Iframe from "react-iframe";
 
 function MainContent(props) {
-  const [slide, setSlide] = useState(6);
+  const [slide, setSlide] = useState(2);
   // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
   // const [audioIsDone, setAudioIsDone] = useState(false);
 
@@ -86,9 +88,7 @@ function MainContent(props) {
           margin: "0 auto",
         }}
       >
-        <AudioPlayerHandler
-          src={content.audioSrc}
-        />
+        <AudioPlayerHandler src={content.audioSrc} />
         {/* <div style={{ display: "flex", flexDirection: "column", flexGrow: 1 }}> */}
         {/* <ImageSlider image1={content.url1} image2={content.url2} /> */}
         <ReactCompareSlider
@@ -120,9 +120,7 @@ function MainContent(props) {
   } else if (content.type === "360_comparison") {
     return (
       <Fragment>
-        <AudioPlayerHandler
-          src={content.audioSrc}
-        />
+        <AudioPlayerHandler src={content.audioSrc} />
         <div
           style={{
             position: "absolute",
@@ -154,14 +152,29 @@ function MainContent(props) {
           <Iframe src={content.url1} />
         </div>
         <ControlButtons
-          width="200px"
+          width="120px"
           bottom="5%"
-          left="5%"
-          right="5%"
+          left="0%"
+          right="0%"
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
       </Fragment>
+    );
+  } else if (content.type === "slide3InteractiveVideo") {
+    return (
+      <>
+        <AudioPlayerHandler src={content.audioSrc} />
+        <VideoSelector />
+        <ControlButtons
+          width="120px"
+          bottom="5%"
+          left="0%"
+          right="0%"
+          nextSlide={nextSlide}
+          prevSlide={prevSlide}
+        />
+      </>
     );
   }
 }
