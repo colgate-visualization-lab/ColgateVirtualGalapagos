@@ -223,7 +223,7 @@ slide10dnd6() {
             return (
                 <Fragment>
                     <div className={classes.leftDiv}>
-                        <button className={classes.button4} onClick={() => this.setState({slideIndex: 12, progressIndex: 12})}>Dev Button</button>
+                        {/* <button className={classes.button4} onClick={() => this.setState({slideIndex: 20, progressIndex: 20})}>Dev Button</button> */}
                         <h1 className={classes.slideName}>Slide {this.state.slideIndex + 1}</h1>
                     </div>
                     <div className={classes.mainDiv}>
