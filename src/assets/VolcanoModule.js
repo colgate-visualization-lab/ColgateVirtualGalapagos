@@ -11,7 +11,7 @@ export const convergent2fix = "https://virtualgalapagos.colgate.edu/assets/Volca
 export const divergent = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/divergent tectonic plates 2.png";
 export const transform = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/transform tectonic plates 2.png";
 export const seaMounts = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/GalapagosSAmerica.png"
-export const eruptionDates = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/EruptionDates (1).png"
+export const eruptionDates = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Eruption Dates.png"
 export const Next = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/nextArrow.png"
 export const Back = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/backArrow.png"
 export const oval = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Oval.png"
@@ -46,6 +46,7 @@ export const Exploration02 = "https://virtualgalapagos.colgate.edu/assets/Volcan
 export const Exploration03 = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration03.mp3"
 export const Exploration04 = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration04.mp3"
 export const Exploration05 = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration05.mp3"
+export const eruptionAudio = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMapEruptionDates.mp3"
 // Videos
 export const introVideo = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoModuleIntro.mp4"
 export const plateTectonics = "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoPlateTectonics.mp4"
