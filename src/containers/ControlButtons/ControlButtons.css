@@ -1,8 +1,16 @@
-/* .prev{
-    height: 100px;
-    left: 50px;
+/*.prev{
+    opacity: 50%;
+    transition: all .2s ease-in-out;
+}
+.prev:hover{
+    opacity: 100%;
+    transform: scale(1.1);
 }
 .next{
-    height: 100px;
-    right: 50px;
-} */
+    opacity: 50%;
+    transition: all .2s ease-in-out;
+}
+.next:hover{
+    opacity: 100%;
+    transform: scale(1.1);
+}*/
