@@ -1,6 +1,5 @@
 import React, { useState, Fragment } from "react";
 import PropTypes from "prop-types";
-import { Back, Next } from "../../assets/VolcanoModule";
 import classes from "./MainContent.css";
 import ControlButtons from "../ControlButtons/ControlButtons";
 import InteractiveImageComponent from "./components/InteractiveImageComponent";
@@ -8,13 +7,12 @@ import {
   ReactCompareSlider,
   ReactCompareSliderImage,
 } from "react-compare-slider";
-import AudioPlayer from "../../components/AudioPlayer/AudioPlayer";
 import { iguanaAssets } from "../../assets/IguanaModule";
 import Iframe from "../../components/VolcanoeIframe/VolcanoeIframe";
 import data from "../../components/IguanaData/IguanaData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 import VideoSelector from "../../components/Slide3InteractiveVideo/VideoSelector";
-import { Button } from "@material-ui/core";
+import Popup from "../../components/Popup/Popup";
 // import Iframe from "react-iframe";
 
 function MainContent(props) {
@@ -89,24 +87,45 @@ function MainContent(props) {
         }}
       >
         <AudioPlayerHandler src={content.audioSrc} />
-        {/* <div style={{ display: "flex", flexDirection: "column", flexGrow: 1 }}> */}
-        {/* <ImageSlider image1={content.url1} image2={content.url2} /> */}
         <ReactCompareSlider
+          onlyHandleDraggable={true}
           itemOne={
-            <ReactCompareSliderImage
-              src={content.url1}
-              alt="adult marine iguana with baby"
-            />
+            <div>
+              <ReactCompareSliderImage
+                src={content.url1}
+                alt="adult marine iguana with baby"
+              />
+              <Popup
+                description={content.popupText.landIguanaHead}
+                top="20%"
+                left="50%"
+              />
+              <Popup
+                description={content.popupText.landIguanaBody}
+                top="20%"
+                left="74%"
+              />
+            </div>
           }
           itemTwo={
-            <ReactCompareSliderImage
-              src={content.url2}
-              alt="smiling land iguana"
-            />
+            <div>
+              <ReactCompareSliderImage
+                src={content.url2}
+                alt="smiling land iguana"
+              />
+              <Popup
+                description={content.popupText.marineIguanaBody}
+                top="25%"
+                left="13%"
+              />
+              <Popup
+                description={content.popupText.marineIguanaTail}
+                top="35%"
+                left="40%"
+              />
+            </div>
           }
-          // style={{ width: "100%", flexGrow: 1 }}
         />
-        {/* </div> */}
         <ControlButtons
           width="150px"
           bottom="5%"

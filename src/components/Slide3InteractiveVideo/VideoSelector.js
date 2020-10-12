@@ -58,19 +58,24 @@ export const data = [
 
 export default function VideoSelector(props) {
   const [src, setSrc] = useState();
+  const [selectionVisible, setSelectionVisible] = useState(true);
 
   const handleSrcChange = (src) => {
     console.log(src.videoSrc);
     setSrc(src);
   };
 
+  const handlePlaybackEnded = () => {
+    setSelectionVisible(true);
+  }
+
+  const handlePlaybackStarted = () => {
+    setSelectionVisible(false);
+  }
+
   return (
     <div
       style={{
-        // display: "flex",
-        // flexDirection: "column",
-        // justifyContent: "center",
-        // alignItems: "center",
         width: "100%",
         margin: "auto",
       }}
@@ -82,23 +87,33 @@ export default function VideoSelector(props) {
           alignItems: "center",
           minWidth: "100vw",
           height: "70vh",
-          //   margin: "auto",
         }}
       >
         {src != null ? (
-          <ReactPlayer
-            width="80%"
-            height="auto"
-            controls
-            url={src.videoSrc}
-            playing={true}
+          <>
+          <ReactPlayer width="80%" height="95%"
+            controls url={src.videoSrc} playing={true}
+            onEnded={handlePlaybackEnded}
+            onStart={handlePlaybackStarted}
+            onPlay={handlePlaybackStarted}
           />
+          {selectionVisible && 
+          <div
+          style={{
+            width: "70%", height: "50%", position: "absolute", display: "flex", 
+            alignItems: "center", zIndex: 9,
+          }}
+        >
+          <VideoSelectorTabs data={data} onSrcChange={handleSrcChange} />
+          </div>
+        }
+          </>
         ) : (
           <p>Click below to test the different hypotheses</p>
         )}
       </div>
 
-      <VideoSelectorTabs data={data} onSrcChange={handleSrcChange} />
+      {/* <VideoSelectorTabs data={data} onSrcChange={handleSrcChange} /> */}
     </div>
   );
 }
