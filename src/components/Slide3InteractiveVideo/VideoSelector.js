@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactPlayer from "react-player";
 
 import VideoSelectorTabs from "./VideoSelectorTabs";
+import AudioPlayerHandler from "../AudioPlayer/AudioPlayerHandler"
 
 export const data = [
   {
@@ -56,6 +57,8 @@ export const data = [
   },
 ];
 
+
+
 export default function VideoSelector(props) {
   const [src, setSrc] = useState();
   const [selectionVisible, setSelectionVisible] = useState(true);
@@ -74,6 +77,8 @@ export default function VideoSelector(props) {
   }
 
   return (
+    <>
+    <AudioPlayerHandler src={props.content.audioSrc} />
     <div
       style={{
         width: "100%",
@@ -87,12 +92,13 @@ export default function VideoSelector(props) {
           alignItems: "center",
           minWidth: "100vw",
           height: "70vh",
+          flexDirection: "column"
         }}
       >
         {src != null ? (
           <>
-          <ReactPlayer width="80%" height="95%"
-            controls url={src.videoSrc} playing={true}
+          <ReactPlayer width="auto" height="100%"
+            controls={selectionVisible? false: true} url={src.videoSrc} playing={true}
             onEnded={handlePlaybackEnded}
             onStart={handlePlaybackStarted}
             onPlay={handlePlaybackStarted}
@@ -100,20 +106,28 @@ export default function VideoSelector(props) {
           {selectionVisible && 
           <div
           style={{
-            width: "70%", height: "50%", position: "absolute", display: "flex", 
-            alignItems: "center", zIndex: 9,
+            width: "90%", height: "90%", position: "absolute", display: "flex", 
+            alignItems: "center", zIndex: 9, backgroundColor: "rgba(0,0,0,0.65)"
           }}
         >
           <VideoSelectorTabs data={data} onSrcChange={handleSrcChange} />
           </div>
         }
+          </>) : 
+          (
+          <>
+            <div style={{ width: "100%", height: "auto", textAlign: "center", fontSize: "2rem", margin: "10px" }}>
+              Select a hypothesis to test below
+            </div>
+            <VideoSelectorTabs data={data} onSrcChange={handleSrcChange} />
           </>
-        ) : (
-          <p>Click below to test the different hypotheses</p>
-        )}
+        )} 
+          
+        
       </div>
 
       {/* <VideoSelectorTabs data={data} onSrcChange={handleSrcChange} /> */}
     </div>
+    </>
   );
 }

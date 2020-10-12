@@ -183,8 +183,8 @@ function MainContent(props) {
   } else if (content.type === "slide3InteractiveVideo") {
     return (
       <>
-        <AudioPlayerHandler src={content.audioSrc} />
-        <VideoSelector />
+        {/* <AudioPlayerHandler src={content.audioSrc} /> */}
+        <VideoSelector content={content}/>
         <ControlButtons
           width="120px"
           bottom="5%"
