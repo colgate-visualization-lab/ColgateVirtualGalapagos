@@ -1,62 +1,171 @@
-import React, {useState, Fragment} from 'react'
-import PropTypes from 'prop-types'
-import {Back, Next} from '../../assets/VolcanoModule'
-import classes from './MainContent.css'
-import ControlButtons from '../ControlButtons/ControlButtons'
-
-
-
-
+import React, { useState, Fragment } from "react";
+import PropTypes from "prop-types";
+import { Back, Next } from "../../assets/VolcanoModule";
+import classes from "./MainContent.css";
+import ControlButtons from "../ControlButtons/ControlButtons";
+import InteractiveImageComponent from "./components/InteractiveImageComponent";
+import {
+  ReactCompareSlider,
+  ReactCompareSliderImage,
+} from "react-compare-slider";
+import AudioPlayer from "../../components/AudioPlayer/AudioPlayer";
+import { iguanaAssets } from "../../assets/IguanaModule";
+import Iframe from "../../components/VolcanoeIframe/VolcanoeIframe";
+import data from "../../components/IguanaData/IguanaData.js"
+import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
+// import Iframe from "react-iframe";
 
 function MainContent(props) {
+  const [slide, setSlide] = useState(6);
+  // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
+  // const [audioIsDone, setAudioIsDone] = useState(false);
 
-  const [slide, setSlide] = useState(0)
+  const nextSlide = () => {
+    setSlide(slide + 1);
+  };
 
-const data = [
-  {
-    id: '0',
-    title: 'Iguana_Endemic01',
-    type: 'video',
-  },
-  {
-    id: '1',
-    title: 'Iguana_Carried01',
-    type: 'image',
-  }
-]
+  const prevSlide = () => {
+    if (slide != 0) {
+      setSlide(slide - 1);
+    } else return null;
+  };
 
-const Media = props => {
-        
-  if(props.type === "image"){
-    return(<img src={props.source} className={classes.img}/>)
-  }
-      
-  else if(props.type === "video")
-  {
-    return(<video src={props.source} className={classes.vid}/>)
-  }
-  
-}
- const nextSlide = () => {
-    setSlide(slide+1)
-}
-
- const prevSlide = () => {
-  setSlide(slide-1)
-}
-const renderData = data.map((data) =>  <Media key={data.id} type={data.type} source={data.source} /> )       
-      return(
-        <div>
-          {renderData}
-          <ControlButtons bottom="20%" left="20%" right="20%" nextSlide={nextSlide} prevSlide={prevSlide}/>
+  const content = data[slide];
+  if (content.type === "image") {
+    return (
+      <div>
+        <img src={content.url} className={`iguana ${classes.img}`} />
+        <ControlButtons
+          width="150px"
+          bottom="5%"
+          left="0%"
+          right="0%"
+          nextSlide={nextSlide}
+          prevSlide={prevSlide}
+        />
+      </div>
+    );
+  } else if (content.type === "video") {
+    return (
+      <div>
+        <video src={content.url} className={classes.vid} controls />
+        <ControlButtons
+          width="120px"
+          bottom="5%"
+          left="0%"
+          right="0%"
+          nextSlide={nextSlide}
+          prevSlide={prevSlide}
+        />
+      </div>
+    );
+  } else if (content.type === "interactive_image") {
+    return (
+      <>
+        <InteractiveImageComponent
+          classes={classes}
+          content={content}
+          iguanaAssets={iguanaAssets}
+        />
+        <ControlButtons
+          width="200px"
+          bottom="5%"
+          left="5%"
+          right="5%"
+          nextSlide={nextSlide}
+          prevSlide={prevSlide}
+        />
+      </>
+    );
+  } else if (content.type === "image_comparison") {
+    return (
+      <div
+        style={{
+          width: "80%",
+          height: "100%",
+          margin: "0 auto",
+        }}
+      >
+        <AudioPlayerHandler
+          src={content.audioSrc}
+        />
+        {/* <div style={{ display: "flex", flexDirection: "column", flexGrow: 1 }}> */}
+        {/* <ImageSlider image1={content.url1} image2={content.url2} /> */}
+        <ReactCompareSlider
+          itemOne={
+            <ReactCompareSliderImage
+              src={content.url1}
+              alt="adult marine iguana with baby"
+            />
+          }
+          itemTwo={
+            <ReactCompareSliderImage
+              src={content.url2}
+              alt="smiling land iguana"
+            />
+          }
+          // style={{ width: "100%", flexGrow: 1 }}
+        />
+        {/* </div> */}
+        <ControlButtons
+          width="150px"
+          bottom="5%"
+          left="0%"
+          right="0%"
+          nextSlide={nextSlide}
+          prevSlide={prevSlide}
+        />
+      </div>
+    );
+  } else if (content.type === "360_comparison") {
+    return (
+      <Fragment>
+        <AudioPlayerHandler
+          src={content.audioSrc}
+        />
+        <div
+          style={{
+            position: "absolute",
+            height: "100%",
+            width: "50%",
+            left: "0",
+          }}
+        >
+          <Iframe src={content.url1} />
+          {/* <h1
+            style={{
+              position: "absolute",
+              left: "4%",
+              bottom: "2%",
+              width: "10%",
+              textAlign: "center",
+              fontSize: "16px",
+            }}
+          ></h1> */}
         </div>
-
-        )
+        <div
+          style={{
+            position: "absolute",
+            height: "100%",
+            width: "50%",
+            right: "0",
+          }}
+        >
+          <Iframe src={content.url1} />
+        </div>
+        <ControlButtons
+          width="200px"
+          bottom="5%"
+          left="5%"
+          right="5%"
+          nextSlide={nextSlide}
+          prevSlide={prevSlide}
+        />
+      </Fragment>
+    );
+  }
 }
 
-MainContent.propTypes = {
+MainContent.propTypes = {};
 
-}
-
-export default MainContent
-
+export default MainContent;
