@@ -21,8 +21,7 @@ const data = [
     id: "2",
     title: "Iguana_Carried02",
     type: "slide3InteractiveVideo",
-    audioSrc:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide3.wav",
+    audioSrc: iguanaAssets["IguanaMystery_Slide3_Intro"],
     data: slide3InteractiveData,
   },
   {
@@ -65,6 +64,12 @@ const data = [
     url2:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/MarineIguanaWithBabies.png",
     audioSrc: iguanaAssets.iguanaMysterySlide8,
+    popupText: {
+      landIguanaHead: "Land iguanas are usually more yellow or brown in color to blend in with the rocks and plants found inland.",
+      landIguanaBody: "Land iguanas are often larger and weigh more than marine iguanas.",
+      marineIguanaBody: "Marine iguanas have flat tails to help them swim!",
+      marineIguanaTail: "Marine iguanas are darker in color to match the black basaltic rocks found in near the coast."
+    }
   },
   {
     id: "8",
