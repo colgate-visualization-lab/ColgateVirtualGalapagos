@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Typography from "@material-ui/core/Typography";
 
@@ -119,5 +120,10 @@ export default function VideoSelector(props) {
         </ButtonBase>
       ))}
     </div>
+    // <div className={classes.root}>
+    //   {props.data.map((datum) => (
+    //     <Button variant="outlined" color="white" onClick={}>{datum.cardTitle}</Button> 
+    //   ))}
+    // </div>
   );
 }
