@@ -6,20 +6,47 @@ const InteractiveImageComponent = (props) => {
   const [audioSrc, setAudioSrc] = useState(props.iguanaAssets.slide15_initial);
   const [audioIsPlaying, setAudioIsPlaying] = useState(true);
   const [audioIsDone, setAudioIsDone] = useState(false);
-  // const toggleAudio = () => {};
 
   // resets audioIsPlaying when user selects different iguana part
   useEffect(() => {
     console.log(audioIsPlaying);
     setAudioIsPlaying(true);
+    console.log(window.innerHeight, window.innerWidth);
   }, [audioSrc]);
 
+
+
+  // We need to get the current window size in order to scale the image map
+  // First, we define a state object for width and height of the window
+  const [dimensions, setDimensions] = useState({width: window.innerWidth - 300, 
+                                               height: window.innerHeight - 200});
+  const [width, setWidth] = useState(window.innerWidth - 300);
+  // const [mapWidth, setMapWidth] = 
+  // Next, we use the useEffect hook to add event listeners to that will call setDimensions
+  //  whenever the dimensions change
+  useEffect(() => {
+    window.addEventListener("resize", ()=>{
+      setDimensions({width: window.innerWidth - 600, height:window.innerHeight - 200});
+      setWidth(window.innerWidth - 300);
+    });
+    console.log(window.innerWidth, window.innerHeight);
+    return (()=>{
+      window.removeEventListener("resize", setDimensions);
+    }) 
+  }, [window.innerHeight, window.innerWidth])
+  
+  // const scaleCoordinates = (ratio) => {
+  //   iguanaComparisonMap.areas.map((area)=>{
+  //     area.coords = area.coords.map(coord => coord/ratio);
+  //   });
+  // }
+
   // prettier-ignore
-  const map = {
+  const iguanaComparisonMap = {
         name: "IGUANA COMPARISON MAP",
         areas: [
           {
-            _id: "1", name: "top_of_head", shape: "poly", 
+            _id: "1", name: "top_of_head", shape: "poly", preFillColor: "red",
             coords: [
                 1468,363,1487,366,1499,369,1521,374,1538,391,
                 1544,414,1535,436,1518,453,1496,459,1468,465,
@@ -29,7 +56,7 @@ const InteractiveImageComponent = (props) => {
             audioSrc: props.iguanaAssets.slide15_head,
           },
           {
-            _id: "2", name: "face", shape: "poly", 
+            _id: "2", name: "face", shape: "poly", preFillColor: "red",
             coords: [
                 1585,439,1597,449,1597,504,1591,533,1586,562,
                 1574,613,1553,625,1535,618,1516,610,1509,587,
@@ -39,7 +66,7 @@ const InteractiveImageComponent = (props) => {
             audioSrc: props.iguanaAssets.slide15_face,
           },
             {
-            _id: "3", name: "tail", shape: "poly", 
+            _id: "3", name: "tail", shape: "poly", preFillColor: "red",
             coords: [
                 206,668,186,695,181,722,193,746,234,766,285,
                 774,342,774,391,768,432,761,466,747,496,726,
@@ -49,7 +76,7 @@ const InteractiveImageComponent = (props) => {
             audioSrc: props.iguanaAssets.slide15_tail,
           },
           {
-            _id: "4", name: "back_spikes", shape: "poly", 
+            _id: "4", name: "back_spikes", shape: "poly", preFillColor: "red",
             coords: [
                 491,547,539,516,571,499,618,474,676,447,734,428,
                 761,420,807,411,872,406,906,401,960,394,985,393,
@@ -64,7 +91,7 @@ const InteractiveImageComponent = (props) => {
             audioSrc: props.iguanaAssets.slide15_spikes,
           },
           {
-            _id: "5", name: "stomach_general", shape: "poly", 
+            _id: "5", name: "stomach_general", shape: "poly", preFillColor: "red",
             coords: [
                 514,711,551,670,551,643,550,611,538,604,528,
                 598,515,592,507,591,499,581,510,572,543,563,
@@ -86,7 +113,13 @@ const InteractiveImageComponent = (props) => {
       };
 
   return (
-    <>
+    <div 
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <AudioPlayer
         src={audioSrc}
         onEnded={() => {
@@ -100,17 +133,18 @@ const InteractiveImageComponent = (props) => {
         }}
         playing={audioIsPlaying}
       />
-      <ImageMapper
-        src={props.content.url}
-        map={map}
-        onClick={(a) => {
-          console.log(a.audioSrc);
-          setAudioSrc(a.audioSrc);
-        }}
-        lineWidth={4}
-        strokeColor="rgba(255, 255, 255, 0.5)"
-      />
-    </>
+        <ImageMapper
+          // height={dimensions.height}
+          src={props.content.url}
+          map={iguanaComparisonMap}
+          onClick={(a) => {
+            console.log(a.audioSrc);
+            setAudioSrc(a.audioSrc);
+          }}
+          lineWidth={4}
+          strokeColor="rgba(255, 255, 255, 0.5)"
+        />
+      </div>
   );
 };
 

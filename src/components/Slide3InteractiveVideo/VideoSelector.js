@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import ReactPlayer from "react-player";
 
 import VideoSelectorTabs from "./VideoSelectorTabs";
@@ -64,8 +64,8 @@ export default function VideoSelector(props) {
   const [selectionVisible, setSelectionVisible] = useState(true);
 
   const handleSrcChange = (src) => {
-    console.log(src.videoSrc);
     setSrc(src);
+    console.log(audioPlayerRef);
   };
 
   const handlePlaybackEnded = () => {
@@ -76,10 +76,12 @@ export default function VideoSelector(props) {
     setSelectionVisible(false);
   }
 
+
   return (
     <>
     <AudioPlayerHandler src={props.content.audioSrc} />
     <div
+    
       style={{
         width: "100%",
         margin: "auto",
@@ -107,7 +109,7 @@ export default function VideoSelector(props) {
           <div
           style={{
             width: "90%", height: "90%", position: "absolute", display: "flex", 
-            alignItems: "center", zIndex: 9, backgroundColor: "rgba(0,0,0,0.65)"
+            alignItems: "center", zIndex: 9, backgroundColor: "rgba(0,0,0,0.65)",
           }}
         >
           <VideoSelectorTabs data={data} onSrcChange={handleSrcChange} />
