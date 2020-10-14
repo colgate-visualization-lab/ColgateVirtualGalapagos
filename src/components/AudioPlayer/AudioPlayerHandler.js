@@ -1,10 +1,12 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import AudioPlayer from "./AudioPlayer";
+
 function AudioPlayerHandler(props){
     const [audioIsPlaying, setAudioIsPlaying] = useState(true);
     const [audioIsDone, setAudioIsDone] = useState(false);
+
     return(
-        <AudioPlayer
+    <AudioPlayer
     src = {props.src}
     onEnded={() => {
         setAudioIsDone(true);
@@ -20,4 +22,6 @@ function AudioPlayerHandler(props){
     />
     );
 }
-export default AudioPlayerHandler
+
+
+export default AudioPlayerHandler;
