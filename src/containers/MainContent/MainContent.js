@@ -16,7 +16,7 @@ import Popup from "../../components/Popup/Popup";
 // import Iframe from "react-iframe";
 
 function MainContent(props) {
-  const [slide, setSlide] = useState(11);
+  const [slide, setSlide] = useState(2);
   // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
   // const [audioIsDone, setAudioIsDone] = useState(false);
 
