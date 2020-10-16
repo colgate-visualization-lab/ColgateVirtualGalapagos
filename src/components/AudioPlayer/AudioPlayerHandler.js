@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AudioPlayer from "./AudioPlayer";
 
 function AudioPlayerHandler(props){
     const [audioIsPlaying, setAudioIsPlaying] = useState(true);
     const [audioIsDone, setAudioIsDone] = useState(false);
+
+    useEffect(()=>{
+      console.log(audioIsPlaying, props.playing)
+      if (props.playing !== undefined){
+        setAudioIsPlaying(props.playing);
+      }
+    })
 
     return(
     <AudioPlayer
