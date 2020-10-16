@@ -61,11 +61,20 @@ export const data = [
 
 export default function VideoSelector(props) {
   const [src, setSrc] = useState();
-  const [selectionVisible, setSelectionVisible] = useState(true);
+  // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
+  const [selectionVisible, setSelectionVisible] = useState({});
+  const [showPlayer, setShowPlayer]  = useState(true);
+
+
+  // optional playing prop to pass to audio handler
+  // let audioPlaying = {}
 
   const handleSrcChange = (src) => {
+    // audioPlaying = {playing: false};
+    // console.log("video selector", audioPlaying)
     setSrc(src);
-    console.log(audioPlayerRef);
+    // setAudioIsPlaying({playing: false})
+    setShowPlayer(false);
   };
 
   const handlePlaybackEnded = () => {
@@ -79,7 +88,9 @@ export default function VideoSelector(props) {
 
   return (
     <>
-    <AudioPlayerHandler src={props.content.audioSrc} />
+    { showPlayer &&
+      <AudioPlayerHandler  src={props.content.audioSrc} />
+    }
     <div
     
       style={{
