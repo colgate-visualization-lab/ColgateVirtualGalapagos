@@ -18,7 +18,7 @@ const data = [
     {
       id: "2",
       title: "Iguana_Carried02",
-      type: "image",
+      type: "interactive_game",
       url:
         "http://virtualgalapagos.colgate.edu/assets/IguanaModule/SouthAmericaCoast.png", //temporary
     },

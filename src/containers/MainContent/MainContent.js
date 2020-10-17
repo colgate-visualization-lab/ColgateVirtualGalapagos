@@ -4,6 +4,7 @@ import { Back, Next } from "../../assets/VolcanoModule";
 import classes from "./MainContent.css";
 import ControlButtons from "../ControlButtons/ControlButtons";
 import InteractiveImageComponent from "./components/InteractiveImageComponent";
+import InteractiveGameComponent from "./components/InteractiveGameComponent";
 import {
   ReactCompareSlider,
   ReactCompareSliderImage,
@@ -16,7 +17,7 @@ import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler"
 // import Iframe from "react-iframe";
 
 function MainContent(props) {
-  const [slide, setSlide] = useState(6);
+  const [slide, setSlide] = useState(2);
   // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
   // const [audioIsDone, setAudioIsDone] = useState(false);
 
@@ -132,16 +133,6 @@ function MainContent(props) {
           }}
         >
           <Iframe src={content.url1} />
-          {/* <h1
-            style={{
-              position: "absolute",
-              left: "4%",
-              bottom: "2%",
-              width: "10%",
-              textAlign: "center",
-              fontSize: "16px",
-            }}
-          ></h1> */}
         </div>
         <div
           style={{
@@ -163,6 +154,21 @@ function MainContent(props) {
         />
       </Fragment>
     );
+  } else if (content.type == "interactive_game") {
+    return (
+      <div>
+        <InteractiveGameComponent />
+        <ControlButtons
+        width="150px"
+        bottom="5%"
+        left="0%"
+        right="0%"
+        nextSlide={nextSlide}
+        prevSlide={prevSlide}
+    />
+      </div>
+      
+      );
   }
 }
 
