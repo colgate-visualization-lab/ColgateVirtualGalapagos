@@ -1,6 +1,5 @@
 import React, { useState, Fragment } from "react";
 import PropTypes from "prop-types";
-import { Back, Next } from "../../assets/VolcanoModule";
 import classes from "./MainContent.css";
 import ControlButtons from "../ControlButtons/ControlButtons";
 import InteractiveImageComponent from "./components/InteractiveImageComponent";
@@ -9,11 +8,12 @@ import {
   ReactCompareSlider,
   ReactCompareSliderImage,
 } from "react-compare-slider";
-import AudioPlayer from "../../components/AudioPlayer/AudioPlayer";
 import { iguanaAssets } from "../../assets/IguanaModule";
 import Iframe from "../../components/VolcanoeIframe/VolcanoeIframe";
-import data from "../../components/IguanaData/IguanaData.js"
+import data from "../../components/IguanaData/IguanaData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
+import VideoSelector from "../../components/Slide3InteractiveVideo/VideoSelector";
+import Popup from "../../components/Popup/Popup";
 // import Iframe from "react-iframe";
 
 function MainContent(props) {
@@ -87,27 +87,46 @@ function MainContent(props) {
           margin: "0 auto",
         }}
       >
-        <AudioPlayerHandler
-          src={content.audioSrc}
-        />
-        {/* <div style={{ display: "flex", flexDirection: "column", flexGrow: 1 }}> */}
-        {/* <ImageSlider image1={content.url1} image2={content.url2} /> */}
+        <AudioPlayerHandler src={content.audioSrc} />
         <ReactCompareSlider
+          onlyHandleDraggable={true}
           itemOne={
-            <ReactCompareSliderImage
-              src={content.url1}
-              alt="adult marine iguana with baby"
-            />
+            <div>
+              <ReactCompareSliderImage
+                src={content.url1}
+                alt="adult marine iguana with baby"
+              />
+              <Popup
+                description={content.popupText.landIguanaHead}
+                top="20%"
+                left="50%"
+              />
+              <Popup
+                description={content.popupText.landIguanaBody}
+                top="20%"
+                left="74%"
+              />
+            </div>
           }
           itemTwo={
-            <ReactCompareSliderImage
-              src={content.url2}
-              alt="smiling land iguana"
-            />
+            <div>
+              <ReactCompareSliderImage
+                src={content.url2}
+                alt="smiling land iguana"
+              />
+              <Popup
+                description={content.popupText.marineIguanaBody}
+                top="25%"
+                left="13%"
+              />
+              <Popup
+                description={content.popupText.marineIguanaTail}
+                top="35%"
+                left="40%"
+              />
+            </div>
           }
-          // style={{ width: "100%", flexGrow: 1 }}
         />
-        {/* </div> */}
         <ControlButtons
           width="150px"
           bottom="5%"
@@ -121,9 +140,7 @@ function MainContent(props) {
   } else if (content.type === "360_comparison") {
     return (
       <Fragment>
-        <AudioPlayerHandler
-          src={content.audioSrc}
-        />
+        <AudioPlayerHandler src={content.audioSrc} />
         <div
           style={{
             position: "absolute",
@@ -145,30 +162,30 @@ function MainContent(props) {
           <Iframe src={content.url1} />
         </div>
         <ControlButtons
-          width="200px"
+          width="120px"
           bottom="5%"
-          left="5%"
-          right="5%"
+          left="0%"
+          right="0%"
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
       </Fragment>
     );
-  } else if (content.type == "interactive_game") {
+  } else if (content.type === "slide3InteractiveVideo") {
     return (
-      <div>
-        <InteractiveGameComponent />
+      <>
+        {/* <AudioPlayerHandler src={content.audioSrc} /> */}
+        <VideoSelector content={content}/>
         <ControlButtons
-        width="150px"
-        bottom="5%"
-        left="0%"
-        right="0%"
-        nextSlide={nextSlide}
-        prevSlide={prevSlide}
-    />
-      </div>
-      
-      );
+          width="120px"
+          bottom="5%"
+          left="0%"
+          right="0%"
+          nextSlide={nextSlide}
+          prevSlide={prevSlide}
+        />
+      </>
+    );
   }
 }
 
