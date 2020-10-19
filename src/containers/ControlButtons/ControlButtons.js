@@ -5,29 +5,31 @@ import classes from "./ControlButtons";
 export default function ControlButtons(props) {
   return (
     <div>
-      <button >
-        <img className="prev"
+      <button>
+        <img
+          className="prev"
           src={Back}
           onClick={props.prevSlide}
           style={{
             width: props.width,
             height: "auto",
             position: "absolute",
-            zIndex: 1,
+            zIndex: 10,
             bottom: props.bottom,
             left: props.left,
           }}
         />
       </button>
-      <button >
-        <img className="next"
+      <button>
+        <img
+          className="next"
           src={Next}
           onClick={props.nextSlide}
           style={{
             width: props.width,
             height: "auto",
             position: "absolute",
-            zIndex: 1,
+            zIndex: 10,
             bottom: props.bottom,
             right: props.right,
           }}
