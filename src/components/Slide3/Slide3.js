@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import ReactPlayer from "react-player";
 
 import Slide3Selector from "./Slide3Selector";
-import AudioPlayerHandler from "../AudioPlayer/AudioPlayerHandler"
+import AudioPlayerHandler from "../AudioPlayer/AudioPlayerHandler";
 
 import classes from "./Slide3.css";
 
@@ -59,25 +59,26 @@ export const data = [
   },
 ];
 
-
-
 export default function VideoSelector(props) {
   const vidSrc = {
-      id: "vegetationRaftHypothesis", 
-      videoSrc: "http://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoPlateTectonics.mp4", 
-      audioSrc: "http://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration01.mp3", 
-      cardTitle: "Vegetation Raft Carrying Iguana", 
-      cardThumbnail: "https://onlinelibrary.wiley.com/cms/asset/143fe60a…97-43e3-a402-0dbf884379d9/ece35414-fig-0001-m.jpg"
-    };
+    id: "vegetationRaftHypothesis",
+    videoSrc:
+      "http://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoPlateTectonics.mp4",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration01.mp3",
+    cardTitle: "Vegetation Raft Carrying Iguana",
+    cardThumbnail:
+      "https://onlinelibrary.wiley.com/cms/asset/143fe60a…97-43e3-a402-0dbf884379d9/ece35414-fig-0001-m.jpg",
+  };
   const [src, setSrc] = useState(vidSrc);
   // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
   const [selectionVisible, setSelectionVisible] = useState({});
-  const [showPlayer, setShowPlayer]  = useState(true);
+  const [showPlayer, setShowPlayer] = useState(true);
 
-  useEffect(()=>{
-    console.log(playerRef);
-    console.log(playerRef.current.width);
-    console.log(playerRef.current.getActivePlayer());
+  useEffect(() => {
+    // console.log(playerRef);
+    // console.log(playerRef.current.width);
+    // console.log(playerRef.current.getActivePlayer());
     // console.log(console.log(playerRef.player.getInternalPlayer));
   });
 
@@ -95,49 +96,58 @@ export default function VideoSelector(props) {
 
   const handlePlaybackEnded = () => {
     setSelectionVisible(true);
-  }
+  };
 
   const handlePlaybackStarted = () => {
     setSelectionVisible(false);
-  }
+  };
 
   const playerRef = useRef();
 
-
   return (
     <>
-    {/* { showPlayer &&
+      {/* { showPlayer &&
       <AudioPlayerHandler  src={props.content.audioSrc} />
     } */}
-    <div
-    
-      style={{
-        width: "100%",
-        margin: "auto",
-      }}
-    >
       <div
         style={{
+          position: "relative",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           minWidth: "100vw",
           height: "70vh",
-          flexDirection: "column"
+          flexDirection: "column",
         }}
       >
-        <>
-          <ReactPlayer ref={playerRef} width="auto" height="100%"
-            controls={selectionVisible? false: true} url={src.videoSrc} playing={true}
-            onEnded={handlePlaybackEnded}
-            onStart={handlePlaybackStarted}
-            onPlay={handlePlaybackStarted}
-          /> 
-          <div className={selectionVisible? classes.videoSelectorOverlay: classes.videoSelectorBottom}>
-            <Slide3Selector data={data} onSrcChange={handleSrcChange} />
-          </div>
-          </>
-
+        <ReactPlayer
+          ref={playerRef}
+          position="absolute"
+          width="100%"
+          height="100%"
+          controls={selectionVisible ? false : true}
+          url={src.videoSrc}
+          playing={true}
+          onEnded={handlePlaybackEnded}
+          onStart={handlePlaybackStarted}
+          onPlay={handlePlaybackStarted}
+        />
+        <div
+          className={
+            selectionVisible
+              ? classes.videoOverlayActive
+              : classes.videoOverlayInactive
+          }
+        />
+        {/* <div
+          className={
+            selectionVisible
+              ? classes.videoSelectorOverlay
+              : classes.videoSelectorBottom
+          }
+        >
+          <Slide3Selector data={data} onSrcChange={handleSrcChange} />
+        </div> */}
         {/* {src != null ? (
           <>
           <ReactPlayer width="auto" height="100%"
@@ -146,17 +156,17 @@ export default function VideoSelector(props) {
             onStart={handlePlaybackStarted}
             onPlay={handlePlaybackStarted}
           />
-          {selectionVisible && 
+          {selectionVisible &&
           <div
           style={{
-            width: "90%", height: "90%", position: "absolute", display: "flex", 
+            width: "90%", height: "90%", position: "absolute", display: "flex",
             alignItems: "center", zIndex: 9, backgroundColor: "rgba(0,0,0,0.65)",
           }}
         >
           <VideoSelectorTabs data={data} onSrcChange={handleSrcChange} />
           </div>
         }
-          </>) : 
+          </>) :
           (
           <>
             <div style={{ width: "100%", height: "auto", textAlign: "center", fontSize: "2rem", margin: "10px" }}>
@@ -165,12 +175,7 @@ export default function VideoSelector(props) {
             <VideoSelectorTabs data={data} onSrcChange={handleSrcChange} />
           </>
         )}  */}
-          
-        
       </div>
-
-      {/* <VideoSelectorTabs data={data} onSrcChange={handleSrcChange} /> */}
-    </div>
     </>
   );
 }
