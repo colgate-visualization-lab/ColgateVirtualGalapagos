@@ -1,0 +1,31 @@
+.videoSelectorOverlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
+.videoSelectorBottom {
+  width: 100%;
+  bottom: -50px;
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  z-index: 1;
+  opacity: 40%;
+  /* margin-bottom: -400px; */
+}
+
+.videoSelectorBottom:hover {
+  width: 100%;
+  bottom: -100px;
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  z-index: 9;
+  opacity: 40%;
+  /* margin-bottom: -400px; */
+}
