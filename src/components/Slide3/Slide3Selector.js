@@ -92,7 +92,7 @@ export default function VideoSelector(props) {
           className={classes.image}
           focusVisibleClassName={classes.focusVisible}
           style={{
-            width: "14%",
+            width: "12%",
           }}
           onClick={() => {
             props.onSrcChange(datum);

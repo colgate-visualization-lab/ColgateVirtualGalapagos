@@ -11,7 +11,7 @@ import { iguanaAssets } from "../../assets/IguanaModule";
 import Iframe from "../../components/VolcanoeIframe/VolcanoeIframe";
 import data from "../../components/IguanaData/IguanaData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
-import VideoSelector from "../../components/Slide3InteractiveVideo/VideoSelector";
+import Slide3 from "../../components/Slide3/Slide3";
 import Popup from "../../components/Popup/Popup";
 // import Iframe from "react-iframe";
 
@@ -184,7 +184,7 @@ function MainContent(props) {
     return (
       <>
         {/* <AudioPlayerHandler src={content.audioSrc} /> */}
-        <VideoSelector content={content}/>
+        <Slide3 content={content}/>
         <ControlButtons
           width="120px"
           bottom="5%"
