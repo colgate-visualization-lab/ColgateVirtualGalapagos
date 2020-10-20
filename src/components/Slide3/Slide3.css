@@ -36,18 +36,18 @@
 .videoSelectorBottomVisible {
   width: 100%;
   position: absolute;
-  bottom: 100px;
-  transition: bottom;
+  top: 20px;
+  transition: top 0.5s;
 }
 
 .videoSelectorBottomHidden {
   width: 100%;
   position: absolute;
-  bottom: -1000px;
-  transition: bottom 0.5s;
+  top: -1000px;
+  transition: top 0.5s ease-in;
 }
 
-/* styling for bottom video selector */
+/* styling for bottom video selector - the div that holds the bottom buttons */
 .bottomVideoSelector {
   position: relative;
   bottom: 0;
@@ -56,32 +56,39 @@
   height: 100%;
   width: 100%;
   flex-direction: row;
-  /* background-color: rgb(0, 0, 0); */
-  /* opacity: 0.3; */
 }
 
 /* bottom video selector buttons styling */
 
 .videoSelectorButton {
-  z-index: 3;
-  display: inline-block;
+  /* display styling */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  /* size and positioning, visual */
   padding: 0.35em 1.2em;
   border: 0.1em solid #ffffff;
   margin: 0 0.3em 0.3em 0;
   border-radius: 0.12em;
   box-sizing: border-box;
+  background-color: rgb(0, 0, 0, 0.4);
+
+  /* text styling */
   text-decoration: none;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   color: #ffffff;
+  font-size: 1rem;
   text-align: center;
+
   transition: all 0.2s;
-  background-color: rgb(0, 0, 0, 0.4);
 }
 
 .videoSelectorButton:hover {
   color: #000000;
-  background-color: #ffffff;
+  font-weight: 400;
+  background-color: rgb(255, 255, 255, 0.6);
 }
 
 @media all and (max-width: 30em) {
