@@ -133,7 +133,7 @@ export default function VideoSelector(props) {
         <div
           className={
             videoSelectionOverlayVisible
-              ? classes.videoSelectorOverlay
+              ? `${classes.videoSelectorOverlay} `
               : videoSelectorVisible
           }
         >
