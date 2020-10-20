@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Back, Next } from "../../assets/VolcanoModule";
 import classes from "./ControlButtons";
+import { Link } from "react-router-dom";
 
 export default function ControlButtons(props) {
+  useEffect(()=>{console.log(props)})
   return (
     <div>
-      <button>
+      { props.hasPrev && 
+      <Link to={props.prevSlide}>
         <img
           className="prev"
           src={Back}
-          onClick={props.prevSlide}
           style={{
             width: props.width,
             height: "auto",
@@ -18,13 +20,13 @@ export default function ControlButtons(props) {
             bottom: props.bottom,
             left: props.left,
           }}
-        />
-      </button>
-      <button>
+        />   
+      </Link>
+}
+      <Link to={props.nextSlide}>
         <img
           className="next"
           src={Next}
-          onClick={props.nextSlide}
           style={{
             width: props.width,
             height: "auto",
@@ -34,7 +36,7 @@ export default function ControlButtons(props) {
             right: props.right,
           }}
         />
-      </button>
+      </Link>
     </div>
   );
 }
