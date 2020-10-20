@@ -20,7 +20,7 @@ function MainContent(props) {
   // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
   // const [audioIsDone, setAudioIsDone] = useState(false);
   
-  useEffect(()=>console.log(props))
+  useEffect(()=>console.log(props, data.length, slideId))
 
   // const nextSlide = () => {
   //   // setSlide(slide + 1);
@@ -37,7 +37,7 @@ function MainContent(props) {
   // we get current slide id from and use that to find the next and prev slide ids
   const slideId = parseInt(props.match.params.slide_id || 0);
   const prevSlide = `/iguana/${slideId === 0? 0 : slideId-1}`;
-  const nextSlide = `/iguana/${slideId+1}`;
+  const nextSlide = `/iguana/${slideId+1 >= data.length? slideId: slideId+1}`;
 
   const content = data[slideId];
   
@@ -50,7 +50,8 @@ function MainContent(props) {
           bottom="5%"
           left="0%"
           right="0%"
-          hasPrev={slideId!==0}
+          hasPrev={slideId !== 0}
+          hasNext={slideId < data.length-1}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
@@ -65,7 +66,8 @@ function MainContent(props) {
           bottom="5%"
           left="0%"
           right="0%"
-          hasPrev={slideId!==0}
+          hasPrev={slideId !== 0}
+          hasNext={slideId < data.length-1}          
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
@@ -84,7 +86,8 @@ function MainContent(props) {
           bottom="5%"
           left="5%"
           right="5%"
-          hasPrev={slideId!==0}
+          hasPrev={slideId !== 0}
+          hasNext={slideId < data.length-1}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
@@ -144,7 +147,8 @@ function MainContent(props) {
           bottom="5%"
           left="0%"
           right="0%"
-          hasPrev={slideId!==0}
+          hasPrev={slideId !== 0}
+          hasNext={slideId < data.length-1}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
@@ -189,7 +193,8 @@ function MainContent(props) {
           bottom="5%"
           left="0%"
           right="0%"
-          hasPrev={slideId!==0}
+          hasPrev={slideId !== 0}
+          hasNext={slideId < data.length-1}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
@@ -205,7 +210,8 @@ function MainContent(props) {
           bottom="5%"
           left="0%"
           right="0%"
-          hasPrev={slideId!==0}
+          hasPrev={slideId !== 0}
+          hasNext={slideId < data.length-1}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />

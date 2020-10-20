@@ -3,6 +3,8 @@ import { Back, Next } from "../../assets/VolcanoModule";
 import classes from "./ControlButtons";
 import { Link } from "react-router-dom";
 
+// changed ControlButtons to use Links instead of button - they also
+//  conditionally render - back button won't render on first slide
 export default function ControlButtons(props) {
   useEffect(()=>{console.log(props)})
   return (
@@ -22,7 +24,8 @@ export default function ControlButtons(props) {
           }}
         />   
       </Link>
-}
+      }
+      {props.hasNext && 
       <Link to={props.nextSlide}>
         <img
           className="next"
@@ -37,6 +40,7 @@ export default function ControlButtons(props) {
           }}
         />
       </Link>
+    }
     </div>
   );
 }
