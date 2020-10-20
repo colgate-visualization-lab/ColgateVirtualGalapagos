@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import ReactPlayer from "react-player";
 
 import Slide3Selector from "./Slide3Selector";
+import Slide3BottomVideoSelector from "./Slide3BottomVideoSelector";
 import AudioPlayerHandler from "../AudioPlayer/AudioPlayerHandler";
 
 import classes from "./Slide3.css";
@@ -74,9 +75,10 @@ export default function VideoSelector(props) {
   // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
   const [selectionVisible, setSelectionVisible] = useState({});
   const [showPlayer, setShowPlayer] = useState(true);
+  
 
   useEffect(() => {
-    // console.log(playerRef);
+    console.log(ref);
     // console.log(playerRef.current.width);
     // console.log(playerRef.current.getActivePlayer());
     // console.log(console.log(playerRef.player.getInternalPlayer));
@@ -102,27 +104,34 @@ export default function VideoSelector(props) {
     setSelectionVisible(false);
   };
 
-  const playerRef = useRef();
+  // this determines whether the video selection buttons
+  //  are visible
+  const [selectionClass, setSelectionClass] = useState(classes.videoSelectorBottomHidden);
+  
+  useEffect(()=>{
+    const mouseMoveTimer=setTimeout(()=>{
+      setSelectionClass(classes.videoSelectorBottomHidden)
+    }, 3000);
+    return () => clearTimeout(mouseMoveTimer);
+  })
+
+  const ref = useRef();
+
+  // return <Slide3BottomVideoSelector data={data} />;
 
   return (
     <>
       {/* { showPlayer &&
       <AudioPlayerHandler  src={props.content.audioSrc} />
     } */}
-      <div
-        style={{
-          position: "relative",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          minWidth: "100vw",
-          height: "70vh",
-          flexDirection: "column",
-        }}
+      <div ref={ref} className={classes.slide3Style} 
+      onMouseMove={()=> {
+        console.log("fired")
+        setSelectionClass(classes.videoSelectorBottomVisible);
+      }}
       >
         <ReactPlayer
-          ref={playerRef}
-          position="absolute"
+          position="relative"
           width="100%"
           height="100%"
           controls={selectionVisible ? false : true}
@@ -139,15 +148,17 @@ export default function VideoSelector(props) {
               : classes.videoOverlayInactive
           }
         />
-        {/* <div
+        {/* <Slide3BottomVideoSelector data={data}/> */}
+        <div
           className={
             selectionVisible
               ? classes.videoSelectorOverlay
-              : classes.videoSelectorBottom
+              : selectionClass
           }
         >
-          <Slide3Selector data={data} onSrcChange={handleSrcChange} />
-        </div> */}
+          <Slide3BottomVideoSelector data={data} onSrcChange={handleSrcChange}/>
+          {/* <Slide3Selector data={data} onSrcChange={handleSrcChange} /> */}
+        </div>
         {/* {src != null ? (
           <>
           <ReactPlayer width="auto" height="100%"
