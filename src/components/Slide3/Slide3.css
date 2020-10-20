@@ -33,26 +33,26 @@
   bottom: 0;
 }
 
-.videoSelectorBottomVisible {
+.videoSelectorVisible {
   width: 100%;
   position: absolute;
-  top: 20px;
-  transition: top 0.5s;
+  bottom: 10%;
+  transition: bottom 0.5s;
 }
 
-.videoSelectorBottomHidden {
+.videoSelectorHidden {
   width: 100%;
   position: absolute;
-  top: -1000px;
-  transition: top 0.5s ease-in;
+  bottom: -1000px;
+  transition: bottom 0.5s ease-in;
 }
 
-/* styling for bottom video selector - the div that holds the bottom buttons */
-.bottomVideoSelector {
+/* styling for video selector - the div that holds the vid selector buttons */
+.videoSelector {
   position: relative;
-  bottom: 0;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
   height: 100%;
   width: 100%;
   flex-direction: row;
@@ -61,6 +61,7 @@
 /* bottom video selector buttons styling */
 
 .videoSelectorButton {
+  bottom: 10%;
   /* display styling */
   display: inline-flex;
   justify-content: center;
