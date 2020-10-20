@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import ReactPlayer from "react-player";
 
 import Slide3Selector from "./Slide3Selector";
-import Slide3BottomVideoSelector from "./Slide3BottomVideoSelector";
+import Slide3VideoSelector from "./Slide3VideoSelector";
 import AudioPlayerHandler from "../AudioPlayer/AudioPlayerHandler";
 
 import classes from "./Slide3.css";
@@ -73,92 +73,73 @@ export default function VideoSelector(props) {
   };
   const [src, setSrc] = useState(vidSrc);
   // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
-  const [selectionVisible, setSelectionVisible] = useState({});
+
+  // videoSelectionOverlay - displays hypothesis, greys out and disables the video
+  const [videoSelectionOverlayVisible, setVideoSelectionOverlayVisible] = useState({});
   const [showPlayer, setShowPlayer] = useState(true);
-  
-
-  useEffect(() => {
-    console.log(ref);
-    // console.log(playerRef.current.width);
-    // console.log(playerRef.current.getActivePlayer());
-    // console.log(console.log(playerRef.player.getInternalPlayer));
-  });
-
-  // optional playing prop to pass to audio handler
-  // let audioPlaying = {}
 
   const handleSrcChange = (src) => {
-    // audioPlaying = {playing: false};
-    // console.log("video selector", audioPlaying)
     setSrc(src);
-    console.log(src);
-    // setAudioIsPlaying({playing: false})
     setShowPlayer(false);
   };
 
   const handlePlaybackEnded = () => {
-    setSelectionVisible(true);
+    setVideoSelectionOverlayVisible(true);
   };
 
   const handlePlaybackStarted = () => {
-    setSelectionVisible(false);
+    setVideoSelectionOverlayVisible(false);
   };
 
   // this determines whether the video selection buttons
   //  are visible
-  const [selectionClass, setSelectionClass] = useState(classes.videoSelectorBottomHidden);
+  const [videoSelectorVisible, setVideoSelectorVisible] = useState(classes.videoSelectorVisible);
   
   useEffect(()=>{
     const mouseMoveTimer=setTimeout(()=>{
-      setSelectionClass(classes.videoSelectorBottomHidden)
+      setVideoSelectorVisible(classes.videoSelectorHidden)
     }, 3000);
     return () => clearTimeout(mouseMoveTimer);
   })
-
-  const ref = useRef();
-
-  // return <Slide3BottomVideoSelector data={data} />;
 
   return (
     <>
       {/* { showPlayer &&
       <AudioPlayerHandler  src={props.content.audioSrc} />
     } */}
-      <div ref={ref} className={classes.slide3Style} 
+      <div className={classes.slide3Style} 
       onMouseMove={()=> {
         console.log("fired")
-        setSelectionClass(classes.videoSelectorBottomVisible);
+        setVideoSelectorVisible(classes.videoSelectorVisible);
       }}
       >
         <ReactPlayer
           position="relative"
           width="100%"
           height="100%"
-          controls={selectionVisible ? false : true}
+          controls={videoSelectionOverlayVisible ? false : true}
           url={src.videoSrc}
           playing={true}
           onEnded={handlePlaybackEnded}
-          onStart={handlePlaybackStarted}
           onPlay={handlePlaybackStarted}
         />
         <div
           className={
-            selectionVisible
+            videoSelectionOverlayVisible
               ? classes.videoOverlayActive
               : classes.videoOverlayInactive
           }
         />
-        {/* <Slide3BottomVideoSelector data={data}/> */}
         <div
           className={
-            selectionVisible
+            videoSelectionOverlayVisible
               ? classes.videoSelectorOverlay
-              : selectionClass
+              : videoSelectorVisible
           }
         >
-          <Slide3BottomVideoSelector data={data} onSrcChange={handleSrcChange}/>
-          {/* <Slide3Selector data={data} onSrcChange={handleSrcChange} /> */}
+          <Slide3VideoSelector  data={data} onSrcChange={handleSrcChange}/>
         </div>
+        
         {/* {src != null ? (
           <>
           <ReactPlayer width="auto" height="100%"
