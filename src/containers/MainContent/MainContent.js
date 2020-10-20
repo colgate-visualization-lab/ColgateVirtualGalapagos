@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import classes from "./MainContent.css";
 import ControlButtons from "../ControlButtons/ControlButtons";
@@ -16,21 +16,31 @@ import Popup from "../../components/Popup/Popup";
 // import Iframe from "react-iframe";
 
 function MainContent(props) {
-  const [slide, setSlide] = useState(2);
+  // const [slide, setSlide] = useState(props.match.params["slide_id"]? props.match.params.slide_id: 0);
   // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
   // const [audioIsDone, setAudioIsDone] = useState(false);
+  
+  useEffect(()=>console.log(props))
 
-  const nextSlide = () => {
-    setSlide(slide + 1);
-  };
+  // const nextSlide = () => {
+  //   // setSlide(slide + 1);
+  //   return `/iguana/${slide_id + 1}`
+  // };
 
-  const prevSlide = () => {
-    if (slide != 0) {
-      setSlide(slide - 1);
-    } else return null;
-  };
+  // const prevSlide = () => {
+  //   if (slide_id != 0) {
+  //     // setSlide(slide - 1);
+  //     return slide_id - 1;
+  //   } else return null;
+  // };
 
-  const content = data[slide];
+  // we get current slide id from and use that to find the next and prev slide ids
+  const slideId = parseInt(props.match.params.slide_id || 0);
+  const prevSlide = `/iguana/${slideId === 0? 0 : slideId-1}`;
+  const nextSlide = `/iguana/${slideId+1}`;
+
+  const content = data[slideId];
+  
   if (content.type === "image") {
     return (
       <div>
@@ -40,6 +50,7 @@ function MainContent(props) {
           bottom="5%"
           left="0%"
           right="0%"
+          hasPrev={slideId!==0}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
@@ -54,6 +65,7 @@ function MainContent(props) {
           bottom="5%"
           left="0%"
           right="0%"
+          hasPrev={slideId!==0}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
@@ -72,6 +84,7 @@ function MainContent(props) {
           bottom="5%"
           left="5%"
           right="5%"
+          hasPrev={slideId!==0}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
@@ -131,6 +144,7 @@ function MainContent(props) {
           bottom="5%"
           left="0%"
           right="0%"
+          hasPrev={slideId!==0}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
@@ -175,6 +189,7 @@ function MainContent(props) {
           bottom="5%"
           left="0%"
           right="0%"
+          hasPrev={slideId!==0}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
@@ -190,6 +205,7 @@ function MainContent(props) {
           bottom="5%"
           left="0%"
           right="0%"
+          hasPrev={slideId!==0}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
