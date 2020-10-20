@@ -10,7 +10,7 @@ const Slide3BottomVideoSelector = ({data, onSrcChange}) => {
 
 
     return (
-    <div className={classes.bottomVideoSelector}>
+    <div className={classes.videoSelector}>
         {data.map((datum)=>(
             <button class={`${classes.videoSelectorButton} ${classes.button} `}  onClick={() => {
                 onSrcChange(datum);
