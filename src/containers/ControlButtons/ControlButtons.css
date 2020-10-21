@@ -14,3 +14,10 @@
     opacity: 100%;
     transform: scale(1.1);
 }*/
+
+.next{
+    cursor: pointer;
+}
+.prev{
+    cursor: pointer;
+}

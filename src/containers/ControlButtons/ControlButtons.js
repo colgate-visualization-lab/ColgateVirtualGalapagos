@@ -5,7 +5,7 @@ import classes from "./ControlButtons";
 export default function ControlButtons(props) {
   return (
     <div>
-      <button >
+      <div >
         <img className="prev"
           src={Back}
           onClick={props.prevSlide}
@@ -16,10 +16,11 @@ export default function ControlButtons(props) {
             zIndex: 1,
             bottom: props.bottom,
             left: props.left,
+            cursor:'pointer',
           }}
         />
-      </button>
-      <button >
+      </div>
+      <div >
         <img className="next"
           src={Next}
           onClick={props.nextSlide}
@@ -30,9 +31,10 @@ export default function ControlButtons(props) {
             zIndex: 1,
             bottom: props.bottom,
             right: props.right,
+            cursor:'pointer',
           }}
         />
-      </button>
+      </div>
     </div>
   );
 }
