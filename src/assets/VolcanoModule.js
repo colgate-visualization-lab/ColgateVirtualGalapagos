@@ -92,6 +92,8 @@ export const Exploration04 =
   "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration04.mp3";
 export const Exploration05 =
   "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration05.mp3";
+export const eruptionAudio = 
+  "http://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMapEruptionDates.mp3"
 // Videos
 export const introVideo =
   "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoModuleIntro.mp4";

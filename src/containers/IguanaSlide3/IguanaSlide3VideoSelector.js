@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import classes from "./Slide3.css";
+import classes from "./IguanaSlide3.css";
 
 
 const Slide3VideoSelector = ({data, onSrcChange}) => {
