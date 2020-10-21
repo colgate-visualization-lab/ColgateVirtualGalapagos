@@ -163,7 +163,7 @@ const data = [
     type: "video",
     youtube: true,
     url:
-      "https://www.youtube.com/embed/sacvf3WD7Dk", // will change to pull from server
+      "https://www.youtube.com/embed/tuMVz_kICEw", // will change to pull from server
   },
   {
     id: "6",
@@ -218,7 +218,7 @@ const data = [
     type: "video",
     youtube: true,
     url:
-      "https://www.youtube.com/embed/sacvf3WD7Dk", // will change to pull from server whiteboard
+      "https://www.youtube.com/embed/7fNOGGIDZ_E", // will change to pull from server whiteboard
   },
   //need to build,
   {
@@ -236,7 +236,7 @@ const data = [
     title: "Iguana_Evolution02",
     type: "video",
     youtube: true,
-    url: "https://www.youtube.com/embed/sacvf3WD7Dk"
+    url: "https://www.youtube.com/embed/Oq-Ev8WWp8k"
   },
   {
     id: "15",
