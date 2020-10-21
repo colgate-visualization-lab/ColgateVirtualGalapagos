@@ -1,0 +1,100 @@
+/* styling for div that holds the video player, the grey
+    overlay, and the buttons */
+
+.slide3Style {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90%;
+  flex-direction: column;
+}
+
+/* styling for div that overlays and greys out the player - 
+   so that we can't interact with it */
+.videoOverlayActive {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: grey;
+  z-index: 8;
+  opacity: 0.2;
+}
+
+.videoOverlayInactive {
+  display: none;
+}
+
+/* styling for the buttons */
+.videoSelectorOverlay {
+  width: 100%;
+  position: relative;
+  bottom: 0;
+}
+
+.videoSelectorVisible {
+  width: 100%;
+  position: absolute;
+  bottom: 10%;
+  transition: bottom 0.5s;
+}
+
+.videoSelectorHidden {
+  width: 100%;
+  position: absolute;
+  bottom: -1000px;
+  transition: bottom 0.5s ease-in;
+}
+
+/* styling for video selector - the div that holds the vid selector buttons */
+.videoSelector {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+}
+
+/* bottom video selector buttons styling */
+
+.videoSelectorButton {
+  bottom: 10%;
+  /* display styling */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  /* size and positioning, visual */
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #ffffff;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  background-color: rgb(0, 0, 0, 0.4);
+
+  /* text styling */
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  font-size: 1rem;
+  text-align: center;
+
+  transition: all 0.2s;
+}
+
+.videoSelectorButton:hover {
+  color: #000000;
+  font-weight: 400;
+  background-color: rgb(255, 255, 255, 0.6);
+}
+
+@media all and (max-width: 30em) {
+  .videoSelectorButton {
+    display: block;
+    margin: 0.4em auto;
+  }
+}

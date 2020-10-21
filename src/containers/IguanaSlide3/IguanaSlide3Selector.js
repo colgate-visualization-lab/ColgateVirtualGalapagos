@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     position: "relative",
-    height: 200,
+    height: 50,
     [theme.breakpoints.down("xs")]: {
       width: "100% !important", // Overrides inline-style
       height: 100,
@@ -92,7 +92,7 @@ export default function VideoSelector(props) {
           className={classes.image}
           focusVisibleClassName={classes.focusVisible}
           style={{
-            width: "14%",
+            width: "12%",
           }}
           onClick={() => {
             props.onSrcChange(datum);
@@ -122,7 +122,7 @@ export default function VideoSelector(props) {
     </div>
     // <div className={classes.root}>
     //   {props.data.map((datum) => (
-    //     <Button variant="outlined" color="white" onClick={}>{datum.cardTitle}</Button> 
+    //     <Button variant="outlined" color="white" onClick={}>{datum.cardTitle}</Button>
     //   ))}
     // </div>
   );

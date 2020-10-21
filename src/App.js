@@ -18,6 +18,8 @@ import ModuleNav from "./components/ModuleNav/ModuleNav"
 import VolcanoLayout from "./containers/VolcanoLayout/VolcanoLayout"
 import IguanaModule from "./components/IguanaModule/IguanaModule"
 import ExtraSelect from "./components/ExtraSelect/ExtraSelect"
+// New volcano Module
+import VolcanoSlides from "./components/VolcanoModuleSlides/VolcanoModuleSlides"
 
 const VolcanoModule = lazy(() => import("./containers/VolcanoModule/VolcanoModule"))
 
@@ -53,6 +55,16 @@ class App extends Component {
 						<Route path="/volcanolayout" exact component={VolcanoLayout}/>
 						<Route path="/iguana" exact component={IguanaModule}/>
 						<Route path="/extras" exact component={ExtraSelect}/>
+
+						{/* route for iguana module slides */}
+						<Route path="/iguana/:slide_id" component={IguanaModule} />
+
+						<Route path="/Volcano_0" 
+							render={(props) => <VolcanoSlides {...props} slide={0}/>}/>
+						<Route path="/Volcano_1" 
+							render={(props) => <VolcanoSlides {...props} slide={1}/>}/>
+						<Route path="/Volcano_2" 
+							render={(props) => <VolcanoSlides {...props} slide={2}/>}/>
 					</Layout>
 					</Suspense>
 				</Switch>

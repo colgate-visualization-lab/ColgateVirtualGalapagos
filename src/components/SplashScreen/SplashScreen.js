@@ -1,6 +1,6 @@
 import React, {Fragment} from "react"
 import {Link} from "react-router-dom"
-import {video} from "../../assets/misc"
+import {video} from "../../assets/Misc"
 import classes from "./SplashScreen.css"
 
 

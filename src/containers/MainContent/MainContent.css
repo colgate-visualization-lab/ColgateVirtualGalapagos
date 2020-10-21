@@ -9,10 +9,11 @@
 }
 .vid {
   position: absolute;
-  height: 100%;
+  height: 90%;
+  width: 90%;
   margin: auto;
   left: 0;
   right: 0;
   text-align: center;
-  border-width: 15px;
+  /* border-width: 15px; */
 }
