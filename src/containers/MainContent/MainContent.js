@@ -220,16 +220,19 @@ function MainContent(props) {
     );
   } else {
     return (
-    <ControlButtons
-          width="120px"
-          bottom="5%"
-          left="0%"
-          right="0%"
-          hasPrev={slideId !== 1}
-          hasNext={slideId < data.length}
-          nextSlide={nextSlide}
-          prevSlide={prevSlide}
-        />
+    <>
+      <div style={{display: "flex", alignItems: "center", justifyContent: "center", width: "100vw", height: "80vh" }}><h1>THIS SLIDE HASN'T BEEN CREATED YET</h1></div>
+      <ControlButtons
+            width="120px"
+            bottom="5%"
+           left="0%"
+           right="0%"
+           hasPrev={slideId !== 1}
+           hasNext={slideId < data.length}
+           nextSlide={nextSlide}
+           prevSlide={prevSlide}
+          />
+    </>
     )
   }
 }
