@@ -3,23 +3,20 @@ import PropTypes from "prop-types";
 import classes from "./MainContent.css";
 import ControlButtons from "../ControlButtons/ControlButtons";
 import IguanaSlide15 from "../IguanaSlide15/IguanaSlide15";
-import {
-  ReactCompareSlider,
-  ReactCompareSliderImage,
-} from "react-compare-slider";
+
 import Iframe from "../../components/VolcanoeIframe/VolcanoeIframe";
 import data from "../../components/IguanaData/IguanaData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 import IguanaSlide3 from "../IguanaSlide3/IguanaSlide3";
-import Popup from "../../components/Popup/Popup";
+import IguanaSlide8 from "../../components/IguanaSlide8/IguanaSlide8";
 // import Iframe from "react-iframe";
 
 function MainContent(props) {
   // const [slide, setSlide] = useState(props.match.params["slide_id"]? props.match.params.slide_id: 0);
   // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
   // const [audioIsDone, setAudioIsDone] = useState(false);
-  
-  useEffect(()=>console.log(content))
+
+  useEffect(() => console.log(content));
 
   // const nextSlide = () => {
   //   // setSlide(slide + 1);
@@ -35,11 +32,13 @@ function MainContent(props) {
 
   // we get current slide id from and use that to find the next and prev slide ids
   const slideId = parseInt(props.match.params.slide_id || 1);
-  const prevSlide = `/iguana/${slideId === 1? 1 : slideId-1}`;
-  const nextSlide = `/iguana/${slideId+1 > data.length? slideId: slideId+1}`;
+  const prevSlide = `/iguana/${slideId === 1 ? 1 : slideId - 1}`;
+  const nextSlide = `/iguana/${
+    slideId + 1 > data.length ? slideId : slideId + 1
+  }`;
 
-  const content = data[slideId-1];
-  
+  const content = data[slideId - 1];
+
   if (content.type === "image") {
     return (
       <div>
@@ -60,9 +59,12 @@ function MainContent(props) {
     return (
       <div>
         {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/sacvf3WD7Dk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
-        
-        { content.youtube? <iframe className={classes.vid} src={content.url}></iframe> :
-        <video src={content.url} className={classes.vid} controls />}
+
+        {content.youtube ? (
+          <iframe className={classes.vid} src={content.url}></iframe>
+        ) : (
+          <video src={content.url} className={classes.vid} controls />
+        )}
         <ControlButtons
           width="120px"
           bottom="5%"
@@ -78,10 +80,7 @@ function MainContent(props) {
   } else if (content.type === "interactive_image") {
     return (
       <>
-        <IguanaSlide15
-          classes={classes}
-          content={content}
-        />
+        <IguanaSlide15 classes={classes} content={content} />
         <ControlButtons
           width="120px"
           bottom="5%"
@@ -104,45 +103,7 @@ function MainContent(props) {
         }}
       >
         <AudioPlayerHandler src={content.audioSrc} />
-        <ReactCompareSlider
-          onlyHandleDraggable={true}
-          itemOne={
-            <div>
-              <ReactCompareSliderImage
-                src={content.url1}
-                alt="adult marine iguana with baby"
-              />
-              <Popup
-                description={content.popupText.landIguanaHead}
-                top="20%"
-                left="50%"
-              />
-              <Popup
-                description={content.popupText.landIguanaBody}
-                top="20%"
-                left="74%"
-              />
-            </div>
-          }
-          itemTwo={
-            <div>
-              <ReactCompareSliderImage
-                src={content.url2}
-                alt="smiling land iguana"
-              />
-              <Popup
-                description={content.popupText.marineIguanaBody}
-                top="25%"
-                left="13%"
-              />
-              <Popup
-                description={content.popupText.marineIguanaTail}
-                top="35%"
-                left="40%"
-              />
-            </div>
-          }
-        />
+        <IguanaSlide8 content={content} />
         <ControlButtons
           width="120px"
           bottom="5%"
@@ -220,20 +181,30 @@ function MainContent(props) {
     );
   } else {
     return (
-    <>
-      <div style={{display: "flex", alignItems: "center", justifyContent: "center", width: "100vw", height: "80vh" }}><h1>THIS SLIDE HASN'T BEEN CREATED YET</h1></div>
-      <ControlButtons
-            width="120px"
-            bottom="5%"
-           left="0%"
-           right="0%"
-           hasPrev={slideId !== 1}
-           hasNext={slideId < data.length}
-           nextSlide={nextSlide}
-           prevSlide={prevSlide}
-          />
-    </>
-    )
+      <>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "100vw",
+            height: "80vh",
+          }}
+        >
+          <h1>THIS SLIDE HASN'T BEEN CREATED YET</h1>
+        </div>
+        <ControlButtons
+          width="120px"
+          bottom="5%"
+          left="0%"
+          right="0%"
+          hasPrev={slideId !== 1}
+          hasNext={slideId < data.length}
+          nextSlide={nextSlide}
+          prevSlide={prevSlide}
+        />
+      </>
+    );
   }
 }
 
