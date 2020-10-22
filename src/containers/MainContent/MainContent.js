@@ -12,23 +12,10 @@ import IguanaSlide8 from "../../components/IguanaSlide8/IguanaSlide8";
 // import Iframe from "react-iframe";
 
 function MainContent(props) {
-  // const [slide, setSlide] = useState(props.match.params["slide_id"]? props.match.params.slide_id: 0);
   // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
   // const [audioIsDone, setAudioIsDone] = useState(false);
 
   useEffect(() => console.log(content));
-
-  // const nextSlide = () => {
-  //   // setSlide(slide + 1);
-  //   return `/iguana/${slide_id + 1}`
-  // };
-
-  // const prevSlide = () => {
-  //   if (slide_id != 0) {
-  //     // setSlide(slide - 1);
-  //     return slide_id - 1;
-  //   } else return null;
-  // };
 
   // we get current slide id from and use that to find the next and prev slide ids
   const slideId = parseInt(props.match.params.slide_id || 1);
@@ -97,9 +84,10 @@ function MainContent(props) {
     return (
       <div
         style={{
-          width: "80%",
-          height: "100%",
+          width: "90%",
+          height: "90%",
           margin: "0 auto",
+          display: "flex",
         }}
       >
         <AudioPlayerHandler src={content.audioSrc} />
