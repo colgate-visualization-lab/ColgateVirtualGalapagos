@@ -10,7 +10,6 @@ import {
   tectonicPlates2, southAmerica1, terrainMap6, plumePlacement1, plumeYes1, plumeNo1, 
   whereNext1, Exploration01, Exploration02, Exploration03, Exploration04, Exploration05,
 } from "../../assets/VolcanoModule";
-import { iguanaAssets } from "../../assets/IguanaModule";
 // import { terrainMap2, volcanoSlider1, eruptionAudio, volcanoCompare360, terrainMap3, fernandina1, santaCruz1, terrainMap4, terrainMapAges1, terrainMapAges2, otherVolcanoes1, tectonicPlates1, platesGame1, tectonicPlates2, southAmerica1, terrainMap6, plumePlacement1, plumeYes1, plumeNo1, whereNext1, Exploration01, Exploration02, Exploration03, Exploration04, Exploration05 } from "../../assets/VolcanoModule"
 import classes from "./VolcanoModule.css";
 import MAP from "./ImageMap.js";
@@ -25,7 +24,6 @@ import AudioPlayer from "../../components/AudioPlayer/AudioPlayer";
 import MapComponent from "../../components/MapComponent/MapComponent";
 import Popup from "reactjs-popup";
 import ImageSlider from "react-image-comparison-slider";
-import { camelCase } from "jquery";
 
 class VolcanoeModule extends Component {
   constructor(props) {
