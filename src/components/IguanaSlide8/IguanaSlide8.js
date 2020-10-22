@@ -8,7 +8,7 @@ import Popup from "../../components/Popup/Popup";
 
 const IguanaSlide8 = ({ content }) => {
   return (
-    <div>
+    <div style={{ alignSelf: "center" }}>
       <ReactCompareSlider
         onlyHandleDraggable={true}
         itemOne={
