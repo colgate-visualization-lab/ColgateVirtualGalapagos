@@ -1,6 +1,3 @@
-import React from "react";
-import { iguanaAssets } from "../../assets/IguanaModule";
-
 // data for slide 3 - to be included in  data array below
 const slide3InteractiveData = [
   {
@@ -8,7 +5,7 @@ const slide3InteractiveData = [
     videoSrc:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/ShoreWaves.mp4",
     audioSrc:
-      "http://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Compare360.mp3",
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide3SplitAudio/IguanaMystery_Slide3_Bird.mp3",
     cardTitle: "Bird Carrying Iguana",
     cardThumbnail:
       "https://pmdvod.nationalgeographic.com/NG_Video/993/419/66827_1_1280x720_1024x576_177585731924.jpg",
@@ -18,7 +15,7 @@ const slide3InteractiveData = [
     videoSrc:
       "http://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoModuleIntro.mp4",
     audioSrc:
-      "http://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration01.mp3",
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide3SplitAudio/IguanaMystery_Slide3_Pumice.mp3",
     cardTitle: "Pumice Carrying Iguana",
     cardThumbnail:
       "https://c7.alamy.com/comp/F1MGEB/closeup-of-a-land-iguana-sitting-on-lava-gravel-and-pumice-F1MGEB.jpg",
@@ -28,7 +25,7 @@ const slide3InteractiveData = [
     videoSrc:
       "http://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoPlateTectonics.mp4",
     audioSrc:
-      "http://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration01.mp3",
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide3SplitAudio/IguanaMystery_Slide3_Vegetation.mp3",
     cardTitle: "Vegetation Raft Carrying Iguana",
     cardThumbnail:
       "https://onlinelibrary.wiley.com/cms/asset/143fe60a-0897-43e3-a402-0dbf884379d9/ece35414-fig-0001-m.jpg",
@@ -38,7 +35,7 @@ const slide3InteractiveData = [
     videoSrc:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/IguanaPath.mp4",
     audioSrc:
-      "http://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration03.mp3",
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide3SplitAudio/IguanaMystery_Slide3_Driftwood.mp3",
     cardTitle: "Driftwood Carrying Iguana",
     cardThumbnail:
       "https://www.santacruzgalapagoscruise.com/wp-content/uploads/2017/12/christmas-iguana-resting.jpg",
@@ -48,7 +45,7 @@ const slide3InteractiveData = [
     videoSrc:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/IguanaRocks.mp4",
     audioSrc:
-      "http://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Fernandina01.mp3",
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide3SplitAudio/IguanaMystery_Slide3_Ship.mp3",
     cardTitle: "Ship Carrying Iguana",
     cardThumbnail:
       "https://www.galapagos.org/wp-content/uploads/2012/01/LandIguana.NorineAudette.2007.jpg",
@@ -132,9 +129,8 @@ const data = [
     id: "1",
     title: "Iguana_Endemic01",
     type: "video",
-    youtube: true,
     url:
-      "https://www.youtube.com/embed/sacvf3WD7Dk", // change to pull from server later
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Video/IguanaModuleIntro.mp4", // change to pull from server later
   },
   {
     id: "2",
@@ -147,7 +143,7 @@ const data = [
     id: "3",
     title: "Iguana_Carried02",
     type: "slide3InteractiveVideo",
-    audioSrc: iguanaAssets["IguanaMystery_Slide3_Intro"],
+    audioSrc: "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide3SplitAudio/IguanaMystery_Slide3_Intro.mp3",
     data: slide3InteractiveData,
   },
   {
@@ -161,9 +157,8 @@ const data = [
     id: "5",
     title: "Iguana_Pumice02",
     type: "video",
-    youtube: true,
     url:
-      "https://www.youtube.com/embed/tuMVz_kICEw", // will change to pull from server
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Video/IguanaPumiceCut.mp4", // will change to pull from server
   },
   {
     id: "6",
@@ -216,9 +211,8 @@ const data = [
     id: "11",
     title: "Iguana_PhyloTree02",
     type: "video",
-    youtube: true,
     url:
-      "https://www.youtube.com/embed/7fNOGGIDZ_E", // will change to pull from server whiteboard
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Video/IguanaPhyloTree.mp4", // will change to pull from server whiteboard
   },
   //need to build,
   {
@@ -235,8 +229,7 @@ const data = [
     id: "14",
     title: "Iguana_Evolution02",
     type: "video",
-    youtube: true,
-    url: "https://www.youtube.com/embed/Oq-Ev8WWp8k"
+    url: "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Video/IguanaWhiteboardEvolution.mp4"
   },
   {
     id: "15",

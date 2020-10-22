@@ -17,8 +17,8 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: grey;
-  z-index: 8;
+  /* background-color: grey; */
+  /* z-index: 8; */
   opacity: 0.2;
 }
 
@@ -27,12 +27,17 @@
 }
 
 /* styling for the buttons */
+
+/* button styling at the end of a video */
 .videoSelectorOverlay {
   width: 100%;
-  position: relative;
-  bottom: 0;
+  position: absolute;
+  display: flex;
+  /* bottom: 50%; */
+  font-size: 100px;
 }
 
+/* button styling during a video, when user moves mouse */
 .videoSelectorVisible {
   width: 100%;
   position: absolute;
@@ -40,6 +45,7 @@
   transition: bottom 0.5s;
 }
 
+/* button styling during a video, when user isn't moving mouse */
 .videoSelectorHidden {
   width: 100%;
   position: absolute;
