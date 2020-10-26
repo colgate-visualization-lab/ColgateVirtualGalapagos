@@ -54,7 +54,7 @@ const slide3InteractiveData = [
 
 // data for slide 15 - to be included in  data array below
 // image map data as well as audio sources
-
+//prettier-ignore
 const slide15Data = {
   name: "IGUANA COMPARISON MAP",
   areas: [
@@ -143,7 +143,8 @@ const data = [
     id: "3",
     title: "Iguana_Carried02",
     type: "slide3InteractiveVideo",
-    audioSrc: "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide3SplitAudio/IguanaMystery_Slide3_Intro.mp3",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide3SplitAudio/IguanaMystery_Slide3_Intro.mp3",
     data: slide3InteractiveData,
   },
   {
@@ -175,7 +176,8 @@ const data = [
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Caldara_Endtrail/index.htm", //temporary
     url2:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Cactus_Final/index.htm",
-    audioSrc: "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide7.wav",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide7.wav",
   },
   {
     id: "8",
@@ -185,13 +187,17 @@ const data = [
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/LandIguanaSmiling01.png", //slider
     url2:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/MarineIguanaWithBabies.png",
-    audioSrc: "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide8.wav",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide8.wav",
     popupText: {
-      landIguanaHead: "Land iguanas are usually more yellow or brown in color to blend in with the rocks and plants found inland.",
-      landIguanaBody: "Land iguanas are often larger and weigh more than marine iguanas.",
+      landIguanaHead:
+        "Land iguanas are usually more yellow or brown in color to blend in with the rocks and plants found inland.",
+      landIguanaBody:
+        "Land iguanas are often larger and weigh more than marine iguanas.",
       marineIguanaBody: "Marine iguanas have flat tails to help them swim!",
-      marineIguanaTail: "Marine iguanas are darker in color to match the black basaltic rocks found in near the coast."
-    }
+      marineIguanaTail:
+        "Marine iguanas are darker in color to match the black basaltic rocks found in near the coast.",
+    },
   },
   // {
   //   id: "9",
@@ -229,7 +235,8 @@ const data = [
     id: "14",
     title: "Iguana_Evolution02",
     type: "video",
-    url: "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Video/IguanaWhiteboardEvolution.mp4"
+    url:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Video/IguanaWhiteboardEvolution.mp4",
   },
   {
     id: "15",
@@ -237,7 +244,8 @@ const data = [
     type: "interactive_image",
     url:
       "https://keep.google.com/u/1/media/v2/1Qap6axeshCXiPdl0r3vhK1-K54n1_aIV_SuJiYxsbvbDNX1835Xp9qVnw7ftrA/15VVpQTnL-CD1LG4nNx4U3BHvTdJmLjfICf5GDWtoU4SucWfcTaLFmYqDv8x1BA?accept=image/gif,image/jpeg,image/jpg,image/png,image/webp,audio/aac&sz=1600",
-    audioSrc: "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide15_initial.mp3",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide15_initial.mp3",
     data: slide15Data,
   },
   {

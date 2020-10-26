@@ -17,3 +17,18 @@
   text-align: center;
   /* border-width: 15px; */
 }
+
+/* slide 7 360 comparison classes */
+.comparison360Right {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  right: 0;
+}
+
+.comparison360Left {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  left: 0;
+}

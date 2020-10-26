@@ -45,13 +45,7 @@ function MainContent(props) {
   } else if (content.type === "video") {
     return (
       <div>
-        {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/sacvf3WD7Dk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
-
-        {content.youtube ? (
-          <iframe className={classes.vid} src={content.url}></iframe>
-        ) : (
-          <video src={content.url} className={classes.vid} controls />
-        )}
+        <video src={content.url} className={classes.vid} controls autoPlay />
         <ControlButtons
           width="120px"
           bottom="5%"
@@ -108,34 +102,10 @@ function MainContent(props) {
     return (
       <Fragment>
         <AudioPlayerHandler src={content.audioSrc} />
-        <div
-          style={{
-            position: "absolute",
-            height: "100%",
-            width: "50%",
-            left: "0",
-          }}
-        >
+        <div className={classes.comparison360Left}>
           <Iframe src={content.url1} />
-          {/* <h1
-            style={{
-              position: "absolute",
-              left: "4%",
-              bottom: "2%",
-              width: "10%",
-              textAlign: "center",
-              fontSize: "16px",
-            }}
-          ></h1> */}
         </div>
-        <div
-          style={{
-            position: "absolute",
-            height: "100%",
-            width: "50%",
-            right: "0",
-          }}
-        >
+        <div className={classes.comparison360Right}>
           <Iframe src={content.url1} />
         </div>
         <ControlButtons
