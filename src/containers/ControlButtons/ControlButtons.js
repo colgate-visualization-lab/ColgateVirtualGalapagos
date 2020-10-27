@@ -1,38 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Back, Next } from "../../assets/VolcanoModule";
 import classes from "./ControlButtons";
+import { Link } from "react-router-dom";
 
+// changed ControlButtons to use Links instead of button - they also
+//  conditionally render - back button won't render on first slide
 export default function ControlButtons(props) {
+  useEffect(()=>{console.log(props)})
   return (
     <div>
-      <button >
-        <img className="prev"
+      { props.hasPrev && 
+      <Link to={props.prevSlide}>
+        <img
+          className="prev"
           src={Back}
-          onClick={props.prevSlide}
           style={{
             width: props.width,
             height: "auto",
             position: "absolute",
-            zIndex: 1,
+            zIndex: 10,
             bottom: props.bottom,
             left: props.left,
           }}
-        />
-      </button>
-      <button >
-        <img className="next"
+        />   
+      </Link>
+      }
+      {props.hasNext && 
+      <Link to={props.nextSlide}>
+        <img
+          className="next"
           src={Next}
-          onClick={props.nextSlide}
           style={{
             width: props.width,
             height: "auto",
             position: "absolute",
-            zIndex: 1,
+            zIndex: 10,
             bottom: props.bottom,
             right: props.right,
           }}
         />
-      </button>
+      </Link>
+    }
     </div>
   );
 }

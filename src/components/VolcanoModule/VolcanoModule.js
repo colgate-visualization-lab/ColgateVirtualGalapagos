@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import MainContent from '../../containers/MainContent/MainContent'
-import data from "../../components/IguanaData/IguanaData.js";
+import data from "../../components/VolcanoData/VolcanoData.js";
 
-function IguanaModule(props){
+function VolcanoModule(props){
 
     return(
         <Fragment>
@@ -10,5 +10,5 @@ function IguanaModule(props){
         </Fragment>
     )
 }
-
-export default IguanaModule
+    
+export default VolcanoModule
