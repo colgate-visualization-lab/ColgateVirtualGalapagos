@@ -1,45 +1,36 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Back, Next } from "../../assets/VolcanoModule";
 import classes from "./MainContent.css";
 import ControlButtons from "../ControlButtons/ControlButtons";
-import InteractiveImageComponent from "./components/InteractiveImageComponent";
-import {
-  ReactCompareSlider,
-  ReactCompareSliderImage,
-} from "react-compare-slider";
-import AudioPlayer from "../../components/AudioPlayer/AudioPlayer";
-import { iguanaAssets } from "../../assets/IguanaModule";
+import IguanaSlide15 from "../IguanaSlide15/IguanaSlide15";
+import {ReactCompareSlider, ReactCompareSliderImage} from "react-compare-slider";
 import Iframe from "../../components/VolcanoeIframe/VolcanoeIframe";
-import data from "../../components/IguanaData/IguanaData.js"
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
+import IguanaSlide3 from "../IguanaSlide3/IguanaSlide3";
+import Popup from "../../components/Popup/Popup";
 // import Iframe from "react-iframe";
 
 function MainContent(props) {
-  const [slide, setSlide] = useState(6);
-  // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
-  // const [audioIsDone, setAudioIsDone] = useState(false);
 
-  const nextSlide = () => {
-    setSlide(slide + 1);
-  };
+// we get current slide id from and use that to find the next and prev slide ids
+// props.moduleData is the array of slides passed down as a prop for each module
 
-  const prevSlide = () => {
-    if (slide != 0) {
-      setSlide(slide - 1);
-    } else return null;
-  };
+const slideId = parseInt(props.match.params.slide_id || 1);
+const prevSlide = `/iguana/${slideId === 1? 1 : slideId-1}`;
+const nextSlide = `/iguana/${slideId+1 > props.moduleData.length? slideId: slideId+1}`;
+const content = props.moduleData[slideId-1] 
 
-  const content = data[slide];
   if (content.type === "image") {
     return (
       <div>
         <img src={content.url} className={`iguana ${classes.img}`} />
         <ControlButtons
-          width="150px"
+          width="120px"
           bottom="5%"
           left="0%"
           right="0%"
+          hasPrev={slideId !== 1}
+          hasNext={slideId < props.moduleData.length}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
@@ -48,12 +39,17 @@ function MainContent(props) {
   } else if (content.type === "video") {
     return (
       <div>
-        <video src={content.url} className={classes.vid} controls />
+        {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/sacvf3WD7Dk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
+        
+        { content.youtube? <iframe className={classes.vid} src={content.url}></iframe> :
+        <video src={content.url} className={classes.vid} controls />}
         <ControlButtons
           width="120px"
           bottom="5%"
           left="0%"
           right="0%"
+          hasPrev={slideId !== 1}
+          hasNext={slideId < props.moduleData.length}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
@@ -62,16 +58,17 @@ function MainContent(props) {
   } else if (content.type === "interactive_image") {
     return (
       <>
-        <InteractiveImageComponent
+        <IguanaSlide15
           classes={classes}
           content={content}
-          iguanaAssets={iguanaAssets}
         />
         <ControlButtons
-          width="200px"
+          width="120px"
           bottom="5%"
-          left="5%"
-          right="5%"
+          left="0%"
+          right="0%"
+          hasPrev={slideId !== 1}
+          hasNext={slideId < props.moduleData.length}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
@@ -86,32 +83,53 @@ function MainContent(props) {
           margin: "0 auto",
         }}
       >
-        <AudioPlayerHandler
-          src={content.audioSrc}
-        />
-        {/* <div style={{ display: "flex", flexDirection: "column", flexGrow: 1 }}> */}
-        {/* <ImageSlider image1={content.url1} image2={content.url2} /> */}
+        <AudioPlayerHandler src={content.audioSrc} />
         <ReactCompareSlider
+          onlyHandleDraggable={true}
           itemOne={
-            <ReactCompareSliderImage
-              src={content.url1}
-              alt="adult marine iguana with baby"
-            />
+            <div>
+              <ReactCompareSliderImage
+                src={content.url1}
+                alt="adult marine iguana with baby"
+              />
+              <Popup
+                description={content.popupText.landIguanaHead}
+                top="20%"
+                left="50%"
+              />
+              <Popup
+                description={content.popupText.landIguanaBody}
+                top="20%"
+                left="74%"
+              />
+            </div>
           }
           itemTwo={
-            <ReactCompareSliderImage
-              src={content.url2}
-              alt="smiling land iguana"
-            />
+            <div>
+              <ReactCompareSliderImage
+                src={content.url2}
+                alt="smiling land iguana"
+              />
+              <Popup
+                description={content.popupText.marineIguanaBody}
+                top="25%"
+                left="13%"
+              />
+              <Popup
+                description={content.popupText.marineIguanaTail}
+                top="35%"
+                left="40%"
+              />
+            </div>
           }
-          // style={{ width: "100%", flexGrow: 1 }}
         />
-        {/* </div> */}
         <ControlButtons
-          width="150px"
+          width="120px"
           bottom="5%"
           left="0%"
           right="0%"
+          hasPrev={slideId !== 1}
+          hasNext={slideId < props.moduleData.length}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
@@ -120,9 +138,7 @@ function MainContent(props) {
   } else if (content.type === "360_comparison") {
     return (
       <Fragment>
-        <AudioPlayerHandler
-          src={content.audioSrc}
-        />
+        <AudioPlayerHandler src={content.audioSrc} />
         <div
           style={{
             position: "absolute",
@@ -154,15 +170,50 @@ function MainContent(props) {
           <Iframe src={content.url1} />
         </div>
         <ControlButtons
-          width="200px"
+          width="120px"
           bottom="5%"
-          left="5%"
-          right="5%"
+          left="0%"
+          right="0%"
+          hasPrev={slideId !== 1}
+          hasNext={slideId < props.moduleData.length}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
       </Fragment>
     );
+  } else if (content.type === "slide3InteractiveVideo") {
+    return (
+      <>
+        {/* <AudioPlayerHandler src={content.audioSrc} /> */}
+        <IguanaSlide3 content={content} />
+        <ControlButtons
+          width="120px"
+          bottom="5%"
+          left="0%"
+          right="0%"
+          hasPrev={slideId !== 1}
+          hasNext={slideId < props.moduleData.length}
+          nextSlide={nextSlide}
+          prevSlide={prevSlide}
+        />
+      </>
+    );
+  } else {
+    return (
+    <>
+      <div style={{display: "flex", alignItems: "center", justifyContent: "center", width: "100vw", height: "80vh" }}><h1>THIS SLIDE HASN'T BEEN CREATED YET</h1></div>
+      <ControlButtons
+            width="120px"
+            bottom="5%"
+           left="0%"
+           right="0%"
+           hasPrev={slideId !== 1}
+           hasNext={slideId < props.moduleData.length}
+           nextSlide={nextSlide}
+           prevSlide={prevSlide}
+          />
+    </>
+    )
   }
 }
 
