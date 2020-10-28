@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
 import AudioPlayer from "./AudioPlayer";
 
-function AudioPlayerHandler(props){
-    const [audioIsPlaying, setAudioIsPlaying] = useState(true);
-    const [audioIsDone, setAudioIsDone] = useState(false);
+function AudioPlayerHandler(props) {
+  const [audioIsPlaying, setAudioIsPlaying] = useState(true);
+  const [audioIsDone, setAudioIsDone] = useState(false);
 
-    useEffect(()=>{
-      console.log(audioIsPlaying, props.playing)
-      if (props.playing !== undefined){
-        setAudioIsPlaying(props.playing);
-      }
-    })
+  useEffect(() => {
+    if (props.playing !== undefined) {
+      setAudioIsPlaying(props.playing);
+    }
+  });
 
-    return(
+  return (
     <AudioPlayer
-    src = {props.src}
-    onEnded={() => {
+      src={props.src}
+      onEnded={() => {
         setAudioIsDone(true);
         setAudioIsPlaying(false);
       }}
@@ -27,8 +26,7 @@ function AudioPlayerHandler(props){
       }}
       playing={audioIsPlaying}
     />
-    );
+  );
 }
-
 
 export default AudioPlayerHandler;
