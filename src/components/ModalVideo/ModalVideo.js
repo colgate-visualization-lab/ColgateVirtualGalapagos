@@ -1,5 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
+import PropTypes from "prop-types";
 import "./styles.css";
 
 const customStyles = {
@@ -51,5 +52,9 @@ function IntroVideo(props) {
     </div>
   );
 }
+
+IntroVideo.propTypes = {
+  src: PropTypes.string.isRequired,
+};
 
 export default IntroVideo;

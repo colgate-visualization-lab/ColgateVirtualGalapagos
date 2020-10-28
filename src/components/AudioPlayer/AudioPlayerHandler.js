@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AudioPlayer from "./AudioPlayer";
+import PropTypes from "prop-types";
 
 function AudioPlayerHandler(props) {
   const [audioIsPlaying, setAudioIsPlaying] = useState(true);
@@ -28,5 +29,9 @@ function AudioPlayerHandler(props) {
     />
   );
 }
+
+AudioPlayerHandler.propTypes = {
+  src: PropTypes.string.isRequired,
+};
 
 export default AudioPlayerHandler;

@@ -1,6 +1,13 @@
-import React from "react"
-import {logo} from "../../../../assets/Misc"
+import React from "react";
+import { logo } from "../../../../assets/Misc";
+import PropTypes from "prop-types";
 
-const logoImage = (props) => <img src={logo} alt="Logo Image" className={props.className}/>
+const LogoImage = (props) => (
+  <img src={logo} alt="Logo Image" className={props.className} />
+);
 
-export default logoImage
+LogoImage.propTypes = {
+  className: PropTypes.string.isRequired,
+};
+
+export default LogoImage;

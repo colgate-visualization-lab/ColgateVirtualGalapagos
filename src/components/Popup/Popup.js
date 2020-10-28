@@ -1,8 +1,10 @@
 import React from "react";
+import { propTypes } from "react-player-circle-controls";
 import Popup from "reactjs-popup";
+import PropTypes from "prop-types";
 import classes from "./Popup.css";
 
-export default function RoundPopup(props) {
+export default function RoundPopup({ top, left, description }) {
   return (
     <Popup
       trigger={
@@ -11,8 +13,8 @@ export default function RoundPopup(props) {
           style={{
             position: "absolute",
             // zIndex: 1,
-            top: props.top,
-            left: props.left,
+            top: top,
+            left: left,
           }}
         ></button>
       }
@@ -28,7 +30,13 @@ export default function RoundPopup(props) {
       arrow={false}
       position="right center"
     >
-      <div>{props.description}</div>
+      <div>{description}</div>
     </Popup>
   );
 }
+
+RoundPopup.propTypes = {
+  top: PropTypes.string.isRequired,
+  left: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};
