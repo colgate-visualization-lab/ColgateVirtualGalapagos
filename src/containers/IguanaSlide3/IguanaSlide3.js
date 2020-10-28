@@ -1,17 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import ReactPlayer from "react-player";
+import PropTypes from "prop-types";
 
-import Slide3VideoSelector from "./IguanaSlide3VideoSelector";``
+import Slide3VideoSelector from "./IguanaSlide3VideoSelector";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
-
 import classes from "./IguanaSlide3.css";
 
-export default function Slide3({ content }) {
+export default function IguanaSlide3({ content }) {
   const [src, setSrc] = useState(content.data[0]);
   // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
 
   // videoSelectionOverlay - displays hypothesis, greys out and disables the video
-  const [videoSelectionOverlayVisible, setVideoSelectionOverlayVisible] = useState({});
+  const [
+    videoSelectionOverlayVisible,
+    setVideoSelectionOverlayVisible,
+  ] = useState({});
   const [showPlayer, setShowPlayer] = useState(true);
 
   const handleSrcChange = (src) => {
@@ -29,25 +32,27 @@ export default function Slide3({ content }) {
 
   // this determines whether the video selection buttons
   //  are visible
-  const [videoSelectorVisible, setVideoSelectorVisible] = useState(classes.videoSelectorVisible);
-  
-  useEffect(()=>{
-    const mouseMoveTimer=setTimeout(()=>{
-      setVideoSelectorVisible(classes.videoSelectorHidden)
+  const [videoSelectorVisible, setVideoSelectorVisible] = useState(
+    classes.videoSelectorVisible
+  );
+
+  useEffect(() => {
+    const mouseMoveTimer = setTimeout(() => {
+      setVideoSelectorVisible(classes.videoSelectorHidden);
     }, 3000);
     return () => clearTimeout(mouseMoveTimer);
-  })
+  });
 
   return (
     <>
       {/* { showPlayer &&
       <AudioPlayerHandler  src={props.content.audioSrc} />
     } */}
-      <div className={classes.slide3Style} 
-      onMouseMove={()=> {
-        console.log("fired")
-        setVideoSelectorVisible(classes.videoSelectorVisible);
-      }}
+      <div
+        className={classes.slide3Style}
+        onMouseMove={() => {
+          setVideoSelectorVisible(classes.videoSelectorVisible);
+        }}
       >
         <ReactPlayer
           position="relative"
@@ -73,9 +78,12 @@ export default function Slide3({ content }) {
               : videoSelectorVisible
           }
         >
-          <Slide3VideoSelector  data={content.data} onSrcChange={handleSrcChange}/>
+          <Slide3VideoSelector
+            data={content.data}
+            onSrcChange={handleSrcChange}
+          />
         </div>
-        
+
         {/* {src != null ? (
           <>
           <ReactPlayer width="auto" height="100%"
@@ -107,3 +115,13 @@ export default function Slide3({ content }) {
     </>
   );
 }
+
+IguanaSlide3.propTypes = {
+  content: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    audioSrc: PropTypes.string,
+    title: PropTypes.string,
+    type: PropTypes.string.isRequired,
+    data: PropTypes.arrayOf(PropTypes.object),
+  }),
+};

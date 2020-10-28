@@ -1,24 +1,35 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+
 import classes from "./IguanaSlide3.css";
 
+const Slide3VideoSelector = ({ data, onSrcChange }) => {
+  useEffect(() => {
+    console.log(data[0].cardTitle);
+  });
 
-const Slide3VideoSelector = ({data, onSrcChange}) => {
-    useEffect(()=>{
-        console.log(data[0].cardTitle)
-    })
-
-
-
-    return (
+  return (
     <div className={classes.videoSelector}>
-        {data.map((datum)=>(
-            <button className={`${classes.videoSelectorButton} ${classes.button} `}  onClick={() => {
-                onSrcChange(datum);
-                console.log(datum.cardTitle);
-              }} type="button" key={datum.id}>{datum.cardTitle}</button>
-        ))}
+      {data.map((datum) => (
+        <button
+          className={`${classes.videoSelectorButton} ${classes.button} `}
+          onClick={() => {
+            onSrcChange(datum);
+            console.log(datum.cardTitle);
+          }}
+          type="button"
+          key={datum.id}
+        >
+          {datum.cardTitle}
+        </button>
+      ))}
     </div>
-    )
-}
+  );
+};
+
+Slide3VideoSelector.propTypes = {
+  data: PropTypes.array.isRequired,
+  onSrcChange: PropTypes.func.isRequired,
+};
 
 export default Slide3VideoSelector;
