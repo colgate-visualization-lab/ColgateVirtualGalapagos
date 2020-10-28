@@ -1,5 +1,6 @@
 import React from "react";
 import Iframe from "react-iframe";
+import PropTypes from "prop-types";
 import classes from "./VolcanoeIframe.css";
 
 function VolcanoeIframe(props) {
@@ -13,4 +14,9 @@ function VolcanoeIframe(props) {
     />
   );
 }
+
+VolcanoeIframe.propTypes = {
+  src: PropTypes.string.isRequired,
+};
+
 export default VolcanoeIframe;
