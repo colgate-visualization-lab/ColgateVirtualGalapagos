@@ -52,6 +52,22 @@ const IguanaSlide8 = ({ content }) => {
   );
 };
 
-IguanaSlide8.propTypes = {};
+IguanaSlide8.propTypes = {
+  // content: PropTypes.object.isRequired,
+  content: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    url1: PropTypes.string.isRequired,
+    url2: PropTypes.string.isRequired,
+    audioSrc: PropTypes.string.isRequired,
+    popupText: PropTypes.shape({
+      landIguanaHead: PropTypes.string.isRequired,
+      landIguanaBody: PropTypes.string.isRequired,
+      marineIguanaBody: PropTypes.string.isRequired,
+      marineIguanaTail: PropTypes.string.isRequired,
+    }),
+  }),
+};
 
 export default IguanaSlide8;
