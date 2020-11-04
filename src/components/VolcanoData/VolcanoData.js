@@ -124,7 +124,7 @@ const slide3InteractiveData = [
     ],
   }
   
-  const data = [
+  const volcanoData = [
     {
       id: "1",
       title: "Iguana_Endemic01",
@@ -277,5 +277,5 @@ const slide3InteractiveData = [
       not_done: true,
     },
   ];
-  export default data;
+  export default volcanoData;
   
