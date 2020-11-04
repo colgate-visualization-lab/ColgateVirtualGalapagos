@@ -17,8 +17,8 @@ function MainContent(props) {
 
 const slideId = parseInt(props.match.params.slide_id || 1);
 const prevSlide = `/${props.route}/${slideId === 1? 1 : slideId-1}`;
-const nextSlide = `/${props.route}/${slideId+1 > props.moduleData.length? slideId: slideId+1}`;
-const content = props.moduleData[slideId-1] 
+const nextSlide = `/${props.route}/${slideId+1 > props.data.length? slideId: slideId+1}`;
+const content = props.data[slideId-1] 
 
   if (content.type === "image") {
     return (
@@ -30,10 +30,11 @@ const content = props.moduleData[slideId-1]
           left="0%"
           right="0%"
           hasPrev={slideId !== 1}
-          hasNext={slideId < props.moduleData.length}
+          hasNext={slideId < props.data.length}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
+           {props.children}
       </div>
     );
   } else if (content.type === "video") {
@@ -49,10 +50,11 @@ const content = props.moduleData[slideId-1]
           left="0%"
           right="0%"
           hasPrev={slideId !== 1}
-          hasNext={slideId < props.moduleData.length}
+          hasNext={slideId < props.data.length}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
+        {props.children}
       </div>
     );
   } else if (content.type === "interactive_image") {
@@ -68,7 +70,7 @@ const content = props.moduleData[slideId-1]
           left="0%"
           right="0%"
           hasPrev={slideId !== 1}
-          hasNext={slideId < props.moduleData.length}
+          hasNext={slideId < props.data.length}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
@@ -120,6 +122,7 @@ const content = props.moduleData[slideId-1]
                 top="35%"
                 left="40%"
               />
+              {props.children}
             </div>
           }
         />
@@ -129,7 +132,7 @@ const content = props.moduleData[slideId-1]
           left="0%"
           right="0%"
           hasPrev={slideId !== 1}
-          hasNext={slideId < props.moduleData.length}
+          hasNext={slideId < props.data.length}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
@@ -175,7 +178,7 @@ const content = props.moduleData[slideId-1]
           left="0%"
           right="0%"
           hasPrev={slideId !== 1}
-          hasNext={slideId < props.moduleData.length}
+          hasNext={slideId < props.data.length}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
@@ -192,7 +195,7 @@ const content = props.moduleData[slideId-1]
           left="0%"
           right="0%"
           hasPrev={slideId !== 1}
-          hasNext={slideId < props.moduleData.length}
+          hasNext={slideId < props.data.length}
           nextSlide={nextSlide}
           prevSlide={prevSlide}
         />
@@ -208,7 +211,7 @@ const content = props.moduleData[slideId-1]
            left="0%"
            right="0%"
            hasPrev={slideId !== 1}
-           hasNext={slideId < props.moduleData.length}
+           hasNext={slideId < props.data.length}
            nextSlide={nextSlide}
            prevSlide={prevSlide}
           />
