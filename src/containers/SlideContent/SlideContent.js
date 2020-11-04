@@ -3,7 +3,7 @@ import { Back, Next, TerrainMap, magnifyingGlass, Ferd, santaCruz, VolcanoCompar
 import { introVideo, plateTectonics, mantlePlumes} from "../../assets/VolcanoModule"
 import classes from "./SlideContent.css"
 import ResizePanel from "react-resize-panel";
-import VolcanoeIframe from "../../components/VolcanoeIframe/VolcanoeIframe"
+import VolcanoeIframe from "../../components/IframeCompoment/IframeComponent"
 
 class SlideContent extends Component {
     constructor(props) {

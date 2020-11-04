@@ -4,10 +4,11 @@ import classes from "./MainContent.css";
 import ControlButtons from "../ControlButtons/ControlButtons";
 import IguanaSlide15 from "../IguanaSlide15/IguanaSlide15";
 import {ReactCompareSlider, ReactCompareSliderImage} from "react-compare-slider";
-import Iframe from "../../components/VolcanoeIframe/VolcanoeIframe";
+import Iframe from "../../components/IframeCompoment/IframeComponent";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 import IguanaSlide3 from "../IguanaSlide3/IguanaSlide3";
 import Popup from "../../components/Popup/Popup";
+import IframeComponent from "../../components/IframeCompoment/IframeComponent"
 // import Iframe from "react-iframe";
 
 function MainContent(props) {
@@ -39,11 +40,9 @@ const content = props.data[slideId-1]
     );
   } else if (content.type === "video") {
     return (
-      <div>
-        {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/sacvf3WD7Dk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
-        
+      <div className={classes.container}>
         { content.youtube? <iframe className={classes.vid} src={content.url}></iframe> :
-        <video src={content.url} className={classes.vid} controls />}
+        <video src={content.url} className={classes.vid} controls controlsList="nodownload" />}
         <ControlButtons
           width="120px"
           bottom="5%"
@@ -201,7 +200,25 @@ const content = props.data[slideId-1]
         />
       </>
     );
-  } else {
+  } else if (content.type === "360_video") {
+    return (
+      <>
+        <IframeComponent src={content.url} />
+        <ControlButtons
+          width="120px"
+          bottom="5%"
+          left="0%"
+          right="0%"
+          hasPrev={slideId !== 1}
+          hasNext={slideId < props.data.length}
+          nextSlide={nextSlide}
+          prevSlide={prevSlide}
+        />
+        {props.children}
+      </>
+    );
+  } 
+  else {
     return (
     <>
       <div style={{display: "flex", alignItems: "center", justifyContent: "center", width: "100vw", height: "80vh" }}><h1>THIS SLIDE HASN'T BEEN CREATED YET</h1></div>

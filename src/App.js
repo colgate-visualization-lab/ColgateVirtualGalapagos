@@ -11,7 +11,7 @@ import SplashScreen from "./components/SplashScreen/SplashScreen"
 import Gallery from "./containers/Gallery/Gallery"
 import ModuleNav from "./components/ModuleNav/ModuleNav"
 import VolcanoLayout from "./containers/VolcanoLayout/VolcanoLayout"
-import IguanaModule from "./components/IguanaModule/IguanaModule"
+// import IguanaModule from "./components/IguanaModule/IguanaModule"
 import ExtraSelect from "./components/ExtraSelect/ExtraSelect"
 // New volcano Module
 import VolcanoModule from "./components/VolcanoModule/VolcanoModule"
