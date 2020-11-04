@@ -12,7 +12,7 @@ const moduleNav = () => {
 			"description": "Follow along with Carlos and Adriana as they learn about volcanoes. Explore how volcanic islands form and how they came to be in the Galapagos!", 
 			"background": "url(https://virtualgalapagos.colgate.edu/assets/misc/Volcano.png)", 
 			"animation": " animated slideInDown",
-			"link": "/volcano"
+			"link": "/volcano/1"
 		}, 
 
 		{"title": "Extras", 
@@ -26,7 +26,7 @@ const moduleNav = () => {
 			"description": "Carlos and Adriana need to learn about iguanas if they want to find the ones in their mystery. Help them learn about the different types of iguanas in the Galapagos and how they got there in the first place.",
 			"background": "url(https://virtualgalapagos.colgate.edu/assets/misc/Iguana.png)", 
 			"animation": " animated slideInDown slower",
-			"link": "/iguana"
+			"link": "/iguana/1"
 		}, 
 
 		{"title": "Currents",

@@ -16,8 +16,8 @@ function MainContent(props) {
 // props.moduleData is the array of slides passed down as a prop for each module
 
 const slideId = parseInt(props.match.params.slide_id || 1);
-const prevSlide = `/iguana/${slideId === 1? 1 : slideId-1}`;
-const nextSlide = `/iguana/${slideId+1 > props.moduleData.length? slideId: slideId+1}`;
+const prevSlide = `/${props.route}/${slideId === 1? 1 : slideId-1}`;
+const nextSlide = `/${props.route}/${slideId+1 > props.moduleData.length? slideId: slideId+1}`;
 const content = props.moduleData[slideId-1] 
 
   if (content.type === "image") {

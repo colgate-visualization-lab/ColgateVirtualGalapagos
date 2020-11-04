@@ -6,7 +6,7 @@ function IguanaModule(props){
 
     return(
         <Fragment>
-            <MainContent {...props} moduleData={data} />
+            <MainContent {...props} moduleData={data} route={"iguana"} />
         </Fragment>
     )
 }

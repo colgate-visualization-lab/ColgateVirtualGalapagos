@@ -137,7 +137,7 @@ const slide3InteractiveData = [
       title: "Iguana_Carried01",
       type: "image",
       url:
-        "http://virtualgalapagos.colgate.edu/assets/IguanaModule/SouthAmericaCoast.png",
+        "http://virtualgalapagos.colgate.edu/assets/IguanaModule/LandIguanaSmiling01.png",
     },
     {
       id: "3",
