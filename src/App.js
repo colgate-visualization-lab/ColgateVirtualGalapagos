@@ -53,7 +53,6 @@ class App extends Component {
 						<Route path="/volcanomod" exact component={VolcanoModule}/>
 						<Route path="/gallery" exact component={Gallery}/>
 						<Route path="/volcanolayout" exact component={VolcanoLayout}/>
-						<Route path="/iguana" exact component={IguanaModule}/>
 						<Route path="/extras" exact component={ExtraSelect}/>
 
 						{/* route for iguana module slides */}
