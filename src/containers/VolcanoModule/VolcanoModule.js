@@ -19,7 +19,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import DndDraggables from "../../components/DndDraggables/DndDraggables";
 import DndDroppables from "../../components/DndDroppables/DndDroppables";
 import ResizePanel from "react-resize-panel";
-import VolcanoeIframe from "../../components/VolcanoeIframe/VolcanoeIframe";
+import VolcanoeIframe from "../../components/IframeCompoment/IframeComponent";
 import AudioPlayer from "../../components/AudioPlayer/AudioPlayer";
 import MapComponent from "../../components/MapComponent/MapComponent";
 import Popup from "reactjs-popup";
