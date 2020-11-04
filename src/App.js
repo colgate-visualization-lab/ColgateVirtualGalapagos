@@ -6,11 +6,6 @@ import Layout from "./containers/Layout/Layout"
 import SignIn from "./containers/SignIn/SignIn"
 import LoadingScreen from "./containers/LoadingScreen/LoadingScreen"
 import {MapFernadina, MapIsabela, MapPinzon, MapFloreana, MapEspanola} from "./assets/Homepage"
-// import MapFernandina from "https://virtualgalapagos.colgate.edu/assets/homepage/MapFernandina.png"
-// import MapIsabela from "https://virtualgalapagos.colgate.edu/assets/homepage/homepage.png"
-// import MapPinzon from "https://virtualgalapagos.colgate.edu/assets/homepage/MapPinzon.png"
-// import MapFloreana from "https://virtualgalapagos.colgate.edu/assets/homepage/MapFloreana.png"
-// import MapEspanola from "https://virtualgalapagos.colgate.edu/assets/homepage/MapEspanola.png"
 import Homepage from "./containers/Homepage/Homepage"
 import SplashScreen from "./components/SplashScreen/SplashScreen"
 import Gallery from "./containers/Gallery/Gallery"
@@ -22,6 +17,11 @@ import ExtraSelect from "./components/ExtraSelect/ExtraSelect"
 import VolcanoModule from "./components/VolcanoModule/VolcanoModule"
 
 // const VolcanoModule = lazy(() => import("./containers/VolcanoModule/VolcanoModule"))
+
+// import all the data for each module and ModuleLayout component
+import MainContent from "./containers/MainContent/MainContent"
+import iguanaData from "./components/IguanaData/IguanaData.js";
+import volcanoData from "./components/VolcanoData/VolcanoData.js";
 
 class App extends Component {
 	componentDidMount(){
@@ -55,9 +55,10 @@ class App extends Component {
 						<Route path="/volcanolayout" exact component={VolcanoLayout}/>
 						<Route path="/extras" exact component={ExtraSelect}/>
 
-						{/* route for iguana module slides */}
-						<Route path="/iguana/:slide_id" component={IguanaModule} />
-						<Route path="/volcano/:slide_id" component={VolcanoModule} />
+						{/* routes for modules */}
+						<Route path="/volcano/:slide_id" exact component={VolcanoModule} />
+						<Route path="/iguana/:slide_id" 
+							render={(props) => <MainContent {...props} data={iguanaData} route={"iguana"} />} />
 
 					</Layout>
 					</Suspense>
