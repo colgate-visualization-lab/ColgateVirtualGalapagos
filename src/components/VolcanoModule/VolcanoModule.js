@@ -6,7 +6,7 @@ function VolcanoModule(props){
 
     return(
         <Fragment>
-            <MainContent {...props} moduleData={data} />
+            <MainContent {...props} moduleData={data} route={"volcano"} />
         </Fragment>
     )
 }
