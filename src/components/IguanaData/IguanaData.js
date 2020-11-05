@@ -229,6 +229,11 @@ const data = [
   {
     id: "13",
     title: "Iguana_Evolution01",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide13.wav",
+    type: "360WithAudio", // 360 with audio
+    src:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/Shorewaves/",
     not_done: true,
   },
   {

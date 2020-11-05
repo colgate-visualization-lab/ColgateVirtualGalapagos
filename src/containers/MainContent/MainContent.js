@@ -4,7 +4,7 @@ import classes from "./MainContent.css";
 import ControlButtons from "../ControlButtons/ControlButtons";
 import IguanaSlide15 from "../IguanaSlide15/IguanaSlide15";
 
-import Iframe from "../../components/VolcanoeIframe/VolcanoeIframe";
+import Iframe from "react-iframe";
 import data from "../../components/IguanaData/IguanaData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 import IguanaSlide3 from "../IguanaSlide3/IguanaSlide3";
@@ -54,6 +54,19 @@ function MainContent(props) {
           prevSlide={prevSlide}
         />
       </div>
+    );
+  } else if (content.type === "360WithAudio") {
+    return (
+      <>
+        <AudioPlayerHandler src={content.audioSrc} />
+        <Iframe
+          position="absolute"
+          width="100%"
+          height="100%"
+          className={classes.Iframe}
+          src={content.src}
+        />
+      </>
     );
   } else if (content.type === "interactive_image") {
     return (
