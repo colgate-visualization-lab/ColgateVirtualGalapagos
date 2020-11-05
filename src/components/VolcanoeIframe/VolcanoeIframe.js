@@ -9,8 +9,9 @@ function VolcanoeIframe(props) {
       position="absolute"
       width="100%"
       height="100%"
-      className={classes.Iframe}
+      styles={{ top: 0 }}
       src={props.src}
+      autoplay
     />
   );
 }
