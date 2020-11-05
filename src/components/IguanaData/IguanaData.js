@@ -150,9 +150,11 @@ const data = [
   {
     id: "4",
     title: "Iguana_Pumice01",
-    type: "video",
-    url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/IguanaPath.mp4", //360
+    type: "360Video",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide4.wav",
+    videoSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/IguanaPath/",
   },
   {
     id: "5",
@@ -164,9 +166,11 @@ const data = [
   {
     id: "6",
     title: "Iguana_Comparison01",
-    type: "video",
-    url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/ShoreWaves.mp4", //360
+    type: "360Video",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide6.wav",
+    videoSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/Shorewaves/",
   },
   {
     id: "7",
@@ -209,9 +213,11 @@ const data = [
   {
     id: "10",
     title: "Iguana_PhyloTree01",
-    type: "video",
-    url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/ShoreWaves.mp4", //360
+    type: "360Video",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide10.wav",
+    videoSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/Shorewaves/",
   },
   {
     id: "11",
@@ -229,12 +235,11 @@ const data = [
   {
     id: "13",
     title: "Iguana_Evolution01",
+    type: "360Video",
     audioSrc:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide13.wav",
-    type: "360WithAudio", // 360 with audio
-    src:
+    videoSrc:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/Shorewaves/",
-    not_done: true,
   },
   {
     id: "14",
@@ -256,9 +261,11 @@ const data = [
   {
     id: "16",
     title: "Iguana_Evolution04",
-    type: "video",
-    url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/ShoreWaves.mp4", //360
+    type: "360Video",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide16.wav",
+    videoSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/Shorewaves/",
   },
   {
     id: "17",
@@ -268,16 +275,20 @@ const data = [
   {
     id: "18",
     title: "Iguana_Scales02",
-    type: "video",
-    url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/ShoreWaves.mp4", //360
+    type: "360Video",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide18.wav",
+    videoSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/Shorewaves/",
   },
   {
     id: "19",
     title: "Iguana_Scales03",
-    type: "video",
-    url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/ShoreWaves.mp4", //360
+    type: "360Video",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide19.wav",
+    videoSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/Shorewaves/",
   },
   {
     id: "20",
@@ -287,7 +298,11 @@ const data = [
   {
     id: "21",
     title: "Iguana_PinkIggy01",
-    not_done: true,
+    type: "360Video",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide21.wav",
+    videoSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/Shorewaves/",
   },
 ];
 export default data;

@@ -55,7 +55,7 @@ function MainContent(props) {
         />
       </div>
     );
-  } else if (content.type === "360WithAudio") {
+  } else if (content.type === "360Video") {
     return (
       <>
         <AudioPlayerHandler src={content.audioSrc} />
@@ -64,7 +64,7 @@ function MainContent(props) {
           width="100%"
           height="100%"
           className={classes.Iframe}
-          src={content.src}
+          src={content.videoSrc}
         />
       </>
     );
