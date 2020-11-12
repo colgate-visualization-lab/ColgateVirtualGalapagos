@@ -12,6 +12,7 @@ import data from "../../components/IguanaData/IguanaData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 import IguanaSlide3 from "../IguanaSlide3/IguanaSlide3";
 import Popup from "../../components/Popup/Popup";
+import IguanaSlide12 from "../IguanaSlide12/IguanaSlide12";
 // import Iframe from "react-iframe";
 
 function MainContent(props) {
@@ -208,7 +209,24 @@ function MainContent(props) {
         />
       </>
     );
-  } else {
+  } else if (content.type === "slide12interactive"){
+    return (
+      <>
+      <IguanaSlide12 content={content}/>
+      <ControlButtons
+          width="120px"
+          bottom="5%"
+          left="0%"
+          right="0%"
+          hasPrev={slideId !== 1}
+          hasNext={slideId < data.length}
+          nextSlide={nextSlide}
+          prevSlide={prevSlide}
+        />
+      </>
+    );
+  }
+  else {
     return (
     <>
       <div style={{display: "flex", alignItems: "center", justifyContent: "center", width: "100vw", height: "80vh" }}><h1>THIS SLIDE HASN'T BEEN CREATED YET</h1></div>

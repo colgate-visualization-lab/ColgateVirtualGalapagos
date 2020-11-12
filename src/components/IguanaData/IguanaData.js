@@ -2,6 +2,16 @@ import React from "react";
 import { iguanaAssets } from "../../assets/IguanaModule";
 
 // data for slide 3 - to be included in  data array below
+const slide12data = [
+  {
+    id:"0",
+    imgsrc:"http://virtualgalapagos.colgate.edu/assets/IguanaModule/LandIguanaCactus.png",
+  },
+  {
+    id:"1",
+    imgsrc:"http://virtualgalapagos.colgate.edu/assets/IguanaModule/LandIguanaOnRocks.png",
+  }
+]
 const slide3InteractiveData = [
   {
     id: "birdHypothesis",
@@ -224,7 +234,8 @@ const data = [
   {
     id: "12",
     title: "Iguana_PhyloTree05",
-    not_done: true,
+    type:"slide12interactive",
+    data:slide12data,
   },
   {
     id: "13",
