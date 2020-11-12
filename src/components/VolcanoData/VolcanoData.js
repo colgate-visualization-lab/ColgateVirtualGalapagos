@@ -42,37 +42,6 @@ const volcanoData = [
       url: "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/TerrainMap-Labelled.png",
     },
     {
-      id: "4",
-      title: "Iguana_Pumice01",
-      type: "video",
-      url:
-        "http://virtualgalapagos.colgate.edu/assets/IguanaModule/IguanaPath.mp4", //360
-    },
-    {
-      id: "5",
-      title: "Iguana_Pumice02",
-      type: "video",
-      url:
-        "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Video/IguanaPumiceCut.mp4", // will change to pull from server
-    },
-    {
-      id: "6",
-      title: "Iguana_Comparison01",
-      type: "video",
-      url:
-        "http://virtualgalapagos.colgate.edu/assets/IguanaModule/ShoreWaves.mp4", //360
-    },
-    {
-      id: "7",
-      title: "Iguana_Comparison02",
-      type: "360_comparison",
-      url1:
-        "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Caldara_Endtrail/index.htm", //temporary
-      url2:
-        "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Cactus_Final/index.htm",
-      audioSrc: "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide7.wav",
-    },
-    {
       id: "8",
       title: "Iguana_Comparison03",
       type: "image_comparison",

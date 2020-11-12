@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, Fragment, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import classes from "./MainContent.css";
 import ControlButtons from "../ControlButtons/ControlButtons";
@@ -8,13 +8,12 @@ import Iframe from "../../components/IframeCompoment/IframeComponent";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 import IguanaSlide3 from "../IguanaSlide3/IguanaSlide3";
 import Popup from "../../components/Popup/Popup";
-import IframeComponent from "../../components/IframeCompoment/IframeComponent"
-// import Iframe from "react-iframe";
 
 function MainContent(props) {
 
 // we get current slide id from and use that to find the next and prev slide ids
-// props.moduleData is the array of slides passed down as a prop for each module
+// props.data is the array of slides passed down as a prop for each module
+// props.route is simply the routing path for each module, i.e. "volcano"
 
 const slideId = parseInt(props.match.params.slide_id || 1);
 const prevSlide = `/${props.route}/${slideId === 1? 1 : slideId-1}`;
@@ -23,18 +22,20 @@ const content = props.data[slideId-1]
 
   if (content.type === "image") {
     return (
-      <div>
-        <img src={content.url} className={`iguana ${classes.img}`} />
-        <ControlButtons
-          width="120px"
+      <div className={classes.container}>
+        {/* <div className={classes.wrapper}> */}
+        <div className={classes.imgContainer} />
+        <img src={content.url} className={classes.img} />
+        {/* </div> */}
+        <ControlButtons width="120px"
           bottom="5%"
           left="0%"
           right="0%"
           hasPrev={slideId !== 1}
           hasNext={slideId < props.data.length}
           nextSlide={nextSlide}
-          prevSlide={prevSlide}
-        />
+          prevSlide={prevSlide} 
+          />
            {props.children}
       </div>
     );
@@ -203,7 +204,7 @@ const content = props.data[slideId-1]
   } else if (content.type === "360_video") {
     return (
       <>
-        <IframeComponent src={content.url} />
+        <Iframe src={content.url} />
         <ControlButtons
           width="120px"
           bottom="5%"
@@ -217,8 +218,7 @@ const content = props.data[slideId-1]
         {props.children}
       </>
     );
-  } 
-  else {
+  } else {
     return (
     <>
       <div style={{display: "flex", alignItems: "center", justifyContent: "center", width: "100vw", height: "80vh" }}><h1>THIS SLIDE HASN'T BEEN CREATED YET</h1></div>
