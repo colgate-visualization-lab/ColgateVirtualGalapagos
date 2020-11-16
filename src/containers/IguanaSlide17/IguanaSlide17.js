@@ -5,11 +5,12 @@ import GeneMutationsTab from "../../components/GeneMutationsTab";
 import classes from "./IguanaSlide17.css";
 
 export const IguanaSlide17 = ({ content }) => {
-  const [selectedGene, setSelectedGene] = useState("");
-  const [geneMutations, setGeneMutations] = useState([
-    "Scale Color Gene",
-    "Tail Shape Gene",
-  ]);
+  const [selectedGene, setSelectedGene] = useState();
+  const [geneMutations, setGeneMutations] = useState(content.geneMutations);
+
+  const handleOnClick = (selectedGene) => {
+    setSelectedGene(selectedGene);
+  };
 
   return (
     <div className={classes.container}>
@@ -21,13 +22,16 @@ export const IguanaSlide17 = ({ content }) => {
       </div>
       <div style={{ alignSelf: "start" }}>
         <GeneMutationsTextbox
-          geneDescription={
-            selectedGene ? content.geneDescriptions[selectedGene] : ""
-          }
+          geneDescription={selectedGene ? selectedGene.description : ""}
         />
       </div>
       <div>
-        <GeneMutationsTab geneMutations={geneMutations} />
+        <GeneMutationsTab
+          geneMutations={geneMutations}
+          onClick={(selectedGene) => {
+            handleOnClick(selectedGene);
+          }}
+        />
       </div>
     </div>
   );
