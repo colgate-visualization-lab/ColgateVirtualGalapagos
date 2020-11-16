@@ -9,8 +9,8 @@ import data from "../../components/IguanaData/IguanaData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 import IguanaSlide3 from "../IguanaSlide3/IguanaSlide3";
 import IguanaSlide8 from "../../components/IguanaSlide8/IguanaSlide8";
-// import DnaInteractiveActivity from "../DnaInteractiveActivity";
 import DnaCanvas from "../../components/DnaCanvas";
+import IguanaSlide17 from "../IguanaSlide17";
 
 function MainContent(props) {
   // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
@@ -139,8 +139,7 @@ function MainContent(props) {
   } else if (content.type === "dnaInteractiveActivity") {
     return (
       <>
-        <h1>This slide</h1>
-        <DnaCanvas />
+        <IguanaSlide17 />
         {/* <ControlButtons
           width="120px"
           bottom="5%"
