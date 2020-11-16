@@ -139,7 +139,7 @@ function MainContent(props) {
   } else if (content.type === "dnaInteractiveActivity") {
     return (
       <>
-        <IguanaSlide17 />
+        <IguanaSlide17 content={content} />
         {/* <ControlButtons
           width="120px"
           bottom="5%"
