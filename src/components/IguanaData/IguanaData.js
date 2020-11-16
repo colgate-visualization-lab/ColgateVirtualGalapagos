@@ -124,6 +124,21 @@ const slide15Data = {
   ],
 }
 
+//data for slide 17 - these are gene mutation descriptions
+const geneMutations = {
+  scaleColorGene: {
+    id: "scaleColorGene",
+    name: "Scale Color Gene",
+    description: "This is responsible for color of the scales...",
+  },
+  tailShapeGene: {
+    id: "tailShapeGene",
+    name: "Tail Shape Gene",
+    description:
+      "The shape of the tail of marine iguanas is different than that of green iguanas...",
+  },
+};
+
 const data = [
   {
     id: "1",
@@ -259,11 +274,7 @@ const data = [
     id: "17",
     title: "Iguana_Evolution05",
     type: "dnaInteractiveActivity",
-    geneDescriptions: {
-      scaleColorGene: "This is responsible for color of the scales...",
-      tailShapeGene:
-        "The shape of the tail of marine iguanas is different than that of green iguanas...",
-    },
+    geneMutations,
     // not_done: true,
   },
   {
