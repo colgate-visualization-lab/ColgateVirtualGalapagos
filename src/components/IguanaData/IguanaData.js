@@ -258,7 +258,8 @@ const data = [
   {
     id: "17",
     title: "Iguana_Evolution05",
-    not_done: true,
+    type: "dnaInteractiveActivity",
+    // not_done: true,
   },
   {
     id: "18",

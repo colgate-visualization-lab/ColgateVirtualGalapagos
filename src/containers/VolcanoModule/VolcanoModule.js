@@ -32,8 +32,8 @@ class VolcanoeModule extends Component {
     this.randomRef = React.createRef();
     this.yoloRef = React.createRef();
     this.state = {
-      slideIndex: 21,
-      progressIndex: 21,
+      slideIndex: 1,
+      progressIndex: 1,
       optional1: false,
       optional2: false,
       optional2Next: false,
