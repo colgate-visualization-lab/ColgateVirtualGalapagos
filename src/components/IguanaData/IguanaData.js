@@ -259,6 +259,11 @@ const data = [
     id: "17",
     title: "Iguana_Evolution05",
     type: "dnaInteractiveActivity",
+    geneDescriptions: {
+      scaleColorGene: "This is responsible for color of the scales...",
+      tailShapeGene:
+        "The shape of the tail of marine iguanas is different than that of green iguanas...",
+    },
     // not_done: true,
   },
   {
