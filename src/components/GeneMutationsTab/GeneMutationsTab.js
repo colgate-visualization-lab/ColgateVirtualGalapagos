@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import classes from "./GeneMutationsTab.css";
 
-const GeneMutationsTab = ({ geneMutations }) => {
+const GeneMutationsTab = ({ geneMutations, onClick }) => {
+  useEffect(() => {
+    console.log(geneMutations);
+  });
   return (
     <>
-      {geneMutations.map((mutation, index) => (
-        <button key={index} type="button" className={classes.button}>
-          {mutation}
+      {Object.keys(geneMutations).map((mutation) => (
+        <button
+          onClick={() => {
+            onClick(geneMutations[mutation]);
+          }}
+          key={geneMutations[mutation].id}
+          type="button"
+          className={classes.button}
+        >
+          {geneMutations[mutation].name}
         </button>
       ))}
     </>
