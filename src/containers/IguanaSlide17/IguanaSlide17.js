@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-import GeneTextbox from "../../components/GeneTextbox";
+import GeneMutationsTextbox from "../../components/GeneMutationsTextbox";
+import GeneMutationsTab from "../../components/GeneMutationsTab";
 import classes from "./IguanaSlide17.css";
 
 export const IguanaSlide17 = ({ content }) => {
@@ -13,9 +14,13 @@ export const IguanaSlide17 = ({ content }) => {
       </div>
       <div className={classes.dummyDnaDiv}>11234dsfgdsfgfd</div>
       <div style={{ alignSelf: "start" }}>
-        <GeneTextbox geneDescription={content.geneDescriptions[selectedGene]} />
+        <GeneMutationsTextbox
+          geneDescription={content.geneDescriptions[selectedGene]}
+        />
       </div>
-      <div>11234dsfgdsfgfd</div>
+      <div>
+        <GeneMutationsTab />
+      </div>
     </div>
   );
 };
