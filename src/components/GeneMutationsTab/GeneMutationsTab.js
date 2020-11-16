@@ -1,7 +1,17 @@
 import React from "react";
 
-const GeneMutationsTab = ({}) => {
-  return <h1>This is the selected genes tab</h1>;
+import classes from "./GeneMutationsTab.css";
+
+const GeneMutationsTab = ({ geneMutations }) => {
+  return (
+    <>
+      {geneMutations.map((mutation, index) => (
+        <button key={index} type="button" className={classes.button}>
+          {mutation}
+        </button>
+      ))}
+    </>
+  );
 };
 
 export default GeneMutationsTab;
