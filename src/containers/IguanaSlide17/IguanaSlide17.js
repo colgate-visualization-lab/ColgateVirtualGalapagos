@@ -3,7 +3,7 @@ import React from "react";
 import GeneTextbox from "../../components/GeneTextbox";
 import classes from "./IguanaSlide17.css";
 
-export const IguanaSlide17 = () => {
+export const IguanaSlide17 = ({ content }) => {
   return (
     <div className={classes.container}>
       <div>
@@ -11,7 +11,7 @@ export const IguanaSlide17 = () => {
       </div>
       <div className={classes.dummyDnaDiv}>11234dsfgdsfgfd</div>
       <div>
-        <GeneTextbox />
+        <GeneTextbox geneDescription="This is a gene descriptor" />
       </div>
       <div>11234dsfgdsfgfd</div>
     </div>
