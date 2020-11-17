@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const GeneMutationsTextbox = ({ geneDescription }) => {
-  return <h1>{geneDescription}</h1>;
+  useEffect(() => {
+    console.log(geneDescription);
+  });
+  return <h2>{geneDescription}</h2>;
 };
 
 export default GeneMutationsTextbox;
