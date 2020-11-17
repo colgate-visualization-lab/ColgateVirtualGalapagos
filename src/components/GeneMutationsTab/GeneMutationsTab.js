@@ -11,7 +11,7 @@ const GeneMutationsTab = ({ geneMutations, onClick }) => {
       {Object.keys(geneMutations).map((mutation) => (
         <button
           onClick={() => {
-            onClick(geneMutations[mutation]);
+            onClick(mutation);
           }}
           key={geneMutations[mutation].id}
           type="button"

@@ -129,13 +129,32 @@ const geneMutations = {
   scaleColorGene: {
     id: "scaleColorGene",
     name: "Scale Color Gene",
-    description: "This is responsible for color of the scales...",
+    description:
+      "Marine iguanas have black scales, while green iguanas have bright green scales",
   },
   tailShapeGene: {
     id: "tailShapeGene",
     name: "Tail Shape Gene",
     description:
-      "The shape of the tail of marine iguanas is different than that of green iguanas...",
+      "Marine iguanas have flatter tails than green iguanas, which helps them swim more efficiently",
+  },
+  saltSpoutGene: {
+    id: "saltSpoutGene",
+    name: "Salt Spout Gene",
+    description:
+      "Marine iguanas have a salt spout on their head to get rid of excess salt that has accumulated in their bodies after swimming in the ocean",
+  },
+  faceShapeGene: {
+    id: "faceShapeGene",
+    name: "Face Shape Gene",
+    description:
+      "Marine iguanas have flatter faces than green iguanas, which allows them to scrape algae and vegetation off of rocks",
+  },
+  backSpikesGene: {
+    id: "backSpikesGene",
+    name: "Back Spikes Gene",
+    description:
+      "The marine iguanas have back spikes which shrink or grow in proportion to how much food is available. This helps them conserve energy when food is scarce",
   },
 };
 

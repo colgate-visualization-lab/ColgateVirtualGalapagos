@@ -11,6 +11,11 @@ export const IguanaSlide17 = ({ content }) => {
 
   const handleOnClick = (selectedGene) => {
     setSelectedGene(selectedGene);
+    geneMutations[selectedGene] = content.geneMutations[selectedGene];
+  };
+
+  const handleOnTabClick = (selectedGene) => {
+    setSelectedGene(selectedGene);
   };
 
   return (
@@ -19,19 +24,21 @@ export const IguanaSlide17 = ({ content }) => {
         <h1>Find the Mutation!</h1>
       </div>
       <div className={classes.dummyDnaDiv}>
-        <DnaMock />
+        <DnaMock onClick={handleOnClick} />
       </div>
       <div style={{ alignSelf: "start" }}>
         <GeneMutationsTextbox
           className={classes.mutationsTextboxDiv}
-          geneDescription={selectedGene ? selectedGene.description : ""}
+          geneDescription={
+            selectedGene ? geneMutations[selectedGene].description : ""
+          }
         />
       </div>
       <div>
         <GeneMutationsTab
           className={classes.mutationsTabDiv}
           geneMutations={geneMutations}
-          onClick={handleOnClick}
+          onClick={handleOnTabClick}
         />
       </div>
     </div>
