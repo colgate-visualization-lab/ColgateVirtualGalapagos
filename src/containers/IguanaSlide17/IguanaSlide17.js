@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 
 import GeneMutationsTextbox from "../../components/GeneMutationsTextbox";
 import GeneMutationsTab from "../../components/GeneMutationsTab";
+import DnaMock from "../../components/DnaMock";
 import classes from "./IguanaSlide17.css";
 
 export const IguanaSlide17 = ({ content }) => {
   const [selectedGene, setSelectedGene] = useState();
-  const [geneMutations, setGeneMutations] = useState(content.geneMutations);
+  const [geneMutations, setGeneMutations] = useState({});
 
   const handleOnClick = (selectedGene) => {
     setSelectedGene(selectedGene);
@@ -18,19 +19,19 @@ export const IguanaSlide17 = ({ content }) => {
         <h1>Find the Mutation!</h1>
       </div>
       <div className={classes.dummyDnaDiv}>
-        Placeholder for the DNA component
+        <DnaMock />
       </div>
       <div style={{ alignSelf: "start" }}>
         <GeneMutationsTextbox
+          className={classes.mutationsTextboxDiv}
           geneDescription={selectedGene ? selectedGene.description : ""}
         />
       </div>
       <div>
         <GeneMutationsTab
+          className={classes.mutationsTabDiv}
           geneMutations={geneMutations}
-          onClick={(selectedGene) => {
-            handleOnClick(selectedGene);
-          }}
+          onClick={handleOnClick}
         />
       </div>
     </div>
