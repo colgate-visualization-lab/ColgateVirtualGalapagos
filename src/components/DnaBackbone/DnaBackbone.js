@@ -1,6 +1,6 @@
 import React from "react";
 
-import DnaBackbonePiece from "../DnaBackbonePiece";
+import DnaBackbonePiece from "./DnaBackbonePiece";
 
 const DnaBackbone = ({ numGroups }) => {
   let xTranslateDistances = [];
