@@ -1,12 +1,19 @@
 import React from "react";
 
-const DnaBackbonePiece = ({}) => {
+const DnaBackbonePiece = ({ xTranslateDistance }) => {
   const dnaBackboneClass = {
     fill: "#333",
   };
+
+  console.log(xTranslateDistance);
+
   return (
     <svg xmlns="http://www.w3.org/2000/svg">
-      <g id="helixBorder1" data-name="helixBorder">
+      <g
+        id="helixBorder1"
+        data-name="helixBorder"
+        transform={`translate(${xTranslateDistance})`}
+      >
         <path
           style={dnaBackboneClass}
           d="M 0,29.7
