@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import GeneMutationsTextbox from "../../components/GeneMutationsTextbox";
 import GeneMutationsTab from "../../components/GeneMutationsTab";
 import DnaMock from "../../components/DnaMock";
+import DnaInteractiveActivity from "../DnaInteractiveActivity";
 import classes from "./IguanaSlide17.css";
 
 export const IguanaSlide17 = ({ content }) => {
@@ -25,6 +26,7 @@ export const IguanaSlide17 = ({ content }) => {
       </div>
       <div className={classes.dummyDnaDiv}>
         <DnaMock onClick={handleOnClick} />
+        <DnaInteractiveActivity />
       </div>
       <div style={{ alignSelf: "start" }}>
         <GeneMutationsTextbox
