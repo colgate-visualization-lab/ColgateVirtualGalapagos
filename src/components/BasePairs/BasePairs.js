@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import BasePairGroup from "./BasePairGroup";
 import { BASE_PAIRS as basePairs } from "./constants";
@@ -12,11 +12,15 @@ const BasePairs = ({ classes, numGroups }) => {
     basePairTranslateDist.push(x * 43.17);
   }
 
+  // useEffect(() => {
+  //   console.log(basePairs);
+  // });
+
   return (
     <g id="basePairs">
       {basePairTranslateDist.map((distance, index) => (
         <BasePairGroup
-          basePairs={basePairs}
+          basePairs={basePairs[index]}
           classes={classes}
           key={index}
           xTranslateDistance={distance}
