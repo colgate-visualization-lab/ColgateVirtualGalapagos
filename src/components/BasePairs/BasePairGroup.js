@@ -3,7 +3,7 @@ import BasePairs from "./BasePairs";
 
 const BasePairGroup = ({ xTranslateDistance, classes }) => {
   return (
-    <g id="basePairs" transform={`translate(${xTranslateDistance})`}>
+    <g id="basePairGroup" transform={`translate(${xTranslateDistance})`}>
       {/* <BasePair
           id="rightBottom"
           pairClass={classes.cls1}
