@@ -16,12 +16,14 @@ const DnaInteractiveActivity = () => {
     pair2Color2: "#754c24",
   };
 
+  const numGroups = 6;
+
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 302.32 32.56">
       <title>dna_extended</title>
       <g id="dna">
-        <DnaBackbone numGroups={7} />
-        <BasePairs classes={classes} />
+        <DnaBackbone numGroups={numGroups + 1} />
+        <BasePairs classes={classes} numGroups={numGroups} />
       </g>
     </svg>
   );
