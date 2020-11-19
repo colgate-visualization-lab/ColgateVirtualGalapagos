@@ -18,11 +18,24 @@
   fill: #333;
 }
 
-.dnaDiv {
+.geneContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  width: auto;
-  margin: 10px, auto;
+  justify-content: space-around;
+  width: 100%;
+  margin: 10px;
+  min-width: 600px;
+}
+
+.geneSvg {
+  width: 1000px;
+  height: 115.34px;
+  align-self: flex-end;
+}
+
+.geneLabel {
+  flex-basis: 5%;
+  font-size: 1.4rem;
+  padding-right: 20px;
 }
