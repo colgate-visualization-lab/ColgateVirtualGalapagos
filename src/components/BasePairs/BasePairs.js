@@ -12,9 +12,14 @@ const BasePairs = ({ classes, numGroups }) => {
   }
 
   return (
-    <g id="dna_extended">
-      <BasePairGroup xTranslateDistance={0} classes={classes} />
-      <BasePairGroup xTranslateDistance={43.17} classes={classes} />
+    <g id="basePairs">
+      {basePairTranslateDist.map((distance, index) => (
+        <BasePairGroup
+          classes={classes}
+          key={index}
+          xTranslateDistance={distance}
+        />
+      ))}
       {/* <g id="nucleotides">
         <BasePair
           id="rightBottom"
@@ -198,7 +203,7 @@ const BasePairs = ({ classes, numGroups }) => {
           height="4.83"
         />
       </g> */}
-      <g id="nucleotides-3" data-name="nucleotides">
+      {/* <g id="nucleotides-3" data-name="nucleotides">
         <rect
           id="rightBottom-3"
           data-name="rightBottom"
@@ -566,6 +571,7 @@ const BasePairs = ({ classes, numGroups }) => {
           height="4.83"
         />
       </g>
+     */}
     </g>
   );
 };
