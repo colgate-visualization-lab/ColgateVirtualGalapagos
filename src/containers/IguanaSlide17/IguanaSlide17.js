@@ -4,6 +4,7 @@ import GeneMutationsTextbox from "../../components/GeneMutationsTextbox";
 import GeneMutationsTab from "../../components/GeneMutationsTab";
 import DnaMock from "../../components/DnaMock";
 import DnaInteractiveActivity from "../DnaInteractiveActivity";
+import DnaCanvas from "../../components/DnaCanvas";
 import classes from "./IguanaSlide17.css";
 
 export const IguanaSlide17 = ({ content }) => {
@@ -24,9 +25,12 @@ export const IguanaSlide17 = ({ content }) => {
       <div>
         <h1>Find the Mutation!</h1>
       </div>
-      <div className={classes.dummyDnaDiv}>
+      <div className={classes.dnaDiv}>
         <DnaMock onClick={handleOnClick} />
-        <DnaInteractiveActivity />
+        <div className={classes.dnaActivity}>
+          <DnaInteractiveActivity label="Green Iguana" />
+          <DnaInteractiveActivity label="Marine Iguana" />
+        </div>
       </div>
       <div style={{ alignSelf: "start" }}>
         <GeneMutationsTextbox

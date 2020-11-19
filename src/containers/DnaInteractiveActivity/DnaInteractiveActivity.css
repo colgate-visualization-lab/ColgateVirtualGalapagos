@@ -17,3 +17,12 @@
 .cls5 {
   fill: #333;
 }
+
+.dnaDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  margin: 10px, auto;
+}
