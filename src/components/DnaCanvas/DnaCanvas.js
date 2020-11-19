@@ -3,29 +3,22 @@ import DnaInteractiveActivity from "../../containers/DnaInteractiveActivity";
 
 const DnaCanvas = () => {
   const style = {
-    // border: "1px solid white",
-    // fill: "white",
+    border: "1px solid white",
+    fill: "white",
   };
-
-  // const viewBox = [
-  //   window.innerWidth / -2,
-  //   window.innerHeight / -2,
-  //   window.innerWidth,
-  //   window.innerHeight,
-  // ];
-
-  const viewBox = [0, 0, 1000, 600];
+  // const viewBox = [0, 0, 250, 150];
 
   return (
     <svg
       id="dna-canvas"
-      preserveAspectRatio="xMaxYMax none"
+      preserveAspectRatio="xMidYMid meet"
       style={style}
       width="1000"
-      height="600"
-      viewBox={viewBox}
+      height="400"
+      // viewBox={viewBox}
     >
-      <DnaInteractiveActivity />
+      <DnaInteractiveActivity yTranslateDistance={-25} label="Green Iguana" />
+      <DnaInteractiveActivity yTranslateDistance={25} label="Marine Iguana" />
     </svg>
   );
 };
