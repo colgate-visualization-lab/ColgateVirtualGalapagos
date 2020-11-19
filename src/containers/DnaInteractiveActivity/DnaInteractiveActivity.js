@@ -25,23 +25,18 @@ const DnaInteractiveActivity = ({ label }) => {
   const numGroups = 6;
 
   const viewBox = [10, 0, 282.32, 32.56];
-  const viewBox2 = [10, 0, 846.96, 97.68];
 
   return (
-    <div className={classes.dnaDiv}>
-      <h2
-        style={{ flexBasis: "10%", fontSize: "1.4rem", paddingRight: "20px" }}
-      >
-        {label}
-      </h2>
-      <div style={{ minWidth: "400px" }}>
+    <div className={classes.geneContainer}>
+      <p className={classes.geneLabel}>{label}</p>
+      <div className={classes.geneSvg}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox={viewBox}
           // style={svgStyle}
           preserveAspectRatio="xMidYMid meet"
-          width="1000"
-          height="115.34"
+          width="100%"
+          height="100%"
         >
           <g
             id="dna"

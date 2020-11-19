@@ -22,27 +22,25 @@ export const IguanaSlide17 = ({ content }) => {
 
   return (
     <div className={classes.container}>
-      <div>
-        <h1>Find the Mutation!</h1>
+      <div className={classes.slideTitle}>
+        <p>Find the Mutation!</p>
       </div>
-      <div className={classes.dnaDiv}>
-        <DnaMock onClick={handleOnClick} />
+      <div className={classes.dna}>
+        {/* <DnaMock onClick={handleOnClick} /> */}
         <div className={classes.dnaActivity}>
           <DnaInteractiveActivity label="Green Iguana" />
           <DnaInteractiveActivity label="Marine Iguana" />
         </div>
       </div>
-      <div style={{ alignSelf: "start" }}>
+      <div className={classes.mutationsTextbox}>
         <GeneMutationsTextbox
-          className={classes.mutationsTextboxDiv}
           geneDescription={
             selectedGene ? geneMutations[selectedGene].description : ""
           }
         />
       </div>
-      <div>
+      <div className={classes.mutationsTab}>
         <GeneMutationsTab
-          className={classes.mutationsTabDiv}
           geneMutations={geneMutations}
           onClick={handleOnTabClick}
         />
