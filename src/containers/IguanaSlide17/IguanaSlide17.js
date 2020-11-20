@@ -12,6 +12,7 @@ export const IguanaSlide17 = ({ content }) => {
   const [geneMutations, setGeneMutations] = useState({});
 
   const handleOnClick = (selectedGene) => {
+    console.log(selectedGene);
     setSelectedGene(selectedGene);
     geneMutations[selectedGene] = content.geneMutations[selectedGene];
   };
@@ -20,16 +21,28 @@ export const IguanaSlide17 = ({ content }) => {
     setSelectedGene(selectedGene);
   };
 
+  const handleOnBasePairClick = (geneIndex) => {
+    console.log(geneIndex);
+  };
+
   return (
     <div className={classes.container}>
       <div className={classes.slideTitle}>
         <p>Find the Mutation!</p>
       </div>
       <div className={classes.dna}>
-        {/* <DnaMock onClick={handleOnClick} /> */}
-        <div className={classes.dnaActivity}>
+        <DnaMock onClick={handleOnClick} />
+        <div
+          className={classes.dnaActivity}
+          onClick={(e) => {
+            console.log(e.target.ddd);
+          }}
+        >
           <DnaInteractiveActivity label="Green Iguana" />
-          <DnaInteractiveActivity label="Marine Iguana" />
+          <DnaInteractiveActivity
+            label="Marine Iguana"
+            onClick={handleOnBasePairClick}
+          />
         </div>
       </div>
       <div className={classes.mutationsTextbox}>

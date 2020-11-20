@@ -3,9 +3,9 @@ import React, { useEffect } from "react";
 import classes from "./GeneMutationsTab.css";
 
 const GeneMutationsTab = ({ geneMutations, onClick }) => {
-  useEffect(() => {
-    console.log(geneMutations);
-  });
+  // useEffect(() => {
+  //   console.log(geneMutations);
+  // });
   return (
     <>
       {Object.keys(geneMutations).map((mutation) => (
