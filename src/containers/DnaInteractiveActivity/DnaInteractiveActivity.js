@@ -4,7 +4,7 @@ import DnaBackbone from "../../components/DnaBackbone";
 import BasePairs from "../../components/BasePairs";
 import classes from "./DnaInteractiveActivity.css";
 
-const DnaInteractiveActivity = ({ label }) => {
+const DnaInteractiveActivity = ({ label, onClick }) => {
   const spBackboneStyle = {
     fill: "#f7931e",
     border: "1px solid white",
@@ -43,7 +43,11 @@ const DnaInteractiveActivity = ({ label }) => {
             // transform={`translate(0,${yTranslateDistance})`}
           >
             <DnaBackbone numGroups={numGroups + 1} />
-            <BasePairs classes={classes} numGroups={numGroups} />
+            <BasePairs
+              classes={classes}
+              numGroups={numGroups}
+              onClick={onClick}
+            />
           </g>
         </svg>
       </div>

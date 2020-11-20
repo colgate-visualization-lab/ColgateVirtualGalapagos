@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 
 import BasePairGroup from "./BasePairGroup";
-import { BASE_PAIRS as basePairs } from "./constants";
+import { basePair1, basePair2 } from "./constants";
 
-const BasePairs = ({ classes, numGroups }) => {
+const BasePairs = ({ classes, numGroups, onClick }) => {
   // 22.09
 
   const basePairTranslateDist = [];
@@ -20,10 +20,12 @@ const BasePairs = ({ classes, numGroups }) => {
     <g id="basePairs">
       {basePairTranslateDist.map((distance, index) => (
         <BasePairGroup
-          basePairs={basePairs[index]}
+          basePairs={basePair1}
+          group={index}
           classes={classes}
           key={index}
           xTranslateDistance={distance}
+          onClick={onClick}
         />
       ))}
     </g>
