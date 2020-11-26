@@ -5,7 +5,7 @@ import BasePairs from "../../components/BasePairs";
 import { basePair1, basePair2 } from "../IguanaSlide17/constants";
 import classes from "./DnaInteractiveActivity.css";
 
-const DnaInteractiveActivity = ({ label, onClick, basePairs }) => {
+const DnaInteractiveActivity = ({ label, basePairs }) => {
   const spBackboneStyle = {
     fill: "#f7931e",
     border: "1px solid white",
@@ -47,7 +47,6 @@ const DnaInteractiveActivity = ({ label, onClick, basePairs }) => {
             <BasePairs
               classes={classes}
               numGroups={numGroups}
-              onClick={onClick}
               basePairs={basePairs}
             />
           </g>

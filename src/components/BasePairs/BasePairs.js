@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import BasePairGroup from "./BasePairGroup";
 
-const BasePairs = ({ classes, numGroups, onClick, basePairs }) => {
+const BasePairs = ({ classes, numGroups, basePairs }) => {
   // 22.09
 
   const basePairTranslateDist = [];
@@ -24,7 +24,6 @@ const BasePairs = ({ classes, numGroups, onClick, basePairs }) => {
           classes={classes}
           key={index}
           xTranslateDistance={distance}
-          onClick={onClick}
         />
       ))}
     </g>

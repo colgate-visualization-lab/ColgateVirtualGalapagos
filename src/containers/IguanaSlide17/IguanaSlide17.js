@@ -5,7 +5,7 @@ import GeneMutationsTab from "../../components/GeneMutationsTab";
 import DnaMock from "../../components/DnaMock";
 import DnaInteractiveActivity from "../DnaInteractiveActivity";
 import { basePair1, basePair2 } from "./constants";
-import DnaCanvas from "../../components/DnaCanvas";
+import { OnBaseClickContext } from "./";
 import classes from "./IguanaSlide17.css";
 
 export const IguanaSlide17 = ({ content }) => {
@@ -22,7 +22,7 @@ export const IguanaSlide17 = ({ content }) => {
     setSelectedGene(selectedGene);
   };
 
-  const handleOnBasePairClick = (geneIndex) => {
+  const handleOnBaseClick = (geneIndex) => {
     const isMutation =
       basePair2[geneIndex] !== basePair1[geneIndex] ? true : false;
     console.log(isMutation);
@@ -36,12 +36,16 @@ export const IguanaSlide17 = ({ content }) => {
       <div className={classes.dna}>
         <DnaMock onClick={handleOnClick} />
         <div className={classes.dnaActivity}>
-          <DnaInteractiveActivity label="Green Iguana" basePairs={basePair1} />
-          <DnaInteractiveActivity
-            label="Marine Iguana"
-            onClick={handleOnBasePairClick}
-            basePairs={basePair2}
-          />
+          <OnBaseClickContext.Provider value={{ handleOnBaseClick }}>
+            <DnaInteractiveActivity
+              label="Green Iguana"
+              basePairs={basePair1}
+            />
+            <DnaInteractiveActivity
+              label="Marine Iguana"
+              basePairs={basePair2}
+            />
+          </OnBaseClickContext.Provider>
         </div>
       </div>
       <div className={classes.mutationsTextbox}>
