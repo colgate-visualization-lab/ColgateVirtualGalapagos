@@ -1,8 +1,8 @@
 import React from "react";
 
 import DnaBackbone from "../../components/DnaBackbone";
-import BasePairs from "../../components/BasePairs";
-import { basePair1, basePair2 } from "../IguanaSlide17/constants";
+import DnaSequence from "../../components/DnaSequence";
+// import { basePair1, basePair2 } from "../IguanaSlide17/constants";
 import classes from "./Dna.css";
 
 const Dna = ({ label, basePairs }) => {
@@ -32,7 +32,7 @@ const Dna = ({ label, basePairs }) => {
             // transform={`translate(0,${yTranslateDistance})`}
           >
             <DnaBackbone numGroups={numGroups + 1} />
-            <BasePairs
+            <DnaSequence
               classes={classes}
               numGroups={numGroups}
               basePairs={basePairs}
