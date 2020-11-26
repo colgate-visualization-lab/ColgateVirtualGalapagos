@@ -1,8 +1,8 @@
 export const BASE = {
-  ADENINE: { name: "adenine", color: "#601A4A", complement: "#EE442F" },
-  THYMINE: { name: "thymine", color: "#EE442F", complement: "#601A4A" },
-  GUANINE: { name: "guanine", color: "#63ACBE", complement: "#F9F4EC" },
-  CYTOSINE: { name: "cytosine", color: "#F9F4EC", complement: "#63ACBE" },
+  ADENINE: { name: "adenine", color: 1, complement: 2 },
+  THYMINE: { name: "thymine", color: 2, complement: 1 },
+  GUANINE: { name: "guanine", color: 3, complement: 4 },
+  CYTOSINE: { name: "cytosine", color: 4, complement: 3 },
 };
 
 // specify only top half of the base pair, in groups of 5
@@ -18,7 +18,7 @@ export const basePair1 = [
 
 //prettier-ignore
 export const basePair2 = [
-    BASE.ADENINE, BASE.THYMINE, BASE.GUANINE, BASE.ADENINE, BASE.CYTOSINE,
+    BASE.CYTOSINE, BASE.THYMINE, BASE.GUANINE, BASE.ADENINE, BASE.CYTOSINE,
     BASE.CYTOSINE, BASE.CYTOSINE, BASE.GUANINE, BASE.ADENINE, BASE.GUANINE,
     BASE.ADENINE, BASE.THYMINE, BASE.GUANINE, BASE.ADENINE, BASE.CYTOSINE,
     BASE.ADENINE, BASE.THYMINE, BASE.GUANINE, BASE.ADENINE, BASE.CYTOSINE,
