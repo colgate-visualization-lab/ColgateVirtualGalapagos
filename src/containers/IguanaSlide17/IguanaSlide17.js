@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import GeneMutationsTextbox from "../../components/GeneMutationsTextbox";
 import GeneMutationsTab from "../../components/GeneMutationsTab";
-import DnaMock from "../../components/DnaMock";
+// import DnaMock from "../../components/DnaMock";
 import Dna from "../Dna";
 import { basePair1, basePair2, mutations } from "./constants";
 import { OnBaseClickContext } from "./";
@@ -12,11 +12,11 @@ export const IguanaSlide17 = ({ content }) => {
   const [selectedGene, setSelectedGene] = useState();
   const [geneMutations, setGeneMutations] = useState({});
 
-  const handleOnClick = (selectedGeneX) => {
-    console.log(selectedGeneX, content.geneMutations[selectedGeneX]);
-    setGeneMutations({ selectedGeneX: content.geneMutations[selectedGeneX] });
-    setSelectedGene(selectedGeneX);
-  };
+  // const handleOnClick = (selectedGeneX) => {
+  //   console.log(selectedGeneX, content.geneMutations[selectedGeneX]);
+  //   setGeneMutations({ selectedGeneX: content.geneMutations[selectedGeneX] });
+  //   setSelectedGene(selectedGeneX);
+  // };
 
   const handleOnTabClick = (selectedGene) => {
     setSelectedGene(selectedGene);
