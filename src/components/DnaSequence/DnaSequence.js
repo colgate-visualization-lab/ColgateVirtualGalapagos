@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import BasePairGroup from "./BasePairGroup";
+import GroupOfFiveBasePairs from "./GroupOfFiveBasePairs";
 
 const BasePairs = ({ classes, numGroups, basePairs }) => {
   // 22.09
@@ -21,7 +21,7 @@ const BasePairs = ({ classes, numGroups, basePairs }) => {
   return (
     <g id="basePairs">
       {basePairTranslateDist.map((distance, index) => (
-        <BasePairGroup
+        <GroupOfFiveBasePairs
           basePairs={basePairs}
           group={index}
           classes={classes}
