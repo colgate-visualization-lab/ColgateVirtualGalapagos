@@ -1,4 +1,4 @@
 import DnaCanvas from "../../components/DnaCanvas";
-import DnaInteractiveActivity from "./DnaInteractiveActivity";
+import Dna from "./Dna";
 
-export default DnaInteractiveActivity;
+export default Dna;

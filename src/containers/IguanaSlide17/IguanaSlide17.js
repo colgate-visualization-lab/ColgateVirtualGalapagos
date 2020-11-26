@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import GeneMutationsTextbox from "../../components/GeneMutationsTextbox";
 import GeneMutationsTab from "../../components/GeneMutationsTab";
 import DnaMock from "../../components/DnaMock";
-import DnaInteractiveActivity from "../DnaInteractiveActivity";
+import Dna from "../Dna";
 import { basePair1, basePair2, mutations } from "./constants";
 import { OnBaseClickContext } from "./";
 import classes from "./IguanaSlide17.css";
@@ -44,24 +44,17 @@ export const IguanaSlide17 = ({ content }) => {
         <p>Find the Mutation!</p>
       </div>
       <div className={classes.dna}>
-        <DnaMock onClick={handleOnClick} />
+        {/* <DnaMock onClick={handleOnClick} /> */}
         <div className={classes.dnaActivity}>
           <OnBaseClickContext.Provider value={{ handleOnBaseClick }}>
-            <DnaInteractiveActivity
-              label="Green Iguana"
-              basePairs={basePair1}
-            />
-            <DnaInteractiveActivity
-              label="Marine Iguana"
-              basePairs={basePair2}
-            />
+            <Dna label="Green Iguana" basePairs={basePair1} />
+            <Dna label="Marine Iguana" basePairs={basePair2} />
           </OnBaseClickContext.Provider>
         </div>
       </div>
       <div className={classes.mutationsTextbox}>
         <GeneMutationsTextbox
           geneDescription={
-            // ""
             selectedGene ? geneMutations[selectedGene].description : ""
           }
         />
