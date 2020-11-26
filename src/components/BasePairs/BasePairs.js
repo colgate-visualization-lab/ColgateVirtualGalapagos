@@ -7,9 +7,12 @@ const BasePairs = ({ classes, numGroups, basePairs }) => {
 
   const basePairTranslateDist = [];
 
-  for (let x = 0; x < numGroups; x++) {
-    basePairTranslateDist.push(x * 43.17);
-  }
+  const createBasePairTranslationDistances = () => {
+    for (let x = 0; x < numGroups; x++) {
+      basePairTranslateDist.push(x * 43.17);
+    }
+  };
+  createBasePairTranslationDistances();
 
   // useEffect(() => {
   //   console.log(basePairs);
