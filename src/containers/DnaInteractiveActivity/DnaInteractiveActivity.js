@@ -2,9 +2,10 @@ import React from "react";
 
 import DnaBackbone from "../../components/DnaBackbone";
 import BasePairs from "../../components/BasePairs";
+import { basePair1, basePair2 } from "../IguanaSlide17/constants";
 import classes from "./DnaInteractiveActivity.css";
 
-const DnaInteractiveActivity = ({ label, onClick }) => {
+const DnaInteractiveActivity = ({ label, onClick, basePairs }) => {
   const spBackboneStyle = {
     fill: "#f7931e",
     border: "1px solid white",
@@ -47,6 +48,7 @@ const DnaInteractiveActivity = ({ label, onClick }) => {
               classes={classes}
               numGroups={numGroups}
               onClick={onClick}
+              basePairs={basePairs}
             />
           </g>
         </svg>

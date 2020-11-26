@@ -1,0 +1,19 @@
+.basePair:hover {
+  fill-opacity: 0.7;
+}
+
+.base1 {
+  fill: #601a4a;
+}
+
+.base2 {
+  fill: #ee442f;
+}
+
+.base3 {
+  fill: #63acbe;
+}
+
+.base4 {
+  fill: #f9f4ec;
+}
