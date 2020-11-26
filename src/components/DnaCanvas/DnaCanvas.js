@@ -1,5 +1,5 @@
 import React from "react";
-import DnaInteractiveActivity from "../../containers/DnaInteractiveActivity";
+import Dna from "../../containers/Dna";
 
 const DnaCanvas = () => {
   const style = {
@@ -17,8 +17,8 @@ const DnaCanvas = () => {
       height="400"
       // viewBox={viewBox}
     >
-      <DnaInteractiveActivity yTranslateDistance={-25} label="Green Iguana" />
-      <DnaInteractiveActivity yTranslateDistance={25} label="Marine Iguana" />
+      <Dna yTranslateDistance={-25} label="Green Iguana" />
+      <Dna yTranslateDistance={25} label="Marine Iguana" />
     </svg>
   );
 };
