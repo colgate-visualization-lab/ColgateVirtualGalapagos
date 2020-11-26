@@ -4,7 +4,7 @@ import GeneMutationsTextbox from "../../components/GeneMutationsTextbox";
 import GeneMutationsTab from "../../components/GeneMutationsTab";
 import DnaMock from "../../components/DnaMock";
 import DnaInteractiveActivity from "../DnaInteractiveActivity";
-import { basePair1, basePair2 } from "./constants";
+import { basePair1, basePair2, mutations } from "./constants";
 import { OnBaseClickContext } from "./";
 import classes from "./IguanaSlide17.css";
 
@@ -23,9 +23,11 @@ export const IguanaSlide17 = ({ content }) => {
   };
 
   const handleOnBaseClick = (geneIndex) => {
-    const isMutation =
-      basePair2[geneIndex] !== basePair1[geneIndex] ? true : false;
-    console.log(isMutation);
+    if (basePair2[geneIndex] !== basePair1[geneIndex]) {
+      console.log("here");
+    }
+    console.log(geneIndex);
+    // console.log(isMutation);
   };
 
   return (

@@ -6,21 +6,9 @@ import { basePair1, basePair2 } from "../IguanaSlide17/constants";
 import classes from "./DnaInteractiveActivity.css";
 
 const DnaInteractiveActivity = ({ label, basePairs }) => {
-  const spBackboneStyle = {
-    fill: "#f7931e",
-    border: "1px solid white",
-  };
-
   const svgStyle = {
     border: "1px solid white",
     float: "left",
-  };
-
-  const basePairsStyle = {
-    pair1Color1: "#2e3192",
-    pair1Color2: "#8cc63f",
-    pair2Color1: "#93278f",
-    pair2Color2: "#754c24",
   };
 
   const numGroups = 6;
