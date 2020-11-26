@@ -1,32 +1,33 @@
 import React, { useEffect } from "react";
+import classes from "./BasePairs.css";
 
 const BasePairGroup = ({
   xTranslateDistance,
-  classes,
+  // classes,
   basePairs,
   group,
   onClick,
 }) => {
   //prettier-ignore
   const basePairProperties = [
-    { id:"leftTop", x:"31.6", y:"11", width:"3",height:"5", fill:basePairs[group].color},
-    { id:"leftBottom", x:"31.6", y:"17", width:"3",height:"5", fill:basePairs[group].complement},
+    { id:"leftTop", x:"31.6", y:"11", width:"3",height:"5", fillClass:basePairs[group].color},
+    { id:"leftBottom", x:"31.6", y:"17", width:"3",height:"5", fillClass:basePairs[group].complement},
 
-    { id:"midLeftTop", x:"36.6", y:"7", width:"3",height:"9", fill:basePairs[group+1].color},
-    { id:"midLeftBottom", x:"36.6", y:"17", width:"3",height:"9",fill:basePairs[group+1].complement},
+    { id:"midLeftTop", x:"36.6", y:"7", width:"3",height:"9", fillClass:basePairs[group+1].color},
+    { id:"midLeftBottom", x:"36.6", y:"17", width:"3",height:"9",fillClass:basePairs[group+1].complement},
 
-    { id:"midTop", x:"41.6", y:"5", width:"3",height:"11", fill:basePairs[group+2].color},
-    { id:"midBottom", x:"41.6", y:"17", width:"3",height:"11",fill:basePairs[group+2].complement},
+    { id:"midTop", x:"41.6", y:"5", width:"3",height:"11", fillClass:basePairs[group+2].color},
+    { id:"midBottom", x:"41.6", y:"17", width:"3",height:"11",fillClass:basePairs[group+2].complement},
 
-    { id:"midRightTop", x:"46.6", y:"7", width:"3",height:"9", fill:basePairs[group+3].color},
-    { id:"midRightBottom", x:"46.6", y:"17", width:"3",height:"9",fill:basePairs[group+3].complement},
+    { id:"midRightTop", x:"46.6", y:"7", width:"3",height:"9", fillClass:basePairs[group+3].color},
+    { id:"midRightBottom", x:"46.6", y:"17", width:"3",height:"9",fillClass:basePairs[group+3].complement},
 
-    { id:"rightTop", x:"51.6", y:"10.98", width:"3",height:"5", fill:basePairs[group+4].color},
-    { id:"rightBottom", x: "51.6",  y: "17", width: "3",  height: "5",fill:basePairs[group+4].complement},
+    { id:"rightTop", x:"51.6", y:"10.98", width:"3",height:"5", fillClass:basePairs[group+4].color},
+    { id:"rightBottom", x: "51.6",  y: "17", width: "3",  height: "5",fillClass:basePairs[group+4].complement},
   ];
 
   useEffect(() => {
-    console.log(group);
+    console.log(classes);
   });
 
   return (
@@ -37,12 +38,10 @@ const BasePairGroup = ({
             const geneIndex = group * 5 + Math.floor(index / 2);
             onClick(geneIndex);
           }}
-          ddd="ddd"
-          geneIndex={group * 5 + Math.floor(index / 2)}
           key={base.id}
           id={base.id}
-          style={{ fill: base.fill }}
-          className={classes.cls1}
+          className={`${classes["base" + base.fillClass]} ${classes.basePair}`}
+          // style={{ fill: base.fill }}
           x={base.x}
           y={base.y}
           width={base.width}

@@ -4,6 +4,7 @@ import GeneMutationsTextbox from "../../components/GeneMutationsTextbox";
 import GeneMutationsTab from "../../components/GeneMutationsTab";
 import DnaMock from "../../components/DnaMock";
 import DnaInteractiveActivity from "../DnaInteractiveActivity";
+import { basePair1, basePair2 } from "./constants";
 import DnaCanvas from "../../components/DnaCanvas";
 import classes from "./IguanaSlide17.css";
 
@@ -22,7 +23,9 @@ export const IguanaSlide17 = ({ content }) => {
   };
 
   const handleOnBasePairClick = (geneIndex) => {
-    console.log(geneIndex);
+    const isMutation =
+      basePair2[geneIndex] !== basePair1[geneIndex] ? true : false;
+    console.log(isMutation);
   };
 
   return (
@@ -32,16 +35,12 @@ export const IguanaSlide17 = ({ content }) => {
       </div>
       <div className={classes.dna}>
         <DnaMock onClick={handleOnClick} />
-        <div
-          className={classes.dnaActivity}
-          onClick={(e) => {
-            console.log(e.target.ddd);
-          }}
-        >
-          <DnaInteractiveActivity label="Green Iguana" />
+        <div className={classes.dnaActivity}>
+          <DnaInteractiveActivity label="Green Iguana" basePairs={basePair1} />
           <DnaInteractiveActivity
             label="Marine Iguana"
             onClick={handleOnBasePairClick}
+            basePairs={basePair2}
           />
         </div>
       </div>
