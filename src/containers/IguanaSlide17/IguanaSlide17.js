@@ -12,10 +12,10 @@ export const IguanaSlide17 = ({ content }) => {
   const [selectedGene, setSelectedGene] = useState();
   const [geneMutations, setGeneMutations] = useState({});
 
-  const handleOnClick = (selectedGene) => {
-    console.log(selectedGene);
-    setSelectedGene(selectedGene);
-    geneMutations[selectedGene] = content.geneMutations[selectedGene];
+  const handleOnClick = (selectedGeneX) => {
+    console.log(selectedGeneX, content.geneMutations[selectedGeneX]);
+    setGeneMutations({ selectedGeneX: content.geneMutations[selectedGeneX] });
+    setSelectedGene(selectedGeneX);
   };
 
   const handleOnTabClick = (selectedGene) => {
@@ -24,10 +24,18 @@ export const IguanaSlide17 = ({ content }) => {
 
   const handleOnBaseClick = (geneIndex) => {
     if (basePair2[geneIndex] !== basePair1[geneIndex]) {
-      console.log("here");
+      let newSelectedGene = mutations[geneIndex];
+      let newGeneMutations = {};
+      newGeneMutations[newSelectedGene] =
+        content.geneMutations[newSelectedGene];
+
+      setGeneMutations({
+        ...geneMutations,
+        ...newGeneMutations,
+      });
+
+      setSelectedGene(newSelectedGene);
     }
-    console.log(geneIndex);
-    // console.log(isMutation);
   };
 
   return (
@@ -53,6 +61,7 @@ export const IguanaSlide17 = ({ content }) => {
       <div className={classes.mutationsTextbox}>
         <GeneMutationsTextbox
           geneDescription={
+            // ""
             selectedGene ? geneMutations[selectedGene].description : ""
           }
         />
