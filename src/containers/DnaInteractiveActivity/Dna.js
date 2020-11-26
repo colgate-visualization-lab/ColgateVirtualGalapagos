@@ -3,9 +3,9 @@ import React from "react";
 import DnaBackbone from "../../components/DnaBackbone";
 import BasePairs from "../../components/BasePairs";
 import { basePair1, basePair2 } from "../IguanaSlide17/constants";
-import classes from "./DnaInteractiveActivity.css";
+import classes from "./Dna.css";
 
-const DnaInteractiveActivity = ({ label, basePairs }) => {
+const Dna = ({ label, basePairs }) => {
   const svgStyle = {
     border: "1px solid white",
     float: "left",
@@ -44,4 +44,4 @@ const DnaInteractiveActivity = ({ label, basePairs }) => {
   );
 };
 
-export default DnaInteractiveActivity;
+export default Dna;
