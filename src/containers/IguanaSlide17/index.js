@@ -1,5 +1,5 @@
 import { IguanaSlide17 } from "./IguanaSlide17";
-import { OnBaseClickContext } from "./OnBaseClickContext";
+import { BasePairClickContext } from "./BasePairClickContext";
 
 export default IguanaSlide17;
-export { OnBaseClickContext };
+export { BasePairClickContext };

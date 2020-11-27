@@ -5,12 +5,13 @@ import GeneMutationsTab from "../../components/GeneMutationsTab";
 // import DnaMock from "../../components/DnaMock";
 import Dna from "../Dna";
 import { basePair1, basePair2, mutations } from "./constants";
-import { OnBaseClickContext } from "./";
+import { BasePairClickContext } from "./";
 import classes from "./IguanaSlide17.css";
 
 export const IguanaSlide17 = ({ content }) => {
   const [selectedGene, setSelectedGene] = useState();
   const [geneMutations, setGeneMutations] = useState({});
+  const [mutationsFound, setMutationsFound] = useState([]);
 
   // const handleOnClick = (selectedGeneX) => {
   //   console.log(selectedGeneX, content.geneMutations[selectedGeneX]);
@@ -35,6 +36,8 @@ export const IguanaSlide17 = ({ content }) => {
       });
 
       setSelectedGene(newSelectedGene);
+
+      setMutationsFound([...mutationsFound, geneIndex]);
     }
   };
 
@@ -46,10 +49,12 @@ export const IguanaSlide17 = ({ content }) => {
       <div className={classes.dna}>
         {/* <DnaMock onClick={handleOnClick} /> */}
         <div className={classes.dnaActivity}>
-          <OnBaseClickContext.Provider value={{ handleOnBaseClick }}>
+          <BasePairClickContext.Provider
+            value={{ handleOnBaseClick, mutationsFound }}
+          >
             <Dna label="Green Iguana" basePairs={basePair1} />
             <Dna label="Marine Iguana" basePairs={basePair2} />
-          </OnBaseClickContext.Provider>
+          </BasePairClickContext.Provider>
         </div>
       </div>
       <div className={classes.mutationsTextbox}>
