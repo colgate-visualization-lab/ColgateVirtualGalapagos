@@ -29,9 +29,10 @@
 }
 
 .geneSvg {
-  width: 1000px;
-  height: 115.34px;
-  align-self: flex-end;
+  width: 85%;
+  min-width: 600px;
+  /* height: 115.34px; */
+  align-self: center;
 }
 
 .geneLabel {

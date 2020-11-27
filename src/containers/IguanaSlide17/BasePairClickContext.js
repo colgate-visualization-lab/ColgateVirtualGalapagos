@@ -1,7 +1,8 @@
 import React from "react";
 
-export const OnBaseClickContext = React.createContext({
+export const BasePairClickContext = React.createContext({
   onClick: function (index) {
     console.log(index);
   },
+  mutationsFound: [],
 });

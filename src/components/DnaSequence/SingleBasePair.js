@@ -1,39 +1,32 @@
-import React, { useContext } from "react";
-import { OnBaseClickContext } from "../../containers/IguanaSlide17";
+import React, { useContext, useEffect } from "react";
+import { BasePairClickContext } from "../../containers/IguanaSlide17";
 
-const SingeBasePair = ({ topBase, bottomBase, classes, geneIndex }) => {
-  const { handleOnBaseClick } = useContext(OnBaseClickContext);
+const SingeBasePair = ({ basePair, classes, geneIndex }) => {
+  const { handleOnBaseClick, mutationsFound } = useContext(
+    BasePairClickContext
+  );
+
+  const basePairClass = `${classes.basePair} ${
+    mutationsFound.includes(geneIndex) ? classes.basePairActive : ""
+  }`;
+
   return (
     <g
-      className={classes.basePair}
-      //   style={{ opacity: 0.6 }}
+      className={basePairClass}
       onClick={() => {
         handleOnBaseClick(geneIndex);
       }}
     >
-      {/* Top Base */}
-      <rect
-        // onClick={() => {
-        //   handleOnBaseClick(geneIndex);
-        // }}
-        className={classes["base" + topBase.fillClass]}
-        x={topBase.x}
-        y={topBase.y}
-        width={topBase.width}
-        height={topBase.height}
-      />
-
-      {/* Bottom Base */}
-      <rect
-        // onClick={() => {
-        //   handleOnBaseClick(geneIndex);
-        // }}
-        className={classes["base" + bottomBase.fillClass]}
-        x={bottomBase.x}
-        y={bottomBase.y}
-        width={bottomBase.width}
-        height={bottomBase.height}
-      />
+      {basePair.map((base) => (
+        <rect
+          key={base.id}
+          className={classes["base" + base.fillClass]}
+          x={base.x}
+          y={base.y}
+          width={base.width}
+          height={base.height}
+        />
+      ))}
     </g>
   );
 };

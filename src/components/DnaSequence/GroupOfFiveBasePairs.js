@@ -35,31 +35,15 @@ const GroupOfFiveBasePairs = ({ xTranslateDistance, basePairs, group }) => {
       fillClass:basePairs[startIndex+4].complement}, ],
   ];
 
-  const { handleOnBaseClick } = useContext(OnBaseClickContext);
-
   return (
     <g id="basePairGroup" transform={`translate(${xTranslateDistance})`}>
-      {basePairProperties.map((base, index) => (
+      {basePairProperties.map((basePair, index) => (
         <SingleBasePair
-          topBase={base[0]}
-          bottomBase={base[1]}
+          basePair={basePair}
           key={index}
           classes={classes}
           geneIndex={group * 5 + index}
         />
-        // <rect
-        //   onClick={() => {
-        //     const geneIndex = group * 5 + Math.floor(index / 2);
-        //     handleOnBaseClick(geneIndex);
-        //   }}
-        //   key={base.id}
-        //   id={base.id}
-        //   className={`${classes["base" + base.fillClass]} ${classes.basePair}`}
-        //   x={base.x}
-        //   y={base.y}
-        //   width={base.width}
-        //   height={base.height}
-        // />
       ))}
     </g>
   );
