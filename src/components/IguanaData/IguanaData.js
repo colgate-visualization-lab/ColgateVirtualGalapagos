@@ -1,3 +1,9 @@
+import {
+  mutationPositions,
+  greenIguanaSequence,
+  marineIguanaSequence,
+  mutationDetails,
+} from "./Slide17Data";
 // data for slide 3 - to be included in  data array below
 const slide3InteractiveData = [
   {
@@ -125,37 +131,11 @@ const slide15Data = {
 }
 
 //data for slide 17 - these are gene mutation descriptions
-const geneMutations = {
-  scaleColorGene: {
-    id: "scaleColorGene",
-    name: "Scale Color Gene",
-    description:
-      "Marine iguanas have black scales, while green iguanas have bright green scales",
-  },
-  tailShapeGene: {
-    id: "tailShapeGene",
-    name: "Tail Shape Gene",
-    description:
-      "Marine iguanas have flatter tails than green iguanas, which helps them swim more efficiently",
-  },
-  saltSpoutGene: {
-    id: "saltSpoutGene",
-    name: "Salt Spout Gene",
-    description:
-      "Marine iguanas have a salt spout on their head to get rid of excess salt that has accumulated in their bodies after swimming in the ocean",
-  },
-  faceShapeGene: {
-    id: "faceShapeGene",
-    name: "Face Shape Gene",
-    description:
-      "Marine iguanas have flatter faces than green iguanas, which allows them to scrape algae and vegetation off of rocks",
-  },
-  backSpikesGene: {
-    id: "backSpikesGene",
-    name: "Back Spikes Gene",
-    description:
-      "The marine iguanas have back spikes which shrink or grow in proportion to how much food is available. This helps them conserve energy when food is scarce",
-  },
+const slide17Data = {
+  mutationPositions,
+  greenIguanaSequence,
+  marineIguanaSequence,
+  mutationDetails,
 };
 
 const data = [
@@ -293,8 +273,7 @@ const data = [
     id: "17",
     title: "Iguana_Evolution05",
     type: "dnaInteractiveActivity",
-    geneMutations,
-    // not_done: true,
+    data: slide17Data,
   },
   {
     id: "18",
