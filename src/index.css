@@ -1,11 +1,25 @@
 * {
   box-sizing: border-box;
 }
+
+/* @media screen and (min-width: 50em) {
+  html {
+    font-size: 2vw;
+  }
+}
+
+@media screen and (min-width: 75em) {
+  html {
+    font-size: 1.5em;
+  }
+} */
+
 html {
   scroll-behavior: smooth;
   -ms-overflow-style: none;
   height: 100vh;
   width: 100vw;
+  /* font-size: calc(16px + (24 - 16) * (100vw - 400px) / (800 - 600)); */
 }
 
 ::-webkit-scrollbar {
