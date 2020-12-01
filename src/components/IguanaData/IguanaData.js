@@ -137,6 +137,8 @@ const data = [
     id: "17",
     title: "Iguana_Evolution05",
     type: "dnaInteractiveActivity",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide17.wav",
     data: slide17Data,
   },
   {

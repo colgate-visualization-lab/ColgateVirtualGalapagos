@@ -9,7 +9,6 @@ import data from "../../components/IguanaData/IguanaData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 import IguanaSlide3 from "../IguanaSlide3/IguanaSlide3";
 import IguanaSlide8 from "../../components/IguanaSlide8/IguanaSlide8";
-import DnaCanvas from "../../components/DnaCanvas";
 import IguanaSlide17 from "../IguanaSlide17";
 
 function MainContent(props) {
@@ -97,6 +96,7 @@ function MainContent(props) {
   } else if (content.type === "dnaInteractiveActivity") {
     return (
       <>
+        <AudioPlayerHandler src={content.audioSrc} />
         <IguanaSlide17 content={content} />
         <ControlButtons {...controlButtonProps} />
       </>
