@@ -161,7 +161,9 @@ const data = [
   {
     id: "21",
     title: "Iguana_PinkIggy01",
-    not_done: true,
+    type: "video",
+    url:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Video/IguanaLastSlide%20.mp4",
   },
 ];
 export default data;
