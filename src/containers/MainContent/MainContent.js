@@ -4,10 +4,6 @@ import {Back, Next} from '../../assets/VolcanoModule'
 import classes from './MainContent.css'
 import ControlButtons from '../ControlButtons/ControlButtons'
 
-
-
-
-
 function MainContent(props) {
 
   const [slide, setSlide] = useState(0)
