@@ -13,6 +13,8 @@ import VolcanoeIframe from "../../components/VolcanoeIframe/VolcanoeIframe"
 import AudioPlayer from "../../components/AudioPlayer/AudioPlayer"
 import MapComponent from "../../components/MapComponent/MapComponent"
 import Popup from "reactjs-popup"
+import CreateIcon from '@material-ui/icons/Create'
+import ReactStickies from 'react-stickies'
 
 class VolcanoeModule extends Component { 
     constructor(props) {
@@ -232,6 +234,7 @@ slide10dnd6() {
                         </video>
                     </div>
                     <div className={classes.rightDiv}>
+                        <CreateIcon className={classes.roundButton} onClick={() => {}}/>
                         <img style={audioIsDone? {} : buttonStyle} src={Next} className={classes.imgNext} onClick={() => this.nextSlide()} />
                     </div>
                 </Fragment>

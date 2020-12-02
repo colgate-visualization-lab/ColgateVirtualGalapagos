@@ -17,6 +17,8 @@ import Gallery from "./containers/Gallery/Gallery"
 import ModuleNav from "./components/ModuleNav/ModuleNav"
 import VolcanoLayout from "./containers/VolcanoLayout/VolcanoLayout"
 import IguanaModule from "./components/IguanaModule/IguanaModule"
+import Backpack from "./containers/Backpack/Backpack"
+import Fieldbook from "./containers/Backpack/Fieldbook/Fieldbook"
 
 const VolcanoModule = lazy(() => import("./containers/VolcanoModule/VolcanoModule"))
 
@@ -51,6 +53,8 @@ class App extends Component {
 						<Route path="/gallery" exact component={Gallery}/>
 						<Route path="/volcanolayout" exact component={VolcanoLayout}/>
 						<Route path="/iguana" exact component={IguanaModule}/>
+						<Route path="/backpack" exact component={Backpack}/>
+						<Route path="/fieldbook" exact component={Fieldbook}/>
 					</Layout>
 					</Suspense>
 				</Switch>
