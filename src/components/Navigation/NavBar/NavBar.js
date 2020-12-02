@@ -28,9 +28,14 @@ const navbar = () => {
 			<NavLink to="/authorization">
 				<Nav.Item className={classes.NavItem}>Sign In</Nav.Item>
 			</NavLink>
-			<NavLink to="/backpack">
-				<Nav.Item className={classes.NavItem}><img src={Backpack} alt="Backpack" className={classes.Backpack}/></Nav.Item>
-			</NavLink>
+			<Dropdown>
+				<Dropdown.Toggle id="backpack" className={classes.dropdown}>
+					<img src={Backpack} alt="Backpack" className={classes.Backpack}/>
+				</Dropdown.Toggle>
+				<Dropdown.Menu className={classes.dropdownList}>
+					<Dropdown.Item className={classes.dropdownItem}><NavLink to='/fieldbook'>Fieldbook</NavLink></Dropdown.Item>
+				</Dropdown.Menu>
+			</Dropdown>
 		</Navbar>
 	)
 }

@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react'
 import MainContent from '../../containers/MainContent/MainContent'
 
-function IguanaModule(){
+function IguanaModule(props){
 
 
     return(
         <Fragment>
-            <MainContent />
+            <MainContent {...props} />
         </Fragment>
     )
 }
