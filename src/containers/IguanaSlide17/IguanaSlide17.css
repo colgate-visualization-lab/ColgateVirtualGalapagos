@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 90%;
+  margin: auto;
+  position: relative;
+  /* background-color: rgb(20, 40, 0, 0.6); */
+  font-family: "Roboto";
+}
+
+.slideTitle {
+  position: absolute;
+  top: 10px;
+  font-size: 2rem;
+}
+
+.dna {
+  width: 100%;
+  height: auto;
+  /* background-color: rgb(10, 60, 60, 0.6); */
+}
+
+.mutationsTextbox {
+  position: absolute;
+  bottom: 50px;
+  font-size: 1.2rem;
+}
+
+.mutationsTab {
+  position: absolute;
+  bottom: 0;
+  /* background-color: rgb(100, 0, 10, 0.6); */
+  font-size: 0.9rem;
+}
+
+.dnaActivity {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
