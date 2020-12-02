@@ -1,44 +1,44 @@
 .Backpack {
-    width: 70px;
-    margin-left: 20px;
+  width: 70px;
+  margin-left: 20px;
 }
 
 .Logo {
-    width: 15%;
+  width: 15%;
 }
 
 .NavItem {
-    display: inline-block;
-    margin: 10px 30px;
-    width: 100%;
+  display: inline-block;
+  margin: 0 30px;
+  width: 100%;
 }
 
 .dropdown {
-    background-color: inherit;
-    border-color: black;
+  background-color: inherit;
+  border-color: black;
 }
 
 .dropdown:focus {
-    background-color: rgb(36, 36, 36);
-    border-color: rgb(48, 48, 48);
-    box-shadow: none;
+  background-color: rgb(36, 36, 36);
+  border-color: rgb(48, 48, 48);
+  box-shadow: none;
 }
 
 .dropdown:hover {
-    background-color: rgb(0, 0, 0);
-    border-color: rgb(255, 255, 255);
-    box-shadow: 1px;
+  background-color: rgb(0, 0, 0);
+  border-color: rgb(255, 255, 255);
+  box-shadow: 1px;
 }
 
-.dropdownList{
-    background-color: black;
+.dropdownList {
+  background-color: black;
 }
 
 .dropdownItem:hover {
-    background-color: rgb(90, 83, 69);
+  background-color: rgb(90, 83, 69);
 }
 
-.text{
-    color: white;
-    font-size: 15px;
+.text {
+  color: white;
+  font-size: 8px;
 }

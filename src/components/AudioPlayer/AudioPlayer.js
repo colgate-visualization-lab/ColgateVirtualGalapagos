@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import ReactPlayer from "react-player";
 import CircleControls from "react-player-circle-controls";
 import "style-loader!css-loader!react-player-circle-controls/dist/styles.css";
+import PropTypes from "prop-types";
+import AudioPlayerHandler from "./AudioPlayerHandler";
 
 const AudioPlayer = (props) => {
   const player = useRef(null);
@@ -37,7 +39,6 @@ const AudioPlayer = (props) => {
           width="0"
           onProgress={setPlayerState}
           onEnded={() => props.onEnded()}
-
         />
         <CircleControls
           played={playerState.played}
@@ -49,6 +50,14 @@ const AudioPlayer = (props) => {
       </div>
     );
   }
+};
+
+AudioPlayer.propTypes = {
+  src: PropTypes.string.isRequired,
+  playing: PropTypes.bool.isRequired,
+  onEnded: PropTypes.func.isRequired,
+  stopAudio: PropTypes.func.isRequired,
+  toggleAudio: PropTypes.func.isRequired,
 };
 
 export default AudioPlayer;
