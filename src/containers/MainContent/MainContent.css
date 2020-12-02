@@ -1,8 +1,34 @@
-.img{
-    height:100%;
+.img {
+  position: absolute;
+  height: 100%;
+  margin: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  border-width: 15px;
 }
-.vid{
-    height: 100%;
-    width: 100%;
-    position: absolute;
+.vid {
+  position: absolute;
+  height: 90%;
+  width: 90%;
+  margin: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  /* border-width: 15px; */
+}
+
+/* slide 7 360 comparison classes */
+.comparison360Right {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  right: 0;
+}
+
+.comparison360Left {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  left: 0;
 }
