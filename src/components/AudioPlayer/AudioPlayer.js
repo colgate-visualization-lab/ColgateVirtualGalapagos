@@ -4,6 +4,7 @@ import CircleControls from "react-player-circle-controls";
 import "style-loader!css-loader!react-player-circle-controls/dist/styles.css";
 import PropTypes from "prop-types";
 import AudioPlayerHandler from "./AudioPlayerHandler";
+import classes from "./AudioPlayer.css";
 
 const AudioPlayer = (props) => {
   const player = useRef(null);
@@ -22,15 +23,7 @@ const AudioPlayer = (props) => {
     return null;
   } else {
     return (
-      <div
-        style={{
-          position: "absolute",
-          left: "0",
-          top: "0",
-          width: "128px",
-          zIndex: "1000",
-        }}
-      >
+      <div style={{ width: "10px" }} className={classes.audioPlayer}>
         <ReactPlayer
           ref={player}
           url={props.src}

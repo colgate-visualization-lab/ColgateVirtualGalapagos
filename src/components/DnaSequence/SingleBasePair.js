@@ -20,7 +20,7 @@ const SingeBasePair = ({ basePair, classes, geneIndex }) => {
       {basePair.map((base) => (
         <rect
           key={base.id}
-          className={classes["base" + base.fillClass]}
+          className={`${classes["base" + base.fillClass]}`}
           x={base.x}
           y={base.y}
           width={base.width}
