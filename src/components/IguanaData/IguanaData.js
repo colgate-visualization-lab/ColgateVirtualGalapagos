@@ -28,9 +28,11 @@ const data = [
   {
     id: "4",
     title: "Iguana_Pumice01",
-    type: "video",
+    type: "video360",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide4.wav",
     url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/IguanaPath.mp4", //360
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/IguanaPath/", //360
   },
   {
     id: "5",
@@ -42,9 +44,11 @@ const data = [
   {
     id: "6",
     title: "Iguana_Comparison01",
-    type: "video",
+    type: "video360",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide6.wav",
     url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/ShoreWaves.mp4", //360
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/Shorewaves/",
   },
   {
     id: "7",
@@ -87,9 +91,11 @@ const data = [
   {
     id: "10",
     title: "Iguana_PhyloTree01",
-    type: "video",
+    type: "video360",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide10.wav",
     url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/ShoreWaves.mp4", //360
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/LandIguana/index.htm",
   },
   {
     id: "11",
@@ -107,7 +113,11 @@ const data = [
   {
     id: "13",
     title: "Iguana_Evolution01",
-    not_done: true,
+    type: "video360",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide13.wav",
+    url:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/IguanaVegetation/index.htm",
   },
   {
     id: "14",
@@ -129,9 +139,11 @@ const data = [
   {
     id: "16",
     title: "Iguana_Evolution04",
-    type: "video",
+    type: "video360",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide16.wav",
     url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/ShoreWaves.mp4", //360
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/IguanaVegetation/index.htm",
   },
   {
     id: "17",
@@ -144,16 +156,20 @@ const data = [
   {
     id: "18",
     title: "Iguana_Scales02",
-    type: "video",
+    type: "video360",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide18.wav",
     url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/ShoreWaves.mp4", //360
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/SantiagoBeach/index.htm", //360
   },
   {
     id: "19",
     title: "Iguana_Scales03",
-    type: "video",
+    type: "video360",
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide19.wav",
     url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/ShoreWaves.mp4", //360
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/Shorewaves/",
   },
   {
     id: "20",
