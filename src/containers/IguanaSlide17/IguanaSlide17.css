@@ -21,19 +21,21 @@
   width: 100%;
   height: auto;
   /* background-color: rgb(10, 60, 60, 0.6); */
+  font-size: 0.5rem;
 }
 
 .mutationsTextbox {
   position: absolute;
   bottom: 50px;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  /* background-color: rgba(200, 10, 230, 0.6); */
 }
 
 .mutationsTab {
   position: absolute;
   bottom: 0;
   /* background-color: rgb(100, 0, 10, 0.6); */
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .dnaActivity {
