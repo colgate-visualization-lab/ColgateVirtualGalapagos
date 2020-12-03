@@ -50,6 +50,14 @@ function MainContent(props) {
         <ControlButtons {...controlButtonProps} />
       </div>
     );
+  } else if (content.type === "video360") {
+    return (
+      <div>
+        <AudioPlayerHandler src={content.audioSrc} />
+        <Iframe src={content.url} />
+        <ControlButtons {...controlButtonProps} />
+      </div>
+    );
   } else if (content.type === "interactive_image") {
     return (
       <>
