@@ -54,18 +54,20 @@ export const IguanaSlide17 = ({ content }) => {
           </BasePairClickContext.Provider>
         </div>
       </div>
-      <div className={classes.mutationsTextbox}>
-        <GeneMutationsTextbox
-          geneDescription={
-            selectedGene ? geneMutations[selectedGene].description : ""
-          }
-        />
-      </div>
-      <div className={classes.mutationsTab}>
-        <GeneMutationsTab
-          geneMutations={geneMutations}
-          onClick={handleOnTabClick}
-        />
+      <div className={classes.mutationsDiv}>
+        <div className={classes.mutationsTextbox}>
+          <GeneMutationsTextbox
+            geneDescription={
+              selectedGene ? geneMutations[selectedGene].description : ""
+            }
+          />
+        </div>
+        <div className={classes.mutationsTab}>
+          <GeneMutationsTab
+            geneMutations={geneMutations}
+            onClick={handleOnTabClick}
+          />
+        </div>
       </div>
     </div>
   );
