@@ -90,12 +90,12 @@ function MainContent(props) {
     return (
       <Fragment>
         <AudioPlayerHandler src={content.audioSrc} />
-        <div className={classes.comparison360Left}>
-          <Iframe src={content.url1} />
-        </div>
-        <div className={classes.comparison360Right}>
-          <Iframe src={content.url1} />
-        </div>
+        {/* <div className={classes.comparison360Left}> */}
+        <Iframe className={classes.comparison360Left} src={content.url1} />
+        {/* </div> */}
+        {/* <div className={classes.comparison360Right}> */}
+        <Iframe className={classes.comparison360Right} src={content.url1} />
+        {/* </div> */}
         <ControlButtons {...controlButtonProps} />
       </Fragment>
     );
