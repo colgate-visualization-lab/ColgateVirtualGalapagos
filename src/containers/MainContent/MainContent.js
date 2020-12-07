@@ -9,7 +9,6 @@ import data from "../../components/IguanaData/IguanaData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 import IguanaSlide3 from "../IguanaSlide3/IguanaSlide3";
 import IguanaSlide8 from "../../components/IguanaSlide8/IguanaSlide8";
-import DnaCanvas from "../../components/DnaCanvas";
 import IguanaSlide17 from "../IguanaSlide17";
 
 function MainContent(props) {
@@ -51,7 +50,7 @@ function MainContent(props) {
         <ControlButtons {...controlButtonProps} />
       </div>
     );
-  } else if (content.type === "360Video") {
+  } else if (content.type === "video360") {
     return (
       <>
         <AudioPlayerHandler src={content.audioSrc} />
@@ -60,8 +59,9 @@ function MainContent(props) {
           width="100%"
           height="100%"
           className={classes.Iframe}
-          src={content.videoSrc}
+          src={content.url}
         />
+        <ControlButtons {...controlButtonProps} />
       </>
     );
   } else if (content.type === "interactive_image") {
@@ -110,6 +110,7 @@ function MainContent(props) {
   } else if (content.type === "dnaInteractiveActivity") {
     return (
       <>
+        <AudioPlayerHandler src={content.audioSrc} />
         <IguanaSlide17 content={content} />
         <ControlButtons {...controlButtonProps} />
       </>
