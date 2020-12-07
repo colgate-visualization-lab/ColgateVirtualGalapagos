@@ -1,16 +1,28 @@
-.Backpack {
+.navBar {
+  padding: 0;
+}
+
+.backpack {
   width: 70px;
   margin-left: 20px;
 }
 
-.Logo {
-  width: 15%;
+.logo {
+  width: 12%;
 }
 
-.NavItem {
+.navBrand {
+  padding: 0;
+  margin: 0;
+  width: auto;
+}
+
+.navItem {
   display: inline-block;
-  margin: 0 30px;
+  margin: 0 1rem;
   width: 100%;
+  font-size: 0.6rem;
+  /* background-color: khaki; */
 }
 
 .dropdown {
