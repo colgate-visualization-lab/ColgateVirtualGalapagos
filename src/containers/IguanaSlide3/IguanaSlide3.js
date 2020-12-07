@@ -8,13 +8,11 @@ import classes from "./IguanaSlide3.css";
 
 export default function IguanaSlide3({ content }) {
   const [src, setSrc] = useState(content.data[0]);
+  const [watched, setWatched] = useState(new Set());
   // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
 
   // videoSelectionOverlay - displays hypothesis, greys out and disables the video
-  const [
-    videoSelectionOverlayVisible,
-    setVideoSelectionOverlayVisible,
-  ] = useState({});
+  const [disableVideoInteraction, setDisableVideoInteraction] = useState({});
   const [showPlayer, setShowPlayer] = useState(true);
 
   const handleSrcChange = (src) => {
@@ -23,11 +21,12 @@ export default function IguanaSlide3({ content }) {
   };
 
   const handlePlaybackEnded = () => {
-    setVideoSelectionOverlayVisible(true);
+    setWatched(watched.add(src.id));
+    setDisableVideoInteraction(true);
   };
 
   const handlePlaybackStarted = () => {
-    setVideoSelectionOverlayVisible(false);
+    setDisableVideoInteraction(false);
   };
 
   // this determines whether the video selection buttons
@@ -49,7 +48,7 @@ export default function IguanaSlide3({ content }) {
       <AudioPlayerHandler  src={props.content.audioSrc} />
     } */}
       <div
-        className={classes.slide3Style}
+        className={classes.slide3}
         onMouseMove={() => {
           setVideoSelectorVisible(classes.videoSelectorVisible);
         }}
@@ -58,7 +57,7 @@ export default function IguanaSlide3({ content }) {
           position="relative"
           width="100%"
           height="100%"
-          controls={videoSelectionOverlayVisible ? false : true}
+          controls={disableVideoInteraction ? false : true}
           url={src.videoSrc}
           playing={true}
           onEnded={handlePlaybackEnded}
@@ -66,51 +65,25 @@ export default function IguanaSlide3({ content }) {
         />
         <div
           className={
-            videoSelectionOverlayVisible
+            disableVideoInteraction
               ? classes.videoOverlayActive
               : classes.videoOverlayInactive
           }
         />
         <div
           className={
-            videoSelectionOverlayVisible
+            disableVideoInteraction
               ? `${classes.videoSelectorOverlay} `
               : videoSelectorVisible
           }
         >
           <Slide3VideoSelector
+            watched={watched}
             data={content.data}
             onSrcChange={handleSrcChange}
+            videoInteractionDisabled={disableVideoInteraction}
           />
         </div>
-
-        {/* {src != null ? (
-          <>
-          <ReactPlayer width="auto" height="100%"
-            controls={selectionVisible? false: true} url={src.videoSrc} playing={true}
-            onEnded={handlePlaybackEnded}
-            onStart={handlePlaybackStarted}
-            onPlay={handlePlaybackStarted}
-          />
-          {selectionVisible &&
-          <div
-          style={{
-            width: "90%", height: "90%", position: "absolute", display: "flex",
-            alignItems: "center", zIndex: 9, backgroundColor: "rgba(0,0,0,0.65)",
-          }}
-        >
-          <VideoSelectorTabs data={data} onSrcChange={handleSrcChange} />
-          </div>
-        }
-          </>) :
-          (
-          <>
-            <div style={{ width: "100%", height: "auto", textAlign: "center", fontSize: "2rem", margin: "10px" }}>
-              Select a hypothesis to test below
-            </div>
-            <VideoSelectorTabs data={data} onSrcChange={handleSrcChange} />
-          </>
-        )}  */}
       </div>
     </>
   );
