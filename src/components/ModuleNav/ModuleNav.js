@@ -12,7 +12,7 @@ const moduleNav = () => {
 			"description": "Follow along with Carlos and Adriana as they learn about volcanoes. Explore how volcanic islands form and how they came to be in the Galapagos!", 
 			"background": "url(https://virtualgalapagos.colgate.edu/assets/misc/Volcano.png)", 
 			"animation": " animated slideInDown",
-			"link": "/volcano/1"
+			"link": "/oldvolcano"
 		}, 
 
 		{"title": "Extras", 

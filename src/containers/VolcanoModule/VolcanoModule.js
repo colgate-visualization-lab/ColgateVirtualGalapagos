@@ -31,8 +31,8 @@ class VolcanoeModule extends Component {
     this.randomRef = React.createRef();
     this.yoloRef = React.createRef();
     this.state = {
-      slideIndex: 23,
-      progressIndex: 23,
+      slideIndex: 0,
+      progressIndex: 0,
       optional1: false,
       optional2: false,
       optional2Next: false,
@@ -346,14 +346,14 @@ class VolcanoeModule extends Component {
       return (
         <Fragment>
           <div className={classes.leftDiv}>
-            <button
+            {/* <button
               className={classes.button4}
               onClick={() =>
                 this.setState({ slideIndex: 12, progressIndex: 12 })
               }
             >
               Dev Button
-            </button>
+            </button> */}
             <h1 className={classes.slideName}>
               Slide {this.state.slideIndex + 1}
             </h1>
