@@ -16,7 +16,7 @@ import ExtraSelect from "./components/ExtraSelect/ExtraSelect"
 // New volcano Module
 import VolcanoModule from "./components/VolcanoModule/VolcanoModule"
 
-// const VolcanoModule = lazy(() => import("./containers/VolcanoModule/VolcanoModule"))
+const VolcanoModules = lazy(() => import("./containers/VolcanoModule/VolcanoModule"))
 
 // import all the data for each module and ModuleLayout component
 import MainContent from "./containers/MainContent/MainContent"
@@ -60,6 +60,8 @@ class App extends Component {
 						<Route path="/iguana/:slide_id" 
 							render={(props) => <MainContent {...props} data={iguanaData} route={"iguana"} />} />
 
+							{/* Old Module */}
+						<Route path="/oldvolcano" exact component={VolcanoModules} />
 					</Layout>
 					</Suspense>
 				</Switch>
