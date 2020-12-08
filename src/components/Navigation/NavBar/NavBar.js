@@ -8,7 +8,7 @@ import { Backpack } from "../../../assets/Misc";
 const navbar = () => {
   return (
     <Navbar expand="lg" className={classes.navBar}>
-      <NavLink to="/home">
+      <NavLink to="/home" className={classes.navLink}>
         <Navbar.Brand className={classes.navBrand}>
           <LogoImage className={classes.logo} />
         </Navbar.Brand>

@@ -94,7 +94,7 @@ function MainContent(props) {
         <Iframe className={classes.comparison360Left} src={content.url1} />
         {/* </div> */}
         {/* <div className={classes.comparison360Right}> */}
-        <Iframe className={classes.comparison360Right} src={content.url1} />
+        <Iframe className={classes.comparison360Right} src={content.url2} />
         {/* </div> */}
         <ControlButtons {...controlButtonProps} />
       </Fragment>
