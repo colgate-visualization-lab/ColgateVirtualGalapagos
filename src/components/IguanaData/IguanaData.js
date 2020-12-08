@@ -55,9 +55,9 @@ const data = [
     title: "Iguana_Comparison02",
     type: "360_comparison",
     url1:
-      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Caldara_Endtrail/index.htm", //temporary
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/IguanaLoop/",
     url2:
-      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Cactus_Final/index.htm",
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/IguanaPath/",
     audioSrc:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide7.wav",
   },
