@@ -50,7 +50,7 @@ function MainContent(props) {
         container
         // spacing={1}
         direction="row"
-        alignItems="space-between"
+        alignItems="center"
         justify="center"
       >
         <Grid

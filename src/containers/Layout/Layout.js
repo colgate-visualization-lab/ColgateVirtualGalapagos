@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useState } from "react";
+import { makeStyles } from "@material-ui/styles";
 
 import NavBar from "../../components/Navigation";
 import Modal from "../../components/UI/Modal/Modal";
@@ -6,20 +7,25 @@ import Backpack from "../Backpack/Backpack";
 
 //import BackgroundVideo from "../../components/BackgroundVideo/BackgroundVideo.js"
 
+const useStyles = makeStyles((theme) => ({
+  toolbarMargin: {
+    ...theme.mixins.toolbar,
+  },
+  main: {
+    width: "100vw",
+    height: `calc(100% - 64px)`,
+    overflow: "visible",
+    position: "relative",
+    flex: "1",
+  },
+}));
+
 export default function Layout({ children }) {
+  const classes = useStyles();
   return (
     <Fragment>
       <NavBar />
-      <main
-        style={{
-          width: "100vw",
-          height: "100%",
-          minHeight: "100%",
-          overflow: "hidden",
-          position: "relative",
-          flex: "1",
-        }}
-      >
+      <main className={classes.main}>
         {children}
         <Modal>
           <Backpack />
