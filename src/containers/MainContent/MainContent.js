@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import classes from "./MainContent.css";
 import ControlButtons from "../ControlButtons/ControlButtons";
 import IguanaSlide15 from "../IguanaSlide15/IguanaSlide15";
-
 import Iframe from "react-iframe";
+import Grid from "@material-ui/core/Grid";
+
 import data from "../../components/IguanaData/IguanaData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 import IguanaSlide3 from "../IguanaSlide3/IguanaSlide3";
@@ -24,8 +25,8 @@ function MainContent(props) {
 
   // ControlButtons component
   const controlButtonProps = {
-    width: "120px",
-    bottom: "5%",
+    width: "100px",
+    bottom: "2%",
     left: "0%",
     right: "0%",
     hasPrev: slideId !== 1,
@@ -45,24 +46,52 @@ function MainContent(props) {
     );
   } else if (content.type === "video") {
     return (
-      <div>
-        <video src={content.url} className={classes.vid} controls autoPlay />
-        <ControlButtons {...controlButtonProps} />
-      </div>
+      <Grid
+        className={classes.container}
+        container
+        // spacing={1}
+        direction="row"
+        alignItems="space-between"
+        justify="center"
+      >
+        <Grid
+          item
+          xs={12}
+          container
+          justify="center"
+          alignItems="flex-start"
+          className={classes.vidContainer}
+        >
+          <video src={content.url} className={classes.vid} controls />
+        </Grid>
+        <Grid item xs={12} container justify="space-between">
+          <ControlButtons {...controlButtonProps} />
+        </Grid>
+      </Grid>
     );
   } else if (content.type === "video360") {
     return (
-      <>
-        <AudioPlayerHandler src={content.audioSrc} />
-        <Iframe
-          position="absolute"
-          width="100%"
-          height="100%"
-          className={classes.Iframe}
-          src={content.url}
-        />
-        <ControlButtons {...controlButtonProps} />
-      </>
+      <Grid
+        container
+        spacing={1}
+        direction="row"
+        alignItems="center"
+        justify="center"
+        className={classes.container}
+      >
+        <Grid item xs={12} className={classes.iframe360}>
+          <AudioPlayerHandler src={content.audioSrc} />
+          <Iframe
+            // position="absolute"
+            width="100%"
+            height="100%"
+            src={content.url}
+          />
+        </Grid>
+        <Grid item xs={12} container justify="space-between">
+          <ControlButtons {...controlButtonProps} />
+        </Grid>
+      </Grid>
     );
   } else if (content.type === "interactive_image") {
     return (

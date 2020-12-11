@@ -2,18 +2,12 @@
   box-sizing: border-box;
 }
 
-/*
-@media screen and (min-width: 75em) {
-  html {
-    font-size: 1.5em;
-  }
-} */
-
 html {
   scroll-behavior: smooth;
   -ms-overflow-style: none;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
+  margin: 0;
   font-size: 1em;
 }
 
@@ -39,8 +33,8 @@ body {
   font-family: "Open Sans", sans-serif;
   background-color: black;
   color: white;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 }
 :global a {
   text-decoration: none;
