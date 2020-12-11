@@ -10,8 +10,9 @@ export default createMuiTheme({
     },
   },
   typography: {
-    h6: {
-      fontWeight: 300,
+    tab: {
+      textTransform: "none",
+      fontSize: "0.6rem",
     },
   },
 });
