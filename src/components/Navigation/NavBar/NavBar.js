@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import classes from "./Navbar.css";
 import { Navbar, Nav, Dropdown } from "react-bootstrap";
 import LogoImage from "./LogoImage/LogoImage";
-import { Backpack } from "../../../assets/Misc";
+import { backpack } from "../../../assets/Misc";
 
 const NavBar = () => {
   return (
@@ -27,7 +27,7 @@ const NavBar = () => {
       </NavLink>
       <Dropdown>
         <Dropdown.Toggle id="backpack" className={classes.dropdown}>
-          <img src={Backpack} alt="Backpack" className={classes.backpack} />
+          <img src={backpack} alt="Backpack" className={classes.backpack} />
         </Dropdown.Toggle>
         <Dropdown.Menu className={classes.dropdownList}>
           <Dropdown.Item className={classes.dropdownItem}>
