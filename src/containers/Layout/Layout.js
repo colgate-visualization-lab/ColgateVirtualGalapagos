@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import NavBar from "../../components/Navigation/NavBar/NavBar";
+import NavBar from "../../components/Navigation";
 import Modal from "../../components/UI/Modal/Modal";
 import Backpack from "../Backpack/Backpack";
 //import BackgroundVideo from "../../components/BackgroundVideo/BackgroundVideo.js"

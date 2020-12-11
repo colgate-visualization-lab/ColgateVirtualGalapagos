@@ -5,7 +5,7 @@ import { Navbar, Nav, Dropdown } from "react-bootstrap";
 import LogoImage from "./LogoImage/LogoImage";
 import { Backpack } from "../../../assets/Misc";
 
-const navbar = () => {
+const NavBar = () => {
   return (
     <Navbar expand="lg" className={classes.navBar}>
       <NavLink to="/home" className={classes.navLink}>
@@ -39,4 +39,4 @@ const navbar = () => {
   );
 };
 
-export default navbar;
+export default NavBar;

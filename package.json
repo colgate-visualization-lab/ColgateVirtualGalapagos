@@ -44,6 +44,7 @@
   "dependencies": {
     "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/styles": "^4.11.2",
     "axios": "^0.19.2",
     "babel-eslint": "^10.1.0",
     "core-js": "^3.6.5",
