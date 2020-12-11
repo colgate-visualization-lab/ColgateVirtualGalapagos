@@ -1,5 +1,4 @@
 import React, { useState, Fragment, useEffect } from "react";
-import PropTypes from "prop-types";
 import classes from "./MainContent.css";
 import ControlButtons from "../ControlButtons/ControlButtons";
 import IguanaSlide15 from "../IguanaSlide15/IguanaSlide15";
