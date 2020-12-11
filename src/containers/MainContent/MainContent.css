@@ -1,3 +1,10 @@
+.container {
+  height: 95vh;
+  box-sizing: border-box;
+  overflow: visible;
+  background-color: tomato;
+}
+
 .img {
   position: absolute;
   height: 100%;
@@ -7,15 +14,18 @@
   text-align: center;
   border-width: 15px;
 }
+.vidContainer {
+  width: 100vw;
+  height: calc(100% - 120px);
+  padding: 0;
+  margin: 0;
+  /* background-color: lavender; */
+}
+
 .vid {
-  position: absolute;
-  height: 90%;
-  width: 90%;
-  margin: auto;
-  left: 0;
-  right: 0;
-  text-align: center;
-  /* border-width: 15px; */
+  min-height: 300px;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 /* slide 7 360 comparison classes */
@@ -31,4 +41,9 @@
   height: 100%;
   width: 50%;
   left: 0;
+}
+
+.iframe360 {
+  height: 90%;
+  background-color: khaki;
 }
