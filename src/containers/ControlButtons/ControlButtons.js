@@ -23,20 +23,6 @@ export default function ControlButtons(props) {
           >
             Previous
           </Button>
-          // <Link to={props.prevSlide}>
-          //   <img
-          //     className="prev"
-          //     src={Back}
-          //     style={{
-          //       width: props.width,
-          //       height: "auto",
-          //       position: "absolute",
-          //       zIndex: 10,
-          //       bottom: props.bottom,
-          //       left: props.left,
-          //     }}
-          //   />
-          // </Link>
         )}
       </Grid>
       <Grid item xs={1}>
@@ -50,20 +36,6 @@ export default function ControlButtons(props) {
           >
             Next
           </Button>
-          // <Link to={props.nextSlide}>
-          //   <img
-          //     className="next"
-          //     src={Next}
-          //     style={{
-          //       width: props.width,
-          //       height: "auto",
-          //       position: "absolute",
-          //       zIndex: 10,
-          //       bottom: props.bottom,
-          //       right: props.right,
-          //     }}
-          //   />
-          // </Link>
         )}
       </Grid>
     </>

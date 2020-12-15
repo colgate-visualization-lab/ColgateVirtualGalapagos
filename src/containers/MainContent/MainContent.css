@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   height: 100%;
   box-sizing: border-box;
   overflow: visible;
@@ -14,15 +15,14 @@
   text-align: center;
   border-width: 15px;
 }
-.vidContainer {
+.videoContainer {
   width: 100vw;
-  height: calc(100% - 120px);
+  max-height: 85vh;
   padding: 0;
-  margin: 0;
-  /* background-color: lavender; */
+  background-color: lavender;
 }
 
-.vid {
+.video {
   min-height: 300px;
   max-width: 100%;
   max-height: 100%;
@@ -46,4 +46,12 @@
 .iframe360 {
   height: 90%;
   background-color: khaki;
+}
+
+/* buttons and its container */
+.buttonsContainer {
+  position: relative;
+  width: 90vw;
+  /* height: 10vh; */
+  background-color: lawngreen;
 }
