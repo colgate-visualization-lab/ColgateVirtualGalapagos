@@ -18,23 +18,36 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     boxSizing: "border-box",
     overflow: "visible",
-    backgroundColor: "tomato",
+    // backgroundColor: "tomato",
   },
+
+  // VIDEO & IMAGE SLIDES - CONTAINER STYLING
   videoContainer: {
     width: "100vw",
     height: `calc(100%  -  ${theme.typography.pxToRem(35)})`,
-    padding: 0,
-    backgroundColor: "lavender",
+    // padding: 0,
+    // backgroundColor: "lavender",
   },
   video: {
     minHeight: "300px",
     maxWidth: "100%",
     maxHeight: "100%",
   },
+
+  // IMAGE CONTENT SLIDES
+  img: {
+    objectFit: "contain",
+    maxHeight: "100%",
+    maxWidth: "100%",
+    minWidth: "360px",
+  },
+
+  // BUTTON STYLES
   buttonsContainer: {
     position: "relative",
     width: "90vw",
-    backgroundColor: "lawngreen",
+    color: "primary",
+    // backgroundColor: "lawngreen",
     height: theme.typography.pxToRem(30),
   },
 }));
@@ -43,7 +56,7 @@ function MainContent(props) {
   // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
   // const [audioIsDone, setAudioIsDone] = useState(false);
   // we get current slide id from and use that to find the next and prev slide ids
-  const styles = useStyles();
+  const classes = useStyles();
   const slideId = parseInt(props.match.params.slide_id || 1);
   const prevSlide = `/iguana/${slideId === 1 ? 1 : slideId - 1}`;
   const nextSlide = `/iguana/${
@@ -66,10 +79,34 @@ function MainContent(props) {
 
   if (content.type === "image") {
     return (
-      <div>
-        <img src={content.url} className={`iguana ${classes.img}`} />
-        <ControlButtons {...controlButtonProps} />
-      </div>
+      <Grid
+        className={classes.container}
+        container
+        spacing={0}
+        direction="row"
+        // alignItems="stretch"
+        justify="space-between"
+      >
+        <Grid
+          item
+          xs={12}
+          container
+          justify="center"
+          // alignItems="flex-start"
+          className={classes.videoContainer}
+        >
+          <img src={content.url} className={`iguana ${classes.img}`} />
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          container
+          justify="space-between"
+          className={classes.buttonsContainer}
+        >
+          <ControlButtons {...controlButtonProps} />
+        </Grid>
+      </Grid>
     );
   } else if (content.type === "video") {
     return (
@@ -87,16 +124,16 @@ function MainContent(props) {
           container
           justify="center"
           // alignItems="flex-start"
-          className={styles.videoContainer}
+          className={classes.videoContainer}
         >
-          <video src={content.url} className={styles.video} controls />
+          <video src={content.url} className={classes.video} controls />
         </Grid>
         <Grid
           item
           xs={12}
           container
           justify="space-between"
-          className={styles.buttonsContainer}
+          className={classes.buttonsContainer}
         >
           <ControlButtons {...controlButtonProps} />
         </Grid>
