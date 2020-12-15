@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     boxSizing: "border-box",
     overflow: "visible",
+    minHeight: "500px",
+    minWidth: "500px",
+    // backgroundColor: "tomato",
   },
 
   //  CONTENT CONTAINER STYLING  - container that surrounds
@@ -28,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
 
     // height is 100% of parent container minus the total height of the PREV and NEXT buttons (plus a little space)
-    height: `calc(100%  -  ${theme.typography.pxToRem(35)})`,
+    height: `calc(100%  -  ${theme.typography.pxToRem(40)})`,
     // backgroundColor: "lavender",
   },
 
@@ -55,18 +58,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100%",
   },
-
-  // BUTTON STYLES
-  buttonsContainer: {
-    position: "relative",
-    width: "90vw",
-    color: "primary",
-    // backgroundColor: "lawngreen",
-    height: theme.typography.pxToRem(30),
-  },
 }));
 
-// Refactoring Grid Outer Container
+// Grid Outer Container Component
 const GridContainer = (props) => (
   <Grid
     {...props}
@@ -77,7 +71,8 @@ const GridContainer = (props) => (
   />
 );
 
-// Refactoring Slide Content Item
+// Slide Content Container Component - i.e. everything above the
+//  PREV/NEXT buttons and below the navbar
 const SlideContent = (props) => (
   <Grid
     item
@@ -169,13 +164,13 @@ function MainContent(props) {
       <GridContainer className={classes.container}>
         <AudioPlayerHandler src={content.audioSrc} />
 
-        <SlideContent className={classes.contentContainer}>
+        <SlideContent xs={6} className={classes.contentContainer}>
           <Iframe src={content.url1} className={classes.iframe360} />
         </SlideContent>
 
-        <Grid item xs={6} className={classes.contentContainer}>
+        <SlideContent xs={6} className={classes.contentContainer}>
           <Iframe src={content.url2} className={classes.iframe360} />
-        </Grid>
+        </SlideContent>
 
         <ControlButtons {...controlButtonProps} />
       </GridContainer>
