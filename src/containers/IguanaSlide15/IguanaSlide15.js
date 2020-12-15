@@ -41,14 +41,7 @@ const IguanaSlide15 = ({ content }) => {
   };
 
   return (
-    <div
-      style={{
-        position: "flex",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <>
       {/* <AudioPlayerHandler src={audioSrc} playing={audioIsPlaying}/> */}
       <AudioPlayer
         src={audioSrc}
@@ -64,7 +57,6 @@ const IguanaSlide15 = ({ content }) => {
         playing={audioIsPlaying}
       />
       <ImageMapper
-        position="relative"
         width={width}
         imgWidth={1600}
         src={content.url}
@@ -77,7 +69,7 @@ const IguanaSlide15 = ({ content }) => {
         lineWidth={4}
         strokeColor="rgba(255, 255, 255, 0.5)"
       />
-    </div>
+    </>
   );
 };
 
