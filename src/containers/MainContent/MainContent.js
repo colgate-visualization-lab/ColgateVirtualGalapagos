@@ -194,12 +194,19 @@ function MainContent(props) {
           item
           xs={12}
           container
+          justify="center"
+          alignItems="center"
+          className={classes.videoContainer}
+        >
+          <IguanaSlide15 classes={classes} content={content} />
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          container
           justify="space-between"
           className={classes.buttonsContainer}
         >
-          <Grid item xs={12} className={classes.videoContainer}>
-            <IguanaSlide15 classes={classes} content={content} />
-          </Grid>
           <ControlButtons {...controlButtonProps} />
         </Grid>
       </Grid>
