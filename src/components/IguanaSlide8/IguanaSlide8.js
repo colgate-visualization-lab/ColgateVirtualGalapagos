@@ -1,21 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import {
   ReactCompareSlider,
   ReactCompareSliderImage,
 } from "react-compare-slider";
+import { makeStyles } from "@material-ui/styles";
+
 import Popup from "../../components/Popup/Popup";
 
+const useStyles = makeStyles((theme) => ({
+  sliderContainer: {
+    width: "100%",
+    // height is 100% of parent container minus the total height of the PREV and NEXT buttons (plus a little space)
+    height: `calc(100%  -  ${theme.typography.pxToRem(40)})`,
+  },
+  sliderImage: {
+    width: "100%",
+    height: "100%",
+  },
+}));
+
 const IguanaSlide8 = ({ content }) => {
+  const classes = useStyles();
+
   return (
-    <div>
+    <>
       <ReactCompareSlider
+        id="parent"
+        className={classes.sliderContainer}
         onlyHandleDraggable={true}
         itemOne={
-          <div
-            id="itemOne"
-            style={{ alignSelf: "center", height: "90vh", width: "100%" }}
-          >
+          <div id="itemOne" className={classes.sliderImage}>
             <ReactCompareSliderImage
               src={content.url1}
               alt="adult marine iguana with baby"
@@ -33,10 +48,7 @@ const IguanaSlide8 = ({ content }) => {
           </div>
         }
         itemTwo={
-          <div
-            id="itemOne"
-            style={{ alignSelf: "center", height: "90vh", width: "100%" }}
-          >
+          <div id="itemTwo" className={classes.sliderImage}>
             <ReactCompareSliderImage
               src={content.url2}
               alt="smiling land iguana"
@@ -54,7 +66,7 @@ const IguanaSlide8 = ({ content }) => {
           </div>
         }
       />
-    </div>
+    </>
   );
 };
 
