@@ -333,20 +333,34 @@ function MainContent(props) {
     );
   } else {
     return (
-      <>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: "100vw",
-            height: "80vh",
-          }}
+      <Grid
+        className={classes.container}
+        container
+        spacing={0}
+        direction="row"
+        justify="space-between"
+      >
+        <Grid
+          item
+          xs={12}
+          className={classes.dnaSlideContainer}
+          container
+          alignItems="center"
+          justify="center"
+          direction="column"
         >
           <h1>THIS SLIDE HASN'T BEEN CREATED YET</h1>
-        </div>
-        <ControlButtons {...controlButtonProps} />
-      </>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          container
+          justify="space-between"
+          className={classes.buttonsContainer}
+        >
+          <ControlButtons {...controlButtonProps} />
+        </Grid>{" "}
+      </Grid>
     );
   }
 }
