@@ -90,10 +90,6 @@ function MainContent(props) {
 
   // ControlButtons component
   const controlButtonProps = {
-    width: "100px",
-    bottom: "2%",
-    left: "0%",
-    right: "0%",
     hasPrev: slideId !== 1,
     hasNext: slideId < data.length,
     nextSlide: nextSlide,
@@ -114,15 +110,7 @@ function MainContent(props) {
         >
           <img src={content.url} className={`iguana ${classes.img}`} />
         </Grid>
-        <Grid
-          item
-          xs={12}
-          container
-          justify="space-between"
-          className={classes.buttonsContainer}
-        >
-          <ControlButtons {...controlButtonProps} />
-        </Grid>
+        <ControlButtons {...controlButtonProps} />
       </GridContainer>
     );
   } else if (content.type === "video") {
@@ -137,15 +125,7 @@ function MainContent(props) {
         >
           <video src={content.url} className={classes.video} controls />
         </Grid>
-        <Grid
-          item
-          xs={12}
-          container
-          justify="space-between"
-          className={classes.buttonsContainer}
-        >
-          <ControlButtons {...controlButtonProps} />
-        </Grid>
+        <ControlButtons {...controlButtonProps} />
       </GridContainer>
     );
   } else if (content.type === "video360") {
@@ -155,15 +135,8 @@ function MainContent(props) {
           <AudioPlayerHandler src={content.audioSrc} />
           <Iframe className={classes.iframe360} src={content.url} />
         </Grid>
-        <Grid
-          item
-          xs={12}
-          container
-          justify="space-between"
-          className={classes.buttonsContainer}
-        >
-          <ControlButtons {...controlButtonProps} />
-        </Grid>
+
+        <ControlButtons {...controlButtonProps} />
       </GridContainer>
     );
   } else if (content.type === "interactive_image") {
@@ -179,15 +152,7 @@ function MainContent(props) {
         >
           <IguanaSlide15 classes={classes} content={content} />
         </Grid>
-        <Grid
-          item
-          xs={12}
-          container
-          justify="space-between"
-          className={classes.buttonsContainer}
-        >
-          <ControlButtons {...controlButtonProps} />
-        </Grid>
+        <ControlButtons {...controlButtonProps} />
       </GridContainer>
     );
   } else if (content.type === "image_comparison") {
@@ -197,15 +162,7 @@ function MainContent(props) {
           <AudioPlayerHandler src={content.audioSrc} />
           <IguanaSlide8 content={content} classes={classes.imageComparison} />
         </Grid>
-        <Grid
-          item
-          xs={12}
-          container
-          justify="space-between"
-          className={classes.buttonsContainer}
-        >
-          <ControlButtons {...controlButtonProps} />
-        </Grid>
+        <ControlButtons {...controlButtonProps} />
       </GridContainer>
     );
   } else if (content.type === "360_comparison") {
@@ -220,15 +177,7 @@ function MainContent(props) {
           <Iframe src={content.url2} className={classes.iframe360} />
         </Grid>
 
-        <Grid
-          item
-          xs={12}
-          container
-          justify="space-between"
-          className={classes.buttonsContainer}
-        >
-          <ControlButtons {...controlButtonProps} />
-        </Grid>
+        <ControlButtons {...controlButtonProps} />
       </GridContainer>
     );
   } else if (content.type === "slide3InteractiveVideo") {
@@ -243,15 +192,7 @@ function MainContent(props) {
         >
           <IguanaSlide3 content={content} />
         </Grid>
-        <Grid
-          item
-          xs={12}
-          container
-          justify="space-between"
-          className={classes.buttonsContainer}
-        >
-          <ControlButtons {...controlButtonProps} />
-        </Grid>
+        <ControlButtons {...controlButtonProps} />
       </GridContainer>
     );
   } else if (content.type === "dnaInteractiveActivity") {
@@ -269,15 +210,7 @@ function MainContent(props) {
         >
           <IguanaSlide17 content={content} />
         </Grid>
-        <Grid
-          item
-          xs={12}
-          container
-          justify="space-between"
-          className={classes.buttonsContainer}
-        >
-          <ControlButtons {...controlButtonProps} />
-        </Grid>
+        <ControlButtons {...controlButtonProps} />
       </GridContainer>
     );
   } else {
@@ -294,15 +227,7 @@ function MainContent(props) {
         >
           <h1>THIS SLIDE HASN'T BEEN CREATED YET</h1>
         </Grid>
-        <Grid
-          item
-          xs={12}
-          container
-          justify="space-between"
-          className={classes.buttonsContainer}
-        >
-          <ControlButtons {...controlButtonProps} />
-        </Grid>
+        <ControlButtons {...controlButtonProps} />
       </GridContainer>
     );
   }
