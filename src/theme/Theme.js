@@ -8,6 +8,9 @@ export default createMuiTheme({
     secondary: {
       main: "#fff",
     },
+    button: {
+      main: "#3f51b5",
+    },
   },
   typography: {
     tab: {
