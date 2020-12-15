@@ -15,7 +15,7 @@ export default function ControlButtons(props) {
       <Grid item xs={1}>
         {props.hasPrev && (
           <Button
-            color="primary"
+            color="secondary"
             variant="outlined"
             size="small"
             component={Link}
@@ -28,7 +28,7 @@ export default function ControlButtons(props) {
       <Grid item xs={1}>
         {props.hasNext && (
           <Button
-            color="primary"
+            color="secondary"
             variant="outlined"
             size="small"
             component={Link}
