@@ -40,7 +40,7 @@ export const IguanaSlide17 = ({ content }) => {
   };
 
   return (
-    <div className={classes.container}>
+    <>
       <div className={classes.slideTitle}>
         <p>Find the Mutation!</p>
       </div>
@@ -69,6 +69,6 @@ export const IguanaSlide17 = ({ content }) => {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 };

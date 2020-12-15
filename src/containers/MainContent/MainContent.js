@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     boxSizing: "border-box",
     overflow: "visible",
-    // backgroundColor: "tomato",
   },
 
   // VIDEO & IMAGE SLIDES - CONTAINER STYLING
@@ -56,6 +55,13 @@ const useStyles = makeStyles((theme) => ({
   iframe360: {
     width: "100%",
     height: "100%",
+  },
+
+  // SLIDE 17 STYLING
+  dnaSlideContainer: {
+    position: "relative",
+    width: "100%",
+    height: `calc(100%  -  ${theme.typography.pxToRem(35)})`,
   },
 
   // BUTTON STYLES
@@ -271,16 +277,13 @@ function MainContent(props) {
         container
         spacing={0}
         direction="row"
-        // alignItems="stretch"
         justify="space-between"
       >
-        {/* <AudioPlayerHandler src={content.audioSrc} /> */}
         <Grid
           item
           xs={12}
           container
           justify="center"
-          // alignItems="flex-start"
           className={classes.videoContainer}
         >
           <IguanaSlide3 content={content} />
@@ -298,11 +301,35 @@ function MainContent(props) {
     );
   } else if (content.type === "dnaInteractiveActivity") {
     return (
-      <>
+      <Grid
+        className={classes.container}
+        container
+        spacing={0}
+        direction="row"
+        justify="space-between"
+      >
         <AudioPlayerHandler src={content.audioSrc} />
-        <IguanaSlide17 content={content} />
-        <ControlButtons {...controlButtonProps} />
-      </>
+        <Grid
+          item
+          xs={12}
+          className={classes.dnaSlideContainer}
+          container
+          alignItems="center"
+          justify="center"
+          direction="column"
+        >
+          <IguanaSlide17 content={content} />
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          container
+          justify="space-between"
+          className={classes.buttonsContainer}
+        >
+          <ControlButtons {...controlButtonProps} />
+        </Grid>
+      </Grid>
     );
   } else {
     return (
