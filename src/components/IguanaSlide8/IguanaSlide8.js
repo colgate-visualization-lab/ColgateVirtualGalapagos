@@ -8,11 +8,14 @@ import Popup from "../../components/Popup/Popup";
 
 const IguanaSlide8 = ({ content }) => {
   return (
-    <div style={{ alignSelf: "center" }}>
+    <div>
       <ReactCompareSlider
         onlyHandleDraggable={true}
         itemOne={
-          <div>
+          <div
+            id="itemOne"
+            style={{ alignSelf: "center", height: "90vh", width: "100%" }}
+          >
             <ReactCompareSliderImage
               src={content.url1}
               alt="adult marine iguana with baby"
@@ -30,7 +33,10 @@ const IguanaSlide8 = ({ content }) => {
           </div>
         }
         itemTwo={
-          <div>
+          <div
+            id="itemOne"
+            style={{ alignSelf: "center", height: "90vh", width: "100%" }}
+          >
             <ReactCompareSliderImage
               src={content.url2}
               alt="smiling land iguana"
