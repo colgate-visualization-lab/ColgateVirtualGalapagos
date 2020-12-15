@@ -4,6 +4,7 @@ import ControlButtons from "../ControlButtons/ControlButtons";
 import IguanaSlide15 from "../IguanaSlide15/IguanaSlide15";
 import Iframe from "react-iframe";
 import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/styles";
 
 import data from "../../components/IguanaData/IguanaData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
@@ -11,11 +12,38 @@ import IguanaSlide3 from "../IguanaSlide3/IguanaSlide3";
 import IguanaSlide8 from "../../components/IguanaSlide8/IguanaSlide8";
 import IguanaSlide17 from "../IguanaSlide17";
 
+const useStyles = makeStyles((theme) => ({
+  container: {
+    position: "relative",
+    height: "100%",
+    boxSizing: "border-box",
+    overflow: "visible",
+    backgroundColor: "tomato",
+  },
+  videoContainer: {
+    width: "100vw",
+    height: `calc(100%  -  ${theme.typography.pxToRem(35)})`,
+    padding: 0,
+    backgroundColor: "lavender",
+  },
+  video: {
+    minHeight: "300px",
+    maxWidth: "100%",
+    maxHeight: "100%",
+  },
+  buttonsContainer: {
+    position: "relative",
+    width: "90vw",
+    backgroundColor: "lawngreen",
+    height: theme.typography.pxToRem(30),
+  },
+}));
+
 function MainContent(props) {
   // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
   // const [audioIsDone, setAudioIsDone] = useState(false);
-
   // we get current slide id from and use that to find the next and prev slide ids
+  const styles = useStyles();
   const slideId = parseInt(props.match.params.slide_id || 1);
   const prevSlide = `/iguana/${slideId === 1 ? 1 : slideId - 1}`;
   const nextSlide = `/iguana/${
@@ -48,22 +76,28 @@ function MainContent(props) {
       <Grid
         className={classes.container}
         container
-        // spacing={1}
+        spacing={0}
         direction="row"
-        alignItems="center"
-        justify="center"
+        // alignItems="stretch"
+        justify="space-between"
       >
         <Grid
           item
           xs={12}
           container
           justify="center"
-          alignItems="flex-start"
-          className={classes.vidContainer}
+          // alignItems="flex-start"
+          className={styles.videoContainer}
         >
-          <video src={content.url} className={classes.vid} controls />
+          <video src={content.url} className={styles.video} controls />
         </Grid>
-        <Grid item xs={12} container justify="space-between">
+        <Grid
+          item
+          xs={12}
+          container
+          justify="space-between"
+          className={styles.buttonsContainer}
+        >
           <ControlButtons {...controlButtonProps} />
         </Grid>
       </Grid>
@@ -72,7 +106,7 @@ function MainContent(props) {
     return (
       <Grid
         container
-        spacing={1}
+        spacing={2}
         direction="row"
         alignItems="center"
         justify="center"

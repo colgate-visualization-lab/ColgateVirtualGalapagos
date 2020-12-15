@@ -14,9 +14,9 @@ const useStyles = makeStyles((theme) => ({
   main: {
     width: "100vw",
     height: `calc(100% - 64px)`,
-    overflow: "visible",
+    overflow: "hidden",
     position: "relative",
-    flex: "1",
+    // flex: "1",
   },
 }));
 

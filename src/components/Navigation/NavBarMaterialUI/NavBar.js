@@ -61,7 +61,7 @@ const NavBar = () => {
               src={logo}
             />
           </Button>
-          <Tabs className={classes.tabContainer}>
+          <Tabs className={classes.tabContainer} value={false}>
             <Tab
               value={0}
               className={classes.tab}
