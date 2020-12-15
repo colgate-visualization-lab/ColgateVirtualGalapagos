@@ -20,12 +20,15 @@ const useStyles = makeStyles((theme) => ({
     overflow: "visible",
   },
 
-  // VIDEO & IMAGE SLIDES - CONTAINER STYLING
-  videoContainer: {
+  //  CONTENT CONTAINER STYLING  - container that surrounds
+  //   main content of the page - basically whatever's above the
+  //   PREV and NEXT buttons
+  contentContainer: {
     position: "relative",
     width: "100%",
+
+    // height is 100% of parent container minus the total height of the PREV and NEXT buttons (plus a little space)
     height: `calc(100%  -  ${theme.typography.pxToRem(35)})`,
-    // padding: 0,
     // backgroundColor: "lavender",
   },
 
@@ -48,20 +51,9 @@ const useStyles = makeStyles((theme) => ({
   imageComparison: {},
 
   // 360 VIDEO STYLING
-  iframe360Container: {
-    width: "100%",
-    height: `calc(100%  -  ${theme.typography.pxToRem(35)})`,
-  },
   iframe360: {
     width: "100%",
     height: "100%",
-  },
-
-  // SLIDE 17 STYLING
-  dnaSlideContainer: {
-    position: "relative",
-    width: "100%",
-    height: `calc(100%  -  ${theme.typography.pxToRem(35)})`,
   },
 
   // BUTTON STYLES
@@ -73,6 +65,17 @@ const useStyles = makeStyles((theme) => ({
     height: theme.typography.pxToRem(30),
   },
 }));
+
+// Refactoring Grid Outer Container
+const GridContainer = (props) => (
+  <Grid
+    {...props}
+    container
+    spacing={0}
+    direction="row"
+    justify="space-between"
+  />
+);
 
 function MainContent(props) {
   // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
@@ -101,21 +104,13 @@ function MainContent(props) {
 
   if (content.type === "image") {
     return (
-      <Grid
-        className={classes.container}
-        container
-        spacing={0}
-        direction="row"
-        // alignItems="stretch"
-        justify="space-between"
-      >
+      <GridContainer className={classes.container}>
         <Grid
           item
           xs={12}
           container
           justify="center"
-          // alignItems="flex-start"
-          className={classes.videoContainer}
+          className={classes.contentContainer}
         >
           <img src={content.url} className={`iguana ${classes.img}`} />
         </Grid>
@@ -128,25 +123,17 @@ function MainContent(props) {
         >
           <ControlButtons {...controlButtonProps} />
         </Grid>
-      </Grid>
+      </GridContainer>
     );
   } else if (content.type === "video") {
     return (
-      <Grid
-        className={classes.container}
-        container
-        spacing={0}
-        direction="row"
-        // alignItems="stretch"
-        justify="space-between"
-      >
+      <GridContainer className={classes.container}>
         <Grid
           item
           xs={12}
           container
           justify="center"
-          // alignItems="flex-start"
-          className={classes.videoContainer}
+          className={classes.contentContainer}
         >
           <video src={content.url} className={classes.video} controls />
         </Grid>
@@ -159,19 +146,12 @@ function MainContent(props) {
         >
           <ControlButtons {...controlButtonProps} />
         </Grid>
-      </Grid>
+      </GridContainer>
     );
   } else if (content.type === "video360") {
     return (
-      <Grid
-        className={classes.container}
-        container
-        spacing={0}
-        direction="row"
-        // alignItems="stretch"
-        justify="space-between"
-      >
-        <Grid item xs={12} className={classes.videoContainer}>
+      <GridContainer className={classes.container}>
+        <Grid item xs={12} className={classes.contentContainer}>
           <AudioPlayerHandler src={content.audioSrc} />
           <Iframe className={classes.iframe360} src={content.url} />
         </Grid>
@@ -184,25 +164,18 @@ function MainContent(props) {
         >
           <ControlButtons {...controlButtonProps} />
         </Grid>
-      </Grid>
+      </GridContainer>
     );
   } else if (content.type === "interactive_image") {
     return (
-      <Grid
-        className={classes.container}
-        container
-        spacing={0}
-        direction="row"
-        // alignItems="stretch"
-        justify="space-between"
-      >
+      <GridContainer className={classes.container}>
         <Grid
           item
           xs={12}
           container
           justify="center"
           alignItems="center"
-          className={classes.videoContainer}
+          className={classes.contentContainer}
         >
           <IguanaSlide15 classes={classes} content={content} />
         </Grid>
@@ -215,18 +188,12 @@ function MainContent(props) {
         >
           <ControlButtons {...controlButtonProps} />
         </Grid>
-      </Grid>
+      </GridContainer>
     );
   } else if (content.type === "image_comparison") {
     return (
-      <Grid
-        className={classes.container}
-        container
-        spacing={0}
-        direction="row"
-        justify="space-between"
-      >
-        <Grid item xs={12} className={classes.iframe360Container}>
+      <GridContainer className={classes.container}>
+        <Grid item xs={12} className={classes.contentContainer}>
           <AudioPlayerHandler src={content.audioSrc} />
           <IguanaSlide8 content={content} classes={classes.imageComparison} />
         </Grid>
@@ -239,23 +206,17 @@ function MainContent(props) {
         >
           <ControlButtons {...controlButtonProps} />
         </Grid>
-      </Grid>
+      </GridContainer>
     );
   } else if (content.type === "360_comparison") {
     return (
-      <Grid
-        className={classes.container}
-        container
-        spacing={0}
-        direction="row"
-        justify="space-between"
-      >
+      <GridContainer className={classes.container}>
         <AudioPlayerHandler src={content.audioSrc} />
-        <Grid item xs={6} className={classes.iframe360Container}>
+        <Grid item xs={6} className={classes.contentContainer}>
           <Iframe src={content.url1} className={classes.iframe360} />
         </Grid>
 
-        <Grid item xs={6} className={classes.iframe360Container}>
+        <Grid item xs={6} className={classes.contentContainer}>
           <Iframe src={content.url2} className={classes.iframe360} />
         </Grid>
 
@@ -268,23 +229,17 @@ function MainContent(props) {
         >
           <ControlButtons {...controlButtonProps} />
         </Grid>
-      </Grid>
+      </GridContainer>
     );
   } else if (content.type === "slide3InteractiveVideo") {
     return (
-      <Grid
-        className={classes.container}
-        container
-        spacing={0}
-        direction="row"
-        justify="space-between"
-      >
+      <GridContainer className={classes.container}>
         <Grid
           item
           xs={12}
           container
           justify="center"
-          className={classes.videoContainer}
+          className={classes.contentContainer}
         >
           <IguanaSlide3 content={content} />
         </Grid>
@@ -297,22 +252,16 @@ function MainContent(props) {
         >
           <ControlButtons {...controlButtonProps} />
         </Grid>
-      </Grid>
+      </GridContainer>
     );
   } else if (content.type === "dnaInteractiveActivity") {
     return (
-      <Grid
-        className={classes.container}
-        container
-        spacing={0}
-        direction="row"
-        justify="space-between"
-      >
+      <GridContainer className={classes.container}>
         <AudioPlayerHandler src={content.audioSrc} />
         <Grid
           item
           xs={12}
-          className={classes.dnaSlideContainer}
+          className={classes.contentContainer}
           container
           alignItems="center"
           justify="center"
@@ -329,21 +278,15 @@ function MainContent(props) {
         >
           <ControlButtons {...controlButtonProps} />
         </Grid>
-      </Grid>
+      </GridContainer>
     );
   } else {
     return (
-      <Grid
-        className={classes.container}
-        container
-        spacing={0}
-        direction="row"
-        justify="space-between"
-      >
+      <GridContainer className={classes.container}>
         <Grid
           item
           xs={12}
-          className={classes.dnaSlideContainer}
+          className={classes.contentContainer}
           container
           alignItems="center"
           justify="center"
@@ -359,8 +302,8 @@ function MainContent(props) {
           className={classes.buttonsContainer}
         >
           <ControlButtons {...controlButtonProps} />
-        </Grid>{" "}
-      </Grid>
+        </Grid>
+      </GridContainer>
     );
   }
 }
