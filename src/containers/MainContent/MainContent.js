@@ -23,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
 
   // VIDEO & IMAGE SLIDES - CONTAINER STYLING
   videoContainer: {
-    width: "100vw",
+    position: "relative",
+    width: "100%",
     height: `calc(100%  -  ${theme.typography.pxToRem(35)})`,
     // padding: 0,
     // backgroundColor: "lavender",
@@ -45,10 +46,16 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "360px",
   },
 
+  imageComparison: {},
+
   // 360 VIDEO STYLING
-  iframe360: {
-    width: "100vw",
+  iframe360Container: {
+    width: "100%",
     height: `calc(100%  -  ${theme.typography.pxToRem(35)})`,
+  },
+  iframe360: {
+    width: "100%",
+    height: "100%",
   },
 
   // BUTTON STYLES
@@ -158,14 +165,9 @@ function MainContent(props) {
         // alignItems="stretch"
         justify="space-between"
       >
-        <Grid item xs={12} className={classes.iframe360}>
-          {/* <AudioPlayerHandler src={content.audioSrc} /> */}
-          <Iframe
-            // position="absolute"
-            width="100%"
-            height="100%"
-            src={content.url}
-          />
+        <Grid item xs={12} className={classes.videoContainer}>
+          <AudioPlayerHandler src={content.audioSrc} />
+          <Iframe className={classes.iframe360} src={content.url} />
         </Grid>
         <Grid
           item
@@ -180,38 +182,80 @@ function MainContent(props) {
     );
   } else if (content.type === "interactive_image") {
     return (
-      <>
-        <IguanaSlide15 classes={classes} content={content} />
-        <ControlButtons {...controlButtonProps} />
-      </>
+      <Grid
+        className={classes.container}
+        container
+        spacing={0}
+        direction="row"
+        // alignItems="stretch"
+        justify="space-between"
+      >
+        <Grid
+          item
+          xs={12}
+          container
+          justify="space-between"
+          className={classes.buttonsContainer}
+        >
+          <Grid item xs={12} className={classes.videoContainer}>
+            <IguanaSlide15 classes={classes} content={content} />
+          </Grid>
+          <ControlButtons {...controlButtonProps} />
+        </Grid>
+      </Grid>
     );
   } else if (content.type === "image_comparison") {
     return (
-      <div
-        style={{
-          width: "90%",
-          height: "90%",
-          margin: "0 auto",
-          display: "flex",
-        }}
+      <Grid
+        className={classes.container}
+        container
+        spacing={0}
+        direction="row"
+        justify="space-between"
       >
-        <AudioPlayerHandler src={content.audioSrc} />
-        <IguanaSlide8 content={content} />
-        <ControlButtons {...controlButtonProps} />
-      </div>
+        <Grid item xs={12} className={classes.iframe360Container}>
+          <AudioPlayerHandler src={content.audioSrc} />
+          <IguanaSlide8 content={content} classes={classes.imageComparison} />
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          container
+          justify="space-between"
+          className={classes.buttonsContainer}
+        >
+          <ControlButtons {...controlButtonProps} />
+        </Grid>
+      </Grid>
     );
   } else if (content.type === "360_comparison") {
     return (
-      <Fragment>
+      <Grid
+        className={classes.container}
+        container
+        spacing={0}
+        direction="row"
+        justify="space-between"
+      >
         <AudioPlayerHandler src={content.audioSrc} />
-        {/* <div className={classes.comparison360Left}> */}
-        <Iframe className={classes.comparison360Left} src={content.url1} />
-        {/* </div> */}
-        {/* <div className={classes.comparison360Right}> */}
-        <Iframe className={classes.comparison360Right} src={content.url2} />
-        {/* </div> */}
-        <ControlButtons {...controlButtonProps} />
-      </Fragment>
+        <Grid item xs={6} className={classes.iframe360Container}>
+          <Iframe src={content.url1} className={classes.iframe360} />
+        </Grid>
+
+        <Grid item xs={6} className={classes.iframe360Container}>
+          <Iframe src={content.url2} className={classes.iframe360} />
+        </Grid>
+
+        <Grid
+          item
+          xs={12}
+          container
+          justify="space-between"
+          className={classes.buttonsContainer}
+        >
+          <ControlButtons {...controlButtonProps} />
+        </Grid>
+      </Grid>
     );
   } else if (content.type === "slide3InteractiveVideo") {
     return (

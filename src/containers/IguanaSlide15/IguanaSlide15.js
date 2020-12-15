@@ -43,6 +43,7 @@ const IguanaSlide15 = ({ content }) => {
   return (
     <div
       style={{
+        position: "flex",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -63,6 +64,7 @@ const IguanaSlide15 = ({ content }) => {
         playing={audioIsPlaying}
       />
       <ImageMapper
+        position="relative"
         width={width}
         imgWidth={1600}
         src={content.url}
