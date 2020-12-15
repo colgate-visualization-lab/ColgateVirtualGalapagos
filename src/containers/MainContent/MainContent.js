@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   video: {
     minHeight: "400px",
     minWidth: "400px",
-    maxWidth: "100%",
+    width: "100%",
     maxHeight: "100%",
   },
 
