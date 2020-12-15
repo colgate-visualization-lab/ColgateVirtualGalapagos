@@ -29,7 +29,8 @@ const useStyles = makeStyles((theme) => ({
     // backgroundColor: "lavender",
   },
   video: {
-    minHeight: "300px",
+    minHeight: "400px",
+    minWidth: "400px",
     maxWidth: "100%",
     maxHeight: "100%",
   },
@@ -200,11 +201,35 @@ function MainContent(props) {
     );
   } else if (content.type === "slide3InteractiveVideo") {
     return (
-      <>
+      <Grid
+        className={classes.container}
+        container
+        spacing={0}
+        direction="row"
+        // alignItems="stretch"
+        justify="space-between"
+      >
         {/* <AudioPlayerHandler src={content.audioSrc} /> */}
-        <IguanaSlide3 content={content} />
-        <ControlButtons {...controlButtonProps} />
-      </>
+        <Grid
+          item
+          xs={12}
+          container
+          justify="center"
+          // alignItems="flex-start"
+          className={classes.videoContainer}
+        >
+          <IguanaSlide3 content={content} />
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          container
+          justify="space-between"
+          className={classes.buttonsContainer}
+        >
+          <ControlButtons {...controlButtonProps} />
+        </Grid>
+      </Grid>
     );
   } else if (content.type === "dnaInteractiveActivity") {
     return (
