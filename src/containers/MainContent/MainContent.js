@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     height: "100%",
     boxSizing: "border-box",
-    overflow: "visible",
+    overflow: "hidden",
     minHeight: "500px",
     minWidth: "500px",
     // backgroundColor: "tomato",
@@ -50,8 +50,6 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "100%",
     minWidth: "360px",
   },
-
-  imageComparison: {},
 
   // 360 VIDEO STYLING
   iframe360: {
@@ -153,7 +151,7 @@ function MainContent(props) {
         <AudioPlayerHandler src={content.audioSrc} />
 
         <SlideContent className={classes.contentContainer}>
-          <IguanaSlide8 content={content} classes={classes.imageComparison} />
+          <IguanaSlide8 content={content} />
         </SlideContent>
 
         <ControlButtons {...controlButtonProps} />
