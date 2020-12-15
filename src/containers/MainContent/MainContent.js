@@ -28,6 +28,8 @@ const useStyles = makeStyles((theme) => ({
     // padding: 0,
     // backgroundColor: "lavender",
   },
+
+  // VIDEO STYLING
   video: {
     minHeight: "400px",
     minWidth: "400px",
@@ -35,12 +37,18 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: "100%",
   },
 
-  // IMAGE CONTENT SLIDES
+  // IMAGE STYLING
   img: {
     objectFit: "contain",
     maxHeight: "100%",
     maxWidth: "100%",
     minWidth: "360px",
+  },
+
+  // 360 VIDEO STYLING
+  iframe360: {
+    width: "100vw",
+    height: `calc(100%  -  ${theme.typography.pxToRem(35)})`,
   },
 
   // BUTTON STYLES
@@ -143,15 +151,15 @@ function MainContent(props) {
   } else if (content.type === "video360") {
     return (
       <Grid
-        container
-        spacing={2}
-        direction="row"
-        alignItems="center"
-        justify="center"
         className={classes.container}
+        container
+        spacing={0}
+        direction="row"
+        // alignItems="stretch"
+        justify="space-between"
       >
         <Grid item xs={12} className={classes.iframe360}>
-          <AudioPlayerHandler src={content.audioSrc} />
+          {/* <AudioPlayerHandler src={content.audioSrc} /> */}
           <Iframe
             // position="absolute"
             width="100%"
@@ -159,7 +167,13 @@ function MainContent(props) {
             src={content.url}
           />
         </Grid>
-        <Grid item xs={12} container justify="space-between">
+        <Grid
+          item
+          xs={12}
+          container
+          justify="space-between"
+          className={classes.buttonsContainer}
+        >
           <ControlButtons {...controlButtonProps} />
         </Grid>
       </Grid>
