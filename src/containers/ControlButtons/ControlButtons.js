@@ -8,13 +8,17 @@ import { makeStyles } from "@material-ui/styles";
 // import { Back, Next } from "../../assets/VolcanoModule";
 
 const useStyles = makeStyles((theme) => ({
+  button: {
+    // background: "rgba(200, 10, 230, 0.6)",
+  },
   // BUTTON STYLES
   buttonsContainer: {
     position: "relative",
     width: "90vw",
     color: "primary",
     // backgroundColor: "lawngreen",
-    height: theme.typography.pxToRem(30),
+    height: theme.typography.pxToRem(40),
+    padding: "0 16px",
   },
 }));
 
@@ -28,9 +32,10 @@ export default function ControlButtons(props) {
       xs={12}
       container
       justify="space-between"
+      alignItems="center"
       className={classes.buttonsContainer}
     >
-      <Grid item xs={1}>
+      <Grid item>
         {props.hasPrev && (
           <Button
             color="secondary"
@@ -38,12 +43,13 @@ export default function ControlButtons(props) {
             size="small"
             component={Link}
             to={props.prevSlide}
+            className={classes.button}
           >
             Previous
           </Button>
         )}
       </Grid>
-      <Grid item xs={1}>
+      <Grid item>
         {props.hasNext && (
           <Button
             color="secondary"
@@ -51,6 +57,7 @@ export default function ControlButtons(props) {
             size="small"
             component={Link}
             to={props.nextSlide}
+            className={classes.button}
           >
             Next
           </Button>
