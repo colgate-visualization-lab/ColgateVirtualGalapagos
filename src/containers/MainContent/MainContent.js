@@ -77,6 +77,18 @@ const GridContainer = (props) => (
   />
 );
 
+// Refactoring Slide Content Item
+const SlideContent = (props) => (
+  <Grid
+    item
+    xs={12}
+    container
+    justify="center"
+    alignItems="center"
+    {...props}
+  />
+);
+
 function MainContent(props) {
   // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
   // const [audioIsDone, setAudioIsDone] = useState(false);
@@ -101,40 +113,31 @@ function MainContent(props) {
   if (content.type === "image") {
     return (
       <GridContainer className={classes.container}>
-        <Grid
-          item
-          xs={12}
-          container
-          justify="center"
-          className={classes.contentContainer}
-        >
+        <SlideContent className={classes.contentContainer}>
           <img src={content.url} className={`iguana ${classes.img}`} />
-        </Grid>
+        </SlideContent>
+
         <ControlButtons {...controlButtonProps} />
       </GridContainer>
     );
   } else if (content.type === "video") {
     return (
       <GridContainer className={classes.container}>
-        <Grid
-          item
-          xs={12}
-          container
-          justify="center"
-          className={classes.contentContainer}
-        >
+        <SlideContent className={classes.contentContainer}>
           <video src={content.url} className={classes.video} controls />
-        </Grid>
+        </SlideContent>
+
         <ControlButtons {...controlButtonProps} />
       </GridContainer>
     );
   } else if (content.type === "video360") {
     return (
       <GridContainer className={classes.container}>
-        <Grid item xs={12} className={classes.contentContainer}>
-          <AudioPlayerHandler src={content.audioSrc} />
+        <AudioPlayerHandler src={content.audioSrc} />
+
+        <SlideContent className={classes.contentContainer}>
           <Iframe className={classes.iframe360} src={content.url} />
-        </Grid>
+        </SlideContent>
 
         <ControlButtons {...controlButtonProps} />
       </GridContainer>
@@ -142,26 +145,22 @@ function MainContent(props) {
   } else if (content.type === "interactive_image") {
     return (
       <GridContainer className={classes.container}>
-        <Grid
-          item
-          xs={12}
-          container
-          justify="center"
-          alignItems="center"
-          className={classes.contentContainer}
-        >
+        <SlideContent className={classes.contentContainer}>
           <IguanaSlide15 classes={classes} content={content} />
-        </Grid>
+        </SlideContent>
+
         <ControlButtons {...controlButtonProps} />
       </GridContainer>
     );
   } else if (content.type === "image_comparison") {
     return (
       <GridContainer className={classes.container}>
-        <Grid item xs={12} className={classes.contentContainer}>
-          <AudioPlayerHandler src={content.audioSrc} />
+        <AudioPlayerHandler src={content.audioSrc} />
+
+        <SlideContent className={classes.contentContainer}>
           <IguanaSlide8 content={content} classes={classes.imageComparison} />
-        </Grid>
+        </SlideContent>
+
         <ControlButtons {...controlButtonProps} />
       </GridContainer>
     );
@@ -169,9 +168,10 @@ function MainContent(props) {
     return (
       <GridContainer className={classes.container}>
         <AudioPlayerHandler src={content.audioSrc} />
-        <Grid item xs={6} className={classes.contentContainer}>
+
+        <SlideContent className={classes.contentContainer}>
           <Iframe src={content.url1} className={classes.iframe360} />
-        </Grid>
+        </SlideContent>
 
         <Grid item xs={6} className={classes.contentContainer}>
           <Iframe src={content.url2} className={classes.iframe360} />
@@ -183,15 +183,10 @@ function MainContent(props) {
   } else if (content.type === "slide3InteractiveVideo") {
     return (
       <GridContainer className={classes.container}>
-        <Grid
-          item
-          xs={12}
-          container
-          justify="center"
-          className={classes.contentContainer}
-        >
+        <SlideContent className={classes.contentContainer}>
           <IguanaSlide3 content={content} />
-        </Grid>
+        </SlideContent>
+
         <ControlButtons {...controlButtonProps} />
       </GridContainer>
     );
@@ -199,34 +194,21 @@ function MainContent(props) {
     return (
       <GridContainer className={classes.container}>
         <AudioPlayerHandler src={content.audioSrc} />
-        <Grid
-          item
-          xs={12}
-          className={classes.contentContainer}
-          container
-          alignItems="center"
-          justify="center"
-          direction="column"
-        >
+
+        <SlideContent className={classes.contentContainer}>
           <IguanaSlide17 content={content} />
-        </Grid>
+        </SlideContent>
+
         <ControlButtons {...controlButtonProps} />
       </GridContainer>
     );
   } else {
     return (
       <GridContainer className={classes.container}>
-        <Grid
-          item
-          xs={12}
-          className={classes.contentContainer}
-          container
-          alignItems="center"
-          justify="center"
-          direction="column"
-        >
+        <SlideContent className={classes.contentContainer}>
           <h1>THIS SLIDE HASN'T BEEN CREATED YET</h1>
-        </Grid>
+        </SlideContent>
+
         <ControlButtons {...controlButtonProps} />
       </GridContainer>
     );
