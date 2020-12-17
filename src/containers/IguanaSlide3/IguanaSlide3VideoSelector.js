@@ -10,7 +10,7 @@ const Slide3VideoSelector = ({
   videoInteractionDisabled,
 }) => {
   useEffect(() => {
-    console.log(data[0].cardTitle);
+    console.log(data[0].description);
   });
 
   return (
@@ -26,11 +26,11 @@ const Slide3VideoSelector = ({
               className={`${classes.videoSelectorButton} ${classes.button} `}
               onClick={() => {
                 onSrcChange(datum);
-                console.log(datum.cardTitle);
+                console.log(datum.description);
               }}
               type="button"
             >
-              {datum.cardTitle}
+              {datum.description}
             </button>
 
             {videoInteractionDisabled && watched.has(datum.id) && (
