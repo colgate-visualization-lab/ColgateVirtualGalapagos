@@ -1,4 +1,4 @@
-import { slide13Data } from "./slide13Data";
+import { slide3Data } from "./slide3Data";
 import { slide15Data } from "./slide15Data";
 import { slide17Data } from "./slide17Data";
 
@@ -21,9 +21,14 @@ const data = [
     id: "3",
     title: "Iguana_Carried02",
     type: "slide3InteractiveVideo",
+
     audioSrc:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide3SplitAudio/IguanaMystery_Slide3_Intro.mp3",
-    data: slide13Data,
+    introVidSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/ShoreWaves.mp4",
+    interSrc:
+      "http://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoModuleIntro.mp4",
+    data: slide3Data,
   },
   {
     id: "4",
