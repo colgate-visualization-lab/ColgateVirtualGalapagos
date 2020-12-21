@@ -3,15 +3,12 @@ import PropTypes from "prop-types";
 
 import classes from "./IguanaSlide3.css";
 
-const Slide3VideoSelector = ({
-  data,
-  onSrcChange,
-  watched,
-  videoInteractionDisabled,
-}) => {
-  useEffect(() => {
-    console.log(data[0].description);
-  });
+const Slide3VideoSelector = (props) => {
+  const { data, onSrcChange, watched, videoInteractionDisabled } = props;
+
+  const buttonSizeClass = videoInteractionDisabled
+    ? classes.buttonSizeOnEnd
+    : classes.buttonSizeOnPlay;
 
   return (
     <div className={classes.videoSelector}>
@@ -23,7 +20,7 @@ const Slide3VideoSelector = ({
         {data.map((datum) => (
           <div key={datum.id}>
             <button
-              className={`${classes.videoSelectorButton} ${classes.button} `}
+              className={`${classes.buttonShared} ${buttonSizeClass} `}
               onClick={() => {
                 onSrcChange(datum);
                 console.log(datum.description);
