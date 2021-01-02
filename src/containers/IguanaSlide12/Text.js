@@ -19,6 +19,8 @@ export default function Text() {
       style={{
         backgroundColor: isDragging ? "#fbb" : "black",
       }}
->Test</div>;
+    >
+      {items}
+    </div>;
     
   }

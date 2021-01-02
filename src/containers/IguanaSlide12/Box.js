@@ -12,7 +12,10 @@ export default function Box({ text, moveCard }) {
         }),
       });
     return <div className={classes.box}
-    ref={dropRef}
-      style={{ backgroundColor: isOver ? "#bbf" : "rgba(0,0,0,.12" }}
-    >{text ? <Text /> : "Drag Here"}</div>;
+      ref={dropRef}
+        style={{ backgroundColor: isOver ? "#bbf" : "rgba(0,0,0,.12" }}
+      >
+        {text ? <Text /> : "Drag Here"}
+        
+      </div>;
   }
