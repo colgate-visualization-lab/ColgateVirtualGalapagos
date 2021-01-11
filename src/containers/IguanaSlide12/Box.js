@@ -1,21 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Text } from "./Text";
-import { useDrag, useDrop } from "react-dnd";
+import { useDrop } from "react-dnd";
 import classes from "./Box.css";
-export const Box = ({ text, text1, moveCard, onDrop }) => {
+export const Box = ({ text, moveCard }) => {
   const [{ canDrop, isOver }, dropRef] = useDrop({
     accept: "text",
-    // drop: () => moveCard(),
     drop: moveCard,
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
-      drop: monitor.drop,
     }),
   });
-  // useEffect(() => {
-  //   console.log(text);
-  // });
+
   return (
     <div
       className={classes.box}

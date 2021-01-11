@@ -7,20 +7,27 @@ import { Text } from "./Text";
 import update from "immutability-helper";
 
 export default function DrawPhyloTree() {
-  const [index, setIndex] = useState(1);
+  // const [index, setIndex] = useState(1);
+  // maintain list of
   const [boxText, setBoxText] = useState([null, null, null, null]);
+  const [draggedText, setDraggedText] = useState([]);
 
   function moveCard(item, index) {
     // the update(boxText...) function is equivalent to
     //   taking boxText array, updating the value on one index,
     //   then returning that as a new array
-    console.log(item);
-    console.log(index);
     const newBoxText = update(boxText, { [index]: { $set: item.name } });
-    console.log(newBoxText);
     setBoxText(newBoxText);
-    console.log(boxText);
+    console.log(draggedText);
+    const newDraggedText = update(
+      draggedText,
+      item.name ? { $push: [item.name] } : { $push: [] }
+    );
+    setDraggedText(newDraggedText);
+    console.log(draggedText);
   }
+
+  const iguanaNames = ["Green Iguana", "Land Iguana", "Marine Iguana"];
 
   return (
     <div
@@ -37,9 +44,13 @@ export default function DrawPhyloTree() {
           width: "300px",
         }}
       >
-        <Text name="Green Iguana" />
-        <Text name="Land Iguana" />
-        <Text name="Marine Iguana" />
+        {iguanaNames.map((iguanaName, index) => (
+          <Text
+            name={iguanaName}
+            key={index}
+            isDropped={draggedText.indexOf(iguanaName) > -1}
+          />
+        ))}
       </div>
       <div
         style={{
