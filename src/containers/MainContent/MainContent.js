@@ -10,6 +10,7 @@ import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler"
 import IguanaSlide3 from "../IguanaSlide3/IguanaSlide3";
 import Popup from "../../components/Popup/Popup";
 import IguanaSlide12 from "../IguanaSlide12/IguanaSlide12";
+// import IguanaSlide12 from "../IguanaSlide12Alt";
 // import Iframe from "react-iframe";
 import IguanaSlide8 from "../../components/IguanaSlide8/IguanaSlide8";
 
@@ -150,11 +151,11 @@ function MainContent(props) {
         />
       </>
     );
-  } else if (content.type === "slide12interactive"){
+  } else if (content.type === "slide12interactive") {
     return (
       <>
-      <IguanaSlide12 content={content}/>
-      <ControlButtons
+        <IguanaSlide12 content={content} />
+        <ControlButtons
           width="120px"
           bottom="5%"
           left="0%"
@@ -166,8 +167,7 @@ function MainContent(props) {
         />
       </>
     );
-  }
-  else {
+  } else {
     return (
       <>
         <div
