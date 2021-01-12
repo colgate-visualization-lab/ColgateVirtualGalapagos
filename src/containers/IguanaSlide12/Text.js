@@ -15,13 +15,6 @@ const style = {
 export const Text = ({ name, handleDrag, handleDrop, pos, type }) => {
   const ref = useRef(null);
 
-  useEffect(() => {
-    if (pos) {
-      console.log("pos: ");
-      console.log(pos);
-    }
-  });
-
   const [{ isDragging }, connectDrag] = useDrag({
     item: { name, type },
     end(item, monitor) {
@@ -48,10 +41,14 @@ export const Text = ({ name, handleDrag, handleDrop, pos, type }) => {
     }),
   });
 
+  // make the boxes both draggable and droppable
   connectDrag(ref);
   connectDrop(ref);
 
   const opacity = isDragging ? 0.4 : 1;
+
+  // this is what positions the target boxes. If the pos prop
+  // is passed down, we know it's a target box and we position accordingly
   const overlayPos = pos
     ? {
         position: "absolute",

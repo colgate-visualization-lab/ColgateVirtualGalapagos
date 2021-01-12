@@ -5,13 +5,8 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import DrawPhyloTree from "./DrawPhyloTree";
 
 export default function Slide12({ content }) {
-  useEffect(() => {
-    console.log(imgRef.current.clientHeight, imgRef.current.clientWidth);
-    setPos(getTargetBoxPos());
-    console.log(pos);
-  }, []);
   const [premade, setPremade] = useState(false);
-  const [draw, setDraw] = useState(true);
+  const [draw, setDraw] = useState(false);
   const [src, setSrc] = useState(content.data[0]);
   const [slide, setSlide] = useState();
 
@@ -27,29 +22,37 @@ export default function Slide12({ content }) {
     setSrc(content.data[1]);
   };
 
-  // here we calculate coordinates of the textboxes
+  // OVERLAYING THE TARGET TEXTBOXES
+  // 1. Create a ref to pass to our image: it'll allow us to get
+  //    image dimensions as well as position
   const imgRef = useRef(null);
-  const imgSize = { height: 502, width: 1518 };
-  const [pos, setPos] = useState({});
 
-  const getImagePosition = () => {
-    let el = imgRef.current;
-    const imgPos = { x: 0, y: 0 };
+  // 2. pos will eventually hold the dimensions of the
+  //    3 target textboxes
+  const [pos, setPos] = useState([]);
 
-    for (imgPos; el; el = el.offsetParent) {
-      // console.log(el.offsetLeft, el.offsetTop);
-      imgPos.x += el.offsetLeft;
-      imgPos.y += el.offsetTop;
-    }
-    // console.log(imgPos);
-    return imgPos;
-  };
+  // 3. Calculate initial position of the target textboxes
+  useEffect(() => {
+    getTargetBoxPos();
+  }, []);
 
+  // 4. Now we add an event listener to the window to make sure that
+  //    the textbox positions are recalculated if the window resizes
+  useEffect(() => {
+    window.addEventListener("resize", getTargetBoxPos);
+    return () => {
+      window.removeEventListener("resize", getTargetBoxPos);
+    };
+  }, [window.innerWidth]);
+
+  // 5. We calculate the target textbox positions.
+  //    Basically I'm dividing the image height and width with
+  //    those ratios specified.
+  // 6. Got those ratios by dividing the original image height and width
+  //    by the (x, y) coordinates of where I'd place those textboxes on the original image
   const getTargetBoxPos = () => {
-    const imgPos = getImagePosition();
-
     const targetPos = [
-      // iguanaBoxPos
+      // greenIguanaBoxPos
       {
         offset: true,
         top: imgRef.current.clientHeight / 1.8785,
@@ -68,7 +71,24 @@ export default function Slide12({ content }) {
         left: imgRef.current.clientWidth / 1.499,
       },
     ];
-    return targetPos;
+    setPos(targetPos);
+  };
+
+  // 7. This gets the image x and y coordinates on screen - basically (0,0) plus
+  //     whatever other offset there is - like margins or other elements above the image, etc
+  //    Placing the textboxes and the image inside the same div eliminates
+  //    the need for this(probably)
+  const getImagePosition = () => {
+    let el = imgRef.current;
+    const imgPos = { x: 0, y: 0 };
+
+    for (imgPos; el; el = el.offsetParent) {
+      // console.log(el.offsetLeft, el.offsetTop);
+      imgPos.x += el.offsetLeft;
+      imgPos.y += el.offsetTop;
+    }
+    // console.log(imgPos);
+    return imgPos;
   };
 
   const slidedata = src[slide];
