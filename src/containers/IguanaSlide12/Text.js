@@ -7,11 +7,20 @@ const style = {
   marginRight: "1.5rem",
   marginBottom: "1.5rem",
   cursor: "move",
-  float: "left",
+  width: "10em",
+  height: "2.8em",
+  // float: "left",
 };
 
-export const Text = ({ name, handleDrag, handleDrop, type }) => {
+export const Text = ({ name, handleDrag, handleDrop, pos, type }) => {
   const ref = useRef(null);
+
+  useEffect(() => {
+    if (pos) {
+      console.log("pos: ");
+      console.log(pos);
+    }
+  });
 
   const [{ isDragging }, connectDrag] = useDrag({
     item: { name, type },
@@ -31,7 +40,6 @@ export const Text = ({ name, handleDrag, handleDrop, type }) => {
     // drop: moveCard,
     drop(item, monitor) {
       const prevText = name !== "Drag Here" ? name : "";
-
       return handleDrop(item.name, prevText, item.type);
     },
     collect: (monitor) => ({
@@ -44,9 +52,20 @@ export const Text = ({ name, handleDrag, handleDrop, type }) => {
   connectDrop(ref);
 
   const opacity = isDragging ? 0.4 : 1;
+  const overlayPos = pos
+    ? {
+        position: "absolute",
+        top: `calc(${pos.top}px - ${2.8 / 2}em)`,
+        left: pos.offset ? `calc(${pos.left}px - 10em)` : pos.left,
+      }
+    : null;
 
   return (
-    <div className="text" ref={ref} style={{ ...style, opacity }}>
+    <div
+      className="text"
+      ref={ref}
+      style={{ ...style, opacity, ...overlayPos }}
+    >
       {name}
     </div>
   );

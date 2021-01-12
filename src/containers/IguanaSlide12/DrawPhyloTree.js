@@ -6,7 +6,11 @@ import { Box } from "./Box";
 import { Text } from "./Text";
 import update from "immutability-helper";
 
-export default function DrawPhyloTree() {
+export default function DrawPhyloTree({ pos }) {
+  useEffect(() => {
+    console.log("drawPhylo");
+    console.log(pos);
+  });
   // maintain list of
   const [placedItems, setPlacedItems] = useState([null, null, null]);
   const [unplacedItems, setUnplacedItems] = useState([
@@ -15,23 +19,11 @@ export default function DrawPhyloTree() {
     "Marine Iguana",
   ]);
 
-  // function moveCard(item, index) {
-  //   // the update(boxText...) function is equivalent to
-  //   //   taking boxText array, updating the value on one index,
-  //   //   then returning that as a new array
-  //   const newBoxText = update(boxText, { [index]: { $set: item.name } });
-  //   setBoxText(newBoxText);
-  //   const newDraggedText = update(
-  //     draggedText,
-  //     item.name ? { $push: [item.name] } : { $push: [] }
-  //   );
-  //   setDraggedText(newDraggedText);
-  // }
-
-  const moveItem = (item, index, dndRef) => {};
-
   const handleDrag = (itemType, index) => {
     if (itemType === "sourceTextbox") {
+      // the update(boxText...) function is equivalent to
+      //   taking boxText array, updating the value on one index,
+      //   then returning that as a new array
       setUnplacedItems(
         update(unplacedItems, {
           [index]: { $set: null },
@@ -71,16 +63,18 @@ export default function DrawPhyloTree() {
   return (
     <div
       style={{
+        position: "relative",
         display: "flex",
         flexDirection: "row",
         marginLeft: "auto",
+        zIndex: 1,
       }}
     >
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
-          width: "300px",
+          flexDirection: "row",
+          margin: "auto",
         }}
       >
         {unplacedItems.map((iguanaName, index) => (
@@ -97,32 +91,21 @@ export default function DrawPhyloTree() {
           />
         ))}
       </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          width: "300px",
-        }}
-      >
-        {placedItems.map((iguanaName, index) => (
-          <Text
-            name={iguanaName ? iguanaName : "Drag Here"}
-            key={index}
-            type="targetTextbox"
-            handleDrag={(itemType) => {
-              handleDrag(itemType, index);
-            }}
-            handleDrop={(newText, prevText, itemType) =>
-              handleDroppedOnTarget(newText, prevText, index)
-            }
-          />
-        ))}
 
-        {/* <Box text={boxText[0]} moveCard={(item) => moveCard(item, 0)} />
-        <Box text={boxText[1]} moveCard={(item) => moveCard(item, 1)} />
-        <Box text={boxText[2]} moveCard={(item) => moveCard(item, 2)} />
-        <Box text={boxText[3]} moveCard={(item) => moveCard(item, 3)} /> */}
-      </div>
+      {placedItems.map((iguanaName, index) => (
+        <Text
+          name={iguanaName ? iguanaName : "Drag Here"}
+          pos={pos[index]}
+          key={index}
+          type="targetTextbox"
+          handleDrag={(itemType) => {
+            handleDrag(itemType, index);
+          }}
+          handleDrop={(newText, prevText, itemType) =>
+            handleDroppedOnTarget(newText, prevText, index)
+          }
+        />
+      ))}
     </div>
   );
 }
