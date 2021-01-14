@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
-import GeneDescription from "./GeneDescription";
+import GeneDescription from "../GeneDescription";
 
 const useStyles = makeStyles((theme) => ({
   foundCount: {
@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const GeneMutationsTab = ({ geneMutations, onClick }) => {
+const MutationsFound = ({ geneMutations, onClick }) => {
   const classes = useStyles();
   const geneDescription =
     "Marine iguanas have black scales, while green iguanas have bright green scales";
@@ -32,4 +32,4 @@ const GeneMutationsTab = ({ geneMutations, onClick }) => {
   );
 };
 
-export default GeneMutationsTab;
+export default MutationsFound;
