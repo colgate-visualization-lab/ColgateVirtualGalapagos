@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     backgroundColor: theme.palette.grey["900"],
     color: "white",
+    padding: theme.spacing(1, 2),
   },
 }));
 
@@ -56,22 +57,12 @@ export const IguanaSlide17 = ({ content }) => {
     <Grid container justify="center" alignItems="flex-start">
       <Grid container item xs={10} spacing={2}>
         <Grid item xs={12}>
-          <Paper
-            variant="outlined"
-            elevation={2}
-            className={classes.paper}
-            square
-          >
+          <Paper variant="outlined" elevation={2} className={classes.paper}>
             <Header />
           </Paper>
         </Grid>
         <Grid item xs={8}>
-          <Paper
-            variant="outlined"
-            elevation={2}
-            className={classes.paper}
-            square
-          >
+          <Paper variant="outlined" elevation={2} className={classes.paper}>
             <BasePairClickContext.Provider
               value={{ handleOnBaseClick, mutationsFound }}
             >
@@ -81,12 +72,7 @@ export const IguanaSlide17 = ({ content }) => {
           </Paper>
         </Grid>
         <Grid item xs={4}>
-          <Paper
-            variant="outlined"
-            elevation={2}
-            className={classes.paper}
-            square
-          >
+          <Paper variant="outlined" elevation={2} className={classes.paper}>
             <MutationsFound />
           </Paper>
         </Grid>

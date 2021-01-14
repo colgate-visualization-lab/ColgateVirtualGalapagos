@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Collapse from "@material-ui/core/Collapse";
 import Button from "@material-ui/core/Button";
@@ -18,35 +19,41 @@ const Slide17Header = ({ handleClick }) => {
   const hint = "Find base pairs with different colors ";
 
   return (
-    <>
-      <Typography component="h1" variant="h5">
-        Find the Mutation!
-      </Typography>
-      <Button
-        variant="contained"
-        size="small"
-        className={classes.hintButton}
-        disableTouchRipple
-        onClick={() => {
-          setShowHint(!showHint);
-        }}
-      >
-        Hint
-      </Button>
-      <Collapse in={showHint}>
-        <Typography variant="caption" component="p">
-          {hint}
+    <Grid container>
+      <Grid item xs={12}>
+        <Typography component="h1" variant="h5">
+          Find the Mutation!
         </Typography>
+      </Grid>
+      <Grid item xs={12}>
         <Button
           variant="contained"
           size="small"
           className={classes.hintButton}
           disableTouchRipple
+          onClick={() => {
+            setShowHint(!showHint);
+          }}
         >
-          Just Show Me The Shit
+          Hint
         </Button>
-      </Collapse>
-    </>
+      </Grid>
+      <Grid item xs={12}>
+        <Collapse in={showHint}>
+          <Typography variant="caption" component="p">
+            {hint}
+          </Typography>
+          <Button
+            variant="contained"
+            size="small"
+            className={classes.hintButton}
+            disableTouchRipple
+          >
+            Just Show Me The Shit
+          </Button>
+        </Collapse>
+      </Grid>
+    </Grid>
   );
 };
 
