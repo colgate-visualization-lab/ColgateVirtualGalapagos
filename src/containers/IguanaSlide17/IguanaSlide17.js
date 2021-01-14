@@ -4,8 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 
-import GeneMutationsTextbox from "../../components/GeneMutationsTextbox";
-import GeneMutationsTab from "../../components/GeneMutationsTab";
+import Header from "../../components/Slide17Header";
+import MutationsFound from "../../components/MutationsFound";
 import Dna from "../Dna";
 import { BasePairClickContext } from "./";
 
@@ -56,14 +56,22 @@ export const IguanaSlide17 = ({ content }) => {
     <Grid container justify="center" alignItems="flex-start">
       <Grid container item xs={10} spacing={2}>
         <Grid item xs={12}>
-          <Paper variant="outlined" elevation={2} className={classes.paper}>
-            <Typography component="h1" variant="h5">
-              Find the Mutation!
-            </Typography>
+          <Paper
+            variant="outlined"
+            elevation={2}
+            className={classes.paper}
+            square
+          >
+            <Header />
           </Paper>
         </Grid>
         <Grid item xs={8}>
-          <Paper variant="outlined" elevation={2} className={classes.paper}>
+          <Paper
+            variant="outlined"
+            elevation={2}
+            className={classes.paper}
+            square
+          >
             <BasePairClickContext.Provider
               value={{ handleOnBaseClick, mutationsFound }}
             >
@@ -73,8 +81,13 @@ export const IguanaSlide17 = ({ content }) => {
           </Paper>
         </Grid>
         <Grid item xs={4}>
-          <Paper variant="outlined" elevation={2} className={classes.paper}>
-            <GeneMutationsTab />
+          <Paper
+            variant="outlined"
+            elevation={2}
+            className={classes.paper}
+            square
+          >
+            <MutationsFound />
           </Paper>
         </Grid>
       </Grid>
