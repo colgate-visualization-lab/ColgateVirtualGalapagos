@@ -10,19 +10,14 @@ import DnaSequence from "../../components/DnaSequence";
 const useStyles = makeStyles((theme) => ({
   dnaContainer: {
     marginBottom: theme.spacing(2),
-    [theme.breakpoints.up("md")]: {
-      marginBottom: theme.spacing(8),
-    },
+    // [theme.breakpoints.up("md")]: {
+    //   marginBottom: theme.spacing(8),
+    // },
   },
 }));
 
 const Dna = ({ label, basePairs }) => {
   const classes = useStyles();
-  // const svgStyle = {
-  //   border: "1px solid white",
-  //   float: "left",
-  // };
-
   const numGroups = 6;
 
   const viewBox = [10, 0, 282.32, 32.56];
@@ -41,7 +36,7 @@ const Dna = ({ label, basePairs }) => {
           preserveAspectRatio="xMidYMid meet"
           width="100%"
           height="100%"
-          transform="scale(1,1.2)"
+          // transform="scale(1,1.2)"
         >
           <g
             id="dna"
