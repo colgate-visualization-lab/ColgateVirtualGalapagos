@@ -10,9 +10,12 @@ const useStyles = makeStyles((theme) => ({
     fontSize: ".5rem",
     padding: theme.spacing(0, 0.5),
   },
+  foundCount: {
+    color: "khaki",
+  },
 }));
 
-const Slide17Header = ({ handleClick }) => {
+const Slide17Header = ({ handleClick, numFound }) => {
   const classes = useStyles();
   const [showHint, setShowHint] = useState(false);
 
@@ -23,6 +26,12 @@ const Slide17Header = ({ handleClick }) => {
       <Grid item xs={12}>
         <Typography component="h1" variant="h5">
           Find the Mutation!
+        </Typography>
+        <Typography variant="caption" component="h2">
+          Mutations Found:{" "}
+          <span className={classes.foundCount}>
+            {numFound ? numFound : 4}/10
+          </span>
         </Typography>
       </Grid>
       <Grid item xs={12}>
