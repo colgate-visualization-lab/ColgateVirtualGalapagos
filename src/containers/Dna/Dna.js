@@ -7,23 +7,30 @@ import DnaBackbone from "../../components/DnaBackbone";
 import DnaSequence from "../../components/DnaSequence";
 // import { basePair1, basePair2 } from "../IguanaSlide17/constants";
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+  dnaContainer: {
+    marginBottom: theme.spacing(2),
+    [theme.breakpoints.up("md")]: {
+      marginBottom: theme.spacing(8),
+    },
+  },
+}));
 
 const Dna = ({ label, basePairs }) => {
   const classes = useStyles();
-  const svgStyle = {
-    border: "1px solid white",
-    float: "left",
-  };
+  // const svgStyle = {
+  //   border: "1px solid white",
+  //   float: "left",
+  // };
 
   const numGroups = 6;
 
   const viewBox = [10, 0, 282.32, 32.56];
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} className={classes.dnaContainer}>
       <Grid item xs={12}>
-        <Typography variant="body1" component="h2">
+        <Typography variant="button" component="h2">
           {label}
         </Typography>
       </Grid>
@@ -31,10 +38,10 @@ const Dna = ({ label, basePairs }) => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox={viewBox}
-          // style={svgStyle}
           preserveAspectRatio="xMidYMid meet"
           width="100%"
           height="100%"
+          transform="scale(1,1.2)"
         >
           <g
             id="dna"
