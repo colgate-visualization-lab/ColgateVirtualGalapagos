@@ -2,7 +2,7 @@ import { slide13Data } from "./slide13Data";
 import { slide15Data } from "./slide15Data";
 import { slide17Data } from "./slide17Data";
 
-const data = [
+const iguanaData = [
   {
     id: "1",
     title: "Iguana_Endemic01",
@@ -184,4 +184,4 @@ const data = [
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Video/IguanaLastSlide%20.mp4",
   },
 ];
-export default data;
+export default iguanaData;
