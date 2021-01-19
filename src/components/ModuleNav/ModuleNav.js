@@ -7,16 +7,13 @@ import { Fragment } from "react";
 // import mysteryIntro from "https://virtualgalapagos.colgate.edu/assets/misc/MysteryIntro.mp4"
 
 const moduleNav = () => {
-  const content = [
-    {
-      title: "Volcano",
-      description:
-        "Follow along with Carlos and Adriana as they learn about volcanoes. Explore how volcanic islands form and how they came to be in the Galapagos!",
-      background:
-        "url(https://virtualgalapagos.colgate.edu/assets/misc/Volcano.png)",
-      animation: " animated slideInDown",
-      link: "/volcanomod",
-    },
+	const content = [
+		{"title": "Volcano", 
+			"description": "Follow along with Carlos and Adriana as they learn about volcanoes. Explore how volcanic islands form and how they came to be in the Galapagos!", 
+			"background": "url(https://virtualgalapagos.colgate.edu/assets/misc/Volcano.png)", 
+			"animation": " animated slideInDown",
+			"link": "/oldvolcano"
+		}, 
 
     {
       title: "Extras",
@@ -27,15 +24,12 @@ const moduleNav = () => {
       link: "/extras",
     },
 
-    {
-      title: "Iguana",
-      description:
-        "Carlos and Adriana need to learn about iguanas if they want to find the ones in their mystery. Help them learn about the different types of iguanas in the Galapagos and how they got there in the first place.",
-      background:
-        "url(https://virtualgalapagos.colgate.edu/assets/misc/Iguana.png)",
-      animation: " animated slideInDown slower",
-      link: "/iguana",
-    },
+		{"title": "Iguana",
+			"description": "Carlos and Adriana need to learn about iguanas if they want to find the ones in their mystery. Help them learn about the different types of iguanas in the Galapagos and how they got there in the first place.",
+			"background": "url(https://virtualgalapagos.colgate.edu/assets/misc/Iguana.png)", 
+			"animation": " animated slideInDown slower",
+			"link": "/iguana/1"
+		}, 
 
     {
       title: "Currents",

@@ -10,7 +10,6 @@ import {
   tectonicPlates2, southAmerica1, terrainMap6, plumePlacement1, plumeYes1, plumeNo1, 
   whereNext1, Exploration01, Exploration02, Exploration03, Exploration04, Exploration05,
 } from "../../assets/VolcanoModule";
-// import { terrainMap2, volcanoSlider1, eruptionAudio, volcanoCompare360, terrainMap3, fernandina1, santaCruz1, terrainMap4, terrainMapAges1, terrainMapAges2, otherVolcanoes1, tectonicPlates1, platesGame1, tectonicPlates2, southAmerica1, terrainMap6, plumePlacement1, plumeYes1, plumeNo1, whereNext1, Exploration01, Exploration02, Exploration03, Exploration04, Exploration05 } from "../../assets/VolcanoModule"
 import classes from "./VolcanoModule.css";
 import MAP from "./ImageMap.js";
 import ImageMapper from "react-image-mapper";
@@ -19,7 +18,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import DndDraggables from "../../components/DndDraggables/DndDraggables";
 import DndDroppables from "../../components/DndDroppables/DndDroppables";
 import ResizePanel from "react-resize-panel";
-import VolcanoeIframe from "../../components/VolcanoeIframe/VolcanoeIframe";
+import VolcanoeIframe from "../../components/IframeCompoment/IframeComponent";
 import AudioPlayer from "../../components/AudioPlayer/AudioPlayer";
 import MapComponent from "../../components/MapComponent/MapComponent";
 import Popup from "reactjs-popup";
@@ -32,8 +31,8 @@ class VolcanoeModule extends Component {
     this.randomRef = React.createRef();
     this.yoloRef = React.createRef();
     this.state = {
-      slideIndex: 1,
-      progressIndex: 1,
+      slideIndex: 0,
+      progressIndex: 0,
       optional1: false,
       optional2: false,
       optional2Next: false,
@@ -347,14 +346,14 @@ class VolcanoeModule extends Component {
       return (
         <Fragment>
           <div className={classes.leftDiv}>
-            <button
+            {/* <button
               className={classes.button4}
               onClick={() =>
                 this.setState({ slideIndex: 12, progressIndex: 12 })
               }
             >
               Dev Button
-            </button>
+            </button> */}
             <h1 className={classes.slideName}>
               Slide {this.state.slideIndex + 1}
             </h1>
@@ -411,6 +410,9 @@ class VolcanoeModule extends Component {
             className={classes.imgNext}
             onClick={() => this.nextSlide()}
           />
+          <div className={this.state.progressIndex == 1? classes.instructions : {visibility: "hidden"}}>
+              <h1 className={classes.instructions2}>Click the play button and to load the 360 video. Hover over the hotspots to interact with them!</h1>
+          </div>
           <h1
             style={{
               position: "absolute",
@@ -632,6 +634,7 @@ class VolcanoeModule extends Component {
             </h1>
           </div>
           <div className={classes.mainDiv}>
+          <h1 className={audioIsDone? classes.slide6thingy : classes.hidden}>click on the magnifying glass to compare Fernandina and Santa Cruz</h1>
             <img src={TerrainMap} className={classes.mainContent} />
             <img
               style={audioIsDone ? {} : buttonStyle}
@@ -712,6 +715,9 @@ class VolcanoeModule extends Component {
             className={classes.mainDiv}
             // style={{ width: "80%", height: "100%" }}
           >
+               <div className={classes.SliderInstruction}>
+              Move slider to compare Fernandina and Santa Cruz
+            </div>
             <ImageSlider
               image1={santaCruz}
               image2={Ferd}
@@ -736,9 +742,6 @@ class VolcanoeModule extends Component {
           </div>
           <div className={classes.leftDiv}>
             <h1 className={classes.leftFerd}>Fernandina</h1>
-            <p className={classes.SliderInstruction}>
-              Move slider to compare Fernandina and Santa Cruz
-            </p>
           </div>
         </Fragment>
       );
@@ -853,6 +856,7 @@ class VolcanoeModule extends Component {
       return (
         <Fragment>
           <div className={classes.leftDiv}>
+          <div className={audioIsDone? classes.hotspotinstruction : classes.hidden}>Click on the hotspots to intereact with them</div>
             <AudioPlayer
               src={fernandina1}
               onEnded={() => {
@@ -1122,7 +1126,7 @@ class VolcanoeModule extends Component {
                 this.nextSlide();
                 this.hideHidden();
                 this.function();
-                setTimeout(() => this.updateDimensions2(), 1);
+                setTimeout(() => this.updateDimensions2(), 100);
               }}
             />
           </div>
@@ -1353,7 +1357,7 @@ class VolcanoeModule extends Component {
               onClick={() => {
                 this.prevSlide();
                 this.function();
-                setTimeout(() => this.updateDimensions2(), 1);
+                setTimeout(() => this.updateDimensions2(), 100);
               }}
             />
             <h1 className={classes.slideName}>
@@ -2004,6 +2008,7 @@ class VolcanoeModule extends Component {
             </h1>
           </div>
           <div className={classes.mainDiv} ref={this.headerRef}>
+            <div className={audioIsDone? classes.choosewhich : classes.hidden}>Choose which side you think the mantle plume is located.</div>
             <img
               className={classes.mainContent}
               src={TerrainMap}
@@ -2056,7 +2061,7 @@ class VolcanoeModule extends Component {
                 });
                 window.addEventListener("resize", this.updateDimensions);
                 setTimeout(() => this.setState({ slideIndex: 21 }), 1);
-                setTimeout(() => this.updateDimensions(), 1);
+                setTimeout(() => this.updateDimensions(), 100);
               }}
             >
               Try Again
@@ -2104,7 +2109,7 @@ class VolcanoeModule extends Component {
               onClick={() => {
                 this.prevSlide();
                 window.addEventListener("resize", this.updateDimensions);
-                setTimeout(() => this.updateDimensions(), 1);
+                setTimeout(() => this.updateDimensions(), 100);
               }}
             />
             <h1 className={classes.slideName}>
@@ -2145,7 +2150,7 @@ class VolcanoeModule extends Component {
               onClick={() => {
                 this.prevSlide();
                 window.addEventListener("resize", this.updateDimensions);
-                setTimeout(() => this.updateDimensions(), 1);
+                setTimeout(() => this.updateDimensions(), 100);
               }}
             />
             <h1 className={classes.slideName}>
@@ -2153,9 +2158,7 @@ class VolcanoeModule extends Component {
             </h1>
           </div>
           <div className={classes.mainDiv}>
-            <h1 className={classes.lastSlide}>
-              This is the end! Thanks for testing!
-            </h1>
+         
             <img src={TerrainMap} className={classes.mainContent} />
           </div>
           <div className={classes.rightDiv}>
