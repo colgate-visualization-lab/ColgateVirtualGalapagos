@@ -4,14 +4,24 @@ import Typography from "@material-ui/core/Typography";
 import Collapse from "@material-ui/core/Collapse";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+import { getThemeProps } from "@material-ui/styles";
 
 const useStyles = makeStyles((theme) => ({
-  hintButton: {
+  button: {
     fontSize: ".5rem",
-    padding: theme.spacing(0, 0.5),
+    // padding: theme.spacing(0.5, 1.5),
   },
+
+  hint: {
+    fontSize: "0.7rem",
+  },
+
   foundCount: {
     color: "khaki",
+  },
+
+  collapsed: {
+    padding: theme.spacing(1, 0),
   },
 }));
 
@@ -24,7 +34,7 @@ const Slide17Header = ({ handleShowMutations, numFound, numMutations }) => {
                 have the same base pairs with their order flipped`;
 
   return (
-    <Grid container>
+    <Grid container spacing={0.5}>
       <Grid item xs={12}>
         <Typography component="h1" variant="h5">
           Find the Mutation!
@@ -38,9 +48,10 @@ const Slide17Header = ({ handleShowMutations, numFound, numMutations }) => {
       </Grid>
       <Grid item xs={12}>
         <Button
-          variant="contained"
+          variant="outlined"
           size="small"
-          className={classes.hintButton}
+          color="secondary"
+          className={classes.button}
           disableTouchRipple
           onClick={() => {
             setShowHint(!showHint);
@@ -49,20 +60,29 @@ const Slide17Header = ({ handleShowMutations, numFound, numMutations }) => {
           Hint
         </Button>
       </Grid>
-      <Grid item xs={12}>
+      <Grid container item xs={12} className={classes.collapsed}>
         <Collapse in={showHint}>
-          <Typography variant="caption" component="p">
-            {hint}
-          </Typography>
-          <Button
-            variant="contained"
-            size="small"
-            className={classes.hintButton}
-            disableTouchRipple
-            onClick={handleShowMutations}
-          >
-            show me the mutations
-          </Button>
+          <Grid item xs={12}>
+            <Typography
+              variant="caption"
+              component="p"
+              className={classes.hint}
+            >
+              {hint}
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Button
+              variant="outlined"
+              size="small"
+              color="secondary"
+              className={classes.button}
+              disableTouchRipple
+              onClick={handleShowMutations}
+            >
+              Show All Mutations
+            </Button>
+          </Grid>
         </Collapse>
       </Grid>
     </Grid>
