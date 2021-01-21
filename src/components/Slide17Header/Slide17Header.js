@@ -19,7 +19,9 @@ const Slide17Header = ({ handleClick, numFound, numMutations }) => {
   const classes = useStyles();
   const [showHint, setShowHint] = useState(false);
 
-  const hint = "Find base pairs with different colors ";
+  const hint = `Compare the Green Iguana and Marine Iguana gene sequences below
+                and find positions that either have different base pairs or
+                have the same base pairs with their order flipped`;
 
   return (
     <Grid container>
@@ -28,7 +30,7 @@ const Slide17Header = ({ handleClick, numFound, numMutations }) => {
           Find the Mutation!
         </Typography>
         <Typography variant="caption" component="h2">
-          Mutations Found:{" "}
+          Mutations Found:
           <span className={classes.foundCount}>
             {numFound}/{numMutations}
           </span>
@@ -58,7 +60,7 @@ const Slide17Header = ({ handleClick, numFound, numMutations }) => {
             className={classes.hintButton}
             disableTouchRipple
           >
-            Just Show Me The Shit
+            show me the mutations
           </Button>
         </Collapse>
       </Grid>
