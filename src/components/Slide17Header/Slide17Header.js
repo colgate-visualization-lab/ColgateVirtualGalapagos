@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Slide17Header = ({ handleClick, numFound }) => {
+const Slide17Header = ({ handleClick, numFound, numMutations }) => {
   const classes = useStyles();
   const [showHint, setShowHint] = useState(false);
 
@@ -30,7 +30,7 @@ const Slide17Header = ({ handleClick, numFound }) => {
         <Typography variant="caption" component="h2">
           Mutations Found:{" "}
           <span className={classes.foundCount}>
-            {numFound ? numFound : 4}/10
+            {numFound}/{numMutations}
           </span>
         </Typography>
       </Grid>
