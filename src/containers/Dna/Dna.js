@@ -5,6 +5,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import DnaBackbone from "../../components/DnaBackbone";
 import DnaSequence from "../../components/DnaSequence";
+import DnaMutationPopover from "../../components/DnaMutationPopover";
+
 // import { basePair1, basePair2 } from "../IguanaSlide17/constants";
 
 const useStyles = makeStyles((theme) => ({
