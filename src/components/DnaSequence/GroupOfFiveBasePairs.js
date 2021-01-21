@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 
 import SingleBasePair from "./SingleBasePair";
 import { OnBaseClickContext } from "../../containers/IguanaSlide17";
-import classes from "./DnaSequence.css";
 
 const GroupOfFiveBasePairs = ({ xTranslateDistance, basePairs, group }) => {
   const startIndex = group * 5;
@@ -41,7 +40,6 @@ const GroupOfFiveBasePairs = ({ xTranslateDistance, basePairs, group }) => {
         <SingleBasePair
           basePair={basePair}
           key={index}
-          classes={classes}
           geneIndex={group * 5 + index}
         />
       ))}

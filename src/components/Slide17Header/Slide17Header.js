@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Slide17Header = ({ handleClick, numFound, numMutations }) => {
+const Slide17Header = ({ handleShowMutations, numFound, numMutations }) => {
   const classes = useStyles();
   const [showHint, setShowHint] = useState(false);
 
@@ -30,7 +30,7 @@ const Slide17Header = ({ handleClick, numFound, numMutations }) => {
           Find the Mutation!
         </Typography>
         <Typography variant="caption" component="h2">
-          Mutations Found:
+          Mutations Found:{" "}
           <span className={classes.foundCount}>
             {numFound}/{numMutations}
           </span>
@@ -59,6 +59,7 @@ const Slide17Header = ({ handleClick, numFound, numMutations }) => {
             size="small"
             className={classes.hintButton}
             disableTouchRipple
+            onClick={handleShowMutations}
           >
             show me the mutations
           </Button>

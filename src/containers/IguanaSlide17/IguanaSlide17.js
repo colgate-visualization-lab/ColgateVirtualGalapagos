@@ -39,7 +39,7 @@ export const IguanaSlide17 = ({ content }) => {
     if (greenIguanaSequence[geneIndex] !== marineIguanaSequence[geneIndex]) {
       setFoundMutations({
         ...foundMutations,
-        geneIndex: mutationDetails[geneIndex],
+        [geneIndex]: mutationDetails[geneIndex],
       });
       setFoundIndices(update(foundIndices, { $add: [geneIndex] }));
     }
@@ -48,6 +48,7 @@ export const IguanaSlide17 = ({ content }) => {
   const handleLeaveBasePair = () => {
     setShowPopover(false);
   };
+
   const handleEnterBasePair = (e, geneIndex) => {
     if (foundIndices.has(geneIndex)) {
       setShowPopover(true);
@@ -61,12 +62,31 @@ export const IguanaSlide17 = ({ content }) => {
     }
   };
 
+  const handleShowMutations = () => {
+    setFoundMutations({
+      ...foundMutations,
+      ...mutationDetails,
+    });
+    setFoundIndices(
+      update(foundIndices, {
+        $add: Object.keys(mutationDetails).map((index) => +index),
+      })
+    );
+    console.log(mutationDetails);
+    console.log(foundMutations);
+    console.log(foundIndices);
+  };
+
   return (
     <Grid container justify="center" alignItems="stretch">
       <Grid container item xs={10} spacing={2}>
         <Grid item xs={12}>
           <Paper variant="outlined" elevation={2} className={classes.paper}>
-            <Header numFound={foundIndices.size} numMutations={numMutations} />
+            <Header
+              numFound={foundIndices.size}
+              numMutations={numMutations}
+              handleShowMutations={handleShowMutations}
+            />
           </Paper>
         </Grid>
         <Grid item xs={12}>

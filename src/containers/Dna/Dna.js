@@ -5,16 +5,10 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import DnaBackbone from "../../components/DnaBackbone";
 import DnaSequence from "../../components/DnaSequence";
-import DnaMutationPopover from "../../components/DnaMutationPopover";
-
-// import { basePair1, basePair2 } from "../IguanaSlide17/constants";
 
 const useStyles = makeStyles((theme) => ({
   dnaContainer: {
     marginBottom: theme.spacing(2),
-    // [theme.breakpoints.up("md")]: {
-    //   marginBottom: theme.spacing(8),
-    // },
   },
 }));
 
@@ -38,7 +32,6 @@ const Dna = ({ label, basePairs }) => {
           preserveAspectRatio="xMidYMid meet"
           width="100%"
           height="100%"
-          // transform="scale(1,1.2)"
         >
           <g
             id="dna"
@@ -54,32 +47,6 @@ const Dna = ({ label, basePairs }) => {
         </svg>
       </Grid>
     </Grid>
-
-    // <div className={classes.geneContainer}>
-    //   <p className={classes.geneLabel}>{label}</p>
-    //   <div className={classes.geneSvg}>
-    //     <svg
-    //       xmlns="http://www.w3.org/2000/svg"
-    //       viewBox={viewBox}
-    //       // style={svgStyle}
-    //       preserveAspectRatio="xMidYMid meet"
-    //       width="100%"
-    //       height="100%"
-    //     >
-    //       <g
-    //         id="dna"
-    //         // transform={`translate(0,${yTranslateDistance})`}
-    //       >
-    //         <DnaBackbone numGroups={numGroups + 1} />
-    //         <DnaSequence
-    //           classes={classes}
-    //           numGroups={numGroups}
-    //           basePairs={basePairs}
-    //         />
-    //       </g>
-    //     </svg>
-    //   </div>
-    // </div>
   );
 };
 
