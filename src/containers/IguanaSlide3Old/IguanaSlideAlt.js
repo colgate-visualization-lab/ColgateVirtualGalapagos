@@ -3,6 +3,7 @@ import ReactPlayer from "react-player";
 import Grow from "@material-ui/core/Grow";
 import Slide from "@material-ui/core/Slide";
 import { makeStyles } from "@material-ui/styles";
+import AudioPlayer from "../../components/AudioPlayer/AudioPlayer";
 
 import IntermissionScreen from "./IguanaSlide3VideoSelector";
 
@@ -23,10 +24,13 @@ const useStyles = makeStyles((theme) => ({
   intermissionScreen: {},
 }));
 
-const IguanaSlide3 = ({ content }) => {
-  const [src, setSrc] = useState(content.introVidSrc);
+const IguanaSlide3 = ({ content, imgClass }) => {
+  const [playIntro, setPlayIntro] = useState(true);
+  const [src, setSrc] = useState();
   const [intermission, setIntermission] = useState(false);
   const [showHypothesisButtons, setShowHypothesisButtons] = useState(false);
+  const [audioIsPlaying, setAudioIsPlaying] = useState(false);
+  const [audioIsDone, setAudioIsDone] = useState(false);
 
   const classes = useStyles();
 
@@ -34,21 +38,42 @@ const IguanaSlide3 = ({ content }) => {
     setIntermission(true);
   };
 
+  const handleIntroEnded = () => {
+    setAudioIsDone(true);
+    setAudioIsPlaying(false);
+    setIntermission(true);
+  };
+
   return (
     <>
-      <ReactPlayer
-        onMouseMove={() => {
-          setShowHypothesisButtons(true);
-        }}
-        width="100%"
-        height="100%"
-        controls={!intermission}
-        playing={false}
-        url={src}
-        onEnded={() => {
-          setIntermission(true);
-        }}
-      />
+      {playIntro ? (
+        <>
+          <AudioPlayer
+            src={content.audioSrc}
+            onEnded={handleIntroEnded}
+            stopAudio={() => {
+              setAudioIsPlaying(false);
+            }}
+            toggleAudio={() => {
+              setAudioIsPlaying(!audioIsPlaying);
+            }}
+            playing={audioIsPlaying}
+          />
+          <img src={content.imageSrc} className={imgClass} />
+        </>
+      ) : (
+        <ReactPlayer
+          onMouseMove={() => {
+            setShowHypothesisButtons(true);
+          }}
+          width="100%"
+          height="100%"
+          controls={!intermission}
+          playing={false}
+          url={src}
+          onEnded={handlePlaybackEnded}
+        />
+      )}
       {/* Grow component is a TransitionComponent */}
       <Grow in={intermission} timeout={500}>
         <div className={classes.intermissionScreenContainer}>
@@ -62,6 +87,8 @@ const IguanaSlide3 = ({ content }) => {
               }, 500);
             }}
             videoInteractionDisabled={true}
+            imgSrc={content.imageSrc}
+            imgClass={imgClass}
           />
         </div>
       </Grow>

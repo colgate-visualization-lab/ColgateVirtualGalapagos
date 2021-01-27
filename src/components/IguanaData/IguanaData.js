@@ -15,19 +15,18 @@ const data = [
     title: "Iguana_Carried01",
     type: "image",
     url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/SouthAmericaCoast.png",
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/SouthAmericaCoast.png",
   },
   {
     id: "3",
     title: "Iguana_Carried02",
     type: "slide3InteractiveVideo",
-
-    audioSrc:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide3SplitAudio/IguanaMystery_Slide3_Intro.mp3",
-    introVidSrc:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/ShoreWaves.mp4",
+    src:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Video/IguanaSlide3Intro.mp4",
+    imageSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide3Intro.JPG",
     interSrc:
-      "http://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoModuleIntro.mp4",
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide3Intro.JPG",
     data: slide3Data,
   },
   {
