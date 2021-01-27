@@ -1,4 +1,3 @@
-// import IguanaSlide3 from "./IguanaSlide3";
-import IguanaSlide3 from "./IguanaSlideAlt";
+import IguanaSlide3 from "./IguanaSlide3";
 
 export default IguanaSlide3;

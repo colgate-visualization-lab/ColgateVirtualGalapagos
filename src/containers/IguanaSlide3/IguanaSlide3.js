@@ -1,100 +1,62 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
-import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
 
-import Slide3VideoSelector from "./IguanaSlide3VideoSelector";
-import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
-import classes from "./IguanaSlide3.css";
+import IntermissionScreen from "./IntermissionScreen";
 
-export default function IguanaSlide3({ content }) {
-  const [src, setSrc] = useState(content.data[0]);
-  const [watched, setWatched] = useState(new Set());
-  // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
+const useStyles = makeStyles((theme) => ({
+  playerWrapper: {
+    position: "relative",
+    display: "flex",
+    justifyContent: "center",
+    aligntems: "center",
+    width: "100%",
+    margin: "auto",
+    height: "100%",
+    flexDirection: "column",
+  },
+}));
 
-  // videoSelectionOverlay - displays hypothesis, greys out and disables the video
-  const [disableVideoInteraction, setDisableVideoInteraction] = useState({});
-  const [showPlayer, setShowPlayer] = useState(true);
-
-  const handleSrcChange = (src) => {
-    setSrc(src);
-    setShowPlayer(false);
-  };
-
-  const handlePlaybackEnded = () => {
-    setWatched(watched.add(src.id));
-    setDisableVideoInteraction(true);
-  };
-
-  const handlePlaybackStarted = () => {
-    setDisableVideoInteraction(false);
-  };
-
-  // this determines whether the video selection buttons
-  //  are visible
-  const [videoSelectorVisible, setVideoSelectorVisible] = useState(
-    classes.videoSelectorVisible
-  );
-
+const IguanaSlide3 = ({ content }) => {
   useEffect(() => {
-    const mouseMoveTimer = setTimeout(() => {
-      setVideoSelectorVisible(classes.videoSelectorHidden);
-    }, 3000);
-    return () => clearTimeout(mouseMoveTimer);
+    // console.log(content);
+    console.log(src);
   });
 
-  return (
-    <>
-      {/* { showPlayer &&
-      <AudioPlayerHandler  src={props.content.audioSrc} />
-    } */}
-      <div
-        className={classes.slide3}
-        onMouseMove={() => {
-          setVideoSelectorVisible(classes.videoSelectorVisible);
-        }}
-      >
-        <ReactPlayer
-          position="relative"
-          width="100%"
-          height="100%"
-          controls={disableVideoInteraction ? false : true}
-          url={src.videoSrc}
-          playing={true}
-          onEnded={handlePlaybackEnded}
-          onPlay={handlePlaybackStarted}
-        />
-        <div
-          className={
-            disableVideoInteraction
-              ? classes.videoOverlayActive
-              : classes.videoOverlayInactive
-          }
-        />
-        <div
-          className={
-            disableVideoInteraction
-              ? `${classes.videoSelectorOverlay} `
-              : videoSelectorVisible
-          }
-        >
-          <Slide3VideoSelector
-            watched={watched}
-            data={content.data}
-            onSrcChange={handleSrcChange}
-            videoInteractionDisabled={disableVideoInteraction}
-          />
-        </div>
-      </div>
-    </>
-  );
-}
+  const classes = useStyles();
 
-IguanaSlide3.propTypes = {
-  content: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    audioSrc: PropTypes.string,
-    title: PropTypes.string,
-    type: PropTypes.string.isRequired,
-    data: PropTypes.arrayOf(PropTypes.object),
-  }),
+  const [src, setSrc] = useState(content.src);
+  const [intermission, setIntermission] = useState(true);
+
+  const handlePlaybackEnded = () => {
+    setIntermission(true);
+  };
+
+  const handleOnClick = (newSrc) => {
+    setIntermission(false);
+    setSrc(newSrc);
+  };
+
+  const VideoPlayer = () => (
+    <div className={classes.playerWrapper}>
+      <ReactPlayer
+        position="relative"
+        width="100%"
+        height="100%"
+        url={src}
+        controls={!intermission}
+        playing={!intermission}
+        onEnded={handlePlaybackEnded}
+        // onPlay={handlePlaybackStarted}
+      />
+    </div>
+  );
+
+  return !intermission ? (
+    <VideoPlayer />
+  ) : (
+    <IntermissionScreen hypotheses={content.data} onClick={handleOnClick} />
+  );
 };
+
+export default IguanaSlide3;

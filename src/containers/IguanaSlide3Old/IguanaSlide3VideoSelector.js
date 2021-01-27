@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 import classes from "./IguanaSlide3.css";
 
 const Slide3VideoSelector = (props) => {
-  const { data, onSrcChange, watched, videoInteractionDisabled } = props;
+  // prettier-ignore
+  const { data, onSrcChange, watched, videoInteractionDisabled, imgSrc, imgClass } = props;
 
   const buttonSizeClass = videoInteractionDisabled
     ? classes.buttonSizeOnEnd
@@ -23,7 +24,6 @@ const Slide3VideoSelector = (props) => {
               className={`${classes.buttonShared} ${buttonSizeClass} `}
               onClick={() => {
                 onSrcChange(datum);
-                console.log(datum.description);
               }}
               type="button"
             >
@@ -38,6 +38,7 @@ const Slide3VideoSelector = (props) => {
           </div>
         ))}
       </div>
+      {/* <img src={imgSrc} className={imgClass} /> */}
     </div>
   );
 };
