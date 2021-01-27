@@ -66,6 +66,7 @@
   align-items: center;
   margin-left: auto;
   margin-right: auto;
+  background-image: url("");
 }
 
 .videoSelector .title {

@@ -177,7 +177,7 @@ function MainContent(props) {
     return (
       <GridContainer className={classes.container}>
         <SlideContent className={classes.contentContainer}>
-          <IguanaSlide3 content={content} />
+          <IguanaSlide3 content={content} imgClass={classes.img} />
         </SlideContent>
 
         <ControlButtons {...controlButtonProps} />
