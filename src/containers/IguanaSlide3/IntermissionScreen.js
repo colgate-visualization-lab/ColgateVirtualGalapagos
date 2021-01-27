@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import { lighten, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   intermissionRoot: {
@@ -16,11 +16,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundBlendMode: "lighten",
     backgroundColor: "black",
   },
+
   title: {
-    fontSize: "2rem",
+    fontSize: "1.7rem",
     fontWeight: "bold",
     textAlign: "center",
-    backgroundColor: "khaki",
   },
 
   img: {
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   button: {
-    height: "5em",
+    height: "4em",
   },
 
   hypothesisTitle: {
@@ -40,8 +40,11 @@ const useStyles = makeStyles((theme) => ({
   },
 
   description: {
-    fontSize: "0.55rem",
+    fontSize: "0.65rem",
     fontWeight: "bold",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: ".8rem",
+    },
   },
 }));
 
@@ -49,56 +52,39 @@ const IntermissionScreen = ({ hypotheses, onClick }) => {
   const classes = useStyles();
 
   return (
-    <>
-      {/* <div style={{}}>
-        <img
-          src="http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide3Intro.JPG"
-          className={classes.img}
-        />
-      </div> */}
-      <Grid
-        container
-        alignContent="center"
-        justify="center"
-        className={classes.intermissionRoot}
-        spacing={1}
-      >
-        <Grid item xs={12}>
-          <Typography component="h1" className={classes.title}>
-            Select a Hypothesis to Explore
-          </Typography>
-        </Grid>
-        {hypotheses.map((item, index) => (
-          <Grid item xs={12} sm={4} md={2} key={index}>
-            <Button
-              variant="contained"
-              color="secondary"
-              fullWidth
-              className={classes.button}
-              onClick={() => {
-                console.log(item);
-                onClick(item.videoSrc);
-              }}
-            >
-              <Grid container>
-                <Grid item xs={12}>
-                  <Typography className={classes.hypothesisTitle}>
-                    {" "}
-                    Hypothesis {index + 1}
-                  </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <Typography className={classes.description}>
-                    {" "}
-                    {item.description}
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Button>
-          </Grid>
-        ))}
+    <Grid
+      container
+      alignContent="center"
+      justify="center"
+      className={classes.intermissionRoot}
+      spacing={1}
+    >
+      <Grid item xs={12}>
+        <Typography component="h1" className={classes.title}>
+          Select A Hypothesis To Explore
+        </Typography>
       </Grid>
-    </>
+      {hypotheses.map((item, index) => (
+        <Grid item xs={12} sm={4} md={2} key={index}>
+          <Button
+            variant="contained"
+            color="secondary"
+            fullWidth
+            className={classes.button}
+            onClick={() => {
+              onClick(item.videoSrc);
+            }}
+          >
+            <Grid item xs={12}>
+              <Typography className={classes.description}>
+                {" "}
+                {item.description}
+              </Typography>
+            </Grid>
+          </Button>
+        </Grid>
+      ))}
+    </Grid>
   );
 };
 
