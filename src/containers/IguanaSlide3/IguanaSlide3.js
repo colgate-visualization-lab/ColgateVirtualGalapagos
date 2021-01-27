@@ -3,6 +3,7 @@ import ReactPlayer from "react-player";
 import { makeStyles } from "@material-ui/core/styles";
 
 import IntermissionScreen from "./IntermissionScreen";
+import IntermissionModal from "./IntermissionModal";
 
 const useStyles = makeStyles((theme) => ({
   playerWrapper: {
@@ -18,11 +19,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const IguanaSlide3 = ({ content }) => {
-  useEffect(() => {
-    // console.log(content);
-    console.log(src);
-  });
-
   const classes = useStyles();
 
   const [src, setSrc] = useState(content.src);
@@ -37,6 +33,10 @@ const IguanaSlide3 = ({ content }) => {
     setSrc(newSrc);
   };
 
+  const handleClose = () => {
+    setIntermission(false);
+  };
+
   const VideoPlayer = () => (
     <div className={classes.playerWrapper}>
       <ReactPlayer
@@ -44,7 +44,7 @@ const IguanaSlide3 = ({ content }) => {
         width="100%"
         height="100%"
         url={src}
-        controls={!intermission}
+        controls
         playing={!intermission}
         onEnded={handlePlaybackEnded}
         // onPlay={handlePlaybackStarted}
@@ -55,7 +55,13 @@ const IguanaSlide3 = ({ content }) => {
   return !intermission ? (
     <VideoPlayer />
   ) : (
-    <IntermissionScreen hypotheses={content.data} onClick={handleOnClick} />
+    // <IntermissionScreen hypotheses={content.data} onClick={handleOnClick} />
+    <IntermissionModal
+      hypotheses={content.data}
+      onClick={handleOnClick}
+      handleClose={handleClose}
+      open={intermission}
+    />
   );
 };
 
