@@ -75,11 +75,13 @@ const data = [
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/MarineIguanaWithBabies.png",
     audioSrc:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide8.wav",
-    popupText: {
+    landIguanaText: {
       landIguanaHead:
         "Land iguanas are usually more yellow or brown in color to blend in with the rocks and plants found inland.",
       landIguanaBody:
         "Land iguanas are often larger and weigh more than marine iguanas.",
+    },
+    marineIguanaText: {
       marineIguanaBody: "Marine iguanas have flat tails to help them swim!",
       marineIguanaTail:
         "Marine iguanas are darker in color to match the black basaltic rocks found in near the coast.",
@@ -112,7 +114,9 @@ const data = [
   {
     id: "12",
     title: "Iguana_PhyloTree05",
-    not_done: true,
+    type: "Slide12DnDInteractive",
+    backgroundUrl:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide12DnDBackground.png",
   },
   {
     id: "13",
