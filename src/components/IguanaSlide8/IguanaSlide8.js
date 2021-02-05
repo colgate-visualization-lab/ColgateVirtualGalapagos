@@ -36,12 +36,12 @@ const IguanaSlide8 = ({ content }) => {
               alt="adult marine iguana with baby"
             />
             <Popup
-              description={content.popupText.landIguanaHead}
+              description={content.landIguanaText.landIguanaHead}
               top="20%"
               left="50%"
             />
             <Popup
-              description={content.popupText.landIguanaBody}
+              description={content.landIguanaText.landIguanaBody}
               top="20%"
               left="74%"
             />
@@ -54,12 +54,12 @@ const IguanaSlide8 = ({ content }) => {
               alt="smiling land iguana"
             />
             <Popup
-              description={content.popupText.marineIguanaBody}
+              description={content.marineIguanaText.marineIguanaBody}
               top="25%"
               left="13%"
             />
             <Popup
-              description={content.popupText.marineIguanaTail}
+              description={content.marineIguanaText.marineIguanaTail}
               top="35%"
               left="40%"
             />
@@ -79,12 +79,12 @@ IguanaSlide8.propTypes = {
     url1: PropTypes.string.isRequired,
     url2: PropTypes.string.isRequired,
     audioSrc: PropTypes.string.isRequired,
-    popupText: PropTypes.shape({
-      landIguanaHead: PropTypes.string.isRequired,
-      landIguanaBody: PropTypes.string.isRequired,
-      marineIguanaBody: PropTypes.string.isRequired,
-      marineIguanaTail: PropTypes.string.isRequired,
-    }),
+    // popupText: PropTypes.shape({
+    //   landIguanaHead: PropTypes.string.isRequired,
+    //   landIguanaBody: PropTypes.string.isRequired,
+    //   marineIguanaBody: PropTypes.string.isRequired,
+    //   marineIguanaTail: PropTypes.string.isRequired,
+    // }),
   }),
 };
 

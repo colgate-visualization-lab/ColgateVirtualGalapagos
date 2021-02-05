@@ -1,16 +1,17 @@
-import React, { useState, Fragment, useEffect } from "react";
-import classes from "./MainContent.css";
-import ControlButtons from "../ControlButtons/ControlButtons";
-import IguanaSlide15 from "../IguanaSlide15/IguanaSlide15";
+import React from "react";
 import Iframe from "react-iframe";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/styles";
 
+import IguanaSlide3 from "../IguanaSlide3";
+import IguanaSlide8 from "../../components/IguanaSlide8";
+import IguanaSlide12 from "../IguanaSlide12";
+import IguanaSlide15 from "../IguanaSlide15/IguanaSlide15";
+import IguanaSlide17 from "../IguanaSlide17";
+import classes from "./MainContent.css";
 import data from "../../components/IguanaData/IguanaData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
-import IguanaSlide3 from "../IguanaSlide3";
-import IguanaSlide8 from "../../components/IguanaSlide8/IguanaSlide8";
-import IguanaSlide17 from "../IguanaSlide17";
+import ControlButtons from "../ControlButtons/ControlButtons";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -153,6 +154,15 @@ function MainContent(props) {
         <SlideContent className={classes.contentContainer}>
           <IguanaSlide8 content={content} />
         </SlideContent>
+        {/* <SlideContent xs={6} className={classes.contentContainer}>
+          <IguanaSlide8 url={content.url1} popupText={content.landIguanaText} />
+        </SlideContent>
+        <SlideContent xs={6} className={classes.contentContainer}>
+          <IguanaSlide8
+            url={content.url2}
+            popupText={content.marineIguanaText}
+          />
+        </SlideContent> */}
 
         <ControlButtons {...controlButtonProps} />
       </GridContainer>
@@ -190,6 +200,18 @@ function MainContent(props) {
 
         <SlideContent className={classes.contentContainer}>
           <IguanaSlide17 content={content} />
+        </SlideContent>
+
+        <ControlButtons {...controlButtonProps} />
+      </GridContainer>
+    );
+  } else if (content.type === "Slide12DnDInteractive") {
+    return (
+      <GridContainer className={classes.container}>
+        {/* <AudioPlayerHandler src={content.audioSrc} /> */}
+
+        <SlideContent className={classes.contentContainer}>
+          <IguanaSlide12 content={content} />
         </SlideContent>
 
         <ControlButtons {...controlButtonProps} />
