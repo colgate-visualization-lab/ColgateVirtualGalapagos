@@ -25,17 +25,10 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
   },
 
-  popupButtonsVisible: {
+  popupButtons: {
     width: "100%",
     position: "absolute",
     bottom: "10%",
-  },
-
-  popupButtonsHidden: {
-    width: "100%",
-    position: "absolute",
-    bottom: "100%",
-    transition: "bottom 2s",
   },
 }));
 
@@ -48,11 +41,8 @@ const IguanaSlide3 = ({ content }) => {
   const [src, setSrc] = useState(content.src);
   const [intermission, setIntermission] = useState(false);
   const [playbackEnded, setPlaybackEnded] = useState(true);
-  const [popupButtonsClass, setPopupButtonsClass] = useState(
-    classes.popupButtonsVisible
-  );
   const [popupTimeout, setPopupTimeout] = useState(null);
-  const [checked, setChecked] = React.useState(false);
+  const [showPopup, setShowPopup] = React.useState(false);
 
   const handlePlaybackEnded = () => {
     setIntermission(true);
@@ -72,15 +62,15 @@ const IguanaSlide3 = ({ content }) => {
 
   const handleMouseMove = (e) => {
     e.preventDefault();
-    setChecked(true);
+    if (src === content.src) return;
+    setShowPopup(true);
     (() => {
       clearTimeout(popupTimeout);
-      setPopupTimeout(setTimeout(() => setChecked(false), 3000));
+      setPopupTimeout(setTimeout(() => setShowPopup(false), 2000));
     })();
   };
 
   return !intermission ? (
-    // <VideoPlayer />
     <div
       className={classes.playerWrapper}
       onMouseMove={(e) => {
@@ -96,13 +86,9 @@ const IguanaSlide3 = ({ content }) => {
         playing={!playbackEnded}
         onEnded={handlePlaybackEnded}
       />
-      <Slide direction="up" in={checked} mountOnEnter unmountOnExit>
-        <div className={popupButtonsClass}>
-          <PopupButtons
-            hypotheses={content.data}
-            onClick={handleOnClick}
-            // popupButtonsClass={popupButtonsClass}
-          />
+      <Slide direction="up" in={showPopup} mountOnEnter unmountOnExit>
+        <div className={classes.popupButtons}>
+          <PopupButtons hypotheses={content.data} onClick={handleOnClick} />
         </div>
       </Slide>
     </div>
