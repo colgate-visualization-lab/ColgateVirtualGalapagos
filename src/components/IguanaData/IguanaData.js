@@ -116,7 +116,7 @@ const data = [
     title: "Iguana_PhyloTree05",
     type: "Slide12DnDInteractive",
     backgroundUrl:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide12DnDBackground.png",
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide12DnDBackgroundGreySquare.png",
   },
   {
     id: "13",
