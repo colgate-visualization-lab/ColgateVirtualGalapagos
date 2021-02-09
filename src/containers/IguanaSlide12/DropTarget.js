@@ -1,26 +1,43 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/styles";
 import { useDrop } from "react-dnd";
+import Fade from "@material-ui/core/Fade";
 
 import { ItemTypes } from "./ItemTypes";
 import IguanaBox from "./IguanaBox";
 
 const useStyles = makeStyles(() => ({
   dropTarget: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
     position: "absolute",
     top: ({ top }) => top,
     left: ({ left }) => left,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     transform: "translate(0,-45px)",
-    backgroundColor: "transparent",
+    // backgroundColor: "blue",
+    // opacity: 0.5,
     width: "170px",
     height: "90px",
   },
+  checkContainer: {
+    position: "absolute",
+    top: ({ top }) => top + 90,
+    left: ({ left }) => left,
+    transform: "translate(0,-45px)",
+    // backgroundColor: "khaki",
+    // opacity: 0.5,
+    width: "170px",
+    height: "30px",
+  },
+  check: {
+    position: "absolute",
+    bottom: "1%",
+    left: "1%",
+  },
 }));
 
-const DropTarget = ({ top, left, onDrop, index, box }) => {
+const DropTarget = ({ top, left, onDrop, index, placedName, children }) => {
   const props = {
     top,
     left,
@@ -37,7 +54,12 @@ const DropTarget = ({ top, left, onDrop, index, box }) => {
   return (
     <>
       <div ref={drop} className={classes.dropTarget}>
-        {box && <IguanaBox name={box} />}
+        {placedName && <IguanaBox name={placedName} />}
+      </div>
+      <div className={classes.checkContainer}>
+        <Fade in={!!children}>
+          <div className={classes.check}>{children}</div>
+        </Fade>
       </div>
     </>
   );
