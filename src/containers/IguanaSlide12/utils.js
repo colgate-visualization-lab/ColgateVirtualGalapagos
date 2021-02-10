@@ -4,11 +4,11 @@ export const Slide12Context = React.createContext();
 
 export class Box {
   constructor(validNames, placedName = null) {
-    this.correctName = validNames;
+    this.validNames = validNames;
     this.placedName = placedName;
   }
 
-  isPlacedCorrectly = () => {
-    return this.correctName.includes(this.placedName);
-  };
+  isPlacedCorrectly() {
+    return this.validNames.includes(this.placedName);
+  }
 }

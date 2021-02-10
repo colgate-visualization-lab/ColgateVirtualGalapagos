@@ -36,12 +36,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "space-between",
     marginTop: "5%",
+    padding: theme.spacing(2, 1),
   },
   dropTargetContainer: {
     position: "relative",
     width: "960px",
-    // maxWidth: "960px",
-    // minWidth: "600px",
     height: "540px",
     marginTop: "2rem",
   },
@@ -49,17 +48,22 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     left: 0,
     top: 0,
-    // width: "100%",
+    width: "100%",
+    height: "100%",
   },
-  backgroundImg: {},
+  backgroundImg: {
+    maxWidth: "100%",
+    display: "block",
+    height: "auto",
+  },
   buttons: {
     position: "relative",
     display: "flex",
     alignItems: "center",
-    // maxWidth: "960px",
     width: "960px",
     height: "3rem",
     border: "1px solid black",
+    padding: theme.spacing(2, 1),
     backgroundColor: "rgb(118,116,116)",
   },
   button: {
@@ -73,7 +77,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const IguanaSlide12 = ({ content }) => {
-  React.useEffect(() => {});
   const [undraggedBoxes, setUndraggedBoxes] = useState([
     "Marine Iguana",
     "Green Iguana",
@@ -111,7 +114,7 @@ const IguanaSlide12 = ({ content }) => {
   };
   const updateDraggedBoxes = (dropppedName, index, currentBox) => {
     let newDraggedBoxes = draggedBoxes.map((box) => {
-      let newBox = new Box(box);
+      let newBox = new Box(box.validNames);
       newBox.placedName =
         dropppedName === box.placedName ? null : box.placedName;
       return newBox;
@@ -119,7 +122,6 @@ const IguanaSlide12 = ({ content }) => {
     newDraggedBoxes = update(newDraggedBoxes, {
       [index]: { $set: new Box(currentBox.validNames, dropppedName) },
     });
-    console.log(newDraggedBoxes);
     setDraggedBoxes(newDraggedBoxes);
   };
 
@@ -129,9 +131,42 @@ const IguanaSlide12 = ({ content }) => {
 
   const handleShowTree = () => {
     setCompleteTree(true);
+    const branchNames = getBranchNames();
     setTimeout(() => {
-      setDraggedBoxes(["Green Iguana", "Marine Iguana", "Land Iguana"]);
+      setDraggedBoxes([
+        new Box(["Green Iguana"], "Green Iguana"),
+        new Box(["Marine Iguana", "Land Iguana"], branchNames.topRightBranch),
+        new Box(
+          ["Marine Iguana", "Land Iguana"],
+          branchNames.bottomRightBranch
+        ),
+      ]);
     }, 500);
+  };
+
+  const getBranchNames = () => {
+    let topRightBranch = draggedBoxes[1].placedName;
+    let bottomRightBranch = draggedBoxes[2].placedName;
+    if (
+      topRightBranch === "Marine Iguana" ||
+      bottomRightBranch === "Marine Iguana"
+    ) {
+      topRightBranch = topRightBranch ? topRightBranch : "Land Iguana";
+      bottomRightBranch = bottomRightBranch ? bottomRightBranch : "Land Iguana";
+    } else if (
+      topRightBranch === "Land Iguana" ||
+      bottomRightBranch === "Land Iguana"
+    ) {
+      topRightBranch = topRightBranch ? topRightBranch : "Marine Iguana";
+      bottomRightBranch = bottomRightBranch
+        ? bottomRightBranch
+        : "Marine Iguana";
+    } else {
+      topRightBranch = "Marine Iguana";
+      bottomRightBranch = "Land Iguana";
+    }
+
+    return { topRightBranch, bottomRightBranch };
   };
 
   const resetCheck = () => {
@@ -171,13 +206,10 @@ const IguanaSlide12 = ({ content }) => {
             ))}
           </div>
           <div className={classes.dropTargetContainer}>
-            <div className={classes.dropTargetDiv}>
-              <img
-                src={content.backgroundUrl}
-                width="100%"
-                className={classes.backgroundImg}
-              ></img>
-            </div>
+            <img
+              src={content.backgroundUrl}
+              className={classes.backgroundImg}
+            />
             <div className={classes.dropTargetDiv}>
               <DropTargetComponent top={270} left={60} index={0} />
               <DropTargetComponent top={135} left={736} index={1} />
