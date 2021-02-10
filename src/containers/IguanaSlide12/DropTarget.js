@@ -14,35 +14,41 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    transform: "translate(0,-45px)",
-    // backgroundColor: "blue",
-    // opacity: 0.5,
-    width: "170px",
-    height: "90px",
+    transform: "translate(0, -50%)",
+    width: ({ width }) => width,
+    height: ({ height }) => height,
   },
   checkContainer: {
     position: "absolute",
-    top: ({ top }) => top + 90,
+    top: ({ containerTop }) => containerTop,
     left: ({ left }) => left,
-    transform: "translate(0,-45px)",
-    // backgroundColor: "khaki",
-    // opacity: 0.5,
-    width: "170px",
-    height: "30px",
+    transform: "translate(0,-140%)",
+    width: ({ width }) => width,
+    height: ({ containerHeight }) => containerHeight,
   },
   check: {
     position: "absolute",
     bottom: "1%",
     left: "1%",
+    fontSize: "1rem",
   },
 }));
 
 const DropTarget = ({ top, left, onDrop, index, placedName, children }) => {
   const props = {
-    top,
-    left,
+    top: `${(top / 540) * 100}%`,
+    left: `${(left / 960) * 100}%`,
+    width: `${(170 / 960) * 100}%`,
+    height: `${(90 / 540) * 100}%`,
+    containerTop: `${((top + 90) / 540) * 100}%`,
+    containerHeight: `${(30 / 540) * 100}%`,
   };
+  console.log(props);
   const classes = useStyles(props);
+
+  React.useEffect(() => {
+    console.log();
+  });
 
   const [, drop] = useDrop({
     accept: ItemTypes.IGUANA,

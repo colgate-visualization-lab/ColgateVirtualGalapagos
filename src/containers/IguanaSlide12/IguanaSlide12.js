@@ -31,17 +31,19 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "2.7rem",
     maxWidth: "960px",
-    padding: "0 2rem",
+    minWidth: "600px",
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
     marginTop: "5%",
-    padding: theme.spacing(2, 1),
+    padding: theme.spacing(2, 4),
   },
   dropTargetContainer: {
     position: "relative",
-    width: "960px",
-    height: "540px",
+    maxWidth: "960px",
+    maxHeight: "540px",
+    minWidth: "600px",
+    minHeight: "337.5px",
     marginTop: "2rem",
   },
   dropTargetDiv: {
@@ -60,7 +62,10 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     display: "flex",
     alignItems: "center",
-    width: "960px",
+    width: "100%",
+    maxWidth: "960px",
+    minWidth: "600px",
+
     height: "3rem",
     border: "1px solid black",
     padding: theme.spacing(2, 1),
@@ -181,9 +186,9 @@ const IguanaSlide12 = ({ content }) => {
     >
       {checkTree &&
         (draggedBoxes[index].isPlacedCorrectly() ? (
-          <CheckCircleIcon fontSize="small" />
+          <CheckCircleIcon fontSize="inherit" />
         ) : (
-          <CancelIcon fontSize="small" />
+          <CancelIcon fontSize="inherit" />
         ))}
     </DropTarget>
   );
