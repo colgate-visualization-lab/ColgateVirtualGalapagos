@@ -1,21 +1,16 @@
 import React from 'react'
 import {Link} from "react-router-dom"
 import {useParams} from "react-router"
-import IntroSlide from "../../components/VolcanoSlides/Intro Slide/IntroSlide"
+import VolcanoSlides from "../../components/VolcanoSlides/VolcanoSlides"
 
 export default function Test(props) {
 
-    let { id } = useParams();
-    if (id == "slide1") {
-        return(
-        <div style={{backgroundColor: "orange", height: "100%"}}> 
-            Go fuck yourself!
-        </div>
-        )}
-    else {
+    let {id} = useParams();
+
     return (
-        <div style={{backgroundColor: "orange", height: "100%"}}>   {id} 
-                <IntroSlide />
+        <div style={{backgroundColor: "orange", height: "100%", width: "100%"}}>
+            <div>s</div>
+            <VolcanoSlides id={id} />
         </div>
-    )}
+    )
 }
