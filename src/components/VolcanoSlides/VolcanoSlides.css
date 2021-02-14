@@ -1,0 +1,11 @@
+.center {
+    position: absolute;
+    height: 80%;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border: 2px solid darkgoldenrod;
+}
+.center:focus { 
+    outline: 0;
+}
