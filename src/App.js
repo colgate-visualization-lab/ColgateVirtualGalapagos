@@ -94,7 +94,8 @@ class App extends Component {
               <Route path="/iguana" exact component={IguanaModule} />
               <Route path="/extras" exact component={ExtraSelect} />
               {/* route for iguana module slides */}
-			  <Route path="/testing" exact component={Test} />
+			        <Route path="/volcano/:id" exact component={Test} />
+
               <Route path="/iguana/:slide_id" component={IguanaModule} />
               <Route
                 path="/Volcano_0"
