@@ -11,6 +11,7 @@ import update from "immutability-helper";
 
 import DropTarget from "./DropTarget";
 import IguanaBox from "./IguanaBox";
+import DrawArea from "../DrawArea";
 import { Slide12Context, Box } from "./utils";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,17 +25,15 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(4),
   },
   iguanaBoxes: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
     position: "relative",
-    backgroundColor: "rgb(118,116,116)",
-    boxShadow: "inset 0 0 2px #000000",
-    borderRadius: "4px",
     width: "100%",
     height: "2.7rem",
     maxWidth: "960px",
     minWidth: "600px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
+    backgroundColor: "rgb(118,116,116)",
     marginTop: "5%",
     padding: theme.spacing(2, 4),
   },
@@ -44,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: "540px",
     minWidth: "600px",
     minHeight: "337.5px",
-    marginTop: "2rem",
+    // marginTop: "2rem",
   },
   dropTargetDiv: {
     position: "absolute",
@@ -82,6 +81,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const IguanaSlide12 = ({ content }) => {
+  React.useEffect(() => {
+    console.log("new one");
+    console.log(draggedBoxes);
+    console.log(undraggedBoxes);
+  });
+
   const [undraggedBoxes, setUndraggedBoxes] = useState([
     "Marine Iguana",
     "Green Iguana",
@@ -135,8 +140,12 @@ const IguanaSlide12 = ({ content }) => {
   };
 
   const handleShowTree = () => {
+    resetCheck();
     setCompleteTree(true);
     const branchNames = getBranchNames();
+    setTimeout(() => {
+      setUndraggedBoxes([]);
+    }, 200);
     setTimeout(() => {
       setDraggedBoxes([
         new Box(["Green Iguana"], "Green Iguana"),
@@ -152,30 +161,36 @@ const IguanaSlide12 = ({ content }) => {
   const getBranchNames = () => {
     let topRightBranch = draggedBoxes[1].placedName;
     let bottomRightBranch = draggedBoxes[2].placedName;
-    if (
-      topRightBranch === "Marine Iguana" ||
-      bottomRightBranch === "Marine Iguana"
-    ) {
-      topRightBranch = topRightBranch ? topRightBranch : "Land Iguana";
-      bottomRightBranch = bottomRightBranch ? bottomRightBranch : "Land Iguana";
-    } else if (
-      topRightBranch === "Land Iguana" ||
-      bottomRightBranch === "Land Iguana"
-    ) {
-      topRightBranch = topRightBranch ? topRightBranch : "Marine Iguana";
-      bottomRightBranch = bottomRightBranch
-        ? bottomRightBranch
-        : "Marine Iguana";
-    } else {
-      topRightBranch = "Marine Iguana";
+
+    //prettier-ignore
+    if (topRightBranch === "Marine Iguana" || bottomRightBranch === "Land Iguana"){
       bottomRightBranch = "Land Iguana";
+      topRightBranch = "Marine Iguana";
+    } else {
+      bottomRightBranch = "Marine Iguana";
+      topRightBranch = "Land Iguana";
     }
 
     return { topRightBranch, bottomRightBranch };
   };
 
+  const handleResetTree = () => {
+    resetCheck();
+    setTimeout(() => {
+      setUndraggedBoxes(["Marine Iguana", "Green Iguana", "Land Iguana"]);
+    }, 500);
+    setTimeout(() => {
+      setDraggedBoxes([
+        new Box(["Green Iguana"]),
+        new Box(["Marine Iguana", "Land Iguana"]),
+        new Box(["Marine Iguana", "Land Iguana"]),
+      ]);
+    }, 200);
+  };
+
   const resetCheck = () => {
     setCheckTree(false);
+    setCompleteTree(false);
   };
   const DropTargetComponent = ({ index, ...props }) => (
     <DropTarget
@@ -194,54 +209,67 @@ const IguanaSlide12 = ({ content }) => {
   );
 
   return (
-    <DndProvider backend={HTML5Backend}>
-      <Slide12Context.Provider value={resetCheck}>
-        <div className={classes.root}>
-          <div className={classes.headerDiv}>
-            <Typography variant="h1" className={classes.header}>
-              Drag the iguana species onto the tree to create a phylogenetic
-              tree
-            </Typography>
-          </div>
-          <div className={classes.iguanaBoxes}>
-            {undraggedBoxes.map((iguanaName, index) => (
-              <Grow in={!completeTree} key={index}>
-                <IguanaBox name={iguanaName} />
-              </Grow>
-            ))}
-          </div>
-          <div className={classes.dropTargetContainer}>
-            <img
-              src={content.backgroundUrl}
-              className={classes.backgroundImg}
-            />
-            <div className={classes.dropTargetDiv}>
-              <DropTargetComponent top={270} left={60} index={0} />
-              <DropTargetComponent top={135} left={736} index={1} />
-              <DropTargetComponent top={405} left={736} index={2} />
-            </div>
-          </div>
-          <div className={classes.buttons}>
-            <Button
-              variant="contained"
-              size="small"
-              className={classes.button}
-              onClick={handleCheckTree}
-            >
-              Check My Tree
-            </Button>
-            <Button
-              variant="contained"
-              size="small"
-              className={classes.button}
-              onClick={handleShowTree}
-            >
-              Show Completed Tree
-            </Button>
-          </div>
-        </div>
-      </Slide12Context.Provider>
-    </DndProvider>
+    <DrawArea />
+    // <DndProvider backend={HTML5Backend}>
+    //   <Slide12Context.Provider value={resetCheck}>
+    //     <div className={classes.root}>
+    //       <div className={classes.headerDiv}>
+    //         <Typography variant="h1" className={classes.header}>
+    //           Drag the iguana species onto the tree to create a phylogenetic
+    //           tree
+    //         </Typography>
+    //       </div>
+    //       <div className={classes.iguanaBoxes}>
+    //         {undraggedBoxes.map((iguanaName, index) => (
+    //           <Grow in={!completeTree} key={index}>
+    //             <IguanaBox name={iguanaName} />
+    //           </Grow>
+    //         ))}
+    //       </div>
+    //       <div className={classes.dropTargetContainer}>
+    //         <img
+    //           src={content.backgroundUrl}
+    //           className={classes.backgroundImg}
+    //         />
+    //         <div className={classes.dropTargetDiv}>
+    //           <DropTargetComponent top={270} left={60} index={0} />
+    //           <DropTargetComponent top={135} left={736} index={1} />
+    //           <DropTargetComponent top={405} left={736} index={2} />
+    //         </div>
+    //       </div>
+    //       <div className={classes.buttons}>
+    //         <Button
+    //           variant="contained"
+    //           size="small"
+    //           className={classes.button}
+    //           onClick={handleCheckTree}
+    //         >
+    //           Check My Tree
+    //         </Button>
+    //         {completeTree ? (
+    //           <Button
+    //             variant="contained"
+    //             size="small"
+    //             className={classes.button}
+    //             onClick={handleResetTree}
+    //           >
+    //             Reset Tree
+    //           </Button>
+    //         ) : (
+    //           <Button
+    //             variant="contained"
+    //             size="small"
+    //             className={classes.button}
+    //             onClick={handleShowTree}
+    //           >
+    //             Show Completed Tree
+    //           </Button>
+    //         )}
+    //       </div>
+    //     </div>
+
+    //   </Slide12Context.Provider>
+    // </DndProvider>
   );
 };
 
