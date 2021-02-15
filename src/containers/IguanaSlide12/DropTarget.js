@@ -43,12 +43,7 @@ const DropTarget = ({ top, left, onDrop, index, placedName, children }) => {
     containerTop: `${((top + 90) / 540) * 100}%`,
     containerHeight: `${(30 / 540) * 100}%`,
   };
-  console.log(props);
   const classes = useStyles(props);
-
-  React.useEffect(() => {
-    console.log();
-  });
 
   const [, drop] = useDrop({
     accept: ItemTypes.IGUANA,
