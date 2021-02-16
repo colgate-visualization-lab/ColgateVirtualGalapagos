@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { useDrag } from "react-dnd";
 
 import { ItemTypes } from "./ItemTypes";

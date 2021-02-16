@@ -1,12 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
-const { List, Map } = require("immutable");
+import { List, Map } from "immutable";
+import { makeStyles } from "@material-ui/core/styles";
+
+import Drawing from "./Drawing";
+
+const useStyles = makeStyles(() => ({
+  drawArea: {
+    height: "100%",
+    width: "100%",
+    backgroundColor: "white",
+  },
+}));
 
 const DrawArea = () => {
+  const classes = useStyles();
+
   const [isDrawing, setIsDrawing] = useState(false);
-  const [lines, setLines] = useState(List);
+  const [lines, setLines] = useState(List());
 
   useEffect(() => {
-    console.log(lines);
     document.addEventListener("mouseup", handleMouseUp);
     return () => {
       document.removeEventListener("mouseup", handleMouseUp);
@@ -19,19 +31,23 @@ const DrawArea = () => {
     if (e.button != 0) {
       return;
     }
+
     const point = relativeCoordsForEvent(e);
+    const updatedLines = lines.push(List([point]));
 
     setIsDrawing(true);
-    setLines((prevLines) => prevLines.push(List([point])));
+    setLines(updatedLines);
   };
 
   const handleMouseMove = (e) => {
     if (!isDrawing) return;
 
     const point = relativeCoordsForEvent(e);
-    setLines(() =>
-      lines.updateIn([lines.size - 1], (line) => line.push([point]))
+    const updatedLines = lines.updateIn([lines.size - 1], (line) =>
+      line.push(point)
     );
+
+    setLines(updatedLines);
   };
 
   const handleMouseUp = () => {
@@ -41,17 +57,21 @@ const DrawArea = () => {
   const relativeCoordsForEvent = (e) => {
     const boundingRect = drawAreaRef.current.getBoundingClientRect();
     return new Map({
-      x: e.target.clientX - boundingRect.left,
-      y: e.target.clientY - boundingRect.top,
+      x: e.clientX - boundingRect.left,
+      y: e.clientY - boundingRect.top,
     });
   };
 
   return (
     <div
       ref={drawAreaRef}
+      className={classes.drawArea}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
-    />
+      onMouseUp={handleMouseUp}
+    >
+      <Drawing lines={lines} />
+    </div>
   );
 };
 

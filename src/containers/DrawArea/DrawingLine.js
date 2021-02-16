@@ -1,0 +1,22 @@
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(() => ({
+  path: {
+    fill: "none",
+    strokeWidth: "2px",
+    stroke: "black",
+    strokeLinecap: "round",
+    strokeLineJoin: "round",
+  },
+}));
+
+const DrawingLine = ({ line }) => {
+  const classes = useStyles();
+  const pathData =
+    "M " + line.map((p) => p.get("x") + " " + p.get("y")).join(" L ");
+  //   console.log(pathData);
+  return <path className={classes.path} d={pathData} />;
+};
+
+export default DrawingLine;
