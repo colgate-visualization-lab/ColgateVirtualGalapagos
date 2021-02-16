@@ -14,7 +14,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Slide12Header = ({ tabIndex, handleTabChange, headerText }) => {
+const Slide12Header = ({ tabIndex, handleTabChange, header, children }) => {
   const classes = useStyles();
   return (
     <Grid container spacing={1} className={classes.root}>
@@ -22,10 +22,10 @@ const Slide12Header = ({ tabIndex, handleTabChange, headerText }) => {
         <PlainTabs tabIndex={tabIndex} handleTabChange={handleTabChange} />
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="body2">{headerText}</Typography>
+        <Typography variant="body2">{header}</Typography>
       </Grid>
       <Grid item xs={12}>
-        {/* {children} */}
+        {children}
       </Grid>
     </Grid>
   );

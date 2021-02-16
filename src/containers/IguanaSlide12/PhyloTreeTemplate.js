@@ -11,6 +11,7 @@ import update from "immutability-helper";
 
 import DropTarget from "./DropTarget";
 import IguanaBox from "./IguanaBox";
+import Slide12Header from "./Slide12Header";
 
 import { Slide12Context, Box } from "./utils";
 
@@ -80,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PhyloTreeTemplate = ({ content }) => {
+const PhyloTreeTemplate = ({ content, tabIndex, handleTabChange }) => {
   const [undraggedBoxes, setUndraggedBoxes] = useState([
     "Marine Iguana",
     "Green Iguana",
@@ -206,19 +207,19 @@ const PhyloTreeTemplate = ({ content }) => {
     <DndProvider backend={HTML5Backend}>
       <Slide12Context.Provider value={resetCheck}>
         <div className={classes.root}>
-          <div className={classes.headerDiv}>
-            <Typography variant="h1" className={classes.header}>
-              Drag the iguana species onto the tree to create a phylogenetic
-              tree
-            </Typography>
-          </div>
-          <div className={classes.iguanaBoxes}>
-            {undraggedBoxes.map((iguanaName, index) => (
-              <Grow in={!completeTree} key={index}>
-                <IguanaBox name={iguanaName} />
-              </Grow>
-            ))}
-          </div>
+          <Slide12Header
+            tabIndex={tabIndex}
+            handleTabChange={handleTabChange}
+            header="Draw a phylogenetic tree on the canvas"
+          >
+            <div className={classes.iguanaBoxes}>
+              {undraggedBoxes.map((iguanaName, index) => (
+                <Grow in={!completeTree} key={index}>
+                  <IguanaBox name={iguanaName} />
+                </Grow>
+              ))}
+            </div>
+          </Slide12Header>
           <div className={classes.dropTargetContainer}>
             <img
               src={content.backgroundUrl}
