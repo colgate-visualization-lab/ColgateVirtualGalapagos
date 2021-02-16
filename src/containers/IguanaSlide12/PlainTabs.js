@@ -29,7 +29,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const PlainTabs = ({ tabIndex, handleChangeTab }) => {
+const PlainTabs = ({ tabIndex, handleTabChange }) => {
   const classes = useStyles();
   const tabItemClasses = {
     root: classes.root,
@@ -40,7 +40,7 @@ const PlainTabs = ({ tabIndex, handleChangeTab }) => {
     <Tabs
       classes={{ indicator: classes.indicator }}
       value={tabIndex}
-      onChange={(e, index) => handleChangeTab(index)}
+      onChange={(e, index) => handleTabChange(index)}
       textColor="inherit"
     >
       <Tab classes={tabItemClasses} label={"Draw My Own Tree"} />
