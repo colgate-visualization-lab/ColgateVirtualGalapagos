@@ -6,8 +6,10 @@ import Drawing from "./Drawing";
 
 const useStyles = makeStyles(() => ({
   drawArea: {
-    height: "100%",
-    width: "100%",
+    maxHeight: "540px",
+    maxWidth: "960px",
+    minHeight: "400px",
+    minWidth: "600px",
     backgroundColor: "white",
   },
 }));

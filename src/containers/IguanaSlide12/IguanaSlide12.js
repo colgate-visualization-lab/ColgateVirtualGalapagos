@@ -1,25 +1,44 @@
 import React, { useState } from "react";
+import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
+import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 
+import Slide12Header from "./Slide12Header";
 import PlainTabs from "./PlainTabs";
 import DrawArea from "../DrawArea";
 import PhyloTreeTemplate from "./PhyloTreeTemplate";
-import { Slide12Context, Box } from "./utils";
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+  root: {
+    maxWidth: "1000px",
+  },
+}));
 
 const IguanaSlide12 = ({ content }) => {
+  const classes = useStyles();
   const [tabIndex, setTabIndex] = useState(1);
-
+  const headerTextArray = [
+    "Draw a phylogenetic tree on the canvas",
+    "Create a phylogenetic tree by dragging the cards below to their correct positions",
+  ];
   return (
-    <>
-      <PlainTabs
+    <Paper className={classes.root}>
+      <Slide12Header
+        headerText={headerTextArray[tabIndex]}
         tabIndex={tabIndex}
-        handleChangeTab={(index) => setTabIndex(index)}
+        handleTabChange={(index) => setTabIndex(index)}
       />
-
-      {tabIndex === 0 ? <DrawArea /> : <PhyloTreeTemplate content={content} />}
-    </>
+      <Grid container spacing={1}>
+        <Grid item xs={12}>
+          {tabIndex === 0 ? (
+            <DrawArea />
+          ) : (
+            <PhyloTreeTemplate content={content} />
+          )}
+        </Grid>
+      </Grid>
+    </Paper>
   );
 };
 
