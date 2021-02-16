@@ -22,19 +22,30 @@ const IguanaSlide12 = ({ content }) => {
     "Draw a phylogenetic tree on the canvas",
     "Create a phylogenetic tree by dragging the cards below to their correct positions",
   ];
+
+  const header = (
+    <Slide12Header
+      headerText={headerTextArray[tabIndex]}
+      tabIndex={tabIndex}
+      handleTabChange={(index) => setTabIndex(index)}
+    />
+  );
+
   return (
     <Paper className={classes.root}>
-      <Slide12Header
-        headerText={headerTextArray[tabIndex]}
-        tabIndex={tabIndex}
-        handleTabChange={(index) => setTabIndex(index)}
-      />
       <Grid container spacing={1}>
         <Grid item xs={12}>
           {tabIndex === 0 ? (
-            <DrawArea />
+            <DrawArea
+              tabIndex={tabIndex}
+              handleTabChange={(index) => setTabIndex(index)}
+            />
           ) : (
-            <PhyloTreeTemplate content={content} />
+            <PhyloTreeTemplate
+              content={content}
+              tabIndex={tabIndex}
+              handleTabChange={(index) => setTabIndex(index)}
+            />
           )}
         </Grid>
       </Grid>

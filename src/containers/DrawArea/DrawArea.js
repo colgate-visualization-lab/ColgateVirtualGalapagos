@@ -3,6 +3,7 @@ import { List, Map } from "immutable";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Drawing from "./Drawing";
+import Slide12Header from "../IguanaSlide12/Slide12Header";
 
 const useStyles = makeStyles(() => ({
   drawArea: {
@@ -14,7 +15,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const DrawArea = () => {
+const DrawArea = ({ tabIndex, handleTabChange }) => {
   const classes = useStyles();
 
   const [isDrawing, setIsDrawing] = useState(false);
@@ -65,15 +66,24 @@ const DrawArea = () => {
   };
 
   return (
-    <div
-      ref={drawAreaRef}
-      className={classes.drawArea}
-      onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
-    >
-      <Drawing lines={lines} />
-    </div>
+    <>
+      <Slide12Header
+        tabIndex={tabIndex}
+        handleTabChange={handleTabChange}
+        header="Create a phylogenetic tree by dragging the cards below to their correct positions"
+      >
+        <h1>Here Here</h1>
+      </Slide12Header>
+      <div
+        ref={drawAreaRef}
+        className={classes.drawArea}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+      >
+        <Drawing lines={lines} />
+      </div>
+    </>
   );
 };
 
