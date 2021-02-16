@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { useDrop } from "react-dnd";
 import Fade from "@material-ui/core/Fade";
 
