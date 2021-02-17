@@ -11,12 +11,20 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const DrawingLine = ({ line }) => {
+const DrawingLine = ({ line, index, handleErase }) => {
   const classes = useStyles();
   const pathData =
     "M " + line.map((p) => p.get("x") + " " + p.get("y")).join(" L ");
-  //   console.log(pathData);
-  return <path className={classes.path} d={pathData} />;
+
+  return (
+    <path
+      onMouseOver={() => {
+        handleErase(index);
+      }}
+      className={classes.path}
+      d={pathData}
+    />
+  );
 };
 
 export default DrawingLine;
