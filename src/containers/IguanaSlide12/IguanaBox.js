@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
   box: {
     background: "transparent",
     cursor: "pointer",
+    padding: theme.spacing(0, 2, 0, 0),
   },
   dragSrc: {
     padding: "0.1rem 0.2rem",
@@ -17,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
       padding: "0.1rem 0.4rem",
     },
     backgroundColor: "rgb(207,207,207)",
+    backgroundColor: "rgba(255, 255, 255, 1)",
     borderRadius: "0.3rem",
   },
   srcName: {
