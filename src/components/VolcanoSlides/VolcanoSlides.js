@@ -12,7 +12,7 @@ import {
     whereNext1, Exploration01, Exploration02, Exploration03, Exploration04, Exploration05,
     Vista, Vista2, Vista3, Vista4, Vista5,
   } from "../../assets/VolcanoModule";
-import IframeCompoment from "../../components/IframeCompoment/IframeComponent"
+import IframeCompoment from "../../components/IframeComponent/IframeComponent"
 
 export default function VolcanoSlides(props) {
 
