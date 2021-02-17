@@ -11,13 +11,18 @@ import PhyloTreeTemplate from "./PhyloTreeTemplate";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: "1000px",
+    width: "988px",
+    position: "absolute",
+    top: "40px",
+  },
+  item: {
+    padding: 0,
   },
 }));
 
 const IguanaSlide12 = ({ content }) => {
   const classes = useStyles();
-  const [tabIndex, setTabIndex] = useState(1);
+  const [tabIndex, setTabIndex] = useState(0);
   const headerTextArray = [
     "Draw a phylogenetic tree on the canvas",
     "Create a phylogenetic tree by dragging the cards below to their correct positions",
@@ -33,7 +38,7 @@ const IguanaSlide12 = ({ content }) => {
 
   return (
     <Paper className={classes.root}>
-      <Grid container spacing={1}>
+      <Grid container spacing={0}>
         <Grid item xs={12}>
           {tabIndex === 0 ? (
             <DrawArea
