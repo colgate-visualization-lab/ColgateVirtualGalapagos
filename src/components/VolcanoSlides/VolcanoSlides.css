@@ -9,3 +9,15 @@
 .center:focus { 
     outline: 0;
 }
+.vista {
+    position: absolute;
+    height: 80%;
+    width: 70%;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border: 2px solid darkgoldenrod;
+}
+.vista:focus {
+    outline: 0;
+}
