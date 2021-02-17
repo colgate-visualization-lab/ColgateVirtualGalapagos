@@ -11,10 +11,6 @@ const useStyles = makeStyles(() => ({
   drawArea: {
     height: "70vh",
     width: "100%",
-    // maxHeight: "540px",
-    // maxWidth: "960px",
-    // minHeight: "400px",
-    // minWidth: "600px",
     backgroundColor: "white",
   },
 }));
@@ -22,9 +18,9 @@ const useStyles = makeStyles(() => ({
 const DrawArea = ({ tabIndex, handleTabChange }) => {
   const classes = useStyles();
 
-  const [isDrawing, setIsDrawing] = useState(false);
+  const [mouseDown, setMouseDown] = useState(false);
   const [lines, setLines] = useState(List());
-  const [selectedTool, setSelectedTool] = useState();
+  const [selectedTool, setSelectedTool] = useState("pen");
 
   useEffect(() => {
     document.addEventListener("mouseup", handleMouseUp);
@@ -40,26 +36,39 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
       return;
     }
 
-    const point = relativeCoordsForEvent(e);
-    const updatedLines = lines.push(List([point]));
+    setMouseDown(true);
 
-    setIsDrawing(true);
-    setLines(updatedLines);
+    if (selectedTool === "pen") {
+      handleDraw(e);
+    }
   };
 
   const handleMouseMove = (e) => {
-    if (!isDrawing) return;
+    if (!mouseDown) return;
 
+    if (selectedTool === "pen") {
+      handleDrawing(e);
+    }
+  };
+
+  const handleMouseUp = () => {
+    setMouseDown(false);
+  };
+
+  const handleDraw = (e) => {
+    const point = relativeCoordsForEvent(e);
+    const updatedLines = lines.push(List([point]));
+
+    setLines(updatedLines);
+  };
+
+  const handleDrawing = (e) => {
     const point = relativeCoordsForEvent(e);
     const updatedLines = lines.updateIn([lines.size - 1], (line) =>
       line.push(point)
     );
 
     setLines(updatedLines);
-  };
-
-  const handleMouseUp = () => {
-    setIsDrawing(false);
   };
 
   const relativeCoordsForEvent = (e) => {
@@ -70,8 +79,13 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     });
   };
 
-  const onToolChange = (name) => {
+  const handleToolChange = (name) => {
     setSelectedTool(name);
+  };
+
+  const handleErase = (index) => {
+    if (!mouseDown || selectedTool !== "eraser") return;
+    setLines(lines.splice(index, 1));
   };
 
   return (
@@ -83,7 +97,7 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
           header="Draw a phylogenetic tree on the canvas"
         >
           <DrawAreaToolbar
-            handleToolChange={onToolChange}
+            handleToolChange={handleToolChange}
             selected={selectedTool}
           />
         </Slide12Header>
@@ -96,7 +110,7 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
         >
-          <Drawing lines={lines} />
+          <Drawing lines={lines} handleErase={handleErase} />
         </div>
       </Grid>
     </Grid>
