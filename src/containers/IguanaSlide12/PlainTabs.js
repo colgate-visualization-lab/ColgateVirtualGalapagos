@@ -2,30 +2,32 @@ import React from "react";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import { makeStyles } from "@material-ui/styles";
-// import { plainTabsStylesHook } from '@mui-treasury/styles/tabs';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    border: "1px solid #e9e9e9",
     "&:not(:first-of-type)": {
       marginLeft: -1,
     },
     background: "#f7f7f7",
     opacity: 1,
+    padding: 0,
+    margin: theme.spacing(0, 2, 0, 0),
     color: "black",
+    fontWeight: theme.typography.fontWeightBold,
   },
   selected: {
-    borderBottomWidth: 0,
-    background: "#ffffff",
+    borderBottomWidth: "3px black",
     "& $wrapper": {
       opacity: 1,
     },
   },
   wrapper: {
-    opacity: 0.7,
+    opacity: 0.5,
+    fontSize: "0.75rem",
+    textTransform: "capitalize",
   },
   indicator: {
-    display: "none",
+    color: "black",
   },
 }));
 
@@ -38,7 +40,8 @@ const PlainTabs = ({ tabIndex, handleTabChange }) => {
   };
   return (
     <Tabs
-      classes={{ indicator: classes.indicator }}
+      // classes={{ indicator: classes.indicator }}
+      indicatorColor="primary"
       value={tabIndex}
       onChange={(e, index) => handleTabChange(index)}
       textColor="inherit"

@@ -23,20 +23,16 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "flex-start",
     height: "100%",
     width: "100%",
-    padding: theme.spacing(4),
   },
   iguanaBoxes: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "flex-start",
     position: "relative",
     width: "100%",
     height: "2.7rem",
     maxWidth: "960px",
     minWidth: "600px",
-    backgroundColor: "rgb(118,116,116)",
-    marginTop: "5%",
-    padding: theme.spacing(2, 4),
   },
   dropTargetContainer: {
     position: "relative",
@@ -44,7 +40,8 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: "540px",
     minWidth: "600px",
     minHeight: "337.5px",
-    // marginTop: "2rem",
+    // padding: theme.spacing(2, 0),
+    margin: theme.spacing(2),
   },
   dropTargetDiv: {
     position: "absolute",
@@ -65,11 +62,10 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     maxWidth: "960px",
     minWidth: "600px",
-
-    height: "3rem",
-    border: "1px solid black",
-    padding: theme.spacing(2, 1),
-    backgroundColor: "rgb(118,116,116)",
+    height: "auto",
+    padding: theme.spacing(2, 0),
+    margin: theme.spacing(3, 0, 0, 0),
+    backgroundColor: "rgb(248,248,248)",
   },
   button: {
     margin: theme.spacing(0, 1),
@@ -210,7 +206,7 @@ const PhyloTreeTemplate = ({ content, tabIndex, handleTabChange }) => {
           <Slide12Header
             tabIndex={tabIndex}
             handleTabChange={handleTabChange}
-            header="Draw a phylogenetic tree on the canvas"
+            header="Create a phylogenetic tree by dragging the cards below to their correct positions"
           >
             <div className={classes.iguanaBoxes}>
               {undraggedBoxes.map((iguanaName, index) => (
