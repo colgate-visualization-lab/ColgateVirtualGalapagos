@@ -24,7 +24,7 @@ export default function VolcanoSlides(props) {
     }
     else if (props.id == 1) {
         return (
-            <Link to="./2">slide 1</Link>
+            <IframeCompoment class={classes.vista} src={Vista}/>
         )
     }
     else if (props.id == 2) {
