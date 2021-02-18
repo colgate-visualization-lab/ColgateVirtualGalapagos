@@ -19,7 +19,7 @@ const DrawingLine = ({ line, index, handleErase }) => {
   return (
     <path
       onMouseOver={() => {
-        handleErase(index);
+        handleErase(index, "pen");
       }}
       className={classes.path}
       d={pathData}
