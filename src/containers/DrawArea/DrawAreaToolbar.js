@@ -6,6 +6,7 @@ import {
   PenIcon,
   EraserIcon,
   TextBoxIcon,
+  LineIcon,
 } from "../../components/DrawAreaIcons";
 
 const useStyles = makeStyles((theme) => ({
@@ -29,6 +30,7 @@ const toolIcons = [
   { name: "pen", component: <PenIcon /> },
   { name: "eraser", component: <EraserIcon /> },
   { name: "textbox", component: <TextBoxIcon /> },
+  { name: "line", component: <LineIcon /> },
 ];
 
 const DrawAreaToolbar = ({ handleToolChange, selected }) => {

@@ -19,7 +19,8 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   const classes = useStyles();
 
   const [mouseDown, setMouseDown] = useState(false);
-  const [lines, setLines] = useState(List());
+  const [penLines, setPenLines] = useState(List());
+  const [straightLines, setStraightLines] = useState(List());
   const [selectedTool, setSelectedTool] = useState("pen");
 
   useEffect(() => {
@@ -39,15 +40,21 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     setMouseDown(true);
 
     if (selectedTool === "pen") {
-      handleDraw(e);
+      handleDrawWithPen(e);
+    } else if (selectedTool === "textbox") {
+      handleText(e);
+    } else if (selectedTool === "line") {
+      handleDrawWithLine(e);
     }
   };
 
   const handleMouseMove = (e) => {
+    e.preventDefault();
     if (!mouseDown) return;
-
     if (selectedTool === "pen") {
-      handleDrawing(e);
+      handleDrawingWithPen(e);
+    } else if (selectedTool === "line") {
+      handleDrawingWithLine(e);
     }
   };
 
@@ -55,20 +62,49 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     setMouseDown(false);
   };
 
-  const handleDraw = (e) => {
+  // line tool logic
+  const handleDrawWithLine = (e) => {
     const point = relativeCoordsForEvent(e);
-    const updatedLines = lines.push(List([point]));
-
-    setLines(updatedLines);
+    console.log(straightLines);
+    const updatedLines = straightLines.push(
+      new Map({
+        origin: point,
+        current: point,
+      })
+    );
+    console.log(updatedLines);
+    setStraightLines(updatedLines);
   };
 
-  const handleDrawing = (e) => {
+  const handleDrawingWithLine = (e) => {
     const point = relativeCoordsForEvent(e);
-    const updatedLines = lines.updateIn([lines.size - 1], (line) =>
+    const updatedLines = straightLines.setIn(
+      [straightLines.size - 1, "current"],
+      point
+    );
+    setStraightLines(updatedLines);
+  };
+
+  // textbox logic
+  const handleText = (e) => {
+    const point = relativeCoordsForEvent(e);
+  };
+
+  // pen tool logic
+  const handleDrawWithPen = (e) => {
+    const point = relativeCoordsForEvent(e);
+    const updatedLines = penLines.push(List([point]));
+
+    setPenLines(updatedLines);
+  };
+
+  const handleDrawingWithPen = (e) => {
+    const point = relativeCoordsForEvent(e);
+    const updatedLines = penLines.updateIn([penLines.size - 1], (line) =>
       line.push(point)
     );
 
-    setLines(updatedLines);
+    setPenLines(updatedLines);
   };
 
   const relativeCoordsForEvent = (e) => {
@@ -83,9 +119,14 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     setSelectedTool(name);
   };
 
-  const handleErase = (index) => {
+  const handleErase = (index, target) => {
     if (!mouseDown || selectedTool !== "eraser") return;
-    setLines(lines.splice(index, 1));
+
+    if (target === "pen") {
+      setPenLines(penLines.splice(index, 1));
+    } else if (target === "line") {
+      setStraightLines(penLines.splice(index, 1));
+    }
   };
 
   return (
@@ -110,7 +151,11 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
         >
-          <Drawing lines={lines} handleErase={handleErase} />
+          <Drawing
+            penLines={penLines}
+            straightLines={straightLines}
+            handleErase={handleErase}
+          />
         </div>
       </Grid>
     </Grid>
