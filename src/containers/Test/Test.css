@@ -25,7 +25,7 @@
   border: 1px solid red;
   background-color: royalblue;
   flex-grow: 1;
-  max-height: 50px;
+  max-height: 25px;
 }
 .scrollItem:hover {
   opacity: 0.7;
