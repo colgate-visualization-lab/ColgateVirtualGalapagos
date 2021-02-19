@@ -1,6 +1,8 @@
 import React, {Fragment} from 'react'
 import {Link} from "react-router-dom"
 import classes from "./VolcanoSlides.css"
+import Popup from "reactjs-popup";
+import ImageSlider from "react-image-comparison-slider";
 import {
     introVideo, summaryVolcano, plateTectonics, mantlePlumes, Back, Next, TerrainMap, 
     magnifyingGlass, Ferd, santaCruz, VolcanoCompare, tectonicPlatesMap, convergent, 
@@ -16,11 +18,11 @@ import IframeCompoment from "../../components/IframeComponent/IframeComponent"
 
 export default function VolcanoSlides(props) {
 
+    const popup = {margin: "auto", padding: "20px", background: "rgba(0, 0, 0, 0.762)", borderRadius: "5px", zIndex: "2", width: "auto", position: "absolute"}
+
     if (props.id == 0) {
         return (
-            <Fragment>
                 <video className={classes.center} src={introVideo} autoPlay muted controls controlsList="nodownload" type="video/mp4"/> 
-            </Fragment>
         )
     }
     else if (props.id == 1) {
@@ -30,22 +32,123 @@ export default function VolcanoSlides(props) {
     }
     else if (props.id == 2) {
         return (
-            <Link to="./0">slide 2</Link>
+            <IframeCompoment class={classes.vista} src={Vista2}/>
         )
     }
     else if (props.id == 3) {
         return (
-            <Link to="./0">slide 3</Link>
+            <IframeCompoment class={classes.vista} src={Vista3}/>
         )
     }
     else if (props.id == 4) {
         return (
-            <Link to="./0">slide 4</Link>
+            <IframeCompoment class={classes.vista} src={Vista4}/>
         )
     }
     else if (props.id == 5) {
         return (
-            <Link to="./0">slide 5</Link>
+            <IframeCompoment class={classes.vista} src={Vista5}/>
+        )
+    }
+    else if (props.id == 6) {
+        return (
+            <Fragment>
+                <img className={classes.center} src={TerrainMap}/>
+                <Link to="./6optional">
+                    <img className={classes.magnifying} src={magnifyingGlass}/>
+                </Link>
+            </Fragment>
+        )
+    }
+    else if (props.id == "6optional") {
+        return (
+            <div className={classes.sliderDiv}>
+                <ImageSlider image1={santaCruz} image2={Ferd} leftLabelText="Fernandina" rightLabelText="Santa Cruz"/>
+            </div>
+        )
+    }
+    else if (props.id == 7) {
+        return (
+            <Fragment>
+                <IframeCompoment class={classes.leftVista} src={Vista} />
+                <IframeCompoment class={classes.rightVista} src={Vista4} />
+            </Fragment>
+        )
+    }
+    else if (props.id == 8) {
+        return (
+            <Fragment>
+                <img className={classes.center} src={TerrainMap}/>
+                <Link to="./8optional1">
+                    <img className={classes.magnifying} src={magnifyingGlass}/>
+                </Link>
+            </Fragment>
+        )
+    }
+    else if (props.id == "8optional1") {
+        return (
+            <Fragment>
+                <img className={classes.center} src={Ferd}/>
+                <Popup trigger={<button className={`${classes.dot} ${classes.dot4}`}></button>} 
+                contentStyle={popup} arrow={false} position="right center">
+                    <div>
+                        The sides of a volcano are called the flanks of the volcano. Lava erupts from the volcano and hardens into black basalt.
+                    </div>
+                </Popup>
+                <Popup trigger={<button className={`${classes.dot} ${classes.dot5}`}></button>}
+                contentStyle={popup} arrow={false} position="right center">
+                    <div>
+                        Fernandina's caldera is in the middle of the island. This formed when the ground above the magma chamber collapsed after an eruption.
+                    </div>
+                </Popup>
+                <Popup trigger={<button className={`${classes.dot} ${classes.dot6}`}></button>}
+                contentStyle={popup} arrow={false} position="right center">
+                    <div>
+                        There is very little vegetation on the island as plants have not had time to develop after the eruptions.
+                    </div>
+                </Popup>
+                <Link to="./8optional2">
+                    <button className={classes.magnifying}>Click my plssss</button>
+                </Link>
+            </Fragment>
+        )
+    }
+    else if (props.id == "8optional2") {
+        return (
+            <Fragment>
+                <img className={classes.center} src={santaCruz}/>
+                    <Popup trigger={<button className={`${classes.dot} ${classes.dot7}`}></button>}
+                    contentStyle={popup} arrow={false} position="right center">
+                        <div>
+                            When basalt has been exposed to the elements for a long time it becomes oxidized and turns red.
+                        </div>
+                    </Popup>
+                    <Popup trigger={<button className={`${classes.dot} ${classes.dot8}`}></button>}
+                    contentStyle={popup} arrow={false} position="right center">
+                        <div>
+                            Since there has not been an eruption in recent history, plants have been able to develop and grow to cover most of the island.
+                        </div>
+                    </Popup>
+                    <Popup trigger={<button className={`${classes.dot} ${classes.dot9}`}></button>}
+                    contentStyle={popup}arrow={false} position="right center">
+                        <div>
+                            Humans have been able to move into the island and develop communities. Farming and developments take up most of the southern part of the island.
+                        </div>
+                    </Popup>
+            </Fragment>
+        )
+    }
+    else if (props.id == 9) {
+        return (
+            <Fragment>
+                <button className={classes.magnifying}>What's a hypothesis?</button>
+                <img className={classes.center} src={TerrainMap}/>
+            </Fragment>
+        )
+    }
+    else if (props.id == 10) {
+        return (
+            <IframeCompoment class={classes.vista} src={Vista5}/>
         )
     }
 }
