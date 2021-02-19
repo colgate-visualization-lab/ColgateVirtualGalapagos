@@ -21,3 +21,102 @@
 .vista:focus {
     outline: 0;
 }
+.magnifying {
+    position: absolute;
+    left: 30%;
+    bottom: 25%;
+    top: 38%;
+    width: 5%;
+    z-index: 1;
+  }
+  .magnifying:hover {
+    opacity: 0.7
+  }
+  .sliderDiv {
+    position: relative;
+    height: 80%;
+    width: 70%;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border: 2px solid darkgoldenrod;
+}
+.sliderDiv:focus{ 
+    outline: 0;
+}
+.leftVista {
+    position: absolute;
+    height: 80%;
+    width: 35%;
+    top: 10%;
+    left: 15%;
+    border: 2px solid darkgoldenrod;
+}
+.leftVista:focus {
+    outline: 0;
+}
+.rightVista {
+    position: absolute;
+    height: 80%;
+    width: 35%;
+    top: 10%;
+    left: 50%;
+    border: 2px solid darkgoldenrod;
+}
+.rightVista:focus {
+    outline: 0;
+}
+.dot {
+    color: white;
+    position: absolute;
+    padding: 10px;
+    background: black;
+    border: 3px solid white;
+    border-radius: 50%;
+    font-size: 0px;
+    -webkit-transition: all 2s; /* Safari */
+    transition: all 1s;
+  }
+  .dot:hover {
+    text-indent: auto;
+    width: auto;
+    font-size: 12px;
+    z-index: 1;
+    border-radius: 0;
+  }
+  .dot4 {
+    position: absolute;
+    z-index: 1;
+    top: 35%;
+    left: 60%;
+  }
+  .dot5 {
+    position: absolute;
+    z-index: 1;
+    top: 42%;
+    left: 47.5%;
+  }
+  .dot6 {
+    position: absolute;
+    z-index: 1;
+    top: 71%;
+    left: 40%;
+  }
+  .dot7 {
+    position: absolute;
+    z-index: 1;
+    top: 27%;
+    left: 42%;
+  }
+  .dot8 {
+    position: absolute;
+    z-index: 1;
+    top: 45%;
+    left: 55%;
+  }
+  .dot9 {
+    position: absolute;
+    z-index: 1;
+    top: 55%;
+    left: 45%;
+  }
