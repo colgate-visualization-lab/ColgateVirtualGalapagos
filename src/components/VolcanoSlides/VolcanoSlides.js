@@ -1,10 +1,10 @@
-import React, {Fragment} from 'react'
+import React, {Fragment, useState} from 'react'
 import {Link} from "react-router-dom"
 import classes from "./VolcanoSlides.css"
 import Popup from "reactjs-popup";
 import ImageSlider from "react-image-comparison-slider";
 import DndDragTest from "../DndDragTest/DndDragTest.js"
-import DndDropTest from "../DndDropTest/DndDropTest.js"
+import DndDropTest from "../DndDragTest/DndDragTest.js"
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 import {
@@ -21,6 +21,12 @@ import {
 import IframeCompoment from "../../components/IframeComponent/IframeComponent"
 
 export default function VolcanoSlides(props) {
+
+    const [dragIndex, setDragIndex] = useState(0)
+    const [canDrag, setCanDrag] = useState(true)
+    const [drop1, setDrop1] = useState(true); const [drop2, setDrop2] = useState(false)
+    const [drop3, setDrop3] = useState(false); const [drop4, setDrop4] = useState(false);
+    const [drop5, setDrop5] = useState(false); const [drop6, setDrop6] = useState(false);
 
     const popup = {margin: "auto", padding: "20px", background: "rgba(0, 0, 0, 0.762)", borderRadius: "5px", zIndex: "2", width: "auto", position: "absolute"}
 
@@ -153,7 +159,6 @@ export default function VolcanoSlides(props) {
     else if (props.id == 10) {
         return (
             <DndProvider backend={HTML5Backend}>
-            <div className={classes.imageOverlap} style={currentSlideX == 10? {width: `${slide6Image.current.getBoundingClientRect().width}px`} : {} }>
                 <div className={classes.wordBank}>
                     <DndDragTest className={drop1? classes.invisible : classes.drag} onDrag={() => setDragIndex(1)} canDrag={canDrag}>1.7 Million Years</DndDragTest>
                     <DndDragTest className={drop2? classes.invisible : classes.drag} onDrag={() => setDragIndex(2)} canDrag={canDrag}>2.3 Million Years</DndDragTest>
@@ -162,15 +167,13 @@ export default function VolcanoSlides(props) {
                     <DndDragTest className={drop5? classes.invisible : classes.drag} onDrag={() => setDragIndex(5)} canDrag={canDrag}>700,000 Years</DndDragTest>
                     <DndDragTest className={drop6? classes.invisible : classes.drag} onDrag={() => setDragIndex(5)} canDrag={canDrag}>700,000 Years</DndDragTest>
                 </div>
-                <DndDropTest className={drop1? classes.invisible : classes.drop1} dragIndex={dragIndex} dropIndex={1} correctDrop={() => correctDrop(setDrop1(true))}>1.7 Million Years</DndDropTest>
-                <DndDropTest className={drop2? classes.invisible : classes.drop2} dragIndex={dragIndex} dropIndex={2} correctDrop={() => correctDrop(setDrop2(true))}>2.3 Million Years</DndDropTest>
-                <DndDropTest className={drop3? classes.invisible : classes.drop3} dragIndex={dragIndex} dropIndex={3} correctDrop={() => correctDrop(setDrop3(true))}>4 Million Years</DndDropTest>
-                <DndDropTest className={drop4? classes.invisible : classes.drop4} dragIndex={dragIndex} dropIndex={4} correctDrop={() => correctDrop(setDrop4(true))}>3.3 Million Years</DndDropTest>
-                <DndDropTest className={drop5? classes.invisible : classes.drop5} dragIndex={dragIndex} dropIndex={5} correctDrop={() => correctDrop(setDrop5(true))}>700,000 Years</DndDropTest>
-                <DndDropTest className={drop6? classes.invisible : classes.drop6} dragIndex={dragIndex} dropIndex={5} correctDrop={() => correctDrop(setDrop6(true))}>700,000 Years</DndDropTest>
-            </div>
+                <DndDropTest className={drop1? classes.invisible : classes.drop1} dragIndex={dragIndex} dropIndex={1} correctDrop={() => setDrop1(true)}>1.7 Million Years</DndDropTest>
+                <DndDropTest className={drop2? classes.invisible : classes.drop2} dragIndex={dragIndex} dropIndex={2} correctDrop={() => setDrop2(true)}>2.3 Million Years</DndDropTest>
+                <DndDropTest className={drop3? classes.invisible : classes.drop3} dragIndex={dragIndex} dropIndex={3} correctDrop={() => setDrop3(true)}>4 Million Years</DndDropTest>
+                <DndDropTest className={drop4? classes.invisible : classes.drop4} dragIndex={dragIndex} dropIndex={4} correctDrop={() => setDrop4(true)}>3.3 Million Years</DndDropTest>
+                <DndDropTest className={drop5? classes.invisible : classes.drop5} dragIndex={dragIndex} dropIndex={5} correctDrop={() => setDrop5(true)}>700,000 Years</DndDropTest>
+                <DndDropTest className={drop6? classes.invisible : classes.drop6} dragIndex={dragIndex} dropIndex={5} correctDrop={() => setDrop6(true)}>700,000 Years</DndDropTest>
             <img className={classes.center} src={TerrainMap}/>
-            <img className={classes.nextButton} style={progressIndex == 11? {} : hidden} src={Next} onClick={() => nextSlideX("Slide 11", terrainMapAges2)}/>
         </DndProvider>
         )
     }
