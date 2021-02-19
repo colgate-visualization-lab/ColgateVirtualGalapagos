@@ -34,6 +34,21 @@ export default function Test() {
                     <Link to="./5">
                         <div className={classes.scrollItem}>Slide 5</div>
                     </Link>
+                    <Link to="./6">
+                        <div className={classes.scrollItem}>Slide 6</div>
+                    </Link>
+                    <Link to="./7">
+                        <div className={classes.scrollItem}>Slide 7</div>
+                    </Link>
+                    <Link to="./8">
+                        <div className={classes.scrollItem}>Slide 8</div>
+                    </Link>
+                    <Link to="./9">
+                        <div className={classes.scrollItem}>Slide 9</div>
+                    </Link>
+                    <Link to="./10">
+                        <div className={classes.scrollItem}>Slide 10</div>
+                    </Link>
                 </div>
             </div>
             <VolcanoSlides id={id} />
