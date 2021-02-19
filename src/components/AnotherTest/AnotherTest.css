@@ -1,0 +1,94 @@
+.wordBank {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 300px;
+    left: 10.5%;
+    width: 10.5%;
+    height: 24.6%;
+    background-color: orange;
+    z-index: 1
+  }
+.drag {
+  position: relative;
+  width: 100%;
+  background-color: rgb(32, 32, 34);
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+}
+.drop1 {
+  position: absolute;
+  width: 10.5%;
+  height: 4.1%;
+  top: 35.5%;
+  right: 36.5%;
+  background-color: red;
+  text-align: center;
+  font-size: 90%;
+  color: blue;
+  z-index: 1;
+}
+.drop2 { 
+  position: absolute;
+  width: 10.5%;
+  height: 4.1%;
+  top: 53%;
+  right: 27%;
+  background-color: orange;
+  text-align: center;
+  font-size: 90%;
+  color: blue;
+  z-index: 1;
+}
+.drop3 {
+  position: absolute;
+  width: 10.5%;
+  height: 4.1%;
+  top: 64.5%;
+  right: 4.5%;
+  background-color: yellow;
+  text-align: center;
+  font-size: 90%;
+  color: blue;
+  z-index: 1;
+}
+.drop4 {
+  position: absolute;
+  width: 10.5%;
+  height: 4.1%;
+  top: 94.75%;
+  right: 15%;
+  background-color: green;
+  text-align: center;
+  font-size: 90%;
+  color: blue;
+  z-index: 1;
+}
+.drop5 {
+  position: absolute;
+  width: 10.5%;
+  height: 4.1%;
+  top: 76.5%;
+  right: 61%;
+  background-color: blue;
+  text-align: center;
+  font-size: 90%;
+  color: red;
+  z-index: 1;
+}
+.drop6 {
+  position: absolute;
+  width: 10.5%;
+  height: 4.1%;
+  top: 37.5%;
+  right: 75.5%;
+  background-color: purple;
+  text-align: center;
+  font-size: 90%;
+  color: pink;
+  z-index: 1;
+}
+.invisible {
+    visibility: hidden;
+  }
