@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import classes from "./AnotherTest.css"
+import classes from "./DndLayout.css"
 import DndDragTest from "../DndDragTest/DndDragTest.js"
 import DndDropTest from "../DndDropTest/DndDropTest.js"
 import { HTML5Backend } from "react-dnd-html5-backend";
