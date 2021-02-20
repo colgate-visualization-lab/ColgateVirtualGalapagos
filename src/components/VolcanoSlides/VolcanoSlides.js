@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 import classes from "./VolcanoSlides.css"
 import Popup from "reactjs-popup";
 import ImageSlider from "react-image-comparison-slider";
-import AnotherTest from "../../components/AnotherTest/AnotherTest.js"
+import DndLayout from "../../components/DndLayout/DndLayout.js"
 import {
     introVideo, summaryVolcano, plateTectonics, mantlePlumes, Back, Next, TerrainMap, 
     magnifyingGlass, Ferd, santaCruz, VolcanoCompare, tectonicPlatesMap, convergent, 
@@ -150,7 +150,7 @@ export default function VolcanoSlides(props) {
     }
     else if (props.id == 10) {
         return (
-          <AnotherTest />
+          <DndLayout />
         )
     }
     else if (props.id == 11) {
@@ -191,6 +191,13 @@ export default function VolcanoSlides(props) {
                 <button className={classes.magnifying}>What's a hypothesis?</button>
                 <img className={classes.center} src={TerrainMap}/>
             </Fragment>
+        )
+    }
+    else {
+        return ( 
+        <div>
+            Oopsie Woopsie there's been an error! ;)
+        </div>
         )
     }
 }
