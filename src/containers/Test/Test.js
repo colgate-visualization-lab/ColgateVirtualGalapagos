@@ -22,14 +22,9 @@ export default function Test() {
     let {id} = useParams();
     let nextSlide = id - -1 //I don't know why, but just adding 1 made it like a string, and subtracting a negative 1 works lol
     let prevSlide = id - 1
-    const history = useHistory();
-
+    const history = useHistory(); //This is used to change the URL in the dropdown menu.
     //State
-    const [state, setState] = React.useState({
-        age: '',
-        name: 'hai',
-      });
-
+    const [state, setState] = useState({age: '',});
     //Methods 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -40,8 +35,7 @@ export default function Test() {
         // const path = event.target.random
         history.push(event.target.value);
       };
-
-    //Custome Styles
+    //Custom Styles
     const nextButton = {
         position: "absolute",
         right: "10px",
@@ -52,22 +46,23 @@ export default function Test() {
         left: "10px",
         bottom: "10px"
       };
-      
-      const useStyles = makeStyles((theme) => ({
+    //MaterialUI Themes
+    const useStyles = makeStyles((theme) => ({
         formControl: {
           margin: theme.spacing(1),
           minWidth: 120,
+          backgroundColor: "white",
+          position: "relative",
+          left: "10px",
+          top: "10px"
         },
-        selectEmpty: {
-          marginTop: theme.spacing(2),
-        },
-      }));
-      const Muiclasses = useStyles();
+    }));
+    const Muiclasses = useStyles();
 
     return (
        <Fragment>
             <FormControl className={Muiclasses.formControl}>
-                <InputLabel htmlFor="age-native-simple">Age</InputLabel>
+                <InputLabel htmlFor="age-native-simple" />
                     <Select
                         native
                         value={state.age}
@@ -77,10 +72,23 @@ export default function Test() {
                             id: 'age-native-simple',
                         }}
                     > 
-                        <option aria-label="None" value=""/>
-                        <option value="./0">Intro Slide</option>
-                        <option value="./1">Slide 1</option>
-                        <option value="./2">Slide 2</option>
+                        <option value="" disabled >Slide Menu</option>
+                        <option value="./0" >Intro Slide</option>
+                        <option value="./1" >Slide 1 </option>
+                        <option value="./2" >Slide 2 </option>
+                        <option value="./3" >Slide 3 </option>
+                        <option value="./4" >Slide 4 </option>
+                        <option value="./5" >Slide 5 </option>
+                        <option value="./6" >Slide 6 </option>
+                        <option value="./7" >Slide 7 </option>
+                        <option value="./8" >Slide 8 </option>
+                        <option value="./9" >Slide 9 </option>
+                        <option value="./10">Slide 10</option>
+                        <option value="./11">Slide 11</option>
+                        <option value="./12">Slide 12</option>
+                        <option value="./13">Slide 13</option>
+                        <option value="./14">Slide 14</option>
+                        <option value="./15">Slide 15</option>
                     </Select>
             </FormControl>
             <VolcanoSlides id={id} />
@@ -93,55 +101,3 @@ export default function Test() {
         </Fragment>
     )
 }
- {/* <div className={classes.scrollMenu}> Scroll Menu
-                <div className={classes.flexbox}>
-                    <Link to="./0">
-                        <div className={classes.scrollItem}>Intro Video</div>
-                    </Link>
-                    <Link to="./1">
-                        <div className={classes.scrollItem}>Slide 1</div>
-                    </Link>
-                    <Link to="./2">
-                        <div className={classes.scrollItem}>Slide 2</div>
-                    </Link>
-                    <Link to="./3">
-                        <div className={classes.scrollItem}>Slide 3</div>
-                    </Link>
-                    <Link to="./4">
-                        <div className={classes.scrollItem}>Slide 4</div>
-                    </Link>
-                    <Link to="./5">
-                        <div className={classes.scrollItem}>Slide 5</div>
-                    </Link>
-                    <Link to="./6">
-                        <div className={classes.scrollItem}>Slide 6</div>
-                    </Link>
-                    <Link to="./7">
-                        <div className={classes.scrollItem}>Slide 7</div>
-                    </Link>
-                    <Link to="./8">
-                        <div className={classes.scrollItem}>Slide 8</div>
-                    </Link>
-                    <Link to="./9">
-                        <div className={classes.scrollItem}>Slide 9</div>
-                    </Link>
-                    <Link to="./10">
-                        <div className={classes.scrollItem}>Slide 10</div>
-                    </Link>
-                    <Link to="./11">
-                        <div className={classes.scrollItem}>Slide 11</div>
-                    </Link>
-                    <Link to="./12">
-                        <div className={classes.scrollItem}>Slide 12</div>
-                    </Link>
-                    <Link to="./13">
-                        <div className={classes.scrollItem}>Slide 13</div>
-                    </Link>
-                    <Link to="./14">
-                        <div className={classes.scrollItem}>Slide 14</div>
-                    </Link>
-                    <Link to="./15">
-                        <div className={classes.scrollItem}>Slide 15</div>
-                    </Link>
-                </div>
-            </div> */}
