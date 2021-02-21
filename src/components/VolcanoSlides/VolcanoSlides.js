@@ -54,12 +54,12 @@ export default function VolcanoSlides(props) {
     }
     else if (props.id == 6) {
         return (
-            <Fragment>
+            <div className={classes.test}>
                 <img className={classes.center} src={TerrainMap}/>
                 <Link to="./6optional">
                     <img className={classes.magnifying} src={magnifyingGlass}/>
                 </Link>
-            </Fragment>
+            </div>
         )
     }
     else if (props.id == "6optional") {
