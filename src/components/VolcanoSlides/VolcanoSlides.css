@@ -1,29 +1,47 @@
 /* General CSS */
 .center {
-    position: absolute;
-    height: 80%;
-    max-width: 85%;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, 0);
-    border: 2px solid darkgoldenrod;
+  position: absolute;
+  height: 80%;
+  max-width: 85vw;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border: 2px solid darkgoldenrod;
 }
-.center:focus { 
+.center:focus {
+  outline: 0;
+}
+.imgContainer {
+  position: absolute;
+  height: 80%;
+  max-width: 85vw;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.imgContainer:focus { 
     outline: 0;
 }
+.imgFill {
+  height: 100%;
+  display: inline-block;
+  border: 2px solid darkgoldenrod;
+  max-width: 85vw;
+}
+.invisible {
+  visibility: hidden;
+}
+/* Slide 6 */
 .magnifying {
   position: absolute;
-  left: 30%;
+  left: 26%;
   bottom: 25%;
-  top: 38%;
+  top: 38.4%;
   width: 5%;
   z-index: 1;
 }
 .magnifying:hover {
   opacity: 0.7
-}
-.invisible {
-  visibility: hidden;
 }
 /* 3dVista CSS */
 .vista {
@@ -220,7 +238,18 @@
   color: pink;
   z-index: 1;
 }
-
-.test {
-
+/* Testing animations */
+.testenter {
+  opacity: 0;
+}
+.testenteractive {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.testexit {
+  opacity: 1;
+}
+.testexitactive {
+  opacity: 0;
+  transition: opacity 200ms;
 }
