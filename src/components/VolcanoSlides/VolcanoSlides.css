@@ -1,4 +1,9 @@
 /* General CSS */
+.container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
 .center {
   position: absolute;
   height: 80%;
