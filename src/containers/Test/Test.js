@@ -1,4 +1,4 @@
-import React, {useState, Fragment} from 'react'
+import React, {useState, Fragment, useEffect} from 'react'
 import classes from "./test.css"
 import { useHistory } from "react-router-dom";
 import {Link} from "react-router-dom"
@@ -25,18 +25,20 @@ export default function Test() {
     let prevSlide = id - 1
     const history = useHistory(); //This is used to change the URL in the dropdown menu.
     //State
-    const [state, setState] = useState({age: '',});
-    const [test, setTest] = useState(true)
+    const [animationState, setAnimationState] = useState(false)
+    const [slideChange, setSlideChange] = useState("")
     //Methods 
-    const handleChange = (event) => {
-        const name = event.target.name;
-        setState({
-          ...state,
-          [name]: event.target.value,
-        });
-        // const path = event.target.random
-        history.push(event.target.value);
-      };
+    const handleDropdownChange = (event) => {
+        setSlideChange(event.target.value)
+    };
+    const handleSlideChange = () => {
+        // Necessary, at least for now, so the route doesn't get pushed to ""
+        if (slideChange == "") {
+        }
+        else {
+        history.push(`./${slideChange}`)
+        }
+    }
     //Custom Styles
     const nextButton = {
         position: "absolute",
@@ -60,55 +62,66 @@ export default function Test() {
         },
     }));
     const Muiclasses = useStyles();
-
+    //Lifecycle. Fires once, at mount, and everytime slideChange changes. Change slieChange to change route.
+    useEffect(() => {
+        setAnimationState(false); //Triggers fade out once slideChange change occurs.
+        setTimeout(() => {handleSlideChange();setAnimationState(true)}, 500) //Triggers fade in at the same time as changing the route.
+    }, [slideChange]);
+    //Fires once, at mount.
+    useEffect(() => {
+        setTimeout(() => setAnimationState(true), 500)
+        return () => {
+            // cleaning up the listeners here
+        }
+    }, []);
     return (
        <Fragment>
-            {/* <button onClick={() => setTest(true)}>click me</button>
-            <button onClick={() => setTest(false)}>click me 2</button> */}
             <FormControl className={Muiclasses.formControl}>
                 <InputLabel htmlFor="age-native-simple" />
                     <Select
                         native
-                        value={state.age}
-                        onChange={handleChange}
-                        inputProps={{
-                            name: 'age',
-                            id: 'age-native-simple',
-                        }}
+                        value={slideChange}
+                        onChange={handleDropdownChange}
                     > 
                         <option value="" disabled >Slide Menu</option>
-                        <option value="./0" >Intro Slide</option>
-                        <option value="./1" >Slide 1 </option>
-                        <option value="./2" >Slide 2 </option>
-                        <option value="./3" >Slide 3 </option>
-                        <option value="./4" >Slide 4 </option>
-                        <option value="./5" >Slide 5 </option>
-                        <option value="./6" >Slide 6 </option>
-                        <option value="./7" >Slide 7 </option>
-                        <option value="./8" >Slide 8 </option>
-                        <option value="./9" >Slide 9 </option>
-                        <option value="./10">Slide 10</option>
-                        <option value="./11">Slide 11</option>
-                        <option value="./12">Slide 12</option>
-                        <option value="./13">Slide 13</option>
-                        <option value="./14">Slide 14</option>
-                        <option value="./15">Slide 15</option>
+                        <option value="0" >Intro Slide</option>
+                        <option value="1" >Slide 1 </option>
+                        <option value="2" >Slide 2 </option>
+                        <option value="3" >Slide 3 </option>
+                        <option value="4" >Slide 4 </option>
+                        <option value="5" >Slide 5 </option>
+                        <option value="6" >Slide 6 </option>
+                        <option value="6optional" >6 optional</option>
+                        <option value="7" >Slide 7 </option>
+                        <option value="8" >Slide 8 </option>
+                        <option value="8optional1" >8optional1</option>
+                        <option value="8optional2" >8optional2</option>
+                        <option value="9" >Slide 9 </option>
+                        <option value="10">Slide 10</option>
+                        <option value="11">Slide 11</option>
+                        <option value="12">Slide 12</option>
+                        <option value="13">Slide 13</option>
+                        <option value="14">Slide 14</option>
+                        <option value="15">Slide 15</option>
                     </Select>
             </FormControl>
-            {/* <CSSTransition
-                in={test}
-                timeout={300}
-                classNames="alert"
+            <CSSTransition
+                in={animationState}
+                timeout={500}
+                classNames={{
+                    enter: `${classes.testenter}`,
+                    enterActive: `${classes.testenteractive}`,
+                    exit: `${classes.testexit}`,
+                    exitActive: `${classes.testexitactive}`,
+                    }}
                 unmountOnExit
-                // onEnter={() => setTest(false)}
-                // onExited={() => setTest(false)}
-            > */}
+                > 
                 <VolcanoSlides id={id} />
-            {/* </CSSTransition> */}
-            <Button style={nextButton} href={`./${nextSlide}`} variant="contained" color="secondary">
+            </CSSTransition>
+            <Button style={nextButton} onClick={() => setSlideChange(nextSlide)} variant="contained" color="secondary">
                 Next
             </Button>
-            <Button style={prevButton} href={`./${prevSlide}`} variant="contained" color="secondary">
+            <Button style={prevButton} onClick={() => setSlideChange(prevSlide)} variant="contained" color="secondary">
                 Back
             </Button>
         </Fragment>

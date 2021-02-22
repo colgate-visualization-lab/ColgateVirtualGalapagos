@@ -30,21 +30,18 @@
 .scrollItem:hover {
   opacity: 0.7;
 }
-/* Testing animations */
-.alert-enter {
+/* Animations */
+.testenter {
   opacity: 0;
-  transform: scale(0.9);
 }
-.alert-enter-active {
+.testenteractive {
   opacity: 1;
-  transform: translateX(0);
-  transition: opacity 300ms, transform 300ms;
+  transition: opacity 500ms;
 }
-.alert-exit {
+.testexit {
   opacity: 1;
 }
-.alert-exit-active {
+.testexitactive {
   opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 300ms, transform 300ms;
+  transition: opacity 500ms;
 }
