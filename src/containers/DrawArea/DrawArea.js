@@ -5,10 +5,13 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Drawing from "./Drawing";
 import DrawAreaToolbar from "./DrawAreaToolbar";
+import Textbox from "./Textbox";
 import Slide12Header from "../IguanaSlide12/Slide12Header";
+import { Transform } from "./utils";
 
 const useStyles = makeStyles(() => ({
   drawArea: {
+    position: "relative",
     height: "70vh",
     width: "100%",
     backgroundColor: "white",
@@ -19,9 +22,12 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   const classes = useStyles();
 
   const [mouseDown, setMouseDown] = useState(false);
+  const [selectedTool, setSelectedTool] = useState("select");
+  const [selectedObject, setSelectedObject] = useState(null);
+  const [transformOrigin, setTransformOrigin] = useState();
   const [penLines, setPenLines] = useState(List());
   const [straightLines, setStraightLines] = useState(List());
-  const [selectedTool, setSelectedTool] = useState("pen");
+  const [textboxes, setTextboxes] = useState(List());
 
   useEffect(() => {
     document.addEventListener("mouseup", handleMouseUp);
@@ -33,16 +39,16 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   const drawAreaRef = useRef();
 
   const handleMouseDown = (e) => {
+    e.preventDefault();
     if (e.button != 0) {
       return;
     }
 
     setMouseDown(true);
-
     if (selectedTool === "pen") {
       handleDrawWithPen(e);
     } else if (selectedTool === "textbox") {
-      handleText(e);
+      handleTextbox(e);
     } else if (selectedTool === "line") {
       handleDrawWithLine(e);
     }
@@ -51,28 +57,106 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   const handleMouseMove = (e) => {
     e.preventDefault();
     if (!mouseDown) return;
-    if (selectedTool === "pen") {
+
+    if (selectedTool === "select") {
+      handleMoveObject(e);
+    } else if (selectedTool === "pen") {
       handleDrawingWithPen(e);
     } else if (selectedTool === "line") {
       handleDrawingWithLine(e);
     }
   };
 
-  const handleMouseUp = () => {
+  const handleMouseUp = (e) => {
     setMouseDown(false);
+    if (selectedTool === "select") {
+      handleStopMove(e);
+    }
   };
+
+  // select tool logic
+  const handleSelect = (e, name, index) => {
+    e.preventDefault();
+    if (name === undefined || index === undefined) return;
+
+    setSelectedObject({ name, index });
+
+    const point = relativeCoordsForEvent(e);
+    if (name === "line") {
+      setTransformOrigin(point);
+    }
+  };
+
+  const handleMoveObject = (e) => {
+    if (!selectedObject) return;
+
+    const point = relativeCoordsForEvent(e);
+    if (selectedObject.name === "line") {
+      const translate = getTranslateFromOrigin(point);
+      setStraightLines(
+        straightLines.setIn([selectedObject.index, "translate"], translate)
+      );
+    }
+  };
+
+  const handleStopMove = (e) => {
+    const point = relativeCoordsForEvent(e);
+    if (selectedObject.name === "line") {
+      const translate = getTranslateFromOrigin(point);
+      let line = straightLines.get(selectedObject.index);
+      line = persistNewCoordinates(line, translate);
+      line = resetTranslate(line);
+      setStraightLines(straightLines.set(selectedObject.index, line));
+    }
+
+    setTransformOrigin();
+    setSelectedObject(null);
+  };
+
+  const persistNewCoordinates = (line, translate) => {
+    const newOrigin = new Map({
+      x: line.get("origin").get("x") + translate.get("x"),
+      y: line.get("origin").get("y") + translate.get("y"),
+    });
+    const newCurrent = new Map({
+      x: line.get("current").get("x") + translate.get("x"),
+      y: line.get("current").get("y") + translate.get("y"),
+    });
+
+    let newLine = line.set("origin", newOrigin);
+    newLine = newLine.set("current", newCurrent);
+    return newLine;
+  };
+
+  const resetTranslate = (line) => {
+    return line.set(
+      "translate",
+      new Map({
+        x: 0,
+        y: 0,
+      })
+    );
+  };
+
+  const getTranslateFromOrigin = (point) =>
+    new Map({
+      x: point.get("x") - transformOrigin.get("x"),
+      y: point.get("y") - transformOrigin.get("y"),
+    });
 
   // line tool logic
   const handleDrawWithLine = (e) => {
     const point = relativeCoordsForEvent(e);
-    console.log(straightLines);
     const updatedLines = straightLines.push(
       new Map({
         origin: point,
         current: point,
+        translate: new Map({
+          x: 0,
+          y: 0,
+        }),
       })
     );
-    console.log(updatedLines);
     setStraightLines(updatedLines);
   };
 
@@ -86,8 +170,9 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   };
 
   // textbox logic
-  const handleText = (e) => {
+  const handleTextbox = (e) => {
     const point = relativeCoordsForEvent(e);
+    setTextboxes(textboxes.push(point));
   };
 
   // pen tool logic
@@ -125,7 +210,7 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     if (target === "pen") {
       setPenLines(penLines.splice(index, 1));
     } else if (target === "line") {
-      setStraightLines(penLines.splice(index, 1));
+      setStraightLines(straightLines.splice(index, 1));
     }
   };
 
@@ -151,10 +236,14 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
         >
+          {textboxes.map((position, index) => (
+            <Textbox key={index} text="" position={position} />
+          ))}
           <Drawing
             penLines={penLines}
             straightLines={straightLines}
             handleErase={handleErase}
+            handleSelect={handleSelect}
           />
         </div>
       </Grid>

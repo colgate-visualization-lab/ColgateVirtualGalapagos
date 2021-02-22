@@ -2,12 +2,7 @@ import React from "react";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import { makeStyles } from "@material-ui/core/styles";
 
-import {
-  PenIcon,
-  EraserIcon,
-  TextBoxIcon,
-  LineIcon,
-} from "../../components/DrawAreaIcons";
+import toolbarIcons from "../../components/DrawAreaIcons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,18 +21,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const toolIcons = [
-  { name: "pen", component: <PenIcon /> },
-  { name: "eraser", component: <EraserIcon /> },
-  { name: "textbox", component: <TextBoxIcon /> },
-  { name: "line", component: <LineIcon /> },
-];
-
 const DrawAreaToolbar = ({ handleToolChange, selected }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      {toolIcons.map(({ name, component }) => (
+      {toolbarIcons.map(({ name, component }) => (
         <SvgIcon
           key={name}
           className={`${classes.iconContainer} ${

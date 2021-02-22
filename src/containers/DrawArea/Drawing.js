@@ -1,31 +1,28 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+
 import DrawingLine from "./DrawingLine";
 import StraightLine from "./StraightLine";
-import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() => ({
   drawing: {
     height: "100%",
     width: "100%",
   },
-  text: {
-    fontSize: "0.9rem",
-  },
 }));
-const Drawing = ({ penLines, straightLines, handleErase }) => {
+const Drawing = ({ penLines, straightLines, handleErase, handleSelect }) => {
   const classes = useStyles();
 
   return (
     <svg className={classes.drawing}>
-      <text x="20" y="35" className={classes.text}>
-        My
-      </text>
+      {/* <Textbox position={{ x: 200, y: 100 }} text="anything I want it to be" /> */}
       {penLines.map((line, index) => (
         <DrawingLine
           key={index}
           line={line}
           index={index}
           handleErase={handleErase}
+          handleSelect={handleSelect}
         />
       ))}
       {straightLines.map((line, index) => (
@@ -34,6 +31,7 @@ const Drawing = ({ penLines, straightLines, handleErase }) => {
           key={index}
           index={index}
           handleErase={handleErase}
+          handleSelect={handleSelect}
         />
       ))}
     </svg>

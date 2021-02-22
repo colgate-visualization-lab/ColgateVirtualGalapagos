@@ -1,9 +1,7 @@
 import React from "react";
-import SvgIcon from "@material-ui/core/SvgIcon";
 
 const EraserIcon = ({ width, height }) => {
   return (
-    // <SvgIcon>
     <svg
       width="24"
       height="24"
@@ -16,7 +14,6 @@ const EraserIcon = ({ width, height }) => {
         fill="black"
       />
     </svg>
-    // </SvgIcon>
   );
 };
 
