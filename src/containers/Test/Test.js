@@ -11,6 +11,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { CSSTransition } from 'react-transition-group';
 
 export default function Test() {
 
@@ -25,6 +26,7 @@ export default function Test() {
     const history = useHistory(); //This is used to change the URL in the dropdown menu.
     //State
     const [state, setState] = useState({age: '',});
+    const [test, setTest] = useState(true)
     //Methods 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -61,6 +63,8 @@ export default function Test() {
 
     return (
        <Fragment>
+            {/* <button onClick={() => setTest(true)}>click me</button>
+            <button onClick={() => setTest(false)}>click me 2</button> */}
             <FormControl className={Muiclasses.formControl}>
                 <InputLabel htmlFor="age-native-simple" />
                     <Select
@@ -91,7 +95,16 @@ export default function Test() {
                         <option value="./15">Slide 15</option>
                     </Select>
             </FormControl>
-            <VolcanoSlides id={id} />
+            {/* <CSSTransition
+                in={test}
+                timeout={300}
+                classNames="alert"
+                unmountOnExit
+                // onEnter={() => setTest(false)}
+                // onExited={() => setTest(false)}
+            > */}
+                <VolcanoSlides id={id} />
+            {/* </CSSTransition> */}
             <Button style={nextButton} href={`./${nextSlide}`} variant="contained" color="secondary">
                 Next
             </Button>

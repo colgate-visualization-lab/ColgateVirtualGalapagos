@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from 'react'
+import React, {Fragment, useState, useRef} from 'react'
 import {Link} from "react-router-dom"
 import classes from "./VolcanoSlides.css"
 import Popup from "reactjs-popup";
@@ -16,8 +16,16 @@ import {
     Vista, Vista2, Vista3, Vista4, Vista5,
   } from "../../assets/VolcanoModule";
 import IframeCompoment from "../../components/IframeComponent/IframeComponent"
+import { CSSTransition } from 'react-transition-group';
+import './VolcanoSlides.css';
 
 export default function VolcanoSlides(props) {
+
+    //State
+    const [test, setTest] = useState(false)
+
+    //Refs
+    const slide6Image = useRef(null)
 
     //Styles
     const popup = {margin: "auto", padding: "20px", background: "rgba(0, 0, 0, 0.762)", borderRadius: "5px", zIndex: "2", width: "auto", position: "absolute"}
@@ -54,8 +62,8 @@ export default function VolcanoSlides(props) {
     }
     else if (props.id == 6) {
         return (
-            <div className={classes.test}>
-                <img className={classes.center} src={TerrainMap}/>
+            <div className={classes.imgContainer}>
+                <img ref={slide6Image} className={classes.imgFill} src={TerrainMap}/>
                 <Link to="./6optional">
                     <img className={classes.magnifying} src={magnifyingGlass}/>
                 </Link>
@@ -190,6 +198,31 @@ export default function VolcanoSlides(props) {
             <Fragment>
                 <button className={classes.magnifying}>What's a hypothesis?</button>
                 <img className={classes.center} src={TerrainMap}/>
+            </Fragment>
+        )
+    }
+    else if (props.id == "test") {
+        return (
+            <Fragment>
+                <button onClick={() => setTest(true)}>click me</button>
+                <button onClick={() => setTest(false)}>click me2</button>
+               <CSSTransition
+                    in={test}
+                    timeout={200}
+                    classNames={{
+                        appear: 'my-node-appear',
+                        appearActive: 'my-node-active-appear',
+                        appearDone: 'my-node-done-appear',
+                        enter: `${classes.testenter}`,
+                        enterActive: `${classes.testenteractive}`,
+                        exit: `${classes.testexit}`,
+                        exitActive: `${classes.testexitactive}`,
+                        exitDone: 'my-node-done-exit',
+                        }}
+                    unmountOnExit
+                > 
+                    <div className={classes.center} style={{backgroundColor: "orange"}}>hello</div>
+                </CSSTransition>
             </Fragment>
         )
     }
