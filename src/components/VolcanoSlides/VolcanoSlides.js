@@ -68,7 +68,7 @@ export default function VolcanoSlides(props) {
         )
     }
     else if (props.id == "6optional") {
-        return (
+        return ( //Width of this needs to get fixed eventually
             <div className={classes.sliderDiv}>
                 <ImageSlider image1={santaCruz} image2={Ferd} leftLabelText="Fernandina"/>
             </div>
@@ -152,7 +152,7 @@ export default function VolcanoSlides(props) {
         return (
             <div className={classes.imgContainer}>
                 <img className={classes.imgFill} src={TerrainMap} />
-                <DndLayout />
+                <DndLayout volcano10={true} />
             </div>
         )
     }
