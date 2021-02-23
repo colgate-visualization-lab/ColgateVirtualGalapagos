@@ -74,9 +74,10 @@ export default function Test() {
           margin: theme.spacing(1),
           minWidth: 120,
           backgroundColor: "white",
+          borderRadius: "5px",
           position: "relative",
           left: "10px",
-          top: "10px"
+          top: "10px",
         },
     }));
     const Muiclasses = useStyles();

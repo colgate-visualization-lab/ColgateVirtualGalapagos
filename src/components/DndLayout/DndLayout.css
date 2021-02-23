@@ -1,93 +1,65 @@
 .wordBank {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    top: 300px;
-    left: 10.5%;
-    width: 10.5%;
-    height: 24.6%;
-    background-color: orange;
-    z-index: 1
-  }
-.drag {
-  position: relative;
-  width: 100%;
-  background-color: rgb(32, 32, 34);
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  top: 50px;
+  left: 10px;
+  width: 21%;
+  height: 12.3%;
+}
+.wordBankHeader {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 21%;
   text-align: center;
-  border-style: solid;
-  border-width: 1px;
+}
+.drag {
+  flex-grow: 1;
+  height: 33.33%;
+  max-width: 50%;
+  flex-grow: 1;
+  background-color: rgb(32, 32, 34);
+  border: 2px solid darkgoldenrod;
+  text-align: center;
+  font-size: 14px;
+  overflow: hidden;
+}
+.drop {
+  position: absolute;
+  width: 10.5%;
+  height: 4.1%;
+  background-color: white;
+  border: 2px solid darkgoldenrod;
+  text-align: center;
+  font-size: 14px;
+  color: black;
 }
 .drop1 {
-  position: absolute;
-  width: 10.5%;
-  height: 4.1%;
-  top: 35.5%;
-  right: 36.5%;
-  background-color: red;
-  text-align: center;
-  font-size: 90%;
-  color: blue;
-  z-index: 1;
+  top: 36.5%;
+  right: 36.4%
 }
-.drop2 { 
-  position: absolute;
-  width: 10.5%;
-  height: 4.1%;
+.drop2 {
   top: 53%;
-  right: 27%;
-  background-color: orange;
-  text-align: center;
-  font-size: 90%;
-  color: blue;
-  z-index: 1;
+  right: 26%;
 }
 .drop3 {
-  position: absolute;
-  width: 10.5%;
-  height: 4.1%;
   top: 64.5%;
   right: 4.5%;
-  background-color: yellow;
-  text-align: center;
-  font-size: 90%;
-  color: blue;
-  z-index: 1;
 }
 .drop4 {
-  position: absolute;
-  width: 10.5%;
-  height: 4.1%;
   top: 94.75%;
   right: 15%;
-  background-color: green;
-  text-align: center;
-  font-size: 90%;
-  color: blue;
-  z-index: 1;
 }
 .drop5 {
-  position: absolute;
-  width: 10.5%;
-  height: 4.1%;
   top: 76.5%;
   right: 61%;
-  background-color: blue;
-  text-align: center;
-  font-size: 90%;
-  color: red;
-  z-index: 1;
 }
 .drop6 {
-  position: absolute;
-  width: 10.5%;
-  height: 4.1%;
   top: 37.5%;
   right: 75.5%;
-  background-color: purple;
-  text-align: center;
-  font-size: 90%;
-  color: pink;
-  z-index: 1;
 }
 .invisible {
     visibility: hidden;

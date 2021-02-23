@@ -83,11 +83,11 @@
 .rightVista:focus {
   outline: 0;
 }
-/* Optional 1 css */
+/* 6Optional */
 .sliderDiv {
   position: relative;
   height: 80%;
-  width: 70%;
+  width:60%;
   left: 50%;
   transform: translate(-50%, 0);
   border: 2px solid darkgoldenrod;
