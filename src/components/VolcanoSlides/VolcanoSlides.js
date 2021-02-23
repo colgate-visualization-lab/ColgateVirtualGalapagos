@@ -63,41 +63,37 @@ export default function VolcanoSlides(props) {
         return (
             <div className={classes.imgContainer}>
                 <img className={classes.imgFill} src={TerrainMap}/>
-                <Link to="./6optional">
-                    <img className={classes.magnifying} src={magnifyingGlass}/>
-                </Link>
+                <img className={classes.magnifying} onClick={() => props.setSlideChange("./6optional")} src={magnifyingGlass}/>
             </div>
         )
     }
     else if (props.id == "6optional") {
         return (
             <div className={classes.sliderDiv}>
-                <ImageSlider image1={santaCruz} image2={Ferd} leftLabelText="Fernandina" rightLabelText="Santa Cruz"/>
+                <ImageSlider image1={santaCruz} image2={Ferd} leftLabelText="Fernandina"/>
             </div>
         )
     }
     else if (props.id == 7) {
         return (
-            <Fragment>
+            <div>
                 <IframeCompoment class={classes.leftVista} src={Vista} />
                 <IframeCompoment class={classes.rightVista} src={Vista4} />
-            </Fragment>
+            </div>
         )
     }
     else if (props.id == 8) {
         return (
             <div className={classes.imgContainer}>
                 <img className={classes.imgFill} src={TerrainMap}/>
-                <Link to="./8optional1">
-                    <img className={classes.magnifying} src={magnifyingGlass}/>
-                </Link>
+                    <img className={classes.magnifying} onClick={() => props.setSlideChange("./8optional1")} src={magnifyingGlass}/>
             </div>
         )
     }
     else if (props.id == "8optional1") {
         return (
-            <Fragment>
-                <img className={classes.center} src={Ferd}/>
+            <div className={classes.imgContainer}>
+                <img className={classes.imgFill} src={Ferd}/>
                 <Popup trigger={<button className={`${classes.dot} ${classes.dot4}`}></button>} 
                 contentStyle={popup} arrow={false} position="right center">
                     <div>
@@ -116,35 +112,32 @@ export default function VolcanoSlides(props) {
                         There is very little vegetation on the island as plants have not had time to develop after the eruptions.
                     </div>
                 </Popup>
-                <Link to="./8optional2">
-                    <button className={classes.magnifying}>Click my plssss</button>
-                </Link>
-            </Fragment>
+            </div>
         )
     }
     else if (props.id == "8optional2") {
         return (
-            <Fragment>
-                <img className={classes.center} src={santaCruz}/>
-                    <Popup trigger={<button className={`${classes.dot} ${classes.dot7}`}></button>}
-                    contentStyle={popup} arrow={false} position="right center">
-                        <div>
-                            When basalt has been exposed to the elements for a long time it becomes oxidized and turns red.
-                        </div>
-                    </Popup>
-                    <Popup trigger={<button className={`${classes.dot} ${classes.dot8}`}></button>}
-                    contentStyle={popup} arrow={false} position="right center">
-                        <div>
-                            Since there has not been an eruption in recent history, plants have been able to develop and grow to cover most of the island.
-                        </div>
-                    </Popup>
-                    <Popup trigger={<button className={`${classes.dot} ${classes.dot9}`}></button>}
-                    contentStyle={popup}arrow={false} position="right center">
-                        <div>
-                            Humans have been able to move into the island and develop communities. Farming and developments take up most of the southern part of the island.
-                        </div>
-                    </Popup>
-            </Fragment>
+            <div className={classes.imgContainer}>
+                <img className={classes.imgFill} src={santaCruz}/>
+                <Popup trigger={<button className={`${classes.dot} ${classes.dot7}`}></button>}
+                contentStyle={popup} arrow={false} position="right center">
+                    <div>
+                        When basalt has been exposed to the elements for a long time it becomes oxidized and turns red.
+                    </div>
+                </Popup>
+                <Popup trigger={<button className={`${classes.dot} ${classes.dot8}`}></button>}
+                contentStyle={popup} arrow={false} position="right center">
+                    <div>
+                        Since there has not been an eruption in recent history, plants have been able to develop and grow to cover most of the island.
+                    </div>
+                </Popup>
+                <Popup trigger={<button className={`${classes.dot} ${classes.dot9}`}></button>}
+                contentStyle={popup}arrow={false} position="right center">
+                    <div>
+                        Humans have been able to move into the island and develop communities. Farming and developments take up most of the southern part of the island.
+                    </div>
+                </Popup>
+            </div>
         )
     }
     else if (props.id == 9) {
@@ -157,7 +150,10 @@ export default function VolcanoSlides(props) {
     }
     else if (props.id == 10) {
         return (
-          <DndLayout />
+            <div className={classes.imgContainer}>
+                <img className={classes.imgFill} src={TerrainMap} />
+                <DndLayout />
+            </div>
         )
     }
     else if (props.id == 11) {
