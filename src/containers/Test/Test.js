@@ -39,17 +39,35 @@ export default function Test() {
         history.push(`./${slideChange}`)
         }
     }
+    const buttonHandler = (path, slide8opt, slide1) => {
+        if (id == 1 && slide1) {
+            setSlideChange("0")
+        }
+        else if (id == "6optional") {
+            setSlideChange(6)
+        }
+        else if (id == "8optional1") {
+            setSlideChange(slide8opt)
+        }
+        else if (id == "8optional2") {
+            setSlideChange("8optional1")
+        }
+        else {
+            setSlideChange(path)
+        }
+    }
     //Custom Styles
     const nextButton = {
         position: "absolute",
         right: "10px",
         bottom: "10px"
-      };
+    };
     const prevButton = {
         position: "absolute",
         left: "10px",
         bottom: "10px"
-      };
+    };
+    const hidden = {visibility: "hidden"}
     //MaterialUI Themes
     const useStyles = makeStyles((theme) => ({
         formControl: {
@@ -116,12 +134,18 @@ export default function Test() {
                     }}
                 unmountOnExit
                 > 
-                <VolcanoSlides id={id} />
+                <VolcanoSlides id={id} setSlideChange={setSlideChange} />
             </CSSTransition>
-            <Button style={nextButton} onClick={() => setSlideChange(nextSlide)} variant="contained" color="secondary">
+            <Button style={id == "6optional" || id == "8optional2" ? hidden : nextButton} 
+                onClick={() => buttonHandler(nextSlide, "8optional2")} 
+                variant="contained" 
+                color="secondary">
                 Next
             </Button>
-            <Button style={prevButton} onClick={() => setSlideChange(prevSlide)} variant="contained" color="secondary">
+            <Button style={id == "0"? hidden : prevButton} 
+                onClick={() => buttonHandler(prevSlide, 8, true)} 
+                variant="contained" 
+                color="secondary">
                 Back
             </Button>
         </Fragment>
