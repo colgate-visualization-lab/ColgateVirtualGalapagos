@@ -16,11 +16,16 @@ const DndDraggables = props => {
         });
     const opaque = {opacity: "0.5"}
 
-        return (
-            <div ref={drag} style={isDragging? opaque : {} } className={props.className}>
-                {props.children}
-            </div>
-        )
+        if (props.dropped == false) {
+            return (
+                <div ref={drag} style={isDragging? opaque : {} } className={props.className}>
+                    {props.children}
+                </div>
+            )
+        }
+        else {
+            return(null)
+        }
 }
 
 export default DndDraggables
