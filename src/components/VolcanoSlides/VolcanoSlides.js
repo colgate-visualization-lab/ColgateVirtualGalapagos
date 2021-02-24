@@ -18,6 +18,8 @@ import {
 import IframeCompoment from "../../components/IframeComponent/IframeComponent"
 import { CSSTransition } from 'react-transition-group';
 import './VolcanoSlides.css';
+import ImageMapper from "react-image-mapper";
+import MAP from "../../containers/VolcanoModule/ImageMap.js";
 
 export default function VolcanoSlides(props) {
 
@@ -158,10 +160,10 @@ export default function VolcanoSlides(props) {
     }
     else if (props.id == 11) {
         return (
-            <Fragment>
+            <div className={classes.imgContainer}>
+                <img className={classes.imgFill} src={TerrainMap}/>
                 <button className={classes.magnifying}>What's a hypothesis?</button>
-                <img className={classes.center} src={TerrainMap}/>
-            </Fragment>
+            </div>
         )
     }
     else if (props.id == 12) {
@@ -221,10 +223,7 @@ export default function VolcanoSlides(props) {
     }
     else if (props.id == 13) {
         return (
-            <Fragment>
-                <button className={classes.magnifying}>What's a hypothesis?</button>
-                <img className={classes.center} src={TerrainMap}/>
-            </Fragment>
+            <video className={classes.center} src={plateTectonics} autoPlay muted controls controlsList="nodownload"  type="video/mp4"/> 
         )
     }
     else if (props.id == 14) {
@@ -241,6 +240,50 @@ export default function VolcanoSlides(props) {
                 <button className={classes.magnifying}>What's a hypothesis?</button>
                 <img className={classes.center} src={TerrainMap}/>
             </Fragment>
+        )
+    }
+    else if (props.id == 16) {
+        return (
+            <Fragment>
+                <button className={classes.magnifying}>What's a hypothesis?</button>
+                <img className={classes.center} src={TerrainMap}/>
+            </Fragment>
+        )
+    }
+    else if (props.id == 17) {
+        return (
+            <video className={classes.center} src={mantlePlumes} autoPlay muted controls controlsList="nodownload"  type="video/mp4"/> 
+        )
+    }
+    else if (props.id == 18) {
+        return (
+            <div className={classes.imgContainer}>
+                <img className={classes.imgFill} src={seaMounts}/>
+            </div>
+        )
+    }
+    else if (props.id == 19) {
+        return (
+            <Fragment>
+                <button className={classes.magnifying}>What's a hypothesis?</button>
+                <img className={classes.center} src={TerrainMap}/>
+            </Fragment>
+        )
+    }
+    else if (props.id == 20) {
+        return (
+            <Fragment>
+                <button className={classes.magnifying}>What's a hypothesis?</button>
+                <img className={classes.center} src={TerrainMap}/>
+            </Fragment>
+        )
+    }
+    else if (props.id == 21) {
+        return (
+            <div className={`${classes.imgContainer} ${classes.imageMapper}`}>    {/* Addional class needed cause image mapper is annoying */}
+                <ImageMapper src={TerrainOval} width={1000} imgWidth={2117} map={MAP} fillColor={"rgba(0, 246, 255, 0.33)"} 
+                onClick={(area) => this.imageFunction(area)}/>
+            </div>
         )
     }
     else {

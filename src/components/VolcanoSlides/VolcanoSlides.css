@@ -242,18 +242,55 @@
   color: pink;
   z-index: 1;
 }
-/* Testing animations */
-.testenter {
-  opacity: 0;
+  /* Volcano Compare  */
+.dot10 {
+    position: absolute;
+    z-index: 1;
+    top: 28%;
+    left: 5%;
 }
-.testenteractive {
-  opacity: 1;
-  transition: opacity 200ms;
+.dot11 {
+    position: absolute;
+    z-index: 1;
+    top: 37%;
+    left: 18%;
 }
-.testexit {
-  opacity: 1;
+.dot12 {
+    position: absolute;
+    z-index: 1;
+    top: 49%;
+    left: 29%;
 }
-.testexitactive {
-  opacity: 0;
-  transition: opacity 200ms;
+.dot13 {
+    position: absolute;
+    z-index: 1;
+    top: 63%;
+    left: 52%;
+}
+.dot14 {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 58%;
+}
+.dot15 {
+    position: absolute;
+    z-index: 1;
+    top: 49%;
+    left: 72%;
+}
+.dot16 {
+    position: absolute;
+    z-index: 1;
+    top: 35%;
+    left: 75%;
+}
+/* Image mapper fix */
+.imageMapper div {
+  position: absolute;
+  height: 80%;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border: 2px solid darkgoldenrod;
 }
