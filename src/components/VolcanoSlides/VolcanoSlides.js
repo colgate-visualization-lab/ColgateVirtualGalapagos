@@ -166,10 +166,57 @@ export default function VolcanoSlides(props) {
     }
     else if (props.id == 12) {
         return (
-            <Fragment>
-                <button className={classes.magnifying}>What's a hypothesis?</button>
-                <img className={classes.center} src={TerrainMap}/>
-            </Fragment>
+            <div className={classes.imgContainer}>
+                    <img className={classes.imgFill} src={VolcanoCompare}/>
+                    <Popup trigger={<button className={`${classes.dot} ${classes.dot10}`}></button>}
+                    contentStyle={popup} arrow={false} position="right center">
+                        <div>
+                            The volcanoes in western Hawaii and have been dormant for
+                            hundreds of years.
+                        </div>
+                    </Popup>
+                    <Popup trigger={<button className={`${classes.dot} ${classes.dot11}`}></button>}
+                    contentStyle={popup} arrow={false} position="right center">
+                        <div>
+                            The Hawaiian islands get progressively older as you move west
+                            along the archipelago.
+                        </div>
+                    </Popup>
+                    <Popup trigger={<button className={`${classes.dot} ${classes.dot12}`}></button>}
+                    contentStyle={popup} arrow={false} position="right center">
+                        <div>
+                            Hawaii's youngest volcanoes (and some of the largest volcanoes
+                            in the world) are in the east of the archipelago!
+                        </div>
+                    </Popup>
+                    <Popup trigger={<button className={`${classes.dot} ${classes.dot13}`}></button>}
+                    contentStyle={popup} arrow={false} position="right center">
+                        <div>
+                            There is a large trench, or subduction zone, off the coast of
+                            Japan.
+                        </div>
+                    </Popup>
+                    <Popup trigger={<button className={`${classes.dot} ${classes.dot14}`}></button>}
+                    contentStyle={popup} arrow={false} position="right center">
+                        <div>
+                            Volcanoes rise high in Japan and erupt often all along the
+                            island.
+                        </div>
+                    </Popup>
+                    <Popup trigger={<button className={`${classes.dot} ${classes.dot15}`}></button>}
+                    contentStyle={popup} arrow={false} position="right center">
+                        <div>
+                            There is a subduction zone off the coast of Central America.
+                        </div>
+                    </Popup>
+                    <Popup trigger={<button className={`${classes.dot} ${classes.dot16}`}></button>}
+                    contentStyle={popup} arrow={false} position="right center">
+                        <div>
+                            Central Americas Volcanoes are located on the western coast. All
+                            along the coast volcanoes erupt regularly!
+                        </div>
+                    </Popup>
+                </div>
         )
     }
     else if (props.id == 13) {
