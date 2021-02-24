@@ -30,7 +30,7 @@ const DndDroppables = props => {
         else {
             return (
                 <div ref={drop} className={props.className} style={isOver? opaque : {}}>
-                    {props.children} 
+                    {props.text} 
                 </div>
             )
         }

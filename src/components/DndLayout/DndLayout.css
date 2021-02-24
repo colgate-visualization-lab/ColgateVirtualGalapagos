@@ -36,6 +36,9 @@
   text-align: center;
   font-size: 14px;
   color: black;
+  -webkit-transition: background-color 1000ms linear;
+  -ms-transition: background-color 1000ms linear;
+  transition: background-color 1000ms linear;
 }
 .drop1 {
   top: 36.5%;
@@ -61,6 +64,6 @@
   top: 37.5%;
   right: 75.5%;
 }
-.invisible {
-    visibility: hidden;
+.dropCorrect {
+    background-color:rgb(18, 156, 60)
   }
