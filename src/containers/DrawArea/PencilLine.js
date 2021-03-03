@@ -27,13 +27,13 @@ const useStyles = makeStyles(() => ({
   },
 
   boundingRect: {
-    fill: "none",
+    fill: "transparent",
     strokeWidth: "2px",
     stroke: "#246AF2",
     strokeDasharray: "4",
-    "&:hover": {
-      cursor: "ew-resize",
-    },
+    // "&:hover": {
+    //   cursor: "ew-resize",
+    // },
   },
 }));
 
@@ -121,31 +121,19 @@ const PencilLine = ({ line, index, handleSelect, handleErase }) => {
             className={classes.highlightPath}
             d={pathData}
           />
-          {/* <rect
-            onMouseMove={() => {
-              console.log("mouse mvoing over");
-            }}
+          <rect
             x={bounds.left}
             y={bounds.top}
             width={bounds.right - bounds.left}
             height={bounds.bottom - bounds.top}
             className={classes.boundingRect}
-          /> */}
+            onMouseDown={(e) => {
+              handleSelect(e, { name: "pencil", index, side: "all" });
+            }}
+          />
         </>
       )}
-      <rect
-        onMouseMove={() => {
-          console.log("mouse mvoing over");
-        }}
-        onMouseDown={(e) => {
-          handleSelect(e, { name: "pencil", index, side: "all" });
-        }}
-        x={bounds.left}
-        y={bounds.top}
-        width={bounds.right - bounds.left}
-        height={bounds.bottom - bounds.top}
-        className={classes.boundingRect}
-      />
+
       <path
         onMouseOver={() => {
           handleErase(index, "pencil");
