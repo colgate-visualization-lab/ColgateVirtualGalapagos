@@ -28,12 +28,23 @@ const useStyles = makeStyles(() => ({
 
   boundingRect: {
     fill: "none",
+    strokeWidth: "2px",
     stroke: "#246AF2",
+    strokeDasharray: "4",
+    "&:hover": {
+      cursor: "ew-resize",
+    },
   },
 }));
 
 const PencilLine = ({ line, index, handleSelect, handleErase }) => {
   const classes = useStyles();
+
+  const [coords, translate, selected] = [
+    line.get("coords"),
+    line.get("translate"),
+    line.get("selected"),
+  ];
 
   const getBounds = () => {
     let bounds = {
@@ -42,7 +53,7 @@ const PencilLine = ({ line, index, handleSelect, handleErase }) => {
       left: Number.MAX_SAFE_INTEGER,
       right: Number.MIN_SAFE_INTEGER,
     };
-    line.get("coords").forEach((p) => {
+    coords.forEach((p) => {
       const [x, y] = [p.get("x"), p.get("y")];
       bounds.top = bounds.top < y ? bounds.top : y;
       bounds.bottom = bounds.bottom > y ? bounds.bottom : y;
@@ -88,8 +99,8 @@ const PencilLine = ({ line, index, handleSelect, handleErase }) => {
       .join(" L ");
 
   return (
-    <>
-      {line.get("selected") && (
+    <g transform={`translate(${translate.get("x")} ${translate.get("y")})`}>
+      {selected && (
         <>
           {boundingVertices.map(({ position, parent }, index) => (
             <BoundingVertex
@@ -110,16 +121,31 @@ const PencilLine = ({ line, index, handleSelect, handleErase }) => {
             className={classes.highlightPath}
             d={pathData}
           />
-          <rect
+          {/* <rect
+            onMouseMove={() => {
+              console.log("mouse mvoing over");
+            }}
             x={bounds.left}
             y={bounds.top}
             width={bounds.right - bounds.left}
             height={bounds.bottom - bounds.top}
             className={classes.boundingRect}
-          />
+          /> */}
         </>
       )}
-
+      <rect
+        onMouseMove={() => {
+          console.log("mouse mvoing over");
+        }}
+        onMouseDown={(e) => {
+          handleSelect(e, { name: "pencil", index, side: "all" });
+        }}
+        x={bounds.left}
+        y={bounds.top}
+        width={bounds.right - bounds.left}
+        height={bounds.bottom - bounds.top}
+        className={classes.boundingRect}
+      />
       <path
         onMouseOver={() => {
           handleErase(index, "pencil");
@@ -130,7 +156,7 @@ const PencilLine = ({ line, index, handleSelect, handleErase }) => {
         className={classes.path}
         d={pathData}
       />
-    </>
+    </g>
   );
 };
 
