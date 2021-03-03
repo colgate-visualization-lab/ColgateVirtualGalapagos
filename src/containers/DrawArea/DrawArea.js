@@ -7,7 +7,6 @@ import Drawing from "./Drawing";
 import DrawAreaToolbar from "./DrawAreaToolbar";
 import Textbox from "./Textbox";
 import Slide12Header from "../IguanaSlide12/Slide12Header";
-import { Transform } from "./utils";
 
 const useStyles = makeStyles(() => ({
   drawArea: {
@@ -25,7 +24,7 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   const [selectedTool, setSelectedTool] = useState("select");
   const [selectedObject, setSelectedObject] = useState(null);
   const [transformOrigin, setTransformOrigin] = useState();
-  const [penLines, setPenLines] = useState(List());
+  const [pencilLines, setPencilLines] = useState(List());
   const [straightLines, setStraightLines] = useState(List());
   const [textboxes, setTextboxes] = useState(List());
 
@@ -46,8 +45,8 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
 
     setMouseDown(true);
     if (selectedTool == "select") {
-    } else if (selectedTool === "pen") {
-      handleDrawWithPen(e);
+    } else if (selectedTool === "pencil") {
+      handleDrawWithPencil(e);
     } else if (selectedTool === "textbox") {
       handleTextbox(e);
     } else if (selectedTool === "line") {
@@ -61,8 +60,8 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
 
     if (selectedTool === "select") {
       handleMoveObject(e);
-    } else if (selectedTool === "pen") {
-      handleDrawingWithPen(e);
+    } else if (selectedTool === "pencil") {
+      handleDrawingWithPencil(e);
     } else if (selectedTool === "line") {
       handleDrawingWithLine(e);
     }
@@ -87,6 +86,10 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     if (name === "line") {
       setStraightLines(straightLines.setIn([index, "selected"], true));
       setTransformOrigin(point);
+    } else if (name === "pencil") {
+      setPencilLines(pencilLines.setIn([index, "selected"], true));
+      console.log("pencil selected");
+      console.log(pencilLines.get(index).get("selected"));
     }
   };
 
@@ -204,21 +207,25 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     setTextboxes(textboxes.push(point));
   };
 
-  // pen tool logic
-  const handleDrawWithPen = (e) => {
+  // pencil tool logic
+  const handleDrawWithPencil = (e) => {
     const point = relativeCoordsForEvent(e);
-    const updatedLines = penLines.push(List([point]));
+    const updatedLines = pencilLines.push(
+      new Map({ selected: false, coords: List([point]) })
+    );
+    console.log("here");
 
-    setPenLines(updatedLines);
+    setPencilLines(updatedLines);
   };
 
-  const handleDrawingWithPen = (e) => {
+  const handleDrawingWithPencil = (e) => {
     const point = relativeCoordsForEvent(e);
-    const updatedLines = penLines.updateIn([penLines.size - 1], (line) =>
-      line.push(point)
+    const updatedLines = pencilLines.updateIn(
+      [pencilLines.size - 1, "coords"],
+      (line) => line.push(point)
     );
 
-    setPenLines(updatedLines);
+    setPencilLines(updatedLines);
   };
 
   const relativeCoordsForEvent = (e) => {
@@ -236,8 +243,8 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   const handleErase = (index, target) => {
     if (!mouseDown || selectedTool !== "eraser") return;
 
-    if (target === "pen") {
-      setPenLines(penLines.splice(index, 1));
+    if (target === "pencil") {
+      setPencilLines(pencilLines.splice(index, 1));
     } else if (target === "line") {
       setStraightLines(straightLines.splice(index, 1));
     }
@@ -276,7 +283,7 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
             <Textbox key={index} text="" position={position} />
           ))}
           <Drawing
-            penLines={penLines}
+            pencilLines={pencilLines}
             straightLines={straightLines}
             handleErase={handleErase}
             handleSelect={handleSelect}
