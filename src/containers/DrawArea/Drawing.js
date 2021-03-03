@@ -10,7 +10,12 @@ const useStyles = makeStyles(() => ({
     width: "100%",
   },
 }));
-const Drawing = ({ pencilLines, straightLines, handleErase, handleSelect }) => {
+const Drawing = ({
+  pencilLines,
+  straightLines,
+  handleDelete,
+  handleSelect,
+}) => {
   const classes = useStyles();
 
   return (
@@ -21,7 +26,7 @@ const Drawing = ({ pencilLines, straightLines, handleErase, handleSelect }) => {
           key={index}
           line={line}
           index={index}
-          handleErase={handleErase}
+          handleDelete={handleDelete}
           handleSelect={handleSelect}
         />
       ))}
@@ -30,7 +35,7 @@ const Drawing = ({ pencilLines, straightLines, handleErase, handleSelect }) => {
           line={line}
           key={index}
           index={index}
-          handleErase={handleErase}
+          handleDelete={handleDelete}
           handleSelect={handleSelect}
         />
       ))}
