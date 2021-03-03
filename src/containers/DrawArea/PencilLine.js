@@ -37,7 +37,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const PencilLine = ({ line, index, handleSelect, handleErase }) => {
+const PencilLine = ({ line, index, handleSelect, handleDelete }) => {
   const classes = useStyles();
 
   const [coords, translate, selected, bounds] = [
@@ -78,8 +78,8 @@ const PencilLine = ({ line, index, handleSelect, handleErase }) => {
       {selected && (
         <>
           <path
-            onMouseOver={() => {
-              handleErase(index, "pencil");
+            onKeyDown={(e) => {
+              handleDelete(e, index, "line");
             }}
             onMouseDown={(e) => {
               handleSelect(e, { name: "pencil", index, side: "all" });
@@ -108,25 +108,25 @@ const PencilLine = ({ line, index, handleSelect, handleErase }) => {
           ))}
         </>
       )}
-      <svg
+      {/* <svg
         id="frame_svg"
         // viewBox={`0 0 ${bounds.right - bounds.left}  ${
         //   bounds.bottom - bounds.top
         // }`}
-        viewBox="0 0 100% 140vh"
+        viewBox="0 0 100% 100%"
         // preserveAspectRatio="none"
-      >
-        <path
-          onMouseOver={() => {
-            handleErase(index, "pencil");
-          }}
-          onMouseDown={(e) => {
-            handleSelect(e, { name: "pencil", index, side: "all" });
-          }}
-          className={classes.path}
-          d={pathData}
-        />
-      </svg>
+      > */}
+      <path
+        onMouseOver={() => {
+          handleDelete(index, "pencil");
+        }}
+        onMouseDown={(e) => {
+          handleSelect(e, { name: "pencil", index, side: "all" });
+        }}
+        className={classes.path}
+        d={pathData}
+      />
+      {/* </svg> */}
     </g>
   );
 };

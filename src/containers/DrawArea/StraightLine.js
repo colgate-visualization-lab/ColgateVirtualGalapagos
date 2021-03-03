@@ -24,7 +24,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const StraightLine = ({ line, handleErase, handleSelect, index }) => {
+const StraightLine = ({ line, handleDelete, handleSelect, index }) => {
   const classes = useStyles();
   const [origin, current, translate, selected] = [
     line.get("origin"),
@@ -32,7 +32,6 @@ const StraightLine = ({ line, handleErase, handleSelect, index }) => {
     line.get("translate"),
     line.get("selected"),
   ];
-
   const boundingVertices = [
     { position: origin, parent: { name: "line", index, side: "start" } },
     { position: current, parent: { name: "line", index, side: "end" } },
@@ -52,8 +51,10 @@ const StraightLine = ({ line, handleErase, handleSelect, index }) => {
         />
       )}
       <line
-        onMouseOver={() => {
-          handleErase(index, "line");
+        onKeyDown={(e) => {
+          e.preventDefault();
+          console.log("pressed");
+          handleDelete(e, index, "line");
         }}
         onMouseDown={(e) => {
           handleSelect(e, { name: "line", index, side: "both" });
