@@ -30,8 +30,10 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
 
   useEffect(() => {
     document.addEventListener("mouseup", handleMouseUp);
+    document.addEventListener("keydown", handleDelete);
     return () => {
       document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener("keydown", handleDelete);
     };
   });
 
@@ -76,21 +78,21 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     if (selectedTool === "select") {
       // handleStopMove(e);
     }
+    if (selectedTool === "textbox") {
+      // clearEmptyTextboxes();
+    }
   };
 
   // select tool logic
-  const handleSelect = (e, args) => {
-    // console.log("handle select first ");
-
+  const handleSelect = (e, currentlySelected) => {
     e.preventDefault();
-    clearSelected(args);
-    if (!args) {
+    // const updatedLines = clearSelected(currentlySelected);
+    if (!currentlySelected) {
       setSelectedObject(null);
       return;
     }
-    const currentlySelected = { ...args };
     setSelectedObject(currentlySelected);
-
+    // console.log(currentlySelected);
     const point = relativeCoordsForEvent(e);
     if (currentlySelected.name === "line") {
       setStraightLines(
@@ -102,6 +104,12 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
         pencilLines.setIn([currentlySelected.index, "selected"], true)
       );
       setTransformOrigin(point);
+    } else if (currentlySelected.name === "textbox") {
+      setTextboxes(
+        textboxes.setIn([currentlySelected.index, "selected"], true)
+      );
+      setTransformOrigin(point);
+      // console.log(textboxes.get(currentlySelected.index).get("selected"));
     }
   };
 
@@ -113,6 +121,8 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
       moveLine(point);
     } else if (selectedObject.name === "pencil") {
       movePencilLine(point);
+    } else if (selectedObject.name === "textbox") {
+      moveTextbox(point);
     }
   };
 
@@ -208,7 +218,41 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   // textbox logic
   const handleTextbox = (e) => {
     const point = relativeCoordsForEvent(e);
-    setTextboxes(textboxes.push(point));
+    const updatedTextboxes = clearTextboxSelections();
+    setTextboxes(
+      updatedTextboxes.push(
+        new Map({
+          position: point,
+          translate: new Map({
+            x: 0,
+            y: 0,
+          }),
+          selected: true,
+        })
+      )
+    );
+  };
+
+  const moveTextbox = (point) => {
+    const translate = getTranslateFromOrigin(point);
+    setTransformOrigin(point);
+    if (selectedObject.side === "all") {
+      setTextboxes(
+        textboxes.updateIn(
+          [selectedObject.index, "translate"],
+          (prevTranslate) =>
+            new Map({
+              ...prevTranslate,
+              x: translate.get("x") + prevTranslate.get("x"),
+              y: translate.get("y") + prevTranslate.get("y"),
+            })
+        )
+      );
+    }
+  };
+
+  const clearTextboxSelections = (e) => {
+    return textboxes.map((textbox) => textbox.set("selected"), false);
   };
 
   // pencil tool logic
@@ -320,27 +364,31 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     setSelectedTool(name);
   };
 
-  const handleErase = (index, target) => {
-    if (!mouseDown || selectedTool !== "eraser") return;
-
-    if (target === "pencil") {
-      setPencilLines(pencilLines.splice(index, 1));
-    } else if (target === "line") {
-      setStraightLines(straightLines.splice(index, 1));
-    }
+  const handleDelete = (e) => {
+    if (e.key !== "Delete" && e.key !== "Backspace") return;
+    setPencilLines(pencilLines.filter((line) => !line.get("selected")));
+    setStraightLines(straightLines.filter((line) => !line.get("selected")));
+    setTextboxes(textboxes.filter((textbox) => !textbox.get("selected")));
   };
 
   const clearSelected = (currentlySelected) => {
-    // console.log(currentlySelected);
-    // console.log(straightLines);
-
-    setStraightLines(
-      straightLines.map((line, index) => {
-        if (!currentlySelected || currentlySelected.index !== index)
+    if (!currentlySelected) {
+      return straightLines.map((line) => line.set("selected", false));
+    } else if (currentlySelected.name === "line") {
+      return straightLines.map((line, index) => {
+        if (!currentlySelected || currentlySelected.index !== index) {
           return line.set("selected", false);
+        }
         return line.set("selected", true);
-      })
-    );
+      });
+    } else if (currentlySelected.name === "pencil") {
+      return pencilLines.map((line, index) => {
+        if (!currentlySelected || currentlySelected.index !== index) {
+          return line.set("selected", false);
+        }
+        return line.set("selected", true);
+      });
+    }
   };
 
   return (
@@ -366,13 +414,20 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
         >
-          {textboxes.map((position, index) => (
-            <Textbox key={index} text="" position={position} />
+          {textboxes.map((textboxDetails, index) => (
+            <Textbox
+              handleSelect={handleSelect}
+              handleDelete={handleDelete}
+              key={index}
+              index={index}
+              text=""
+              textboxDetails={textboxDetails}
+            />
           ))}
           <Drawing
             pencilLines={pencilLines}
             straightLines={straightLines}
-            handleErase={handleErase}
+            handleDelete={handleDelete}
             handleSelect={handleSelect}
           />
         </div>
