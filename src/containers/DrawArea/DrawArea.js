@@ -37,7 +37,7 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
 
   const drawAreaRef = useRef();
 
-  const handleMouseDown = (e) => {
+  const handleMouseDown = (e, ...args) => {
     e.preventDefault();
     if (e.button != 0) {
       return;
@@ -45,6 +45,8 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
 
     setMouseDown(true);
     if (selectedTool == "select") {
+      if (e.target.id === "parentSvg" || e.target.id === "parentDiv")
+        handleSelect(e);
     } else if (selectedTool === "pencil") {
       handleDrawWithPencil(e);
     } else if (selectedTool === "textbox") {
@@ -72,31 +74,39 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     if (!selectedObject) return;
 
     if (selectedTool === "select") {
-      handleStopMove(e);
+      // handleStopMove(e);
     }
   };
 
   // select tool logic
-  const handleSelect = (e, { name, index, side }) => {
+  const handleSelect = (e, args) => {
+    // console.log("handle select first ");
+
     e.preventDefault();
-    if (name === undefined || index === undefined) return;
-    setSelectedObject({ name, index, side });
+    clearSelected(args);
+    if (!args) {
+      setSelectedObject(null);
+      return;
+    }
+    const currentlySelected = { ...args };
+    setSelectedObject(currentlySelected);
 
     const point = relativeCoordsForEvent(e);
-    if (name === "line") {
-      setStraightLines(straightLines.setIn([index, "selected"], true));
+    if (currentlySelected.name === "line") {
+      setStraightLines(
+        straightLines.setIn([currentlySelected.index, "selected"], true)
+      );
       setTransformOrigin(point);
-    } else if (name === "pencil") {
-      setPencilLines(pencilLines.setIn([index, "selected"], true));
-      console.log("pencil selected");
+    } else if (currentlySelected.name === "pencil") {
+      setPencilLines(
+        pencilLines.setIn([currentlySelected.index, "selected"], true)
+      );
       setTransformOrigin(point);
-
-      console.log(pencilLines.get(index).get("selected"));
     }
   };
 
   const handleMoveObject = (e) => {
-    if (!selectedObject) return;
+    if (!selectedObject || !mouseDown) return;
 
     const point = relativeCoordsForEvent(e);
     if (selectedObject.name === "line") {
@@ -107,17 +117,7 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   };
 
   const handleStopMove = (e) => {
-    const point = relativeCoordsForEvent(e);
-    if (selectedObject.name === "line") {
-      const translate = getTranslateFromOrigin(point);
-      let line = straightLines.get(selectedObject.index);
-      line = persistNewCoordinates(line, translate);
-      line = resetTranslate(line);
-      setStraightLines(straightLines.set(selectedObject.index, line));
-    }
-
     setTransformOrigin();
-    setSelectedObject(null);
   };
 
   const persistNewCoordinates = (line, translate) => {
@@ -216,24 +216,44 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     const point = relativeCoordsForEvent(e);
     const updatedLines = pencilLines.push(
       new Map({
+        coords: List([point]),
         translate: new Map({
           x: 0,
           y: 0,
         }),
         selected: false,
-        coords: List([point]),
+        bounds: {
+          top: point.get("y") - 5,
+          bottom: point.get("y") + 5,
+          left: point.get("x") - 5,
+          right: point.get("x") + 5,
+        },
       })
     );
-    console.log("here");
+    // console.log("here");
 
     setPencilLines(updatedLines);
   };
 
   const handleDrawingWithPencil = (e) => {
     const point = relativeCoordsForEvent(e);
-    const updatedLines = pencilLines.updateIn(
+    let updatedLines = pencilLines.updateIn(
       [pencilLines.size - 1, "coords"],
       (line) => line.push(point)
+    );
+    updatedLines = updatedLines.updateIn(
+      [pencilLines.size - 1, "bounds"],
+      (bounds) => ({
+        top: bounds.top < point.get("y") - 5 ? bounds.top : point.get("y") - 5,
+        bottom:
+          bounds.bottom > point.get("y") + 5
+            ? bounds.bottom
+            : point.get("y") + 5,
+        left:
+          bounds.left < point.get("x") - 5 ? bounds.left : point.get("x") - 5,
+        right:
+          bounds.right > point.get("x") + 5 ? bounds.right : point.get("x") + 5,
+      })
     );
 
     setPencilLines(updatedLines);
@@ -242,16 +262,50 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   const movePencilLine = (point) => {
     const translate = getTranslateFromOrigin(point);
     setTransformOrigin(point);
-    setPencilLines(
-      pencilLines.updateIn(
-        [selectedObject.index, "translate"],
-        (prevTranslate) =>
-          new Map({
-            x: translate.get("x") + prevTranslate.get("x"),
-            y: translate.get("y") + prevTranslate.get("y"),
-          })
-      )
-    );
+    if (selectedObject.side === "all") {
+      setPencilLines(
+        pencilLines.updateIn(
+          [selectedObject.index, "translate"],
+          (prevTranslate) =>
+            new Map({
+              x: translate.get("x") + prevTranslate.get("x"),
+              y: translate.get("y") + prevTranslate.get("y"),
+            })
+        )
+      );
+    } else if (selectedObject.side === "topLeft") {
+      setPencilLines(
+        pencilLines.updateIn([selectedObject.index, "bounds"], (bounds) => ({
+          ...bounds,
+          top: bounds.top + translate.get("y"),
+          left: bounds.left + translate.get("x"),
+        }))
+      );
+    } else if (selectedObject.side === "topRight") {
+      setPencilLines(
+        pencilLines.updateIn([selectedObject.index, "bounds"], (bounds) => ({
+          ...bounds,
+          top: bounds.top + translate.get("y"),
+          right: bounds.right + translate.get("x"),
+        }))
+      );
+    } else if (selectedObject.side === "bottomLeft") {
+      setPencilLines(
+        pencilLines.updateIn([selectedObject.index, "bounds"], (bounds) => ({
+          ...bounds,
+          bottom: bounds.bottom + translate.get("y"),
+          left: bounds.left + translate.get("x"),
+        }))
+      );
+    } else if (selectedObject.side === "bottomRight") {
+      setPencilLines(
+        pencilLines.updateIn([selectedObject.index, "bounds"], (bounds) => ({
+          ...bounds,
+          bottom: bounds.bottom + translate.get("y"),
+          right: bounds.right + translate.get("x"),
+        }))
+      );
+    }
   };
 
   const relativeCoordsForEvent = (e) => {
@@ -276,11 +330,17 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     }
   };
 
-  const clearSelected = () => {
-    straightLines.map((line) => {
-      console.log(line);
-    });
-    setStraightLines(straightLines.map((line) => line.set("selected", false)));
+  const clearSelected = (currentlySelected) => {
+    // console.log(currentlySelected);
+    // console.log(straightLines);
+
+    setStraightLines(
+      straightLines.map((line, index) => {
+        if (!currentlySelected || currentlySelected.index !== index)
+          return line.set("selected", false);
+        return line.set("selected", true);
+      })
+    );
   };
 
   return (
@@ -299,6 +359,7 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
       </Grid>
       <Grid item xs={12}>
         <div
+          id="parentDiv"
           ref={drawAreaRef}
           className={classes.drawArea}
           onMouseDown={handleMouseDown}

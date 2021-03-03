@@ -64,6 +64,7 @@ const StraightLine = ({ line, handleErase, handleSelect, index }) => {
         y2={current.get("y")}
         className={classes.line}
       />
+      {}
       {selected &&
         boundingVertices.map(({ position, parent }, index) => (
           <BoundingVertex

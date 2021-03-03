@@ -40,37 +40,12 @@ const useStyles = makeStyles(() => ({
 const PencilLine = ({ line, index, handleSelect, handleErase }) => {
   const classes = useStyles();
 
-  const [coords, translate, selected] = [
+  const [coords, translate, selected, bounds] = [
     line.get("coords"),
     line.get("translate"),
     line.get("selected"),
+    line.get("bounds"),
   ];
-
-  const getBounds = () => {
-    let bounds = {
-      top: Number.MAX_SAFE_INTEGER,
-      bottom: Number.MIN_SAFE_INTEGER,
-      left: Number.MAX_SAFE_INTEGER,
-      right: Number.MIN_SAFE_INTEGER,
-    };
-    coords.forEach((p) => {
-      const [x, y] = [p.get("x"), p.get("y")];
-      bounds.top = bounds.top < y ? bounds.top : y;
-      bounds.bottom = bounds.bottom > y ? bounds.bottom : y;
-      bounds.left = bounds.left < x ? bounds.left : x;
-      bounds.right = bounds.right > x ? bounds.right : x;
-    });
-
-    bounds = {
-      top: bounds.top - 3,
-      bottom: bounds.bottom + 3,
-      left: bounds.left - 3,
-      right: bounds.right + 3,
-    };
-    return bounds;
-  };
-
-  const bounds = getBounds();
 
   const boundingVertices = [
     {
@@ -102,21 +77,12 @@ const PencilLine = ({ line, index, handleSelect, handleErase }) => {
     <g transform={`translate(${translate.get("x")} ${translate.get("y")})`}>
       {selected && (
         <>
-          {boundingVertices.map(({ position, parent }, index) => (
-            <BoundingVertex
-              key={index}
-              cx={position.x}
-              cy={position.y}
-              parent={parent}
-              handleMouseDown={handleSelect}
-            />
-          ))}
           <path
             onMouseOver={() => {
               handleErase(index, "pencil");
             }}
             onMouseDown={(e) => {
-              handleSelect(e, { name: "pencil", index, side: "both" });
+              handleSelect(e, { name: "pencil", index, side: "all" });
             }}
             className={classes.highlightPath}
             d={pathData}
@@ -131,19 +97,36 @@ const PencilLine = ({ line, index, handleSelect, handleErase }) => {
               handleSelect(e, { name: "pencil", index, side: "all" });
             }}
           />
+          {boundingVertices.map(({ position, parent }, index) => (
+            <BoundingVertex
+              key={index}
+              cx={position.x}
+              cy={position.y}
+              parent={parent}
+              handleMouseDown={handleSelect}
+            />
+          ))}
         </>
       )}
-
-      <path
-        onMouseOver={() => {
-          handleErase(index, "pencil");
-        }}
-        onMouseDown={(e) => {
-          handleSelect(e, { name: "pencil", index, side: "both" });
-        }}
-        className={classes.path}
-        d={pathData}
-      />
+      <svg
+        id="frame_svg"
+        // viewBox={`0 0 ${bounds.right - bounds.left}  ${
+        //   bounds.bottom - bounds.top
+        // }`}
+        viewBox="0 0 100% 140vh"
+        // preserveAspectRatio="none"
+      >
+        <path
+          onMouseOver={() => {
+            handleErase(index, "pencil");
+          }}
+          onMouseDown={(e) => {
+            handleSelect(e, { name: "pencil", index, side: "all" });
+          }}
+          className={classes.path}
+          d={pathData}
+        />
+      </svg>
     </g>
   );
 };
