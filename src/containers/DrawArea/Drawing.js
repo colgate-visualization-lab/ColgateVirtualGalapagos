@@ -14,7 +14,7 @@ const Drawing = ({ pencilLines, straightLines, handleErase, handleSelect }) => {
   const classes = useStyles();
 
   return (
-    <svg className={classes.drawing}>
+    <svg className={classes.drawing} id="parentSvg">
       {/* <Textbox position={{ x: 200, y: 100 }} text="anything I want it to be" /> */}
       {pencilLines.map((line, index) => (
         <PencilLine
