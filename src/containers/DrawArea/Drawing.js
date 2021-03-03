@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
-import DrawingLine from "./DrawingLine";
+import PencilLine from "./PencilLine";
 import StraightLine from "./StraightLine";
 
 const useStyles = makeStyles(() => ({
@@ -10,14 +10,14 @@ const useStyles = makeStyles(() => ({
     width: "100%",
   },
 }));
-const Drawing = ({ penLines, straightLines, handleErase, handleSelect }) => {
+const Drawing = ({ pencilLines, straightLines, handleErase, handleSelect }) => {
   const classes = useStyles();
 
   return (
     <svg className={classes.drawing}>
       {/* <Textbox position={{ x: 200, y: 100 }} text="anything I want it to be" /> */}
-      {penLines.map((line, index) => (
-        <DrawingLine
+      {pencilLines.map((line, index) => (
+        <PencilLine
           key={index}
           line={line}
           index={index}
