@@ -46,7 +46,6 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
 
     setMouseDown(true);
     if (selectedTool == "select") {
-      console.log("select selected");
     } else if (selectedTool === "pen") {
       handleDrawWithPen(e);
     } else if (selectedTool === "textbox") {
@@ -82,7 +81,6 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   const handleSelect = (e, { name, index, side }) => {
     e.preventDefault();
     if (name === undefined || index === undefined) return;
-
     setSelectedObject({ name, index, side });
 
     const point = relativeCoordsForEvent(e);
@@ -103,7 +101,6 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
 
   const handleStopMove = (e) => {
     const point = relativeCoordsForEvent(e);
-    console.log(selectedObject);
     if (selectedObject.name === "line") {
       const translate = getTranslateFromOrigin(point);
       let line = straightLines.get(selectedObject.index);
@@ -177,15 +174,17 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   const moveLine = (point) => {
     const translate = getTranslateFromOrigin(point);
     setTransformOrigin(point);
-    let newLines;
+    let newLines = straightLines;
+
     if (selectedObject.side === "both") {
-      newLines = updateCoords(straightLines, translate, "origin");
+      newLines = updateCoords(newLines, translate, "origin");
       newLines = updateCoords(newLines, translate, "current");
     } else if (selectedObject.side === "start") {
-      newLines = updateCoords(straightLines, translate, "origin");
+      newLines = updateCoords(newLines, translate, "origin");
     } else if (selectedObject.side === "end") {
-      newLines = updateCoords(straightLines, translate, "current");
+      newLines = updateCoords(newLines, translate, "current");
     }
+
     setStraightLines(newLines);
   };
 
@@ -242,6 +241,13 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     } else if (target === "line") {
       setStraightLines(straightLines.splice(index, 1));
     }
+  };
+
+  const clearSelected = () => {
+    straightLines.map((line) => {
+      console.log(line);
+    });
+    setStraightLines(straightLines.map((line) => line.set("selected", false)));
   };
 
   return (
