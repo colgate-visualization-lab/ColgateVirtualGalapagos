@@ -45,7 +45,9 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     }
 
     setMouseDown(true);
-    if (selectedTool === "pen") {
+    if (selectedTool == "select") {
+      console.log("select selected");
+    } else if (selectedTool === "pen") {
       handleDrawWithPen(e);
     } else if (selectedTool === "textbox") {
       handleTextbox(e);
@@ -69,20 +71,23 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
 
   const handleMouseUp = (e) => {
     setMouseDown(false);
+    if (!selectedObject) return;
+
     if (selectedTool === "select") {
       handleStopMove(e);
     }
   };
 
   // select tool logic
-  const handleSelect = (e, name, index) => {
+  const handleSelect = (e, { name, index, side }) => {
     e.preventDefault();
     if (name === undefined || index === undefined) return;
 
-    setSelectedObject({ name, index });
+    setSelectedObject({ name, index, side });
 
     const point = relativeCoordsForEvent(e);
     if (name === "line") {
+      setStraightLines(straightLines.setIn([index, "selected"], true));
       setTransformOrigin(point);
     }
   };
@@ -92,15 +97,13 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
 
     const point = relativeCoordsForEvent(e);
     if (selectedObject.name === "line") {
-      const translate = getTranslateFromOrigin(point);
-      setStraightLines(
-        straightLines.setIn([selectedObject.index, "translate"], translate)
-      );
+      moveLine(point);
     }
   };
 
   const handleStopMove = (e) => {
     const point = relativeCoordsForEvent(e);
+    console.log(selectedObject);
     if (selectedObject.name === "line") {
       const translate = getTranslateFromOrigin(point);
       let line = straightLines.get(selectedObject.index);
@@ -142,6 +145,7 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     new Map({
       x: point.get("x") - transformOrigin.get("x"),
       y: point.get("y") - transformOrigin.get("y"),
+      side: selectedObject.side,
     });
 
   // line tool logic
@@ -155,6 +159,7 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
           x: 0,
           y: 0,
         }),
+        selected: false,
       })
     );
     setStraightLines(updatedLines);
@@ -168,6 +173,31 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     );
     setStraightLines(updatedLines);
   };
+
+  const moveLine = (point) => {
+    const translate = getTranslateFromOrigin(point);
+    setTransformOrigin(point);
+    let newLines;
+    if (selectedObject.side === "both") {
+      newLines = updateCoords(straightLines, translate, "origin");
+      newLines = updateCoords(newLines, translate, "current");
+    } else if (selectedObject.side === "start") {
+      newLines = updateCoords(straightLines, translate, "origin");
+    } else if (selectedObject.side === "end") {
+      newLines = updateCoords(straightLines, translate, "current");
+    }
+    setStraightLines(newLines);
+  };
+
+  const updateCoords = (lines, translate, label) =>
+    lines.updateIn(
+      [selectedObject.index, label],
+      (coord) =>
+        new Map({
+          x: coord.get("x") + translate.get("x"),
+          y: coord.get("y") + translate.get("y"),
+        })
+    );
 
   // textbox logic
   const handleTextbox = (e) => {
