@@ -5,8 +5,14 @@ import BoundingVertex from "./BoundingVertex";
 
 const useStyles = makeStyles(() => ({
   line: {
-    strokeWidth: "5px",
+    strokeWidth: "3px",
     stroke: "black",
+    strokeLinecap: "round",
+    strokeLineJoin: "round",
+  },
+  highlightLine: {
+    strokeWidth: "4px",
+    stroke: "#7D7DF1",
     strokeLinecap: "round",
     strokeLineJoin: "round",
   },
@@ -27,6 +33,15 @@ const StraightLine = ({ line, handleErase, handleSelect, index }) => {
   ];
   return (
     <g transform={`translate(${translate.get("x")} ${translate.get("y")})`}>
+      {selected && (
+        <line
+          x1={origin.get("x")}
+          y1={origin.get("y")}
+          x2={current.get("x")}
+          y2={current.get("y")}
+          className={classes.highlightLine}
+        />
+      )}
       <line
         onMouseOver={() => {
           handleErase(index, "line");
