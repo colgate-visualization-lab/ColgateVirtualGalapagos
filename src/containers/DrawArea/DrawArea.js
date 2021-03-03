@@ -89,6 +89,8 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     } else if (name === "pencil") {
       setPencilLines(pencilLines.setIn([index, "selected"], true));
       console.log("pencil selected");
+      setTransformOrigin(point);
+
       console.log(pencilLines.get(index).get("selected"));
     }
   };
@@ -99,6 +101,8 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     const point = relativeCoordsForEvent(e);
     if (selectedObject.name === "line") {
       moveLine(point);
+    } else if (selectedObject.name === "pencil") {
+      movePencilLine(point);
     }
   };
 
@@ -211,7 +215,14 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   const handleDrawWithPencil = (e) => {
     const point = relativeCoordsForEvent(e);
     const updatedLines = pencilLines.push(
-      new Map({ selected: false, coords: List([point]) })
+      new Map({
+        translate: new Map({
+          x: 0,
+          y: 0,
+        }),
+        selected: false,
+        coords: List([point]),
+      })
     );
     console.log("here");
 
@@ -226,6 +237,21 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     );
 
     setPencilLines(updatedLines);
+  };
+
+  const movePencilLine = (point) => {
+    const translate = getTranslateFromOrigin(point);
+    setTransformOrigin(point);
+    setPencilLines(
+      pencilLines.updateIn(
+        [selectedObject.index, "translate"],
+        (prevTranslate) =>
+          new Map({
+            x: translate.get("x") + prevTranslate.get("x"),
+            y: translate.get("y") + prevTranslate.get("y"),
+          })
+      )
+    );
   };
 
   const relativeCoordsForEvent = (e) => {
