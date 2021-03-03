@@ -9,10 +9,16 @@ const useStyles = makeStyles(() => ({
     stroke: "black",
     strokeLinecap: "round",
     strokeLineJoin: "round",
+    "&:hover": {
+      stroke: "#246AF2",
+    },
+    "&:active": {
+      stroke: "black",
+    },
   },
   highlightLine: {
-    strokeWidth: "4px",
-    stroke: "#7D7DF1",
+    strokeWidth: "5px",
+    stroke: "#246AF2",
     strokeLinecap: "round",
     strokeLineJoin: "round",
   },
@@ -40,6 +46,9 @@ const StraightLine = ({ line, handleErase, handleSelect, index }) => {
           x2={current.get("x")}
           y2={current.get("y")}
           className={classes.highlightLine}
+          onMouseDown={(e) => {
+            handleSelect(e, { name: "line", index, side: "both" });
+          }}
         />
       )}
       <line
@@ -48,9 +57,6 @@ const StraightLine = ({ line, handleErase, handleSelect, index }) => {
         }}
         onMouseDown={(e) => {
           handleSelect(e, { name: "line", index, side: "both" });
-        }}
-        onMouseMove={() => {
-          console.log("mouse moving");
         }}
         x1={origin.get("x")}
         y1={origin.get("y")}
