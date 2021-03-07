@@ -7,13 +7,26 @@ import Drawing from "./Drawing";
 import DrawAreaToolbar from "./DrawAreaToolbar";
 import Slide12Header from "../IguanaSlide12/Slide12Header";
 
-const createElement = () => {};
+const createElement = (e, drawAreaRef, selectedTool) => {
+  const point = relativeCoordsForEvent(e, drawAreaRef);
+  if (selectedTool === "line") {
+    return new Map({
+      x1: point.x,
+      y1: point.y,
+      x2: point.x,
+      y2: point.y,
+      type: "line",
+      selected: true,
+    });
+  }
+};
 
-const relativeCoordsForEvent = (e, boundingRect) => {
-  return new Map({
+const relativeCoordsForEvent = (e, drawAreaRef) => {
+  const boundingRect = drawAreaRef.current.getBoundingClientRect();
+  return {
     x: e.clientX - boundingRect.left,
     y: e.clientY - boundingRect.top,
-  });
+  };
 };
 
 const useStyles = makeStyles(() => ({
@@ -29,26 +42,21 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   const classes = useStyles();
 
   const [elements, setElements] = useState(List());
+  const [selectedElement, setSelectedElement] = useState(List());
   const [action, setAction] = useState("idle");
   const [selectedTool, setSelectedTool] = useState("select");
 
   const handleMouseDown = (e) => {
-    const boundingRect = drawAreaRef.current.getBoundingClientRect();
-    const point = relativeCoordsForEvent(e, boundingRect);
-    setElements(
-      elements.push(
-        new Map({
-          x1: 20,
-          y1: 20,
-          x2: 200,
-          y2: 100,
-          type: "line",
-          selected: false,
-        })
-      )
-    );
-    console.log(elements);
+    if (selectedTool === "select") {
+    } else {
+      const element = createElement(e, drawAreaRef, selectedTool);
+      setElements((elements) => elements.push(element));
+      setSelectedElement(element);
+      console.log(element);
+    }
   };
+
+  const handleMouseMove = (e) => {};
 
   const drawAreaRef = useRef();
 
@@ -75,6 +83,7 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
           ref={drawAreaRef}
           className={classes.drawArea}
           onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
         >
           <Drawing elements={elements} />
         </div>
