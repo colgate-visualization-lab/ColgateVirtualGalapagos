@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Textbox = ({ textboxDetails, index, handleSelect }) => {
+const Textbox = ({ textboxDetails, index, handleSelect, handleDelete }) => {
   const [position, selected, translate] = [
     textboxDetails.get("position"),
     textboxDetails.get("selected"),
