@@ -6,7 +6,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Slide12Header from "./Slide12Header";
 import PlainTabs from "./PlainTabs";
-import DrawArea from "../DrawArea";
+// import DrawArea from "../DrawArea";
+import DrawArea from "../DrawAreaAlternate";
 import PhyloTreeTemplate from "./PhyloTreeTemplate";
 
 const useStyles = makeStyles((theme) => ({
