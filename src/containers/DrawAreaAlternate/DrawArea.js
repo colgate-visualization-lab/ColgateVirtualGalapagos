@@ -21,6 +21,17 @@ const createElement = (e, drawAreaRef, selectedTool) => {
   }
 };
 
+const updateElement = (e, element, drawAreaRef, selectedTool) => {
+  const point = relativeCoordsForEvent(e, drawAreaRef);
+  if (selectedTool === "line") {
+    const updates = new Map({
+      x2: point.x,
+      y2: point.y,
+    });
+    return element.merge(updates);
+  }
+};
+
 const relativeCoordsForEvent = (e, drawAreaRef) => {
   const boundingRect = drawAreaRef.current.getBoundingClientRect();
   return {
@@ -52,11 +63,23 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
       const element = createElement(e, drawAreaRef, selectedTool);
       setElements((elements) => elements.push(element));
       setSelectedElement(element);
-      console.log(element);
+      setAction("drawing");
     }
   };
 
-  const handleMouseMove = (e) => {};
+  const handleMouseMove = (e) => {
+    if (action === "drawing") {
+      const currentElement = elements.get(elements.size - 1);
+      //prettier-ignore
+      const updatedElement = updateElement( e, currentElement, drawAreaRef, selectedTool);
+      setElements(elements.set(elements.size - 1, updatedElement));
+      setSelectedElement(updatedElement);
+    }
+  };
+
+  const handleMouseUp = (e) => {
+    setAction("none");
+  };
 
   const drawAreaRef = useRef();
 
@@ -84,6 +107,7 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
           className={classes.drawArea}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
         >
           <Drawing elements={elements} />
         </div>
