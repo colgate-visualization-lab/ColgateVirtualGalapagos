@@ -25,7 +25,7 @@ const createElement = (e, index, drawAreaRef, selectedTool) => {
       x2: x,
       y2: y,
       type: "line",
-      selected: false,
+      selected: true,
     });
   }
 };
@@ -67,7 +67,7 @@ const checkElementAtPosition = (x, y, element) => {
   const b = { x: x2, y: y2 };
   const c = { x, y };
 
-  return Math.abs(distance(a, b) - (distance(a, c) + distance(b, c))) < 1
+  return Math.abs(distance(a, b) - (distance(a, c) + distance(b, c))) < 0.3
     ? "inside"
     : null;
 };
@@ -98,27 +98,37 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   const [action, setAction] = useState("idle");
   const [selectedTool, setSelectedTool] = useState("select");
 
+  const clearSelectedElements = () => {
+    console.log("here");
+    let updatedElements = elements.map((element) =>
+      element.set("selected", false)
+    );
+    updatedElements = updatedElements.map((element) =>
+      element.set("position", null)
+    );
+
+    setSelectedElement(null);
+    return updatedElements;
+  };
+
   const handleMouseDown = (e) => {
-    const index = elements.size - 1;
+    let updatedElements = clearSelectedElements();
+
     if (selectedTool === "select") {
       let element = getElementAtPosition(e, drawAreaRef, elements);
-
       if (element) {
+        const index = element.get("index");
         element = element.set("selected", true);
-        setElements((elements) => elements.set(index, element));
         setSelectedElement(element);
-        console.log("here for some reason");
-      } else {
-        element = selectedElement.merge(
-          new Map({ selected: false, position: null })
-        );
-        console.log(element);
-        setElements((elements) => elements.set(index, element));
-        setSelectedElement(null);
+        updatedElements = updatedElements.set(index, element);
       }
+
+      setElements(updatedElements);
     } else {
+      const index = updatedElements.size;
       const element = createElement(e, index, drawAreaRef, selectedTool);
-      setElements((elements) => elements.push(element));
+      updatedElements = updatedElements.push(element);
+      setElements(updatedElements);
       setSelectedElement(element);
       setAction("drawing");
     }
@@ -137,7 +147,6 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
 
   const handleMouseUp = (e) => {
     setAction("none");
-    setSelectedElement;
   };
 
   const handleToolChange = (name) => {
