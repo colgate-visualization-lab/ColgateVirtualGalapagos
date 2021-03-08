@@ -29,6 +29,8 @@ import ExtraSelect from "./components/ExtraSelect/ExtraSelect";
 import VolcanoSlides from "./components/VolcanoModuleSlides/VolcanoModuleSlides";
 import theme from "./theme/Theme";
 
+import Test from "./containers/Test/Test"
+
 const VolcanoModule = lazy(() =>
   import("./containers/VolcanoModule/VolcanoModule")
 );
@@ -92,6 +94,10 @@ class App extends Component {
               <Route path="/iguana" exact component={IguanaModule} />
               <Route path="/extras" exact component={ExtraSelect} />
               {/* route for iguana module slides */}
+			        <Route path="/volcano/:id" exact 
+                render={(props) => <Test {...props}  />}
+              />
+
               <Route path="/iguana/:slide_id" component={IguanaModule} />
               <Route
                 path="/Volcano_0"
