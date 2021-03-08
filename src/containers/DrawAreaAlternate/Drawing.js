@@ -19,11 +19,16 @@ const Drawing = ({ elements }) => {
   };
 
   return (
-    <svg className={classes.drawing} id="parentSvg">
-      {elements.map((element, index) => (
-        <Line element={element} key={index} />
-      ))}
-    </svg>
+    <>
+      <div style={{ height: "400px", width: "200px" }}>
+        <input style={{ height: "50%", width: "50%" }} />
+      </div>
+      <svg className={classes.drawing} id="parentSvg">
+        {elements.map((element, index) => (
+          <Line element={element} key={index} />
+        ))}
+      </svg>
+    </>
   );
 };
 
