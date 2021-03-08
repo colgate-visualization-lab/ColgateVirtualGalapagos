@@ -1,6 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
+import ResizingVertex from "./ResizingVertex";
+
 const useStyles = makeStyles(() => ({
   line: {
     strokeWidth: "3",
@@ -48,6 +50,12 @@ const Line = ({ element }) => {
         />
       )}
       <line x1={x1} y1={y1} x2={x2} y2={y2} className={classes.line} />
+      {selected && (
+        <>
+          <ResizingVertex cx={x1} cy={y1} />
+          <ResizingVertex cx={x2} cy={y2} />
+        </>
+      )}
     </g>
   );
 };
