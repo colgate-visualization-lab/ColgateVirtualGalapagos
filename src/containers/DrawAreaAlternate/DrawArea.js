@@ -41,35 +41,97 @@ const updateElement = (e, element, drawAreaRef, selectedTool, offsetX) => {
   }
 };
 
-const moveElement = (e, selectedElement, drawAreaRef) => {
-  //prettier-ignore
-  if (selectedElement.get("type") === "line"){
+const calculateNewCoordinates = (e, selectedElement, drawAreaRef) => {
+  if (selectedElement.get("type") === "line") {
+    let [x1, y1, x2, y2, offsetXOrigin, offsetYOrigin, position] = [
+      selectedElement.get("x1"),
+      selectedElement.get("y1"),
+      selectedElement.get("x2"),
+      selectedElement.get("y2"),
+      selectedElement.get("offsetXOrigin"),
+      selectedElement.get("offsetYOrigin"),
+      selectedElement.get("position"),
+    ];
 
-    let [x1, y1, x2, y2, offsetXOrigin, offsetYOrigin] = [
-      selectedElement.get("x1"), selectedElement.get("y1"), selectedElement.get("x2"),
-      selectedElement.get("y2"), selectedElement.get("offsetXOrigin"),
-      selectedElement.get("offsetYOrigin")];
     const { x, y } = relativeCoordsForEvent(e, drawAreaRef);
     const offsetX = x - offsetXOrigin;
     const offsetY = y - offsetYOrigin;
-  
-    //prettier-ignore
-    let [newX1, newY1, newX2, newY2, newOffsetXOrigin, newOffsetYOrigin] = 
-    [ x1 + offsetX, y1 + offsetY, x2 + offsetX, y2 + offsetY, x, y];
-    //prettier-ignore
-    return selectedElement.merge(new Map({
+
+    return {
+      newX1: x1 + offsetX,
+      newY1: y1 + offsetY,
+      newX2: x2 + offsetX,
+      newY2: y2 + offsetY,
+      newOffsetXOrigin: x,
+      newOffsetYOrigin: y,
+      position,
+    };
+  }
+};
+
+const moveElement = (e, selectedElement, drawAreaRef) => {
+  //prettier-ignore
+  let { newX1, newY1, newX2, newY2, newOffsetXOrigin, newOffsetYOrigin } = 
+      calculateNewCoordinates(e, selectedElement, drawAreaRef);
+
+  //prettier-ignore
+  return selectedElement.merge(new Map({
       x1: newX1, y1: newY1, x2: newX2, y2: newY2,
       offsetXOrigin: newOffsetXOrigin, offsetYOrigin: newOffsetYOrigin,
     }))
+};
+
+const resizeElement = (e, selectedElement, drawAreaRef) => {
+  if (selectedElement.get("type") === "line") {
+    if (selectedElement.get("type") === "line") {
+      //prettier-ignore
+      let { newX1, newY1, newX2, newY2, newOffsetXOrigin, newOffsetYOrigin, position } = 
+          calculateNewCoordinates(e, selectedElement, drawAreaRef);
+
+      if (position === "start") {
+        //prettier-ignore
+        return selectedElement.merge(new Map({
+          x1: newX1, y1: newY1,
+          offsetXOrigin: newOffsetXOrigin, offsetYOrigin: newOffsetYOrigin,
+        }))
+      } else {
+        //prettier-ignore
+        return selectedElement.merge(new Map({
+          x2: newX2, y2: newY2,
+          offsetXOrigin: newOffsetXOrigin, offsetYOrigin: newOffsetYOrigin,
+        }))
+      }
+    }
   }
 };
 
 const distance = (a, b) =>
   Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2));
 
+const atPoint = (x, y, x1, y1, position) => {
+  return x1 - 5 <= x && x <= x1 + 5 && y1 - 5 <= y && y <= y1 + 5
+    ? position
+    : null;
+};
+
+const checkElementAtPosition = (x, y, x1, y1, x2, y2) => {
+  // const { x1, y1, x2, y2, type } = unpackElementDetails(element);
+  const a = { x: x1, y: y1 };
+  const b = { x: x2, y: y2 };
+  const c = { x, y };
+
+  return Math.abs(distance(a, b) - (distance(a, c) + distance(b, c))) < 0.3
+    ? "inside"
+    : null;
+};
+
 const positionWithinElement = (x, y, element) => {
-  const { x1, y1, x2, y2, type } = element;
+  const { x1, y1, x2, y2, type } = unpackElementDetails(element);
   if (element.get("type") === "line") {
+    const start = atPoint(x, y, x1, y1, "start");
+    const end = atPoint(x, y, x2, y2, "end");
+    const inside = checkElementAtPosition(x, y, x1, y1, x2, y2);
+    return start || end || inside;
   }
 };
 
@@ -84,23 +146,12 @@ const unpackElementDetails = (element) => {
   };
 };
 
-const checkElementAtPosition = (x, y, element) => {
-  const { x1, y1, x2, y2, type } = unpackElementDetails(element);
-  const a = { x: x1, y: y1 };
-  const b = { x: x2, y: y2 };
-  const c = { x, y };
-
-  return Math.abs(distance(a, b) - (distance(a, c) + distance(b, c))) < 0.3
-    ? "inside"
-    : null;
-};
-
 const getElementAtPosition = (e, drawAreaRef, elements) => {
   const { x, y } = relativeCoordsForEvent(e, drawAreaRef);
   const elementsAtPosition = elements.map((element) =>
     element.merge(
       new Map({
-        position: checkElementAtPosition(x, y, element),
+        position: positionWithinElement(x, y, element),
         offsetXOrigin: x,
         offsetYOrigin: y,
       })
@@ -152,6 +203,8 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
         updatedElements = updatedElements.set(index, element);
         if (element.get("position") === "inside") {
           setAction("moving");
+        } else {
+          setAction("resizing");
         }
       }
 
@@ -176,6 +229,10 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
       setSelectedElement(updatedElement);
     } else if (action === "moving") {
       const updatedElement = moveElement(e, selectedElement, drawAreaRef);
+      setElements(elements.set(selectedElement.get("index"), updatedElement));
+      setSelectedElement(updatedElement);
+    } else if (action === "resizing") {
+      const updatedElement = resizeElement(e, selectedElement, drawAreaRef);
       setElements(elements.set(selectedElement.get("index"), updatedElement));
       setSelectedElement(updatedElement);
     }
