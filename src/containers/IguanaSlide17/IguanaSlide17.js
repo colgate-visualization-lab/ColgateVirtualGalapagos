@@ -1,72 +1,115 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import update from "immutability-helper";
 
-import GeneMutationsTextbox from "../../components/GeneMutationsTextbox";
-import GeneMutationsTab from "../../components/GeneMutationsTab";
+import Header from "../../components/Slide17Header";
 import Dna from "../Dna";
+import DnaMutationPopover from "../../components/DnaMutationPopover";
 import { BasePairClickContext } from "./";
-import classes from "./IguanaSlide17.css";
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    backgroundColor: theme.palette.grey["900"],
+    color: "white",
+    padding: theme.spacing(1, 2),
+  },
+}));
 
 export const IguanaSlide17 = ({ content }) => {
-  const [selectedGene, setSelectedGene] = useState();
-  const [geneMutations, setGeneMutations] = useState({});
-  const [mutationsFound, setMutationsFound] = useState([]);
+  const classes = useStyles();
+
+  const [foundMutations, setFoundMutations] = useState({});
+  const [foundIndices, setFoundIndices] = useState(new Set());
+
+  const [showPopover, setShowPopover] = useState(false);
+  const [popoverCoords, setPopoverCoords] = useState({});
+  const [popoverDetails, setPopoverDetails] = useState({});
 
   const {
-    mutationPositions,
     greenIguanaSequence,
     marineIguanaSequence,
     mutationDetails,
   } = content.data;
 
-  const handleOnTabClick = (selectedGene) => {
-    setSelectedGene(selectedGene);
-  };
+  const numMutations = Object.keys(mutationDetails).length;
 
   const handleOnBaseClick = (geneIndex) => {
     if (greenIguanaSequence[geneIndex] !== marineIguanaSequence[geneIndex]) {
-      let newSelectedGene = mutationPositions[geneIndex];
-      let newGeneMutations = {};
-      newGeneMutations[newSelectedGene] = mutationDetails[newSelectedGene];
-
-      setGeneMutations({
-        ...geneMutations,
-        ...newGeneMutations,
+      setFoundMutations({
+        ...foundMutations,
+        [geneIndex]: mutationDetails[geneIndex],
       });
-
-      setSelectedGene(newSelectedGene);
-
-      setMutationsFound([...mutationsFound, geneIndex]);
+      setFoundIndices(update(foundIndices, { $add: [geneIndex] }));
     }
   };
 
+  const handleLeaveBasePair = () => {
+    setShowPopover(false);
+  };
+
+  const handleEnterBasePair = (e, geneIndex) => {
+    if (foundIndices.has(geneIndex)) {
+      setShowPopover(true);
+      setPopoverCoords({ x: e.pageX, y: e.pageY });
+
+      const mutation = mutationDetails[geneIndex];
+      setPopoverDetails({
+        geneName: mutation.name,
+        geneDescription: mutation.description,
+      });
+    }
+  };
+
+  const handleShowMutations = () => {
+    setFoundMutations({
+      ...foundMutations,
+      ...mutationDetails,
+    });
+    setFoundIndices(
+      update(foundIndices, {
+        $add: Object.keys(mutationDetails).map((index) => +index),
+      })
+    );
+    console.log(mutationDetails);
+    console.log(foundMutations);
+    console.log(foundIndices);
+  };
+
   return (
-    <div className={classes.container}>
-      <div className={classes.slideTitle}>
-        <p>Find the Mutation!</p>
-      </div>
-      <div className={classes.dna}>
-        <div className={classes.dnaActivity}>
-          <BasePairClickContext.Provider
-            value={{ handleOnBaseClick, mutationsFound }}
-          >
-            <Dna label="Green Iguana" basePairs={greenIguanaSequence} />
-            <Dna label="Marine Iguana" basePairs={marineIguanaSequence} />
-          </BasePairClickContext.Provider>
-        </div>
-      </div>
-      <div className={classes.mutationsTextbox}>
-        <GeneMutationsTextbox
-          geneDescription={
-            selectedGene ? geneMutations[selectedGene].description : ""
-          }
-        />
-      </div>
-      <div className={classes.mutationsTab}>
-        <GeneMutationsTab
-          geneMutations={geneMutations}
-          onClick={handleOnTabClick}
-        />
-      </div>
-    </div>
+    <Grid container justify="center" alignItems="stretch">
+      <Grid container item xs={10} spacing={2}>
+        <Grid item xs={12}>
+          <Paper variant="outlined" elevation={2} className={classes.paper}>
+            <Header
+              numFound={foundIndices.size}
+              numMutations={numMutations}
+              handleShowMutations={handleShowMutations}
+            />
+          </Paper>
+        </Grid>
+        <Grid item xs={12}>
+          <Paper variant="outlined" elevation={2} className={classes.paper}>
+            <BasePairClickContext.Provider
+              value={{
+                handleOnBaseClick,
+                handleEnterBasePair,
+                handleLeaveBasePair,
+                foundIndices,
+              }}
+            >
+              <Dna label="Green Iguana" basePairs={greenIguanaSequence} />
+              <Dna label="Marine Iguana" basePairs={marineIguanaSequence} />
+            </BasePairClickContext.Provider>
+            <DnaMutationPopover
+              show={showPopover}
+              coords={popoverCoords}
+              details={popoverDetails}
+            />
+          </Paper>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };

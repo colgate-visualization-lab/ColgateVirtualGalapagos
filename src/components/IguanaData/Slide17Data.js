@@ -35,33 +35,37 @@ const marineIguanaSequence = [
     ];
 
 const mutationDetails = {
-  scaleColorGene: {
+  3: {
     id: "scaleColorGene",
     name: "Scale Color Gene",
     description:
       "Marine iguanas have black scales, while green iguanas have bright green scales",
   },
-  tailShapeGene: {
+  5: {
     id: "tailShapeGene",
     name: "Tail Shape Gene",
+    position: 5,
     description:
       "Marine iguanas have flatter tails than green iguanas, which helps them swim more efficiently",
   },
-  saltSpoutGene: {
+  15: {
     id: "saltSpoutGene",
     name: "Salt Spout Gene",
+    position: 15,
     description:
       "Marine iguanas have a salt spout on their head to get rid of excess salt that has accumulated in their bodies after swimming in the ocean",
   },
-  faceShapeGene: {
+  18: {
     id: "faceShapeGene",
     name: "Face Shape Gene",
+    position: 18,
     description:
       "Marine iguanas have flatter faces than green iguanas, which allows them to scrape algae and vegetation off of rocks",
   },
-  backSpikesGene: {
+  28: {
     id: "backSpikesGene",
     name: "Back Spikes Gene",
+    position: 28,
     description:
       "The marine iguanas have back spikes which shrink or grow in proportion to how much food is available. This helps them conserve energy when food is scarce",
   },
