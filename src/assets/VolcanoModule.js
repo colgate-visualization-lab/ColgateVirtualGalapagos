@@ -71,13 +71,13 @@ export const platesGame1 =
 export const tectonicPlates2 =
   "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TectonicPlates02.mp3";
 export const southAmerica1 =
-  "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_SouthAmerica01.mp3";
+  "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_SouthAmerica01Fix.mp3";
 export const terrainMap6 =
   "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap06.mp3";
 export const plumePlacement1 =
   "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_PlumePlacement01.mp3";
 export const plumeYes1 =
-  "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_PlumeYes01.mp3";
+  "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_PlumeYes01Fix.mp3";
 export const plumeNo1 =
   "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_PlumeNo01.mp3";
 export const whereNext1 =
@@ -93,7 +93,7 @@ export const Exploration04 =
 export const Exploration05 =
   "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration05.mp3";
 export const eruptionAudio = 
-  "http://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMapEruptionDates.mp3"
+  "http://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMapEruptionDatesFix.mp3"
 // Videos
 export const introVideo =
   "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoModuleIntro.mp4";
@@ -103,3 +103,14 @@ export const mantlePlumes =
   "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoMantlePlumes.mp4";
 export const summaryVolcano =
   "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoSummary.mp4";
+//3d Vistas
+export const Vista =
+  "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Caldara_Endtrail/index.htm";
+export const Vista2 =
+  "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Caldara_Shotfive/index.htm";
+export const Vista3 =
+  "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Stillwater/index.htm"
+export const Vista4 =
+  "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Cactus_Final/index.htm"
+export const Vista5 =
+  "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/PlazaCliff/index.htm"
