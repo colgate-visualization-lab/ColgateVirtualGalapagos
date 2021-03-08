@@ -179,7 +179,6 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   const [selectedTool, setSelectedTool] = useState("select");
 
   const clearSelectedElements = () => {
-    console.log("here");
     let updatedElements = elements.map((element) =>
       element.set("selected", false)
     );
