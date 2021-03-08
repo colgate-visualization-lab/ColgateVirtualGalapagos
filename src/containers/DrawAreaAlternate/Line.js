@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() => ({
   line: {
-    strokeWidth: "3px",
+    strokeWidth: "3",
     stroke: "black",
     strokeLinecap: "round",
     strokeLineJoin: "round",
@@ -38,10 +38,16 @@ const Line = ({ element }) => {
 
   return (
     <g>
-      <line x1={x1} y1={y1} x2={x2} y2={y2} className={classes.line} />
       {selected && (
-        <line x1={x1} y1={y1} x2={x2} y2={y2} className={classes.line} />
+        <line
+          x1={x1}
+          y1={y1}
+          x2={x2}
+          y2={y2}
+          className={classes.highlightLine}
+        />
       )}
+      <line x1={x1} y1={y1} x2={x2} y2={y2} className={classes.line} />
     </g>
   );
 };
