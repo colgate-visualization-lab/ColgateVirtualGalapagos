@@ -41,13 +41,7 @@ const IguanaSlide15 = ({ content }) => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <>
       {/* <AudioPlayerHandler src={audioSrc} playing={audioIsPlaying}/> */}
       <AudioPlayer
         src={audioSrc}
@@ -75,7 +69,7 @@ const IguanaSlide15 = ({ content }) => {
         lineWidth={4}
         strokeColor="rgba(255, 255, 255, 0.5)"
       />
-    </div>
+    </>
   );
 };
 

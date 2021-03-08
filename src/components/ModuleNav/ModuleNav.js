@@ -7,6 +7,7 @@ import { Fragment } from "react";
 // import mysteryIntro from "https://virtualgalapagos.colgate.edu/assets/misc/MysteryIntro.mp4"
 
 const moduleNav = () => {
+  const test = 1
   const content = [
     {
       title: "Volcano",
@@ -15,7 +16,7 @@ const moduleNav = () => {
       background:
         "url(https://virtualgalapagos.colgate.edu/assets/misc/Volcano.png)",
       animation: " animated slideInDown",
-      link: "/volcanomod",
+      link: `/Volcano/${test}`,
     },
 
     {

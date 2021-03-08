@@ -3,7 +3,7 @@ import AudioPlayer from "./AudioPlayer";
 import PropTypes from "prop-types";
 
 function AudioPlayerHandler(props) {
-  const [audioIsPlaying, setAudioIsPlaying] = useState(true);
+  const [audioIsPlaying, setAudioIsPlaying] = useState(false);
   const [audioIsDone, setAudioIsDone] = useState(false);
 
   useEffect(() => {

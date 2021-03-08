@@ -2,24 +2,25 @@
   box-sizing: border-box;
 }
 
-/* @media screen and (min-width: 50em) {
-  html {
-    font-size: 2vw;
-  }
-}
-
-@media screen and (min-width: 75em) {
-  html {
-    font-size: 1.5em;
-  }
-} */
-
 html {
   scroll-behavior: smooth;
   -ms-overflow-style: none;
-  height: 100vh;
-  width: 100vw;
-  /* font-size: calc(16px + (24 - 16) * (100vw - 400px) / (800 - 600)); */
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-size: 1em;
+}
+
+@media screen and (min-width: 400px) {
+  html {
+    font-size: calc(16px + (24 - 16) * (100vw - 400px) / (800 - 400));
+  }
+}
+
+@media screen and (min-width: 800px) {
+  html {
+    font-size: 1.5em;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -32,8 +33,8 @@ body {
   font-family: "Open Sans", sans-serif;
   background-color: black;
   color: white;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 }
 :global a {
   text-decoration: none;
