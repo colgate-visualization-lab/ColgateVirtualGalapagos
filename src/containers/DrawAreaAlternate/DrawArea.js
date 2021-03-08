@@ -30,7 +30,7 @@ const createElement = (e, index, drawAreaRef, selectedTool) => {
   }
 };
 
-const updateElement = (e, element, drawAreaRef, selectedTool) => {
+const updateElement = (e, element, drawAreaRef, selectedTool, offsetX) => {
   const { x, y } = relativeCoordsForEvent(e, drawAreaRef);
   if (selectedTool === "line") {
     const updates = new Map({
@@ -38,6 +38,29 @@ const updateElement = (e, element, drawAreaRef, selectedTool) => {
       y2: y,
     });
     return element.merge(updates);
+  }
+};
+
+const moveElement = (e, selectedElement, drawAreaRef) => {
+  //prettier-ignore
+  if (selectedElement.get("type") === "line"){
+
+    let [x1, y1, x2, y2, offsetXOrigin, offsetYOrigin] = [
+      selectedElement.get("x1"), selectedElement.get("y1"), selectedElement.get("x2"),
+      selectedElement.get("y2"), selectedElement.get("offsetXOrigin"),
+      selectedElement.get("offsetYOrigin")];
+    const { x, y } = relativeCoordsForEvent(e, drawAreaRef);
+    const offsetX = x - offsetXOrigin;
+    const offsetY = y - offsetYOrigin;
+  
+    //prettier-ignore
+    let [newX1, newY1, newX2, newY2, newOffsetXOrigin, newOffsetYOrigin] = 
+    [ x1 + offsetX, y1 + offsetY, x2 + offsetX, y2 + offsetY, x, y];
+    //prettier-ignore
+    return selectedElement.merge(new Map({
+      x1: newX1, y1: newY1, x2: newX2, y2: newY2,
+      offsetXOrigin: newOffsetXOrigin, offsetYOrigin: newOffsetYOrigin,
+    }))
   }
 };
 
@@ -75,7 +98,13 @@ const checkElementAtPosition = (x, y, element) => {
 const getElementAtPosition = (e, drawAreaRef, elements) => {
   const { x, y } = relativeCoordsForEvent(e, drawAreaRef);
   const elementsAtPosition = elements.map((element) =>
-    element.set("position", checkElementAtPosition(x, y, element))
+    element.merge(
+      new Map({
+        position: checkElementAtPosition(x, y, element),
+        offsetXOrigin: x,
+        offsetYOrigin: y,
+      })
+    )
   );
   return elementsAtPosition.find((element) => element.get("position") !== null);
 };
@@ -83,7 +112,7 @@ const getElementAtPosition = (e, drawAreaRef, elements) => {
 const useStyles = makeStyles(() => ({
   drawArea: {
     position: "relative",
-    height: "70vh",
+    height: "50vh",
     width: "100%",
     backgroundColor: "white",
   },
@@ -121,6 +150,9 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
         element = element.set("selected", true);
         setSelectedElement(element);
         updatedElements = updatedElements.set(index, element);
+        if (element.get("position") === "inside") {
+          setAction("moving");
+        }
       }
 
       setElements(updatedElements);
@@ -141,6 +173,10 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
       //prettier-ignore
       const updatedElement = updateElement(e, currentElement, drawAreaRef, selectedTool);
       setElements(elements.set(index, updatedElement));
+      setSelectedElement(updatedElement);
+    } else if (action === "moving") {
+      const updatedElement = moveElement(e, selectedElement, drawAreaRef);
+      setElements(elements.set(selectedElement.get("index"), updatedElement));
       setSelectedElement(updatedElement);
     }
   };
