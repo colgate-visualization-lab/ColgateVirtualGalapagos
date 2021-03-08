@@ -1,21 +1,93 @@
-import React, { useState, Fragment, useEffect } from "react";
-import PropTypes from "prop-types";
-import classes from "./MainContent.css";
-import ControlButtons from "../ControlButtons/ControlButtons";
-import IguanaSlide15 from "../IguanaSlide15/IguanaSlide15";
-
+import React from "react";
 import Iframe from "react-iframe";
+import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/styles";
+
+import IguanaSlide3 from "../IguanaSlide3";
+import IguanaSlide8 from "../../components/IguanaSlide8";
+import IguanaSlide12 from "../IguanaSlide12";
+import IguanaSlide15 from "../IguanaSlide15/IguanaSlide15";
+import IguanaSlide17 from "../IguanaSlide17";
+import classes from "./MainContent.css";
 import data from "../../components/IguanaData/IguanaData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
-import IguanaSlide3 from "../IguanaSlide3/IguanaSlide3";
-import IguanaSlide8 from "../../components/IguanaSlide8/IguanaSlide8";
-import IguanaSlide17 from "../IguanaSlide17";
+import ControlButtons from "../ControlButtons/ControlButtons";
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    position: "relative",
+    height: "100%",
+    boxSizing: "border-box",
+    overflow: "hidden",
+    minHeight: "500px",
+    minWidth: "500px",
+    // backgroundColor: "tomato",
+  },
+
+  //  CONTENT CONTAINER STYLING  - container that surrounds
+  //   main content of the page - basically whatever's above the
+  //   PREV and NEXT buttons
+  contentContainer: {
+    position: "relative",
+    width: "100%",
+
+    // height is 100% of parent container minus the total height of the PREV and NEXT buttons (plus a little space)
+    height: `calc(100%  -  ${theme.typography.pxToRem(40)})`,
+    // backgroundColor: "lavender",
+  },
+
+  // VIDEO STYLING
+  video: {
+    minHeight: "400px",
+    minWidth: "400px",
+    width: "100%",
+    maxHeight: "100%",
+  },
+
+  // IMAGE STYLING
+  img: {
+    objectFit: "contain",
+    maxHeight: "100%",
+    maxWidth: "100%",
+    minWidth: "360px",
+  },
+
+  // 360 VIDEO STYLING
+  iframe360: {
+    width: "100%",
+    height: "100%",
+  },
+}));
+
+// Grid Outer Container Component
+const GridContainer = (props) => (
+  <Grid
+    {...props}
+    container
+    spacing={0}
+    direction="row"
+    justify="space-between"
+  />
+);
+
+// Slide Content Container Component - i.e. everything above the
+//  PREV/NEXT buttons and below the navbar
+const SlideContent = (props) => (
+  <Grid
+    item
+    xs={12}
+    container
+    justify="center"
+    alignItems="center"
+    {...props}
+  />
+);
 
 function MainContent(props) {
   // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
   // const [audioIsDone, setAudioIsDone] = useState(false);
-
   // we get current slide id from and use that to find the next and prev slide ids
+  const classes = useStyles();
   const slideId = parseInt(props.match.params.slide_id || 1);
   const prevSlide = `/iguana/${slideId === 1 ? 1 : slideId - 1}`;
   const nextSlide = `/iguana/${
@@ -24,10 +96,6 @@ function MainContent(props) {
 
   // ControlButtons component
   const controlButtonProps = {
-    width: "120px",
-    bottom: "5%",
-    left: "0%",
-    right: "0%",
     hasPrev: slideId !== 1,
     hasNext: slideId < data.length,
     nextSlide: nextSlide,
@@ -38,99 +106,126 @@ function MainContent(props) {
 
   if (content.type === "image") {
     return (
-      <div>
-        <img src={content.url} className={`iguana ${classes.img}`} />
+      <GridContainer className={classes.container}>
+        <SlideContent className={classes.contentContainer}>
+          <img src={content.url} className={`iguana ${classes.img}`} />
+        </SlideContent>
+
         <ControlButtons {...controlButtonProps} />
-      </div>
+      </GridContainer>
     );
   } else if (content.type === "video") {
     return (
-      <div>
-        <video src={content.url} className={classes.vid} controls autoPlay />
+      <GridContainer className={classes.container}>
+        <SlideContent className={classes.contentContainer}>
+          <video src={content.url} className={classes.video} controls />
+        </SlideContent>
+
         <ControlButtons {...controlButtonProps} />
-      </div>
+      </GridContainer>
     );
   } else if (content.type === "video360") {
     return (
-      <>
+      <GridContainer className={classes.container}>
         <AudioPlayerHandler src={content.audioSrc} />
-        <Iframe
-          position="absolute"
-          width="100%"
-          height="100%"
-          className={classes.Iframe}
-          src={content.url}
-        />
+
+        <SlideContent className={classes.contentContainer}>
+          <Iframe className={classes.iframe360} src={content.url} />
+        </SlideContent>
+
         <ControlButtons {...controlButtonProps} />
-      </>
+      </GridContainer>
     );
   } else if (content.type === "interactive_image") {
     return (
-      <>
-        <IguanaSlide15 classes={classes} content={content} />
+      <GridContainer className={classes.container}>
+        <SlideContent className={classes.contentContainer}>
+          <IguanaSlide15 classes={classes} content={content} />
+        </SlideContent>
+
         <ControlButtons {...controlButtonProps} />
-      </>
+      </GridContainer>
     );
   } else if (content.type === "image_comparison") {
     return (
-      <div
-        style={{
-          width: "90%",
-          height: "90%",
-          margin: "0 auto",
-          display: "flex",
-        }}
-      >
+      <GridContainer className={classes.container}>
         <AudioPlayerHandler src={content.audioSrc} />
-        <IguanaSlide8 content={content} />
+
+        <SlideContent className={classes.contentContainer}>
+          <IguanaSlide8 content={content} />
+        </SlideContent>
+        {/* <SlideContent xs={6} className={classes.contentContainer}>
+          <IguanaSlide8 url={content.url1} popupText={content.landIguanaText} />
+        </SlideContent>
+        <SlideContent xs={6} className={classes.contentContainer}>
+          <IguanaSlide8
+            url={content.url2}
+            popupText={content.marineIguanaText}
+          />
+        </SlideContent> */}
+
         <ControlButtons {...controlButtonProps} />
-      </div>
+      </GridContainer>
     );
   } else if (content.type === "360_comparison") {
     return (
-      <Fragment>
+      <GridContainer className={classes.container}>
         <AudioPlayerHandler src={content.audioSrc} />
-        <div className={classes.comparison360Left}>
-          <Iframe src={content.url1} />
-        </div>
-        <div className={classes.comparison360Right}>
-          <Iframe src={content.url1} />
-        </div>
+
+        <SlideContent xs={6} className={classes.contentContainer}>
+          <Iframe src={content.url1} className={classes.iframe360} />
+        </SlideContent>
+
+        <SlideContent xs={6} className={classes.contentContainer}>
+          <Iframe src={content.url2} className={classes.iframe360} />
+        </SlideContent>
+
         <ControlButtons {...controlButtonProps} />
-      </Fragment>
+      </GridContainer>
     );
   } else if (content.type === "slide3InteractiveVideo") {
     return (
-      <>
-        {/* <AudioPlayerHandler src={content.audioSrc} /> */}
-        <IguanaSlide3 content={content} />
+      <GridContainer className={classes.container}>
+        <SlideContent className={classes.contentContainer}>
+          <IguanaSlide3 content={content} imgClass={classes.img} />
+        </SlideContent>
+
         <ControlButtons {...controlButtonProps} />
-      </>
+      </GridContainer>
     );
   } else if (content.type === "dnaInteractiveActivity") {
     return (
-      <>
+      <GridContainer className={classes.container}>
         <AudioPlayerHandler src={content.audioSrc} />
-        <IguanaSlide17 content={content} />
+
+        <SlideContent className={classes.contentContainer}>
+          <IguanaSlide17 content={content} />
+        </SlideContent>
+
         <ControlButtons {...controlButtonProps} />
-      </>
+      </GridContainer>
+    );
+  } else if (content.type === "Slide12DnDInteractive") {
+    return (
+      <GridContainer className={classes.container}>
+        {/* <AudioPlayerHandler src={content.audioSrc} /> */}
+
+        <SlideContent className={classes.contentContainer}>
+          <IguanaSlide12 content={content} />
+        </SlideContent>
+
+        <ControlButtons {...controlButtonProps} />
+      </GridContainer>
     );
   } else {
     return (
-      <>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: "100vw",
-            height: "80vh",
-          }}
-        >
+      <GridContainer className={classes.container}>
+        <SlideContent className={classes.contentContainer}>
           <h1>THIS SLIDE HASN'T BEEN CREATED YET</h1>
-        </div>
+        </SlideContent>
+
         <ControlButtons {...controlButtonProps} />
-      </>
+      </GridContainer>
     );
   }
 }
