@@ -24,19 +24,10 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const unpackElementDetails = (element) => {
-  return [
-    element.get("x1"),
-    element.get("y1"),
-    element.get("x2"),
-    element.get("y2"),
-    element.get("selected"),
-  ];
-};
-
-const Line = ({ element }) => {
+const Line = ({ x1, y1, x2, y2, selected }) => {
   const classes = useStyles();
-  const [x1, y1, x2, y2, selected] = unpackElementDetails(element);
+  // console.log(x1, x2);
+  // const [] = unpackElementDetails(element);
 
   return (
     <g>

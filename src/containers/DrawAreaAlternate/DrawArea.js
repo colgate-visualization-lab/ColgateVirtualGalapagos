@@ -17,6 +17,7 @@ const relativeCoordsForEvent = (e, drawAreaRef) => {
 
 const createElement = (e, index, drawAreaRef, selectedTool) => {
   const { x, y } = relativeCoordsForEvent(e, drawAreaRef);
+
   if (selectedTool === "line") {
     return new Map({
       index: index,
@@ -27,12 +28,28 @@ const createElement = (e, index, drawAreaRef, selectedTool) => {
       type: "line",
       selected: true,
     });
+  } else if (selectedTool === "textbox") {
+    return new Map({
+      index: index,
+      x1: x,
+      y1: y,
+      x2: x,
+      y2: y,
+      type: "textbox",
+      selected: true,
+    });
   }
 };
 
-const updateElement = (e, element, drawAreaRef, selectedTool, offsetX) => {
+const updateElement = (e, element, drawAreaRef, offsetX) => {
   const { x, y } = relativeCoordsForEvent(e, drawAreaRef);
-  if (selectedTool === "line") {
+  if (element.get("type") === "line") {
+    const updates = new Map({
+      x2: x,
+      y2: y,
+    });
+    return element.merge(updates);
+  } else if (element.get("type") === "textbox") {
     const updates = new Map({
       x2: x,
       y2: y,
@@ -42,7 +59,10 @@ const updateElement = (e, element, drawAreaRef, selectedTool, offsetX) => {
 };
 
 const calculateNewCoordinates = (e, selectedElement, drawAreaRef) => {
-  if (selectedElement.get("type") === "line") {
+  if (
+    selectedElement.get("type") === "line" ||
+    selectedElement.get("type") === "textbox"
+  ) {
     let [x1, y1, x2, y2, offsetXOrigin, offsetYOrigin, position] = [
       selectedElement.get("x1"),
       selectedElement.get("y1"),
@@ -82,25 +102,64 @@ const moveElement = (e, selectedElement, drawAreaRef) => {
 };
 
 const resizeElement = (e, selectedElement, drawAreaRef) => {
+  //prettier-ignore
+  let { newX1, newY1, newX2, newY2, newOffsetXOrigin, newOffsetYOrigin, position } = 
+        calculateNewCoordinates(e, selectedElement, drawAreaRef);
   if (selectedElement.get("type") === "line") {
-    if (selectedElement.get("type") === "line") {
+    if (position === "start") {
       //prettier-ignore
-      let { newX1, newY1, newX2, newY2, newOffsetXOrigin, newOffsetYOrigin, position } = 
-          calculateNewCoordinates(e, selectedElement, drawAreaRef);
-
-      if (position === "start") {
-        //prettier-ignore
-        return selectedElement.merge(new Map({
+      return selectedElement.merge(new Map({
           x1: newX1, y1: newY1,
           offsetXOrigin: newOffsetXOrigin, offsetYOrigin: newOffsetYOrigin,
         }))
-      } else {
-        //prettier-ignore
-        return selectedElement.merge(new Map({
+    } else {
+      //prettier-ignore
+      return selectedElement.merge(new Map({
           x2: newX2, y2: newY2,
           offsetXOrigin: newOffsetXOrigin, offsetYOrigin: newOffsetYOrigin,
         }))
-      }
+    }
+  }
+  if (selectedElement.get("type") === "textbox") {
+    if (position === "topLeft") {
+      return selectedElement.merge(
+        new Map({
+          x1: newX1,
+          y1: newY1,
+          offsetXOrigin: newOffsetXOrigin,
+          offsetYOrigin: newOffsetYOrigin,
+        })
+      );
+    }
+    if (position === "topRight") {
+      return selectedElement.merge(
+        new Map({
+          x2: newX2,
+          y1: newY1,
+          offsetXOrigin: newOffsetXOrigin,
+          offsetYOrigin: newOffsetYOrigin,
+        })
+      );
+    }
+    if (position === "bottomLeft") {
+      return selectedElement.merge(
+        new Map({
+          x1: newX1,
+          y2: newY2,
+          offsetXOrigin: newOffsetXOrigin,
+          offsetYOrigin: newOffsetYOrigin,
+        })
+      );
+    }
+    if (position === "bottomRight") {
+      return selectedElement.merge(
+        new Map({
+          x2: newX2,
+          y2: newY2,
+          offsetXOrigin: newOffsetXOrigin,
+          offsetYOrigin: newOffsetYOrigin,
+        })
+      );
     }
   }
 };
@@ -132,7 +191,15 @@ const positionWithinElement = (x, y, element) => {
     const end = atPoint(x, y, x2, y2, "end");
     const inside = checkElementAtPosition(x, y, x1, y1, x2, y2);
     return start || end || inside;
+  } else if (element.get("type") === "textbox") {
+    const topLeft = atPoint(x, y, x1, y1, "topLeft");
+    const topRight = atPoint(x, y, x2, y1, "topRight");
+    const bottomLeft = atPoint(x, y, x1, y2, "bottomLeft");
+    const bottomRight = atPoint(x, y, x2, y2, "bottomRight");
+    const inside = x1 <= x && x <= x2 && y1 <= y && y <= y2 ? "inside" : null;
+    return topLeft || topRight || bottomLeft || bottomRight || inside;
   }
+  return null;
 };
 
 const unpackElementDetails = (element) => {
@@ -201,6 +268,7 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
         setSelectedElement(element);
         updatedElements = updatedElements.set(index, element);
         if (element.get("position") === "inside") {
+          console.log("inside textbox");
           setAction("moving");
         } else {
           setAction("resizing");
@@ -214,6 +282,7 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
       updatedElements = updatedElements.push(element);
       setElements(updatedElements);
       setSelectedElement(element);
+      setSelectedTool("select");
       setAction("drawing");
     }
   };
@@ -223,7 +292,7 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
       const index = elements.size - 1;
       const currentElement = elements.get(index);
       //prettier-ignore
-      const updatedElement = updateElement(e, currentElement, drawAreaRef, selectedTool);
+      const updatedElement = updateElement(e, currentElement, drawAreaRef);
       setElements(elements.set(index, updatedElement));
       setSelectedElement(updatedElement);
     } else if (action === "moving") {
