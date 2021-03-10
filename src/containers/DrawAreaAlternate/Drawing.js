@@ -20,6 +20,7 @@ const unpackElementDetails = (element) => {
     selected: element.get("selected"),
     focused: element.get("focused"),
     cursor: element.get("cursor"),
+    options: element.get("options"),
   };
 };
 
