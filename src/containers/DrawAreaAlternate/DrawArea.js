@@ -7,6 +7,7 @@ import Drawing from "./Drawing";
 import DrawAreaToolbar from "./DrawAreaToolbar";
 import Options from "../../components/DrawAreaOptions";
 import Slide12Header from "../IguanaSlide12/Slide12Header";
+import { unpackElementDetails } from "./utils";
 
 const relativeCoordsForEvent = (e, drawAreaRef) => {
   const boundingRect = drawAreaRef.current.getBoundingClientRect();
@@ -60,6 +61,22 @@ const createElement = (e, index, drawAreaRef, selectedTool) => {
       options: getDefaultOptions("textbox"),
     });
   }
+};
+
+const duplicateElement = (index, element) => {
+  const { x1, y1, x2, y2 } = unpackElementDetails(element);
+  let newElement = new Map(element);
+  newElement = newElement.merge(
+    new Map({
+      x1: x1 + 10,
+      y1: y1 + 10,
+      x2: x2 + 10,
+      y2: y2 + 10,
+      selected: true,
+    })
+  );
+
+  return newElement;
 };
 
 const updateElement = (e, element, drawAreaRef, offsetX) => {
@@ -271,19 +288,6 @@ const positionWithinElement = (x, y, element) => {
   return null;
 };
 
-const unpackElementDetails = (element) => {
-  return {
-    x1: element.get("x1"),
-    y1: element.get("y1"),
-    x2: element.get("x2"),
-    y2: element.get("y2"),
-    type: element.get("type"),
-    selected: element.get("selected"),
-    focused: element.get("focused"),
-    position: element.get("position"),
-  };
-};
-
 const getElementAtPosition = (e, drawAreaRef, elements) => {
   const { x, y } = relativeCoordsForEvent(e, drawAreaRef);
   const elementsAtPosition = elements.map((element) =>
@@ -372,8 +376,6 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     let updatedElements = clearSelectedState(elements);
     setSelectedElement(null);
     setFocusedElement(null);
-
-    console.log(updatedElements.get(0));
 
     let element = getElementAtPosition(e, drawAreaRef, updatedElements);
     if (selectedTool === "select") {
@@ -471,6 +473,19 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     }
   };
 
+  const handleAction = (action) => {
+    if (action === "delete") {
+      setElements(elements.delete(selectedElement.get("index")));
+      setSelectedElement(null);
+    } else if (action === "duplicate") {
+      const index = selectedElement.get("index");
+      let updatedElements = elements.setIn([index, "selected"], false);
+      const newElement = duplicateElement(elements.size, selectedElement);
+      setElements(updatedElements.push(newElement));
+      setSelectedElement(newElement);
+    }
+  };
+
   return (
     <Grid container spacing={1}>
       <Grid item xs={12}>
@@ -495,9 +510,9 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
         >
           {selectedElement && (
             <Options
-              options={selectedElement.get("options")}
+              element={selectedElement}
               handleOptionsChange={handleOptionsChange}
-              type={selectedElement.get("type")}
+              handleAction={handleAction}
             />
           )}
           <Drawing elements={elements} />
