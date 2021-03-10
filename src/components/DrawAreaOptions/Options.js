@@ -2,16 +2,16 @@ import React from "react";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import Chip from "@material-ui/core/Chip";
+
 import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment";
 import { makeStyles } from "@material-ui/core/styles";
 
 import StrokeColorOption from "./StrokeColorOption";
 import FontSizeOption from "./FontSizeOption";
 import TextAlignOption from "./TextAlignOption";
 import StrokeWidthOption from "./StrokeWidthOption";
+import ElementActions from "./ElementActions";
+import { unpackElementDetails } from "../../containers/DrawAreaAlternate/utils";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,10 +29,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Options = ({ options, handleOptionsChange, type }) => {
+const Options = ({ element, handleOptionsChange, handleAction }) => {
+  const { type, options } = unpackElementDetails(element);
   const classes = useStyles();
-
-  const OptionHeader = () => <Typography className={classes.optionHeader} />;
 
   return (
     <Paper
@@ -84,9 +83,10 @@ const Options = ({ options, handleOptionsChange, type }) => {
             </Grid>
           </>
         )}
-        {/* <Grid item xs={12}>
+        <Grid item xs={12}>
           <Typography className={classes.optionHeader}>Actions</Typography>
-        </Grid> */}
+          <ElementActions handleAction={handleAction} />
+        </Grid>
       </Grid>
     </Paper>
   );
