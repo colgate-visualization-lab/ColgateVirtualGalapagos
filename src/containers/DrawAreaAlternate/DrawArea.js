@@ -36,7 +36,8 @@ const createElement = (e, index, drawAreaRef, selectedTool) => {
       x2: x,
       y2: y,
       type: "textbox",
-      selected: true,
+      selected: false,
+      focused: true,
     });
   }
 };
@@ -121,45 +122,78 @@ const resizeElement = (e, selectedElement, drawAreaRef) => {
     }
   }
   if (selectedElement.get("type") === "textbox") {
-    if (position === "topLeft") {
-      return selectedElement.merge(
-        new Map({
-          x1: newX1,
-          y1: newY1,
-          offsetXOrigin: newOffsetXOrigin,
-          offsetYOrigin: newOffsetYOrigin,
-        })
-      );
-    }
-    if (position === "topRight") {
-      return selectedElement.merge(
-        new Map({
-          x2: newX2,
-          y1: newY1,
-          offsetXOrigin: newOffsetXOrigin,
-          offsetYOrigin: newOffsetYOrigin,
-        })
-      );
-    }
-    if (position === "bottomLeft") {
-      return selectedElement.merge(
-        new Map({
-          x1: newX1,
-          y2: newY2,
-          offsetXOrigin: newOffsetXOrigin,
-          offsetYOrigin: newOffsetYOrigin,
-        })
-      );
-    }
-    if (position === "bottomRight") {
-      return selectedElement.merge(
-        new Map({
-          x2: newX2,
-          y2: newY2,
-          offsetXOrigin: newOffsetXOrigin,
-          offsetYOrigin: newOffsetYOrigin,
-        })
-      );
+    switch (position) {
+      case "top":
+        return selectedElement.merge(
+          new Map({
+            y1: newY1,
+            offsetXOrigin: newOffsetXOrigin,
+            offsetYOrigin: newOffsetYOrigin,
+          })
+        );
+      case "right":
+        return selectedElement.merge(
+          new Map({
+            x2: newX2,
+            offsetXOrigin: newOffsetXOrigin,
+            offsetYOrigin: newOffsetYOrigin,
+          })
+        );
+      case "bottom":
+        return selectedElement.merge(
+          new Map({
+            y2: newY2,
+            offsetXOrigin: newOffsetXOrigin,
+            offsetYOrigin: newOffsetYOrigin,
+          })
+        );
+      case "left":
+        return selectedElement.merge(
+          new Map({
+            x1: newX1,
+            offsetXOrigin: newOffsetXOrigin,
+            offsetYOrigin: newOffsetYOrigin,
+          })
+        );
+      case "topLeft":
+        return selectedElement.merge(
+          new Map({
+            x1: newX1,
+            y1: newY1,
+            offsetXOrigin: newOffsetXOrigin,
+            offsetYOrigin: newOffsetYOrigin,
+          })
+        );
+
+      case "topRight":
+        return selectedElement.merge(
+          new Map({
+            x2: newX2,
+            y1: newY1,
+            offsetXOrigin: newOffsetXOrigin,
+            offsetYOrigin: newOffsetYOrigin,
+          })
+        );
+      case "bottomLeft":
+        return selectedElement.merge(
+          new Map({
+            x1: newX1,
+            y2: newY2,
+            offsetXOrigin: newOffsetXOrigin,
+            offsetYOrigin: newOffsetYOrigin,
+          })
+        );
+      case "bottomRight":
+        return selectedElement.merge(
+          new Map({
+            x2: newX2,
+            y2: newY2,
+            offsetXOrigin: newOffsetXOrigin,
+            offsetYOrigin: newOffsetYOrigin,
+          })
+        );
+      default:
+        return selectedElement;
     }
   }
 };
@@ -173,14 +207,14 @@ const atPoint = (x, y, x1, y1, position) => {
     : null;
 };
 
-const checkElementAtPosition = (x, y, x1, y1, x2, y2) => {
+const checkElementLine = (x, y, x1, y1, x2, y2, position) => {
   // const { x1, y1, x2, y2, type } = unpackElementDetails(element);
   const a = { x: x1, y: y1 };
   const b = { x: x2, y: y2 };
   const c = { x, y };
 
   return Math.abs(distance(a, b) - (distance(a, c) + distance(b, c))) < 0.3
-    ? "inside"
+    ? position
     : null;
 };
 
@@ -189,15 +223,29 @@ const positionWithinElement = (x, y, element) => {
   if (element.get("type") === "line") {
     const start = atPoint(x, y, x1, y1, "start");
     const end = atPoint(x, y, x2, y2, "end");
-    const inside = checkElementAtPosition(x, y, x1, y1, x2, y2);
+    const inside = checkElementLine(x, y, x1, y1, x2, y2, "inside");
     return start || end || inside;
   } else if (element.get("type") === "textbox") {
     const topLeft = atPoint(x, y, x1, y1, "topLeft");
     const topRight = atPoint(x, y, x2, y1, "topRight");
     const bottomLeft = atPoint(x, y, x1, y2, "bottomLeft");
     const bottomRight = atPoint(x, y, x2, y2, "bottomRight");
+    const top = checkElementLine(x, y, x1, y1, x2, y1, "top");
+    const right = checkElementLine(x, y, x2, y1, x2, y2, "right");
+    const bottom = checkElementLine(x, y, x1, y2, x2, y2, "bottom");
+    const left = checkElementLine(x, y, x1, y1, x1, y2, "left");
     const inside = x1 <= x && x <= x2 && y1 <= y && y <= y2 ? "inside" : null;
-    return topLeft || topRight || bottomLeft || bottomRight || inside;
+    return (
+      topLeft ||
+      topRight ||
+      bottomLeft ||
+      bottomRight ||
+      top ||
+      right ||
+      bottom ||
+      left ||
+      inside
+    );
   }
   return null;
 };
@@ -227,6 +275,18 @@ const getElementAtPosition = (e, drawAreaRef, elements) => {
   return elementsAtPosition.find((element) => element.get("position") !== null);
 };
 
+const clearSelectedState = (elements) => {
+  return elements.map((element) =>
+    element.merge(new Map({ selected: false, position: null }))
+  );
+};
+
+const clearFocusedState = (elements) => {
+  return elements.map((element) =>
+    element.get("type") === "textbox" ? element.set("focused", false) : element
+  );
+};
+
 const useStyles = makeStyles(() => ({
   drawArea: {
     position: "relative",
@@ -245,40 +305,46 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   const [action, setAction] = useState("idle");
   const [selectedTool, setSelectedTool] = useState("select");
 
-  const clearSelectedElements = () => {
-    let updatedElements = elements.map((element) =>
-      element.set("selected", false)
-    );
-    updatedElements = updatedElements.map((element) =>
-      element.set("position", null)
-    );
-
-    setSelectedElement(null);
-    return updatedElements;
-  };
-
   const handleMouseDown = (e) => {
-    let updatedElements = clearSelectedElements();
+    let updatedElements = clearSelectedState(elements);
+    setSelectedElement(null);
 
+    console.log(updatedElements.get(0));
+
+    let element = getElementAtPosition(e, drawAreaRef, updatedElements);
     if (selectedTool === "select") {
-      let element = getElementAtPosition(e, drawAreaRef, elements);
+      //prettier-ignore
+      if (element && element.get("type") === "textbox" && element.get("focused") === true) {
+        return;
+      }
+      updatedElements = clearFocusedState(updatedElements);
       if (element) {
         const index = element.get("index");
         element = element.set("selected", true);
         setSelectedElement(element);
         updatedElements = updatedElements.set(index, element);
+
         if (element.get("position") === "inside") {
-          console.log("inside textbox");
           setAction("moving");
         } else {
           setAction("resizing");
         }
       }
-
       setElements(updatedElements);
-    } else {
+    } else if (selectedTool !== "select") {
+      if (
+        element &&
+        element.get("type") === "textbox" &&
+        selectedTool === "textbox"
+      ) {
+        element = element.set("focused", true);
+        const index = element.get("index");
+        setElements(updatedElements.set(index, element));
+        setSelectedTool("select");
+        return;
+      }
       const index = updatedElements.size;
-      const element = createElement(e, index, drawAreaRef, selectedTool);
+      element = createElement(e, index, drawAreaRef, selectedTool);
       updatedElements = updatedElements.push(element);
       setElements(updatedElements);
       setSelectedElement(element);
