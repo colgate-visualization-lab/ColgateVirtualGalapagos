@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Drawing from "./Drawing";
 import DrawAreaToolbar from "./DrawAreaToolbar";
-import Options from "./Options";
+import Options from "../../components/DrawAreaOptions";
 import Slide12Header from "../IguanaSlide12/Slide12Header";
 
 const relativeCoordsForEvent = (e, drawAreaRef) => {
@@ -14,6 +14,23 @@ const relativeCoordsForEvent = (e, drawAreaRef) => {
     x: e.clientX - boundingRect.left,
     y: e.clientY - boundingRect.top,
   };
+};
+
+const getDefaultOptions = (type) => {
+  if (type === "line") {
+    return new Map({
+      strokeColor: "black",
+      strokeWidth: 4,
+      strokeStyle: "solid",
+    });
+  } else if (type === "textbox") {
+    return new Map({
+      strokeColor: "black",
+      fontSize: 14,
+      horizontalAlign: "center",
+      verticalAlign: "center",
+    });
+  }
 };
 
 const createElement = (e, index, drawAreaRef, selectedTool) => {
@@ -28,6 +45,7 @@ const createElement = (e, index, drawAreaRef, selectedTool) => {
       y2: y,
       type: "line",
       selected: true,
+      options: getDefaultOptions("line"),
     });
   } else if (selectedTool === "textbox") {
     return new Map({
@@ -39,6 +57,7 @@ const createElement = (e, index, drawAreaRef, selectedTool) => {
       type: "textbox",
       selected: false,
       focused: true,
+      options: getDefaultOptions("textbox"),
     });
   }
 };
@@ -199,8 +218,9 @@ const resizeElement = (e, selectedElement, drawAreaRef) => {
   }
 };
 
-const distance = (a, b) =>
-  Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2));
+const distance = (a, b) => {
+  return Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2));
+};
 
 const atPoint = (x, y, x1, y1, position) => {
   return x1 - 5 <= x && x <= x1 + 5 && y1 - 5 <= y && y <= y1 + 5
@@ -343,13 +363,15 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   const drawAreaRef = useRef();
 
   const [elements, setElements] = useState(List());
-  const [selectedElement, setSelectedElement] = useState(List());
+  const [selectedElement, setSelectedElement] = useState(null);
+  const [focusedElement, setFocusedElement] = useState(null);
   const [action, setAction] = useState("idle");
   const [selectedTool, setSelectedTool] = useState("select");
 
   const handleMouseDown = (e) => {
     let updatedElements = clearSelectedState(elements);
     setSelectedElement(null);
+    setFocusedElement(null);
 
     console.log(updatedElements.get(0));
 
@@ -357,6 +379,8 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     if (selectedTool === "select") {
       //prettier-ignore
       if (element && element.get("type") === "textbox" && element.get("focused") === true) {
+        setSelectedElement(element);
+
         return;
       }
       updatedElements = clearFocusedState(updatedElements);
@@ -381,10 +405,12 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
       ) {
         element = element.set("focused", true);
         const index = element.get("index");
+        setSelectedElement(element);
         setElements(updatedElements.set(index, element));
         setSelectedTool("select");
         return;
       }
+      updatedElements = clearFocusedState(updatedElements);
       const index = updatedElements.size;
       element = createElement(e, index, drawAreaRef, selectedTool);
       updatedElements = updatedElements.push(element);
@@ -427,6 +453,24 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     setSelectedTool(name);
   };
 
+  const handleOptionsChange = (options, switchFocus = false) => {
+    if (selectedElement) {
+      let updatedElement = selectedElement.set("options", options);
+      if (switchFocus) {
+        updatedElement = updatedElement.merge(
+          new Map({
+            selected: true,
+            focused: false,
+          })
+        );
+      }
+
+      const index = selectedElement.get("index");
+      setSelectedElement(updatedElement);
+      setElements(elements.set(index, updatedElement));
+    }
+  };
+
   return (
     <Grid container spacing={1}>
       <Grid item xs={12}>
@@ -449,6 +493,13 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
         >
+          {selectedElement && (
+            <Options
+              options={selectedElement.get("options")}
+              handleOptionsChange={handleOptionsChange}
+              type={selectedElement.get("type")}
+            />
+          )}
           <Drawing elements={elements} />
         </div>
       </Grid>
