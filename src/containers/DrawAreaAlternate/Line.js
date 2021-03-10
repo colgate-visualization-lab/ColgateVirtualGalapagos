@@ -5,27 +5,29 @@ import ResizingVertex from "./ResizingVertex";
 
 const useStyles = makeStyles(() => ({
   line: {
-    strokeWidth: "3",
-    stroke: "black",
+    strokeWidth: ({ strokeWidth }) => `${strokeWidth}px`,
+    stroke: ({ strokeColor }) => strokeColor,
     strokeLinecap: "round",
     strokeLineJoin: "round",
     "&:hover": {
       stroke: "#246AF2",
     },
-    "&:active": {
-      stroke: "black",
-    },
   },
   highlightLine: {
-    strokeWidth: "5px",
+    strokeWidth: ({ strokeWidth }) => `${strokeWidth + 3}px`,
+
     stroke: "#246AF2",
     strokeLinecap: "round",
     strokeLineJoin: "round",
   },
 }));
 
-const Line = ({ x1, y1, x2, y2, selected }) => {
-  const classes = useStyles();
+const Line = ({ x1, y1, x2, y2, selected, options }) => {
+  const styleProps = {
+    strokeWidth: +options.get("strokeWidth"),
+    strokeColor: options.get("strokeColor"),
+  };
+  const classes = useStyles(styleProps);
 
   return (
     <g>

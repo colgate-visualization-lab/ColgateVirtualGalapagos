@@ -21,11 +21,14 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
   },
   text: {
-    transform: ({ mirrorX, mirrorY }) => `scale(${mirrorX}, ${mirrorY})`,
     height: "100%",
     width: "100%",
-    fontSize: "1rem",
+    transform: ({ mirrorX, mirrorY }) => `scale(${mirrorX}, ${mirrorY})`,
     fontFamily: "'Roboto Mono', monospace",
+    fontSize: ({ options }) =>
+      theme.typography.pxToRem(options.get("fontSize")),
+    color: ({ options }) => options.get("strokeColor"),
+    textAlign: ({ options }) => options.get("textAlign"),
     padding: 0,
     resize: "none",
     background: "transparent",
@@ -47,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Textbox = ({ x1, y1, x2, y2, selected, focused }) => {
+const Textbox = ({ x1, y1, x2, y2, selected, focused, options }) => {
   const [value, setValue] = useState("");
   const ref = useRef();
 
@@ -66,6 +69,7 @@ const Textbox = ({ x1, y1, x2, y2, selected, focused }) => {
     height: Math.abs(y2 - y1),
     mirrorX: x1 <= x2 ? 1 : -1,
     mirrorY: y1 <= y2 ? 1 : -1,
+    options,
   };
   // console.log(styleProps.)
   const classes = useStyles(styleProps);
