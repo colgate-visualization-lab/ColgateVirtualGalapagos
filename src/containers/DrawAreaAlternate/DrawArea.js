@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Drawing from "./Drawing";
 import DrawAreaToolbar from "./DrawAreaToolbar";
+import Options from "./Options";
 import Slide12Header from "../IguanaSlide12/Slide12Header";
 
 const relativeCoordsForEvent = (e, drawAreaRef) => {
@@ -258,6 +259,8 @@ const unpackElementDetails = (element) => {
     y2: element.get("y2"),
     type: element.get("type"),
     selected: element.get("selected"),
+    focused: element.get("focused"),
+    position: element.get("position"),
   };
 };
 
@@ -285,6 +288,45 @@ const clearFocusedState = (elements) => {
   return elements.map((element) =>
     element.get("type") === "textbox" ? element.set("focused", false) : element
   );
+};
+
+const getCursorAtPosition = (element, selectedTool) => {
+  if (!element) return "default";
+  const { type, position, focused } = unpackElementDetails(element);
+  let cursor;
+  if (type === "textbox" && (selectedTool === "textbox" || focused)) {
+    cursor = "text";
+  } else if (selectedTool !== "select") {
+    cursor = "crosshair";
+  } else {
+    switch (position) {
+      case "top":
+      case "bottom":
+        cursor = "ns-resize";
+        break;
+      case "left":
+      case "right":
+        cursor = "ew-resize";
+        break;
+      case "topLeft":
+      case "bottomRight":
+        cursor = "nwse-resize";
+        break;
+      case "topRight":
+      case "bottomLeft":
+        cursor = "nesw-resize";
+        break;
+      case "start":
+      case "end":
+      case "inside":
+        cursor = "move";
+        break;
+      default:
+        cursor = "default";
+    }
+  }
+
+  return cursor;
 };
 
 const useStyles = makeStyles(() => ({
@@ -354,6 +396,11 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   };
 
   const handleMouseMove = (e) => {
+    if (selectedTool === "select" || selectedTool === "textbox") {
+      const element = getElementAtPosition(e, drawAreaRef, elements);
+      e.target.style.cursor = getCursorAtPosition(element, selectedTool);
+    }
+
     if (action === "drawing") {
       const index = elements.size - 1;
       const currentElement = elements.get(index);
