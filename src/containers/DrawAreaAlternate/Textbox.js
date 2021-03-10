@@ -17,9 +17,8 @@ const useStyles = makeStyles((theme) => ({
     fill: "transparent",
   },
   textDiv: {
-    position: "relative",
-    overflowY: "visible",
     background: "transparent",
+    padding: 0,
   },
   text: {
     transform: ({ mirrorX, mirrorY }) => `scale(${mirrorX}, ${mirrorY})`,
@@ -27,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     fontSize: "1rem",
     fontFamily: "'Roboto Mono', monospace",
-    padding: theme.spacing(0),
+    padding: 0,
     resize: "none",
     background: "transparent",
     border: "none",
@@ -53,12 +52,9 @@ const Textbox = ({ x1, y1, x2, y2, selected, focused }) => {
   const ref = useRef();
 
   useEffect(() => {
-    // console.log(focused);
     if (focused) {
-      // console.log("focus it out");
       ref.current.focus();
     } else {
-      // console.log("blur it out");
       ref.current.blur();
     }
   });
@@ -80,27 +76,7 @@ const Textbox = ({ x1, y1, x2, y2, selected, focused }) => {
   };
 
   return (
-    <g
-      onMouseDown={(e) => {
-        console.log(focused);
-      }}
-    >
-      <foreignObject
-        x={styleProps.left}
-        y={styleProps.top}
-        height={styleProps.height}
-        width={styleProps.width}
-        className={classes.textDiv}
-      >
-        <textarea
-          autoFocus={false}
-          disabled={!focused}
-          ref={ref}
-          className={classes.text}
-          value={value}
-          onChange={handleChange}
-        />
-      </foreignObject>
+    <g>
       {focused && (
         <rect
           x={styleProps.left}
@@ -126,6 +102,21 @@ const Textbox = ({ x1, y1, x2, y2, selected, focused }) => {
           <ResizingVertex cx={x2} cy={y2} />
         </>
       )}
+      <foreignObject
+        x={styleProps.left}
+        y={styleProps.top}
+        height={styleProps.height}
+        width={styleProps.width}
+        className={classes.textDiv}
+      >
+        <textarea
+          autoFocus={false}
+          ref={ref}
+          className={classes.text}
+          value={value}
+          onChange={handleChange}
+        />
+      </foreignObject>
     </g>
   );
 };

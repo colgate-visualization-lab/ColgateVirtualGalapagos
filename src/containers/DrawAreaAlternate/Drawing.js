@@ -12,7 +12,6 @@ const useStyles = makeStyles(() => ({
 }));
 
 const unpackElementDetails = (element) => {
-  // console.log(element.get("x1"));
   return {
     x1: element.get("x1"),
     y1: element.get("y1"),
@@ -20,11 +19,11 @@ const unpackElementDetails = (element) => {
     y2: element.get("y2"),
     selected: element.get("selected"),
     focused: element.get("focused"),
+    cursor: element.get("cursor"),
   };
 };
 
 const Drawing = ({ elements }) => {
-  // console.log(elements);
   const classes = useStyles();
 
   const drawnElements = {
