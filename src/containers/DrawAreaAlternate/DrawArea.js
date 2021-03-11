@@ -356,7 +356,7 @@ const getCursorAtPosition = (element, selectedTool) => {
 const useStyles = makeStyles(() => ({
   drawArea: {
     position: "relative",
-    height: "60vh",
+    height: "50vh",
     width: "100%",
     backgroundColor: "white",
   },

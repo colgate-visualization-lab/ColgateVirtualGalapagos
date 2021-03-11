@@ -17,6 +17,8 @@ const useStyles = makeStyles((theme) => ({
   container: {
     position: "relative",
     height: "100%",
+    width: "100%",
+    background: "khaki",
     boxSizing: "border-box",
     overflow: "hidden",
     minHeight: "500px",
@@ -30,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   contentContainer: {
     position: "relative",
     width: "100%",
-
+    // background: "khaki",
     // height is 100% of parent container minus the total height of the PREV and NEXT buttons (plus a little space)
     height: `calc(100%  -  ${theme.typography.pxToRem(40)})`,
     // backgroundColor: "lavender",
@@ -61,13 +63,7 @@ const useStyles = makeStyles((theme) => ({
 
 // Grid Outer Container Component
 const GridContainer = (props) => (
-  <Grid
-    {...props}
-    container
-    spacing={0}
-    direction="row"
-    justify="space-between"
-  />
+  <Grid {...props} container spacing={0} direction="row" justify="center" />
 );
 
 // Slide Content Container Component - i.e. everything above the
@@ -75,7 +71,7 @@ const GridContainer = (props) => (
 const SlideContent = (props) => (
   <Grid
     item
-    xs={12}
+    xs={10}
     container
     justify="center"
     alignItems="center"
@@ -172,11 +168,11 @@ function MainContent(props) {
       <GridContainer className={classes.container}>
         <AudioPlayerHandler src={content.audioSrc} />
 
-        <SlideContent xs={6} className={classes.contentContainer}>
+        <SlideContent xs={5} className={classes.contentContainer}>
           <Iframe src={content.url1} className={classes.iframe360} />
         </SlideContent>
 
-        <SlideContent xs={6} className={classes.contentContainer}>
+        <SlideContent xs={5} className={classes.contentContainer}>
           <Iframe src={content.url2} className={classes.iframe360} />
         </SlideContent>
 
