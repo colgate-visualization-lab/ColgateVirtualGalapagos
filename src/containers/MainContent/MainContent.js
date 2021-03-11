@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import Iframe from "react-iframe";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/styles";
+import clsx from "clsx";
 
 import IguanaSlide3 from "../IguanaSlide3";
 import IguanaSlide8 from "../../components/IguanaSlide8";
 import IguanaSlide12 from "../IguanaSlide12";
 import IguanaSlide15 from "../IguanaSlide15/IguanaSlide15";
 import IguanaSlide17 from "../IguanaSlide17";
-import classes from "./MainContent.css";
+// import classes from "./MainContent.css";
 import data from "../../components/IguanaData/IguanaData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 import ControlButtons from "../ControlButtons/ControlButtons";
+import SlideContentDrawer from "../SlideContentDrawer";
+
+const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+  },
   container: {
     position: "relative",
     height: "100%",
@@ -59,6 +66,24 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100%",
   },
+
+  // to accomodate drawer
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+    transition: theme.transitions.create("margin", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    marginLeft: -drawerWidth,
+  },
+  contentShift: {
+    transition: theme.transitions.create("margin", {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    marginLeft: 0,
+  },
 }));
 
 // Grid Outer Container Component
@@ -89,6 +114,11 @@ function MainContent(props) {
   const nextSlide = `/iguana/${
     slideId + 1 > data.length ? slideId : slideId + 1
   }`;
+  const [contentDrawerOpen, setContentDrawerOpen] = useState(false);
+
+  const handleContentDrawerToggle = (open) => {
+    setContentDrawerOpen(open);
+  };
 
   // ControlButtons component
   const controlButtonProps = {
@@ -112,13 +142,23 @@ function MainContent(props) {
     );
   } else if (content.type === "video") {
     return (
-      <GridContainer className={classes.container}>
-        <SlideContent className={classes.contentContainer}>
-          <video src={content.url} className={classes.video} controls />
-        </SlideContent>
+      <div className={classes.root}>
+        <SlideContentDrawer
+          contentDrawerOpen={contentDrawerOpen}
+          handleContentDrawerToggle={handleContentDrawerToggle}
+        />
+        <GridContainer
+          className={clsx(classes.container, classes.content, {
+            [classes.contentShift]: contentDrawerOpen,
+          })}
+        >
+          <SlideContent className={classes.contentContainer}>
+            <video src={content.url} className={classes.video} controls />
+          </SlideContent>
 
-        <ControlButtons {...controlButtonProps} />
-      </GridContainer>
+          <ControlButtons {...controlButtonProps} />
+        </GridContainer>
+      </div>
     );
   } else if (content.type === "video360") {
     return (
