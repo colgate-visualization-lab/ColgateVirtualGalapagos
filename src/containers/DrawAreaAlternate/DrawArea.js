@@ -356,7 +356,7 @@ const getCursorAtPosition = (element, selectedTool) => {
 const useStyles = makeStyles(() => ({
   drawArea: {
     position: "relative",
-    height: "50vh",
+    height: "60vh",
     width: "100%",
     backgroundColor: "white",
   },
@@ -487,7 +487,7 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   };
 
   return (
-    <Grid container spacing={1}>
+    <Grid container spacing={1} className={classes.root}>
       <Grid item xs={12}>
         <Slide12Header
           tabIndex={tabIndex}
