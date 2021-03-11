@@ -79,7 +79,7 @@ export const IguanaSlide17 = ({ content }) => {
 
   return (
     <Grid container justify="center" alignItems="stretch">
-      <Grid container item xs={10} spacing={2}>
+      <Grid container item xs={12} spacing={2}>
         <Grid item xs={12}>
           <Paper variant="outlined" elevation={2} className={classes.paper}>
             <Header

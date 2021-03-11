@@ -8,12 +8,12 @@ html {
   height: 100%;
   width: 100%;
   margin: 0;
-  font-size: 1em;
+  font-size: 16px;
 }
 
-@media screen and (min-width: 400px) {
+/* @media screen and (min-width: 400px) {
   html {
-    font-size: calc(16px + (24 - 16) * (100vw - 400px) / (800 - 400));
+    font-size: calc(16px + (22 - 16) * (100vw - 400px) / (800 - 400));
   }
 }
 
@@ -21,7 +21,7 @@ html {
   html {
     font-size: 1.5em;
   }
-}
+} */
 
 ::-webkit-scrollbar {
   display: none;
