@@ -7,7 +7,7 @@ import { Fragment } from "react";
 // import mysteryIntro from "https://virtualgalapagos.colgate.edu/assets/misc/MysteryIntro.mp4"
 
 const moduleNav = () => {
-  const test = 1
+  const test = 1;
   const content = [
     {
       title: "Volcano",
@@ -83,7 +83,7 @@ const moduleNav = () => {
   return (
     <Fragment>
       <div className={classes.backgroundDiv}>
-        <IntroVideo src="https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoModuleIntro.mp4" />
+        {/* <IntroVideo src="https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoModuleIntro.mp4" /> */}
         <img src={MapPinzon} className={classes.backgroundImage} />
         <div className={classes.wrapper}>
           <div className={classes.cols}>{items}</div>
