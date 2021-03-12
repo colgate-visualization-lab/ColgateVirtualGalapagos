@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Line from "./Line";
+import Textbox from "./Textbox";
 
 const useStyles = makeStyles(() => ({
   drawing: {
@@ -9,21 +10,39 @@ const useStyles = makeStyles(() => ({
     width: "100%",
   },
 }));
+
+const unpackElementDetails = (element) => {
+  return {
+    x1: element.get("x1"),
+    y1: element.get("y1"),
+    x2: element.get("x2"),
+    y2: element.get("y2"),
+    selected: element.get("selected"),
+    focused: element.get("focused"),
+    cursor: element.get("cursor"),
+    options: element.get("options"),
+  };
+};
+
 const Drawing = ({ elements }) => {
   const classes = useStyles();
 
-  const drawElement = (element, index) => {
-    if (element === "line") {
-      return <Line key={index} element={element} />;
-    }
+  const drawnElements = {
+    line: Line,
+    textbox: Textbox,
   };
 
   return (
-    <svg className={classes.drawing} id="parentSvg">
-      {elements.map((element, index) => (
-        <Line element={element} key={index} />
-      ))}
-    </svg>
+    <>
+      <svg className={classes.drawing} id="parentSvg">
+        {elements.map((element, index) => {
+          const CurrentElement = drawnElements[element.get("type")];
+          return (
+            <CurrentElement key={index} {...unpackElementDetails(element)} />
+          );
+        })}
+      </svg>
+    </>
   );
 };
 
