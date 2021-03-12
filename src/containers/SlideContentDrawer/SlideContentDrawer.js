@@ -18,17 +18,17 @@ const useStyles = makeStyles((theme) => ({
   root: {
     zIndex: 100,
     // marginRight: theme.spacing(2),
-    // position: "relative",
+    position: "relative",
     // height: "100%",
     // overflowY: "visible",
   },
 
   menuButton: {
-    // position: "absolute",
-    // top: 0,
-    // left: 0,
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(2),
+    position: "absolute",
+    top: 10,
+    left: 5,
+    // marginLeft: theme.spacing(1),
+    // marginRight: theme.spacing(2),
   },
   hide: {
     display: "none",
@@ -48,22 +48,6 @@ const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: "flex-end",
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: -drawerWidth,
-  },
-  contentShift: {
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: 0,
   },
 }));
 

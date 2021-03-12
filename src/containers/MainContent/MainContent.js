@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import Iframe from "react-iframe";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/styles";
-import clsx from "clsx";
 
 import IguanaSlide3 from "../IguanaSlide3";
 import IguanaSlide8 from "../../components/IguanaSlide8";
@@ -10,10 +9,7 @@ import IguanaSlide12 from "../IguanaSlide12";
 import IguanaSlide15 from "../IguanaSlide15/IguanaSlide15";
 import IguanaSlide17 from "../IguanaSlide17";
 // import classes from "./MainContent.css";
-import data from "../../components/IguanaData/IguanaData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
-import ControlButtons from "../ControlButtons/ControlButtons";
-import SlideContentDrawer from "../SlideContentDrawer";
 
 const useStyles = makeStyles((theme) => ({
   //  CONTENT CONTAINER STYLING  - container that surrounds
