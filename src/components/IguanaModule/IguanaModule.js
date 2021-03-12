@@ -1,14 +1,9 @@
-import React, { Component, Fragment } from 'react'
-import MainContent from '../../containers/MainContent/MainContent'
+import React, { Component, Fragment } from "react";
+import MainContent from "../../containers/MainContent/MainContent";
+import ModuleContainer from "../../containers/MainContent";
 
-function IguanaModule(props){
-
-
-    return(
-        <Fragment>
-            <MainContent {...props} />
-        </Fragment>
-    )
+function IguanaModule(props) {
+  return <ModuleContainer {...props} />;
 }
 
-export default IguanaModule
+export default IguanaModule;

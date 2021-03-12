@@ -9,17 +9,15 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
     zIndex: 100,
-    marginRight: theme.spacing(2),
+    // marginRight: theme.spacing(2),
     // position: "relative",
     // height: "100%",
     // overflowY: "visible",
@@ -29,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
     // position: "absolute",
     // top: 0,
     // left: 0,
+    marginLeft: theme.spacing(1),
     marginRight: theme.spacing(2),
   },
   hide: {
@@ -45,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     padding: theme.spacing(0, 1),
-    marginTop: "100px",
+    marginTop: theme.typography.pxToRem(60),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: "flex-end",
@@ -71,6 +70,8 @@ const useStyles = makeStyles((theme) => ({
 export default function SlideContentDrawer({
   contentDrawerOpen,
   handleContentDrawerToggle,
+  handleSlideChange,
+  slideData,
 }) {
   const classes = useStyles();
   const theme = useTheme();
@@ -118,26 +119,16 @@ export default function SlideContentDrawer({
           </div>
           <Divider />
           <List>
-            {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
+            {slideData.map((data, index) => (
+              <ListItem button key={index} component={Link} to={data.id}>
+                {/* <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
+                </ListItemIcon> */}
+                <ListItemText primary={data.title} />
               </ListItem>
             ))}
           </List>
           <Divider />
-          <List>
-            {["All mail", "Trash", "Spam"].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
         </Drawer>
       </>
     </div>
