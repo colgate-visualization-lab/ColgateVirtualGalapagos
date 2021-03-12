@@ -1,8 +1,8 @@
 .audioPlayer {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 40px;
+  top: 20px;
   width: 100px;
-  z-index: 1000;
+  z-index: 200;
   width: 0;
 }
