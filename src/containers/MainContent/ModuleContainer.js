@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     minHeight: "500px",
     minWidth: "500px",
-    backgroundColor: "tomato",
+    // backgroundColor: "tomato",
   },
 
   // to accomodate drawer
