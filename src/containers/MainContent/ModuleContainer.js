@@ -9,9 +9,11 @@ import data from "../../components/IguanaData/IguanaData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 import ControlButtons from "../ControlButtons/ControlButtons";
 import SlideContentDrawer from "../SlideContentDrawer";
+import FieldBookDrawer from "../FieldBookDrawer";
 import MainContent from "./MainContent";
 
-const drawerWidth = 240;
+const contentDrawerWidth = 240;
+const fieldBookDrawerWidth = 400;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,14 +43,22 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -drawerWidth,
+    marginLeft: -contentDrawerWidth,
+    marginRight: -fieldBookDrawerWidth,
   },
-  contentShift: {
+  contentShiftLeft: {
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
     marginLeft: 0,
+  },
+  contentShiftRight: {
+    transition: theme.transitions.create("margin", {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    marginRight: 0,
   },
 }));
 
@@ -68,9 +78,13 @@ function ModuleContainer(props) {
     slideId + 1 > data.length ? slideId : slideId + 1
   }`;
   const [contentDrawerOpen, setContentDrawerOpen] = useState(false);
+  const [fieldBookDrawerOpen, setFieldBookDrawerOpen] = useState(false);
 
   const handleContentDrawerToggle = (open) => {
     setContentDrawerOpen(open);
+  };
+  const handleFieldBookDrawerToggle = (open) => {
+    setFieldBookDrawerOpen(open);
   };
 
   const handleSlideChange = (slideId) => {};
@@ -95,13 +109,20 @@ function ModuleContainer(props) {
       />
       <GridContainer
         className={clsx(classes.container, classes.content, {
-          [classes.contentShift]: contentDrawerOpen,
+          [classes.contentShiftLeft]: contentDrawerOpen,
+          [classes.contentShiftRight]: fieldBookDrawerOpen,
         })}
       >
         <MainContent content={content} />
 
         <ControlButtons {...controlButtonProps} />
       </GridContainer>
+      <FieldBookDrawer
+        slideData={data}
+        contentDrawerOpen={fieldBookDrawerOpen}
+        handleSlideChange={handleSlideChange}
+        handleContentDrawerToggle={handleFieldBookDrawerToggle}
+      />
     </div>
   );
 }
