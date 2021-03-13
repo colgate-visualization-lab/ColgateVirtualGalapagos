@@ -12,7 +12,7 @@ import PhyloTreeTemplate from "./PhyloTreeTemplate";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100%",
+    width: "80%",
     position: "absolute",
     top: "40px",
   },

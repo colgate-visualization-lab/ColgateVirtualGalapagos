@@ -17,6 +17,7 @@ const fieldBookDrawerWidth = 400;
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    zIndex: 50,
     display: "flex",
     position: "relative",
     height: "100%",
