@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
     top: 20,
     left: 20,
 
-    width: "280px",
+    width: "240px",
+    minHeight: "250px",
   },
   optionHeader: {
     fontSize: "0.6rem",

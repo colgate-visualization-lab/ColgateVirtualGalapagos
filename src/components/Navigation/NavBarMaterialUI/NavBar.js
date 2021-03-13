@@ -26,11 +26,12 @@ const useStyles = makeStyles((theme) => ({
     ...theme.typography.tab,
     minWidth: 10,
     marginLeft: "25px", // we use fixed units here to create consistency regardless of screen size
+    fontSize: "0.8rem",
   },
 
   // menu itme
   menuItem: {
-    fontSize: "0.6em",
+    fontSize: "0.8rem",
   },
 }));
 

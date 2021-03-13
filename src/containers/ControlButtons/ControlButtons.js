@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
   // BUTTON STYLES
   buttonsContainer: {
-    zIndex: 200,
+    zIndex: 100,
     position: "relative",
     width: "90vw",
     color: "primary",
