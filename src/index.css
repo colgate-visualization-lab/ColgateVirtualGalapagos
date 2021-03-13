@@ -4,7 +4,8 @@
 
 html {
   scroll-behavior: smooth;
-  -ms-overflow-style: none;
+  overflow: "visible";
+  /* -ms-overflow-style: none; */
   height: 100%;
   width: 100%;
   margin: 0;
