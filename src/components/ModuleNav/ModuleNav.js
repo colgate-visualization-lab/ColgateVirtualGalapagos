@@ -7,13 +7,17 @@ import { Fragment } from "react";
 // import mysteryIntro from "https://virtualgalapagos.colgate.edu/assets/misc/MysteryIntro.mp4"
 
 const moduleNav = () => {
-	const content = [
-		{"title": "Volcano", 
-			"description": "Follow along with Carlos and Adriana as they learn about volcanoes. Explore how volcanic islands form and how they came to be in the Galapagos!", 
-			"background": "url(https://virtualgalapagos.colgate.edu/assets/misc/Volcano.png)", 
-			"animation": " animated slideInDown",
-			"link": "/oldvolcano"
-		}, 
+  const test = 1;
+  const content = [
+    {
+      title: "Volcano",
+      description:
+        "Follow along with Carlos and Adriana as they learn about volcanoes. Explore how volcanic islands form and how they came to be in the Galapagos!",
+      background:
+        "url(https://virtualgalapagos.colgate.edu/assets/misc/Volcano.png)",
+      animation: " animated slideInDown",
+      link: `/Volcano/${test}`,
+    },
 
     {
       title: "Extras",
@@ -76,7 +80,7 @@ const moduleNav = () => {
   return (
     <Fragment>
       <div className={classes.backgroundDiv}>
-        <IntroVideo src="https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoModuleIntro.mp4" />
+        {/* <IntroVideo src="https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoModuleIntro.mp4" /> */}
         <img src={MapPinzon} className={classes.backgroundImage} />
         <div className={classes.wrapper}>
           <div className={classes.cols}>{items}</div>

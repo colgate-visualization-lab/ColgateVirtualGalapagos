@@ -3,7 +3,6 @@ import ReactPlayer from "react-player";
 import CircleControls from "react-player-circle-controls";
 import "style-loader!css-loader!react-player-circle-controls/dist/styles.css";
 import PropTypes from "prop-types";
-import AudioPlayerHandler from "./AudioPlayerHandler";
 import classes from "./AudioPlayer.css";
 
 const AudioPlayer = (props) => {
