@@ -1,4 +1,4 @@
-import { slide13Data } from "./slide13Data";
+import { slide3Data } from "./slide3Data";
 import { slide15Data } from "./slide15Data";
 import { slide17Data } from "./slide17Data";
 
@@ -15,15 +15,19 @@ const iguanaData = [
     title: "Iguana_Carried01",
     type: "image",
     url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/SouthAmericaCoast.png",
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/SouthAmericaCoast.png",
   },
   {
     id: "3",
     title: "Iguana_Carried02",
     type: "slide3InteractiveVideo",
-    audioSrc:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide3SplitAudio/IguanaMystery_Slide3_Intro.mp3",
-    data: slide13Data,
+    src:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Video/IguanaSlide3Intro.mp4",
+    imageSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide3Intro.JPG",
+    interSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide3Intro.JPG",
+    data: slide3Data,
   },
   {
     id: "4",
@@ -55,9 +59,9 @@ const iguanaData = [
     title: "Iguana_Comparison02",
     type: "360_comparison",
     url1:
-      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Caldara_Endtrail/index.htm", //temporary
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/IguanaLoop/",
     url2:
-      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Cactus_Final/index.htm",
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/IguanaPath/",
     audioSrc:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide7.wav",
   },
@@ -71,11 +75,13 @@ const iguanaData = [
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/MarineIguanaWithBabies.png",
     audioSrc:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide8.wav",
-    popupText: {
+    landIguanaText: {
       landIguanaHead:
         "Land iguanas are usually more yellow or brown in color to blend in with the rocks and plants found inland.",
       landIguanaBody:
         "Land iguanas are often larger and weigh more than marine iguanas.",
+    },
+    marineIguanaText: {
       marineIguanaBody: "Marine iguanas have flat tails to help them swim!",
       marineIguanaTail:
         "Marine iguanas are darker in color to match the black basaltic rocks found in near the coast.",
@@ -108,7 +114,9 @@ const iguanaData = [
   {
     id: "12",
     title: "Iguana_PhyloTree05",
-    not_done: true,
+    type: "Slide12DnDInteractive",
+    backgroundUrl:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide12DnDBackgroundGreySquare.png",
   },
   {
     id: "13",
@@ -131,7 +139,7 @@ const iguanaData = [
     title: "Iguana_Evolution03",
     type: "interactive_image",
     url:
-      "https://keep.google.com/u/1/media/v2/1Qap6axeshCXiPdl0r3vhK1-K54n1_aIV_SuJiYxsbvbDNX1835Xp9qVnw7ftrA/15VVpQTnL-CD1LG4nNx4U3BHvTdJmLjfICf5GDWtoU4SucWfcTaLFmYqDv8x1BA?accept=image/gif,image/jpeg,image/jpg,image/png,image/webp,audio/aac&sz=1600",
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/MarineGreenIguanaComparison.jpg",
     audioSrc:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide15_initial.mp3",
     data: slide15Data,

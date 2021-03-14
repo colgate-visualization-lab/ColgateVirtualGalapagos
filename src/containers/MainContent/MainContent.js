@@ -1,224 +1,166 @@
-import React, { useState, Fragment, useEffect, useRef } from "react";
-import PropTypes from "prop-types";
-import classes from "./MainContent.css";
-import ControlButtons from "../ControlButtons/ControlButtons";
+import React from "react";
+import Iframe from "react-iframe";
+import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/styles";
+
+import IguanaSlide3 from "../IguanaSlide3";
+import IguanaSlide8 from "../../components/IguanaSlide8";
+import IguanaSlide12 from "../IguanaSlide12";
 import IguanaSlide15 from "../IguanaSlide15/IguanaSlide15";
-import {ReactCompareSlider, ReactCompareSliderImage} from "react-compare-slider";
-import Iframe from "../../components/IframeCompoment/IframeComponent";
+import IguanaSlide17 from "../IguanaSlide17";
+// import classes from "./MainContent.css";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
-import IguanaSlide3 from "../IguanaSlide3/IguanaSlide3";
-import Popup from "../../components/Popup/Popup";
 
-function MainContent(props) {
+const useStyles = makeStyles((theme) => ({
+  //  CONTENT CONTAINER STYLING  - container that surrounds
+  //   main content of the page - basically whatever's above the
+  //   PREV and NEXT buttons
+  contentContainer: {
+    position: "relative",
+    width: "100%",
 
-// we get current slide id from and use that to find the next and prev slide ids
-// props.data is the array of slides passed down as a prop for each module
-// props.route is simply the routing path for each module, i.e. "volcano"
+    // height is 100% of parent container minus the total height of the PREV and NEXT buttons (plus a little space)
+    height: `calc(100%  -  ${theme.typography.pxToRem(40)})`,
+    // backgroundColor: "lavender",
+  },
 
-const slideId = parseInt(props.match.params.slide_id || 1);
-const prevSlide = `/${props.route}/${slideId === 1? 1 : slideId-1}`;
-const nextSlide = `/${props.route}/${slideId+1 > props.data.length? slideId: slideId+1}`;
-const content = props.data[slideId-1] 
+  // VIDEO STYLING
+  video: {
+    minHeight: "400px",
+    minWidth: "400px",
+    width: "100%",
+    maxHeight: "100%",
+  },
 
+  // IMAGE STYLING
+  img: {
+    objectFit: "contain",
+    maxHeight: "100%",
+    maxWidth: "100%",
+    minWidth: "360px",
+  },
+
+  // 360 VIDEO STYLING
+  iframe360: {
+    width: "100%",
+    height: "100%",
+  },
+}));
+
+// Slide Content Container Component - i.e. everything above the
+//  PREV/NEXT buttons and below the navbar
+const SlideContainer = (props) => (
+  <Grid
+    item
+    xs={10}
+    container
+    justify="center"
+    alignItems="center"
+    {...props}
+  />
+);
+
+function MainContent({ content }) {
+  const classes = useStyles();
   if (content.type === "image") {
     return (
-      <div className={classes.container}>
-        {/* <div className={classes.wrapper}> */}
-        <div className={classes.imgContainer} />
-        <img src={content.url} className={classes.img} />
-        {/* </div> */}
-        <ControlButtons width="120px"
-          bottom="5%"
-          left="0%"
-          right="0%"
-          hasPrev={slideId !== 1}
-          hasNext={slideId < props.data.length}
-          nextSlide={nextSlide}
-          prevSlide={prevSlide} 
-          />
-           {props.children}
-      </div>
+      <SlideContainer className={classes.contentContainer}>
+        <img src={content.url} className={`iguana ${classes.img}`} />
+      </SlideContainer>
     );
   } else if (content.type === "video") {
     return (
-      <div className={classes.container}>
-        { content.youtube? <iframe className={classes.vid} src={content.url}></iframe> :
-        <video src={content.url} className={classes.vid} controls controlsList="nodownload" />}
-        <ControlButtons
-          width="120px"
-          bottom="5%"
-          left="0%"
-          right="0%"
-          hasPrev={slideId !== 1}
-          hasNext={slideId < props.data.length}
-          nextSlide={nextSlide}
-          prevSlide={prevSlide}
-        />
-        {props.children}
-      </div>
+      <SlideContainer className={classes.contentContainer}>
+        <video src={content.url} className={classes.video} controls />
+      </SlideContainer>
     );
   } else if (content.type === "video360") {
     return (
       <>
-        <IguanaSlide15
-          classes={classes}
-          content={content}
-        />
-        <ControlButtons
-          width="120px"
-          bottom="5%"
-          left="0%"
-          right="0%"
-          hasPrev={slideId !== 1}
-          hasNext={slideId < props.data.length}
-          nextSlide={nextSlide}
-          prevSlide={prevSlide}
-        />
-        <ControlButtons {...controlButtonProps} />
+        <AudioPlayerHandler src={content.audioSrc} />
+
+        <SlideContainer className={classes.contentContainer}>
+          <Iframe className={classes.iframe360} src={content.url} />
+        </SlideContainer>
       </>
     );
   } else if (content.type === "interactive_image") {
     return (
       <>
-        <IguanaSlide15 classes={classes} content={content} />
-        <ControlButtons {...controlButtonProps} />
+        <SlideContainer className={classes.contentContainer}>
+          <IguanaSlide15 classes={classes} content={content} />
+        </SlideContainer>
       </>
     );
   } else if (content.type === "image_comparison") {
     return (
-      <div
-        style={{
-          width: "90%",
-          height: "90%",
-          margin: "0 auto",
-          display: "flex",
-        }}
-      >
+      <>
         <AudioPlayerHandler src={content.audioSrc} />
-        <ReactCompareSlider
-          onlyHandleDraggable={true}
-          itemOne={
-            <div>
-              <ReactCompareSliderImage
-                src={content.url1}
-                alt="adult marine iguana with baby"
-              />
-              <Popup
-                description={content.popupText.landIguanaHead}
-                top="20%"
-                left="50%"
-              />
-              <Popup
-                description={content.popupText.landIguanaBody}
-                top="20%"
-                left="74%"
-              />
-            </div>
-          }
-          itemTwo={
-            <div>
-              <ReactCompareSliderImage
-                src={content.url2}
-                alt="smiling land iguana"
-              />
-              <Popup
-                description={content.popupText.marineIguanaBody}
-                top="25%"
-                left="13%"
-              />
-              <Popup
-                description={content.popupText.marineIguanaTail}
-                top="35%"
-                left="40%"
-              />
-              {props.children}
-            </div>
-          }
-        />
-        <ControlButtons
-          width="120px"
-          bottom="5%"
-          left="0%"
-          right="0%"
-          hasPrev={slideId !== 1}
-          hasNext={slideId < props.data.length}
-          nextSlide={nextSlide}
-          prevSlide={prevSlide}
-        />
-      </div>
+
+        <SlideContainer className={classes.contentContainer}>
+          <IguanaSlide8 content={content} />
+        </SlideContainer>
+        {/* <SlideContainer xs={6} className={classes.contentContainer}>
+          <IguanaSlide8 url={content.url1} popupText={content.landIguanaText} />
+        </SlideContainer>
+        <SlideContainer xs={6} className={classes.contentContainer}>
+          <IguanaSlide8
+            url={content.url2}
+            popupText={content.marineIguanaText}
+          />
+        </SlideContainer> */}
+      </>
     );
   } else if (content.type === "360_comparison") {
     return (
-      <Fragment>
+      <>
         <AudioPlayerHandler src={content.audioSrc} />
-        <div className={classes.comparison360Left}>
-          <Iframe src={content.url1} />
-        </div>
-        <div className={classes.comparison360Right}>
-          <Iframe src={content.url1} />
-        </div>
-        <ControlButtons
-          width="120px"
-          bottom="5%"
-          left="0%"
-          right="0%"
-          hasPrev={slideId !== 1}
-          hasNext={slideId < props.data.length}
-          nextSlide={nextSlide}
-          prevSlide={prevSlide}
-        />
-      </Fragment>
+
+        <SlideContainer xs={5} className={classes.contentContainer}>
+          <Iframe src={content.url1} className={classes.iframe360} />
+        </SlideContainer>
+
+        <SlideContainer xs={5} className={classes.contentContainer}>
+          <Iframe src={content.url2} className={classes.iframe360} />
+        </SlideContainer>
+      </>
     );
   } else if (content.type === "slide3InteractiveVideo") {
     return (
       <>
-        {/* <AudioPlayerHandler src={content.audioSrc} /> */}
-        <IguanaSlide3 content={content} />
-        <ControlButtons
-          width="120px"
-          bottom="5%"
-          left="0%"
-          right="0%"
-          hasPrev={slideId !== 1}
-          hasNext={slideId < props.data.length}
-          nextSlide={nextSlide}
-          prevSlide={prevSlide}
-        />
+        <SlideContainer className={classes.contentContainer}>
+          <IguanaSlide3 content={content} imgClass={classes.img} />
+        </SlideContainer>
       </>
     );
   } else if (content.type === "360_video") {
     return (
       <>
-        <Iframe src={content.url} />
-        <ControlButtons
-          width="120px"
-          bottom="5%"
-          left="0%"
-          right="0%"
-          hasPrev={slideId !== 1}
-          hasNext={slideId < props.data.length}
-          nextSlide={nextSlide}
-          prevSlide={prevSlide}
-        />
-        {props.children}
+        <AudioPlayerHandler src={content.audioSrc} />
+
+        <SlideContainer className={classes.contentContainer}>
+          <IguanaSlide17 content={content} />
+        </SlideContainer>
+      </>
+    );
+  } else if (content.type === "Slide12DnDInteractive") {
+    return (
+      <>
+        {/* <AudioPlayerHandler src={content.audioSrc} /> */}
+
+        <SlideContainer className={classes.contentContainer}>
+          <IguanaSlide12 content={content} />
+        </SlideContainer>
       </>
     );
   } else {
     return (
-    <>
-      <div style={{display: "flex", alignItems: "center", justifyContent: "center", width: "100vw", height: "80vh" }}><h1>THIS SLIDE HASN'T BEEN CREATED YET</h1></div>
-      <ControlButtons
-            width="120px"
-            bottom="5%"
-           left="0%"
-           right="0%"
-           hasPrev={slideId !== 1}
-           hasNext={slideId < props.data.length}
-           nextSlide={nextSlide}
-           prevSlide={prevSlide}
-          />
-    </>
-    )
+      <>
+        <SlideContainer className={classes.contentContainer}>
+          <h1>THIS SLIDE HASN'T BEEN CREATED YET</h1>
+        </SlideContainer>
+      </>
+    );
   }
 }
 

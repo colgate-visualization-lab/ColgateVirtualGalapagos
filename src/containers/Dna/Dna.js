@@ -1,28 +1,34 @@
 import React from "react";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
 
 import DnaBackbone from "../../components/DnaBackbone";
 import DnaSequence from "../../components/DnaSequence";
-// import { basePair1, basePair2 } from "../IguanaSlide17/constants";
-import classes from "./Dna.css";
+
+const useStyles = makeStyles((theme) => ({
+  dnaContainer: {
+    marginBottom: theme.spacing(2),
+  },
+}));
 
 const Dna = ({ label, basePairs }) => {
-  const svgStyle = {
-    border: "1px solid white",
-    float: "left",
-  };
-
+  const classes = useStyles();
   const numGroups = 6;
 
   const viewBox = [10, 0, 282.32, 32.56];
 
   return (
-    <div className={classes.geneContainer}>
-      <p className={classes.geneLabel}>{label}</p>
-      <div className={classes.geneSvg}>
+    <Grid container spacing={2} className={classes.dnaContainer}>
+      <Grid item xs={12}>
+        <Typography variant="button" component="h2">
+          {label}
+        </Typography>
+      </Grid>
+      <Grid item xs={12}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox={viewBox}
-          // style={svgStyle}
           preserveAspectRatio="xMidYMid meet"
           width="100%"
           height="100%"
@@ -39,8 +45,8 @@ const Dna = ({ label, basePairs }) => {
             />
           </g>
         </svg>
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   );
 };
 
