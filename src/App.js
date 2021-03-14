@@ -1,6 +1,5 @@
 import React, { Component, Suspense, lazy } from "react";
 import { Route, Switch } from "react-router-dom";
-import axios from "axios";
 
 import Layout from "./containers/Layout/Layout"
 import SignIn from "./containers/SignIn/SignIn"
@@ -22,22 +21,16 @@ const VolcanoModules = lazy(() => import("./containers/VolcanoModule/VolcanoModu
 import MainContent from "./containers/MainContent/MainContent"
 import iguanaData from "./components/IguanaData/IguanaData.js";
 import volcanoData from "./components/VolcanoData/VolcanoData.js";
+import Fieldbook from "./containers/Backpack/Fieldbook/Fieldbook";
+import NewNote from "./containers/Backpack/Fieldbook/Note/NewNote"
+import SignUp from "./containers/Authorization/SignUp"
 
 class App extends Component {
-	componentDidMount(){
-		axios.post('localhost:3000/users/login', {
-			"username":"joe", 
-			"password": "joe123e"
-		}).then(response => console.log(response))
-		.catch(error => console.log(error))
-	}
-	
 	render(){
 		return (
 				<Switch>
 					<Suspense fallback={<LoadingScreen />}>
 					<Route path="/" exact component={SplashScreen}/>
-					<Route path="/authorization" component={SignIn}/>
 					<Layout> {/*Layout sets up navbar and the main tag that takes up the rest of the screen */}
 						<Route path="/home" 
 							render={(props) => <Homepage {...props} lockValue={1} MapImg={MapIsabela} />}/>
@@ -54,7 +47,7 @@ class App extends Component {
 						<Route path="/gallery" exact component={Gallery}/>
 						<Route path="/volcanolayout" exact component={VolcanoLayout}/>
 						<Route path="/extras" exact component={ExtraSelect}/>
-
+            			<Route path="/fieldbook" exact component={Fieldbook} />
 						{/* routes for modules */}
 						<Route path="/volcano/:slide_id" exact component={VolcanoModule} />
 						<Route path="/iguana/:slide_id" 
@@ -62,7 +55,11 @@ class App extends Component {
 
 							{/* Old Module */}
 						<Route path="/oldvolcano" exact component={VolcanoModules} />
+						<Route path="/newnote" component={NewNote}/>
+						<Route path="/note/:id" />
 					</Layout>
+					<Route path="/authorization" component={SignIn}/>
+					<Route path="/signup" component={SignUp}/>
 					</Suspense>
 				</Switch>
 		)
