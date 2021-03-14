@@ -1,16 +1,15 @@
 import React from "react"
 import {NavLink} from "react-router-dom"
 import classes from "./Navbar.css"
-import {Navbar, Nav, Dropdown} from "react-bootstrap"
+import {Navbar, Nav} from "react-bootstrap"
 import LogoImage from "./LogoImage/LogoImage"
 import {Backpack} from "../../../assets/Misc"
 
 
 
 const navbar = () => {
-	
 	return (
-		<Navbar expand='lg'>
+		<Navbar expand='lg' className={classes.container}>
 			<NavLink to='/home'>
 				<Navbar.Brand>
 					<LogoImage className={classes.Logo}/>
@@ -28,14 +27,9 @@ const navbar = () => {
 			<NavLink to="/authorization">
 				<Nav.Item className={classes.NavItem}>Sign In</Nav.Item>
 			</NavLink>
-			<Dropdown>
-				<Dropdown.Toggle id="backpack" className={classes.dropdown}>
-					<img src={Backpack} alt="Backpack" className={classes.Backpack}/>
-				</Dropdown.Toggle>
-				<Dropdown.Menu className={classes.dropdownList}>
-					<Dropdown.Item className={classes.dropdownItem}><NavLink to='/fieldbook'>Fieldbook</NavLink></Dropdown.Item>
-				</Dropdown.Menu>
-			</Dropdown>
+			<NavLink to="/fieldbook">
+				<Nav.Item className={classes.NavItem}><img src={Backpack} alt="Backpack" className={classes.Backpack}/></Nav.Item>
+			</NavLink>
 		</Navbar>
 	)
 }
