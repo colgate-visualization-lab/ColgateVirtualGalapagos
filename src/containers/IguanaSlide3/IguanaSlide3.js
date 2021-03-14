@@ -1,127 +1,105 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState, useCallback } from "react";
 import ReactPlayer from "react-player";
-import PropTypes from "prop-types";
+import Slide from "@material-ui/core/Slide";
+import { makeStyles } from "@material-ui/core/styles";
 
-import Slide3VideoSelector from "./IguanaSlide3VideoSelector";
-import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
-import classes from "./IguanaSlide3.css";
+// import IntermissionScreen from "./IntermissionScreen";
+import IntermissionModal from "./IntermissionModal";
+import PopupButtons from "./PopupButtons";
 
-export default function IguanaSlide3({ content }) {
-  const [src, setSrc] = useState(content.data[0]);
-  // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
+const useStyles = makeStyles((theme) => ({
+  playerWrapper: {
+    position: "relative",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    margin: "auto",
+    height: "100%",
+    flexDirection: "column",
+  },
 
-  // videoSelectionOverlay - displays hypothesis, greys out and disables the video
-  const [
-    videoSelectionOverlayVisible,
-    setVideoSelectionOverlayVisible,
-  ] = useState({});
-  const [showPlayer, setShowPlayer] = useState(true);
+  mouseMoveDiv: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+  },
 
-  const handleSrcChange = (src) => {
-    setSrc(src);
-    setShowPlayer(false);
-  };
+  popupButtons: {
+    width: "100%",
+    position: "absolute",
+    bottom: "10%",
+  },
+}));
+
+const IguanaSlide3 = ({ content }) => {
+  React.useEffect(() => {
+    console.log("rerendered");
+  });
+  const classes = useStyles();
+
+  const [src, setSrc] = useState(content.src);
+  const [intermission, setIntermission] = useState(false);
+  const [playbackEnded, setPlaybackEnded] = useState(true);
+  const [popupTimeout, setPopupTimeout] = useState(null);
+  const [showPopup, setShowPopup] = React.useState(false);
 
   const handlePlaybackEnded = () => {
-    setVideoSelectionOverlayVisible(true);
+    setIntermission(true);
+    setPlaybackEnded(true);
   };
 
-  const handlePlaybackStarted = () => {
-    setVideoSelectionOverlayVisible(false);
+  const handleOnClick = (newSrc) => {
+    setSrc(newSrc);
+    setIntermission(false);
+    setPlaybackEnded(false);
   };
 
-  // this determines whether the video selection buttons
-  //  are visible
-  const [videoSelectorVisible, setVideoSelectorVisible] = useState(
-    classes.videoSelectorVisible
-  );
+  const handleClose = () => {
+    setIntermission(false);
+    setPlaybackEnded(true);
+  };
 
-  useEffect(() => {
-    const mouseMoveTimer = setTimeout(() => {
-      setVideoSelectorVisible(classes.videoSelectorHidden);
-    }, 3000);
-    return () => clearTimeout(mouseMoveTimer);
-  });
+  const handleMouseMove = (e) => {
+    e.preventDefault();
+    if (src === content.src) return;
+    setShowPopup(true);
+    (() => {
+      clearTimeout(popupTimeout);
+      setPopupTimeout(setTimeout(() => setShowPopup(false), 2000));
+    })();
+  };
 
-  return (
-    <>
-      {/* { showPlayer &&
-      <AudioPlayerHandler  src={props.content.audioSrc} />
-    } */}
-      <div
-        className={classes.slide3Style}
-        onMouseMove={() => {
-          setVideoSelectorVisible(classes.videoSelectorVisible);
-        }}
-      >
-        <ReactPlayer
-          position="relative"
-          width="100%"
-          height="100%"
-          controls={videoSelectionOverlayVisible ? false : true}
-          url={src.videoSrc}
-          playing={true}
-          onEnded={handlePlaybackEnded}
-          onPlay={handlePlaybackStarted}
-        />
-        <div
-          className={
-            videoSelectionOverlayVisible
-              ? classes.videoOverlayActive
-              : classes.videoOverlayInactive
-          }
-        />
-        <div
-          className={
-            videoSelectionOverlayVisible
-              ? `${classes.videoSelectorOverlay} `
-              : videoSelectorVisible
-          }
-        >
-          <Slide3VideoSelector
-            data={content.data}
-            onSrcChange={handleSrcChange}
-          />
+  return !intermission ? (
+    <div
+      className={classes.playerWrapper}
+      onMouseMove={(e) => {
+        handleMouseMove(e);
+      }}
+    >
+      <ReactPlayer
+        position="relative"
+        width="100%"
+        height="100%"
+        url={src}
+        controls
+        playing={!playbackEnded}
+        onEnded={handlePlaybackEnded}
+      />
+      <Slide direction="up" in={showPopup} mountOnEnter unmountOnExit>
+        <div className={classes.popupButtons}>
+          <PopupButtons hypotheses={content.data} onClick={handleOnClick} />
         </div>
-
-        {/* {src != null ? (
-          <>
-          <ReactPlayer width="auto" height="100%"
-            controls={selectionVisible? false: true} url={src.videoSrc} playing={true}
-            onEnded={handlePlaybackEnded}
-            onStart={handlePlaybackStarted}
-            onPlay={handlePlaybackStarted}
-          />
-          {selectionVisible &&
-          <div
-          style={{
-            width: "90%", height: "90%", position: "absolute", display: "flex",
-            alignItems: "center", zIndex: 9, backgroundColor: "rgba(0,0,0,0.65)",
-          }}
-        >
-          <VideoSelectorTabs data={data} onSrcChange={handleSrcChange} />
-          </div>
-        }
-          </>) :
-          (
-          <>
-            <div style={{ width: "100%", height: "auto", textAlign: "center", fontSize: "2rem", margin: "10px" }}>
-              Select a hypothesis to test below
-            </div>
-            <VideoSelectorTabs data={data} onSrcChange={handleSrcChange} />
-          </>
-        )}  */}
-      </div>
-    </>
+      </Slide>
+    </div>
+  ) : (
+    <IntermissionModal
+      hypotheses={content.data}
+      onClick={handleOnClick}
+      handleClose={handleClose}
+      open={intermission}
+    />
   );
-}
-
-IguanaSlide3.propTypes = {
-  content: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    audioSrc: PropTypes.string,
-    title: PropTypes.string,
-    type: PropTypes.string.isRequired,
-    data: PropTypes.arrayOf(PropTypes.object),
-  }),
 };
+
+export default IguanaSlide3;
