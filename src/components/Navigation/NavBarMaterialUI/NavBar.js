@@ -15,21 +15,25 @@ const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
   },
+
   navbarImage: {
     height: "3em",
   },
+
   navbarImageContainer: { padding: 0 },
+
   tabContainer: {
     marginLeft: "auto",
+    color: "white",
   },
+
   tab: {
-    ...theme.typography.tab,
+    ...theme.typography.link,
     minWidth: 10,
     marginLeft: "25px", // we use fixed units here to create consistency regardless of screen size
     fontSize: "0.8rem",
   },
 
-  // menu itme
   menuItem: {
     fontSize: "0.8rem",
   },
@@ -62,7 +66,11 @@ const NavBar = () => {
               src={logo}
             />
           </Button>
-          <Tabs className={classes.tabContainer} value={false}>
+          <Tabs
+            className={classes.tabContainer}
+            value={false}
+            textColor="primary"
+          >
             <Tab
               value={0}
               className={classes.tab}
