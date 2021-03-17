@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/styles";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -19,8 +20,12 @@ const useStyles = makeStyles((theme) => ({
     height: theme.typography.pxToRem(40),
     padding: theme.spacing(2, 0),
   },
-  link: {
-    ...theme.typography.link,
+  // link: {
+  //   ...theme.typography.link,
+  //   fontWeight: "bold",
+  // },
+  buttonText: {
+    fontWeight: "bold",
   },
 }));
 
@@ -39,20 +44,24 @@ export default function ControlButtons(props) {
     >
       <Grid item>
         {props.hasPrev && (
-          <Button variant="outlined" size="medium" className={classes.button}>
-            <Link className={classes.link} to={props.prevSlide}>
-              PREVIOUS
-            </Link>
-          </Button>
+          <Link to={props.prevSlide}>
+            <Button variant="outlined" size="medium" className={classes.button}>
+              <Typography color="secondary" className={classes.buttonText}>
+                PREVIOUS
+              </Typography>
+            </Button>
+          </Link>
         )}
       </Grid>
       <Grid item>
         {props.hasNext && (
-          <Button variant="outlined" size="medium" className={classes.button}>
-            <Link className={classes.link} to={props.nextSlide}>
-              NEXT
-            </Link>
-          </Button>
+          <Link to={props.nextSlide}>
+            <Button variant="outlined" size="medium" className={classes.button}>
+              <Typography color="secondary" className={classes.buttonText}>
+                NEXT
+              </Typography>
+            </Button>
+          </Link>
         )}
       </Grid>
     </Grid>
