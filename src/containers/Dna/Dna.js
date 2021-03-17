@@ -10,6 +10,12 @@ const useStyles = makeStyles((theme) => ({
   dnaContainer: {
     marginBottom: theme.spacing(2),
   },
+
+  label: {
+    fontSize: "1.2rem",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+  },
 }));
 
 const Dna = ({ label, basePairs }) => {
@@ -21,9 +27,7 @@ const Dna = ({ label, basePairs }) => {
   return (
     <Grid container spacing={2} className={classes.dnaContainer}>
       <Grid item xs={12}>
-        <Typography variant="button" component="h2">
-          {label}
-        </Typography>
+        <Typography className={classes.label}>{label}</Typography>
       </Grid>
       <Grid item xs={12}>
         <svg
