@@ -3,19 +3,22 @@ import { createMuiTheme } from "@material-ui/core/styles";
 export default createMuiTheme({
   palette: {
     primary: {
-      main: "#000",
+      main: "#212121",
     },
     secondary: {
-      main: "#fff",
-    },
-    button: {
-      main: "#3f51b5",
+      main: "#66bb6a",
     },
   },
   typography: {
-    tab: {
+    link: {
       textTransform: "none",
-      fontSize: "0.6rem",
+      textDecoration: "none",
+      textTransform: "uppercase",
+      color: "inherit",
+      "&:hover, &:focus, &:visited, &:link, &:active": {
+        color: "inherit",
+        textDecoration: "none",
+      },
     },
   },
 });

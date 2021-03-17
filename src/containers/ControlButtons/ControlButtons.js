@@ -5,21 +5,22 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/styles";
 
-// import { Back, Next } from "../../assets/VolcanoModule";
-
 const useStyles = makeStyles((theme) => ({
   button: {
-    // background: "rgba(200, 10, 230, 0.6)",
+    fontFamily: "inherit",
+    fontWeight: "bold",
   },
   // BUTTON STYLES
   buttonsContainer: {
     zIndex: 100,
     position: "relative",
     width: "90vw",
-    color: "primary",
-    // backgroundColor: "lawngreen",
+    color: "black",
     height: theme.typography.pxToRem(40),
-    padding: "0 16px",
+    padding: theme.spacing(2, 0),
+  },
+  link: {
+    ...theme.typography.link,
   },
 }));
 
@@ -38,29 +39,19 @@ export default function ControlButtons(props) {
     >
       <Grid item>
         {props.hasPrev && (
-          <Button
-            color="secondary"
-            variant="outlined"
-            size="small"
-            component={Link}
-            to={props.prevSlide}
-            className={classes.button}
-          >
-            Previous
+          <Button variant="outlined" size="medium" className={classes.button}>
+            <Link className={classes.link} to={props.prevSlide}>
+              PREVIOUS
+            </Link>
           </Button>
         )}
       </Grid>
       <Grid item>
         {props.hasNext && (
-          <Button
-            color="secondary"
-            variant="outlined"
-            size="small"
-            component={Link}
-            to={props.nextSlide}
-            className={classes.button}
-          >
-            Next
+          <Button variant="outlined" size="medium" className={classes.button}>
+            <Link className={classes.link} to={props.nextSlide}>
+              NEXT
+            </Link>
           </Button>
         )}
       </Grid>
