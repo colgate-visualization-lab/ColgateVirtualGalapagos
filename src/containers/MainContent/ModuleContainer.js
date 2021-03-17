@@ -22,18 +22,18 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     height: "100%",
     width: "100%",
+    justifyContent: "space-between",
   },
 
   container: {
     position: "relative",
     height: "100%",
     width: "100%",
-    // alignSelf: "center",
     boxSizing: "border-box",
     overflow: "hidden",
     minHeight: "500px",
     minWidth: "500px",
-    // backgroundColor: "tomato",
+    maxWidth: "1000px",
   },
 
   // to accomodate drawer
@@ -115,7 +115,6 @@ function ModuleContainer(props) {
         })}
       >
         <MainContent content={content} />
-
         <ControlButtons {...controlButtonProps} />
       </GridContainer>
       <FieldBookDrawer
