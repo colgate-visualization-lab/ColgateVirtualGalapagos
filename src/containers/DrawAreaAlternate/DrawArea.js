@@ -370,7 +370,7 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   const [selectedElement, setSelectedElement] = useState(null);
   const [focusedElement, setFocusedElement] = useState(null);
   const [action, setAction] = useState("idle");
-  const [selectedTool, setSelectedTool] = useState("select");
+  const [selectedTool, setSelectedTool] = useState("line");
 
   const handleMouseDown = (e) => {
     let updatedElements = clearSelectedState(elements);

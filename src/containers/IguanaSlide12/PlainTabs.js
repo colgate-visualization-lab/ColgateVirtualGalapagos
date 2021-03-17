@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
   wrapper: {
     opacity: 0.5,
-    fontSize: "0.75rem",
+    fontSize: "1.2rem",
     textTransform: "capitalize",
   },
   indicator: {
