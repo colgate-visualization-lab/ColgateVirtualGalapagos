@@ -50,11 +50,16 @@ const useStyles = makeStyles((theme) => ({
     justifySelf: "flex-start",
     marginRight: "auto",
     marginLeft: theme.spacing(1),
-    fontSize: "1.2rem",
+    fontSize: "1.5rem",
     fontWeight: "bold",
   },
   slideTitle: {
-    fontSize: "0.8rem",
+    fontSize: "1rem",
+  },
+
+  cleanLink: {
+    ...theme.typography.link,
+    textTransform: "none",
   },
 }));
 
@@ -112,7 +117,13 @@ export default function SlideContentDrawer({
           <Divider />
           <List>
             {slideData.map((data, index) => (
-              <ListItem button key={index} component={Link} to={data.id}>
+              <ListItem
+                button
+                key={index}
+                component={Link}
+                to={data.id}
+                className={classes.cleanLink}
+              >
                 <ListItemText
                   primaryTypographyProps={{
                     className: classes.slideTitle,
