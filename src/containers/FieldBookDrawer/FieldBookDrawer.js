@@ -55,16 +55,16 @@ const useStyles = makeStyles((theme) => ({
     justifySelf: "flex-start",
     marginRight: "auto",
     marginLeft: theme.spacing(1),
-    fontSize: "1.2rem",
+    fontSize: "1.5rem",
     fontWeight: "bold",
   },
   notesClass: {
-    fontSize: "0.8rem",
+    fontSize: "1rem",
   },
   notesTextarea: {
     margin: theme.spacing(2),
     marginTop: "auto",
-    fontSize: "0.8rem",
+    fontSize: "1rem",
   },
 
   saveNoteButton: {
@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   saveButtonText: {
-    fontSize: "0.8rem",
+    fontSize: "1rem",
     fontWeight: "bold",
   },
 }));
@@ -147,7 +147,7 @@ export default function SlideContentDrawer({
         <Divider />
         <List>
           {notes.map((note, index) => (
-            <>
+            <div key={index}>
               <ListItem key={index}>
                 <ListItemText
                   primaryTypographyProps={{
@@ -155,9 +155,9 @@ export default function SlideContentDrawer({
                   }}
                   primary={note}
                 />
-                <Divider />
               </ListItem>
-            </>
+              <Divider variant="middle" />
+            </div>
           ))}
         </List>
         <TextField
@@ -171,8 +171,10 @@ export default function SlideContentDrawer({
           onChange={handleNoteChange}
         />
         <Button
-          variant="contained"
+          variant="outlined"
+          color="secondary"
           //   fullWidth
+          disabled={currentNote === ""}
           className={classes.saveNoteButton}
           onClick={handleSaveNote}
         >
