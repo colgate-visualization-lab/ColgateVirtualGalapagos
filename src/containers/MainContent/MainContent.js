@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
 const SlideContainer = (props) => (
   <Grid
     item
-    xs={10}
+    xs={12}
     container
     justify="center"
     alignItems="center"
@@ -116,11 +116,11 @@ function MainContent({ content }) {
       <>
         <AudioPlayerHandler src={content.audioSrc} />
 
-        <SlideContainer xs={5} className={classes.contentContainer}>
+        <SlideContainer xs={6} className={classes.contentContainer}>
           <Iframe src={content.url1} className={classes.iframe360} />
         </SlideContainer>
 
-        <SlideContainer xs={5} className={classes.contentContainer}>
+        <SlideContainer xs={6} className={classes.contentContainer}>
           <Iframe src={content.url2} className={classes.iframe360} />
         </SlideContainer>
       </>
