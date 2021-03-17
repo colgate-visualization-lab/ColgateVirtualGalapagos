@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(1),
   },
   header: {
-    fontSize: "0.75rem",
+    fontSize: "1.2rem",
   },
 }));
 

@@ -4,12 +4,12 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: "1.4rem",
+    height: "2rem",
   },
   fontSizeInput: {
     width: "100%",
-    height: "1.4rem",
-    fontSize: "0.6rem",
+    height: "2rem",
+    fontSize: "0.95rem",
     border: "2px solid #E5E5E5",
     borderRadius: "5px",
     padding: theme.spacing(1, 1),

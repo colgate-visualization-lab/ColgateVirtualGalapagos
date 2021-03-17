@@ -22,11 +22,11 @@ const useStyles = makeStyles((theme) => ({
     left: 20,
 
     width: "240px",
-    minHeight: "250px",
   },
   optionHeader: {
-    fontSize: "0.6rem",
+    fontSize: "1rem",
     fontWeight: "bold",
+    padding: theme.spacing(0.5, 0, 1, 0),
   },
 }));
 
@@ -41,7 +41,7 @@ const Options = ({ element, handleOptionsChange, handleAction }) => {
         e.stopPropagation();
       }}
     >
-      <Grid container justify="center" spacing={4}>
+      <Grid container justify="center" spacing={3}>
         <Grid item xs={12}>
           <Typography className={classes.optionHeader}>Stroke Color</Typography>
           <StrokeColorOption
