@@ -6,7 +6,7 @@ export default createMuiTheme({
       main: "#212121",
     },
     secondary: {
-      main: "#66bb6a",
+      main: "#3949ab",
     },
   },
   typography: {
