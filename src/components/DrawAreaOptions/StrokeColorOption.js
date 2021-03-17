@@ -4,11 +4,12 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: "1.2rem",
+    height: "2rem",
+    padding: 0,
   },
   colorDiv: {
     background: ({ color }) => color,
-    height: "1.2rem",
+    height: "2rem",
     width: "100%",
     borderRadius: "5px",
   },
@@ -21,19 +22,19 @@ const useStyles = makeStyles((theme) => ({
   },
   colorInput: {
     display: "inline-block",
-    height: "1.2rem",
+    height: "2rem",
     padding: theme.spacing(0, 1),
     width: "100%",
-    fontSize: "0.8rem",
+    fontSize: "0.95rem",
     border: "none",
     outline: "none",
   },
   inputArdonment: {
     flexGrow: 1,
-    height: "1.2rem",
-    fontSize: "0.8rem",
+    height: "2rem",
+    fontSize: "0.95rem",
     marginRight: "0.1rem",
-    padding: theme.spacing(0, 1),
+    padding: theme.spacing(0.5, 1, 0, 1),
     backgroundColor: "#E5E5E5",
   },
 }));
