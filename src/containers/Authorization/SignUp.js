@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -11,27 +11,64 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import LocalStorage from '../../utils/localStorage'
+import MuiAlert from "@material-ui/lab/Alert"
+import Snackbar from "@material-ui/core/Snackbar"
+import { ErrorOutlineTwoTone } from '@material-ui/icons';
+
+function Alert(props) {
+	return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const SignUp = () => {
   const classes = useStyles()
+  const history = useHistory()
+  const [error, setError] = useState(false)
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const data = {username, email, password}
+  const [allowedExtraEmail, setAllowedExtraEmail] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
+
+  useEffect(() => {
+    const userInfo = LocalStorage.getUser()
+    const token = LocalStorage.getToken()
+    if (userInfo.email != null && token != null) {
+      setError(true)
+      setErrorMessage("You are already signed in!")
+    }
+  }, [])
 
   const handleSubmit = async (e) => {
       e.preventDefault()
+      
       try {
+          if (password.length < 7) {
+            setError(true)
+            setErrorMessage("Password must have at least 7 characters")
+          }
+          const data = {username, email, password}
           const result = await axios.post('/users', data)
           const userData = result.data
-		  LocalStorage.setUser(userData.user)
-		  LocalStorage.setToken(userData.token)
+          if (result.status == 201) {
+            history.push('/home')
+            LocalStorage.setUser(userData.user)
+            LocalStorage.setToken(userData.token)
+          }
+          else {
+            setError(true)
+            setErrorMessage("Please check your credentials and try again!")
+          }
       }
       catch (e) {
-          console.log(e)
+          setError(true)
+          setErrorMessage('Cannot sign up. Please try again')
       }
+  }
+
+  const handleClick = () => {
+    setAllowedExtraEmail(!allowedExtraEmail)
   }
 
   return (
@@ -71,7 +108,7 @@ const SignUp = () => {
                 name="email"
                 autoComplete="email"
                 value={email}
-				onChange={(e) => setEmail(e.target.value)}
+			        	onChange={(e) => setEmail(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -86,12 +123,12 @@ const SignUp = () => {
                 id="password"
                 autoComplete="current-password"
                 value={password}
-				onChange={(e) => setPassword(e.target.value)}
+				        onChange={(e) => setPassword(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" checked/>}
+                control={<Checkbox value="allowExtraEmails" checked={allowedExtraEmail} className={classes.checkbox} onClick={handleClick}/>}
                 label="I want to receive inspiration, marketing promotions and updates via email."
               />
             </Grid>
@@ -100,19 +137,27 @@ const SignUp = () => {
             type="submit"
             fullWidth
             variant="contained"
-            color="primary"
             className={classes.submit}
           >
             Sign Up
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link to="/authorization">
+              <Link to="/authorization" className={classes.link}>
                 Already have an account? Sign in
               </Link>
             </Grid>
           </Grid>
         </form>
+        {error ? 
+          <Snackbar 
+            open={true} 
+            autoHideDuration={6000}  
+            anchorOrigin={{vertical: "top", horizontal: "center"}}
+          >
+            <Alert severity="error">{errorMessage}
+            </Alert>
+          </Snackbar> : null}
       </div>
       <Box mt={5}>
       </Box>
@@ -129,7 +174,6 @@ const useStyles = makeStyles((theme) => ({
     },
     avatar: {
       margin: theme.spacing(1),
-      backgroundColor: theme.palette.secondary.main,
     },
     form: {
       width: '100%', 
@@ -139,8 +183,14 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(3, 0, 2),
     },
     textField: {
-		backgroundColor: "rgba(255, 255, 255, 0.2)",
-	},
+		  backgroundColor: "rgba(255, 255, 255, 0.2)",
+	  },
+    link: {
+      fontSize: "small",
+    },
+    checkbox: {
+      color: "white",
+    },
 }))
 
 export default SignUp

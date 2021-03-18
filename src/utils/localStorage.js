@@ -27,6 +27,12 @@ LocalStorage.getUser = () => {
     return {email, username, id}
 }
 
+LocalStorage.removeUser = () => {
+    LocalStorage.remove("email")
+    LocalStorage.remove("username")
+    LocalStorage.remove("id")
+}
+
 /**
  Token functions
 **/
@@ -38,6 +44,10 @@ LocalStorage.setToken = (token) => {
 LocalStorage.getToken = () => {
     const token = LocalStorage.get("token")
     return token 
+}
+
+LocalStorage.removeToken = () => {
+    LocalStorage.remove("token")
 }
 
 export default LocalStorage
