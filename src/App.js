@@ -1,9 +1,8 @@
 import React, { Component, Suspense, lazy } from "react";
 import { Route, Switch } from "react-router-dom";
-import axios from "axios";
 import { ThemeProvider } from "@material-ui/styles";
 import Layout from "./containers/Layout/Layout";
-import SignIn from "./containers/SignIn/SignIn";
+import SignIn from "./containers/Authorization/SignIn";
 import SignUp from "./containers/Authorization/SignUp"
 import LoadingScreen from "./containers/LoadingScreen/LoadingScreen";
 import {
@@ -26,10 +25,12 @@ import VolcanoLayout from "./containers/VolcanoLayout/VolcanoLayout";
 import IguanaModule from "./components/IguanaModule/IguanaModule";
 import ExtraSelect from "./components/ExtraSelect/ExtraSelect";
 // New volcano Module
-import VolcanoSlides from "./components/VolcanoModuleSlides/VolcanoModuleSlides";
+import VolcanoSlides from "./components/VolcanoSlides/VolcanoSlides";
 import theme from "./theme/Theme";
 import Test from "./containers/Test/Test"
 import NewNote from "./containers/Backpack/Fieldbook/Note/NewNote"
+import Fieldbook from "./containers/Backpack/Fieldbook/Fieldbook"
+import Settings from "./components/Settings/Settings"
 
 const VolcanoModule = lazy(() =>
   import("./containers/VolcanoModule/VolcanoModule")
@@ -101,6 +102,8 @@ class App extends Component {
                 path="/Volcano_2"
                 render={(props) => <VolcanoSlides {...props} slide={2} />}
               />
+			  <Route path="/fieldbook" component={Fieldbook} />
+			  <Route path="/settings" component={Settings}/>
 			  <Route path="/authorization" component={SignIn}/>
 			  <Route path="/signup" component={SignUp}/>
 			  <Route path="/newnote" component={NewNote}/>

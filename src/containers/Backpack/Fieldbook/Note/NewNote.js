@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core"
 import { Typography, TextField, Button } from "@material-ui/core"
 import axios from 'axios'
 import {useHistory} from 'react-router-dom'
+import LocalStorage from "../../../../utils/localStorage"
 
 const NewNote = () => {
   const classes = useStyles()
@@ -13,7 +14,12 @@ const NewNote = () => {
   const addNote = async () => {
     try {
       const data = {title, content}
-      const result = await axios.post('/notes', data)
+      const token = LocalStorage.getToken()
+      const result = await axios.post('/notes', data, {
+        headers: {
+          'Authorization': 'Bearer ' + token
+        }
+      })
       history.push('/fieldbook')
     } 
     catch (e) {
@@ -56,8 +62,7 @@ const NewNote = () => {
             value={content}
           />
           <Button
-            variant="outlined"
-            color="primary"
+            variant="contained"
             className={classes.button}
             onClick={addNote}
           >

@@ -4,10 +4,8 @@ export const AppContext = createContext()
 
 export const useStateValue = () => useContext(AppContext)
 
-export const initialState = {
-    notes: [], 
-    modal: false, 
-    edit: null, 
-    show: null,
-    showModal: false
+export const userInfo = {
+    email: '', 
+    username: '', 
+    id: ''
 }
