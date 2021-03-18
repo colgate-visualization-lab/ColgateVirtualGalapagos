@@ -44,6 +44,7 @@
   "dependencies": {
     "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "@material-ui/styles": "^4.11.2",
     "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
@@ -74,7 +75,6 @@
     "react-router-dom": "^5.2.0",
     "react-spring": "^8.0.27",
     "react-spring-3d-carousel": "^1.2.0",
-    "react-stickies": "0.0.16",
     "react-transition-group": "^4.4.1",
     "reactjs-popup": "^1.5.0",
     "regenerator-runtime": "^0.13.5",

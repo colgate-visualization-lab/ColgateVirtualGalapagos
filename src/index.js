@@ -7,9 +7,7 @@ import {AppContext} from './AppContext'
 import axios from 'axios'
 import LocalStorage from './utils/localStorage'
 
-const authToken = LocalStorage.getToken()
 axios.defaults.baseURL = 'http://virtualgalapagos.colgate.edu:9000'
-axios.defaults.headers.common['Authorization'] = 'Bearer ' + authToken
 
 const app = (
   <BrowserRouter>

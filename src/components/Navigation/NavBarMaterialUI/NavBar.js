@@ -32,6 +32,9 @@ const useStyles = makeStyles((theme) => ({
   menuItem: {
     fontSize: "0.6em",
   },
+  link: {
+    color: "black",
+  },
 }));
 
 const NavBar = () => {
@@ -83,13 +86,6 @@ const NavBar = () => {
               to="/authorization"
               label="Sign In"
             />
-            <Tab
-              value={3}
-              className={classes.tab}
-              component={Link}
-              to="/fieldbook"
-              label="Fieldbook"
-            />
           </Tabs>
 
           {/* backpack drowdown */}
@@ -120,8 +116,11 @@ const NavBar = () => {
               horizontal: "center",
             }}
           >
+            <MenuItem className={classes.menuItem} onClick={handleClose} >
+              <Link className={classes.link} to="/fieldbook">Fieldbook</Link>
+            </MenuItem>
             <MenuItem className={classes.menuItem} onClick={handleClose}>
-              Fieldbook
+            <Link className={classes.link} to="/settings">Settings</Link>
             </MenuItem>
           </Menu>
         </Toolbar>
