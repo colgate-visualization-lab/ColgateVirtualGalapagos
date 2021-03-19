@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     minHeight: "500px",
     minWidth: "500px",
-    maxWidth: "1000px",
+    maxWidth: "1200px",
   },
 
   // to accomodate drawer
@@ -47,6 +47,15 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: -contentDrawerWidth,
     marginRight: -fieldBookDrawerWidth,
   },
+  slideContainer: {
+    position: "relative",
+    width: "100%",
+
+    // height is 100% of parent container minus the total height of the PREV and NEXT buttons (plus a little space)
+    height: `calc(100%  -  ${theme.typography.pxToRem(40)})`,
+    // backgroundColor: "lavender",
+  },
+
   contentShiftLeft: {
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.easeOut,
@@ -54,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: 0,
   },
+
   contentShiftRight: {
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.easeOut,
@@ -66,6 +76,19 @@ const useStyles = makeStyles((theme) => ({
 // Grid Outer Container Component
 const GridContainer = (props) => (
   <Grid {...props} container spacing={0} direction="row" justify="center" />
+);
+
+// Slide Content Container Component - i.e. everything above the
+//  PREV/NEXT buttons and below the navbar
+const SlideContainer = (props) => (
+  <Grid
+    item
+    xs={12}
+    container
+    justify="center"
+    alignItems="center"
+    {...props}
+  />
 );
 
 function ModuleContainer(props) {
@@ -114,7 +137,9 @@ function ModuleContainer(props) {
           [classes.contentShiftRight]: fieldBookDrawerOpen,
         })}
       >
-        <MainContent content={content} />
+        <SlideContainer className={classes.slideContainer}>
+          <MainContent content={content} />
+        </SlideContainer>
         <ControlButtons {...controlButtonProps} />
       </GridContainer>
       <FieldBookDrawer
