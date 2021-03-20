@@ -42,17 +42,9 @@ const useStyles = makeStyles((theme) => ({
 function MainContent({ content }) {
   const classes = useStyles();
   if (content.type === "image") {
-    return (
-      <>
-        <img src={content.url} className={`iguana ${classes.img}`} />
-      </>
-    );
+    return <img src={content.url} className={`iguana ${classes.img}`} />;
   } else if (content.type === "video") {
-    return (
-      <>
-        <video src={content.url} className={classes.video} controls />
-      </>
-    );
+    return <video src={content.url} className={classes.video} controls />;
   } else if (content.type === "video360") {
     return (
       <>
@@ -61,11 +53,7 @@ function MainContent({ content }) {
       </>
     );
   } else if (content.type === "interactive_image") {
-    return (
-      <>
-        <IguanaSlide15 classes={classes} content={content} />
-      </>
-    );
+    return <IguanaSlide15 classes={classes} content={content} />;
   } else if (content.type === "image_comparison") {
     return (
       <>
@@ -86,11 +74,7 @@ function MainContent({ content }) {
       </>
     );
   } else if (content.type === "slide3InteractiveVideo") {
-    return (
-      <>
-        <IguanaSlide3 content={content} imgClass={classes.img} />
-      </>
-    );
+    return <IguanaSlide3 content={content} imgClass={classes.img} />;
   } else if (content.type === "dnaInteractiveActivity") {
     return (
       <>
@@ -106,11 +90,7 @@ function MainContent({ content }) {
       </>
     );
   } else {
-    return (
-      <>
-        <h1>THIS SLIDE HASN'T BEEN CREATED YET</h1>
-      </>
-    );
+    return <h1>THIS SLIDE HASN'T BEEN CREATED YET</h1>;
   }
 }
 

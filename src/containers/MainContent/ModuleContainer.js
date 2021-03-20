@@ -14,6 +14,7 @@ import MainContent from "./MainContent";
 
 const contentDrawerWidth = 240;
 const fieldBookDrawerWidth = 400;
+const marginWhenCollapsed = 48;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     minHeight: "500px",
     minWidth: "500px",
-    maxWidth: "1200px",
+    maxWidth: "1280px",
   },
 
   // to accomodate drawer
@@ -44,8 +45,8 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -contentDrawerWidth,
-    marginRight: -fieldBookDrawerWidth,
+    marginLeft: -contentDrawerWidth + marginWhenCollapsed,
+    marginRight: -fieldBookDrawerWidth + marginWhenCollapsed,
   },
   slideContainer: {
     position: "relative",
@@ -78,8 +79,8 @@ const GridContainer = (props) => (
   <Grid {...props} container spacing={0} direction="row" justify="center" />
 );
 
-// Slide Content Container Component - i.e. everything above the
-//  PREV/NEXT buttons and below the navbar
+// Slide Content Container Component - holds slide-specific content
+// the videos, images, 360s, and any other content
 const SlideContainer = (props) => (
   <Grid
     item
