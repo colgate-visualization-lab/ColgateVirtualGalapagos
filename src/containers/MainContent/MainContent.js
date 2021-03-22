@@ -8,8 +8,9 @@ import IguanaSlide8 from "../../components/IguanaSlide8";
 import IguanaSlide12 from "../IguanaSlide12";
 import IguanaSlide15 from "../IguanaSlide15/IguanaSlide15";
 import IguanaSlide17 from "../IguanaSlide17";
-// import classes from "./MainContent.css";
-import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
+// import classes from "./MainContent.css";\
+import AudioPlayer from "../AudioPlayer";
+// import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 
 const useStyles = makeStyles((theme) => ({
   //  CONTENT CONTAINER STYLING  - container that surrounds
@@ -77,11 +78,12 @@ function MainContent({ content }) {
   } else if (content.type === "video360") {
     return (
       <>
-        <AudioPlayerHandler src={content.audioSrc} />
+        {/* <AudioPlayerHandler src={content.audioSrc} /> */}
 
         <SlideContainer className={classes.contentContainer}>
           <Iframe className={classes.iframe360} src={content.url} />
         </SlideContainer>
+        <AudioPlayer src={content.audioSrc} />
       </>
     );
   } else if (content.type === "interactive_image") {
@@ -95,11 +97,12 @@ function MainContent({ content }) {
   } else if (content.type === "image_comparison") {
     return (
       <>
-        <AudioPlayerHandler src={content.audioSrc} />
+        {/* <AudioPlayerHandler src={content.audioSrc} /> */}
 
         <SlideContainer className={classes.contentContainer}>
           <IguanaSlide8 content={content} />
         </SlideContainer>
+        <AudioPlayer src={content.audioSrc} />
         {/* <SlideContainer xs={6} className={classes.contentContainer}>
           <IguanaSlide8 url={content.url1} popupText={content.landIguanaText} />
         </SlideContainer>
@@ -114,7 +117,7 @@ function MainContent({ content }) {
   } else if (content.type === "360_comparison") {
     return (
       <>
-        <AudioPlayerHandler src={content.audioSrc} />
+        {/* <AudioPlayerHandler src={content.audioSrc} /> */}
 
         <SlideContainer xs={6} className={classes.contentContainer}>
           <Iframe src={content.url1} className={classes.iframe360} />
@@ -123,6 +126,7 @@ function MainContent({ content }) {
         <SlideContainer xs={6} className={classes.contentContainer}>
           <Iframe src={content.url2} className={classes.iframe360} />
         </SlideContainer>
+        <AudioPlayer src={content.audioSrc} />
       </>
     );
   } else if (content.type === "slide3InteractiveVideo") {
@@ -136,11 +140,12 @@ function MainContent({ content }) {
   } else if (content.type === "dnaInteractiveActivity") {
     return (
       <>
-        <AudioPlayerHandler src={content.audioSrc} />
+        {/* <AudioPlayerHandler src={content.audioSrc} /> */}
 
         <SlideContainer className={classes.contentContainer}>
           <IguanaSlide17 content={content} />
         </SlideContainer>
+        <AudioPlayer src={content.audioSrc} />
       </>
     );
   } else if (content.type === "Slide12DnDInteractive") {
@@ -151,6 +156,7 @@ function MainContent({ content }) {
         <SlideContainer className={classes.contentContainer}>
           <IguanaSlide12 content={content} />
         </SlideContainer>
+        <AudioPlayer src={content.audioSrc} />
       </>
     );
   } else {
