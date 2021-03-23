@@ -1,27 +1,30 @@
 import React from "react";
-import AudioPlayer from "react-h5-audio-player";
-import "style-loader!css-loader!react-h5-audio-player/lib/styles.css";
 import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/styles";
+import ReactAudioPlayer from "react-audio-player";
 
-// import 'react-h5-audio-player/lib/styles.less' Use LESS
-// import 'react-h5-audio-player/src/styles.scss' Use SASS
+const useStyles = makeStyles((theme) => ({
+  player: {
+    width: "100%",
 
-const Player = ({ src }) => (
-  <Grid item xs={12}>
-    <AudioPlayer
-      autoPlay
-      src={src}
-      onPlay={(e) => console.log("onPlay")}
-      // other props here
-    />
-  </Grid>
-);
+    color: "red",
+    zIndex: 400,
+    borderRadius: 0,
+  },
+}));
+
+const Player = ({ src }) => {
+  const classes = useStyles();
+  return (
+    <Grid container item xs={12}>
+      <ReactAudioPlayer
+        className={classes.player}
+        src={src}
+        autoPlay={false}
+        controls
+      />
+    </Grid>
+  );
+};
 
 export default Player;
-
-// import React from "react";
-// import ReactAudioPlayer from "react-audio-player";
-
-// const Player = ({ src }) => <ReactAudioPlayer src={src} autoPlay controls />;
-
-// export default Player;

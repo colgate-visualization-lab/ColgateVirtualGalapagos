@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "337.5px",
     // padding: theme.spacing(2, 0),
     margin: theme.spacing(2),
+    zIndex: 400,
   },
   dropTargetDiv: {
     position: "absolute",
@@ -49,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     width: "100%",
     height: "100%",
+    zIndex: 400,
   },
   backgroundImg: {
     maxWidth: "100%",
