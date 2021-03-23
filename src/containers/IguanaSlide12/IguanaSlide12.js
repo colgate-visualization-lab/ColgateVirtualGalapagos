@@ -8,7 +8,7 @@ import Slide12Header from "./Slide12Header";
 import PlainTabs from "./PlainTabs";
 // import DrawArea from "../DrawArea";
 import DrawArea from "../DrawAreaAlternate";
-import PhyloTreeTemplate from "./PhyloTreeTemplate";
+import PhyloTreeDnD from "../PhyloTreeDnD";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,7 +47,7 @@ const IguanaSlide12 = ({ content }) => {
               handleTabChange={(index) => setTabIndex(index)}
             />
           ) : (
-            <PhyloTreeTemplate
+            <PhyloTreeDnD
               content={content}
               tabIndex={tabIndex}
               handleTabChange={(index) => setTabIndex(index)}

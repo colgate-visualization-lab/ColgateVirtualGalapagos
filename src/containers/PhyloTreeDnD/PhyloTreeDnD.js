@@ -11,7 +11,7 @@ import update from "immutability-helper";
 
 import DropTarget from "./DropTarget";
 import IguanaBox from "./IguanaBox";
-import Slide12Header from "./Slide12Header";
+import Slide12Header from "../IguanaSlide12/Slide12Header";
 
 import { Slide12Context, Box } from "./utils";
 
@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PhyloTreeTemplate = ({ content, tabIndex, handleTabChange }) => {
+const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
   const [undraggedBoxes, setUndraggedBoxes] = useState([
     "Marine Iguana",
     "Green Iguana",
@@ -264,4 +264,4 @@ const PhyloTreeTemplate = ({ content, tabIndex, handleTabChange }) => {
   );
 };
 
-export default PhyloTreeTemplate;
+export default PhyloTreeDnD;
