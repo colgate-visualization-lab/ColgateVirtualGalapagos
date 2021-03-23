@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
 
     // height is 100% of parent container minus the total height of the PREV and NEXT buttons (plus a little space)
-    height: `calc(100%  -  ${theme.typography.pxToRem(40)})`,
+    // height: `calc(100%  -  ${theme.typography.pxToRem(40)})`,
     // backgroundColor: "lavender",
   },
 
@@ -83,7 +83,7 @@ function MainContent({ content }) {
         <SlideContainer className={classes.contentContainer}>
           <Iframe className={classes.iframe360} src={content.url} />
         </SlideContainer>
-        <AudioPlayer src={content.audioSrc} />
+        {/* <AudioPlayer src={content.audioSrc} /> */}
       </>
     );
   } else if (content.type === "interactive_image") {
@@ -102,7 +102,7 @@ function MainContent({ content }) {
         <SlideContainer className={classes.contentContainer}>
           <IguanaSlide8 content={content} />
         </SlideContainer>
-        <AudioPlayer src={content.audioSrc} />
+        {/* <AudioPlayer src={content.audioSrc} /> */}
         {/* <SlideContainer xs={6} className={classes.contentContainer}>
           <IguanaSlide8 url={content.url1} popupText={content.landIguanaText} />
         </SlideContainer>
@@ -126,7 +126,7 @@ function MainContent({ content }) {
         <SlideContainer xs={6} className={classes.contentContainer}>
           <Iframe src={content.url2} className={classes.iframe360} />
         </SlideContainer>
-        <AudioPlayer src={content.audioSrc} />
+        {/* <AudioPlayer src={content.audioSrc} /> */}
       </>
     );
   } else if (content.type === "slide3InteractiveVideo") {
@@ -145,7 +145,7 @@ function MainContent({ content }) {
         <SlideContainer className={classes.contentContainer}>
           <IguanaSlide17 content={content} />
         </SlideContainer>
-        <AudioPlayer src={content.audioSrc} />
+        {/* <AudioPlayer src={content.audioSrc} /> */}
       </>
     );
   } else if (content.type === "Slide12DnDInteractive") {
@@ -156,7 +156,7 @@ function MainContent({ content }) {
         <SlideContainer className={classes.contentContainer}>
           <IguanaSlide12 content={content} />
         </SlideContainer>
-        <AudioPlayer src={content.audioSrc} />
+        {/* <AudioPlayer src={content.audioSrc} /> */}
       </>
     );
   } else {

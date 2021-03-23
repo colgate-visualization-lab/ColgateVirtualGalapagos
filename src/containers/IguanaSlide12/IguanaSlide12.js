@@ -13,8 +13,8 @@ import PhyloTreeTemplate from "./PhyloTreeTemplate";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    position: "absolute",
-    top: "40px",
+    // position: "absolute",
+    // top: "40px",
   },
   item: {
     padding: 0,
