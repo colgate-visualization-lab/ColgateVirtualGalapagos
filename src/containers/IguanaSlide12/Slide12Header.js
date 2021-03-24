@@ -1,8 +1,6 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/tab";
 import Typography from "@material-ui/core/Typography";
 
 import PlainTabs from "./PlainTabs";
