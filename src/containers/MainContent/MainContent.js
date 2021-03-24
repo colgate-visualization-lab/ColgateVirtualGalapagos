@@ -8,9 +8,7 @@ import IguanaSlide8 from "../../components/IguanaSlide8";
 import IguanaSlide12 from "../IguanaSlide12";
 import IguanaSlide15 from "../IguanaSlide15/IguanaSlide15";
 import IguanaSlide17 from "../IguanaSlide17";
-// import classes from "./MainContent.css";\
-import AudioPlayer from "../AudioPlayer";
-// import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
+// import AudioPlayer from "../AudioPlayer";
 
 const useStyles = makeStyles((theme) => ({
   // VIDEO STYLING
@@ -49,7 +47,7 @@ function MainContent({ content }) {
   } else if (content.type === "video360") {
     return (
       <>
-        <AudioPlayerHandler src={content.audioSrc} />
+        {/* <AudioPlayer src={content.audioSrc} /> */}
         <Iframe className={classes.iframe360} src={content.url} />
       </>
     );
@@ -58,14 +56,14 @@ function MainContent({ content }) {
   } else if (content.type === "image_comparison") {
     return (
       <>
-        <AudioPlayerHandler src={content.audioSrc} />
+        {/* <AudioPlayer src={content.audioSrc} /> */}
         <IguanaSlide8 content={content} />
       </>
     );
   } else if (content.type === "360_comparison") {
     return (
       <>
-        <AudioPlayerHandler src={content.audioSrc} />
+        {/* <AudioPlayer src={content.audioSrc} /> */}
         <Grid item xs={6} style={{ height: "100%" }}>
           <Iframe src={content.url1} className={classes.iframe360} />
         </Grid>
@@ -79,14 +77,14 @@ function MainContent({ content }) {
   } else if (content.type === "dnaInteractiveActivity") {
     return (
       <>
-        <AudioPlayerHandler src={content.audioSrc} />
+        {/* <AudioPlayer src={content.audioSrc} /> */}
         <IguanaSlide17 content={content} />
       </>
     );
   } else if (content.type === "Slide12DnDInteractive") {
     return (
       <>
-        <AudioPlayerHandler src={content.audioSrc} />
+        {/* <AudioPlayer src={content.audioSrc} /> */}
         <IguanaSlide12 content={content} />
       </>
     );
