@@ -11,7 +11,7 @@ import FontSizeOption from "./FontSizeOption";
 import TextAlignOption from "./TextAlignOption";
 import StrokeWidthOption from "./StrokeWidthOption";
 import ElementActions from "./ElementActions";
-import { unpackElementDetails } from "../../containers/DrawAreaAlternate/utils";
+import { unpackElementDetails } from "../../containers/DrawArea/utils";
 
 const useStyles = makeStyles((theme) => ({
   root: {

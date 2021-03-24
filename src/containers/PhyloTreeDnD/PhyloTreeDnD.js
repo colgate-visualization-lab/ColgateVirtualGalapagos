@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import Grow from "@material-ui/core/Grow";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import CancelIcon from "@material-ui/icons/Cancel";
@@ -40,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: "540px",
     minWidth: "600px",
     minHeight: "337.5px",
-    // padding: theme.spacing(2, 0),
     margin: theme.spacing(2),
     zIndex: 400,
   },
