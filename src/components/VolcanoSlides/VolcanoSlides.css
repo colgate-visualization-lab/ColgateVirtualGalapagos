@@ -36,6 +36,14 @@
 .invisible {
   visibility: hidden;
 }
+.audioPlayer {
+  position: absolute;
+  left: 10%;
+  top: 16px;
+}
+.audioPlayer:focus {
+  outline: 0;
+}
 /* Slide 6 */
 .magnifying {
   position: absolute;
@@ -95,6 +103,15 @@
 .sliderDiv:focus{ 
     outline: 0;
 }
+/* Slide 9 */
+.hypothesis{
+  position: absolute;
+    z-index: 1;
+    top: 55%;
+    left: 7%;
+    font-size: 24px;
+    width: 15%;
+}
 /* Popup CSS */
 .dot {
     color: white;
@@ -149,6 +166,12 @@
     z-index: 1;
     top: 55%;
     left: 45%;
+  }
+  .dothypothesis {
+    position: absolute;
+    z-index: 1;
+    top: 55%;
+    left: 25%;
   }
 /* Drag and Drop CSS */
   .wordBank {
