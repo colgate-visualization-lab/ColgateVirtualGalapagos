@@ -117,7 +117,7 @@ const data = [
   {
     id: "12",
     title: "Iguana_PhyloTree05",
-    type: "Slide12DnDInteractive",
+    type: "PhyloTreeDrawingSlide",
     audioSrc: {
       part1:
         "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide12_1.m4a",
@@ -128,9 +128,6 @@ const data = [
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide12DnDBackgroundSquare.png",
     phyloTreeData: slide12PhyloTreeData,
     drawAreaData: slide12DrawAreaData,
-    // backgroundUrl:
-    //   "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide20DnDBackgroundWithText.png",
-    // phyloTreeData: slide20PhyloTreeData,
   },
   {
     id: "13",
@@ -196,10 +193,9 @@ const data = [
   {
     id: "20",
     title: "Iguana_PhyloTree06",
+    type: "PhyloTreeDrawingSlide",
     audioSrc:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide20.wav",
-    backgroundUrl:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide20DnDBackground.png",
     backgroundUrl:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide20DnDBackgroundWithText.png",
     phyloTreeData: slide20PhyloTreeData,

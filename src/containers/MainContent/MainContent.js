@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/styles";
 
 import IguanaSlide3 from "../IguanaSlide3";
 import IguanaSlide8 from "../../components/IguanaSlide8";
-import IguanaSlide12 from "../IguanaSlide12";
+import PhyloTreeSlide from "../PhyloTreeSlide";
 import IguanaSlide15 from "../IguanaSlide15/IguanaSlide15";
 import IguanaSlide17 from "../IguanaSlide17";
 // import AudioPlayer from "../AudioPlayer";
@@ -81,11 +81,11 @@ function MainContent({ content }) {
         <IguanaSlide17 content={content} />
       </>
     );
-  } else if (content.type === "Slide12DnDInteractive") {
+  } else if (content.type === "PhyloTreeDrawingSlide") {
     return (
       <>
         {/* <AudioPlayer src={content.audioSrc} /> */}
-        <IguanaSlide12 content={content} />
+        <PhyloTreeSlide content={content} />
       </>
     );
   } else {

@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Drawing from "./Drawing";
 import DrawAreaToolbar from "./DrawAreaToolbar";
 import Options from "../../components/DrawAreaOptions";
-import Slide12Header from "../IguanaSlide12/Slide12Header";
+import PhyloTreeHeader from "../PhyloTreeHeader";
 import { unpackElementDetails } from "./utils";
 
 const relativeCoordsForEvent = (e, drawAreaRef) => {
@@ -372,7 +372,6 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   const [focusedElement, setFocusedElement] = useState(null);
   const [action, setAction] = useState("idle");
   const [selectedTool, setSelectedTool] = useState("line");
-  
 
   const handleMouseDown = (e) => {
     let updatedElements = clearSelectedState(elements);
@@ -491,7 +490,7 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   return (
     <Grid container spacing={1} className={classes.root}>
       <Grid item xs={12}>
-        <Slide12Header
+        <PhyloTreeHeader
           tabIndex={tabIndex}
           handleTabChange={handleTabChange}
           header="Draw a phylogenetic tree on the canvas"
@@ -500,7 +499,7 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
             handleToolChange={handleToolChange}
             selected={selectedTool}
           />
-        </Slide12Header>
+        </PhyloTreeHeader>
       </Grid>
       <Grid item xs={12}>
         <div

@@ -17,10 +17,8 @@ const useStyles = makeStyles(() => ({
     transform: "translate(0, -50%)",
     width: ({ width }) => width,
     height: ({ height }) => height,
-    background: "rgba(255, 0, 0, 0.3)",
   },
   checkContainer: {
-    background: "rgba(255, 0, 255, 0.3)",
     position: "absolute",
     top: ({ containerTop }) => containerTop,
     left: ({ left }) => left,
