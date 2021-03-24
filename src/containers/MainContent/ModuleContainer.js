@@ -11,6 +11,7 @@ import ControlButtons from "../ControlButtons/ControlButtons";
 import SlideContentDrawer from "../SlideContentDrawer";
 import FieldBookDrawer from "../FieldBookDrawer";
 import MainContent from "./MainContent";
+import AudioPlayer from "../AudioPlayer";
 
 const contentDrawerWidth = 240;
 const fieldBookDrawerWidth = 400;
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
     boxSizing: "border-box",
-    overflow: "hidden",
+    // overflow: "hidden",
     minHeight: "500px",
     minWidth: "500px",
     maxWidth: "1280px",
@@ -62,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    marginLeft: 0,
+    marginLeft: baseContentMargin,
   },
 
   contentShiftRight: {
@@ -70,13 +71,13 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    marginRight: 0,
+    marginRight: baseContentMargin,
   },
 }));
 
 // Grid Outer Container Component
 const GridContainer = (props) => (
-  <Grid {...props} container spacing={0} direction="row" justify="center" />
+  <Grid {...props} container spacing={1} direction="row" justify="center" />
 );
 
 // Slide Content Container Component - holds slide-specific content
@@ -123,7 +124,7 @@ function ModuleContainer(props) {
   };
 
   const content = data[slideId - 1];
-
+  // console.log(content.audioSrc);
   return (
     <div className={classes.root}>
       <SlideContentDrawer

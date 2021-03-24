@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import Grow from "@material-ui/core/Grow";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import CancelIcon from "@material-ui/icons/Cancel";
@@ -11,7 +10,7 @@ import update from "immutability-helper";
 
 import DropTarget from "./DropTarget";
 import IguanaBox from "./IguanaBox";
-import Slide12Header from "./Slide12Header";
+import Slide12Header from "../IguanaSlide12/Slide12Header";
 
 import { Slide12Context, Box } from "./utils";
 
@@ -40,8 +39,8 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: "540px",
     minWidth: "600px",
     minHeight: "337.5px",
-    // padding: theme.spacing(2, 0),
     margin: theme.spacing(2),
+    zIndex: 400,
   },
   dropTargetDiv: {
     position: "absolute",
@@ -49,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     width: "100%",
     height: "100%",
+    zIndex: 400,
   },
   backgroundImg: {
     maxWidth: "100%",
@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PhyloTreeTemplate = ({ content, tabIndex, handleTabChange }) => {
+const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
   const [undraggedBoxes, setUndraggedBoxes] = useState([
     "Marine Iguana",
     "Green Iguana",
@@ -262,4 +262,4 @@ const PhyloTreeTemplate = ({ content, tabIndex, handleTabChange }) => {
   );
 };
 
-export default PhyloTreeTemplate;
+export default PhyloTreeDnD;

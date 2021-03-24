@@ -8,8 +8,9 @@ import IguanaSlide8 from "../../components/IguanaSlide8";
 import IguanaSlide12 from "../IguanaSlide12";
 import IguanaSlide15 from "../IguanaSlide15/IguanaSlide15";
 import IguanaSlide17 from "../IguanaSlide17";
-// import classes from "./MainContent.css";
-import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
+// import classes from "./MainContent.css";\
+import AudioPlayer from "../AudioPlayer";
+// import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 
 const useStyles = makeStyles((theme) => ({
   // VIDEO STYLING

@@ -1,8 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
-import PencilLine from "./PencilLine";
-import StraightLine from "./StraightLine";
+import Line from "./Line";
+import Textbox from "./Textbox";
 
 const useStyles = makeStyles(() => ({
   drawing: {
@@ -10,36 +10,39 @@ const useStyles = makeStyles(() => ({
     width: "100%",
   },
 }));
-const Drawing = ({
-  pencilLines,
-  straightLines,
-  handleDelete,
-  handleSelect,
-}) => {
+
+const unpackElementDetails = (element) => {
+  return {
+    x1: element.get("x1"),
+    y1: element.get("y1"),
+    x2: element.get("x2"),
+    y2: element.get("y2"),
+    selected: element.get("selected"),
+    focused: element.get("focused"),
+    cursor: element.get("cursor"),
+    options: element.get("options"),
+  };
+};
+
+const Drawing = ({ elements }) => {
   const classes = useStyles();
 
+  const drawnElements = {
+    line: Line,
+    textbox: Textbox,
+  };
+
   return (
-    <svg className={classes.drawing} id="parentSvg">
-      {/* <Textbox position={{ x: 200, y: 100 }} text="anything I want it to be" /> */}
-      {pencilLines.map((line, index) => (
-        <PencilLine
-          key={index}
-          line={line}
-          index={index}
-          handleDelete={handleDelete}
-          handleSelect={handleSelect}
-        />
-      ))}
-      {straightLines.map((line, index) => (
-        <StraightLine
-          line={line}
-          key={index}
-          index={index}
-          handleDelete={handleDelete}
-          handleSelect={handleSelect}
-        />
-      ))}
-    </svg>
+    <>
+      <svg className={classes.drawing} id="parentSvg">
+        {elements.map((element, index) => {
+          const CurrentElement = drawnElements[element.get("type")];
+          return (
+            <CurrentElement key={index} {...unpackElementDetails(element)} />
+          );
+        })}
+      </svg>
+    </>
   );
 };
 

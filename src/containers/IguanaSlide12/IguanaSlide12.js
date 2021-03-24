@@ -1,20 +1,15 @@
 import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Slide12Header from "./Slide12Header";
-import PlainTabs from "./PlainTabs";
-// import DrawArea from "../DrawArea";
-import DrawArea from "../DrawAreaAlternate";
-import PhyloTreeTemplate from "./PhyloTreeTemplate";
+import DrawArea from "../DrawArea";
+import PhyloTreeDnD from "../PhyloTreeDnD";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    position: "absolute",
-    top: "40px",
   },
   item: {
     padding: 0,
@@ -47,7 +42,7 @@ const IguanaSlide12 = ({ content }) => {
               handleTabChange={(index) => setTabIndex(index)}
             />
           ) : (
-            <PhyloTreeTemplate
+            <PhyloTreeDnD
               content={content}
               tabIndex={tabIndex}
               handleTabChange={(index) => setTabIndex(index)}
