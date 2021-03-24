@@ -10,9 +10,9 @@ const useStyles = makeStyles((theme) => ({
   },
   iconContainer: {
     marginRight: theme.spacing(1),
-    fontSize: "1.1rem",
-    height: "1.8rem",
-    width: "1.7rem",
+    fontSize: "1.3rem",
+    height: "2rem",
+    width: "2rem",
     padding: "0.2rem",
   },
   selected: {
