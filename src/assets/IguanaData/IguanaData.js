@@ -1,6 +1,8 @@
 import { slide3Data } from "./slide3Data";
 import { slide15Data } from "./slide15Data";
 import { slide17Data } from "./slide17Data";
+import { slide12DrawAreaData, slide12PhyloTreeData } from "./slide12Data";
+import { slide20DrawAreaData, slide20PhyloTreeData } from "./slide20Data";
 
 const data = [
   {
@@ -107,6 +109,7 @@ const data = [
     id: "11",
     title: "Iguana_PhyloTree02",
     type: "video",
+
     url:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Video/IguanaPhyloTree.mp4", // will change to pull from server whiteboard
   },
@@ -115,8 +118,19 @@ const data = [
     id: "12",
     title: "Iguana_PhyloTree05",
     type: "Slide12DnDInteractive",
+    audioSrc: {
+      part1:
+        "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide12_1.m4a",
+      part2:
+        "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide12_2.m4a",
+    },
     backgroundUrl:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide12DnDBackgroundGreySquare.png",
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide12DnDBackgroundSquare.png",
+    phyloTreeData: slide12PhyloTreeData,
+    drawAreaData: slide12DrawAreaData,
+    // backgroundUrl:
+    //   "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide20DnDBackgroundWithText.png",
+    // phyloTreeData: slide20PhyloTreeData,
   },
   {
     id: "13",
@@ -182,7 +196,14 @@ const data = [
   {
     id: "20",
     title: "Iguana_PhyloTree06",
-    not_done: true,
+    audioSrc:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide20.wav",
+    backgroundUrl:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide20DnDBackground.png",
+    backgroundUrl:
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide20DnDBackgroundWithText.png",
+    phyloTreeData: slide20PhyloTreeData,
+    drawAreaData: slide20DrawAreaData,
   },
   {
     id: "21",
