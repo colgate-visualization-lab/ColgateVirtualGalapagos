@@ -10,7 +10,7 @@ import update from "immutability-helper";
 
 import DropTarget from "./DropTarget";
 import IguanaBox from "./IguanaBox";
-import Slide12Header from "../IguanaSlide12/Slide12Header";
+import PhyloTreeHeader from "../PhyloTreeHeader";
 
 import { Slide12Context, Box } from "./utils";
 
@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
 
 const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
   const {
-    type,
+    id,
     iguanaNames,
     iguanaNamesPlacement,
     imgDimensions,
@@ -136,7 +136,7 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
       setUndraggedBoxes([]);
     }, 200);
 
-    if (type === "Slide12DnDInteractive") {
+    if (id === "12") {
       const branchNames = getBranchNames();
       setTimeout(() => {
         setDraggedBoxes([
@@ -150,9 +150,10 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
       }, 500);
     } else {
       setTimeout(() => {
-        setDraggedBoxes(
-          iguanaNamesPlacement.map((box) => new Box(box, "Pink Iguana"))
-        );
+        setDraggedBoxes([
+          new Box([""], ""),
+          new Box(["Pink Iguana"], "Pink Iguana"),
+        ]);
       }, 500);
     }
   };
@@ -210,7 +211,7 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
     <DndProvider backend={HTML5Backend}>
       <Slide12Context.Provider value={resetCheck}>
         <div className={classes.root}>
-          <Slide12Header
+          <PhyloTreeHeader
             tabIndex={tabIndex}
             handleTabChange={handleTabChange}
             header="Create a phylogenetic tree by dragging the cards below to their correct positions"
@@ -222,7 +223,7 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
                 </Grow>
               ))}
             </div>
-          </Slide12Header>
+          </PhyloTreeHeader>
           <div className={classes.dropTargetContainer}>
             <img
               src={content.backgroundUrl}

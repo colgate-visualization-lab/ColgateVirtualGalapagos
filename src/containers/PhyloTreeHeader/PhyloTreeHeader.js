@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Slide12Header = ({ tabIndex, handleTabChange, header, children }) => {
+const PhyloTreeHeader = ({ tabIndex, handleTabChange, header, children }) => {
   const classes = useStyles();
   return (
     <Grid container className={classes.root}>
@@ -38,4 +38,4 @@ const Slide12Header = ({ tabIndex, handleTabChange, header, children }) => {
   );
 };
 
-export default Slide12Header;
+export default PhyloTreeHeader;
