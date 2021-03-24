@@ -37,8 +37,6 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     maxWidth: "960px",
     maxHeight: "540px",
-    minWidth: "600px",
-    minHeight: "337.5px",
     margin: theme.spacing(2),
     zIndex: 400,
   },
@@ -60,8 +58,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     width: "100%",
-    maxWidth: "960px",
-    minWidth: "600px",
     height: "auto",
     padding: theme.spacing(2, 0),
     margin: theme.spacing(3, 0, 0, 0),
@@ -78,17 +74,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
-  const [undraggedBoxes, setUndraggedBoxes] = useState([
-    "Marine Iguana",
-    "Green Iguana",
-    "Land Iguana",
-  ]);
-  const [draggedBoxes, setDraggedBoxes] = useState([
-    new Box(["Green Iguana"]),
-    new Box(["Marine Iguana", "Land Iguana"]),
-    new Box(["Marine Iguana", "Land Iguana"]),
-  ]);
+  const {
+    type,
+    iguanaNames,
+    iguanaNamesPlacement,
+    imgDimensions,
+    dropTargetDimensions,
+    dropTargets,
+  } = content.phyloTreeData;
 
+  const [undraggedBoxes, setUndraggedBoxes] = useState([...iguanaNames]);
+  const [draggedBoxes, setDraggedBoxes] = useState(
+    iguanaNamesPlacement.map((box) => new Box(box))
+  );
   const [checkTree, setCheckTree] = useState(false);
   const [completeTree, setCompleteTree] = useState(false);
 
@@ -113,6 +111,7 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
     }
     setUndraggedBoxes(newlyUndragged);
   };
+
   const updateDraggedBoxes = (dropppedName, index, currentBox) => {
     let newDraggedBoxes = draggedBoxes.map((box) => {
       let newBox = new Box(box.validNames);
@@ -133,20 +132,29 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
   const handleShowTree = () => {
     resetCheck();
     setCompleteTree(true);
-    const branchNames = getBranchNames();
     setTimeout(() => {
       setUndraggedBoxes([]);
     }, 200);
-    setTimeout(() => {
-      setDraggedBoxes([
-        new Box(["Green Iguana"], "Green Iguana"),
-        new Box(["Marine Iguana", "Land Iguana"], branchNames.topRightBranch),
-        new Box(
-          ["Marine Iguana", "Land Iguana"],
-          branchNames.bottomRightBranch
-        ),
-      ]);
-    }, 500);
+
+    if (type === "Slide12DnDInteractive") {
+      const branchNames = getBranchNames();
+      setTimeout(() => {
+        setDraggedBoxes([
+          new Box(["Green Iguana"], "Green Iguana"),
+          new Box(["Marine Iguana", "Land Iguana"], branchNames.topRightBranch),
+          new Box(
+            ["Marine Iguana", "Land Iguana"],
+            branchNames.bottomRightBranch
+          ),
+        ]);
+      }, 500);
+    } else {
+      setTimeout(() => {
+        setDraggedBoxes(
+          iguanaNamesPlacement.map((box) => new Box(box, "Pink Iguana"))
+        );
+      }, 500);
+    }
   };
 
   const getBranchNames = () => {
@@ -168,14 +176,10 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
   const handleResetTree = () => {
     resetCheck();
     setTimeout(() => {
-      setUndraggedBoxes(["Marine Iguana", "Green Iguana", "Land Iguana"]);
+      setUndraggedBoxes(iguanaNames);
     }, 500);
     setTimeout(() => {
-      setDraggedBoxes([
-        new Box(["Green Iguana"]),
-        new Box(["Marine Iguana", "Land Iguana"]),
-        new Box(["Marine Iguana", "Land Iguana"]),
-      ]);
+      setDraggedBoxes(iguanaNamesPlacement.map((box) => new Box(box)));
     }, 200);
   };
 
@@ -183,10 +187,13 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
     setCheckTree(false);
     setCompleteTree(false);
   };
+
   const DropTargetComponent = ({ index, ...props }) => (
     <DropTarget
       {...props}
       index={index}
+      imgDimensions={imgDimensions}
+      dropTargetDimensions={dropTargetDimensions}
       onDrop={handleDrop}
       placedName={draggedBoxes[index].placedName}
     >
@@ -222,9 +229,14 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
               className={classes.backgroundImg}
             />
             <div className={classes.dropTargetDiv}>
-              <DropTargetComponent top={270} left={60} index={0} />
-              <DropTargetComponent top={135} left={736} index={1} />
-              <DropTargetComponent top={405} left={736} index={2} />
+              {dropTargets.map(({ top, left }, index) => (
+                <DropTargetComponent
+                  key={index}
+                  top={top}
+                  left={left}
+                  index={index}
+                />
+              ))}
             </div>
           </div>
           <div className={classes.buttons}>

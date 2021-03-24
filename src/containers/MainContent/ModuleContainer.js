@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/styles";
 import clsx from "clsx";
 
 // import classes from "./MainContent.css";
-import data from "../../components/IguanaData/IguanaData.js";
+import data from "../../assets/IguanaData/IguanaData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 import ControlButtons from "../ControlButtons/ControlButtons";
 import SlideContentDrawer from "../SlideContentDrawer";
@@ -15,7 +15,7 @@ import AudioPlayer from "../AudioPlayer";
 
 const contentDrawerWidth = 240;
 const fieldBookDrawerWidth = 400;
-const marginWhenCollapsed = 48;
+const baseContentMargin = 48;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,8 +46,8 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -contentDrawerWidth + marginWhenCollapsed,
-    marginRight: -fieldBookDrawerWidth + marginWhenCollapsed,
+    marginLeft: -contentDrawerWidth + baseContentMargin,
+    marginRight: -fieldBookDrawerWidth + baseContentMargin,
   },
   slideContainer: {
     position: "relative",
@@ -142,6 +142,7 @@ function ModuleContainer(props) {
         <SlideContainer className={classes.slideContainer}>
           <MainContent content={content} />
         </SlideContainer>
+        {"audioSrc" in content ? <AudioPlayer src={content.audioSrc} /> : null}
         <ControlButtons {...controlButtonProps} />
       </GridContainer>
       <FieldBookDrawer
