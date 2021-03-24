@@ -52,6 +52,9 @@ export default function Test() {
         else if (id == "8optional2") {
             setSlideChange("8optional1")
         }
+        else if (id == "21wrong") {
+            setSlideChange(21)
+        }
         else {
             setSlideChange(path)
         }
@@ -103,25 +106,34 @@ export default function Test() {
                         onChange={handleDropdownChange}
                     > 
                         <option value="" disabled >Slide Menu</option>
-                        <option value="0" >Intro Slide</option>
-                        <option value="1" >Slide 1 </option>
-                        <option value="2" >Slide 2 </option>
-                        <option value="3" >Slide 3 </option>
-                        <option value="4" >Slide 4 </option>
-                        <option value="5" >Slide 5 </option>
-                        <option value="6" >Slide 6 </option>
-                        <option value="6optional" >6 optional</option>
-                        <option value="7" >Slide 7 </option>
-                        <option value="8" >Slide 8 </option>
-                        <option value="8optional1" >8optional1</option>
-                        <option value="8optional2" >8optional2</option>
-                        <option value="9" >Slide 9 </option>
-                        <option value="10">Slide 10</option>
-                        <option value="11">Slide 11</option>
-                        <option value="12">Slide 12</option>
-                        <option value="13">Slide 13</option>
-                        <option value="14">Slide 14</option>
-                        <option value="15">Slide 15</option>
+                        <option value="0" >Intro</option>
+                        <option value="1" >360 Video</option>
+                        <option value="2" >360 Video</option>
+                        <option value="3" >360 Video</option>
+                        <option value="4" >360 Video</option>
+                        <option value="5" >360 Video</option>
+                        <option value="6" >Magnifying</option>
+                        <option value="6optional" >Slider Compare</option>
+                        <option value="7" >350 Compare</option>
+                        <option value="8" >TerrainMap 3</option>
+                        <option value="8optional1" >Fernandina </option>
+                        <option value="8optional2" >Santa Cruz</option>
+                        <option value="9" >TerrainMap4</option>
+                        <option value="10">DnD 1</option>
+                        <option value="11">Ages 2</option>
+                        <option value="12">Other Volcanos</option>
+                        <option value="13">Tectonics vid</option>
+                        <option value="14">Plates 1</option>
+                        <option value="15">DnD 2</option>
+                        <option value="16">Plates 2</option>
+                        <option value="17">Plumes vid</option>
+                        <option value="18">South America</option>
+                        <option value="19">TerrainMap6</option>
+                        <option value="20">EruptionDates</option>
+                        <option value="21">Choose Plume</option>
+                        <option value="22">Plume Yes</option>
+                        <option value="23">Where Next</option>
+                        <option value="24">End</option>
                     </Select>
             </FormControl>
             <CSSTransition
@@ -137,7 +149,7 @@ export default function Test() {
                 > 
                 <VolcanoSlides id={id} setSlideChange={setSlideChange} />
             </CSSTransition>
-            <Button style={id == "6optional" || id == "8optional2" ? hidden : nextButton} 
+            <Button style={id == "6optional" || id == "8optional2" || id == "21" || id == "19" || id == "21wrong" ? hidden : nextButton} 
                 onClick={() => buttonHandler(nextSlide, "8optional2")} 
                 variant="contained" 
                 color="secondary">
