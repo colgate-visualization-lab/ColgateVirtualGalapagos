@@ -2,8 +2,9 @@ import React, { Component, Fragment } from "react";
 import MainContent from "../../containers/MainContent/MainContent";
 import ModuleContainer from "../../containers/MainContent";
 
-function IguanaModule(props) {
-  return <ModuleContainer {...props} />;
+export default function IguanaModule(props) {
+  return ( 
+    <ModuleContainer {...props} module={"iguana"} />
+  )
 }
 
-export default IguanaModule;
