@@ -334,8 +334,7 @@ export default function VolcanoSlides(props) {
     else if (props.id == 15) {
         return (
             <div>
-            <audio className={classes.audioPlayer} src={platesGame1} autoPlay controls controlsList="nodownload"/>
-                <DndLayout volcano10={true} />
+                This slide is not completed yet! You can listen to the audio tho :D
             </div>
         )
     }
