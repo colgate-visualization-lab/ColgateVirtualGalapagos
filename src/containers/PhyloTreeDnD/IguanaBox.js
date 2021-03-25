@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       padding: "0.1rem 0.4rem",
     },
-    backgroundColor: "rgb(207,207,207)",
     backgroundColor: "rgba(255, 255, 255, 1)",
     borderRadius: "0.3rem",
   },

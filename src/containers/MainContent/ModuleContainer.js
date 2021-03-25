@@ -6,7 +6,6 @@ import clsx from "clsx";
 
 // import classes from "./MainContent.css";
 import data from "../../assets/IguanaData/IguanaData.js";
-import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 import ControlButtons from "../ControlButtons/ControlButtons";
 import SlideContentDrawer from "../SlideContentDrawer";
 import FieldBookDrawer from "../FieldBookDrawer";
@@ -32,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
     boxSizing: "border-box",
-    // overflow: "hidden",
     minHeight: "500px",
     minWidth: "500px",
     maxWidth: "1280px",
@@ -55,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
 
     // height is 100% of parent container minus the total height of the PREV and NEXT buttons (plus a little space)
     height: `calc(100%  -  ${theme.typography.pxToRem(40)})`,
-    // backgroundColor: "lavender",
   },
 
   contentShiftLeft: {
@@ -94,8 +91,6 @@ const SlideContainer = (props) => (
 );
 
 function ModuleContainer(props) {
-  // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
-  // const [audioIsDone, setAudioIsDone] = useState(false);
   // we get current slide id from and use that to find the next and prev slide ids
   const classes = useStyles();
   const slideId = parseInt(props.match.params.slide_id || 1);
@@ -124,7 +119,6 @@ function ModuleContainer(props) {
   };
 
   const content = data[slideId - 1];
-  // console.log(content.audioSrc);
   return (
     <div className={classes.root}>
       <SlideContentDrawer
@@ -142,7 +136,7 @@ function ModuleContainer(props) {
         <SlideContainer className={classes.slideContainer}>
           <MainContent content={content} />
         </SlideContainer>
-        {"audioSrc" in content ? <AudioPlayer src={content.audioSrc} /> : null}
+        {/* {"audioSrc" in content ? <AudioPlayer src={content.audioSrc} /> : null} */}
         <ControlButtons {...controlButtonProps} />
       </GridContainer>
       <FieldBookDrawer

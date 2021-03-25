@@ -11,7 +11,6 @@ import update from "immutability-helper";
 import DropTarget from "./DropTarget";
 import IguanaBox from "./IguanaBox";
 import PhyloTreeHeader from "../PhyloTreeHeader";
-
 import { Slide12Context, Box } from "./utils";
 
 const useStyles = makeStyles((theme) => ({
@@ -36,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   dropTargetContainer: {
     position: "relative",
     maxWidth: "960px",
-    maxHeight: "540px",
+    maxHeight: "600px",
     margin: theme.spacing(2),
     zIndex: 400,
   },
@@ -75,7 +74,6 @@ const useStyles = makeStyles((theme) => ({
 
 const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
   const {
-    id,
     iguanaNames,
     iguanaNamesPlacement,
     imgDimensions,
@@ -135,8 +133,7 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
     setTimeout(() => {
       setUndraggedBoxes([]);
     }, 200);
-
-    if (id === "12") {
+    if (content.id === "12") {
       const branchNames = getBranchNames();
       setTimeout(() => {
         setDraggedBoxes([
