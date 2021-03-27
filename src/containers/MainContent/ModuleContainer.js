@@ -133,10 +133,10 @@ function ModuleContainer(props) {
           [classes.contentShiftRight]: fieldBookDrawerOpen,
         })}
       >
-        <SlideContainer className={classes.slideContainer}>
+        {/* <SlideContainer className={classes.slideContainer}>
           <MainContent content={content} />
-        </SlideContainer>
-        {/* {"audioSrc" in content ? <AudioPlayer src={content.audioSrc} /> : null} */}
+        </SlideContainer> */}
+        {"audioSrc" in content ? <AudioPlayer src={content.audioSrc} /> : null}
         <ControlButtons {...controlButtonProps} />
       </GridContainer>
       <FieldBookDrawer

@@ -8,13 +8,14 @@ import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 import Forward5Icon from "@material-ui/icons/Forward5";
 import Replay5Icon from "@material-ui/icons/Replay5";
 import VolumeUpIcon from "@material-ui/icons/VolumeUpOutlined";
-// import VolumeOffIcon from "@material-ui/icons/VolumeOffOutlined";
+import VolumeOffIcon from "@material-ui/icons/VolumeOffOutlined";
 // import VolumeMuteIcon from "@material-ui/icons/VolumeMuteOutlined";
 // import VolumeDownIcon from "@material-ui/icons/VolumeDownOutlined";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import FullscreenOutlinedIcon from "@material-ui/icons/FullscreenOutlined";
 // import FullscreenExitOutlinedIcon from '@material-ui/icons/FullscreenExitOutlined';
 import clsx from "clsx";
+import ReactHowler from "react-howler";
 
 import { makeStyles } from "@material-ui/styles";
 
@@ -33,16 +34,16 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
   },
-  section: {
+  controls: {
     display: "flex",
     flexDirection: "row",
     flexGrow: 1,
     alignItems: "center",
   },
-  section1: {
+  controlsLeft: {
     justifyContent: "flex-start",
   },
-  section2: {
+  controlsRight: {
     justifyContent: "flex-end",
   },
   progressBar: {
@@ -51,41 +52,81 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const VGAudioPlayer = ({ src }) => {
-  const [playing, setPlaying] = useState(false);
-  const [progress, setProgress] = useState(100);
-  const [volume, setVolume] = useState(50);
-  const classes = useStyles();
-  const audioRef = useRef(null);
-  // useEffect(() => {
-  //   console.log(audioRef.current.readyState);
-  // });
+const formatTime = (secs) => {
+  const minutes = Math.floor(secs / 60);
+  const seconds = Math.floor(secs % 60);
+  const formattedSecs = seconds < 10 ? `0${seconds}` : `${seconds}`;
+  return `${minutes}:${formattedSecs}`;
+};
 
-  const handleProgressChange = (event, newValue) => {
-    setProgress(newValue);
+const VGAudioPlayer = ({ src }) => {
+  const player = useRef(null);
+  const raf = useRef();
+  const [playing, setPlaying] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const [seek, setSeek] = useState(0.0);
+  const [isSeeking, setIsSeeking] = useState(false);
+  const [duration, setDuration] = useState(0.0);
+  const [muted, setMuted] = useState(false);
+  const [volume, setVolume] = useState(0.5);
+  const [rate, setRate] = useState(1);
+
+  useEffect(() => {
+    raf.current = requestAnimationFrame(renderSeekPos);
+    return () => cancelAnimationFrame(raf.current);
+  }, []);
+
+  const classes = useStyles();
+
+  const handleOnLoad = () => {
+    setLoaded(true);
+    console.log(player.current);
+    setDuration(player.current.duration());
   };
 
-  const handleLoadedMetadata = (event) => {
-    console.log("data");
-    console.log(event);
-    console.log(event.target.duration);
+  const handleOnEnd = () => {
+    setPlaying(false);
+    cancelAnimationFrame(raf.current);
+  };
+
+  const handlePlay = () => {
+    setPlaying((playing) => !playing);
+    renderSeekPos();
+  };
+
+  const handleSeek = (newValue) => {
+    setSeek(parseFloat(newValue));
+    player.current.seek(parseFloat(newValue));
+  };
+
+  const renderSeekPos = () => {
+    setSeek(player.current.seek());
+    raf.current = requestAnimationFrame(renderSeekPos);
+  };
+
+  const handleMute = () => {
+    setMuted((muted) => !muted);
   };
 
   return (
     <Grid container justify="center" item xs={12} className={classes.root}>
-      <audio
-        ref={audioRef}
+      <ReactHowler
+        ref={player}
         src={src}
-        preload="auto"
-        loop
-        onLoadedMetadata={handleLoadedMetadata}
+        playing={playing}
+        mute={muted}
+        onLoad={handleOnLoad}
+        onEnd={handleOnEnd}
       />
       <Grid container item xs={12}>
         <div className={classes.progressBarSection}>
           <div className={classes.progressBar}>
             <Slider
-              value={progress}
-              onChange={handleProgressChange}
+              min={0}
+              max={duration}
+              step={0.01}
+              value={seek}
+              onChange={handleSeek}
               aria-labelledby="continuous-slider"
             />
           </div>
@@ -93,49 +134,41 @@ const VGAudioPlayer = ({ src }) => {
       </Grid>
       <Grid item xs={12}>
         <div className={classes.controlsSection}>
-          <div className={clsx(classes.section1, classes.section)}>
+          <div className={clsx(classes.controlsLeft, classes.controls)}>
             <div>
-              <IconButton
-                color="primary"
-                onClick={() => {
-                  setPlaying(!playing);
-                }}
-              >
+              <IconButton color="primary" onClick={handlePlay}>
                 {playing ? (
-                  <PlayCircleOutlineIcon />
-                ) : (
                   <PauseCircleOutlineIcon />
+                ) : (
+                  <PlayCircleOutlineIcon />
                 )}
               </IconButton>
             </div>
             <div>
-              <IconButton color="primary">
+              <IconButton onClick={() => handleSeek(seek - 5)} color="primary">
                 <Replay5Icon />
               </IconButton>
             </div>
             <div>
-              <IconButton color="primary">
+              <IconButton onClick={() => handleSeek(seek + 5)} color="primary">
                 <Forward5Icon />
               </IconButton>
             </div>
             <div>
-              <Typography>00:00 / 01:40</Typography>
+              <Typography>
+                {formatTime(seek)} / {formatTime(duration)}
+              </Typography>
             </div>
           </div>
-          <div className={clsx(classes.section2, classes.section)}>
+          <div className={clsx(classes.controlsRight, classes.controls)}>
             <div>
-              <IconButton color="primary">
-                <VolumeUpIcon />
+              <IconButton onClick={handleMute} color="primary">
+                {!muted ? <VolumeUpIcon /> : <VolumeOffIcon />}
               </IconButton>
             </div>
             <div>
               <IconButton color="primary">
                 <SettingsOutlinedIcon />
-              </IconButton>
-            </div>
-            <div>
-              <IconButton color="primary">
-                <FullscreenOutlinedIcon />
               </IconButton>
             </div>
           </div>
