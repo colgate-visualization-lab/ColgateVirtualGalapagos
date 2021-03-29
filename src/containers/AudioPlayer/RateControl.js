@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import Slider from "@material-ui/core/Slider";
 import Popover from "@material-ui/core/Popover";
-import VolumeUpIcon from "@material-ui/icons/VolumeUpOutlined";
-import VolumeOffIcon from "@material-ui/icons/VolumeOffOutlined";
+import Button from "@material-ui/core/Button";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 import SpeedOutlinedIcon from "@material-ui/icons/SpeedOutlined";
 import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -15,20 +16,22 @@ const useStyles = makeStyles((theme) => {
     },
 
     sliderDiv: {
-      height: theme.typography.pxToRem(160),
-    },
-
-    popover: {
-      pointerEvents: "none",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
     },
 
     paper: {
-      padding: theme.spacing(1, 2),
+      padding: theme.spacing(1),
+      transform: "translate(0, -20%)!important",
+    },
+    selectedRate: {
+      color: "red",
     },
   };
 });
 
-const speedMarks = [
+const rates = [
   {
     value: 0.5,
     label: "0.5x",
@@ -63,7 +66,7 @@ function valuetext(value) {
   return `${value}x`;
 }
 
-const SpeedControl = ({ rate, handleRateChange }) => {
+const RateControl = ({ currentRate, handleRateChange }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const classes = useStyles();
 
@@ -77,15 +80,15 @@ const SpeedControl = ({ rate, handleRateChange }) => {
   };
   const slider = Boolean(anchorEl);
 
+  // console.log(rates.findIndex((rate) => rate.value === currentRate));
+
   return (
-    <div
-      onMouseEnter={handleShowVolumeSlider}
-      onMouseLeave={handleCloseVolumeSlider}
-    >
+    <div>
       <IconButton
         aria-owns={open ? "speed-popover" : undefined}
         aria-haspopup="true"
         color="primary"
+        onClick={handleShowVolumeSlider}
       >
         <SpeedOutlinedIcon />
       </IconButton>
@@ -109,22 +112,28 @@ const SpeedControl = ({ rate, handleRateChange }) => {
         disableRestoreFocus
       >
         <div className={classes.sliderDiv}>
-          <Slider
-            min={0.25}
-            max={2}
-            step={0.25}
-            marks={speedMarks}
+          <ButtonGroup
+            color="primary"
+            aria-label="speed control button group"
             orientation="vertical"
-            value={rate}
-            valueLabelDisplay="auto"
-            onChange={handleRateChange}
-            aria-labelledby="speed slider"
-            getAriaValueText={valuetext}
-          />
+            variant="text"
+          >
+            {rates.map((rate) => (
+              <Button
+                key={rate.value}
+                className={
+                  rate.value === currentRate ? classes.selectedRate : ""
+                }
+                onClick={(event) => handleRateChange(event, rate.value)}
+              >
+                {rate.label}
+              </Button>
+            ))}
+          </ButtonGroup>
         </div>
       </Popover>
     </div>
   );
 };
 
-export default SpeedControl;
+export default RateControl;
