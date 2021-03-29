@@ -51,8 +51,10 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     width: "100%",
 
-    // height is 100% of parent container minus the total height of the PREV and NEXT buttons (plus a little space)
-    height: `calc(100%  -  ${theme.typography.pxToRem(40)})`,
+    // height is 100% of parent container minus the total height of the
+    //  PREV and NEXT buttons and audio player(plus a little space)
+    height: ({ heightOffset }) =>
+      `calc(100%  -  ${theme.typography.pxToRem(heightOffset)})`,
   },
 
   contentShiftLeft: {
@@ -92,8 +94,12 @@ const SlideContainer = (props) => (
 
 function ModuleContainer(props) {
   // we get current slide id from and use that to find the next and prev slide ids
-  const classes = useStyles();
   const slideId = parseInt(props.match.params.slide_id || 1);
+  const content = data[slideId - 1];
+  const styleProps = {
+    heightOffset: "audioSrc" in content ? 150 : 60,
+  };
+  const classes = useStyles(styleProps);
   const prevSlide = `/iguana/${slideId === 1 ? 1 : slideId - 1}`;
   const nextSlide = `/iguana/${
     slideId + 1 > data.length ? slideId : slideId + 1
@@ -118,7 +124,6 @@ function ModuleContainer(props) {
     prevSlide: prevSlide,
   };
 
-  const content = data[slideId - 1];
   return (
     <div className={classes.root}>
       <SlideContentDrawer
@@ -133,9 +138,9 @@ function ModuleContainer(props) {
           [classes.contentShiftRight]: fieldBookDrawerOpen,
         })}
       >
-        {/* <SlideContainer className={classes.slideContainer}>
+        <SlideContainer className={classes.slideContainer}>
           <MainContent content={content} />
-        </SlideContainer> */}
+        </SlideContainer>
         {"audioSrc" in content ? <AudioPlayer src={content.audioSrc} /> : null}
         <ControlButtons {...controlButtonProps} />
       </GridContainer>
