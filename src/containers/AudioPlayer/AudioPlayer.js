@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: "90px",
     zIndex: 300,
-    marginTop: "300px",
   },
 
   controlsSection: {
@@ -23,12 +22,14 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
   },
+
   controls: {
     display: "flex",
     flexDirection: "row",
     flexGrow: 1,
     alignItems: "center",
   },
+
   controlsLeft: {
     justifyContent: "flex-start",
   },
