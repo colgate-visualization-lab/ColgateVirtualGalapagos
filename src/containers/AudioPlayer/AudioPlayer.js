@@ -9,7 +9,7 @@ import ProgressBar from "./ProgressBar";
 import ExtraControls from "./ExtraControls";
 import MainControls from "./MainControls";
 import TimeDisplay from "./TimeDisplay";
-import SpeedControl from "./SpeedControl";
+import RateControl from "./RateControl";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,7 +54,7 @@ const AudioPlayer = ({ src }) => {
   const [duration, setDuration] = useState(0.0);
   const [muted, setMuted] = useState(false);
   const [volume, setVolume] = useState(0.5);
-  const [rate, setRate] = useState(1);
+  const [rate, setRate] = useState(1.0);
 
   useEffect(() => {
     raf.current = requestAnimationFrame(renderSeekPos);
@@ -102,6 +102,7 @@ const AudioPlayer = ({ src }) => {
 
   const handleRateChange = (_, value) => {
     setRate(parseFloat(value));
+    player.current.howler.rate(parseFloat(value));
   };
 
   return (
@@ -141,7 +142,10 @@ const AudioPlayer = ({ src }) => {
               volume={volume}
               handleVolumeChange={handleVolumeChange}
             />
-            {/* <SpeedControl rate={rate} handleRateChange={handleRateChange} /> */}
+            <RateControl
+              currentRate={rate}
+              handleRateChange={handleRateChange}
+            />
           </div>
         </div>
       </Grid>
