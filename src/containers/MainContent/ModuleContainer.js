@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 // import classes from "./MainContent.css";
 import data from "../../components/IguanaData/IguanaData.js";
+import volcanodata from "../../components/VolcanoData/VolcanoData.js"
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 import ControlButtons from "../ControlButtons/ControlButtons";
 import SlideContentDrawer from "../SlideContentDrawer";
@@ -98,7 +99,37 @@ function ModuleContainer(props) {
   };
 
   const content = data[slideId - 1];
+  const volcanocontent = volcanodata[slideId -1];
 
+  if (props.module == "Volcano") {
+    return (
+      <div className={classes.root}>
+      <SlideContentDrawer
+        slideData={volcanodata}
+        contentDrawerOpen={contentDrawerOpen}
+        handleSlideChange={handleSlideChange}
+        handleContentDrawerToggle={handleContentDrawerToggle}
+      />
+      <GridContainer
+        className={clsx(classes.container, classes.content, {
+          [classes.contentShiftLeft]: contentDrawerOpen,
+          [classes.contentShiftRight]: fieldBookDrawerOpen,
+        })}
+      >
+        <MainContent content={volcanocontent} />
+
+        <ControlButtons {...controlButtonProps} />
+      </GridContainer>
+      <FieldBookDrawer
+        slideData={volcanodata}
+        contentDrawerOpen={fieldBookDrawerOpen}
+        handleSlideChange={handleSlideChange}
+        handleContentDrawerToggle={handleFieldBookDrawerToggle}
+      />
+    </div>
+    )
+  }
+  else if (props.module == "Iguana") {
   return (
     <div className={classes.root}>
       <SlideContentDrawer
@@ -125,6 +156,7 @@ function ModuleContainer(props) {
       />
     </div>
   );
+  }
 }
 ModuleContainer.propTypes = {};
 
