@@ -109,42 +109,13 @@ function ModuleContainer(props) {
     prevSlide: volcanoprevSlide,
   };
 
-  const content = data[slideId - 1];
+  const content = props.data[slideId - 1];
   const volcanocontent = volcanodata[slideId -1];
 
-  if (props.module == "Volcano") {
-    return (
-      <div className={classes.root}>
-      <SlideContentDrawer
-        slideData={volcanodata}
-        contentDrawerOpen={contentDrawerOpen}
-        handleSlideChange={handleSlideChange}
-        handleContentDrawerToggle={handleContentDrawerToggle}
-      />
-      <GridContainer
-        className={clsx(classes.container, classes.content, {
-          [classes.contentShiftLeft]: contentDrawerOpen,
-          [classes.contentShiftRight]: fieldBookDrawerOpen,
-        })}
-      >
-        <VolcanoSlides content={volcanocontent} />
-
-        <ControlButtons {...volcanocontrolButtonProps} />
-      </GridContainer>
-      <FieldBookDrawer
-        slideData={volcanodata}
-        contentDrawerOpen={fieldBookDrawerOpen}
-        handleSlideChange={handleSlideChange}
-        handleContentDrawerToggle={handleFieldBookDrawerToggle}
-      />
-    </div>
-    )
-  }
-  else if (props.module == "Iguana") {
   return (
     <div className={classes.root}>
       <SlideContentDrawer
-        slideData={data}
+        slideData={props.data}
         contentDrawerOpen={contentDrawerOpen}
         handleSlideChange={handleSlideChange}
         handleContentDrawerToggle={handleContentDrawerToggle}
@@ -167,7 +138,6 @@ function ModuleContainer(props) {
       />
     </div>
   );
-  }
 }
 ModuleContainer.propTypes = {};
 
