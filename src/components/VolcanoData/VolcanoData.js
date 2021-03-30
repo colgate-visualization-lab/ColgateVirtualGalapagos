@@ -5,54 +5,55 @@ import { slide17Data } from "../IguanaData/slide17Data";
 const iguanaData = [
   {
     id: "1",
-    title: "Iguana_Endemic01",
+    title: "Intro Video",
     type: "video",
     url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Video/IguanaModuleIntro.mp4", // change to pull from server later
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoModuleIntro.mp4", 
   },
   {
     id: "2",
-    title: "Iguana_Carried01",
-    type: "image",
+    title: "Caldara_Endtrail",
+    type: "video360",
+    audioSrc:
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration01.mp3",
     url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/SouthAmericaCoast.png",
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Caldara_Endtrail/index.htm",
   },
   {
     id: "3",
-    title: "Iguana_Carried02",
-    type: "slide3InteractiveVideo",
-    src:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Video/IguanaSlide3Intro.mp4",
-    imageSrc:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide3Intro.JPG",
-    interSrc:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide3Intro.JPG",
-    data: slide3Data,
+    title: "Caldara_Shotfive",
+    type: "video360",
+    audioSrc:
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration02.mp3",
+    url:
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Caldara_Shotfive/index.htm",
   },
   {
     id: "4",
-    title: "Iguana_Pumice01",
+    title: "Stillwater",
     type: "video360",
     audioSrc:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide4.wav",
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration03.mp3",
     url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/IguanaPath/", //360
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Stillwater/index.htm",
   },
   {
     id: "5",
-    title: "Iguana_Pumice02",
-    type: "video",
+    title: "Cactus_Final",
+    type: "video360",
+    audioSrc:
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration04.mp3",
     url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Video/IguanaPumiceCut.mp4", // will change to pull from server
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Cactus_Final/index.htm",
   },
   {
     id: "6",
-    title: "Iguana_Comparison01",
+    title: "PlazaCliff",
     type: "video360",
     audioSrc:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide6.wav",
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration05.mp3",
     url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/Shorewaves/",
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/PlazaCliff/index.htm",
   },
   {
     id: "7",
