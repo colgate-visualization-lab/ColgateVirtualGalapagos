@@ -86,11 +86,18 @@ class App extends Component {
               <Route path="/iguana" exact component={IguanaModule} />
               <Route path="/extras" exact component={ExtraSelect} />
               {/* route for iguana module slides */}
-			        <Route path="/volcano/:id" exact 
+			        {/* <Route path="/volcano/:id" exact 
                 render={(props) => <Test {...props}  />}
-              />
+              /> */}
 
-              <Route path="/iguana/:slide_id" component={ModuleContainer} />
+              <Route path="/iguana/:slide_id"  exact 
+                render={(props) => <ModuleContainer {...props} module={"Iguana"} />}
+              />
+              <Route path="/volcano/:slide_id"  exact 
+                render={(props) => <ModuleContainer {...props} module={"Volcano"} />}
+              />
+              
+              {/* path="/iguana/:slide_id" component={ModuleContainer} /> */}
    
 			  <Route path="/fieldbook" component={Fieldbook} />
 			  <Route path="/settings" component={Settings}/>
