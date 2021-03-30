@@ -12,6 +12,7 @@ import ControlButtons from "../ControlButtons/ControlButtons";
 import SlideContentDrawer from "../SlideContentDrawer";
 import FieldBookDrawer from "../FieldBookDrawer";
 import MainContent from "./MainContent";
+import VolcanoSlides from "../../components/VolcanoSlides/VolcanoSlides"
 
 const contentDrawerWidth = 240;
 const fieldBookDrawerWidth = 400;
@@ -126,7 +127,7 @@ function ModuleContainer(props) {
           [classes.contentShiftRight]: fieldBookDrawerOpen,
         })}
       >
-        <MainContent content={volcanocontent} />
+        <VolcanoSlides content={volcanocontent} />
 
         <ControlButtons {...volcanocontrolButtonProps} />
       </GridContainer>
