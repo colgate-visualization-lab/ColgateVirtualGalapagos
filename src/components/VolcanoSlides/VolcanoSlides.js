@@ -112,60 +112,60 @@ export default function VolcanoSlides(props) {
     if (props.content.id == 1) {
         return (
             <SlideContainer className={MUIclasses.contentContainer}>
-                <video className={classes.center} src={introVideo} autoPlay controls controlsList="nodownload" type="video/mp4"/> 
+                <video className={classes.center} src={props.content.url} autoPlay controls controlsList="nodownload" type="video/mp4"/> 
             </SlideContainer>
         )
     }
     else if (props.content.id == 2) {
         return (
-            <div>
-                <audio className={classes.audioPlayer} src={Exploration01} autoPlay controls controlsList="nodownload"/>
-                <IframeCompoment class={classes.vista} src={Vista}/>
-            </div>
+            <SlideContainer className={MUIclasses.contentContainer}>
+                {/* <audio className={classes.audioPlayer} src={props.content.audioSrc} autoPlay controls controlsList="nodownload"/> */}
+                <IframeCompoment class={classes.vista} src={props.content.url}/>
+            </SlideContainer>
         )
     }
-    else if (props.id == 2) {
+    else if (props.content.id == 3) {
         return (
-            <div>
-                <audio className={classes.audioPlayer} src={Exploration02} autoPlay controls controlsList="nodownload"/>
-                <IframeCompoment class={classes.vista} src={Vista2}/>
-            </div>
+            <SlideContainer className={MUIclasses.contentContainer}>
+                {/* <audio className={classes.audioPlayer} src={props.content.audioSrc} autoPlay controls controlsList="nodownload"/> */}
+                <IframeCompoment class={classes.vista} src={props.content.url}/>
+            </SlideContainer>
         )
     }
-    else if (props.id == 3) {
+    else if (props.content.id == 4) {
         return (
-            <div>
-                <audio className={classes.audioPlayer} src={Exploration03} autoPlay controls controlsList="nodownload"/>
-                <IframeCompoment class={classes.vista} src={Vista3}/>
-            </div>
+            <SlideContainer className={MUIclasses.contentContainer}>
+                {/* <audio className={classes.audioPlayer} src={props.content.audioSrc} autoPlay controls controlsList="nodownload"/> */}
+                <IframeCompoment class={classes.vista} src={props.content.url}/>
+            </SlideContainer>
         )
     }
-    else if (props.id == 4) {
+    else if (props.content.id == 5) {
         return (
-            <div>
-                <audio className={classes.audioPlayer} src={Exploration04} autoPlay controls controlsList="nodownload"/>
-                <IframeCompoment class={classes.vista} src={Vista4}/>
-            </div>
+            <SlideContainer className={MUIclasses.contentContainer}>
+                {/* <audio className={classes.audioPlayer} src={props.content.audioSrc} autoPlay controls controlsList="nodownload"/> */}
+                <IframeCompoment class={classes.vista} src={props.content.url}/>
+            </SlideContainer>
         )
     }
-    else if (props.id == 5) {
+    else if (props.content.id == 6) {
         return (
-            <div>
-                <audio className={classes.audioPlayer} src={Exploration04} autoPlay controls controlsList="nodownload"/>
-                <IframeCompoment class={classes.vista} src={Vista5}/>
-            </div>
+            <SlideContainer className={MUIclasses.contentContainer}>
+                {/* <audio className={classes.audioPlayer} src={props.content.audioSrc} autoPlay controls controlsList="nodownload"/> */}
+                <IframeCompoment class={classes.vista} src={props.content.url}/>
+            </SlideContainer>
         )
     }
-    else if (props.id == 6) {
+    else if (props.content.id == 7) {
         return (
-            <div>
+            <SlideContainer className={MUIclasses.contentContainer}>
                 <audio className={classes.audioPlayer} src={terrainMap2} autoPlay controls controlsList="nodownload"/>
                 <div className={classes.imgContainer}>
                     <img className={classes.imgFill} src={TerrainMap}/>
                     <div className={classes.hypothesis}>Click on the magnifying glass!</div>
                     <img className={classes.magnifying} onClick={() => props.setSlideChange("./6optional")} src={magnifyingGlass}/>
                 </div>
-            </div>
+            </SlideContainer>
         )
     }
     else if (props.id == "6optional") {
