@@ -78,6 +78,10 @@ function ModuleContainer(props) {
   const nextSlide = `/iguana/${
     slideId + 1 > data.length ? slideId : slideId + 1
   }`;
+  const volcanoprevSlide = `/volcano/${slideId === 1 ? 1 : slideId - 1}`;
+  const volcanonextSlide = `/volcano/${
+    slideId + 1 > data.length ? slideId : slideId + 1
+  }`;
   const [contentDrawerOpen, setContentDrawerOpen] = useState(false);
   const [fieldBookDrawerOpen, setFieldBookDrawerOpen] = useState(false);
 
@@ -96,6 +100,12 @@ function ModuleContainer(props) {
     hasNext: slideId < data.length,
     nextSlide: nextSlide,
     prevSlide: prevSlide,
+  };
+  const volcanocontrolButtonProps = {
+    hasPrev: slideId !== 1,
+    hasNext: slideId < volcanodata.length,
+    nextSlide: volcanonextSlide,
+    prevSlide: volcanoprevSlide,
   };
 
   const content = data[slideId - 1];
@@ -118,7 +128,7 @@ function ModuleContainer(props) {
       >
         <MainContent content={volcanocontent} />
 
-        <ControlButtons {...controlButtonProps} />
+        <ControlButtons {...volcanocontrolButtonProps} />
       </GridContainer>
       <FieldBookDrawer
         slideData={volcanodata}
