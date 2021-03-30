@@ -31,6 +31,7 @@ import Test from "./containers/Test/Test"
 import NewNote from "./containers/Backpack/Fieldbook/Note/NewNote"
 import Fieldbook from "./containers/Backpack/Fieldbook/Fieldbook"
 import Settings from "./components/Settings/Settings"
+import ModuleContainer from "./containers/MainContent";
 
 const VolcanoModule = lazy(() =>
   import("./containers/VolcanoModule/VolcanoModule")
@@ -89,20 +90,8 @@ class App extends Component {
                 render={(props) => <Test {...props}  />}
               />
 
-              <Route path="/iguana/:slide_id" component={IguanaModule} />
-              {/* Testing */}
-              <Route
-                path="/Volcano_0"
-                render={(props) => <VolcanoSlides {...props} slide={0} />}
-              />
-              <Route
-                path="/Volcano_1"
-                render={(props) => <VolcanoSlides {...props} slide={1} />}
-              />
-              <Route
-                path="/Volcano_2"
-                render={(props) => <VolcanoSlides {...props} slide={2} />}
-              />
+              <Route path="/iguana/:slide_id" component={ModuleContainer} />
+   
 			  <Route path="/fieldbook" component={Fieldbook} />
 			  <Route path="/settings" component={Settings}/>
 			  <Route path="/authorization" component={SignIn}/>
