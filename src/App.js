@@ -32,6 +32,8 @@ import NewNote from "./containers/Backpack/Fieldbook/Note/NewNote"
 import Fieldbook from "./containers/Backpack/Fieldbook/Fieldbook"
 import Settings from "./components/Settings/Settings"
 import ModuleContainer from "./containers/MainContent";
+import data from "./components/IguanaData/IguanaData.js";
+import volcanodata from "./components/VolcanoData/VolcanoData.js"
 
 const VolcanoModule = lazy(() =>
   import("./containers/VolcanoModule/VolcanoModule")
@@ -91,10 +93,10 @@ class App extends Component {
               /> */}
 
               <Route path="/iguana/:slide_id"  exact 
-                render={(props) => <ModuleContainer {...props} module={"Iguana"} />}
+                render={(props) => <ModuleContainer {...props} module={"iguana"} data={data} />}
               />
               <Route path="/volcano/:slide_id"  exact 
-                render={(props) => <ModuleContainer {...props} module={"Volcano"} />}
+                render={(props) => <ModuleContainer {...props} module={"volcano"} data={volcanodata} />}
               />
               
               {/* path="/iguana/:slide_id" component={ModuleContainer} /> */}
