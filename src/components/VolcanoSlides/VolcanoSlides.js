@@ -23,6 +23,8 @@ import MAP from "../../containers/VolcanoModule/ImageMap.js";
 import Button from '@material-ui/core/Button';
 import { SettingsEthernet } from '@material-ui/icons';
 import { Divider } from '@material-ui/core';
+import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/styles";
 
 export default function VolcanoSlides(props) {
 
@@ -45,7 +47,54 @@ export default function VolcanoSlides(props) {
 
     //Styles
     const popup = {margin: "auto", padding: "20px", background: "rgba(0, 0, 0, 0.762)", borderRadius: "5px", zIndex: "2", width: "auto", position: "absolute"}
+    const useStyles = makeStyles((theme) => ({
+        //  CONTENT CONTAINER STYLING  - container that surrounds
+        //   main content of the page - basically whatever's above the
+        //   PREV and NEXT buttons
+        contentContainer: {
+          position: "relative",
+          width: "100%",
+      
+          // height is 100% of parent container minus the total height of the PREV and NEXT buttons (plus a little space)
+          height: `calc(100%  -  ${theme.typography.pxToRem(40)})`,
+          // backgroundColor: "lavender",
+        },
+      
+        // VIDEO STYLING
+        video: {
+          minHeight: "400px",
+          minWidth: "400px",
+          width: "100%",
+          maxHeight: "100%",
+        },
+      
+        // IMAGE STYLING
+        img: {
+          objectFit: "contain",
+          maxHeight: "100%",
+          maxWidth: "100%",
+          minWidth: "360px",
+        },
+      
+        // 360 VIDEO STYLING
+        iframe360: {
+          width: "100%",
+          height: "100%",
+        },
+      }));
 
+    //Idk what this is 
+    const SlideContainer = (props) => (
+        <Grid
+          item
+          xs={10}
+          container
+          justify="center"
+          alignItems="center"
+          {...props}
+        />
+      );
+    const MUIclasses = useStyles();
     //Lifecycle
     useEffect(() => {
         if (props.id == 21) {
@@ -60,12 +109,14 @@ export default function VolcanoSlides(props) {
         }
     }, [props.id]);
 
-    if (props.id == 0) {
+    if (props.content.id == 1) {
         return (
-            <video className={classes.center} src={introVideo} autoPlay controls controlsList="nodownload" type="video/mp4"/> 
+            <SlideContainer className={MUIclasses.contentContainer}>
+                <video className={classes.center} src={introVideo} autoPlay controls controlsList="nodownload" type="video/mp4"/> 
+            </SlideContainer>
         )
     }
-    else if (props.id == 1) {
+    else if (props.content.id == 2) {
         return (
             <div>
                 <audio className={classes.audioPlayer} src={Exploration01} autoPlay controls controlsList="nodownload"/>
