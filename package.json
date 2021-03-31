@@ -57,6 +57,7 @@
     "immutability-helper": "^3.1.1",
     "immutable": "^4.0.0-rc.12",
     "jquery": "^3.5.1",
+    "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-audio-player": "^0.14.0",
