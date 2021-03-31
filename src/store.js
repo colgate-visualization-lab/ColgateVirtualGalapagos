@@ -3,6 +3,6 @@ import modulesReducer from "./slices/modulesSlice";
 
 export default configureStore({
   reducer: {
-    modulesReducer,
+    module: modulesReducer,
   },
 });

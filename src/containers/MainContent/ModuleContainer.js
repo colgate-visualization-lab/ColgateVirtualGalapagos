@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Iframe from "react-iframe";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/styles";
@@ -101,18 +101,19 @@ const SlideContainer = (props) => (
 
 function ModuleContainer(props) {
   const dispatch = useDispatch();
-  const moduleData = useSelector(selectSlide);
+  let moduleData = useSelector(selectSlide);
+  let status = useSelector(selectStatus);
   // we get current slide id from and use that to find the next and prev slide ids
   const slideId = parseInt(props.match.params.slide_id || 1);
 
-  React.useEffect(() => {
-    fetchData();
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(getModuleData("iguana"));
+    }
+    if (status === "moduleDataLoaded") {
+      dispatch(getSlideData(slideId));
+    }
   });
-
-  const fetchData = async () => {
-    await dispatch(getModuleData("iguana"));
-    await dispatch(getSlideData(slideId));
-  };
 
   const content = data[slideId - 1];
   const styleProps = {
@@ -142,7 +143,6 @@ function ModuleContainer(props) {
     nextSlide: nextSlide,
     prevSlide: prevSlide,
   };
-
   return (
     <div className={classes.root}>
       <SlideContentDrawer
@@ -160,7 +160,6 @@ function ModuleContainer(props) {
         <SlideContainer className={classes.slideContainer}>
           <MainContent content={content} />
         </SlideContainer>
-        {"audioSrc" in content ? <AudioPlayer src={content.audioSrc} /> : null}
         <ControlButtons {...controlButtonProps} />
       </GridContainer>
       <FieldBookDrawer
