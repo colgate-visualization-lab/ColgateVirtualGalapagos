@@ -83,7 +83,7 @@ export default function VolcanoSlides(props) {
         },
       }));
 
-    //Idk what this is 
+    //I use this otherwise the buttons are all messed up
     const SlideContainer = (props) => (
         <Grid
           item
@@ -109,54 +109,54 @@ export default function VolcanoSlides(props) {
         }
     }, [props.id]);
 
-    if (props.content.id == 1) {
+    if (props.data.id == 1) {
         return (
             <SlideContainer className={MUIclasses.contentContainer}>
-                <video className={classes.center} src={props.content.url} autoPlay controls controlsList="nodownload" type="video/mp4"/> 
+                <video className={classes.center} src={props.data.url} autoPlay controls controlsList="nodownload" type="video/mp4"/> 
             </SlideContainer>
         )
     }
-    else if (props.content.id == 2) {
+    else if (props.data.id == 2) {
         return (
             <SlideContainer className={MUIclasses.contentContainer}>
-                {/* <audio className={classes.audioPlayer} src={props.content.audioSrc} autoPlay controls controlsList="nodownload"/> */}
-                <IframeCompoment class={classes.vista} src={props.content.url}/>
+                {/* <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> */}
+                <IframeCompoment class={classes.vista} src={props.data.url}/>
             </SlideContainer>
         )
     }
-    else if (props.content.id == 3) {
+    else if (props.data.id == 3) {
         return (
             <SlideContainer className={MUIclasses.contentContainer}>
-                {/* <audio className={classes.audioPlayer} src={props.content.audioSrc} autoPlay controls controlsList="nodownload"/> */}
-                <IframeCompoment class={classes.vista} src={props.content.url}/>
+                {/* <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> */}
+                <IframeCompoment class={classes.vista} src={props.data.url}/>
             </SlideContainer>
         )
     }
-    else if (props.content.id == 4) {
+    else if (props.data.id == 4) {
         return (
             <SlideContainer className={MUIclasses.contentContainer}>
-                {/* <audio className={classes.audioPlayer} src={props.content.audioSrc} autoPlay controls controlsList="nodownload"/> */}
-                <IframeCompoment class={classes.vista} src={props.content.url}/>
+                {/* <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> */}
+                <IframeCompoment class={classes.vista} src={props.data.url}/>
             </SlideContainer>
         )
     }
-    else if (props.content.id == 5) {
+    else if (props.data.id == 5) {
         return (
             <SlideContainer className={MUIclasses.contentContainer}>
-                {/* <audio className={classes.audioPlayer} src={props.content.audioSrc} autoPlay controls controlsList="nodownload"/> */}
-                <IframeCompoment class={classes.vista} src={props.content.url}/>
+                {/* <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> */}
+                <IframeCompoment class={classes.vista} src={props.data.url}/>
             </SlideContainer>
         )
     }
-    else if (props.content.id == 6) {
+    else if (props.data.id == 6) {
         return (
             <SlideContainer className={MUIclasses.contentContainer}>
-                {/* <audio className={classes.audioPlayer} src={props.content.audioSrc} autoPlay controls controlsList="nodownload"/> */}
-                <IframeCompoment class={classes.vista} src={props.content.url}/>
+                {/* <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> */}
+                <IframeCompoment class={classes.vista} src={props.data.url}/>
             </SlideContainer>
         )
     }
-    else if (props.content.id == 7) {
+    else if (props.data.id == 7) {
         return (
             <SlideContainer className={MUIclasses.contentContainer}>
                 <audio className={classes.audioPlayer} src={terrainMap2} autoPlay controls controlsList="nodownload"/>

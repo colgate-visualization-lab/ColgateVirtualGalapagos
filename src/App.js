@@ -22,7 +22,7 @@ import SplashScreen from "./components/SplashScreen/SplashScreen";
 import Gallery from "./containers/Gallery/Gallery";
 import ModuleNav from "./components/ModuleNav/ModuleNav";
 import VolcanoLayout from "./containers/VolcanoLayout/VolcanoLayout";
-import IguanaModule from "./components/IguanaModule/IguanaModule";
+// import IguanaModule from "./components/IguanaModule/IguanaModule";
 import ExtraSelect from "./components/ExtraSelect/ExtraSelect";
 // New volcano Module
 import VolcanoSlides from "./components/VolcanoSlides/VolcanoSlides";
@@ -85,7 +85,7 @@ class App extends Component {
               <Route path="/volcanomod" exact component={VolcanoModule} />
               <Route path="/gallery" exact component={Gallery} />
               <Route path="/volcanolayout" exact component={VolcanoLayout} />
-              <Route path="/iguana" exact component={IguanaModule} />
+              {/* <Route path="/iguana" exact component={IguanaModule} /> */}
               <Route path="/extras" exact component={ExtraSelect} />
               {/* route for iguana module slides */}
 			        {/* <Route path="/volcano/:id" exact 
