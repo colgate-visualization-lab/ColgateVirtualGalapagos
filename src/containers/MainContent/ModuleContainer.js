@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   slideContainer: {
     position: "relative",
     width: "100%",
-
+    zIndex: 1,
     // height is 100% of parent container minus the total height of the
     //  PREV and NEXT buttons and audio player(plus a little space)
     height: ({ heightOffset }) =>
