@@ -3,6 +3,7 @@ import Iframe from "react-iframe";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/styles";
 import clsx from "clsx";
+import { useSelector, useDispatch } from "react-redux";
 
 // import classes from "./MainContent.css";
 import data from "../../assets/IguanaData/IguanaData.js";
@@ -11,6 +12,12 @@ import SlideContentDrawer from "../SlideContentDrawer";
 import FieldBookDrawer from "../FieldBookDrawer";
 import MainContent from "./MainContent";
 import AudioPlayer from "../AudioPlayer";
+import {
+  getModuleData,
+  getSlideData,
+  selectSlide,
+  selectStatus,
+} from "../../slices/modulesSlice";
 
 const contentDrawerWidth = 240;
 const fieldBookDrawerWidth = 400;
@@ -93,8 +100,20 @@ const SlideContainer = (props) => (
 );
 
 function ModuleContainer(props) {
+  const dispatch = useDispatch();
+  const moduleData = useSelector(selectSlide);
   // we get current slide id from and use that to find the next and prev slide ids
   const slideId = parseInt(props.match.params.slide_id || 1);
+
+  React.useEffect(() => {
+    fetchData();
+  });
+
+  const fetchData = async () => {
+    await dispatch(getModuleData("iguana"));
+    await dispatch(getSlideData(slideId));
+  };
+
   const content = data[slideId - 1];
   const styleProps = {
     heightOffset: "audioSrc" in content ? 150 : 60,
