@@ -1,15 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { modules } from "../api/db";
+import { loadState } from "./localStorage";
 
-const initialState = {
-  status: "idle", // could be loading,
-  id: null,
-  name: null,
-  slides: null,
-  progressData: {},
-  currentSlideId: null,
-  currentSlide: null,
-};
+const preLoadedState = loadState();
+
+const initialState = preLoadedState
+  ? preLoadedState.module
+  : {
+      status: "idle", // could be loading,
+      id: null,
+      name: null,
+      slides: null,
+      progressData: {},
+      currentSlideId: null,
+      currentSlide: null,
+    };
 
 export const slice = createSlice({
   name: "module",
@@ -37,8 +42,9 @@ export const slice = createSlice({
     },
 
     saveDrawing: (state, action) => {
-      console.log(state.currentSlide);
-      state.currentSlide.savedData.elements = action.payload;
+      const newSavedData = { elements: action.payload };
+      state.slides[state.currentSlideId - 1].savedData = { ...newSavedData };
+      state.currentSlide.savedData = { ...newSavedData };
     },
   },
 });

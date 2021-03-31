@@ -6,11 +6,6 @@ import { Provider } from "react-redux";
 
 import App from "./App";
 import "./index.css";
-// import { saveState, loadState } from "./slices/localStorage";
-
-// store.subscribe(() => {
-//   saveState(store.getState())
-// })
 
 const app = (
   <Provider store={store}>
