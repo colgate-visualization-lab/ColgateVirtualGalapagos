@@ -105,7 +105,7 @@ function ModuleContainer(props) {
   let status = useSelector(selectStatus);
   // we get current slide id from and use that to find the next and prev slide ids
   const slideId = parseInt(props.match.params.slide_id || 1);
-
+  console.log(`status: ${status}`);
   useEffect(() => {
     if (status === "idle") {
       dispatch(getModuleData("iguana"));
