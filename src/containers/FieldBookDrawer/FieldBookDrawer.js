@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   menuButton: {
-    zIndex: 100,
+    // zIndex: 100,
     position: "absolute",
     top: 10,
     right: 5,
