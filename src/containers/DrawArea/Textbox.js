@@ -50,10 +50,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Textbox = ({ x1, y1, x2, y2, selected, focused, options }) => {
-  const [value, setValue] = useState("");
+const Textbox = ({
+  text,
+  handleTextChange,
+  x1,
+  y1,
+  x2,
+  y2,
+  selected,
+  focused,
+  options,
+}) => {
   const ref = useRef();
-
   useEffect(() => {
     if (focused) {
       ref.current.focus();
@@ -71,7 +79,6 @@ const Textbox = ({ x1, y1, x2, y2, selected, focused, options }) => {
     mirrorY: y1 <= y2 ? 1 : -1,
     options,
   };
-  // console.log(styleProps.)
   const classes = useStyles(styleProps);
 
   const handleChange = (e) => {
@@ -117,8 +124,8 @@ const Textbox = ({ x1, y1, x2, y2, selected, focused, options }) => {
           autoFocus={false}
           ref={ref}
           className={classes.text}
-          value={value}
-          onChange={handleChange}
+          value={text}
+          onChange={handleTextChange}
         />
       </foreignObject>
     </g>

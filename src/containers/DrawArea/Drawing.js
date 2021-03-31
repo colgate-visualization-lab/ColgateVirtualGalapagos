@@ -12,7 +12,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const unpackElementDetails = (element) => {
-  return {
+  const elementDetails = {
     x1: element.get("x1"),
     y1: element.get("y1"),
     x2: element.get("x2"),
@@ -22,9 +22,15 @@ const unpackElementDetails = (element) => {
     cursor: element.get("cursor"),
     options: element.get("options"),
   };
+
+  // add textValue if type textbox
+  if (element.get("type") === "textbox") {
+    elementDetails.text = element.get("text");
+  }
+  return elementDetails;
 };
 
-const Drawing = ({ elements }) => {
+const Drawing = ({ elements, handleTextChange }) => {
   const classes = useStyles();
 
   const drawnElements = {
@@ -38,7 +44,11 @@ const Drawing = ({ elements }) => {
         {elements.map((element, index) => {
           const CurrentElement = drawnElements[element.get("type")];
           return (
-            <CurrentElement key={index} {...unpackElementDetails(element)} />
+            <CurrentElement
+              key={index}
+              {...unpackElementDetails(element)}
+              handleTextChange={handleTextChange}
+            />
           );
         })}
       </svg>
