@@ -1,13 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
 import Grid from "@material-ui/core/Grid";
 import { List, Map } from "immutable";
+import transit from "transit-immutable-js";
 import { makeStyles } from "@material-ui/core/styles";
+import { useDispatch, useSelector } from "react-redux";
 
 import Drawing from "./Drawing";
 import DrawAreaToolbar from "./DrawAreaToolbar";
 import Options from "../../components/DrawAreaOptions";
 import PhyloTreeHeader from "../PhyloTreeHeader";
 import { unpackElementDetails } from "./utils";
+import {
+  saveDrawing,
+  selectElements,
+  selectStatus,
+} from "../../slices/modulesSlice";
 
 const relativeCoordsForEvent = (e, drawAreaRef) => {
   const boundingRect = drawAreaRef.current.getBoundingClientRect();
@@ -364,14 +371,27 @@ const useStyles = makeStyles(() => ({
 }));
 
 const DrawArea = ({ tabIndex, handleTabChange }) => {
+  const dispatch = useDispatch();
+  const savedElements = useSelector(selectElements);
+  const status = useSelector(selectStatus);
+  console.log(savedElements);
   const classes = useStyles();
   const drawAreaRef = useRef();
 
-  const [elements, setElements] = useState(List());
+  const [elements, setElements] = useState(
+    savedElements ? transit.fromJSON(savedElements) : List()
+  );
   const [selectedElement, setSelectedElement] = useState(null);
   const [focusedElement, setFocusedElement] = useState(null);
   const [action, setAction] = useState("idle");
   const [selectedTool, setSelectedTool] = useState("line");
+
+  useEffect(() => {
+    if (status === "slideDataLoaded") {
+      const serializedElements = transit.toJSON(elements);
+      dispatch(saveDrawing(serializedElements));
+    }
+  }, [elements]);
 
   const handleMouseDown = (e) => {
     let updatedElements = clearSelectedState(elements);
