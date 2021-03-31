@@ -27,13 +27,13 @@ const relativeCoordsForEvent = (e, drawAreaRef) => {
 const getDefaultOptions = (type) => {
   if (type === "line") {
     return new Map({
-      strokeColor: "black",
+      strokeColor: "#000000",
       strokeWidth: 4,
       strokeStyle: "solid",
     });
   } else if (type === "textbox") {
     return new Map({
-      strokeColor: "black",
+      strokeColor: "#000000",
       fontSize: 14,
       horizontalAlign: "center",
       verticalAlign: "center",
@@ -65,6 +65,7 @@ const createElement = (e, index, drawAreaRef, selectedTool) => {
       type: "textbox",
       selected: false,
       focused: true,
+      text: "",
       options: getDefaultOptions("textbox"),
     });
   }
@@ -383,11 +384,14 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   const [selectedElement, setSelectedElement] = useState(null);
   const [focusedElement, setFocusedElement] = useState(null);
   const [action, setAction] = useState("idle");
-  const [selectedTool, setSelectedTool] = useState("line");
+  const [selectedTool, setSelectedTool] = useState("select");
 
   useEffect(() => {
     if (status === "slideDataLoaded") {
-      const serializedElements = transit.toJSON(elements);
+      const stateClearedElements = clearSelectedState(
+        clearFocusedState(elements)
+      );
+      const serializedElements = transit.toJSON(stateClearedElements);
       dispatch(saveDrawing(serializedElements));
     }
   }, [elements]);
@@ -506,6 +510,17 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     }
   };
 
+  const handleTextChange = (e) => {
+    const index = selectedElement.get("index");
+    if (elements) {
+      setElements(elements.setIn([index, "text"], e.target.value));
+    }
+  };
+
+  const handleClearCanvas = () => {
+    setElements(List());
+  };
+
   return (
     <Grid container spacing={1} className={classes.root}>
       <Grid item xs={12}>
@@ -528,14 +543,14 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
         >
-          {selectedElement && (
-            <Options
-              element={selectedElement}
-              handleOptionsChange={handleOptionsChange}
-              handleAction={handleAction}
-            />
-          )}
-          <Drawing elements={elements} />
+          <Options
+            element={selectedElement}
+            handleOptionsChange={handleOptionsChange}
+            handleAction={handleAction}
+            handleClearCanvas={handleClearCanvas}
+          />
+
+          <Drawing elements={elements} handleTextChange={handleTextChange} />
         </div>
       </Grid>
     </Grid>
