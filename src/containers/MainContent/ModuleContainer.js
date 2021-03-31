@@ -114,7 +114,7 @@ function ModuleContainer(props) {
           [classes.contentShiftRight]: fieldBookDrawerOpen,
         })}
       >
-        <ModuleSelector content={content} module={props.module} />
+        <ModuleSelector content={content} module={props.module} slideId={slideId} />
         <ControlButtons {...controlButtonProps} />
       </GridContainer>
       <FieldBookDrawer

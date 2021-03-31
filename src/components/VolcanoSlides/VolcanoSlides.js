@@ -47,6 +47,7 @@ export default function VolcanoSlides(props) {
 
     //Styles
     const popup = {margin: "auto", padding: "20px", background: "rgba(0, 0, 0, 0.762)", borderRadius: "5px", zIndex: "2", width: "auto", position: "absolute"}
+    //more custom styles
     const useStyles = makeStyles((theme) => ({
         //  CONTENT CONTAINER STYLING  - container that surrounds
         //   main content of the page - basically whatever's above the

@@ -1,0 +1,18 @@
+.testenter {
+    opacity: 0;
+  }
+  .testenteractive {
+    opacity: 1;
+    transition: opacity 500ms;
+  }
+  .testexit {
+    opacity: 1;
+  }
+  .testexitactive {
+    opacity: 0;
+    transition: opacity 500ms;
+  }
+  .neededfortransition {
+    height: 1px;
+    width: 1px;
+  }
