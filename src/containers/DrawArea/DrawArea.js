@@ -374,7 +374,6 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   const dispatch = useDispatch();
   const savedElements = useSelector(selectElements);
   const status = useSelector(selectStatus);
-  console.log(savedElements);
   const classes = useStyles();
   const drawAreaRef = useRef();
 
