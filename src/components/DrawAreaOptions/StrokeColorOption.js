@@ -1,6 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
+import StrokeColorPanel from "./StrokeColorPanel";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,27 +41,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const StrokeColorOption = ({ options, handleOptionsChange }) => {
-  const styleProps = {
-    color: options.get("strokeColor"),
+  const currentColor = options.get("strokeColor");
+
+  const classes = useStyles({ currentColor: currentColor });
+  const handleColorChange = (value) => {
+    handleOptionsChange(options.set("strokeColor", value), true);
   };
-  const classes = useStyles(styleProps);
   return (
     <Grid container alignItems="center" spacing={1} className={classes.root}>
       <Grid item xs={3}>
-        <div className={classes.colorDiv} />
+        <StrokeColorPanel
+          options={options}
+          handleColorChange={handleColorChange}
+        />
       </Grid>
       <Grid item xs={9}>
         <div className={classes.inputDiv}>
           <span className={classes.inputArdonment}>#</span>
           <input
             type="text"
-            value={styleProps.color}
+            value={currentColor.slice(1)}
             className={classes.colorInput}
-            onChange={(e) => {
-              handleOptionsChange(
-                options.set("strokeColor", e.target.value),
-                true
-              );
+            onChange={(event) => {
+              handleColorChange(event.target.value);
             }}
           />
         </div>

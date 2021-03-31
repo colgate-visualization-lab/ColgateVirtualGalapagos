@@ -1,6 +1,6 @@
 import React from "react";
 import PencilIcon from "./PencilIcon";
-import EraserIcon from "./EraserIcon";
+// import EraserIcon from "./EraserIcon";
 import TextBoxIcon from "./TextBoxIcon";
 import LineIcon from "./LineIcon";
 import SelectIcon from "./SelectIcon";
