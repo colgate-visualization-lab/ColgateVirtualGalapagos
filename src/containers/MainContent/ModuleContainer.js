@@ -13,10 +13,12 @@ import SlideContentDrawer from "../SlideContentDrawer";
 import FieldBookDrawer from "../FieldBookDrawer";
 import MainContent from "./MainContent";
 import VolcanoSlides from "../../components/VolcanoSlides/VolcanoSlides"
+import ModuleSelector from "../ModuleSelector/ModuleSelector"
 
+//Needed for something lol
 const contentDrawerWidth = 240;
 const fieldBookDrawerWidth = 400;
-
+//Custom Styles
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -36,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "500px",
     // backgroundColor: "tomato",
   },
-
   // to accomodate drawer
   content: {
     flexGrow: 1,
@@ -63,54 +64,41 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 0,
   },
 }));
-
 // Grid Outer Container Component
 const GridContainer = (props) => (
   <Grid {...props} container spacing={0} direction="row" justify="center" />
 );
-
+// Actual function being exported
 function ModuleContainer(props) {
   // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
   // const [audioIsDone, setAudioIsDone] = useState(false);
   // we get current slide id from and use that to find the next and prev slide ids
   const classes = useStyles();
   const slideId = parseInt(props.match.params.slide_id || 1);
-  const prevSlide = `/iguana/${slideId === 1 ? 1 : slideId - 1}`;
-  const nextSlide = `/iguana/${
-    slideId + 1 > data.length ? slideId : slideId + 1
-  }`;
-  const volcanoprevSlide = `/volcano/${slideId === 1 ? 1 : slideId - 1}`;
-  const volcanonextSlide = `/volcano/${
-    slideId + 1 > data.length ? slideId : slideId + 1
-  }`;
+  const prevSlide = `/${props.module}/${slideId === 1 ? 1 : slideId - 1}`;
+  const nextSlide = `/${props.module}/${slideId + 1 > data.length ? slideId : slideId + 1}`;
+  //I guess this state is used for sidebars and fieldbook
   const [contentDrawerOpen, setContentDrawerOpen] = useState(false);
   const [fieldBookDrawerOpen, setFieldBookDrawerOpen] = useState(false);
-
+  //I guess these are used for opening it and stuff
   const handleContentDrawerToggle = (open) => {
     setContentDrawerOpen(open);
   };
   const handleFieldBookDrawerToggle = (open) => {
     setFieldBookDrawerOpen(open);
   };
-
+  //IDK what this is
   const handleSlideChange = (slideId) => {};
 
-  // ControlButtons component
+  // ControlButtons component props
   const controlButtonProps = {
     hasPrev: slideId !== 1,
     hasNext: slideId < data.length,
     nextSlide: nextSlide,
     prevSlide: prevSlide,
   };
-  const volcanocontrolButtonProps = {
-    hasPrev: slideId !== 1,
-    hasNext: slideId < volcanodata.length,
-    nextSlide: volcanonextSlide,
-    prevSlide: volcanoprevSlide,
-  };
-
+  // Uhh not 100% sure what this is but it's important haha :)
   const content = props.data[slideId - 1];
-  const volcanocontent = volcanodata[slideId -1];
 
   return (
     <div className={classes.root}>
@@ -126,8 +114,7 @@ function ModuleContainer(props) {
           [classes.contentShiftRight]: fieldBookDrawerOpen,
         })}
       >
-        <MainContent content={content} />
-
+        <ModuleSelector content={content} module={props.module} />
         <ControlButtons {...controlButtonProps} />
       </GridContainer>
       <FieldBookDrawer
