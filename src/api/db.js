@@ -151,6 +151,7 @@ export const iguanaSlides = [
     type: "PhyloTreeDrawingSlide",
     notes: [],
     isCompleted: false,
+
     data: {
       audioSrc1:
         "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide12_1.m4a",
@@ -161,6 +162,7 @@ export const iguanaSlides = [
       phyloTreeData: slide12PhyloTreeData,
       drawAreaData: slide12DrawAreaData,
     },
+    savedData: {},
   },
   {
     id: "12",

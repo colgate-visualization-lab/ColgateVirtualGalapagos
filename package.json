@@ -84,6 +84,8 @@
     "react-transition-group": "^4.4.1",
     "reactjs-popup": "^1.5.0",
     "regenerator-runtime": "^0.13.5",
+    "transit-immutable-js": "^0.8.0",
+    "transit-js": "^0.8.867",
     "uuid": "^7.0.3"
   }
 }

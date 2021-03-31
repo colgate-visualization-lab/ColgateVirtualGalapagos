@@ -8,7 +8,7 @@ import IguanaSlide8 from "../../components/IguanaSlide8";
 import PhyloTreeSlide from "../PhyloTreeSlide";
 import IguanaSlide15 from "../IguanaSlide15/IguanaSlide15";
 import IguanaSlide17 from "../IguanaSlide17";
-// import AudioPlayer from "../AudioPlayer";
+import AudioPlayer from "../AudioPlayer";
 
 const useStyles = makeStyles((theme) => ({
   // VIDEO STYLING
@@ -47,8 +47,8 @@ function MainContent({ content }) {
   } else if (content.type === "video360") {
     return (
       <>
-        {/* <AudioPlayer src={content.audioSrc} /> */}
         <Iframe className={classes.iframe360} src={content.url} />
+        <AudioPlayer src={content.audioSrc} />
       </>
     );
   } else if (content.type === "interactive_image") {
@@ -56,20 +56,20 @@ function MainContent({ content }) {
   } else if (content.type === "image_comparison") {
     return (
       <>
-        {/* <AudioPlayer src={content.audioSrc} /> */}
         <IguanaSlide8 content={content} />
+        <AudioPlayer src={content.audioSrc} />
       </>
     );
   } else if (content.type === "360_comparison") {
     return (
       <>
-        {/* <AudioPlayer src={content.audioSrc} /> */}
         <Grid item xs={6} style={{ height: "100%" }}>
           <Iframe src={content.url1} className={classes.iframe360} />
         </Grid>
         <Grid item xs={6} style={{ height: "100%" }}>
           <Iframe src={content.url2} className={classes.iframe360} />
         </Grid>
+        <AudioPlayer src={content.audioSrc} />
       </>
     );
   } else if (content.type === "slide3InteractiveVideo") {
@@ -77,15 +77,15 @@ function MainContent({ content }) {
   } else if (content.type === "dnaInteractiveActivity") {
     return (
       <>
-        {/* <AudioPlayer src={content.audioSrc} /> */}
         <IguanaSlide17 content={content} />
+        <AudioPlayer src={content.audioSrc} />
       </>
     );
   } else if (content.type === "PhyloTreeDrawingSlide") {
     return (
       <>
-        {/* <AudioPlayer src={content.audioSrc} /> */}
         <PhyloTreeSlide content={content} />
+        <AudioPlayer src={content.audioSrc.part1} />
       </>
     );
   } else {
