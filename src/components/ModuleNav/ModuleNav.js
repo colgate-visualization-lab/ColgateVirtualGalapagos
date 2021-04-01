@@ -16,7 +16,7 @@ const moduleNav = () => {
       background:
         "url(https://virtualgalapagos.colgate.edu/assets/misc/Volcano.png)",
       animation: " animated slideInDown",
-      link: `/Volcano/${test}`,
+      link: `/oldvolcano/${test}`,
     },
 
     {
