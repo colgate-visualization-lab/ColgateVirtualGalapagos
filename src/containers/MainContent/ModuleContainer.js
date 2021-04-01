@@ -101,6 +101,7 @@ const SlideContainer = (props) => (
     {...props}
   />
 );
+
 // Actual function being exported
 function ModuleContainer(props) {
   const dispatch = useDispatch();
