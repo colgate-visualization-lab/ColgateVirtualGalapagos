@@ -124,6 +124,11 @@ function ModuleContainer(props) {
   //IDK what this is
   const handleSlideChange = (slideId) => {};
 
+  //styling I think
+  const styleProps = {
+    heightOffset: "audioSrc" in content ? 150 : 60,
+  };
+  const classes = useStyles(styleProps);
   // ControlButtons component props
   const controlButtonProps = {
     hasPrev: slideId !== 1,
