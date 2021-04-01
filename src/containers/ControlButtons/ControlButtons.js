@@ -4,22 +4,28 @@ import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/styles";
-
-// import { Back, Next } from "../../assets/VolcanoModule";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    // background: "rgba(200, 10, 230, 0.6)",
+    fontFamily: "inherit",
+    fontWeight: "bold",
   },
   // BUTTON STYLES
   buttonsContainer: {
-    zIndex: 200,
+    zIndex: 100,
     position: "relative",
     width: "90vw",
-    color: "primary",
-    // backgroundColor: "lawngreen",
+    color: "black",
     height: theme.typography.pxToRem(40),
-    padding: "0 16px",
+    padding: theme.spacing(2, 0),
+  },
+  // link: {
+  //   ...theme.typography.link,
+  //   fontWeight: "bold",
+  // },
+  buttonText: {
+    fontWeight: "bold",
   },
 }));
 
@@ -38,30 +44,24 @@ export default function ControlButtons(props) {
     >
       <Grid item>
         {props.hasPrev && (
-          <Button
-            color="secondary"
-            variant="outlined"
-            size="small"
-            component={Link}
-            to={props.prevSlide}
-            className={classes.button}
-          >
-            Previous
-          </Button>
+          <Link to={props.prevSlide}>
+            <Button variant="outlined" size="medium" className={classes.button}>
+              <Typography color="secondary" className={classes.buttonText}>
+                PREVIOUS
+              </Typography>
+            </Button>
+          </Link>
         )}
       </Grid>
       <Grid item>
         {props.hasNext && (
-          <Button
-            color="secondary"
-            variant="outlined"
-            size="small"
-            component={Link}
-            to={props.nextSlide}
-            className={classes.button}
-          >
-            Next
-          </Button>
+          <Link to={props.nextSlide}>
+            <Button variant="outlined" size="medium" className={classes.button}>
+              <Typography color="secondary" className={classes.buttonText}>
+                NEXT
+              </Typography>
+            </Button>
+          </Link>
         )}
       </Grid>
     </Grid>

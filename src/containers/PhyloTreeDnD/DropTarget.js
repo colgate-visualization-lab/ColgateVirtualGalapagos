@@ -34,14 +34,25 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const DropTarget = ({ top, left, onDrop, index, placedName, children }) => {
+const DropTarget = ({
+  top,
+  left,
+  imgDimensions,
+  dropTargetDimensions,
+  onDrop,
+  index,
+  placedName,
+  children,
+}) => {
   const props = {
-    top: `${(top / 540) * 100}%`,
-    left: `${(left / 960) * 100}%`,
-    width: `${(170 / 960) * 100}%`,
-    height: `${(90 / 540) * 100}%`,
-    containerTop: `${((top + 90) / 540) * 100}%`,
-    containerHeight: `${(30 / 540) * 100}%`,
+    top: `${(top / imgDimensions.height) * 100}%`,
+    left: `${(left / imgDimensions.width) * 100}%`,
+    width: `${(dropTargetDimensions.width / imgDimensions.width) * 100}%`,
+    height: `${(dropTargetDimensions.height / imgDimensions.height) * 100}%`,
+    containerTop: `${
+      ((top + dropTargetDimensions.height) / imgDimensions.height) * 100
+    }%`,
+    containerHeight: `${(30 / imgDimensions.height) * 100}%`,
   };
   const classes = useStyles(props);
 

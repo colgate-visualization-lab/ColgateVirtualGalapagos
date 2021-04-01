@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+import store from "./store";
+import { Provider } from "react-redux";
+
 import App from "./App";
 import "./index.css";
 import {AppContext} from './AppContext'
@@ -10,11 +13,11 @@ import LocalStorage from './utils/localStorage'
 axios.defaults.baseURL = 'http://virtualgalapagos.colgate.edu:9000'
 
 const app = (
-  <BrowserRouter>
-    <AppContext.Provider>
+  <Provider store={store}>
+    <BrowserRouter>
       <App />
-    </AppContext.Provider>
-  </BrowserRouter>
+    </BrowserRouter>
+  </Provider>
 );
 
 ReactDOM.render(app, document.getElementById("root"));

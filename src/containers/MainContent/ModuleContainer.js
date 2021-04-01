@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Iframe from "react-iframe";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/styles";
 import clsx from "clsx";
+import { useSelector, useDispatch } from "react-redux";
 
 // import classes from "./MainContent.css";
 import data from "../../components/IguanaData/IguanaData.js";
@@ -14,29 +15,37 @@ import FieldBookDrawer from "../FieldBookDrawer";
 import MainContent from "./MainContent";
 import VolcanoSlides from "../../components/VolcanoSlides/VolcanoSlides"
 import ModuleSelector from "../ModuleSelector/ModuleSelector"
+import AudioPlayer from "../AudioPlayer";
+import {
+  getModuleData,
+  getSlideData,
+  selectSlide,
+  selectStatus,
+} from "../../slices/modulesSlice";
 
 //Needed for something lol
 const contentDrawerWidth = 240;
 const fieldBookDrawerWidth = 400;
-//Custom Styles
+const baseContentMargin = 48;
+
 const useStyles = makeStyles((theme) => ({
   root: {
+    zIndex: 50,
     display: "flex",
     position: "relative",
     height: "100%",
     width: "100%",
+    justifyContent: "space-between",
   },
 
   container: {
     position: "relative",
     height: "100%",
     width: "100%",
-    // alignSelf: "center",
     boxSizing: "border-box",
-    overflow: "hidden",
     minHeight: "500px",
     minWidth: "500px",
-    // backgroundColor: "tomato",
+    maxWidth: "1280px",
   },
   // to accomodate drawer
   content: {
@@ -46,34 +55,58 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -contentDrawerWidth,
-    marginRight: -fieldBookDrawerWidth,
+    marginLeft: -contentDrawerWidth + baseContentMargin,
+    marginRight: -fieldBookDrawerWidth + baseContentMargin,
   },
+  slideContainer: {
+    position: "relative",
+    width: "100%",
+    zIndex: 1,
+    // height is 100% of parent container minus the total height of the
+    //  PREV and NEXT buttons and audio player(plus a little space)
+    height: ({ heightOffset }) =>
+      `calc(100%  -  ${theme.typography.pxToRem(heightOffset)})`,
+  },
+
   contentShiftLeft: {
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    marginLeft: 0,
+    marginLeft: baseContentMargin,
   },
+
   contentShiftRight: {
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    marginRight: 0,
+    marginRight: baseContentMargin,
   },
 }));
 // Grid Outer Container Component
 const GridContainer = (props) => (
-  <Grid {...props} container spacing={0} direction="row" justify="center" />
+  <Grid {...props} container spacing={1} direction="row" justify="center" />
+);
+
+// Slide Content Container Component - holds slide-specific content
+// the videos, images, 360s, and any other content
+const SlideContainer = (props) => (
+  <Grid
+    item
+    xs={12}
+    container
+    justify="center"
+    alignItems="center"
+    {...props}
+  />
 );
 // Actual function being exported
 function ModuleContainer(props) {
-  // const [audioIsPlaying, setAudioIsPlaying] = useState(true);
-  // const [audioIsDone, setAudioIsDone] = useState(false);
+  const dispatch = useDispatch();
+  let moduleData = useSelector(selectSlide);
+  let status = useSelector(selectStatus);
   // we get current slide id from and use that to find the next and prev slide ids
-  const classes = useStyles();
   const slideId = parseInt(props.match.params.slide_id || 1);
   const prevSlide = `/${props.module}/${slideId === 1 ? 1 : slideId - 1}`;
   const nextSlide = `/${props.module}/${slideId + 1 > data.length ? slideId : slideId + 1}`;
@@ -113,9 +146,11 @@ function ModuleContainer(props) {
           [classes.contentShiftLeft]: contentDrawerOpen,
           [classes.contentShiftRight]: fieldBookDrawerOpen,
         })}
-      >
+      > 
+      <SlideContainer className={classes.slideContainer}>
         <ModuleSelector content={content} module={props.module} slideId={slideId} />
         <ControlButtons {...controlButtonProps} />
+      </SlideContainer>
       </GridContainer>
       <FieldBookDrawer
         slideData={data}
