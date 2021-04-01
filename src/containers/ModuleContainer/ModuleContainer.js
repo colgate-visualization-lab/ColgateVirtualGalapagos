@@ -5,16 +5,15 @@ import { makeStyles } from "@material-ui/styles";
 import clsx from "clsx";
 import { useSelector, useDispatch } from "react-redux";
 
-// import classes from "./MainContent.css";
 import data from "../../assets/IguanaData/IguanaData.js";
-import volcanodata from "../../components/VolcanoData/VolcanoData.js"
+import volcanodata from "../../components/VolcanoData/VolcanoData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 import ControlButtons from "../ControlButtons/ControlButtons";
 import SlideContentDrawer from "../SlideContentDrawer";
 import FieldBookDrawer from "../FieldBookDrawer";
-import MainContent from "./MainContent";
-import VolcanoSlides from "../../components/VolcanoSlides/VolcanoSlides"
-import ModuleSelector from "../ModuleSelector/ModuleSelector"
+import IguanaSlides from "../../components/IguanaSlides";
+import VolcanoSlides from "../../components/VolcanoSlides/VolcanoSlides";
+import ModuleSelector from "../ModuleSelector/ModuleSelector";
 import AudioPlayer from "../AudioPlayer";
 import {
   getModuleData,
@@ -120,7 +119,9 @@ function ModuleContainer(props) {
   // we get current slide id from and use that to find the next and prev slide ids
   const slideId = parseInt(props.match.params.slide_id || 1);
   const prevSlide = `/${props.module}/${slideId === 1 ? 1 : slideId - 1}`;
-  const nextSlide = `/${props.module}/${slideId + 1 > data.length ? slideId : slideId + 1}`;
+  const nextSlide = `/${props.module}/${
+    slideId + 1 > data.length ? slideId : slideId + 1
+  }`;
   //I guess this state is used for sidebars and fieldbook
   const [contentDrawerOpen, setContentDrawerOpen] = useState(false);
   const [fieldBookDrawerOpen, setFieldBookDrawerOpen] = useState(false);
@@ -135,8 +136,6 @@ function ModuleContainer(props) {
   // // const nextSlide = `/iguana/${
   // //   slideId + 1 > data.length ? slideId : slideId + 1
   // // }`;
-
-
 
   //I guess these are used for opening it and stuff
   const handleContentDrawerToggle = (open) => {
@@ -168,11 +167,15 @@ function ModuleContainer(props) {
           [classes.contentShiftLeft]: contentDrawerOpen,
           [classes.contentShiftRight]: fieldBookDrawerOpen,
         })}
-      > 
-      <SlideContainer className={classes.slideContainer}>
-        <ModuleSelector content={content} module={props.module} slideId={slideId} />
-        <ControlButtons {...controlButtonProps} />
-      </SlideContainer>
+      >
+        <SlideContainer className={classes.slideContainer}>
+          <ModuleSelector
+            content={content}
+            module={props.module}
+            slideId={slideId}
+          />
+          <ControlButtons {...controlButtonProps} />
+        </SlideContainer>
       </GridContainer>
       <FieldBookDrawer
         slideData={data}
@@ -187,25 +190,24 @@ ModuleContainer.propTypes = {};
 
 export default ModuleContainer;
 
+// useEffect(() => {
+//   if (status === "idle") {
+//     dispatch(getModuleData("iguana"));
+//   }
+//   if (status === "moduleDataLoaded") {
+//     dispatch(getSlideData(slideId));
+//   }
+// });
 
-  // useEffect(() => {
-  //   if (status === "idle") {
-  //     dispatch(getModuleData("iguana"));
-  //   }
-  //   if (status === "moduleDataLoaded") {
-  //     dispatch(getSlideData(slideId));
-  //   }
-  // });
-
-  // const content = data[slideId - 1];
-  // const styleProps = {
-  //   heightOffset: "audioSrc" in content ? 150 : 60,
-  // };
-  // const classes = useStyles(styleProps);
-  // const prevSlide = `/iguana/${slideId === 1 ? 1 : slideId - 1}`;
-  // const nextSlide = `/iguana/${
-  //   slideId + 1 > data.length ? slideId : slideId + 1
-  // }`;
+// const content = data[slideId - 1];
+// const styleProps = {
+//   heightOffset: "audioSrc" in content ? 150 : 60,
+// };
+// const classes = useStyles(styleProps);
+// const prevSlide = `/iguana/${slideId === 1 ? 1 : slideId - 1}`;
+// const nextSlide = `/iguana/${
+//   slideId + 1 > data.length ? slideId : slideId + 1
+// }`;
 //   const [contentDrawerOpen, setContentDrawerOpen] = useState(false);
 //   const [fieldBookDrawerOpen, setFieldBookDrawerOpen] = useState(false);
 
