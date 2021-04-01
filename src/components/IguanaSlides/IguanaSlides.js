@@ -3,12 +3,12 @@ import Iframe from "react-iframe";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/styles";
 
-import IguanaSlide3 from "../IguanaSlide3";
-import IguanaSlide8 from "../../components/IguanaSlide8";
-import PhyloTreeSlide from "../PhyloTreeSlide";
-import IguanaSlide15 from "../IguanaSlide15/IguanaSlide15";
-import IguanaSlide17 from "../IguanaSlide17";
-import AudioPlayer from "../AudioPlayer";
+import IguanaSlide3 from "../../containers/IguanaSlide3";
+import IguanaSlide8 from "../IguanaSlide8";
+import PhyloTreeSlide from "../../containers/PhyloTreeSlide";
+import IguanaSlide15 from "../../containers/IguanaSlide15/IguanaSlide15";
+import IguanaSlide17 from "../../containers/IguanaSlide17";
+import AudioPlayer from "../../containers/AudioPlayer";
 
 const useStyles = makeStyles((theme) => ({
   // VIDEO STYLING
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function MainContent({ content }) {
+function IguanaSlides({ content }) {
   const classes = useStyles();
   if (content.type === "image") {
     return <img src={content.url} className={`iguana ${classes.img}`} />;
@@ -93,6 +93,6 @@ function MainContent({ content }) {
   }
 }
 
-MainContent.propTypes = {};
+IguanaSlides.propTypes = {};
 
-export default MainContent;
+export default IguanaSlides;
