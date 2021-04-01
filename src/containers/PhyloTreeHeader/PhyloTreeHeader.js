@@ -1,8 +1,6 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/tab";
 import Typography from "@material-ui/core/Typography";
 
 import PlainTabs from "./PlainTabs";
@@ -17,11 +15,11 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(1),
   },
   header: {
-    fontSize: "0.75rem",
+    fontSize: "1.2rem",
   },
 }));
 
-const Slide12Header = ({ tabIndex, handleTabChange, header, children }) => {
+const PhyloTreeHeader = ({ tabIndex, handleTabChange, header, children }) => {
   const classes = useStyles();
   return (
     <Grid container className={classes.root}>
@@ -40,4 +38,4 @@ const Slide12Header = ({ tabIndex, handleTabChange, header, children }) => {
   );
 };
 
-export default Slide12Header;
+export default PhyloTreeHeader;

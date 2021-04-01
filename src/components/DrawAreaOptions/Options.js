@@ -11,7 +11,7 @@ import FontSizeOption from "./FontSizeOption";
 import TextAlignOption from "./TextAlignOption";
 import StrokeWidthOption from "./StrokeWidthOption";
 import ElementActions from "./ElementActions";
-import { unpackElementDetails } from "../../containers/DrawAreaAlternate/utils";
+import { unpackElementDetails } from "../../containers/DrawArea/utils";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,16 +21,28 @@ const useStyles = makeStyles((theme) => ({
     top: 20,
     left: 20,
 
-    width: "280px",
+    width: "240px",
   },
   optionHeader: {
-    fontSize: "0.6rem",
+    fontSize: "1rem",
     fontWeight: "bold",
+    padding: theme.spacing(0.5, 0, 1, 0),
   },
 }));
 
-const Options = ({ element, handleOptionsChange, handleAction }) => {
-  const { type, options } = unpackElementDetails(element);
+const Options = ({
+  element,
+  handleOptionsChange,
+  handleAction,
+  handleClearCanvas,
+}) => {
+  let options = [];
+  let type = undefined;
+  if (element) {
+    const unpackedElementDetails = unpackElementDetails(element);
+    options = unpackedElementDetails.options;
+    type = unpackedElementDetails.type;
+  }
   const classes = useStyles();
 
   return (
@@ -40,14 +52,28 @@ const Options = ({ element, handleOptionsChange, handleAction }) => {
         e.stopPropagation();
       }}
     >
-      <Grid container justify="center" spacing={4}>
+      <Grid container justify="center" spacing={2}>
         <Grid item xs={12}>
-          <Typography className={classes.optionHeader}>Stroke Color</Typography>
-          <StrokeColorOption
-            options={options}
-            handleOptionsChange={handleOptionsChange}
-          />
+          <Button variant="outlined" onClick={handleClearCanvas} fullWidth>
+            <Typography className={classes.optionHeader}>
+              Reset Canvas
+            </Typography>
+          </Button>
         </Grid>
+
+        {type !== undefined && (
+          <>
+            <Grid item xs={12}>
+              <Typography className={classes.optionHeader}>
+                Stroke Color
+              </Typography>
+              <StrokeColorOption
+                options={options}
+                handleOptionsChange={handleOptionsChange}
+              />
+            </Grid>
+          </>
+        )}
         {type === "textbox" && (
           <>
             <Grid item xs={12}>
@@ -83,10 +109,12 @@ const Options = ({ element, handleOptionsChange, handleAction }) => {
             </Grid>
           </>
         )}
-        <Grid item xs={12}>
-          <Typography className={classes.optionHeader}>Actions</Typography>
-          <ElementActions handleAction={handleAction} />
-        </Grid>
+        {type !== undefined && (
+          <Grid item xs={12}>
+            <Typography className={classes.optionHeader}>Actions</Typography>
+            <ElementActions handleAction={handleAction} />
+          </Grid>
+        )}
       </Grid>
     </Paper>
   );

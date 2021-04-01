@@ -17,19 +17,15 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    zIndex: 100,
-    // marginRight: theme.spacing(2),
     position: "relative",
-    // height: "100%",
     overflowY: "visible",
   },
 
   menuButton: {
+    // zIndex: 100,
     position: "absolute",
     top: 10,
     left: 5,
-    // marginLeft: theme.spacing(1),
-    // marginRight: theme.spacing(2),
   },
   hide: {
     display: "none",
@@ -54,6 +50,16 @@ const useStyles = makeStyles((theme) => ({
     justifySelf: "flex-start",
     marginRight: "auto",
     marginLeft: theme.spacing(1),
+    fontSize: "1.5rem",
+    fontWeight: "bold",
+  },
+  slideTitle: {
+    fontSize: "1rem",
+  },
+
+  cleanLink: {
+    ...theme.typography.link,
+    textTransform: "none",
   },
 }));
 
@@ -99,9 +105,7 @@ export default function SlideContentDrawer({
           }}
         >
           <div className={classes.drawerHeader}>
-            <Typography className={classes.drawerTitle} variant="h6">
-              Slides
-            </Typography>
+            <Typography className={classes.drawerTitle}>Slides</Typography>
             <IconButton onClick={handleDrawerClose}>
               {theme.direction === "ltr" ? (
                 <ChevronLeftIcon />
@@ -113,8 +117,20 @@ export default function SlideContentDrawer({
           <Divider />
           <List>
             {slideData.map((data, index) => (
-              <ListItem button key={index} component={Link} to={data.id}>
-                <ListItemText primary={data.title} />
+              <ListItem
+                button
+                key={index}
+                component={Link}
+                to={data.id}
+                className={classes.cleanLink}
+              >
+                <ListItemText
+                  primaryTypographyProps={{
+                    className: classes.slideTitle,
+                  }}
+                  // className={classes.slideTitle}
+                  primary={data.title}
+                />
               </ListItem>
             ))}
           </List>
