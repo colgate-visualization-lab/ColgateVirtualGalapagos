@@ -3,7 +3,7 @@ import classes from "./test.css"
 import { useHistory } from "react-router-dom";
 import {Link} from "react-router-dom"
 import {useParams} from "react-router"
-import VolcanoSlides from "../../components/VolcanoSlides/VolcanoSlides"
+import OldVolcanoSlides from "../../components/OldVolcanoSlides/OldVolcanoSlides"
 import axios from 'axios'
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -147,7 +147,7 @@ export default function Test() {
                     }}
                 unmountOnExit
                 > 
-                <VolcanoSlides id={id} setSlideChange={setSlideChange} />
+                <OldVolcanoSlides id={id} setSlideChange={setSlideChange} />
             </CSSTransition>
             <Button style={id == "6optional" || id == "8optional2" || id == "21" || id == "19" || id == "21wrong" ? hidden : nextButton} 
                 onClick={() => buttonHandler(nextSlide, "8optional2")} 
