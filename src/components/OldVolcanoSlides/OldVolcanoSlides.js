@@ -1,6 +1,6 @@
 import React, {Fragment, useState, useRef, useEffect} from 'react'
 import {Link} from "react-router-dom"
-import classes from "./VolcanoSlides.css"
+import classes from "./OldVolcanoSlides.css"
 import Popup from "reactjs-popup";
 import ImageSlider from "react-image-comparison-slider";
 import DndLayout from "../../components/DndLayout/DndLayout.js"
@@ -17,14 +17,12 @@ import {
   } from "../../assets/VolcanoModule";
 import IframeCompoment from "../../components/IframeComponent/IframeComponent"
 import { CSSTransition } from 'react-transition-group';
-import './VolcanoSlides.css';
+// import './VolcanoSlides.css';
 import ImageMapper from "react-image-mapper";
 import MAP from "../../containers/VolcanoModule/ImageMap.js";
 import Button from '@material-ui/core/Button';
 import { SettingsEthernet } from '@material-ui/icons';
 import { Divider } from '@material-ui/core';
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/styles";
 
 export default function VolcanoSlides(props) {
 
@@ -47,55 +45,7 @@ export default function VolcanoSlides(props) {
 
     //Styles
     const popup = {margin: "auto", padding: "20px", background: "rgba(0, 0, 0, 0.762)", borderRadius: "5px", zIndex: "2", width: "auto", position: "absolute"}
-    //more custom styles
-    const useStyles = makeStyles((theme) => ({
-        //  CONTENT CONTAINER STYLING  - container that surrounds
-        //   main content of the page - basically whatever's above the
-        //   PREV and NEXT buttons
-        contentContainer: {
-          position: "relative",
-          width: "100%",
-      
-          // height is 100% of parent container minus the total height of the PREV and NEXT buttons (plus a little space)
-          height: `calc(100%  -  ${theme.typography.pxToRem(40)})`,
-          // backgroundColor: "lavender",
-        },
-      
-        // VIDEO STYLING
-        video: {
-          minHeight: "400px",
-          minWidth: "400px",
-          width: "100%",
-          maxHeight: "100%",
-        },
-      
-        // IMAGE STYLING
-        img: {
-          objectFit: "contain",
-          maxHeight: "100%",
-          maxWidth: "100%",
-          minWidth: "360px",
-        },
-      
-        // 360 VIDEO STYLING
-        iframe360: {
-          width: "100%",
-          height: "100%",
-        },
-      }));
 
-    //I use this otherwise the buttons are all messed up
-    const SlideContainer = (props) => (
-        <Grid
-          item
-          xs={10}
-          container
-          justify="center"
-          alignItems="center"
-          {...props}
-        />
-      );
-    const MUIclasses = useStyles();
     //Lifecycle
     useEffect(() => {
         if (props.id == 21) {
@@ -110,63 +60,61 @@ export default function VolcanoSlides(props) {
         }
     }, [props.id]);
 
-    if (props.data.id == 1) {
+    if (props.id == 0) {
         return (
-            <SlideContainer className={MUIclasses.contentContainer}>
-                <video className={classes.center} src={props.data.url} autoPlay controls controlsList="nodownload" type="video/mp4"/> 
-            </SlideContainer>
+            <video className={classes.center} src={introVideo} autoPlay controls controlsList="nodownload" type="video/mp4"/> 
         )
     }
-    else if (props.data.id == 2) {
+    else if (props.id == 1) {
         return (
-            <SlideContainer className={MUIclasses.contentContainer}>
-                {/* <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> */}
-                <IframeCompoment class={classes.vista} src={props.data.url}/>
-            </SlideContainer>
+            <div>
+                <audio className={classes.audioPlayer} src={Exploration01} autoPlay controls controlsList="nodownload"/>
+                <IframeCompoment class={classes.vista} src={Vista}/>
+            </div>
         )
     }
-    else if (props.data.id == 3) {
+    else if (props.id == 2) {
         return (
-            <SlideContainer className={MUIclasses.contentContainer}>
-                {/* <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> */}
-                <IframeCompoment class={classes.vista} src={props.data.url}/>
-            </SlideContainer>
+            <div>
+                <audio className={classes.audioPlayer} src={Exploration02} autoPlay controls controlsList="nodownload"/>
+                <IframeCompoment class={classes.vista} src={Vista2}/>
+            </div>
         )
     }
-    else if (props.data.id == 4) {
+    else if (props.id == 3) {
         return (
-            <SlideContainer className={MUIclasses.contentContainer}>
-                {/* <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> */}
-                <IframeCompoment class={classes.vista} src={props.data.url}/>
-            </SlideContainer>
+            <div>
+                <audio className={classes.audioPlayer} src={Exploration03} autoPlay controls controlsList="nodownload"/>
+                <IframeCompoment class={classes.vista} src={Vista3}/>
+            </div>
         )
     }
-    else if (props.data.id == 5) {
+    else if (props.id == 4) {
         return (
-            <SlideContainer className={MUIclasses.contentContainer}>
-                {/* <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> */}
-                <IframeCompoment class={classes.vista} src={props.data.url}/>
-            </SlideContainer>
+            <div>
+                <audio className={classes.audioPlayer} src={Exploration04} autoPlay controls controlsList="nodownload"/>
+                <IframeCompoment class={classes.vista} src={Vista4}/>
+            </div>
         )
     }
-    else if (props.data.id == 6) {
+    else if (props.id == 5) {
         return (
-            <SlideContainer className={MUIclasses.contentContainer}>
-                {/* <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> */}
-                <IframeCompoment class={classes.vista} src={props.data.url}/>
-            </SlideContainer>
+            <div>
+                <audio className={classes.audioPlayer} src={Exploration04} autoPlay controls controlsList="nodownload"/>
+                <IframeCompoment class={classes.vista} src={Vista5}/>
+            </div>
         )
     }
-    else if (props.data.id == 7) {
+    else if (props.id == 6) {
         return (
-            <SlideContainer className={MUIclasses.contentContainer}>
+            <div>
                 <audio className={classes.audioPlayer} src={terrainMap2} autoPlay controls controlsList="nodownload"/>
                 <div className={classes.imgContainer}>
                     <img className={classes.imgFill} src={TerrainMap}/>
                     <div className={classes.hypothesis}>Click on the magnifying glass!</div>
                     <img className={classes.magnifying} onClick={() => props.setSlideChange("./6optional")} src={magnifyingGlass}/>
                 </div>
-            </SlideContainer>
+            </div>
         )
     }
     else if (props.id == "6optional") {
