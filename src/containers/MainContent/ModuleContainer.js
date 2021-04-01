@@ -129,6 +129,14 @@ function ModuleContainer(props) {
     heightOffset: "audioSrc" in content ? 150 : 60,
   };
   const classes = useStyles(styleProps);
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(getModuleData("iguana"));
+    }
+    if (status === "moduleDataLoaded") {
+      dispatch(getSlideData(slideId));
+    }
+  });
   // ControlButtons component props
   const controlButtonProps = {
     hasPrev: slideId !== 1,
