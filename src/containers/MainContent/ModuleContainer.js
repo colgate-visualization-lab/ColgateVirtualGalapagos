@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { useSelector, useDispatch } from "react-redux";
 
 // import classes from "./MainContent.css";
-import data from "../../components/IguanaData/IguanaData.js";
+import data from "../../assets/IguanaData/IguanaData.js";
 import volcanodata from "../../components/VolcanoData/VolcanoData.js"
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 import ControlButtons from "../ControlButtons/ControlButtons";

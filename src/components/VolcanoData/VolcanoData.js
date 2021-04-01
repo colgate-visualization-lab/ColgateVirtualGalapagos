@@ -1,6 +1,6 @@
-import { slide3Data } from "../IguanaData/slide3Data";
-import { slide15Data } from "../IguanaData/slide15Data";
-import { slide17Data } from "../IguanaData/slide17Data";
+import { slide3Data } from "../../assets/IguanaData/slide3Data";
+import { slide15Data } from "../../assets/IguanaData/slide15Data";
+import { slide17Data } from "../../assets/IguanaData/slide17Data";
 
 const iguanaData = [
   {
