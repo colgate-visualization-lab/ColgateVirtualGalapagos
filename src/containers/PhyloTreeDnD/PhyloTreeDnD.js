@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import Grow from "@material-ui/core/Grow";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import CancelIcon from "@material-ui/icons/Cancel";
@@ -11,8 +10,7 @@ import update from "immutability-helper";
 
 import DropTarget from "./DropTarget";
 import IguanaBox from "./IguanaBox";
-import Slide12Header from "./Slide12Header";
-
+import PhyloTreeHeader from "../PhyloTreeHeader";
 import { Slide12Context, Box } from "./utils";
 
 const useStyles = makeStyles((theme) => ({
@@ -37,11 +35,9 @@ const useStyles = makeStyles((theme) => ({
   dropTargetContainer: {
     position: "relative",
     maxWidth: "960px",
-    maxHeight: "540px",
-    minWidth: "600px",
-    minHeight: "337.5px",
-    // padding: theme.spacing(2, 0),
+    maxHeight: "600px",
     margin: theme.spacing(2),
+    zIndex: 400,
   },
   dropTargetDiv: {
     position: "absolute",
@@ -49,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     width: "100%",
     height: "100%",
+    zIndex: 400,
   },
   backgroundImg: {
     maxWidth: "100%",
@@ -60,8 +57,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     width: "100%",
-    maxWidth: "960px",
-    minWidth: "600px",
     height: "auto",
     padding: theme.spacing(2, 0),
     margin: theme.spacing(3, 0, 0, 0),
@@ -77,18 +72,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PhyloTreeTemplate = ({ content, tabIndex, handleTabChange }) => {
-  const [undraggedBoxes, setUndraggedBoxes] = useState([
-    "Marine Iguana",
-    "Green Iguana",
-    "Land Iguana",
-  ]);
-  const [draggedBoxes, setDraggedBoxes] = useState([
-    new Box(["Green Iguana"]),
-    new Box(["Marine Iguana", "Land Iguana"]),
-    new Box(["Marine Iguana", "Land Iguana"]),
-  ]);
+const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
+  const {
+    iguanaNames,
+    iguanaNamesPlacement,
+    imgDimensions,
+    dropTargetDimensions,
+    dropTargets,
+  } = content.phyloTreeData;
 
+  const [undraggedBoxes, setUndraggedBoxes] = useState([...iguanaNames]);
+  const [draggedBoxes, setDraggedBoxes] = useState(
+    iguanaNamesPlacement.map((box) => new Box(box))
+  );
   const [checkTree, setCheckTree] = useState(false);
   const [completeTree, setCompleteTree] = useState(false);
 
@@ -113,6 +109,7 @@ const PhyloTreeTemplate = ({ content, tabIndex, handleTabChange }) => {
     }
     setUndraggedBoxes(newlyUndragged);
   };
+
   const updateDraggedBoxes = (dropppedName, index, currentBox) => {
     let newDraggedBoxes = draggedBoxes.map((box) => {
       let newBox = new Box(box.validNames);
@@ -133,20 +130,29 @@ const PhyloTreeTemplate = ({ content, tabIndex, handleTabChange }) => {
   const handleShowTree = () => {
     resetCheck();
     setCompleteTree(true);
-    const branchNames = getBranchNames();
     setTimeout(() => {
       setUndraggedBoxes([]);
     }, 200);
-    setTimeout(() => {
-      setDraggedBoxes([
-        new Box(["Green Iguana"], "Green Iguana"),
-        new Box(["Marine Iguana", "Land Iguana"], branchNames.topRightBranch),
-        new Box(
-          ["Marine Iguana", "Land Iguana"],
-          branchNames.bottomRightBranch
-        ),
-      ]);
-    }, 500);
+    if (content.id === "12") {
+      const branchNames = getBranchNames();
+      setTimeout(() => {
+        setDraggedBoxes([
+          new Box(["Green Iguana"], "Green Iguana"),
+          new Box(["Marine Iguana", "Land Iguana"], branchNames.topRightBranch),
+          new Box(
+            ["Marine Iguana", "Land Iguana"],
+            branchNames.bottomRightBranch
+          ),
+        ]);
+      }, 500);
+    } else {
+      setTimeout(() => {
+        setDraggedBoxes([
+          new Box([""], ""),
+          new Box(["Pink Iguana"], "Pink Iguana"),
+        ]);
+      }, 500);
+    }
   };
 
   const getBranchNames = () => {
@@ -168,14 +174,10 @@ const PhyloTreeTemplate = ({ content, tabIndex, handleTabChange }) => {
   const handleResetTree = () => {
     resetCheck();
     setTimeout(() => {
-      setUndraggedBoxes(["Marine Iguana", "Green Iguana", "Land Iguana"]);
+      setUndraggedBoxes(iguanaNames);
     }, 500);
     setTimeout(() => {
-      setDraggedBoxes([
-        new Box(["Green Iguana"]),
-        new Box(["Marine Iguana", "Land Iguana"]),
-        new Box(["Marine Iguana", "Land Iguana"]),
-      ]);
+      setDraggedBoxes(iguanaNamesPlacement.map((box) => new Box(box)));
     }, 200);
   };
 
@@ -183,10 +185,13 @@ const PhyloTreeTemplate = ({ content, tabIndex, handleTabChange }) => {
     setCheckTree(false);
     setCompleteTree(false);
   };
+
   const DropTargetComponent = ({ index, ...props }) => (
     <DropTarget
       {...props}
       index={index}
+      imgDimensions={imgDimensions}
+      dropTargetDimensions={dropTargetDimensions}
       onDrop={handleDrop}
       placedName={draggedBoxes[index].placedName}
     >
@@ -203,7 +208,7 @@ const PhyloTreeTemplate = ({ content, tabIndex, handleTabChange }) => {
     <DndProvider backend={HTML5Backend}>
       <Slide12Context.Provider value={resetCheck}>
         <div className={classes.root}>
-          <Slide12Header
+          <PhyloTreeHeader
             tabIndex={tabIndex}
             handleTabChange={handleTabChange}
             header="Create a phylogenetic tree by dragging the cards below to their correct positions"
@@ -215,16 +220,21 @@ const PhyloTreeTemplate = ({ content, tabIndex, handleTabChange }) => {
                 </Grow>
               ))}
             </div>
-          </Slide12Header>
+          </PhyloTreeHeader>
           <div className={classes.dropTargetContainer}>
             <img
               src={content.backgroundUrl}
               className={classes.backgroundImg}
             />
             <div className={classes.dropTargetDiv}>
-              <DropTargetComponent top={270} left={60} index={0} />
-              <DropTargetComponent top={135} left={736} index={1} />
-              <DropTargetComponent top={405} left={736} index={2} />
+              {dropTargets.map(({ top, left }, index) => (
+                <DropTargetComponent
+                  key={index}
+                  top={top}
+                  left={left}
+                  index={index}
+                />
+              ))}
             </div>
           </div>
           <div className={classes.buttons}>
@@ -262,4 +272,4 @@ const PhyloTreeTemplate = ({ content, tabIndex, handleTabChange }) => {
   );
 };
 
-export default PhyloTreeTemplate;
+export default PhyloTreeDnD;

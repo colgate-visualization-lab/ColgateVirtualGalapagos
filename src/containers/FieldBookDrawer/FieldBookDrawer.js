@@ -18,11 +18,11 @@ const drawerWidth = 400;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    zIndex: 100,
     position: "relative",
   },
 
   menuButton: {
+    // zIndex: 100,
     position: "absolute",
     top: 10,
     right: 5,
@@ -55,16 +55,26 @@ const useStyles = makeStyles((theme) => ({
     justifySelf: "flex-start",
     marginRight: "auto",
     marginLeft: theme.spacing(1),
+    fontSize: "1.5rem",
+    fontWeight: "bold",
   },
-
+  notesClass: {
+    fontSize: "1rem",
+  },
   notesTextarea: {
     margin: theme.spacing(2),
     marginTop: "auto",
+    fontSize: "1rem",
   },
 
   saveNoteButton: {
     margin: theme.spacing(2),
     marginTop: 0,
+  },
+
+  saveButtonText: {
+    fontSize: "1rem",
+    fontWeight: "bold",
   },
 }));
 
@@ -137,12 +147,17 @@ export default function SlideContentDrawer({
         <Divider />
         <List>
           {notes.map((note, index) => (
-            <>
+            <div key={index}>
               <ListItem key={index}>
-                <ListItemText primary={note} />
+                <ListItemText
+                  primaryTypographyProps={{
+                    className: classes.notesClass,
+                  }}
+                  primary={note}
+                />
               </ListItem>
-              <Divider />
-            </>
+              <Divider variant="middle" />
+            </div>
           ))}
         </List>
         <TextField
@@ -156,12 +171,14 @@ export default function SlideContentDrawer({
           onChange={handleNoteChange}
         />
         <Button
-          variant="contained"
+          variant="outlined"
+          color="secondary"
           //   fullWidth
+          disabled={currentNote === ""}
           className={classes.saveNoteButton}
           onClick={handleSaveNote}
         >
-          Save Note
+          <Typography className={classes.saveButtonText}>Save Note</Typography>
         </Button>
       </Drawer>
     </div>

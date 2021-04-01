@@ -1,400 +1,530 @@
 import React, { useState, useEffect, useRef } from "react";
 import Grid from "@material-ui/core/Grid";
 import { List, Map } from "immutable";
+import transit from "transit-immutable-js";
 import { makeStyles } from "@material-ui/core/styles";
+import { useDispatch, useSelector } from "react-redux";
 
 import Drawing from "./Drawing";
 import DrawAreaToolbar from "./DrawAreaToolbar";
-import Textbox from "./Textbox";
-import Slide12Header from "../IguanaSlide12/Slide12Header";
+import Options from "../../components/DrawAreaOptions";
+import PhyloTreeHeader from "../PhyloTreeHeader";
+import { unpackElementDetails } from "./utils";
+import {
+  saveDrawing,
+  selectElements,
+  selectStatus,
+} from "../../slices/modulesSlice";
+
+const relativeCoordsForEvent = (e, drawAreaRef) => {
+  const boundingRect = drawAreaRef.current.getBoundingClientRect();
+  return {
+    x: e.clientX - boundingRect.left,
+    y: e.clientY - boundingRect.top,
+  };
+};
+
+const getDefaultOptions = (type) => {
+  if (type === "line") {
+    return new Map({
+      strokeColor: "#000000",
+      strokeWidth: 4,
+      strokeStyle: "solid",
+    });
+  } else if (type === "textbox") {
+    return new Map({
+      strokeColor: "#000000",
+      fontSize: 14,
+      horizontalAlign: "center",
+      verticalAlign: "center",
+    });
+  }
+};
+
+const createElement = (e, index, drawAreaRef, selectedTool) => {
+  const { x, y } = relativeCoordsForEvent(e, drawAreaRef);
+
+  if (selectedTool === "line") {
+    return new Map({
+      index: index,
+      x1: x,
+      y1: y,
+      x2: x,
+      y2: y,
+      type: "line",
+      selected: true,
+      options: getDefaultOptions("line"),
+    });
+  } else if (selectedTool === "textbox") {
+    return new Map({
+      index: index,
+      x1: x,
+      y1: y,
+      x2: x,
+      y2: y,
+      type: "textbox",
+      selected: false,
+      focused: true,
+      text: "",
+      options: getDefaultOptions("textbox"),
+    });
+  }
+};
+
+const duplicateElement = (index, element) => {
+  const { x1, y1, x2, y2 } = unpackElementDetails(element);
+  let newElement = new Map(element);
+  newElement = newElement.merge(
+    new Map({
+      x1: x1 + 10,
+      y1: y1 + 10,
+      x2: x2 + 10,
+      y2: y2 + 10,
+      selected: true,
+    })
+  );
+
+  return newElement;
+};
+
+const updateElement = (e, element, drawAreaRef, offsetX) => {
+  const { x, y } = relativeCoordsForEvent(e, drawAreaRef);
+  if (element.get("type") === "line") {
+    const updates = new Map({
+      x2: x,
+      y2: y,
+    });
+    return element.merge(updates);
+  } else if (element.get("type") === "textbox") {
+    const updates = new Map({
+      x2: x,
+      y2: y,
+    });
+    return element.merge(updates);
+  }
+};
+
+const calculateNewCoordinates = (e, selectedElement, drawAreaRef) => {
+  if (
+    selectedElement.get("type") === "line" ||
+    selectedElement.get("type") === "textbox"
+  ) {
+    let [x1, y1, x2, y2, offsetXOrigin, offsetYOrigin, position] = [
+      selectedElement.get("x1"),
+      selectedElement.get("y1"),
+      selectedElement.get("x2"),
+      selectedElement.get("y2"),
+      selectedElement.get("offsetXOrigin"),
+      selectedElement.get("offsetYOrigin"),
+      selectedElement.get("position"),
+    ];
+
+    const { x, y } = relativeCoordsForEvent(e, drawAreaRef);
+    const offsetX = x - offsetXOrigin;
+    const offsetY = y - offsetYOrigin;
+
+    return {
+      newX1: x1 + offsetX,
+      newY1: y1 + offsetY,
+      newX2: x2 + offsetX,
+      newY2: y2 + offsetY,
+      newOffsetXOrigin: x,
+      newOffsetYOrigin: y,
+      position,
+    };
+  }
+};
+
+const moveElement = (e, selectedElement, drawAreaRef) => {
+  //prettier-ignore
+  let { newX1, newY1, newX2, newY2, newOffsetXOrigin, newOffsetYOrigin } = 
+      calculateNewCoordinates(e, selectedElement, drawAreaRef);
+
+  //prettier-ignore
+  return selectedElement.merge(new Map({
+      x1: newX1, y1: newY1, x2: newX2, y2: newY2,
+      offsetXOrigin: newOffsetXOrigin, offsetYOrigin: newOffsetYOrigin,
+    }))
+};
+
+const resizeElement = (e, selectedElement, drawAreaRef) => {
+  //prettier-ignore
+  let { newX1, newY1, newX2, newY2, newOffsetXOrigin, newOffsetYOrigin, position } = 
+        calculateNewCoordinates(e, selectedElement, drawAreaRef);
+  if (selectedElement.get("type") === "line") {
+    if (position === "start") {
+      //prettier-ignore
+      return selectedElement.merge(new Map({
+          x1: newX1, y1: newY1,
+          offsetXOrigin: newOffsetXOrigin, offsetYOrigin: newOffsetYOrigin,
+        }))
+    } else {
+      //prettier-ignore
+      return selectedElement.merge(new Map({
+          x2: newX2, y2: newY2,
+          offsetXOrigin: newOffsetXOrigin, offsetYOrigin: newOffsetYOrigin,
+        }))
+    }
+  }
+  if (selectedElement.get("type") === "textbox") {
+    switch (position) {
+      case "top":
+        return selectedElement.merge(
+          new Map({
+            y1: newY1,
+            offsetXOrigin: newOffsetXOrigin,
+            offsetYOrigin: newOffsetYOrigin,
+          })
+        );
+      case "right":
+        return selectedElement.merge(
+          new Map({
+            x2: newX2,
+            offsetXOrigin: newOffsetXOrigin,
+            offsetYOrigin: newOffsetYOrigin,
+          })
+        );
+      case "bottom":
+        return selectedElement.merge(
+          new Map({
+            y2: newY2,
+            offsetXOrigin: newOffsetXOrigin,
+            offsetYOrigin: newOffsetYOrigin,
+          })
+        );
+      case "left":
+        return selectedElement.merge(
+          new Map({
+            x1: newX1,
+            offsetXOrigin: newOffsetXOrigin,
+            offsetYOrigin: newOffsetYOrigin,
+          })
+        );
+      case "topLeft":
+        return selectedElement.merge(
+          new Map({
+            x1: newX1,
+            y1: newY1,
+            offsetXOrigin: newOffsetXOrigin,
+            offsetYOrigin: newOffsetYOrigin,
+          })
+        );
+
+      case "topRight":
+        return selectedElement.merge(
+          new Map({
+            x2: newX2,
+            y1: newY1,
+            offsetXOrigin: newOffsetXOrigin,
+            offsetYOrigin: newOffsetYOrigin,
+          })
+        );
+      case "bottomLeft":
+        return selectedElement.merge(
+          new Map({
+            x1: newX1,
+            y2: newY2,
+            offsetXOrigin: newOffsetXOrigin,
+            offsetYOrigin: newOffsetYOrigin,
+          })
+        );
+      case "bottomRight":
+        return selectedElement.merge(
+          new Map({
+            x2: newX2,
+            y2: newY2,
+            offsetXOrigin: newOffsetXOrigin,
+            offsetYOrigin: newOffsetYOrigin,
+          })
+        );
+      default:
+        return selectedElement;
+    }
+  }
+};
+
+const distance = (a, b) => {
+  return Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2));
+};
+
+const atPoint = (x, y, x1, y1, position) => {
+  return x1 - 5 <= x && x <= x1 + 5 && y1 - 5 <= y && y <= y1 + 5
+    ? position
+    : null;
+};
+
+const checkElementLine = (x, y, x1, y1, x2, y2, position) => {
+  // const { x1, y1, x2, y2, type } = unpackElementDetails(element);
+  const a = { x: x1, y: y1 };
+  const b = { x: x2, y: y2 };
+  const c = { x, y };
+
+  return Math.abs(distance(a, b) - (distance(a, c) + distance(b, c))) < 0.3
+    ? position
+    : null;
+};
+
+const positionWithinElement = (x, y, element) => {
+  const { x1, y1, x2, y2, type } = unpackElementDetails(element);
+  if (element.get("type") === "line") {
+    const start = atPoint(x, y, x1, y1, "start");
+    const end = atPoint(x, y, x2, y2, "end");
+    const inside = checkElementLine(x, y, x1, y1, x2, y2, "inside");
+    return start || end || inside;
+  } else if (element.get("type") === "textbox") {
+    const topLeft = atPoint(x, y, x1, y1, "topLeft");
+    const topRight = atPoint(x, y, x2, y1, "topRight");
+    const bottomLeft = atPoint(x, y, x1, y2, "bottomLeft");
+    const bottomRight = atPoint(x, y, x2, y2, "bottomRight");
+    const top = checkElementLine(x, y, x1, y1, x2, y1, "top");
+    const right = checkElementLine(x, y, x2, y1, x2, y2, "right");
+    const bottom = checkElementLine(x, y, x1, y2, x2, y2, "bottom");
+    const left = checkElementLine(x, y, x1, y1, x1, y2, "left");
+    const inside = x1 <= x && x <= x2 && y1 <= y && y <= y2 ? "inside" : null;
+    return (
+      topLeft ||
+      topRight ||
+      bottomLeft ||
+      bottomRight ||
+      top ||
+      right ||
+      bottom ||
+      left ||
+      inside
+    );
+  }
+  return null;
+};
+
+const getElementAtPosition = (e, drawAreaRef, elements) => {
+  const { x, y } = relativeCoordsForEvent(e, drawAreaRef);
+  const elementsAtPosition = elements.map((element) =>
+    element.merge(
+      new Map({
+        position: positionWithinElement(x, y, element),
+        offsetXOrigin: x,
+        offsetYOrigin: y,
+      })
+    )
+  );
+  return elementsAtPosition.find((element) => element.get("position") !== null);
+};
+
+const clearSelectedState = (elements) => {
+  return elements.map((element) =>
+    element.merge(new Map({ selected: false, position: null }))
+  );
+};
+
+const clearFocusedState = (elements) => {
+  return elements.map((element) =>
+    element.get("type") === "textbox" ? element.set("focused", false) : element
+  );
+};
+
+const getCursorAtPosition = (element, selectedTool) => {
+  if (!element) return "default";
+  const { type, position, focused } = unpackElementDetails(element);
+  let cursor;
+  if (type === "textbox" && (selectedTool === "textbox" || focused)) {
+    cursor = "text";
+  } else if (selectedTool !== "select") {
+    cursor = "crosshair";
+  } else {
+    switch (position) {
+      case "top":
+      case "bottom":
+        cursor = "ns-resize";
+        break;
+      case "left":
+      case "right":
+        cursor = "ew-resize";
+        break;
+      case "topLeft":
+      case "bottomRight":
+        cursor = "nwse-resize";
+        break;
+      case "topRight":
+      case "bottomLeft":
+        cursor = "nesw-resize";
+        break;
+      case "start":
+      case "end":
+      case "inside":
+        cursor = "move";
+        break;
+      default:
+        cursor = "default";
+    }
+  }
+
+  return cursor;
+};
 
 const useStyles = makeStyles(() => ({
   drawArea: {
     position: "relative",
-    height: "70vh",
+    height: "50vh",
     width: "100%",
     backgroundColor: "white",
+    zIndex: 300,
   },
 }));
 
 const DrawArea = ({ tabIndex, handleTabChange }) => {
+  const dispatch = useDispatch();
+  const savedElements = useSelector(selectElements);
+  const status = useSelector(selectStatus);
   const classes = useStyles();
-
-  const [mouseDown, setMouseDown] = useState(false);
-  const [selectedTool, setSelectedTool] = useState("select");
-  const [selectedObject, setSelectedObject] = useState(null);
-  const [transformOrigin, setTransformOrigin] = useState();
-  const [pencilLines, setPencilLines] = useState(List());
-  const [straightLines, setStraightLines] = useState(List());
-  const [textboxes, setTextboxes] = useState(List());
-
-  useEffect(() => {
-    document.addEventListener("mouseup", handleMouseUp);
-    document.addEventListener("keydown", handleDelete);
-    return () => {
-      document.removeEventListener("mouseup", handleMouseUp);
-      document.removeEventListener("keydown", handleDelete);
-    };
-  });
-
   const drawAreaRef = useRef();
 
-  const handleMouseDown = (e, ...args) => {
-    e.preventDefault();
-    if (e.button != 0) {
-      return;
-    }
+  const [elements, setElements] = useState(
+    savedElements ? transit.fromJSON(savedElements) : List()
+  );
+  const [selectedElement, setSelectedElement] = useState(null);
+  const [focusedElement, setFocusedElement] = useState(null);
+  const [action, setAction] = useState("idle");
+  const [selectedTool, setSelectedTool] = useState("select");
 
-    setMouseDown(true);
-    if (selectedTool == "select") {
-      if (e.target.id === "parentSvg" || e.target.id === "parentDiv")
-        handleSelect(e);
-    } else if (selectedTool === "pencil") {
-      handleDrawWithPencil(e);
-    } else if (selectedTool === "textbox") {
-      handleTextbox(e);
-    } else if (selectedTool === "line") {
-      handleDrawWithLine(e);
+  useEffect(() => {
+    if (status === "slideDataLoaded") {
+      const stateClearedElements = clearSelectedState(
+        clearFocusedState(elements)
+      );
+      const serializedElements = transit.toJSON(stateClearedElements);
+      dispatch(saveDrawing(serializedElements));
+    }
+  }, [elements]);
+
+  const handleMouseDown = (e) => {
+    let updatedElements = clearSelectedState(elements);
+    setSelectedElement(null);
+    setFocusedElement(null);
+
+    let element = getElementAtPosition(e, drawAreaRef, updatedElements);
+    if (selectedTool === "select") {
+      //prettier-ignore
+      if (element && element.get("type") === "textbox" && element.get("focused") === true) {
+        setSelectedElement(element);
+
+        return;
+      }
+      updatedElements = clearFocusedState(updatedElements);
+      if (element) {
+        const index = element.get("index");
+        element = element.set("selected", true);
+        setSelectedElement(element);
+        updatedElements = updatedElements.set(index, element);
+
+        if (element.get("position") === "inside") {
+          setAction("moving");
+        } else {
+          setAction("resizing");
+        }
+      }
+      setElements(updatedElements);
+    } else if (selectedTool !== "select") {
+      if (
+        element &&
+        element.get("type") === "textbox" &&
+        selectedTool === "textbox"
+      ) {
+        element = element.set("focused", true);
+        const index = element.get("index");
+        setSelectedElement(element);
+        setElements(updatedElements.set(index, element));
+        setSelectedTool("select");
+        return;
+      }
+      updatedElements = clearFocusedState(updatedElements);
+      const index = updatedElements.size;
+      element = createElement(e, index, drawAreaRef, selectedTool);
+      updatedElements = updatedElements.push(element);
+      setElements(updatedElements);
+      setSelectedElement(element);
+      setSelectedTool("select");
+      setAction("drawing");
     }
   };
 
   const handleMouseMove = (e) => {
-    e.preventDefault();
-    if (!mouseDown) return;
+    if (selectedTool === "select" || selectedTool === "textbox") {
+      const element = getElementAtPosition(e, drawAreaRef, elements);
+      e.target.style.cursor = getCursorAtPosition(element, selectedTool);
+    }
 
-    if (selectedTool === "select") {
-      handleMoveObject(e);
-    } else if (selectedTool === "pencil") {
-      handleDrawingWithPencil(e);
-    } else if (selectedTool === "line") {
-      handleDrawingWithLine(e);
+    if (action === "drawing") {
+      const index = elements.size - 1;
+      const currentElement = elements.get(index);
+      //prettier-ignore
+      const updatedElement = updateElement(e, currentElement, drawAreaRef);
+      setElements(elements.set(index, updatedElement));
+      setSelectedElement(updatedElement);
+    } else if (action === "moving") {
+      const updatedElement = moveElement(e, selectedElement, drawAreaRef);
+      setElements(elements.set(selectedElement.get("index"), updatedElement));
+      setSelectedElement(updatedElement);
+    } else if (action === "resizing") {
+      const updatedElement = resizeElement(e, selectedElement, drawAreaRef);
+      setElements(elements.set(selectedElement.get("index"), updatedElement));
+      setSelectedElement(updatedElement);
     }
   };
 
   const handleMouseUp = (e) => {
-    setMouseDown(false);
-    if (!selectedObject) return;
-
-    if (selectedTool === "select") {
-      // handleStopMove(e);
-    }
-    if (selectedTool === "textbox") {
-      // clearEmptyTextboxes();
-    }
-  };
-
-  // select tool logic
-  const handleSelect = (e, currentlySelected) => {
-    e.preventDefault();
-    // const updatedLines = clearSelected(currentlySelected);
-    if (!currentlySelected) {
-      setSelectedObject(null);
-      return;
-    }
-    setSelectedObject(currentlySelected);
-    // console.log(currentlySelected);
-    const point = relativeCoordsForEvent(e);
-    if (currentlySelected.name === "line") {
-      setStraightLines(
-        straightLines.setIn([currentlySelected.index, "selected"], true)
-      );
-      setTransformOrigin(point);
-    } else if (currentlySelected.name === "pencil") {
-      setPencilLines(
-        pencilLines.setIn([currentlySelected.index, "selected"], true)
-      );
-      setTransformOrigin(point);
-    } else if (currentlySelected.name === "textbox") {
-      setTextboxes(
-        textboxes.setIn([currentlySelected.index, "selected"], true)
-      );
-      setTransformOrigin(point);
-      // console.log(textboxes.get(currentlySelected.index).get("selected"));
-    }
-  };
-
-  const handleMoveObject = (e) => {
-    if (!selectedObject || !mouseDown) return;
-
-    const point = relativeCoordsForEvent(e);
-    if (selectedObject.name === "line") {
-      moveLine(point);
-    } else if (selectedObject.name === "pencil") {
-      movePencilLine(point);
-    } else if (selectedObject.name === "textbox") {
-      moveTextbox(point);
-    }
-  };
-
-  const handleStopMove = (e) => {
-    setTransformOrigin();
-  };
-
-  const persistNewCoordinates = (line, translate) => {
-    const newOrigin = new Map({
-      x: line.get("origin").get("x") + translate.get("x"),
-      y: line.get("origin").get("y") + translate.get("y"),
-    });
-    const newCurrent = new Map({
-      x: line.get("current").get("x") + translate.get("x"),
-      y: line.get("current").get("y") + translate.get("y"),
-    });
-
-    let newLine = line.set("origin", newOrigin);
-    newLine = newLine.set("current", newCurrent);
-    return newLine;
-  };
-
-  const resetTranslate = (line) => {
-    return line.set(
-      "translate",
-      new Map({
-        x: 0,
-        y: 0,
-      })
-    );
-  };
-
-  const getTranslateFromOrigin = (point) =>
-    new Map({
-      x: point.get("x") - transformOrigin.get("x"),
-      y: point.get("y") - transformOrigin.get("y"),
-      side: selectedObject.side,
-    });
-
-  // line tool logic
-  const handleDrawWithLine = (e) => {
-    const point = relativeCoordsForEvent(e);
-    const updatedLines = straightLines.push(
-      new Map({
-        origin: point,
-        current: point,
-        translate: new Map({
-          x: 0,
-          y: 0,
-        }),
-        selected: false,
-      })
-    );
-    setStraightLines(updatedLines);
-  };
-
-  const handleDrawingWithLine = (e) => {
-    const point = relativeCoordsForEvent(e);
-    const updatedLines = straightLines.setIn(
-      [straightLines.size - 1, "current"],
-      point
-    );
-    setStraightLines(updatedLines);
-  };
-
-  const moveLine = (point) => {
-    const translate = getTranslateFromOrigin(point);
-    setTransformOrigin(point);
-    let newLines = straightLines;
-
-    if (selectedObject.side === "both") {
-      newLines = updateCoords(newLines, translate, "origin");
-      newLines = updateCoords(newLines, translate, "current");
-    } else if (selectedObject.side === "start") {
-      newLines = updateCoords(newLines, translate, "origin");
-    } else if (selectedObject.side === "end") {
-      newLines = updateCoords(newLines, translate, "current");
-    }
-
-    setStraightLines(newLines);
-  };
-
-  const updateCoords = (lines, translate, label) =>
-    lines.updateIn(
-      [selectedObject.index, label],
-      (coord) =>
-        new Map({
-          x: coord.get("x") + translate.get("x"),
-          y: coord.get("y") + translate.get("y"),
-        })
-    );
-
-  // textbox logic
-  const handleTextbox = (e) => {
-    const point = relativeCoordsForEvent(e);
-    const updatedTextboxes = clearTextboxSelections();
-    setTextboxes(
-      updatedTextboxes.push(
-        new Map({
-          position: point,
-          translate: new Map({
-            x: 0,
-            y: 0,
-          }),
-          selected: true,
-        })
-      )
-    );
-  };
-
-  const moveTextbox = (point) => {
-    const translate = getTranslateFromOrigin(point);
-    setTransformOrigin(point);
-    if (selectedObject.side === "all") {
-      setTextboxes(
-        textboxes.updateIn(
-          [selectedObject.index, "translate"],
-          (prevTranslate) =>
-            new Map({
-              ...prevTranslate,
-              x: translate.get("x") + prevTranslate.get("x"),
-              y: translate.get("y") + prevTranslate.get("y"),
-            })
-        )
-      );
-    }
-  };
-
-  const clearTextboxSelections = (e) => {
-    return textboxes.map((textbox) => textbox.set("selected"), false);
-  };
-
-  // pencil tool logic
-  const handleDrawWithPencil = (e) => {
-    const point = relativeCoordsForEvent(e);
-    const updatedLines = pencilLines.push(
-      new Map({
-        coords: List([point]),
-        translate: new Map({
-          x: 0,
-          y: 0,
-        }),
-        selected: false,
-        bounds: {
-          top: point.get("y") - 5,
-          bottom: point.get("y") + 5,
-          left: point.get("x") - 5,
-          right: point.get("x") + 5,
-        },
-      })
-    );
-    // console.log("here");
-
-    setPencilLines(updatedLines);
-  };
-
-  const handleDrawingWithPencil = (e) => {
-    const point = relativeCoordsForEvent(e);
-    let updatedLines = pencilLines.updateIn(
-      [pencilLines.size - 1, "coords"],
-      (line) => line.push(point)
-    );
-    updatedLines = updatedLines.updateIn(
-      [pencilLines.size - 1, "bounds"],
-      (bounds) => ({
-        top: bounds.top < point.get("y") - 5 ? bounds.top : point.get("y") - 5,
-        bottom:
-          bounds.bottom > point.get("y") + 5
-            ? bounds.bottom
-            : point.get("y") + 5,
-        left:
-          bounds.left < point.get("x") - 5 ? bounds.left : point.get("x") - 5,
-        right:
-          bounds.right > point.get("x") + 5 ? bounds.right : point.get("x") + 5,
-      })
-    );
-
-    setPencilLines(updatedLines);
-  };
-
-  const movePencilLine = (point) => {
-    const translate = getTranslateFromOrigin(point);
-    setTransformOrigin(point);
-    if (selectedObject.side === "all") {
-      setPencilLines(
-        pencilLines.updateIn(
-          [selectedObject.index, "translate"],
-          (prevTranslate) =>
-            new Map({
-              x: translate.get("x") + prevTranslate.get("x"),
-              y: translate.get("y") + prevTranslate.get("y"),
-            })
-        )
-      );
-    } else if (selectedObject.side === "topLeft") {
-      setPencilLines(
-        pencilLines.updateIn([selectedObject.index, "bounds"], (bounds) => ({
-          ...bounds,
-          top: bounds.top + translate.get("y"),
-          left: bounds.left + translate.get("x"),
-        }))
-      );
-    } else if (selectedObject.side === "topRight") {
-      setPencilLines(
-        pencilLines.updateIn([selectedObject.index, "bounds"], (bounds) => ({
-          ...bounds,
-          top: bounds.top + translate.get("y"),
-          right: bounds.right + translate.get("x"),
-        }))
-      );
-    } else if (selectedObject.side === "bottomLeft") {
-      setPencilLines(
-        pencilLines.updateIn([selectedObject.index, "bounds"], (bounds) => ({
-          ...bounds,
-          bottom: bounds.bottom + translate.get("y"),
-          left: bounds.left + translate.get("x"),
-        }))
-      );
-    } else if (selectedObject.side === "bottomRight") {
-      setPencilLines(
-        pencilLines.updateIn([selectedObject.index, "bounds"], (bounds) => ({
-          ...bounds,
-          bottom: bounds.bottom + translate.get("y"),
-          right: bounds.right + translate.get("x"),
-        }))
-      );
-    }
-  };
-
-  const relativeCoordsForEvent = (e) => {
-    const boundingRect = drawAreaRef.current.getBoundingClientRect();
-    return new Map({
-      x: e.clientX - boundingRect.left,
-      y: e.clientY - boundingRect.top,
-    });
+    setAction("none");
   };
 
   const handleToolChange = (name) => {
     setSelectedTool(name);
   };
 
-  const handleDelete = (e) => {
-    if (e.key !== "Delete" && e.key !== "Backspace") return;
-    setPencilLines(pencilLines.filter((line) => !line.get("selected")));
-    setStraightLines(straightLines.filter((line) => !line.get("selected")));
-    setTextboxes(textboxes.filter((textbox) => !textbox.get("selected")));
-  };
+  const handleOptionsChange = (options, switchFocus = false) => {
+    if (selectedElement) {
+      let updatedElement = selectedElement.set("options", options);
+      if (switchFocus) {
+        updatedElement = updatedElement.merge(
+          new Map({
+            selected: true,
+            focused: false,
+          })
+        );
+      }
 
-  const clearSelected = (currentlySelected) => {
-    if (!currentlySelected) {
-      return straightLines.map((line) => line.set("selected", false));
-    } else if (currentlySelected.name === "line") {
-      return straightLines.map((line, index) => {
-        if (!currentlySelected || currentlySelected.index !== index) {
-          return line.set("selected", false);
-        }
-        return line.set("selected", true);
-      });
-    } else if (currentlySelected.name === "pencil") {
-      return pencilLines.map((line, index) => {
-        if (!currentlySelected || currentlySelected.index !== index) {
-          return line.set("selected", false);
-        }
-        return line.set("selected", true);
-      });
+      const index = selectedElement.get("index");
+      setSelectedElement(updatedElement);
+      setElements(elements.set(index, updatedElement));
     }
   };
 
+  const handleAction = (action) => {
+    if (action === "delete") {
+      setElements(elements.delete(selectedElement.get("index")));
+      setSelectedElement(null);
+    } else if (action === "duplicate") {
+      const index = selectedElement.get("index");
+      let updatedElements = elements.setIn([index, "selected"], false);
+      const newElement = duplicateElement(elements.size, selectedElement);
+      setElements(updatedElements.push(newElement));
+      setSelectedElement(newElement);
+    }
+  };
+
+  const handleTextChange = (e) => {
+    const index = selectedElement.get("index");
+    if (elements) {
+      setElements(elements.setIn([index, "text"], e.target.value));
+    }
+  };
+
+  const handleClearCanvas = () => {
+    setElements(List());
+  };
+
   return (
-    <Grid container spacing={1}>
+    <Grid container spacing={1} className={classes.root}>
       <Grid item xs={12}>
-        <Slide12Header
+        <PhyloTreeHeader
           tabIndex={tabIndex}
           handleTabChange={handleTabChange}
           header="Draw a phylogenetic tree on the canvas"
@@ -403,33 +533,24 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
             handleToolChange={handleToolChange}
             selected={selectedTool}
           />
-        </Slide12Header>
+        </PhyloTreeHeader>
       </Grid>
       <Grid item xs={12}>
         <div
-          id="parentDiv"
           ref={drawAreaRef}
           className={classes.drawArea}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
         >
-          {textboxes.map((textboxDetails, index) => (
-            <Textbox
-              handleSelect={handleSelect}
-              handleDelete={handleDelete}
-              key={index}
-              index={index}
-              text=""
-              textboxDetails={textboxDetails}
-            />
-          ))}
-          <Drawing
-            pencilLines={pencilLines}
-            straightLines={straightLines}
-            handleDelete={handleDelete}
-            handleSelect={handleSelect}
+          <Options
+            element={selectedElement}
+            handleOptionsChange={handleOptionsChange}
+            handleAction={handleAction}
+            handleClearCanvas={handleClearCanvas}
           />
+
+          <Drawing elements={elements} handleTextChange={handleTextChange} />
         </div>
       </Grid>
     </Grid>

@@ -5,21 +5,20 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: "1.2rem",
+    height: "2rem",
   },
 
   fontSizeInput: {
     width: "100%",
-    height: "1.4rem",
+    height: "2rem",
     fontSize: "0.6rem",
     border: "2px solid #E5E5E5",
     borderRadius: "5px",
-    padding: theme.spacing(1, 1),
+    // padding: theme.spacing(1, 1),
   },
   chip: {
-    fontSize: "0.7rem",
+    fontSize: "0.9rem",
     textAlign: "center",
-
     width: "100%",
   },
 }));

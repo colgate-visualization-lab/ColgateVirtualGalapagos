@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 
 import { BasePairClickContext } from "../../containers/IguanaSlide17";
 
@@ -19,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   // hover state
   basePair: {
     "&:hover": {
+      strokeOpacity: "0.8",
       opacity: 0.7,
       cursor: "pointer",
     },
@@ -26,9 +28,15 @@ const useStyles = makeStyles((theme) => ({
 
   //selected state
   basePairActive: {
-    stroke: "#EBE7EB",
-    strokeOpacity: "0.5",
-    strokeWidth: "1px",
+    // fill: "black",
+    // stroke: "black",
+    // strokeOpacity: "0.7",
+    // strokeWidth: "1px",
+  },
+
+  overlay: {
+    fill: "black",
+    opacity: ({ overlayOpacity }) => overlayOpacity,
   },
 
   // state when selected wrong base pair
@@ -36,30 +44,38 @@ const useStyles = makeStyles((theme) => ({
 
   // base pair colors
   base1: {
-    fill: "#601a4a",
+    fill: "#882255",
   },
 
   base2: {
-    fill: "#ee442f",
+    fill: "#117733",
   },
 
   base3: {
-    fill: "#63acbe",
+    fill: "#ee442f",
   },
 
   base4: {
-    fill: "#f9f4ec",
+    fill: "#332288",
+  },
+
+  baseSelected: {
+    fill: "black",
   },
 }));
 
 const SingeBasePair = ({ basePair, geneIndex }) => {
-  const classes = useStyles();
   const {
     handleOnBaseClick,
     handleEnterBasePair,
     handleLeaveBasePair,
     foundIndices,
   } = useContext(BasePairClickContext);
+
+  const styleProps = {
+    overlayOpacity: foundIndices.has(geneIndex) ? 0.3 : 0,
+  };
+  const classes = useStyles(styleProps);
 
   const basePairClass = `${classes.basePair} ${
     foundIndices.has(geneIndex) ? classes.basePairActive : ""
@@ -77,14 +93,25 @@ const SingeBasePair = ({ basePair, geneIndex }) => {
       onMouseLeave={handleLeaveBasePair}
     >
       {basePair.map((base) => (
-        <rect
-          key={base.id}
-          className={`${classes["base" + base.fillClass]}`}
-          x={base.x}
-          y={base.y}
-          width={base.width}
-          height={base.height}
-        />
+        <g key={base.id}>
+          <rect
+            className={clsx(classes["base" + base.fillClass], {
+              // [classes.baseSelected]: found,
+            })}
+            x={base.x}
+            y={base.y}
+            width={base.width}
+            height={base.height}
+          />
+          <rect
+            key={base.id}
+            className={classes.overlay}
+            x={base.x}
+            y={base.y}
+            width={base.width}
+            height={base.height}
+          />
+        </g>
       ))}
     </g>
   );

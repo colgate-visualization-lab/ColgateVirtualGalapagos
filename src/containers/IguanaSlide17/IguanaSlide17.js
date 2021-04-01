@@ -11,8 +11,8 @@ import { BasePairClickContext } from "./";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    backgroundColor: theme.palette.grey["900"],
-    color: "white",
+    backgroundColor: theme.palette.grey["100"],
+    color: "primary",
     padding: theme.spacing(1, 2),
   },
 }));
