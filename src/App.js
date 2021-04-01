@@ -32,7 +32,7 @@ import NewNote from "./containers/Backpack/Fieldbook/Note/NewNote"
 import Fieldbook from "./containers/Backpack/Fieldbook/Fieldbook"
 import Settings from "./components/Settings/Settings"
 import ModuleContainer from "./containers/MainContent";
-import data from "./components/IguanaData/IguanaData.js";
+import data from "./assets/IguanaData/IguanaData.js";
 import volcanodata from "./components/VolcanoData/VolcanoData.js"
 
 const VolcanoModule = lazy(() =>
