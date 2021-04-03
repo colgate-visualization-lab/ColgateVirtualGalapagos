@@ -1,9 +1,8 @@
 import React from "react";
 import Iframe from "react-iframe";
-import PropTypes from "prop-types";
-import classes from "./VolcanoeIframe.css";
+import classes from "./IframeCompoment.css";
 
-function VolcanoeIframe(props) {
+function IframeComponent(props) {
   return (
     <Iframe
       position="absolute"
@@ -15,9 +14,4 @@ function VolcanoeIframe(props) {
     />
   );
 }
-
-VolcanoeIframe.propTypes = {
-  src: PropTypes.string.isRequired,
-};
-
-export default VolcanoeIframe;
+export default IframeComponent;

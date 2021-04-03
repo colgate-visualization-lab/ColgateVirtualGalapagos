@@ -1,10 +1,9 @@
 import React, { Component, Suspense, lazy } from "react";
 import { Route, Switch } from "react-router-dom";
-import axios from "axios";
 import { ThemeProvider } from "@material-ui/styles";
-
 import Layout from "./containers/Layout/Layout";
-import SignIn from "./containers/SignIn/SignIn";
+import SignIn from "./containers/Authorization/SignIn";
+import SignUp from "./containers/Authorization/SignUp"
 import LoadingScreen from "./containers/LoadingScreen/LoadingScreen";
 import {
   MapFernadina,
@@ -24,29 +23,24 @@ import Gallery from "./containers/Gallery/Gallery";
 // import ModuleNav from "./components/ModuleNav/ModuleNav";
 import ModuleNav from "./components/ModuleNavAlternate";
 import VolcanoLayout from "./containers/VolcanoLayout/VolcanoLayout";
-import IguanaModule from "./components/IguanaModule/IguanaModule";
+// import IguanaModule from "./components/IguanaModule/IguanaModule";
 import ExtraSelect from "./components/ExtraSelect/ExtraSelect";
 // New volcano Module
-import VolcanoSlides from "./components/VolcanoModuleSlides/VolcanoModuleSlides";
+import VolcanoSlides from "./components/VolcanoSlides/VolcanoSlides";
 import theme from "./theme/Theme";
-
-import Test from "./containers/Test/Test";
+import Test from "./containers/Test/Test"
+import NewNote from "./containers/Backpack/Fieldbook/Note/NewNote"
+import Fieldbook from "./containers/Backpack/Fieldbook/Fieldbook"
+import Settings from "./components/Settings/Settings"
+import ModuleContainer from "./containers/MainContent";
+import data from "./assets/IguanaData/IguanaData.js";
+import volcanodata from "./components/VolcanoData/VolcanoData.js"
 
 const VolcanoModule = lazy(() =>
   import("./containers/VolcanoModule/VolcanoModule")
 );
 
 class App extends Component {
-  componentDidMount() {
-    axios
-      .post("localhost:3000/users/login", {
-        username: "joe",
-        password: "joe123e",
-      })
-      .then((response) => console.log(response))
-      .catch((error) => console.log(error));
-  }
-
   render() {
     return (
       <ThemeProvider theme={theme}>
@@ -92,27 +86,28 @@ class App extends Component {
               <Route path="/volcanomod" exact component={VolcanoModule} />
               <Route path="/gallery" exact component={Gallery} />
               <Route path="/volcanolayout" exact component={VolcanoLayout} />
-              <Route path="/iguana" exact component={IguanaModule} />
+              {/* <Route path="/iguana" exact component={IguanaModule} /> */}
               <Route path="/extras" exact component={ExtraSelect} />
               {/* route for iguana module slides */}
-              <Route
-                path="/volcano/:id"
-                exact
-                render={(props) => <Test {...props} />}
+			        <Route path="/oldvolcano/:id" exact 
+                render={(props) => <Test {...props}  />}
               />
-              <Route path="/iguana/:slide_id" component={IguanaModule} />
-              <Route
-                path="/Volcano_0"
-                render={(props) => <VolcanoSlides {...props} slide={0} />}
+
+              <Route path="/iguana/:slide_id"  exact 
+                render={(props) => <ModuleContainer {...props} module={"iguana"} data={data} />}
               />
-              <Route
-                path="/Volcano_1"
-                render={(props) => <VolcanoSlides {...props} slide={1} />}
+              <Route path="/volcano/:slide_id"  exact 
+                render={(props) => <ModuleContainer {...props} module={"volcano"} data={volcanodata} />}
               />
-              <Route
-                path="/Volcano_2"
-                render={(props) => <VolcanoSlides {...props} slide={2} />}
-              />
+              
+              {/* path="/iguana/:slide_id" component={ModuleContainer} /> */}
+   
+			  <Route path="/fieldbook" component={Fieldbook} />
+			  <Route path="/settings" component={Settings}/>
+			  <Route path="/authorization" component={SignIn}/>
+			  <Route path="/signup" component={SignUp}/>
+			  <Route path="/newnote" component={NewNote}/>
+			  <Route path="/note/:id" />
             </Layout>
           </Suspense>
         </Switch>

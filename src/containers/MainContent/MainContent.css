@@ -9,11 +9,6 @@
 .img {
   position: absolute;
   height: 100%;
-  margin: auto;
-  left: 0;
-  right: 0;
-  text-align: center;
-  border-width: 15px;
 }
 .videoContainer {
   width: 100vw;
@@ -27,20 +22,20 @@
   max-width: 100%;
   max-height: 100%;
 }
-
-/* slide 7 360 comparison classes */
-.comparison360Right {
-  position: absolute;
-  height: 100%;
-  width: 50%;
-  right: 0;
+.vid:focus {
+  outline: 0
 }
-
-.comparison360Left {
+.container {
+  height: 100%;
+  width: 100%;
+  background-color: royalblue;
+  position: relative;
+}
+.imgContainer {
+  background-color: orange;
   position: absolute;
   height: 100%;
-  width: 50%;
-  left: 0;
+  opacity: 0.5
 }
 
 .iframe360 {
