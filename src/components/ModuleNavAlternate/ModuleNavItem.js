@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     background: "rgb(245,245,245)",
+    padding: theme.spacing(2),
   },
   modIndex: {
     textTransform: "uppercase",
@@ -47,9 +48,11 @@ const ModuleNavItem = ({ index, title, description, link }) => {
   const classes = useStyles();
   return (
     <Paper className={classes.root}>
-      <Grid container justify="flex-start" spacing={2}>
+      <Grid container justify="flex-start" spacing={1}>
         <Grid item xs={12}>
-          <Typography className={classes.modIndex}>Module {index}</Typography>
+          <Typography className={classes.modIndex}>
+            Module {index + 1}
+          </Typography>
         </Grid>
         <Grid item xs={12}>
           <Typography className={classes.title}>{title}</Typography>
