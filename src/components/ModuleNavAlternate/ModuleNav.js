@@ -13,7 +13,7 @@ const modules = [
     background:
       "url(https://virtualgalapagos.colgate.edu/assets/misc/Volcano.png)",
     animation: " animated slideInDown",
-    link: `/Volcano/${test}`,
+    link: `/volcano/${test}`,
   },
 
   {
@@ -32,7 +32,7 @@ const modules = [
     background:
       "url(https://virtualgalapagos.colgate.edu/assets/misc/Iguana.png)",
     animation: " animated slideInDown slower",
-    link: "/iguana",
+    link: "/iguana/1",
   },
 
   {

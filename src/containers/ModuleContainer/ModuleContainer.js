@@ -6,8 +6,8 @@ import clsx from "clsx";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import data from "../../assets/IguanaData/IguanaData.js";
-import volcanodata from "../../components/VolcanoData/VolcanoData.js";
+import iguanaData from "../../assets/IguanaData/IguanaData.js";
+import volcanoData from "../../components/VolcanoData/VolcanoData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 import ControlButtons from "../ControlButtons/ControlButtons";
 import SlideContentDrawer from "../SlideContentDrawer";
@@ -18,9 +18,13 @@ import AudioPlayer from "../AudioPlayer";
 import {
   getModuleData,
   getSlideData,
-  selectSlide,
   selectStatus,
 } from "../../slices/modulesSlice";
+
+const moduleData = {
+  iguana: iguanaData,
+  volcano: volcanoData,
+};
 
 //Needed for something lol
 const contentDrawerWidth = 240;
@@ -104,7 +108,6 @@ const SlideContainer = (props) => (
 // Actual function being exported
 function ModuleContainer(props) {
   const dispatch = useDispatch();
-  let moduleData = useSelector(selectSlide);
   let status = useSelector(selectStatus);
 
   useEffect(() => {
@@ -119,25 +122,27 @@ function ModuleContainer(props) {
   let { moduleName, slideId } = useParams(); // parameters in our url
   slideId = 1 && parseInt(slideId);
 
+  // get module data
+  let data = moduleData[moduleName];
+
   // we get current slide id from and use that to find the next and prev slide ids
-  const prevSlide = `/${props.module}/${slideId === 1 ? 1 : slideId - 1}`;
-  const nextSlide = `/${props.module}/${
+  const prevSlide = `/${moduleName}/${slideId === 1 ? 1 : slideId - 1}`;
+  const nextSlide = `/${moduleName}/${
     slideId + 1 > data.length ? slideId : slideId + 1
   }`;
   //I guess this state is used for sidebars and fieldbook
   const [contentDrawerOpen, setContentDrawerOpen] = useState(false);
   const [fieldBookDrawerOpen, setFieldBookDrawerOpen] = useState(false);
+
   // Uhh not 100% sure what this is but it's important haha :)
-  const content = props.data[slideId - 1];
+  const content = data[slideId - 1];
+
   //Styling? Also if we declare content after styleProps this doesn't work. Order matters kids.
+  // these are props to pass to useStyles and so I can use them in the makeStyles function above
   const styleProps = {
     heightOffset: "audioSrc" in content ? 150 : 60,
   };
   const classes = useStyles(styleProps);
-  // // const prevSlide = `/iguana/${slideId === 1 ? 1 : slideId - 1}`;
-  // // const nextSlide = `/iguana/${
-  // //   slideId + 1 > data.length ? slideId : slideId + 1
-  // // }`;
 
   //I guess these are used for opening it and stuff
   const handleContentDrawerToggle = (open) => {
@@ -146,8 +151,7 @@ function ModuleContainer(props) {
   const handleFieldBookDrawerToggle = (open) => {
     setFieldBookDrawerOpen(open);
   };
-  //IDK what this is
-  const handleSlideChange = (slideId) => {};
+
   // ControlButtons component props
   const controlButtonProps = {
     hasPrev: slideId !== 1,
@@ -159,9 +163,8 @@ function ModuleContainer(props) {
   return (
     <div className={classes.root}>
       <SlideContentDrawer
-        slideData={props.data}
+        slideData={data}
         contentDrawerOpen={contentDrawerOpen}
-        handleSlideChange={handleSlideChange}
         handleContentDrawerToggle={handleContentDrawerToggle}
       />
       <GridContainer
@@ -182,7 +185,6 @@ function ModuleContainer(props) {
       <FieldBookDrawer
         slideData={data}
         contentDrawerOpen={fieldBookDrawerOpen}
-        handleSlideChange={handleSlideChange}
         handleContentDrawerToggle={handleFieldBookDrawerToggle}
       />
     </div>
