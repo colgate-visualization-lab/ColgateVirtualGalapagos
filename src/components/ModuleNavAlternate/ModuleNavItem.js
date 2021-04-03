@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
  *   - Button to start the module
  *
  */
-const ModuleNavItem = ({ index, title, description, link }) => {
+const ModuleNavItem = ({ index, title, description, link, accessible }) => {
   const classes = useStyles();
   return (
     <Paper className={classes.root}>
@@ -63,8 +63,9 @@ const ModuleNavItem = ({ index, title, description, link }) => {
         </Grid>
         <Grid item xs={12}>
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <Link to={link}>
+            <Link to={accessible ? link : "#"}>
               <Button
+                disabled={!accessible}
                 variant="outlined"
                 size="medium"
                 className={classes.button}
