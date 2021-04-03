@@ -1,6 +1,7 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 
 import ModuleNavItem from "./ModuleNavItem";
@@ -15,16 +16,6 @@ const modules = [
     animation: " animated slideInDown",
     link: `/volcano/${test}`,
   },
-
-  {
-    title: "Extras",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.",
-    background: "url(https://source.unsplash.com/collection/894/1600x900)",
-    animation: " animated slideInDown slow",
-    link: "/extras",
-  },
-
   {
     title: "Iguana",
     description:
@@ -64,13 +55,24 @@ const modules = [
     animation: " animated slideInUp slower",
     link: "/home",
   },
+  {
+    title: "Extras",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.",
+    background: "url(https://source.unsplash.com/collection/894/1600x900)",
+    animation: " animated slideInDown slow",
+    link: "/extras",
+  },
 ];
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    margin: theme.spacing(2),
+  },
   islandName: {
     fontSize: theme.typography.pxToRem(34),
     fontWeight: "600",
+    paddingLeft: theme.spacing(2),
   },
 }));
 
@@ -78,16 +80,18 @@ const ModuleNav = () => {
   const classes = useStyles();
 
   return (
-    <Grid container justify="center" className={classes.root} spacing={2}>
-      <Grid item xs={12}>
-        <Typography className={classes.islandName}>Isabella</Typography>
-      </Grid>
-      {modules.map((moduleItem, index) => (
-        <Grid key={index} item xs={12}>
-          <ModuleNavItem {...moduleItem} index={index} />
+    <Container maxWidth="md">
+      <Grid container justify="center" className={classes.root} spacing={2}>
+        <Grid item xs={12}>
+          <Typography className={classes.islandName}>Isabella</Typography>
         </Grid>
-      ))}
-    </Grid>
+        {modules.map((moduleItem, index) => (
+          <Grid key={index} item xs={12}>
+            <ModuleNavItem {...moduleItem} index={index} />
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
   );
 };
 
