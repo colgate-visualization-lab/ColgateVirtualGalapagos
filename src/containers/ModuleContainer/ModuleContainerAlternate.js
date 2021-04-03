@@ -4,7 +4,6 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/styles";
 import clsx from "clsx";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
 
 import data from "../../assets/IguanaData/IguanaData.js";
 import volcanodata from "../../components/VolcanoData/VolcanoData.js";
@@ -14,7 +13,6 @@ import SlideContentDrawer from "../SlideContentDrawer";
 import FieldBookDrawer from "../FieldBookDrawer";
 import ModuleSelector from "../ModuleSelector/ModuleSelector";
 import AudioPlayer from "../AudioPlayer";
-
 import {
   getModuleData,
   getSlideData,
@@ -116,10 +114,8 @@ function ModuleContainer(props) {
     }
   });
 
-  let { moduleName, slideId } = useParams(); // parameters in our url
-  slideId = 1 && parseInt(slideId);
-
   // we get current slide id from and use that to find the next and prev slide ids
+  const slideId = parseInt(props.match.params.slide_id || 1);
   const prevSlide = `/${props.module}/${slideId === 1 ? 1 : slideId - 1}`;
   const nextSlide = `/${props.module}/${
     slideId + 1 > data.length ? slideId : slideId + 1
@@ -173,7 +169,7 @@ function ModuleContainer(props) {
         <SlideContainer className={classes.slideContainer}>
           <ModuleSelector
             content={content}
-            module={moduleName}
+            module={props.module}
             slideId={slideId}
           />
           <ControlButtons {...controlButtonProps} />

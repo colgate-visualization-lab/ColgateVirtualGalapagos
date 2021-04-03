@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// primary unit of time is seconds for Howler.js
 const formatTime = (secs) => {
   const minutes = Math.floor(secs / 60);
   const seconds = Math.floor(secs % 60);
@@ -45,9 +46,12 @@ const formatTime = (secs) => {
   return `${minutes}:${formattedSecs}`;
 };
 
+/*
+  AudioPlayer - src
+*/
 const AudioPlayer = ({ src }) => {
   const player = useRef(null);
-  const raf = useRef();
+  const raf = useRef(); //
   const [playing, setPlaying] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [seek, setSeek] = useState(0.0);
