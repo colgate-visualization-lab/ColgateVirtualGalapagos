@@ -88,7 +88,7 @@ const ModuleNav = () => {
    */
   return (
     <Container maxWidth="md">
-      <Grid container justify="center" spacing={2}>
+      <Grid container justify="center" spacing={1}>
         <Grid item xs={12}>
           <Typography className={classes.islandName}>Isabella</Typography>
         </Grid>
