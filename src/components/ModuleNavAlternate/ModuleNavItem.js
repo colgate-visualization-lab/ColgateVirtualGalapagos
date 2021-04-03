@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    background: "rgb(250,250,250)",
+    background: "rgb(245,245,245)",
   },
   modIndex: {
     textTransform: "uppercase",
