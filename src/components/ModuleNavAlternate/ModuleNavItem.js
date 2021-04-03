@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     background: "rgb(245,245,245)",
     padding: theme.spacing(2),
+    marginBottom: theme.spacing(3),
   },
   modIndex: {
     textTransform: "uppercase",
@@ -61,13 +62,19 @@ const ModuleNavItem = ({ index, title, description, link }) => {
           <Typography className={classes.description}>{description}</Typography>
         </Grid>
         <Grid item xs={12}>
-          <Link to={link}>
-            <Button variant="outlined" size="medium" className={classes.button}>
-              <Typography color="secondary" className={classes.buttonText}>
-                Start Exploring
-              </Typography>
-            </Button>
-          </Link>
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            <Link to={link}>
+              <Button
+                variant="outlined"
+                size="medium"
+                className={classes.button}
+              >
+                <Typography color="secondary" className={classes.buttonText}>
+                  Start Exploring
+                </Typography>
+              </Button>
+            </Link>
+          </div>
         </Grid>
       </Grid>
     </Paper>
