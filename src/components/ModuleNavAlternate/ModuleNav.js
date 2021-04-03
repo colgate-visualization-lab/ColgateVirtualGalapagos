@@ -70,18 +70,25 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(2),
   },
   islandName: {
-    fontSize: theme.typography.pxToRem(34),
+    fontSize: theme.typography.pxToRem(40),
     fontWeight: "600",
     paddingLeft: theme.spacing(2),
+    marginTop: theme.spacing(2),
   },
 }));
 
 const ModuleNav = () => {
   const classes = useStyles();
 
+  /**
+   * Container component to center the entire page horizontally
+   * Grid container that has 2 parts: the Island Name and the ModuleNavItems
+   *  which just displays each Module's title and description and provides a
+   *  button to explore it
+   */
   return (
     <Container maxWidth="md">
-      <Grid container justify="center" className={classes.root} spacing={2}>
+      <Grid container justify="center" spacing={2}>
         <Grid item xs={12}>
           <Typography className={classes.islandName}>Isabella</Typography>
         </Grid>
