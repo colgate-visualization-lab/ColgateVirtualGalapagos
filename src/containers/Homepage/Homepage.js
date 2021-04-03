@@ -1,106 +1,129 @@
-import React, { Fragment, Component } from "react"
-import classes from "./Homepage.css"
-import ImageMapper from "react-image-mapper"
-import MAP from "../../components/ImageMap/ImageMaps.js"
-import { Redirect } from "react-router"
-import {MapPinzon} from "../../assets/Homepage"
-//import BackgroundVideo from "../../components/BackgroundVideo/BackgroundVideo.js"
+import React, { Fragment, useState, useEffect } from "react";
+// import classes from "./Homepage.css";
+import ImageMapper from "react-image-mapper";
+import imageMap from "./imageMap";
+import { Redirect } from "react-router";
+import { MapPinzon } from "../../assets/Homepage";
+import { makeStyles } from "@material-ui/core/styles";
 
-class Homepage extends Component {
-	constructor(props) {
-		super(props)
+const useStyles = makeStyles((theme) => ({
+  mapheader: {
+    position: "absolute",
+    textAlign: "center",
+    height: "100px",
+    margin: "auto",
+    top: "10px",
+    right: "0px",
+    left: "0px",
+    zIndex: 1,
+    overflow: "hidden",
+    textShadow: "2px 2px 8px #000000",
+  },
+  ".containerFix div": {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    margin: "auto",
+    opacity: 0.9,
+  },
+  videoSubstitute: {
+    position: "absolute",
+    height: "100%",
+    width: "100%",
+  },
+  "@media only screen and (min-width: 992px)": {
+    videoSubstitute: {
+      display: "none",
+    },
+  },
+}));
 
-		this.state = {
-			msg: "Click on the highlighted island to travel to the next module!",
-			route: false,
-			link: "",
-			width: 0,
-			height: 0
-		}
-	}
+const HomePage2 = ({ mapImage, lockValue }) => {
+  const classes = useStyles();
+  const [msg, setMsg] = useState(
+    "Click on the highlighted island to travel to the next module!"
+  );
+  const [route, setRoute] = useState(false);
+  const [link, setLink] = useState("");
+  const [width, setWidth] = useState(0);
 
-	//Image Map States & Handlers
-	enterArea(area) {
-		let unlock = `${area._id}`
-		let lockValue = this.props.lockValue
+  // same function as componentDidMount and componentWillUnmount
+  useEffect(() => {
+    window.addEventListener("resize", updateDimensions);
+    updateDimensions();
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
+    };
+  });
 
-		if (unlock <= lockValue) {
-			this.setState({ msg: `${area.name}`, link: `${area.id}` })
-		} else {
-			this.setState({ msg: "this is locked" })
-		}
-	}
-
-	leaveArea() {
-		this.setState({ msg: "Click on the highlighted island to travel to the next module!" })
-	}
-
-	enterModule(area) {
-		let unlock = `${area._id}`
-		let lockValue = this.props.lockValue
-		if (unlock <= lockValue) {
-			this.setState({ route: true })
-		}
-	}
-
-    //<ImmageMapper> cannot be styled with css, so these methods update a width state for responsivness
-    updateDimensions = () => {
-		let windowWidth = window.innerWidth
-		if (windowWidth > 1500 ) {
-			this.setState({ width: window.innerWidth - 500})
-		} else if (windowWidth > 1300) {
-			this.setState({ width: window.innerWidth - 400})
-		} else if (windowWidth > 1100) {
-			this.setState({ width: window.innerWidth - 300})
-		} else {
-			this.setState({ width: window.innerWidth - 50 })
-		} 
-		if (window.innerHeight < 515 && windowWidth > 1000){
-			this.setState({ width: window.innerWidth - 500})
-		} else if (window.innerHeight < 515){
-			this.setState({ width: window.innerWidth - 300})
-		}
-	}
-
-    componentDidMount() {
-    	window.addEventListener("resize", this.updateDimensions)
-    	this.updateDimensions()
+  // update width of image map
+  const updateDimensions = () => {
+    let windowWidth = window.innerWidth;
+    if (windowWidth > 1500) {
+      setWidth(windowWidth - 500);
+    } else if (windowWidth > 1300) {
+      setWidth(windowWidth - 400);
+    } else if (windowWidth > 1100) {
+      setWidth(windowWidth - 300);
+    } else {
+      setWidth(windowWidth - 50);
     }
-
-    componentWillUnmount() {
-    	window.removeEventListener("resize", this.updateDimensions)
+    if (window.innerHeight < 515 && windowWidth > 1000) {
+      setWidth(windowWidth - 500);
+    } else if (window.innerHeight < 515) {
+      setWidth(windowWidth - 300);
     }
+  };
 
-    render() {
-    	const animation = "animated slideInRight"
-    	const { msg, route, link, width } = this.state
-    	const { MapImg } = this.props
-    	if (route) {
-    		return <Redirect to = { link }
-    		/>
-    	}
-    	return ( 
-    		<Fragment >
-				<img 
-    				src = { MapPinzon }
-    				className = { classes.videoSubstitute }
-    				alt = "" 
-    			/> { /*Background Image for Mobile Devices */ } 
-    			<div className = { `${animation} ${classes.containerFix}` } >
-    				<ImageMapper 
-    					src = { MapImg }
-						width = { width }
-						imgWidth = { 1920 }
-    					map = { MAP }
-    					fillColor = { "rgba(0, 246, 255, 0.33)" }
-    					onMouseEnter = { area => this.enterArea(area) }
-    					onMouseLeave = {() => this.leaveArea()}
-    					onClick = {(area) => this.enterModule(area)}
-    				/> 
-    			</div> 
-    			<h1 className = { classes.Mapheader } style = {{ width: `${width}px` }}>{ msg }</h1>
-    		</Fragment >
-    	)
+  // image map states and handlers
+  const enterArea = (area) => {
+    let unlock = `${area._id}`;
+    let lockValue = lockValue;
+
+    if (unlock <= lockValue) {
+      setMsg(area.name);
+      setLink(area.link);
+    } else {
+      setMsg("Currently Locked");
     }
-}
-export default Homepage
+  };
+
+  const leaveArea = () => {
+    setMsg("Click on the highlighted island to travel to the next module!");
+  };
+
+  const enterModule = (area) => {
+    let unlock = `${area._id}`;
+    let lockValue = lockValue;
+    if (unlock <= lockValue) {
+      setRoute(true);
+    }
+  };
+
+  const animation = "animated slideInRight";
+
+  return route ? (
+    <Redirect to={link} />
+  ) : (
+    <Fragment>
+      <img src={MapPinzon} className={classes.videoSubstitute} alt="" />
+      <div className={`${animation} ${classes.containerFix}`}>
+        <ImageMapper
+          src={mapImage}
+          width={width}
+          imgWidth={1920}
+          map={imageMap}
+          fillColor={"rgba(0, 246, 255, 0.33)"}
+          onMouseEnter={(area) => enterArea(area)}
+          onMouseLeave={() => leaveArea()}
+          onClick={(area) => enterModule(area)}
+        />
+      </div>
+      <h1 className={classes.mapheader} style={{ width: `${width}px` }}>
+        {msg}
+      </h1>
+    </Fragment>
+  );
+};
+
+export default HomePage2;
