@@ -3,3 +3,5 @@ export const video =
 export const backpack =
   "https://virtualgalapagos.colgate.edu/assets/misc/backpack.png";
 export const logo = "https://virtualgalapagos.colgate.edu/assets/misc/logo.png";
+export const fieldbook =
+  "https://virtualgalapagos.colgate.edu/assets/misc/backpack.png";

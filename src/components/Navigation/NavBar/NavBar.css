@@ -40,13 +40,13 @@
 
 .dropdown:focus {
   background-color: rgb(36, 36, 36);
-  border-color: rgb(48, 48, 48);
+  border-color: none;
   box-shadow: none;
 }
 
 .dropdown:hover {
   background-color: rgb(0, 0, 0);
-  border-color: rgb(255, 255, 255);
+  border-color: none;
   box-shadow: 1px;
 }
 
@@ -61,4 +61,8 @@
 .text {
   color: white;
   font-size: 8px;
+}
+
+.container {
+  background-color: black;
 }
