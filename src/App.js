@@ -6,7 +6,7 @@ import SignIn from "./containers/Authorization/SignIn";
 import SignUp from "./containers/Authorization/SignUp";
 import LoadingScreen from "./containers/LoadingScreen/LoadingScreen";
 import {
-  MapFernadina,
+  MapFernandina,
   MapIsabela,
   MapPinzon,
   MapFloreana,
@@ -24,7 +24,7 @@ import Test from "./containers/Test/Test";
 import NewNote from "./containers/Backpack/Fieldbook/Note/NewNote";
 import Fieldbook from "./containers/Backpack/Fieldbook/Fieldbook";
 import Settings from "./components/Settings/Settings";
-import ModuleContainer from "./containers/MainContent";
+import ModuleContainer from "./containers/ModuleContainer";
 import data from "./assets/IguanaData/IguanaData.js";
 import volcanodata from "./components/VolcanoData/VolcanoData.js";
 
@@ -34,7 +34,7 @@ const VolcanoModule = lazy(() =>
 
 const mapImages = [
   MapIsabela,
-  MapFernadina,
+  MapFernandina,
   MapFloreana,
   MapEspanola,
   MapPinzon,
@@ -49,7 +49,6 @@ class App extends Component {
             <Route path="/" exact component={SplashScreen} />
             <Route path="/authorization" component={SignIn} />
             <Layout>
-              {" "}
               {/*Layout sets up navbar and the main tag that takes up the rest of the screen */}
               {mapImages.map((mapImage, index) => (
                 <Route
@@ -78,6 +77,18 @@ class App extends Component {
                 render={(props) => <Test {...props} />}
               />
               <Route
+                path="/:moduleName/:slideId"
+                exact
+                render={(props) => <ModuleContainer {...props} />}
+              />
+              {/* <Route
+                path="/iguana/:slide_id"
+                exact
+                render={(props) => (
+                  <ModuleContainer {...props} module={"iguana"} data={data} />
+                )}
+              />
+              <Route
                 path="/iguana/:slide_id"
                 exact
                 render={(props) => (
@@ -94,7 +105,7 @@ class App extends Component {
                     data={volcanodata}
                   />
                 )}
-              />
+              /> */}
               {/* path="/iguana/:slide_id" component={ModuleContainer} /> */}
               <Route path="/fieldbook" component={Fieldbook} />
               <Route path="/settings" component={Settings} />

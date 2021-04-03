@@ -11,6 +11,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/* 
+  ProgressBar is a slider essentially. 
+  Parameters are duration of the audio, seek (which is currentTime),
+  and handleSeek to change the currentTime/seek if you seek on the slider
+*/
 const ProgressBar = ({ duration, seek, handleSeek }) => {
   const classes = useStyles();
   return (
