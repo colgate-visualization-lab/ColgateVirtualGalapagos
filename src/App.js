@@ -21,7 +21,8 @@ import {
 import Homepage from "./containers/Homepage/Homepage";
 import SplashScreen from "./components/SplashScreen/SplashScreen";
 import Gallery from "./containers/Gallery/Gallery";
-import ModuleNav from "./components/ModuleNav/ModuleNav";
+// import ModuleNav from "./components/ModuleNav/ModuleNav";
+import ModuleNav from "./components/ModuleNavAlternate";
 import VolcanoLayout from "./containers/VolcanoLayout/VolcanoLayout";
 import IguanaModule from "./components/IguanaModule/IguanaModule";
 import ExtraSelect from "./components/ExtraSelect/ExtraSelect";
