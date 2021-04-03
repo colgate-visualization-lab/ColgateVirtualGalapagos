@@ -78,7 +78,7 @@ const ModuleNav = () => {
   const classes = useStyles();
 
   return (
-    <Grid container justify="center" className={classes.root}>
+    <Grid container justify="center" className={classes.root} spacing={2}>
       <Grid item xs={12}>
         <Typography className={classes.islandName}>Isabella</Typography>
       </Grid>
