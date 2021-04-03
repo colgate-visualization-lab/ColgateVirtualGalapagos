@@ -12,7 +12,7 @@ import {
   MapFloreana,
   MapEspanola,
 } from "./assets/Homepage";
-import Homepage from "./containers/Homepage/Homepage";
+import Homepage from "./containers/Homepage";
 import SplashScreen from "./components/SplashScreen/SplashScreen";
 import Gallery from "./containers/Gallery/Gallery";
 // import ModuleNav from "./components/ModuleNav/ModuleNav";
@@ -26,8 +26,6 @@ import NewNote from "./containers/Backpack/Fieldbook/Note/NewNote";
 import Fieldbook from "./containers/Backpack/Fieldbook/Fieldbook";
 import Settings from "./components/Settings/Settings";
 import ModuleContainer from "./containers/ModuleContainer";
-import data from "./assets/IguanaData/IguanaData.js";
-import volcanodata from "./components/VolcanoData/VolcanoData.js";
 
 const VolcanoModule = lazy(() =>
   import("./containers/VolcanoModule/VolcanoModule")
@@ -59,7 +57,7 @@ class App extends Component {
                     <Homepage
                       {...props}
                       lockValue={index + 1}
-                      MapImg={mapImage}
+                      mapImage={mapImage}
                     />
                   )}
                 />
