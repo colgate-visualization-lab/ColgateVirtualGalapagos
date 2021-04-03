@@ -80,8 +80,6 @@ const RateControl = ({ currentRate, handleRateChange }) => {
   };
   const slider = Boolean(anchorEl);
 
-  // console.log(rates.findIndex((rate) => rate.value === currentRate));
-
   return (
     <div>
       <IconButton
