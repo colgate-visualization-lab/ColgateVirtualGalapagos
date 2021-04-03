@@ -1,6 +1,4 @@
-import React from "react";
-
-var MAP = {
+const imageMap = {
   name: "THIS IS MY MAP",
   areas: [
     {
@@ -253,4 +251,4 @@ var MAP = {
   ],
 };
 
-export default MAP;
+export default imageMap;
