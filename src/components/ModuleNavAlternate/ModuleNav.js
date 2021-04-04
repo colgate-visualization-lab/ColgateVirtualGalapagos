@@ -15,7 +15,7 @@ const modules = [
       "url(https://virtualgalapagos.colgate.edu/assets/misc/Volcano.png)",
     animation: " animated slideInDown",
     link: `/volcano/${test}`,
-    acessible: true,
+    accessible: true,
   },
   {
     title: "Iguana",
@@ -25,7 +25,7 @@ const modules = [
       "url(https://virtualgalapagos.colgate.edu/assets/misc/Iguana.png)",
     animation: " animated slideInDown slower",
     link: "/iguana/1",
-    acessible: true,
+    accessible: true,
   },
 
   {
@@ -36,7 +36,7 @@ const modules = [
       "url(http://virtualgalapagos.colgate.edu/assets/misc/Currents.png)",
     animation: " animated slideInUp",
     link: "/home",
-    acessible: false,
+    accessible: false,
   },
 
   {
@@ -47,7 +47,7 @@ const modules = [
       "url(http://virtualgalapagos.colgate.edu/assets/misc/Eruption.png)",
     animation: " animated slideInUp slow",
     link: "/home",
-    acessible: false,
+    accessible: false,
   },
 
   {
@@ -58,7 +58,7 @@ const modules = [
       "url(http://virtualgalapagos.colgate.edu/assets/misc/IslandLifeCycle.png)",
     animation: " animated slideInUp slower",
     link: "/home",
-    acessible: false,
+    accessible: false,
   },
   {
     title: "Extras",
@@ -67,7 +67,7 @@ const modules = [
     background: "url(https://source.unsplash.com/collection/894/1600x900)",
     animation: " animated slideInDown slow",
     link: "/extras",
-    acessible: false,
+    accessible: false,
   },
 ];
 
