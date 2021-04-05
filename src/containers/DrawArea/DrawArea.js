@@ -56,6 +56,7 @@ const createElement = (e, index, drawAreaRef, selectedTool) => {
       options: getDefaultOptions("line"),
     });
   } else if (selectedTool === "textbox") {
+    console.log("clearly creating text");
     return new Map({
       index: index,
       x1: x,
@@ -73,9 +74,9 @@ const createElement = (e, index, drawAreaRef, selectedTool) => {
 
 const duplicateElement = (index, element) => {
   const { x1, y1, x2, y2 } = unpackElementDetails(element);
-  let newElement = new Map(element);
-  newElement = newElement.merge(
+  let newElement = new Map(element).merge(
     new Map({
+      index,
       x1: x1 + 10,
       y1: y1 + 10,
       x2: x2 + 10,
@@ -87,7 +88,7 @@ const duplicateElement = (index, element) => {
   return newElement;
 };
 
-const updateElement = (e, element, drawAreaRef, offsetX) => {
+const updateElement = (e, element, drawAreaRef) => {
   const { x, y } = relativeCoordsForEvent(e, drawAreaRef);
   if (element.get("type") === "line") {
     const updates = new Map({
@@ -484,9 +485,9 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
 
   /*   
     Callbacks for Options component - the side bar that allows you to edit aspects of the selected element
-    What's the switchFocus for? used to be   const handleOptionsChange = (options, switchFocus = false) 
-
   */
+
+  // updates options (color, size, etc) for the selected element
   const handleOptionsChange = (options) => {
     if (selectedElement) {
       let updatedElement = selectedElement.set("options", options);
@@ -504,13 +505,19 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     }
   };
 
+  // performs an action (deleting or duplicating a selected element)
   const handleAction = (action) => {
     if (action === "delete") {
       setElements(elements.delete(selectedElement.get("index")));
       setSelectedElement(null);
     } else if (action === "duplicate") {
+      // reset the selected/focused state of currently selected element
       const index = selectedElement.get("index");
-      let updatedElements = elements.setIn([index, "selected"], false);
+      let updatedElements = elements
+        .setIn([index, "selected"], false)
+        .setIn([index, "focused"], false);
+
+      // duplicate the element, and pass it's index (which is just size of elements list)
       const newElement = duplicateElement(elements.size, selectedElement);
       setElements(updatedElements.push(newElement));
       setSelectedElement(newElement);
@@ -523,11 +530,11 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
 
   /* callback for Drawing component (this is what displays the drawings lol)
       Need to have the text of all textboxes stored in elements as well */
-  const handleTextChange = (e) => {
+  const handleTextChange = (value) => {
     const index = selectedElement.get("index");
-    if (elements) {
-      setElements(elements.setIn([index, "text"], e.target.value));
-    }
+    const updatedElements = elements.setIn([index, "text"], value);
+    setElements(updatedElements);
+    setSelectedElement(updatedElements.get(index));
   };
 
   return (

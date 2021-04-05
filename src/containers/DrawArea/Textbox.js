@@ -125,7 +125,7 @@ const Textbox = ({
           ref={ref}
           className={classes.text}
           value={text}
-          onChange={handleTextChange}
+          onChange={(e) => handleTextChange(e.target.value)}
         />
       </foreignObject>
     </g>
