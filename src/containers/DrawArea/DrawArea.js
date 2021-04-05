@@ -396,6 +396,13 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     }
   }, [elements]);
 
+  // callback props for DrawAreaToolbar
+  const handleToolChange = (name) => {
+    setSelectedTool(name);
+  };
+
+  /* Set of callback functions that handle the "drawing" aspect
+     Essentially, they populate the elements list appropriately */
   const handleMouseDown = (e) => {
     let updatedElements = clearSelectedState(elements);
     setSelectedElement(null);
@@ -475,14 +482,15 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     setAction("none");
   };
 
-  const handleToolChange = (name) => {
-    setSelectedTool(name);
-  };
+  /*   
+    Callbacks for Options component - the side bar that allows you to edit aspects of the selected element
+    What's the switchFocus for? used to be   const handleOptionsChange = (options, switchFocus = false) 
 
-  const handleOptionsChange = (options, switchFocus = false) => {
+  */
+  const handleOptionsChange = (options) => {
     if (selectedElement) {
       let updatedElement = selectedElement.set("options", options);
-      if (switchFocus) {
+      if (selectedElement.get("type") === "textbox") {
         updatedElement = updatedElement.merge(
           new Map({
             selected: true,
@@ -490,7 +498,6 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
           })
         );
       }
-
       const index = selectedElement.get("index");
       setSelectedElement(updatedElement);
       setElements(elements.set(index, updatedElement));
@@ -510,15 +517,17 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
     }
   };
 
+  const handleClearCanvas = () => {
+    setElements(List());
+  };
+
+  /* callback for Drawing component (this is what displays the drawings lol)
+      Need to have the text of all textboxes stored in elements as well */
   const handleTextChange = (e) => {
     const index = selectedElement.get("index");
     if (elements) {
       setElements(elements.setIn([index, "text"], e.target.value));
     }
-  };
-
-  const handleClearCanvas = () => {
-    setElements(List());
   };
 
   return (
