@@ -45,7 +45,7 @@ const StrokeColorOption = ({ options, handleOptionsChange }) => {
 
   const classes = useStyles({ currentColor: currentColor });
   const handleColorChange = (value) => {
-    handleOptionsChange(options.set("strokeColor", value), true);
+    handleOptionsChange(options.set("strokeColor", value));
   };
   return (
     <Grid container alignItems="center" spacing={1} className={classes.root}>
