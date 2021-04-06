@@ -243,7 +243,7 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == 9) {
+    else if (props.data.id == 10) {
         return (
             <div>
             <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
@@ -267,23 +267,13 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == 10) {
-        return (
-            <div>
-            <audio className={classes.audioPlayer} src={terrainMapAges1} autoPlay controls controlsList="nodownload"/>
-            <div className={classes.imgContainer}>
-                <img className={classes.imgFill} src={TerrainMap} />
-                <DndLayout volcano10={true} />
-            </div>
-            </div>
-        )
-    }
     else if (props.data.id == 11) {
         return (
             <div>
-                <audio className={classes.audioPlayer} src={terrainMapAges2} autoPlay controls controlsList="nodownload"/>
+            <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
             <div className={classes.imgContainer}>
-                <img className={classes.imgFill} src={DnDAnswers}/>
+                <img className={classes.imgFill} src={props.data.imageSrc} />
+                <DndLayout volcano10={true} />
             </div>
             </div>
         )
@@ -291,9 +281,19 @@ export default function VolcanoSlides(props) {
     else if (props.data.id == 12) {
         return (
             <div>
-            <audio className={classes.audioPlayer} src={otherVolcanoes1} autoPlay controls controlsList="nodownload"/>
+                <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
             <div className={classes.imgContainer}>
-                    <img className={classes.imgFill} src={VolcanoCompare}/>
+                <img className={classes.imgFill} src={props.data.imageSrc}/>
+            </div>
+            </div>
+        )
+    }
+    else if (props.data.id == 13) {
+        return (
+            <div>
+            <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
+            <div className={classes.imgContainer}>
+                    <img className={classes.imgFill} src={props.data.imageSrc}/>
                     <Popup trigger={<button className={`${classes.dot} ${classes.dot10}`}></button>}
                     contentStyle={popup} arrow={false} position="right center">
                         <div>
@@ -346,16 +346,16 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == 13) {
+    else if (props.data.id == 14) {
         return (
             <video className={classes.center} src={plateTectonics} autoPlay controls controlsList="nodownload"  type="video/mp4"/> 
         )
     }
-    else if (props.data.id == 14) {
+    else if (props.data.id == 15) {
         return (
             <div>
-                <audio className={classes.audioPlayer} src={tectonicPlates1} autoPlay controls controlsList="nodownload"/>
-            <img className={classes.center} src={tectonicPlatesMap}/>
+                <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
+                <img className={classes.center} src={tectonicPlatesMap}/>
             </div>
         )
     }
