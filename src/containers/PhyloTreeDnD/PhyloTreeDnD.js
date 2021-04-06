@@ -11,7 +11,7 @@ import update from "immutability-helper";
 import DropTarget from "./DropTarget";
 import IguanaBox from "./IguanaBox";
 import PhyloTreeHeader from "../PhyloTreeHeader";
-import { Slide12Context, Box } from "./utils";
+import { Box } from "./utils";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "960px",
     maxHeight: "600px",
     margin: theme.spacing(2),
-    zIndex: 400,
   },
   dropTargetDiv: {
     position: "absolute",
@@ -45,7 +44,6 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     width: "100%",
     height: "100%",
-    zIndex: 400,
   },
   backgroundImg: {
     maxWidth: "100%",
@@ -89,8 +87,8 @@ const useTreeDnD = (iguanaNames, iguanaNamesPlacement) => {
   let initialState = {
     undraggedNames: iguanaNames,
     draggedNames: iguanaNamesPlacement.map((box) => new Box(box)),
-    checkTree: false,
-    completeTree: false,
+    correctnessIndicatorVisible: false,
+    completedTreeVisible: false,
   };
 
   let [state, dispatch] = useReducer((state, action) => {
@@ -140,17 +138,17 @@ const useTreeDnD = (iguanaNames, iguanaNamesPlacement) => {
           draggedNames: action.names,
         };
       }
-      case "CHECK_TREE": {
+      case "SET_TREE_CORRECTNESS_INDICATOR": {
         return {
           ...state,
-          checkTree: action.value,
+          correctnessIndicatorVisible: action.value,
         };
       }
-      case "COMPLETE_TREE": {
+      case "SET_COMPLETE_TREE_STATUS": {
         return {
           ...state,
-          checkTree: false,
-          completeTree: true,
+          // correctnessIndicatorVisible: false,
+          completedTreeVisible: action.value,
         };
       }
       case "SHOW_COMPLETED_TREE": {
@@ -181,18 +179,9 @@ const useTreeDnD = (iguanaNames, iguanaNamesPlacement) => {
 
         return {
           ...state,
-          checkTree: false,
-          completeTree: true,
+          correctnessIndicatorVisible: false,
+          completedTreeVisible: true,
           draggedNames: newDraggedNames,
-        };
-      }
-      case "RESET_TREE": {
-      }
-      case "RESET_CHECK": {
-        return {
-          ...state,
-          checkTree: false,
-          completeTree: false,
         };
       }
       default: {
@@ -215,45 +204,26 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
 
   const [state, dispatch] = useTreeDnD(iguanaNames, iguanaNamesPlacement);
 
-  let { draggedNames, undraggedNames, checkTree, completeTree } = state;
+  let {
+    draggedNames,
+    undraggedNames,
+    correctnessIndicatorVisible,
+    completedTreeVisible,
+  } = state;
 
   const props = { backgroundUrl: `url('${content.backgroundUrl}')` };
   const classes = useStyles(props);
 
   const handleDrop = (droppedName, index) => {
+    console.log("called here?");
     const currentBox = draggedNames[index];
     dispatch({ type: "UPDATE_UNDRAGGED_NAMES", droppedName, currentBox });
     dispatch({ type: "UPDATE_DRAGGED_NAMES", droppedName, index, currentBox });
-  };
-
-  const updateUndraggedBoxes = (droppedName, index, currentBox) => {
-    let newlyUndragged = undraggedNames.filter((name) => droppedName !== name);
-    if (
-      currentBox.placedName !== null &&
-      currentBox.placedName !== droppedName
-    ) {
-      newlyUndragged = update(newlyUndragged, {
-        $push: [currentBox.placedName],
-      });
-    }
-    setUndraggedNames(newlyUndragged);
-  };
-
-  const updateDraggedBoxes = (droppedName, index, currentBox) => {
-    let newDraggedBoxes = draggedNames.map((box) => {
-      let newBox = new Box(box.validNames);
-      newBox.placedName =
-        droppedName === box.placedName ? null : box.placedName;
-      return newBox;
-    });
-    newDraggedBoxes = update(newDraggedBoxes, {
-      [index]: { $set: new Box(currentBox.validNames, droppedName) },
-    });
-    setDraggedNames(newDraggedBoxes);
+    dispatch({ type: "SET_TREE_CORRECTNESS_INDICATOR", value: false });
   };
 
   const handleCheckTree = () => {
-    dispatch({ type: "CHECK_TREE", value: true });
+    dispatch({ type: "SET_TREE_CORRECTNESS_INDICATOR", value: true });
   };
 
   // cause delay
@@ -266,7 +236,8 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
   };
 
   const handleShowTree = async () => {
-    dispatch({ type: "COMPLETE_TREE" });
+    dispatch({ type: "SET_TREE_CORRECTNESS_INDICATOR", value: false });
+    dispatch({ type: "SET_COMPLETE_TREE_STATUS", value: true });
     await delay(200);
     dispatch({ type: "SET_UNDRAGGED_NAMES", names: [] });
     await delay(200);
@@ -274,7 +245,8 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
   };
 
   const handleResetTree = async () => {
-    dispatch({ type: "RESET_CHECK" });
+    dispatch({ type: "SET_TREE_CORRECTNESS_INDICATOR", value: false });
+    dispatch({ type: "SET_COMPLETE_TREE_STATUS", value: false });
     await delay(200);
     dispatch({
       type: "SET_DRAGGED_NAMES",
@@ -282,10 +254,6 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
     });
     await delay(300);
     dispatch({ type: "SET_UNDRAGGED_NAMES", names: iguanaNames });
-  };
-
-  const resetCheck = () => {
-    dispatch({ type: "RESET_CHECK" });
   };
 
   const DropTargetComponent = ({ index, ...props }) => (
@@ -297,7 +265,7 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
       onDrop={handleDrop}
       placedName={draggedNames[index].placedName}
     >
-      {checkTree &&
+      {correctnessIndicatorVisible &&
         (draggedNames[index].isPlacedCorrectly() ? (
           <CheckCircleIcon fontSize="inherit" />
         ) : (
@@ -308,68 +276,63 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <Slide12Context.Provider value={resetCheck}>
-        <div className={classes.root}>
-          <PhyloTreeHeader
-            tabIndex={tabIndex}
-            handleTabChange={handleTabChange}
-            header="Create a phylogenetic tree by dragging the cards below to their correct positions"
-          >
-            <div className={classes.iguanaBoxes}>
-              {undraggedNames.map((iguanaName, index) => (
-                <Grow in={!completeTree} key={index}>
-                  <IguanaBox name={iguanaName} />
-                </Grow>
-              ))}
-            </div>
-          </PhyloTreeHeader>
-          <div className={classes.dropTargetContainer}>
-            <img
-              src={content.backgroundUrl}
-              className={classes.backgroundImg}
-            />
-            <div className={classes.dropTargetDiv}>
-              {dropTargets.map(({ top, left }, index) => (
-                <DropTargetComponent
-                  key={index}
-                  top={top}
-                  left={left}
-                  index={index}
-                />
-              ))}
-            </div>
+      <div className={classes.root}>
+        <PhyloTreeHeader
+          tabIndex={tabIndex}
+          handleTabChange={handleTabChange}
+          header="Create a phylogenetic tree by dragging the cards below to their correct positions"
+        >
+          <div className={classes.iguanaBoxes}>
+            {undraggedNames.map((iguanaName, index) => (
+              <Grow in={!completedTreeVisible} key={index}>
+                <IguanaBox name={iguanaName} />
+              </Grow>
+            ))}
           </div>
-          <div className={classes.buttons}>
+        </PhyloTreeHeader>
+        <div className={classes.dropTargetContainer}>
+          <img src={content.backgroundUrl} className={classes.backgroundImg} />
+          <div className={classes.dropTargetDiv}>
+            {dropTargets.map(({ top, left }, index) => (
+              <DropTargetComponent
+                key={index}
+                top={top}
+                left={left}
+                index={index}
+              />
+            ))}
+          </div>
+        </div>
+        <div className={classes.buttons}>
+          <Button
+            variant="contained"
+            size="small"
+            className={classes.button}
+            onClick={handleCheckTree}
+          >
+            Check My Tree
+          </Button>
+          {completedTreeVisible ? (
             <Button
               variant="contained"
               size="small"
               className={classes.button}
-              onClick={handleCheckTree}
+              onClick={handleResetTree}
             >
-              Check My Tree
+              Reset Tree
             </Button>
-            {completeTree ? (
-              <Button
-                variant="contained"
-                size="small"
-                className={classes.button}
-                onClick={handleResetTree}
-              >
-                Reset Tree
-              </Button>
-            ) : (
-              <Button
-                variant="contained"
-                size="small"
-                className={classes.button}
-                onClick={handleShowTree}
-              >
-                Show Completed Tree
-              </Button>
-            )}
-          </div>
+          ) : (
+            <Button
+              variant="contained"
+              size="small"
+              className={classes.button}
+              onClick={handleShowTree}
+            >
+              Show Completed Tree
+            </Button>
+          )}
         </div>
-      </Slide12Context.Provider>
+      </div>
     </DndProvider>
   );
 };
