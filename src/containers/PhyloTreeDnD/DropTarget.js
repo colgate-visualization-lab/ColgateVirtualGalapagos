@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useDrop } from "react-dnd";
 import Fade from "@material-ui/core/Fade";
 
-import { ItemTypes } from "./ItemTypes";
 import IguanaBox from "./IguanaBox";
 
 const useStyles = makeStyles(() => ({
@@ -58,7 +57,7 @@ const DropTarget = ({
   const classes = useStyles(props);
 
   const [, drop] = useDrop({
-    accept: ItemTypes.IGUANA,
+    accept: "iguana",
     drop(item) {
       onDrop(item.name, index);
     },
