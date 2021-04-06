@@ -101,6 +101,7 @@ export default function VolcanoSlides(props) {
     if (props.data.id == 1) {
         return (
                 <video className={classes.test} src={props.data.videoSrc} autoPlay controls controlsList="nodownload" type="video/mp4"/> 
+                // <div style={{backgroundColor: "pink", position: "absolute", height: "100%", width: "100%"}}>hello</div>
         )
     }
     else if (props.data.id == 2) {
@@ -135,14 +136,12 @@ export default function VolcanoSlides(props) {
     }
     else if (props.data.id == 7) {
         return (
-            <div className={classes.test}>
-                {/* <audio className={classes.audioPlayer} src={terrainMap2} autoPlay controls controlsList="nodownload"/> */}
-                {/* <div className={classes.imgContainer}> */}
-                    <img className={classes.test} src={props.data.imageSrc1}/>
+                <Fragment>
+                    {/* <audio className={classes.audioPlayer} src={terrainMap2} autoPlay controls controlsList="nodownload"/> */}
+                    <img className={MUIclasses.img} src={props.data.imageSrc1}/>
                     <div className={classes.hypothesis}>Click on the magnifying glass!</div>
                     <img className={classes.magnifying} onClick={() => props.setSlideChange("./6optional")} src={props.data.imageSrc2}/>
-                {/* </div> */}
-            </div>
+                </Fragment>
         )
     }
     else if (props.data.id == "6optional") {
@@ -165,10 +164,7 @@ export default function VolcanoSlides(props) {
         )
     }
     else if (props.data.id == 9) {
-        const button = {position: "absolute",
-            zIndex: "1",
-            top: "55%",
-            left: "7%",}
+        const button = {position: "absolute", zIndex: "1", top: "55%", left: "7%",}
         return (
             <div>
             <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
