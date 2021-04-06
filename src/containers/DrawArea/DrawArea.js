@@ -236,33 +236,30 @@ const useDrawArea = () => {
   return [state, dispatch, drawAreaRef];
 };
 
+const useStoredDrawings = () => {
+  const dispatch = useDispatch();
+  const savedElements = useSelector(selectElements);
+  const status = useSelector(selectStatus);
+  const [elements, setElements] = useState(List());
+  //   savedElements ? transit.fromJSON(savedElements) : List()
+  // );
+  useEffect(() => {
+    if (status === "slideDataLoaded") {
+      const stateClearedElements = clearSelectedState(
+        clearFocusedState(elements)
+      );
+      const serializedElements = transit.toJSON(stateClearedElements);
+      dispatch(saveDrawing(serializedElements));
+    }
+  }, [elements]);
+};
+
 const DrawArea = ({ tabIndex, handleTabChange }) => {
-  // const dispatch = useDispatch();
-  // const savedElements = useSelector(selectElements);
-  // const status = useSelector(selectStatus);
   const classes = useStyles();
 
   const [state, dispatch, drawAreaRef] = useDrawArea();
 
-  // const [elements, setElements] = useState(List());
-  // //   savedElements ? transit.fromJSON(savedElements) : List()
-  // // );
-  // const [selectedElement, setSelectedElement] = useState(null);
-  // const [focusedElement, setFocusedElement] = useState(null);
-  // const [action, setAction] = useState("none");
-  // const [selectedTool, setSelectedTool] = useState("select");
-
   const { elements, selectedElement, action, selectedTool } = state;
-
-  // useEffect(() => {
-  //   if (status === "slideDataLoaded") {
-  //     const stateClearedElements = clearSelectedState(
-  //       clearFocusedState(elements)
-  //     );
-  //     const serializedElements = transit.toJSON(stateClearedElements);
-  //     dispatch(saveDrawing(serializedElements));
-  //   }
-  // }, [elements]);
 
   // callback props for DrawAreaToolbar
   const handleToolChange = (name) => {
