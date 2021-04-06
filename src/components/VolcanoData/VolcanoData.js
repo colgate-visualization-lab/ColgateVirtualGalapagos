@@ -69,70 +69,59 @@ const iguanaData = [
     videoSrc2:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Cactus_Final/index.htm",
   },
-  // {
-  //   id: "9",
-  //   title: "Iguana_Comparison04",
-  //   type: "image",
-  //   url:
-  //     "http://virtualgalapagos.colgate.edu/assets/IguanaModule/LandIguanaOnRocks.png", //slider
-  // },
   {
     id: "9",
     title: "Terrain Map 3",
-    audioSrc:
+    audioSrc: 
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap03.mp3",
-    imageSrc:
+    imageSrc: 
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/TerrainMap-Labelled.png",
   },
   {
     id: "10",
-    title: "Iguana_PhyloTree02",
-    audioSrc: "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap04.mp3",
-    imageSrc:
+    title: "Terrain Map 4",
+    audioSrc: 
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap04.mp3",
+    imageSrc: 
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/TerrainMap-Labelled.png", 
   },
-  //need to build,
+  {
+    id: "11",
+    title: "DND 1",
+    audioSrc: 
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMapAges01.mp3",
+    imageSrc:
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/TerrainMap-Labelled.png",
+  },
   {
     id: "12",
-    title: "Iguana_PhyloTree05",
-    type: "Slide12DnDInteractive",
-    backgroundUrl:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide12DnDBackgroundGreySquare.png",
+    title: "Terrain Ages 2",
+    audioSrc:
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMapAges02.mp3",
+    imageSrc:
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/DragandDropAnswers.png",
   },
   {
     id: "13",
-    title: "Iguana_Evolution01",
-    type: "video360",
-    audioSrc:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide13.wav",
-    url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/IguanaVegetation/index.htm",
+    title: "Other Volcanoes 01",
+    audioSrc: 
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_OtherVolcanoes01.mp3",
+    imageSrc:
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoCompare.png",
   },
   {
     id: "14",
-    title: "Iguana_Evolution02",
-    type: "video",
-    url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Video/IguanaWhiteboardEvolution.mp4",
+    title: "Plate Tectonics Video",
+    videoSrc:
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoPlateTectonics.mp4",
   },
   {
     id: "15",
-    title: "Iguana_Evolution03",
-    type: "interactive_image",
-    url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/MarineGreenIguanaComparison.jpg",
-    audioSrc:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide15_initial.mp3",
-    data: slide15Data,
-  },
-  {
-    id: "16",
     title: "Iguana_Evolution04",
-    type: "video360",
     audioSrc:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide16.wav",
-    url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/IguanaVegetation/index.htm",
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TectonicPlates01.mp3",
+    imageSrc:
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/tectonicplatesmap.png",
   },
   {
     id: "17",
