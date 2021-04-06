@@ -21,6 +21,7 @@ const relativeCoordsForEvent = (e, drawAreaRef) => {
     y: e.clientY - boundingRect.top,
   };
 };
+
 const getDefaultOptions = (type) => {
   if (type === "line") {
     return new Map({
@@ -37,6 +38,7 @@ const getDefaultOptions = (type) => {
     });
   }
 };
+
 export const createElement = (e, index, drawAreaRef, selectedTool) => {
   const { x, y } = relativeCoordsForEvent(e, drawAreaRef);
 
@@ -67,6 +69,7 @@ export const createElement = (e, index, drawAreaRef, selectedTool) => {
     });
   }
 };
+
 export const duplicateElement = (index, element) => {
   const { x1, y1, x2, y2 } = unpackElementDetails(element);
   let newElement = new Map(element).merge(
@@ -82,6 +85,7 @@ export const duplicateElement = (index, element) => {
 
   return newElement;
 };
+
 export const updateElement = (e, element, drawAreaRef) => {
   const { x, y } = relativeCoordsForEvent(e, drawAreaRef);
   if (element.get("type") === "line") {
@@ -98,6 +102,7 @@ export const updateElement = (e, element, drawAreaRef) => {
     return element.merge(updates);
   }
 };
+
 const calculateNewCoordinates = (e, selectedElement, drawAreaRef) => {
   if (
     selectedElement.get("type") === "line" ||
@@ -128,6 +133,7 @@ const calculateNewCoordinates = (e, selectedElement, drawAreaRef) => {
     };
   }
 };
+
 export const moveElement = (e, selectedElement, drawAreaRef) => {
   //prettier-ignore
   let { newX1, newY1, newX2, newY2, newOffsetXOrigin, newOffsetYOrigin } = calculateNewCoordinates(e, selectedElement, drawAreaRef);
@@ -138,6 +144,7 @@ export const moveElement = (e, selectedElement, drawAreaRef) => {
     offsetXOrigin: newOffsetXOrigin, offsetYOrigin: newOffsetYOrigin,
   }));
 };
+
 export const resizeElement = (e, selectedElement, drawAreaRef) => {
   //prettier-ignore
   let { newX1, newY1, newX2, newY2, newOffsetXOrigin, newOffsetYOrigin, position } = calculateNewCoordinates(e, selectedElement, drawAreaRef);
@@ -232,14 +239,17 @@ export const resizeElement = (e, selectedElement, drawAreaRef) => {
     }
   }
 };
+
 const distance = (a, b) => {
   return Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2));
 };
+
 const atPoint = (x, y, x1, y1, position) => {
   return x1 - 5 <= x && x <= x1 + 5 && y1 - 5 <= y && y <= y1 + 5
     ? position
     : null;
 };
+
 const checkElementLine = (x, y, x1, y1, x2, y2, position) => {
   // const { x1, y1, x2, y2, type } = unpackElementDetails(element);
   const a = { x: x1, y: y1 };
@@ -250,6 +260,7 @@ const checkElementLine = (x, y, x1, y1, x2, y2, position) => {
     ? position
     : null;
 };
+
 const positionWithinElement = (x, y, element) => {
   const { x1, y1, x2, y2, type } = unpackElementDetails(element);
   if (element.get("type") === "line") {
@@ -281,6 +292,7 @@ const positionWithinElement = (x, y, element) => {
   }
   return null;
 };
+
 export const getElementAtPosition = (e, drawAreaRef, elements) => {
   const { x, y } = relativeCoordsForEvent(e, drawAreaRef);
   const elementsAtPosition = elements.map((element) =>
@@ -295,16 +307,19 @@ export const getElementAtPosition = (e, drawAreaRef, elements) => {
   );
   return elementsAtPosition.find((element) => element.get("position") !== null);
 };
+
 export const clearSelectedState = (elements) => {
   return elements.map((element) =>
     element.merge(new Map({ selected: false, position: null }))
   );
 };
+
 export const clearFocusedState = (elements) => {
   return elements.map((element) =>
     element.get("type") === "textbox" ? element.set("focused", false) : element
   );
 };
+
 export const getCursorAtPosition = (element, selectedTool) => {
   if (!element) return "default";
   const { type, position, focused } = unpackElementDetails(element);
@@ -343,6 +358,7 @@ export const getCursorAtPosition = (element, selectedTool) => {
 
   return cursor;
 };
+
 export const isFocusedTextbox = (element) => {
   return element.get("type") === "textbox" && element.get("focused") === true;
 };
