@@ -355,47 +355,47 @@ export default function VolcanoSlides(props) {
         return (
             <div>
                 <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
-                <img className={classes.center} src={tectonicPlatesMap}/>
+                <img className={classes.center} src={props.data.imageSrc}/>
             </div>
         )
     }
-    else if (props.data.id == 15) {
+    else if (props.data.id == 16) {
         return (
             <div>
                 This slide is not completed yet! You can listen to the audio tho :D
             </div>
         )
     }
-    else if (props.data.id == 16) {
-        return (
-                <div>
-                <audio className={classes.audioPlayer} src={tectonicPlates2} autoPlay controls controlsList="nodownload"/>
-                <img className={classes.center} src={tectonicPlatesMap}/>
-                </div>
-        )
-    }
     else if (props.data.id == 17) {
         return (
-            <video className={classes.center} src={mantlePlumes} autoPlay controls controlsList="nodownload"  type="video/mp4"/> 
+                <div>
+                <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
+                <img className={classes.center} src={props.data.imageSrc}/>
+                </div>
         )
     }
     else if (props.data.id == 18) {
         return (
+            <video className={classes.center} src={props.data.videoSrc} autoPlay controls controlsList="nodownload"  type="video/mp4"/> 
+        )
+    }
+    else if (props.data.id == 19) {
+        return (
             <div>
-            <audio className={classes.audioPlayer} src={southAmerica1} autoPlay controls controlsList="nodownload"/>
+            <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
             <div className={classes.imgContainer}>
-                <img className={classes.imgFill} src={seaMounts}/>
+                <img className={classes.imgFill} src={props.data.imageSrc}/>
             </div>
             </div>
         )
     }
-    else if (props.data.id == 19) {
+    else if (props.data.id == 20) {
         const button = {position: "absolute", zIndex: "1", top: "55%", left: "7%",}
         return (
             <div>
-                <audio className={classes.audioPlayer} src={terrainMap6} autoPlay controls controlsList="nodownload"/>
+                <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
             <div className={classes.imgContainer}>
-                <img className={classes.imgFill} src={TerrainMap}/>
+                <img className={classes.imgFill} src={props.data.imageSrc}/>
                 <Button 
                     style={button}
                     variant="contained" 
@@ -407,23 +407,23 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == 20) {
+    else if (props.data.id == 21) {
         return (
             <div>
-                <audio className={classes.audioPlayer} src={eruptionAudio} autoPlay controls controlsList="nodownload"/>
+                <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
             <div className={classes.imgContainer}>
-                <img className={classes.imgFill} src={eruptionDates}/>
+                <img className={classes.imgFill} src={props.data.imageSrc}/>
             </div>
             </div>
         )
     }
-    else if (props.data.id == 21) {
+    else if (props.data.id == 22) {
         return (
             <div>
-                <audio className={classes.audioPlayer} src={plumePlacement1} autoPlay controls controlsList="nodownload"/>
-                <img ref={slide21ref} src={TerrainOval} className={classes.center} style={{visibility: "hidden"}} />
+                <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
+                <img ref={slide21ref} src={props.data.imageSrc} className={classes.center} style={{visibility: "hidden"}} />
                 <div className={classes.imageMapper}>   
-                    <ImageMapper src={TerrainOval} width={slide21state + 15} imgWidth={2117} map={MAP} fillColor={"rgba(0, 246, 255, 0.33)"} 
+                    <ImageMapper src={props.data.imageSrc} width={slide21state + 15} imgWidth={2117} map={MAP} fillColor={"rgba(0, 246, 255, 0.33)"} 
                     onClick={(area) => slide21Handler(area)}/>
                 </div>
             </div>
@@ -454,17 +454,17 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == 22) {
+    else if (props.data.id == 23) {
         return (
             <div>
-            <audio className={classes.audioPlayer} src={plumeYes1} autoPlay controls controlsList="nodownload"/> 
+            <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> 
             <div className={classes.imgContainer}>
-                <img className={classes.imgFill} src={TerrainOvalCorrect}/>
+                <img className={classes.imgFill} src={props.data.imageSrc}/>
             </div>
             </div>
         )
     }
-    else if (props.data.id == 23) {
+    else if (props.data.id == 24) {
         return (
             <div>
             <audio className={classes.audioPlayer} src={whereNext1} autoPlay controls controlsList="nodownload"/> 
@@ -475,9 +475,9 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == 24) {
+    else if (props.data.id == 25) {
         return (
-            <video className={classes.center} src={summaryVolcano} autoPlay controls controlsList="nodownload"  type="video/mp4" />
+            <video className={classes.test} src={props.data.videoSrc} autoPlay controls controlsList="nodownload"  type="video/mp4" />
         )
     }
     else {
