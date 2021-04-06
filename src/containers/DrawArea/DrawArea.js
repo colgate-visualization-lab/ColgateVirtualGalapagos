@@ -236,13 +236,12 @@ const useDrawArea = () => {
   return [state, dispatch, drawAreaRef];
 };
 
-const useStoredDrawings = () => {
+const useSavedDrawings = () => {
   const dispatch = useDispatch();
   const savedElements = useSelector(selectElements);
   const status = useSelector(selectStatus);
-  const [elements, setElements] = useState(List());
-  //   savedElements ? transit.fromJSON(savedElements) : List()
-  // );
+  const elements = savedElements ? transit.fromJSON(savedElements) : List();
+
   useEffect(() => {
     if (status === "slideDataLoaded") {
       const stateClearedElements = clearSelectedState(
@@ -256,9 +255,7 @@ const useStoredDrawings = () => {
 
 const DrawArea = ({ tabIndex, handleTabChange }) => {
   const classes = useStyles();
-
   const [state, dispatch, drawAreaRef] = useDrawArea();
-
   const { elements, selectedElement, action, selectedTool } = state;
 
   // callback props for DrawAreaToolbar
