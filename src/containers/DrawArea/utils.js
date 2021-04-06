@@ -343,3 +343,6 @@ export const getCursorAtPosition = (element, selectedTool) => {
 
   return cursor;
 };
+export const isFocusedTextbox = (element) => {
+  return element.get("type") === "textbox" && element.get("focused") === true;
+};

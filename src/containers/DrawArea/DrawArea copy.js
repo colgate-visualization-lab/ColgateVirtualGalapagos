@@ -31,7 +31,6 @@ const useStyles = makeStyles(() => ({
 }));
 
 const useDrawArea = () => {
-  const drawAreaRef = useRef();
   let [state, dispatch] = useReducer(
     (state, action) => {
       switch (action.type) {
@@ -40,58 +39,10 @@ const useDrawArea = () => {
         }
         // action types for onMouseDown
         case "CREATE_ELEMENT": {
-          // create new element and push to updatedElements list
-          let index = state.elements.size;
-          let element = createElement(
-            action.event,
-            index,
-            drawAreaRef,
-            state.selectedTool
-          );
-          let elements = clearSelectedState(state.elements);
-          elements = elements.push(element);
-          return {
-            ...state,
-            selectedElement: element,
-            elements,
-            action: "drawing",
-            selectedTool: "select",
-          };
         }
         case "SELECT_ELEMENT": {
-          let element = getElementAtPosition(
-            action.event,
-            drawAreaRef,
-            state.elements
-          );
-
-          element = element.set("selected", true);
-          let index = element.get("index");
-          let elements = clearSelectedState(state.elements);
-          elements = elements.set(index, element);
-          return {
-            ...state,
-            selectedElement: element,
-            elements,
-            action:
-              element.get("position") === "inside" ? "moving" : "resizing",
-          };
         }
         case "EDIT_TEXTBOX": {
-          let element = getElementAtPosition(
-            action.event,
-            drawAreaRef,
-            state.elements
-          );
-          element = element.set("focused", true);
-          let index = element.get("index");
-          let elements = state.elements.set(index, element);
-          return {
-            ...state,
-            selectedElement: element,
-            elements,
-            selectedTool: "select",
-          };
         }
         case "RESET_FOCUS_AND_SELECTED_STATUS": {
           return {
@@ -103,48 +54,10 @@ const useDrawArea = () => {
 
         // action types for onMouseMove
         case "DRAW_ELEMENT": {
-          const index = state.elements.size - 1;
-          const currentElement = state.elements.get(index);
-          //prettier-ignore
-          const element = updateElement(action.event, currentElement, drawAreaRef);
-          const elements = state.elements.set(index, element);
-          return {
-            ...state,
-            selectedElement: element,
-            elements,
-          };
         }
         case "MOVE_ELEMENT": {
-          const element = moveElement(
-            action.event,
-            state.selectedElement,
-            drawAreaRef
-          );
-          const elements = state.elements.set(
-            state.selectedElement.get("index"),
-            element
-          );
-          return {
-            ...state,
-            selectedElement: element,
-            elements,
-          };
         }
         case "RESIZE_ELEMENT": {
-          const element = resizeElement(
-            action.event,
-            state.selectedElement,
-            drawAreaRef
-          );
-          const elements = state.elements.set(
-            state.selectedElement.get("index"),
-            element
-          );
-          return {
-            ...state,
-            selectedElement: element,
-            elements,
-          };
         }
         case "UPDATE_CURSOR": {
         }
@@ -156,67 +69,13 @@ const useDrawArea = () => {
         // action types for handleOptionsChange
 
         case "UPDATE_OPTIONS": {
-          let element = state.selectedElement.set("options", action.options);
-          if (state.selectedElement.get("type") === "textbox") {
-            element = element.merge(
-              new Map({
-                selected: true,
-                focused: false,
-              })
-            );
-          }
-          let index = state.selectedElement.get("index");
-
-          let elements = state.elements.set(index, element);
-          return {
-            ...state,
-            selectedElement: element,
-            elements,
-          };
         }
-        case "DELETE_ELEMENT": {
-          let elements = state.elements.delete(
-            state.selectedElement.get("index")
-          );
-
-          return {
-            ...state,
-            selectedElement: null,
-            elements: elements,
-          };
-        }
-        case "DUPLICATE_ELEMENT": {
-          // reset the selected/focused state of currently selected element
-          let index = state.selectedElement.get("index");
-          let elements = state.elements
-            .setIn([index, "selected"], false)
-            .setIn([index, "focused"], false);
-
-          // duplicate the element, and pass it's index (which is just size of elements list)
-          const element = duplicateElement(
-            state.elements.size,
-            state.selectedElement
-          );
-          elements = elements.push(element);
-
-          return {
-            ...state,
-            selectedElement: element,
-            elements,
-          };
+        case "PERFORM_ACTION": {
         }
         case "INPUT_TEXT": {
-          let index = state.selectedElement.get("index");
-          let elements = state.elements.setIn([index, "text"], action.value);
-          let element = elements.get(index);
-          return {
-            ...state,
-            selectedElement: element,
-            elements,
-          };
         }
         case "CLEAR_CANVAS": {
-          return { ...state, selectedElement: false, elements: List() };
+          return { ...state, elements: List() };
         }
 
         default: {
@@ -233,7 +92,7 @@ const useDrawArea = () => {
     }
   );
 
-  return [state, dispatch, drawAreaRef];
+  return [state, dispatch];
 };
 
 const DrawArea = ({ tabIndex, handleTabChange }) => {
@@ -241,8 +100,8 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   // const savedElements = useSelector(selectElements);
   // const status = useSelector(selectStatus);
   const classes = useStyles();
-
-  const [state, dispatch, drawAreaRef] = useDrawArea();
+  const drawAreaRef = useRef();
+  const [state, dispatch] = useDrawArea();
 
   // const [elements, setElements] = useState(List());
   // //   savedElements ? transit.fromJSON(savedElements) : List()
@@ -266,67 +125,146 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
 
   // callback props for DrawAreaToolbar
   const handleToolChange = (name) => {
+    // setSelectedTool(name);
     dispatch({ type: "SELECT_TOOL", value: name });
   };
 
   /* Set of callback functions that handle the "drawing" aspect
      Essentially, they populate the elements list appropriately */
   const handleMouseDown = (e) => {
-    e.persist();
     let element = getElementAtPosition(e, drawAreaRef, elements);
     if (selectedTool === "select") {
-      if (element && !isFocusedTextbox(element)) {
-        dispatch({ type: "SELECT_ELEMENT", event: e });
+      if (!isFocusedTextbox()) {
+        dispatch({ type: "SELECT_ELEMENT", element });
       } else {
         dispatch({ type: "RESET_FOCUS_AND_SELECTED_STATUS" });
       }
     } else if (selectedTool === "textbox") {
-      if (element && element.get("type") === "textbox") {
-        dispatch({ type: "EDIT_TEXTBOX", event: e });
+      if (element.get("type") === "textbox") {
+        dispatch({ type: "EDIT_TEXTBOX" });
       } else {
-        dispatch({ type: "CREATE_ELEMENT", event: e });
+        dispatch({ type: "CREATE_ELEMENT" });
       }
     } else {
-      dispatch({ type: "CREATE_ELEMENT", event: e });
+      dispatch({ type: "CREATE_ELEMENT" });
+    }
+    // reset selected and focused states
+    let updatedElements = clearSelectedState(elements);
+    setSelectedElement(null);
+    setFocusedElement(null);
+
+    let index;
+    let element = getElementAtPosition(e, drawAreaRef, updatedElements);
+    // handle onMouseDown when select is the selected tool
+    if (selectedTool === "select") {
+      // selectedElement and action are updated in this condition
+      updatedElements = clearFocusedState(updatedElements);
+      if (element) {
+        index = element.get("index");
+        element = element.set("selected", true);
+        setSelectedElement(element);
+        // this is to avoid moving a textbox when it's focused on (i.e. when it's being edited)
+        // prettier-ignore
+        if (element.get("type") === "textbox" && element.get("focused") === true) {
+          return;
+        }
+        updatedElements = updatedElements.set(index, element);
+        if (element.get("position") === "inside") {
+          setAction("moving");
+        } else {
+          setAction("resizing");
+        }
+      }
+      setElements(updatedElements);
+    } else if (selectedTool !== "select") {
+      // handles the case of when we want to edit/type into a textbox - in this case, we don't
+      //  create a new textbox
+      // prettier-ignore
+      if (element && element.get("type") === "textbox" && selectedTool === "textbox") {
+        index = element.get("index");
+        element = element.set("focused", true);
+        updatedElements = updatedElements.set(index, element)
+      } else {
+        // create new element and push to updatedElements list
+        index = updatedElements.size;
+        element = createElement(e, index, drawAreaRef, selectedTool);
+        updatedElements = updatedElements.push(element);
+        // update action
+        setAction("drawing");
+      }
+      // update other parts of state
+      setSelectedElement(element);
+      setElements(updatedElements);
+      setSelectedTool("select");
     }
   };
 
   const handleMouseMove = (e) => {
-    e.persist();
-    if (selectedTool === "select" || selectedTool === "textbox") {
-      const element = getElementAtPosition(e, drawAreaRef, elements);
-      e.target.style.cursor = getCursorAtPosition(element, selectedTool);
-    }
-
-    if (action === "drawing") {
-      dispatch({ type: "DRAW_ELEMENT", event: e });
-    } else if (action === "moving") {
-      dispatch({ type: "MOVE_ELEMENT", event: e });
-    } else if (action === "resizing") {
-      dispatch({ type: "RESIZE_ELEMENT", event: e });
-    }
+    // if (selectedTool === "select" || selectedTool === "textbox") {
+    //   const element = getElementAtPosition(e, drawAreaRef, elements);
+    //   e.target.style.cursor = getCursorAtPosition(element, selectedTool);
+    // }
+    // if (action === "drawing") {
+    //   const index = elements.size - 1;
+    //   const currentElement = elements.get(index);
+    //   //prettier-ignore
+    //   const updatedElement = updateElement(e, currentElement, drawAreaRef);
+    //   setElements(elements.set(index, updatedElement));
+    //   setSelectedElement(updatedElement);
+    // } else if (action === "moving") {
+    //   const updatedElement = moveElement(e, selectedElement, drawAreaRef);
+    //   setElements(elements.set(selectedElement.get("index"), updatedElement));
+    //   setSelectedElement(updatedElement);
+    // } else if (action === "resizing") {
+    //   const updatedElement = resizeElement(e, selectedElement, drawAreaRef);
+    //   setElements(elements.set(selectedElement.get("index"), updatedElement));
+    //   setSelectedElement(updatedElement);
+    // }
   };
 
-  const handleMouseUp = () => {
+  const handleMouseUp = (e) => {
+    // setAction("none");
     dispatch({ type: "RESET_ACTION" });
   };
 
   /*   
     Callbacks for Options component - the side bar that allows you to edit aspects of the selected element
   */
+
   // updates options (color, size, etc) for the selected element
   const handleOptionsChange = (options) => {
     if (selectedElement) {
-      dispatch({ type: "UPDATE_OPTIONS", options });
+      let updatedElement = selectedElement.set("options", options);
+      if (selectedElement.get("type") === "textbox") {
+        updatedElement = updatedElement.merge(
+          new Map({
+            selected: true,
+            focused: false,
+          })
+        );
+      }
+      const index = selectedElement.get("index");
+      setSelectedElement(updatedElement);
+      setElements(elements.set(index, updatedElement));
     }
   };
 
   // performs an action (deleting or duplicating a selected element)
   const handleAction = (action) => {
     if (action === "delete") {
-      dispatch({ type: "DELETE_ELEMENT" });
+      setElements(elements.delete(selectedElement.get("index")));
+      setSelectedElement(null);
     } else if (action === "duplicate") {
-      dispatch({ type: "DUPLICATE_ELEMENT" });
+      // reset the selected/focused state of currently selected element
+      const index = selectedElement.get("index");
+      let updatedElements = elements
+        .setIn([index, "selected"], false)
+        .setIn([index, "focused"], false);
+
+      // duplicate the element, and pass it's index (which is just size of elements list)
+      const newElement = duplicateElement(elements.size, selectedElement);
+      setElements(updatedElements.push(newElement));
+      setSelectedElement(newElement);
     }
   };
 
@@ -338,7 +276,10 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   /* callback for Drawing component (this is what displays the drawings lol)
       Need to have the text of all textboxes stored in elements as well */
   const handleTextChange = (value) => {
-    dispatch({ type: "INPUT_TEXT", value });
+    const index = selectedElement.get("index");
+    const updatedElements = elements.setIn([index, "text"], value);
+    setElements(updatedElements);
+    setSelectedElement(updatedElements.get(index));
   };
 
   return (
