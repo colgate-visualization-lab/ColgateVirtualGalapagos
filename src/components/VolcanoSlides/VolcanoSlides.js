@@ -100,37 +100,37 @@ export default function VolcanoSlides(props) {
 
     if (props.data.id == 1) {
         return (
-                <video className={classes.test} src={props.data.url} autoPlay controls controlsList="nodownload" type="video/mp4"/> 
+                <video className={classes.test} src={props.data.videoSrc} autoPlay controls controlsList="nodownload" type="video/mp4"/> 
         )
     }
     else if (props.data.id == 2) {
         return (
                 // {/* <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> */}
-                <IframeCompoment class={classes.test} src={props.data.url}/>
+                <IframeCompoment class={classes.test} src={props.data.videoSrc}/>
         )
     }
     else if (props.data.id == 3) {
         return (
                 // {/* <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> */}
-                <IframeCompoment class={classes.test} src={props.data.url}/>
+                <IframeCompoment class={classes.test} src={props.data.videoSrc}/>
         )
     }
     else if (props.data.id == 4) {
         return (
                 // {/* <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> */}
-                <IframeCompoment class={classes.test} src={props.data.url}/>
+                <IframeCompoment class={classes.test} src={props.data.videoSrc}/>
         )
     }
     else if (props.data.id == 5) {
         return (
                 // {/* <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> */}
-                <IframeCompoment class={classes.test} src={props.data.url}/>
+                <IframeCompoment class={classes.test} src={props.data.videoSrc}/>
         )
     }
     else if (props.data.id == 6) {
         return (
                 // {/* <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> */}
-                <IframeCompoment class={classes.test} src={props.data.url}/>
+                <IframeCompoment class={classes.test} src={props.data.videoSrc}/>
         )
     }
     else if (props.data.id == 7) {
@@ -138,9 +138,9 @@ export default function VolcanoSlides(props) {
             <div className={classes.test}>
                 {/* <audio className={classes.audioPlayer} src={terrainMap2} autoPlay controls controlsList="nodownload"/> */}
                 {/* <div className={classes.imgContainer}> */}
-                    <img className={classes.test} src={TerrainMap}/>
+                    <img className={classes.test} src={props.data.imageSrc1}/>
                     <div className={classes.hypothesis}>Click on the magnifying glass!</div>
-                    <img className={classes.magnifying} onClick={() => props.setSlideChange("./6optional")} src={magnifyingGlass}/>
+                    <img className={classes.magnifying} onClick={() => props.setSlideChange("./6optional")} src={props.data.imageSrc2}/>
                 {/* </div> */}
             </div>
         )
@@ -155,25 +155,25 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == 7) {
+    else if (props.data.id == 8) {
         return (
             <div>
                 <audio className={classes.audioPlayer} src={volcanoCompare360} autoPlay controls controlsList="nodownload"/>
-                <IframeCompoment class={classes.leftVista} src={Vista} />
-                <IframeCompoment class={classes.rightVista} src={Vista4} />
+                <IframeCompoment class={classes.leftVista} src={props.data.videoSrc1} />
+                <IframeCompoment class={classes.rightVista} src={props.data.videoSrc2} />
             </div>
         )
     }
-    else if (props.data.id == 8) {
+    else if (props.data.id == 9) {
         const button = {position: "absolute",
             zIndex: "1",
             top: "55%",
             left: "7%",}
         return (
             <div>
-            <audio className={classes.audioPlayer} src={terrainMap3} autoPlay controls controlsList="nodownload"/>
+            <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
             <div className={classes.imgContainer}>
-                <img className={classes.imgFill} src={TerrainMap}/>
+                <img className={classes.imgFill} src={props.data.imageSrc}/>
                 <div className={classes.hypothesis}>
                     <Button 
                         style={button}
@@ -246,9 +246,9 @@ export default function VolcanoSlides(props) {
     else if (props.data.id == 9) {
         return (
             <div>
-            <audio className={classes.audioPlayer} src={terrainMap4} autoPlay controls controlsList="nodownload"/>
+            <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
             <div className={classes.imgContainer}>
-                <img className={classes.imgFill} src={TerrainMap}/>
+                <img className={classes.imgFill} src={props.data.imageSrc}/>
                 <div className={classes.hypothesis}>What's a hypothesis? (click the circle) </div>
                 <Popup trigger={<button className={`${classes.dot} ${classes.dothypothesis}`}></button>}
                 contentStyle={popup} arrow={false} position="right center"> 

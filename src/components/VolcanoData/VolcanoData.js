@@ -6,72 +6,68 @@ const iguanaData = [
   {
     id: "1",
     title: "Intro Video",
-    type: "video",
-    url:
+    videoSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoModuleIntro.mp4", 
   },
   {
     id: "2",
     title: "Caldara_Endtrail",
-    type: "video360",
     audioSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration01.mp3",
-    url:
+    videoSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Caldara_Endtrail/index.htm",
   },
   {
     id: "3",
     title: "Caldara_Shotfive",
-    type: "video360",
     audioSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration02.mp3",
-    url:
+    videoSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Caldara_Shotfive/index.htm",
   },
   {
     id: "4",
     title: "Stillwater",
-    type: "video360",
     audioSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration03.mp3",
-    url:
+    videoSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Stillwater/index.htm",
   },
   {
     id: "5",
     title: "Cactus_Final",
-    type: "video360",
     audioSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration04.mp3",
-    url:
+    videoSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Cactus_Final/index.htm",
   },
   {
     id: "6",
     title: "PlazaCliff",
-    type: "video360",
     audioSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration05.mp3",
-    url:
+    videoSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/PlazaCliff/index.htm",
   },
   {
     id: "7",
     title: "Magnifying",
-    type: "image",
-    url:
-      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/TerrainMap-Labelled.png",
     audioSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap02.mp3",
+    imageSrc1:
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/TerrainMap-Labelled.png",
+    imageSrc2:
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/magnifying-glass-1010537_1920.png",
   },
   {
     id: "8",
-    title: "Magnifying 2",
-    type: "image",
-    url:
-      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/TerrainMap-Labelled.png",
+    title: "360 Compare",
     audioSrc:
-      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap02.mp3",
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Compare360.mp3",
+    videoSrc1:
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Caldara_Endtrail/index.htm",
+    videoSrc2:
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Cactus_Final/index.htm",
   },
   // {
   //   id: "9",
@@ -81,20 +77,19 @@ const iguanaData = [
   //     "http://virtualgalapagos.colgate.edu/assets/IguanaModule/LandIguanaOnRocks.png", //slider
   // },
   {
-    id: "10",
-    title: "Iguana_PhyloTree01",
-    type: "video360",
+    id: "9",
+    title: "Terrain Map 3",
     audioSrc:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide10.wav",
-    url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/LandIguana/index.htm",
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap03.mp3",
+    imageSrc:
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/TerrainMap-Labelled.png",
   },
   {
-    id: "11",
+    id: "10",
     title: "Iguana_PhyloTree02",
-    type: "video",
-    url:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Video/IguanaPhyloTree.mp4", // will change to pull from server whiteboard
+    audioSrc: "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap04.mp3",
+    imageSrc:
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/TerrainMap-Labelled.png", 
   },
   //need to build,
   {
