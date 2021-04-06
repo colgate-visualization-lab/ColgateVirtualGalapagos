@@ -144,16 +144,16 @@ export default function VolcanoSlides(props) {
                 </Fragment>
         )
     }
-    else if (props.data.id == "6optional") {
-        return ( //Width of this needs to get fixed eventually
-            <div>
-            <audio className={classes.audioPlayer} src={volcanoSlider1} autoPlay controls controlsList="nodownload"/>
-            <div className={classes.sliderDiv}>
-                <ImageSlider image1={santaCruz} image2={Ferd} leftLabelText="Fernandina" rightLabelText="Santa Cruz"/>
-            </div>
-            </div>
-        )
-    }
+    // else if (props.data.id == "Slide7_optional1") {
+    //     return ( //Width of this needs to get fixed eventually
+    //         <div>
+    //         <audio className={classes.audioPlayer} src={volcanoSlider1} autoPlay controls controlsList="nodownload"/>
+    //         <div className={classes.sliderDiv}>
+    //             <ImageSlider image1={santaCruz} image2={Ferd} leftLabelText="Fernandina" rightLabelText="Santa Cruz"/>
+    //         </div>
+    //         </div>
+    //     )
+    // }
     else if (props.data.id == 8) {
         return (
             <div>
@@ -474,6 +474,11 @@ export default function VolcanoSlides(props) {
     else if (props.data.id == 25) {
         return (
             <video className={classes.test} src={props.data.videoSrc} autoPlay controls controlsList="nodownload"  type="video/mp4" />
+        )
+    }
+    else if (props.data.id == 100) {
+        return (
+            <div>you adfljasdf</div>
         )
     }
     else {

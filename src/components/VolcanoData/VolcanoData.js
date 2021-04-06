@@ -59,6 +59,16 @@ const iguanaData = [
     imageSrc2:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/magnifying-glass-1010537_1920.png",
   },
+  // {
+  //   id: "100",
+  //   title: "Magnifying",
+  //   audioSrc:
+  //     "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap02.mp3",
+  //   imageSrc1:
+  //     "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/TerrainMap-Labelled.png",
+  //   imageSrc2:
+  //     "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/magnifying-glass-1010537_1920.png",
+  // },
   {
     id: "8",
     title: "360 Compare",
@@ -193,6 +203,12 @@ const iguanaData = [
   },
   {
     id: "25",
+    title: "Summary Video",
+    videoSrc: 
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoSummary.mp4",
+  },
+  {
+    id: "100",
     title: "Summary Video",
     videoSrc: 
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoSummary.mp4",
