@@ -87,6 +87,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: baseContentMargin,
   },
 }));
+
 // Grid Outer Container Component
 const GridContainer = (props) => (
   <Grid {...props} container spacing={1} direction="row" justify="center" />
@@ -130,6 +131,7 @@ function ModuleContainer(props) {
   const nextSlide = `/${moduleName}/${
     slideId + 1 > data.length ? slideId : slideId + 1
   }`;
+
   //I guess this state is used for sidebars and fieldbook
   const [contentDrawerOpen, setContentDrawerOpen] = useState(false);
   const [fieldBookDrawerOpen, setFieldBookDrawerOpen] = useState(false);
