@@ -11,7 +11,8 @@ import update from "immutability-helper";
 import DropTarget from "./DropTarget";
 import IguanaBox from "./IguanaBox";
 import PhyloTreeHeader from "../PhyloTreeHeader";
-import { Box } from "./utils";
+import PhyloTreeDnDButtons from "./PhyloTreeDnDButtons";
+import { Box, delay, getBranchNames } from "./utils";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,19 +71,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const getBranchNames = (topRightBranch, bottomRightBranch) => {
-  //prettier-ignore
-  if (topRightBranch === "Marine Iguana" || bottomRightBranch === "Land Iguana"){
-    bottomRightBranch = "Land Iguana";
-    topRightBranch = "Marine Iguana";
-  } else {
-    bottomRightBranch = "Marine Iguana";
-    topRightBranch = "Land Iguana";
-  }
-
-  return { topRightBranch, bottomRightBranch };
-};
-
 const useTreeDnD = (iguanaNames, iguanaNamesPlacement) => {
   let initialState = {
     undraggedNames: iguanaNames,
@@ -120,7 +108,6 @@ const useTreeDnD = (iguanaNames, iguanaNamesPlacement) => {
         newDraggedNames = update(newDraggedNames, {
           [index]: { $set: new Box(currentBox.validNames, droppedName) },
         });
-        console.log(newDraggedNames);
         return {
           ...state,
           draggedNames: newDraggedNames,
@@ -147,7 +134,6 @@ const useTreeDnD = (iguanaNames, iguanaNamesPlacement) => {
       case "SET_COMPLETE_TREE_STATUS": {
         return {
           ...state,
-          // correctnessIndicatorVisible: false,
           completedTreeVisible: action.value,
         };
       }
@@ -194,28 +180,21 @@ const useTreeDnD = (iguanaNames, iguanaNamesPlacement) => {
 };
 
 const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
-  const {
-    iguanaNames,
-    iguanaNamesPlacement,
-    imgDimensions,
-    dropTargetDimensions,
-    dropTargets,
+  // prettier-ignore
+  const { iguanaNames, iguanaNamesPlacement, imgDimensions,
+    dropTargetDimensions, dropTargets, 
   } = content.phyloTreeData;
 
   const [state, dispatch] = useTreeDnD(iguanaNames, iguanaNamesPlacement);
 
-  let {
-    draggedNames,
-    undraggedNames,
-    correctnessIndicatorVisible,
-    completedTreeVisible,
+  // prettier-ignore
+  let { draggedNames, undraggedNames, correctnessIndicatorVisible, completedTreeVisible,
   } = state;
 
   const props = { backgroundUrl: `url('${content.backgroundUrl}')` };
   const classes = useStyles(props);
 
   const handleDrop = (droppedName, index) => {
-    console.log("called here?");
     const currentBox = draggedNames[index];
     dispatch({ type: "UPDATE_UNDRAGGED_NAMES", droppedName, currentBox });
     dispatch({ type: "UPDATE_DRAGGED_NAMES", droppedName, index, currentBox });
@@ -224,15 +203,6 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
 
   const handleCheckTree = () => {
     dispatch({ type: "SET_TREE_CORRECTNESS_INDICATOR", value: true });
-  };
-
-  // cause delay
-  const delay = (time = 500) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(true);
-      }, time);
-    });
   };
 
   const handleShowTree = async () => {
@@ -303,35 +273,12 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
             ))}
           </div>
         </div>
-        <div className={classes.buttons}>
-          <Button
-            variant="contained"
-            size="small"
-            className={classes.button}
-            onClick={handleCheckTree}
-          >
-            Check My Tree
-          </Button>
-          {completedTreeVisible ? (
-            <Button
-              variant="contained"
-              size="small"
-              className={classes.button}
-              onClick={handleResetTree}
-            >
-              Reset Tree
-            </Button>
-          ) : (
-            <Button
-              variant="contained"
-              size="small"
-              className={classes.button}
-              onClick={handleShowTree}
-            >
-              Show Completed Tree
-            </Button>
-          )}
-        </div>
+        <PhyloTreeDnDButtons
+          handleCheckTree={handleCheckTree}
+          handleResetTree={handleResetTree}
+          handleShowTree={handleShowTree}
+          completedTreeVisible={completedTreeVisible}
+        />
       </div>
     </DndProvider>
   );
