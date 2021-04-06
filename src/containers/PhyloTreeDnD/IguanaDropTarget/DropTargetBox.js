@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useDrop } from "react-dnd";
 import Fade from "@material-ui/core/Fade";
 
-import IguanaBox from "./IguanaBox";
+import { IguanaBox } from "../IguanaDragSource";
 
 const useStyles = makeStyles(() => ({
   dropTarget: {
@@ -34,7 +34,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const DropTarget = ({
+const DropTargetBox = ({
   top,
   left,
   imgDimensions,
@@ -77,4 +77,4 @@ const DropTarget = ({
   );
 };
 
-export default DropTarget;
+export default DropTargetBox;

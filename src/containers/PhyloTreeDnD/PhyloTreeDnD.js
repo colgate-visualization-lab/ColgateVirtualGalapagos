@@ -1,15 +1,11 @@
-import React, { useState, useReducer } from "react";
-import Button from "@material-ui/core/Button";
-import Grow from "@material-ui/core/Grow";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import CancelIcon from "@material-ui/icons/Cancel";
+import React, { useReducer } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import update from "immutability-helper";
 
-import DropTarget from "./DropTarget";
-import IguanaBox from "./IguanaBox";
+import IguanaDropTarget from "./IguanaDropTarget";
+import IguanaDragSource from "./IguanaDragSource";
 import PhyloTreeHeader from "../PhyloTreeHeader";
 import PhyloTreeDnDButtons from "./PhyloTreeDnDButtons";
 import { Box, delay, getBranchNames } from "./utils";
@@ -23,49 +19,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
   },
-  iguanaBoxes: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    position: "relative",
-    width: "100%",
-    height: "2.7rem",
-    maxWidth: "960px",
-    minWidth: "600px",
-  },
-  dropTargetContainer: {
-    position: "relative",
-    maxWidth: "960px",
-    maxHeight: "600px",
-    margin: theme.spacing(2),
-  },
-  dropTargetDiv: {
-    position: "absolute",
-    left: 0,
-    top: 0,
-    width: "100%",
-    height: "100%",
-  },
-  backgroundImg: {
-    maxWidth: "100%",
-    display: "block",
-    height: "auto",
-  },
-  buttons: {
-    position: "relative",
-    display: "flex",
-    alignItems: "center",
-    width: "100%",
-    height: "auto",
-    padding: theme.spacing(2, 0),
-    margin: theme.spacing(3, 0, 0, 0),
-    backgroundColor: "rgb(248,248,248)",
-  },
-  button: {
-    margin: theme.spacing(0, 1),
-    fontSize: "0.7rem",
-    fontWeight: "bold",
-  },
+
   header: {
     fontSize: "1.5rem",
   },
@@ -181,8 +135,7 @@ const useTreeDnD = (iguanaNames, iguanaNamesPlacement) => {
 
 const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
   // prettier-ignore
-  const { iguanaNames, iguanaNamesPlacement, imgDimensions,
-    dropTargetDimensions, dropTargets, 
+  const { iguanaNames, iguanaNamesPlacement
   } = content.phyloTreeData;
 
   const [state, dispatch] = useTreeDnD(iguanaNames, iguanaNamesPlacement);
@@ -199,6 +152,7 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
     dispatch({ type: "UPDATE_UNDRAGGED_NAMES", droppedName, currentBox });
     dispatch({ type: "UPDATE_DRAGGED_NAMES", droppedName, index, currentBox });
     dispatch({ type: "SET_TREE_CORRECTNESS_INDICATOR", value: false });
+    dispatch({ type: "SET_COMPLETE_TREE_STATUS", value: false });
   };
 
   const handleCheckTree = () => {
@@ -226,24 +180,6 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
     dispatch({ type: "SET_UNDRAGGED_NAMES", names: iguanaNames });
   };
 
-  const DropTargetComponent = ({ index, ...props }) => (
-    <DropTarget
-      {...props}
-      index={index}
-      imgDimensions={imgDimensions}
-      dropTargetDimensions={dropTargetDimensions}
-      onDrop={handleDrop}
-      placedName={draggedNames[index].placedName}
-    >
-      {correctnessIndicatorVisible &&
-        (draggedNames[index].isPlacedCorrectly() ? (
-          <CheckCircleIcon fontSize="inherit" />
-        ) : (
-          <CancelIcon fontSize="inherit" />
-        ))}
-    </DropTarget>
-  );
-
   return (
     <DndProvider backend={HTML5Backend}>
       <div className={classes.root}>
@@ -252,27 +188,17 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
           handleTabChange={handleTabChange}
           header="Create a phylogenetic tree by dragging the cards below to their correct positions"
         >
-          <div className={classes.iguanaBoxes}>
-            {undraggedNames.map((iguanaName, index) => (
-              <Grow in={!completedTreeVisible} key={index}>
-                <IguanaBox name={iguanaName} />
-              </Grow>
-            ))}
-          </div>
+          <IguanaDragSource
+            undraggedNames={undraggedNames}
+            completedTreeVisible={completedTreeVisible}
+          />
         </PhyloTreeHeader>
-        <div className={classes.dropTargetContainer}>
-          <img src={content.backgroundUrl} className={classes.backgroundImg} />
-          <div className={classes.dropTargetDiv}>
-            {dropTargets.map(({ top, left }, index) => (
-              <DropTargetComponent
-                key={index}
-                top={top}
-                left={left}
-                index={index}
-              />
-            ))}
-          </div>
-        </div>
+        <IguanaDropTarget
+          content={content}
+          draggedNames={draggedNames}
+          correctnessIndicatorVisible={correctnessIndicatorVisible}
+          handleDrop={handleDrop}
+        />
         <PhyloTreeDnDButtons
           handleCheckTree={handleCheckTree}
           handleResetTree={handleResetTree}
