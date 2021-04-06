@@ -4,7 +4,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useDrag } from "react-dnd";
 
 import { ItemTypes } from "./ItemTypes";
-import { Slide12Context } from "./utils";
 
 const useStyles = makeStyles((theme) => ({
   box: {
@@ -31,21 +30,18 @@ const useStyles = makeStyles((theme) => ({
 
 const IguanaBox = ({ name }) => {
   const classes = useStyles();
-  const resetCheck = useContext(Slide12Context);
-
   const [, drag] = useDrag({
     item: { name, type: ItemTypes.IGUANA },
-    begin: () => {
-      console.log("here");
-      resetCheck();
-    },
-    end: () => {
-      console.log("end");
-    },
   });
 
   return (
-    <div ref={drag} className={classes.box}>
+    <div
+      ref={drag}
+      className={classes.box}
+      onClick={() => {
+        console.log(name);
+      }}
+    >
       <div className={classes.dragSrc}>
         <Typography variant="subtitle1" className={classes.srcName}>
           {name}
