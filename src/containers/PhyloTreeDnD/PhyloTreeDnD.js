@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import Button from "@material-ui/core/Button";
 import Grow from "@material-ui/core/Grow";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
@@ -72,6 +72,138 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const getBranchNames = (topRightBranch, bottomRightBranch) => {
+  //prettier-ignore
+  if (topRightBranch === "Marine Iguana" || bottomRightBranch === "Land Iguana"){
+    bottomRightBranch = "Land Iguana";
+    topRightBranch = "Marine Iguana";
+  } else {
+    bottomRightBranch = "Marine Iguana";
+    topRightBranch = "Land Iguana";
+  }
+
+  return { topRightBranch, bottomRightBranch };
+};
+
+const useTreeDnD = (iguanaNames, iguanaNamesPlacement) => {
+  let initialState = {
+    undraggedNames: iguanaNames,
+    draggedNames: iguanaNamesPlacement.map((box) => new Box(box)),
+    checkTree: false,
+    completeTree: false,
+  };
+
+  let [state, dispatch] = useReducer((state, action) => {
+    switch (action.type) {
+      case "UPDATE_UNDRAGGED_NAMES": {
+        let { droppedName, currentBox } = action;
+        let newlyUndragged = state.undraggedNames.filter(
+          (name) => droppedName !== name
+        );
+        // prettier-ignore
+        if (currentBox.placedName !== null && currentBox.placedName !== droppedName) {
+          newlyUndragged = update(newlyUndragged, {
+            $push: [currentBox.placedName],
+          });
+        }
+        return {
+          ...state,
+          undraggedNames: newlyUndragged,
+        };
+      }
+      case "UPDATE_DRAGGED_NAMES": {
+        let { droppedName, currentBox, index } = action;
+        let newDraggedNames = state.draggedNames.map((box) => {
+          let newBox = new Box(box.validNames);
+          newBox.placedName =
+            droppedName === box.placedName ? null : box.placedName;
+          return newBox;
+        });
+        newDraggedNames = update(newDraggedNames, {
+          [index]: { $set: new Box(currentBox.validNames, droppedName) },
+        });
+        console.log(newDraggedNames);
+        return {
+          ...state,
+          draggedNames: newDraggedNames,
+        };
+      }
+      case "SET_UNDRAGGED_NAMES": {
+        return {
+          ...state,
+          undraggedNames: action.names,
+        };
+      }
+      case "SET_DRAGGED_NAMES": {
+        return {
+          ...state,
+          draggedNames: action.names,
+        };
+      }
+      case "CHECK_TREE": {
+        return {
+          ...state,
+          checkTree: action.value,
+        };
+      }
+      case "COMPLETE_TREE": {
+        return {
+          ...state,
+          checkTree: false,
+          completeTree: true,
+        };
+      }
+      case "SHOW_COMPLETED_TREE": {
+        let newDraggedNames = [];
+        if (action.id === "12") {
+          const branchNames = getBranchNames(
+            state.draggedNames[1].placedName,
+            state.draggedNames[2].placedName
+          );
+
+          newDraggedNames = [
+            new Box(["Green Iguana"], "Green Iguana"),
+            new Box(
+              ["Marine Iguana", "Land Iguana"],
+              branchNames.topRightBranch
+            ),
+            new Box(
+              ["Marine Iguana", "Land Iguana"],
+              branchNames.bottomRightBranch
+            ),
+          ];
+        } else {
+          newDraggedNames = [
+            new Box([""], ""),
+            new Box(["Pink Iguana"], "Pink Iguana"),
+          ];
+        }
+
+        return {
+          ...state,
+          checkTree: false,
+          completeTree: true,
+          draggedNames: newDraggedNames,
+        };
+      }
+      case "RESET_TREE": {
+      }
+      case "RESET_CHECK": {
+        return {
+          ...state,
+          checkTree: false,
+          completeTree: false,
+        };
+      }
+      default: {
+        return state;
+      }
+    }
+  }, initialState);
+
+  return [state, dispatch];
+};
+
 const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
   const {
     iguanaNames,
@@ -81,109 +213,79 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
     dropTargets,
   } = content.phyloTreeData;
 
-  const [undraggedBoxes, setUndraggedBoxes] = useState([...iguanaNames]);
-  const [draggedBoxes, setDraggedBoxes] = useState(
-    iguanaNamesPlacement.map((box) => new Box(box))
-  );
-  const [checkTree, setCheckTree] = useState(false);
-  const [completeTree, setCompleteTree] = useState(false);
+  const [state, dispatch] = useTreeDnD(iguanaNames, iguanaNamesPlacement);
+
+  let { draggedNames, undraggedNames, checkTree, completeTree } = state;
 
   const props = { backgroundUrl: `url('${content.backgroundUrl}')` };
   const classes = useStyles(props);
 
-  const handleDrop = (dropppedName, index) => {
-    const currentBox = draggedBoxes[index];
-    updateUndraggedBoxes(dropppedName, index, currentBox);
-    updateDraggedBoxes(dropppedName, index, currentBox);
+  const handleDrop = (droppedName, index) => {
+    const currentBox = draggedNames[index];
+    dispatch({ type: "UPDATE_UNDRAGGED_NAMES", droppedName, currentBox });
+    dispatch({ type: "UPDATE_DRAGGED_NAMES", droppedName, index, currentBox });
   };
 
-  const updateUndraggedBoxes = (dropppedName, index, currentBox) => {
-    let newlyUndragged = undraggedBoxes.filter((name) => dropppedName !== name);
+  const updateUndraggedBoxes = (droppedName, index, currentBox) => {
+    let newlyUndragged = undraggedNames.filter((name) => droppedName !== name);
     if (
       currentBox.placedName !== null &&
-      currentBox.placedName !== dropppedName
+      currentBox.placedName !== droppedName
     ) {
       newlyUndragged = update(newlyUndragged, {
         $push: [currentBox.placedName],
       });
     }
-    setUndraggedBoxes(newlyUndragged);
+    setUndraggedNames(newlyUndragged);
   };
 
-  const updateDraggedBoxes = (dropppedName, index, currentBox) => {
-    let newDraggedBoxes = draggedBoxes.map((box) => {
+  const updateDraggedBoxes = (droppedName, index, currentBox) => {
+    let newDraggedBoxes = draggedNames.map((box) => {
       let newBox = new Box(box.validNames);
       newBox.placedName =
-        dropppedName === box.placedName ? null : box.placedName;
+        droppedName === box.placedName ? null : box.placedName;
       return newBox;
     });
     newDraggedBoxes = update(newDraggedBoxes, {
-      [index]: { $set: new Box(currentBox.validNames, dropppedName) },
+      [index]: { $set: new Box(currentBox.validNames, droppedName) },
     });
-    setDraggedBoxes(newDraggedBoxes);
+    setDraggedNames(newDraggedBoxes);
   };
 
   const handleCheckTree = () => {
-    setCheckTree(true);
+    dispatch({ type: "CHECK_TREE", value: true });
   };
 
-  const handleShowTree = () => {
-    resetCheck();
-    setCompleteTree(true);
-    setTimeout(() => {
-      setUndraggedBoxes([]);
-    }, 200);
-    if (content.id === "12") {
-      const branchNames = getBranchNames();
+  // cause delay
+  const delay = (time = 500) => {
+    return new Promise((resolve) => {
       setTimeout(() => {
-        setDraggedBoxes([
-          new Box(["Green Iguana"], "Green Iguana"),
-          new Box(["Marine Iguana", "Land Iguana"], branchNames.topRightBranch),
-          new Box(
-            ["Marine Iguana", "Land Iguana"],
-            branchNames.bottomRightBranch
-          ),
-        ]);
-      }, 500);
-    } else {
-      setTimeout(() => {
-        setDraggedBoxes([
-          new Box([""], ""),
-          new Box(["Pink Iguana"], "Pink Iguana"),
-        ]);
-      }, 500);
-    }
+        resolve(true);
+      }, time);
+    });
   };
 
-  const getBranchNames = () => {
-    let topRightBranch = draggedBoxes[1].placedName;
-    let bottomRightBranch = draggedBoxes[2].placedName;
-
-    //prettier-ignore
-    if (topRightBranch === "Marine Iguana" || bottomRightBranch === "Land Iguana"){
-      bottomRightBranch = "Land Iguana";
-      topRightBranch = "Marine Iguana";
-    } else {
-      bottomRightBranch = "Marine Iguana";
-      topRightBranch = "Land Iguana";
-    }
-
-    return { topRightBranch, bottomRightBranch };
+  const handleShowTree = async () => {
+    dispatch({ type: "COMPLETE_TREE" });
+    await delay(200);
+    dispatch({ type: "SET_UNDRAGGED_NAMES", names: [] });
+    await delay(200);
+    dispatch({ type: "SHOW_COMPLETED_TREE", id: content.id });
   };
 
-  const handleResetTree = () => {
-    resetCheck();
-    setTimeout(() => {
-      setUndraggedBoxes(iguanaNames);
-    }, 500);
-    setTimeout(() => {
-      setDraggedBoxes(iguanaNamesPlacement.map((box) => new Box(box)));
-    }, 200);
+  const handleResetTree = async () => {
+    dispatch({ type: "RESET_CHECK" });
+    await delay(200);
+    dispatch({
+      type: "SET_DRAGGED_NAMES",
+      names: iguanaNamesPlacement.map((box) => new Box(box)),
+    });
+    await delay(300);
+    dispatch({ type: "SET_UNDRAGGED_NAMES", names: iguanaNames });
   };
 
   const resetCheck = () => {
-    setCheckTree(false);
-    setCompleteTree(false);
+    dispatch({ type: "RESET_CHECK" });
   };
 
   const DropTargetComponent = ({ index, ...props }) => (
@@ -193,10 +295,10 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
       imgDimensions={imgDimensions}
       dropTargetDimensions={dropTargetDimensions}
       onDrop={handleDrop}
-      placedName={draggedBoxes[index].placedName}
+      placedName={draggedNames[index].placedName}
     >
       {checkTree &&
-        (draggedBoxes[index].isPlacedCorrectly() ? (
+        (draggedNames[index].isPlacedCorrectly() ? (
           <CheckCircleIcon fontSize="inherit" />
         ) : (
           <CancelIcon fontSize="inherit" />
@@ -214,7 +316,7 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
             header="Create a phylogenetic tree by dragging the cards below to their correct positions"
           >
             <div className={classes.iguanaBoxes}>
-              {undraggedBoxes.map((iguanaName, index) => (
+              {undraggedNames.map((iguanaName, index) => (
                 <Grow in={!completeTree} key={index}>
                   <IguanaBox name={iguanaName} />
                 </Grow>

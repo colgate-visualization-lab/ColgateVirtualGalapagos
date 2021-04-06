@@ -36,7 +36,11 @@ const IguanaBox = ({ name }) => {
   const [, drag] = useDrag({
     item: { name, type: ItemTypes.IGUANA },
     begin: () => {
+      console.log("here");
       resetCheck();
+    },
+    end: () => {
+      console.log("end");
     },
   });
 
