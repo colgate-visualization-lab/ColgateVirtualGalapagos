@@ -18,7 +18,7 @@
 }
 .imgContainer {
   position: absolute;
-  height: 80%;
+  height: 100%;
   max-width: 85vw;
   top: 10%;
   left: 50%;
@@ -316,4 +316,9 @@
   left: 50%;
   transform: translate(-50%, 0);
   border: 2px solid darkgoldenrod;
+}
+/* New shit */
+.test {
+  height: 100%;
+  width: 100%;
 }
