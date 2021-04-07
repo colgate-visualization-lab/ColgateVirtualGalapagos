@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { throttle } from "lodash";
 
-import modulesReducer from "./slices/modulesSlice";
+// import modulesReducer from "./slices/modulesSlice";
+import slideReducer from "./slices/slideSlice";
 import { saveState } from "./slices/localStorage";
 
 const store = configureStore({
   reducer: {
-    module: modulesReducer,
+    // module: modulesReducer,
+    slide: slideReducer,
   },
 });
 
@@ -15,7 +17,8 @@ const store = configureStore({
 store.subscribe(
   throttle(() => {
     saveState({
-      module: store.getState().module,
+      slide: store.getState().slide,
+      // module: store.getState().module,
     });
   }, 1000)
 );

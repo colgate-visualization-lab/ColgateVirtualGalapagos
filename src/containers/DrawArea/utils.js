@@ -54,7 +54,6 @@ export const createElement = (e, index, drawAreaRef, selectedTool) => {
       options: getDefaultOptions("line"),
     });
   } else if (selectedTool === "textbox") {
-    console.log("clearly creating text");
     return new Map({
       index: index,
       x1: x,

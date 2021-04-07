@@ -3,7 +3,6 @@ import Iframe from "react-iframe";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/styles";
 import clsx from "clsx";
-import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import iguanaData from "../../assets/IguanaData/IguanaData.js";
@@ -14,12 +13,6 @@ import SlideContentDrawer from "../SlideContentDrawer";
 import FieldBookDrawer from "../FieldBookDrawer";
 import ModuleSelector from "../ModuleSelector/ModuleSelector";
 import AudioPlayer from "../AudioPlayer";
-
-import {
-  getModuleData,
-  getSlideData,
-  selectStatus,
-} from "../../slices/modulesSlice";
 
 const moduleData = {
   iguana: iguanaData,
@@ -108,18 +101,6 @@ const SlideContainer = (props) => (
 
 // Actual function being exported
 function ModuleContainer(props) {
-  const dispatch = useDispatch();
-  let status = useSelector(selectStatus);
-
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(getModuleData("iguana"));
-    }
-    if (status === "moduleDataLoaded") {
-      dispatch(getSlideData(slideId));
-    }
-  });
-
   let { moduleName, slideId } = useParams(); // parameters in our url
   slideId = 1 && parseInt(slideId);
 
