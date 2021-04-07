@@ -175,9 +175,13 @@ const useDrawArea = () => {
           };
         }
         case "DELETE_ELEMENT": {
-          let elements = state.elements.delete(
-            state.selectedElement.get("index")
-          );
+          let elements = state.elements;
+
+          if (state.selectedElement) {
+            elements = state.elements.delete(
+              state.selectedElement.get("index")
+            );
+          }
 
           return {
             ...state,
@@ -186,6 +190,9 @@ const useDrawArea = () => {
           };
         }
         case "DUPLICATE_ELEMENT": {
+          if (!state.selectedElement) {
+            return { ...state };
+          }
           // reset the selected/focused state of currently selected element
           let index = state.selectedElement.get("index");
           let elements = state.elements
@@ -257,6 +264,23 @@ const DrawArea = ({ tabIndex, handleTabChange }) => {
   const classes = useStyles();
   const [state, dispatch, drawAreaRef] = useDrawArea();
   const { elements, selectedElement, action, selectedTool } = state;
+
+  useEffect(() => {
+    window.document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  const handleKeyDown = (event) => {
+    if (event.ctrlKey && event.key === "d") {
+      dispatch({ type: "DUPLICATE_ELEMENT" });
+      event.preventDefault();
+    } else if (event.key === "Backspace" || event.key === "Delete") {
+      event.preventDefault();
+      dispatch({ type: "DELETE_ELEMENT" });
+    }
+  };
 
   // callback props for DrawAreaToolbar
   const handleToolChange = (name) => {
