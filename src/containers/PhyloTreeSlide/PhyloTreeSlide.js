@@ -25,6 +25,7 @@ const PhyloTreeSlide = ({ content }) => {
         <Grid item xs={12}>
           {tabIndex === 0 ? (
             <DrawArea
+              id={content.id}
               tabIndex={tabIndex}
               handleTabChange={(index) => setTabIndex(index)}
             />
