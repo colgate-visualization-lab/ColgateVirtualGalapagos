@@ -39,7 +39,11 @@ const useDrawArea = (id) => {
   // retrieve data from localstorage
   const storeDispatch = useDispatch();
   let elements = useSelector(selectSlideData(id));
+  let slide12Elements = useSelector(selectSlideData("11"));
   elements = elements ? transit.fromJSON(elements) : List();
+  slide12Elements = slide12Elements
+    ? transit.fromJSON(slide12Elements)
+    : List();
 
   let initialState = {
     elements: elements,
@@ -247,6 +251,14 @@ const useDrawArea = (id) => {
         return { ...state, selectedElement: false, elements: List() };
       }
 
+      // action type for loading slide 12 data from slide 19
+      case "LOAD_SLIDE_12_TREE": {
+        console.log(slide12Elements);
+        return {
+          ...state,
+          elements: state.elements.concat(slide12Elements),
+        };
+      }
       default: {
         return state;
       }
@@ -357,6 +369,11 @@ const DrawArea = ({ id, tabIndex, handleTabChange }) => {
     dispatch({ type: "INPUT_TEXT", value });
   };
 
+  // callback to load slide 12 data in slide 19
+  const handleLoadSlide12Data = () => {
+    dispatch({ type: "LOAD_SLIDE_12_TREE" });
+  };
+
   return (
     <Grid container spacing={1} className={classes.root}>
       <Grid item xs={12}>
@@ -380,7 +397,9 @@ const DrawArea = ({ id, tabIndex, handleTabChange }) => {
           onMouseUp={handleMouseUp}
         >
           <Options
+            id={id}
             element={selectedElement}
+            handleLoadSlide12Data={handleLoadSlide12Data}
             handleOptionsChange={handleOptionsChange}
             handleAction={handleAction}
             handleClearCanvas={handleClearCanvas}

@@ -89,15 +89,8 @@ const iguanaData = [
         "Marine iguanas are darker in color to match the black basaltic rocks found in near the coast.",
     },
   },
-  // {
-  //   id: "9",
-  //   title: "Iguana_Comparison04",
-  //   type: "image",
-  //   url:
-  //     "http://virtualgalapagos.colgate.edu/assets/IguanaModule/LandIguanaOnRocks.png", //slider
-  // },
   {
-    id: "10",
+    id: "9",
     title: "Iguana_PhyloTree01",
     type: "video360",
     audioSrc:
@@ -106,7 +99,7 @@ const iguanaData = [
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/LandIguana/index.htm",
   },
   {
-    id: "11",
+    id: "10",
     title: "Iguana_PhyloTree02",
     type: "video",
 
@@ -115,9 +108,9 @@ const iguanaData = [
   },
   //need to build,
   {
-    id: "12",
+    id: "11",
     title: "Iguana_PhyloTree05",
-    type: "PhyloTreeDrawingSlide",
+    type: "IguanaSlide11",
     audioSrc: {
       part1:
         "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide12_1.m4a",
@@ -130,7 +123,7 @@ const iguanaData = [
     drawAreaData: slide12DrawAreaData,
   },
   {
-    id: "13",
+    id: "12",
     title: "Iguana_Evolution01",
     type: "video360",
     audioSrc:
@@ -139,14 +132,14 @@ const iguanaData = [
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/IguanaVegetation/index.htm",
   },
   {
-    id: "14",
+    id: "13",
     title: "Iguana_Evolution02",
     type: "video",
     url:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Video/IguanaWhiteboardEvolution.mp4",
   },
   {
-    id: "15",
+    id: "14",
     title: "Iguana_Evolution03",
     type: "interactive_image",
     url:
@@ -156,7 +149,7 @@ const iguanaData = [
     data: slide15Data,
   },
   {
-    id: "16",
+    id: "15",
     title: "Iguana_Evolution04",
     type: "video360",
     audioSrc:
@@ -165,7 +158,7 @@ const iguanaData = [
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/IguanaVegetation/index.htm",
   },
   {
-    id: "17",
+    id: "16",
     title: "Iguana_Evolution05",
     type: "dnaInteractiveActivity",
     audioSrc:
@@ -173,7 +166,7 @@ const iguanaData = [
     data: slide17Data,
   },
   {
-    id: "18",
+    id: "17",
     title: "Iguana_Scales02",
     type: "video360",
     audioSrc:
@@ -182,7 +175,7 @@ const iguanaData = [
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/SantiagoBeach/index.htm", //360
   },
   {
-    id: "19",
+    id: "18",
     title: "Iguana_Scales03",
     type: "video360",
     audioSrc:
@@ -191,9 +184,9 @@ const iguanaData = [
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/360Videos/Shorewaves/",
   },
   {
-    id: "20",
+    id: "19",
     title: "Iguana_PhyloTree06",
-    type: "PhyloTreeDrawingSlide",
+    type: "IguanaSlide19",
     audioSrc:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide20.wav",
     backgroundUrl:
@@ -202,7 +195,7 @@ const iguanaData = [
     drawAreaData: slide20DrawAreaData,
   },
   {
-    id: "21",
+    id: "20",
     title: "Iguana_PinkIggy01",
     type: "video",
     url:

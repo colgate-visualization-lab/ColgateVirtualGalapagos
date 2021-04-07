@@ -81,11 +81,18 @@ function IguanaSlides({ content }) {
         <AudioPlayer src={content.audioSrc} />
       </>
     );
-  } else if (content.type === "PhyloTreeDrawingSlide") {
+  } else if (content.type === "IguanaSlide11") {
     return (
       <>
         <PhyloTreeSlide content={content} />
         <AudioPlayer src={content.audioSrc.part1} />
+      </>
+    );
+  } else if (content.type === "IguanaSlide19") {
+    return (
+      <>
+        <PhyloTreeSlide content={content} />
+        <AudioPlayer src={content.audioSrc} />
       </>
     );
   } else {
