@@ -24,15 +24,17 @@ const useStyles = makeStyles((theme) => ({
     width: "240px",
   },
   optionHeader: {
-    fontSize: "1rem",
+    fontSize: "0.8rem",
     fontWeight: "bold",
     padding: theme.spacing(0.5, 0, 1, 0),
   },
 }));
 
 const Options = ({
+  id,
   element,
   handleOptionsChange,
+  handleLoadSlide12Data,
   handleAction,
   handleClearCanvas,
 }) => {
@@ -52,9 +54,22 @@ const Options = ({
         e.stopPropagation();
       }}
     >
-      <Grid container justify="center" spacing={2}>
-        <Grid item xs={12}>
-          <Button variant="outlined" onClick={handleClearCanvas} fullWidth>
+      <Grid container justify="flex-start" spacing={2}>
+        {id === "19" && (
+          <Grid item xs={6}>
+            <Button
+              variant="outlined"
+              onClick={handleLoadSlide12Data}
+              size="small"
+            >
+              <Typography className={classes.optionHeader}>
+                Load Saved Tree
+              </Typography>
+            </Button>
+          </Grid>
+        )}
+        <Grid item xs={6}>
+          <Button variant="outlined" onClick={handleClearCanvas} size="small">
             <Typography className={classes.optionHeader}>
               Reset Canvas
             </Typography>
