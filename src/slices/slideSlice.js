@@ -8,7 +8,7 @@ let initialState = preLoadedState
   : {
       slideData: {
         byId: {},
-        allIds: [],
+        // allIds: [],
       },
     };
 
