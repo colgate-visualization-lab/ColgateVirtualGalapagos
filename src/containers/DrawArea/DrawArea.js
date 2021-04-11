@@ -48,6 +48,7 @@ const useDrawArea = (id) => {
   let initialState = {
     elements: elements,
     selectedElement: null,
+    elementInFocus: false,
     action: "idle",
     selectedTool: "select",
   };
@@ -70,9 +71,11 @@ const useDrawArea = (id) => {
         let elements = clearSelectedState(state.elements);
         elements = elements.push(element);
         saveDataToLocalStorage(storeDispatch, elements, id);
+        let elementInFocus = state.selectedTool === "textbox";
         return {
           ...state,
           selectedElement: element,
+          elementInFocus,
           elements,
           action: "drawing",
           selectedTool: "select",
@@ -112,6 +115,7 @@ const useDrawArea = (id) => {
           selectedElement: element,
           elements,
           selectedTool: "select",
+          elementInFocus: true,
         };
       }
       case "RESET_FOCUS_AND_SELECTED_STATUS": {
@@ -119,6 +123,7 @@ const useDrawArea = (id) => {
           ...state,
           selectedElement: null,
           elements: clearFocusedState(clearSelectedState(state.elements)),
+          elementInFocus: false,
         };
       }
 
@@ -244,6 +249,7 @@ const useDrawArea = (id) => {
           ...state,
           selectedElement: element,
           elements,
+          elementInFocus: true,
         };
       }
       case "CLEAR_CANVAS": {
@@ -273,7 +279,8 @@ const DrawArea = ({ id, tabIndex, handleTabChange }) => {
 
   // created custom hook to handle most state changes in this component
   let [state, dispatch, drawAreaRef] = useDrawArea(id);
-  let { elements, selectedElement, action, selectedTool } = state;
+  // prettier-ignore
+  let { elements, elementInFocus, selectedElement, action, selectedTool } = state;
 
   useEffect(() => {
     window.document.addEventListener("keydown", handleKeyDown);
@@ -283,12 +290,16 @@ const DrawArea = ({ id, tabIndex, handleTabChange }) => {
   }, []);
 
   const handleKeyDown = (event) => {
+    console.log(selectedElement);
+    if (selectedElement && selectedElement.get("focused")) {
+      return;
+    }
     if (event.ctrlKey && event.key === "d") {
       dispatch({ type: "DUPLICATE_ELEMENT" });
       event.preventDefault();
     } else if (event.key === "Backspace" || event.key === "Delete") {
-      event.preventDefault();
       dispatch({ type: "DELETE_ELEMENT" });
+      event.preventDefault();
     }
   };
 
@@ -366,6 +377,7 @@ const DrawArea = ({ id, tabIndex, handleTabChange }) => {
   /* callback for Drawing component (this is what displays the drawings lol)
       Need to have the text of all textboxes stored in elements as well */
   const handleTextChange = (value) => {
+    // console.log(selectedElement);
     dispatch({ type: "INPUT_TEXT", value });
   };
 
