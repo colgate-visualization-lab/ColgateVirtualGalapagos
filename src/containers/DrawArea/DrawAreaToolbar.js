@@ -6,7 +6,9 @@ import toolbarIcons from "../../components/DrawAreaIcons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100%",
+    // width: "100%",
+    justifySelf: "center",
+    marginLeft: theme.spacing(2),
   },
   iconContainer: {
     marginRight: theme.spacing(1),
