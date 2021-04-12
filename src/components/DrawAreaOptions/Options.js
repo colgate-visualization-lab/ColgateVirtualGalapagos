@@ -30,14 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Options = ({
-  id,
-  element,
-  handleOptionsChange,
-  handleLoadSlide12Data,
-  handleAction,
-  handleClearCanvas,
-}) => {
+const Options = ({ element, handleOptionsChange, handleAction }) => {
   let options = [];
   let type = undefined;
   if (element) {
@@ -48,90 +41,71 @@ const Options = ({
   const classes = useStyles();
 
   return (
-    <Paper
-      className={classes.root}
-      onMouseDown={(e) => {
-        e.stopPropagation();
-      }}
-    >
-      <Grid container justify="flex-start" spacing={2}>
-        {id === "19" && (
-          <Grid item xs={6}>
-            <Button
-              variant="outlined"
-              onClick={handleLoadSlide12Data}
-              size="small"
-            >
-              <Typography className={classes.optionHeader}>
-                Load Saved Tree
-              </Typography>
-            </Button>
-          </Grid>
-        )}
-        <Grid item xs={6}>
-          <Button variant="outlined" onClick={handleClearCanvas} size="small">
-            <Typography className={classes.optionHeader}>
-              Reset Canvas
-            </Typography>
-          </Button>
+    element && (
+      <Paper
+        className={classes.root}
+        onMouseDown={(e) => {
+          e.stopPropagation();
+        }}
+      >
+        <Grid container justify="flex-start" spacing={2}>
+          {type !== undefined && (
+            <>
+              <Grid item xs={12}>
+                <Typography className={classes.optionHeader}>
+                  Stroke Color
+                </Typography>
+                <StrokeColorOption
+                  options={options}
+                  handleOptionsChange={handleOptionsChange}
+                />
+              </Grid>
+            </>
+          )}
+          {type === "textbox" && (
+            <>
+              <Grid item xs={12}>
+                <Typography className={classes.optionHeader}>
+                  Font Size
+                </Typography>
+                <FontSizeOption
+                  options={options}
+                  handleOptionsChange={handleOptionsChange}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <Typography className={classes.optionHeader}>
+                  Text Align
+                </Typography>
+                <TextAlignOption
+                  options={options}
+                  handleOptionsChange={handleOptionsChange}
+                />
+              </Grid>
+            </>
+          )}
+          {type === "line" && (
+            <>
+              <Grid item xs={12}>
+                <Typography className={classes.optionHeader}>
+                  Stroke Width
+                </Typography>
+                <StrokeWidthOption
+                  options={options}
+                  handleOptionsChange={handleOptionsChange}
+                />
+              </Grid>
+            </>
+          )}
+          {type !== undefined && (
+            <Grid item xs={12}>
+              <Typography className={classes.optionHeader}>Actions</Typography>
+              <ElementActions handleAction={handleAction} />
+            </Grid>
+          )}
         </Grid>
-
-        {type !== undefined && (
-          <>
-            <Grid item xs={12}>
-              <Typography className={classes.optionHeader}>
-                Stroke Color
-              </Typography>
-              <StrokeColorOption
-                options={options}
-                handleOptionsChange={handleOptionsChange}
-              />
-            </Grid>
-          </>
-        )}
-        {type === "textbox" && (
-          <>
-            <Grid item xs={12}>
-              <Typography className={classes.optionHeader}>
-                Font Size
-              </Typography>
-              <FontSizeOption
-                options={options}
-                handleOptionsChange={handleOptionsChange}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <Typography className={classes.optionHeader}>
-                Text Align
-              </Typography>
-              <TextAlignOption
-                options={options}
-                handleOptionsChange={handleOptionsChange}
-              />
-            </Grid>
-          </>
-        )}
-        {type === "line" && (
-          <>
-            <Grid item xs={12}>
-              <Typography className={classes.optionHeader}>
-                Stroke Width
-              </Typography>
-              <StrokeWidthOption
-                options={options}
-                handleOptionsChange={handleOptionsChange}
-              />
-            </Grid>
-          </>
-        )}
-        {type !== undefined && (
-          <Grid item xs={12}>
-            <Typography className={classes.optionHeader}>Actions</Typography>
-            <ElementActions handleAction={handleAction} />
-          </Grid>
-        )}
-      </Grid>
-    </Paper>
+      </Paper>
+    )
   );
 };
 
