@@ -26,7 +26,10 @@ const useStyles = makeStyles((theme) => ({
 
   positioning: {
     position: "relative",
-    // width: "100%",
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    margin: theme.spacing(1, 2),
   },
 }));
 
@@ -205,13 +208,13 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
             handleShowTree={handleShowTree}
             completedTreeVisible={completedTreeVisible}
           />
-          <IguanaDropTarget
-            content={content}
-            draggedNames={draggedNames}
-            correctnessIndicatorVisible={correctnessIndicatorVisible}
-            handleDrop={handleDrop}
-          />
         </div>
+        <IguanaDropTarget
+          content={content}
+          draggedNames={draggedNames}
+          correctnessIndicatorVisible={correctnessIndicatorVisible}
+          handleDrop={handleDrop}
+        />
       </div>
     </DndProvider>
   );

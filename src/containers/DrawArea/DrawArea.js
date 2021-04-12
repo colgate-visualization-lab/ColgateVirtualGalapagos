@@ -387,6 +387,11 @@ const DrawArea = ({ id, tabIndex, handleTabChange }) => {
     dispatch({ type: "LOAD_SLIDE_12_TREE" });
   };
 
+  // callback to save tree and play next audio when user is done
+  const handleDone = () => {
+    // TODO
+  };
+
   return (
     <Grid container spacing={1} className={classes.root}>
       <Grid item xs={12}>
@@ -396,7 +401,7 @@ const DrawArea = ({ id, tabIndex, handleTabChange }) => {
           header="Draw a phylogenetic tree on the canvas"
         />
       </Grid>
-      <Grid item xs={12}>
+      <Grid container justify="space-between" item xs={12}>
         <DrawAreaToolbar
           handleToolChange={handleToolChange}
           selected={selectedTool}
@@ -405,6 +410,7 @@ const DrawArea = ({ id, tabIndex, handleTabChange }) => {
           id={id}
           handleClearCanvas={handleClearCanvas}
           handleLoadSlide12Data={handleLoadSlide12Data}
+          handleDone={handleDone}
         />
       </Grid>
       <Grid item xs={12}>
