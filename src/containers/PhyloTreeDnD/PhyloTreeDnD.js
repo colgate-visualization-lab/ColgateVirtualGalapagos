@@ -93,7 +93,7 @@ const useTreeDnD = (iguanaNames, iguanaNamesPlacement) => {
       }
       case "SHOW_COMPLETED_TREE": {
         let newDraggedNames = [];
-        if (action.id === "12") {
+        if (action.id === "11") {
           const branchNames = getBranchNames(
             state.draggedNames[1].placedName,
             state.draggedNames[2].placedName
@@ -160,6 +160,7 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
   };
 
   const handleShowTree = async () => {
+    console.log(content.id)
     dispatch({ type: "SET_TREE_CORRECTNESS_INDICATOR", value: false });
     dispatch({ type: "SET_COMPLETE_TREE_STATUS", value: true });
     await delay(200);
