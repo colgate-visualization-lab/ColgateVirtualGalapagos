@@ -10,7 +10,7 @@ const useStyles = makeStyles(() => ({
     alignItems: "center",
     justifyContent: "flex-start",
     position: "relative",
-    width: "100%",
+    // width: "100%",
     height: "2.7rem",
     maxWidth: "960px",
     minWidth: "600px",
