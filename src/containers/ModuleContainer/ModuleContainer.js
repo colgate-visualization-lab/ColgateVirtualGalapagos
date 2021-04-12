@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from "react";
-import Iframe from "react-iframe";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/styles";
-import clsx from "clsx";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react"
+import Iframe from "react-iframe"
+import Grid from "@material-ui/core/Grid"
+import { makeStyles } from "@material-ui/styles"
+import clsx from "clsx"
+import { useParams } from "react-router-dom"
 
-import iguanaData from "../../assets/IguanaData/IguanaData.js";
-import volcanoData from "../../components/VolcanoData/VolcanoData.js";
-import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
-import ControlButtons from "../ControlButtons/ControlButtons";
-import SlideContentDrawer from "../SlideContentDrawer";
-import FieldBookDrawer from "../FieldBookDrawer";
-import ModuleSelector from "../ModuleSelector/ModuleSelector";
-import AudioPlayer from "../AudioPlayer";
+import iguanaData from "../../assets/IguanaData"
+import volcanoData from "../../components/VolcanoData/VolcanoData.js"
+import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler"
+import ControlButtons from "../ControlButtons/ControlButtons"
+import SlideContentDrawer from "../SlideContentDrawer"
+import FieldBookDrawer from "../FieldBookDrawer"
+import ModuleSelector from "../ModuleSelector/ModuleSelector"
+import AudioPlayer from "../AudioPlayer"
 
 const moduleData = {
   iguana: iguanaData,
   volcano: volcanoData,
-};
+}
 
 //Needed for something lol
-const contentDrawerWidth = 240;
-const fieldBookDrawerWidth = 400;
-const baseContentMargin = 48;
+const contentDrawerWidth = 240
+const fieldBookDrawerWidth = 400
+const baseContentMargin = 48
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -79,12 +79,12 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginRight: baseContentMargin,
   },
-}));
+}))
 
 // Grid Outer Container Component
 const GridContainer = (props) => (
   <Grid {...props} container spacing={1} direction="row" justify="center" />
-);
+)
 
 // Slide Content Container Component - holds slide-specific content
 // the videos, images, 360s, and any other content
@@ -97,43 +97,43 @@ const SlideContainer = (props) => (
     alignItems="center"
     {...props}
   />
-);
+)
 
 // Actual function being exported
 function ModuleContainer(props) {
-  let { moduleName, slideId } = useParams(); // parameters in our url
-  slideId = 1 && parseInt(slideId);
+  let { moduleName, slideId } = useParams() // parameters in our url
+  slideId = 1 && parseInt(slideId)
 
   // get module data
-  let data = moduleData[moduleName];
+  let data = moduleData[moduleName]
 
   // we get current slide id from and use that to find the next and prev slide ids
-  const prevSlide = `/${moduleName}/${slideId === 1 ? 1 : slideId - 1}`;
+  const prevSlide = `/${moduleName}/${slideId === 1 ? 1 : slideId - 1}`
   const nextSlide = `/${moduleName}/${
     slideId + 1 > data.length ? slideId : slideId + 1
-  }`;
+  }`
 
   //I guess this state is used for sidebars and fieldbook
-  const [contentDrawerOpen, setContentDrawerOpen] = useState(false);
-  const [fieldBookDrawerOpen, setFieldBookDrawerOpen] = useState(false);
+  const [contentDrawerOpen, setContentDrawerOpen] = useState(false)
+  const [fieldBookDrawerOpen, setFieldBookDrawerOpen] = useState(false)
 
   // Uhh not 100% sure what this is but it's important haha :)
-  const content = data[slideId - 1];
+  const content = data[slideId - 1]
 
   //Styling? Also if we declare content after styleProps this doesn't work. Order matters kids.
   // these are props to pass to useStyles and so I can use them in the makeStyles function above
   const styleProps = {
     heightOffset: "audioSrc" in content ? 150 : 60,
-  };
-  const classes = useStyles(styleProps);
+  }
+  const classes = useStyles(styleProps)
 
   //I guess these are used for opening it and stuff
   const handleContentDrawerToggle = (open) => {
-    setContentDrawerOpen(open);
-  };
+    setContentDrawerOpen(open)
+  }
   const handleFieldBookDrawerToggle = (open) => {
-    setFieldBookDrawerOpen(open);
-  };
+    setFieldBookDrawerOpen(open)
+  }
 
   // ControlButtons component props
   const controlButtonProps = {
@@ -141,7 +141,7 @@ function ModuleContainer(props) {
     hasNext: slideId < data.length,
     nextSlide: nextSlide,
     prevSlide: prevSlide,
-  };
+  }
 
   return (
     <div className={classes.root}>
@@ -171,11 +171,11 @@ function ModuleContainer(props) {
         handleContentDrawerToggle={handleFieldBookDrawerToggle}
       />
     </div>
-  );
+  )
 }
-ModuleContainer.propTypes = {};
+ModuleContainer.propTypes = {}
 
-export default ModuleContainer;
+export default ModuleContainer
 
 // useEffect(() => {
 //   if (status === "idle") {
