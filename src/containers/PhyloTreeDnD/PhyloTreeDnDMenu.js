@@ -1,6 +1,8 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+import PhyloTreeMenuButton from "../../components/PhyloTreeMenu/PhyloTreeMenuButton";
+import PhyloTreeMenu from "../../components/PhyloTreeMenu";
 
 const useStyles = makeStyles((theme) => ({
   buttons: {
@@ -29,35 +31,20 @@ const PhyloTreeDnDButtons = ({
   const classes = useStyles();
 
   return (
-    <div className={classes.buttons}>
-      <Button
-        variant="contained"
-        size="small"
-        className={classes.button}
-        onClick={handleCheckTree}
-      >
-        Check My Tree
-      </Button>
+    <PhyloTreeMenu>
+      <PhyloTreeMenuButton
+        handleClick={handleCheckTree}
+        label="Check My Tree"
+      />
       {completedTreeVisible ? (
-        <Button
-          variant="contained"
-          size="small"
-          className={classes.button}
-          onClick={handleResetTree}
-        >
-          Reset Tree
-        </Button>
+        <PhyloTreeMenuButton handleClick={handleResetTree} label="Reset Tree" />
       ) : (
-        <Button
-          variant="contained"
-          size="small"
-          className={classes.button}
-          onClick={handleShowTree}
-        >
-          Show Completed Tree
-        </Button>
+        <PhyloTreeMenuButton
+          handleClick={handleShowTree}
+          label="Show Completed Tree"
+        />
       )}
-    </div>
+    </PhyloTreeMenu>
   );
 };
 
