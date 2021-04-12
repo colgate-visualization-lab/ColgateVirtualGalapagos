@@ -7,7 +7,7 @@ import update from "immutability-helper";
 import IguanaDropTarget from "./IguanaDropTarget";
 import IguanaDragSource from "./IguanaDragSource";
 import PhyloTreeHeader from "../PhyloTreeHeader";
-import PhyloTreeDnDButtons from "./PhyloTreeDnDButtons";
+import PhyloTreeDnDMenu from "./PhyloTreeDnDMenu";
 import { Box, delay, getBranchNames } from "./utils";
 
 const useStyles = makeStyles((theme) => ({
@@ -22,6 +22,11 @@ const useStyles = makeStyles((theme) => ({
 
   header: {
     fontSize: "1.5rem",
+  },
+
+  positioning: {
+    position: "relative",
+    // width: "100%",
   },
 }));
 
@@ -160,7 +165,7 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
   };
 
   const handleShowTree = async () => {
-    console.log(content.id)
+    console.log(content.id);
     dispatch({ type: "SET_TREE_CORRECTNESS_INDICATOR", value: false });
     dispatch({ type: "SET_COMPLETE_TREE_STATUS", value: true });
     await delay(200);
@@ -188,24 +193,25 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
           tabIndex={tabIndex}
           handleTabChange={handleTabChange}
           header="Create a phylogenetic tree by dragging the cards below to their correct positions"
-        >
+        />
+        <div className={classes.positioning}>
           <IguanaDragSource
             undraggedNames={undraggedNames}
             completedTreeVisible={completedTreeVisible}
           />
-        </PhyloTreeHeader>
-        <IguanaDropTarget
-          content={content}
-          draggedNames={draggedNames}
-          correctnessIndicatorVisible={correctnessIndicatorVisible}
-          handleDrop={handleDrop}
-        />
-        <PhyloTreeDnDButtons
-          handleCheckTree={handleCheckTree}
-          handleResetTree={handleResetTree}
-          handleShowTree={handleShowTree}
-          completedTreeVisible={completedTreeVisible}
-        />
+          <PhyloTreeDnDMenu
+            handleCheckTree={handleCheckTree}
+            handleResetTree={handleResetTree}
+            handleShowTree={handleShowTree}
+            completedTreeVisible={completedTreeVisible}
+          />
+          <IguanaDropTarget
+            content={content}
+            draggedNames={draggedNames}
+            correctnessIndicatorVisible={correctnessIndicatorVisible}
+            handleDrop={handleDrop}
+          />
+        </div>
       </div>
     </DndProvider>
   );
