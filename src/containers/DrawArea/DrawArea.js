@@ -9,6 +9,7 @@ import Drawing from "./Drawing";
 import DrawAreaToolbar from "./DrawAreaToolbar";
 import Options from "../../components/DrawAreaOptions";
 import PhyloTreeHeader from "../PhyloTreeHeader";
+import DrawAreaMenu from "./DrawAreaMenu";
 import { selectSlideData, saveSlideData } from "../../slices/slideSlice";
 //prettier-ignore
 import { clearSelectedState, clearFocusedState, getElementAtPosition, 
@@ -393,12 +394,18 @@ const DrawArea = ({ id, tabIndex, handleTabChange }) => {
           tabIndex={tabIndex}
           handleTabChange={handleTabChange}
           header="Draw a phylogenetic tree on the canvas"
-        >
-          <DrawAreaToolbar
-            handleToolChange={handleToolChange}
-            selected={selectedTool}
-          />
-        </PhyloTreeHeader>
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <DrawAreaToolbar
+          handleToolChange={handleToolChange}
+          selected={selectedTool}
+        />
+        <DrawAreaMenu
+          id={id}
+          handleClearCanvas={handleClearCanvas}
+          handleLoadSlide12Data={handleLoadSlide12Data}
+        />
       </Grid>
       <Grid item xs={12}>
         <div
@@ -409,12 +416,9 @@ const DrawArea = ({ id, tabIndex, handleTabChange }) => {
           onMouseUp={handleMouseUp}
         >
           <Options
-            id={id}
             element={selectedElement}
-            handleLoadSlide12Data={handleLoadSlide12Data}
             handleOptionsChange={handleOptionsChange}
             handleAction={handleAction}
-            handleClearCanvas={handleClearCanvas}
           />
 
           <Drawing elements={elements} handleTextChange={handleTextChange} />

@@ -39,7 +39,7 @@ const IguanaDropTarget = ({
     dropTargetDimensions,
     dropTargets,
   } = content.phyloTreeData;
-  console.log(draggedNames)
+  console.log(draggedNames);
   return (
     <div className={classes.dropTargetContainer}>
       <img src={content.backgroundUrl} className={classes.backgroundImg} />

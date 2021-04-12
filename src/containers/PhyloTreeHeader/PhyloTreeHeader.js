@@ -31,7 +31,7 @@ const PhyloTreeHeader = ({ tabIndex, handleTabChange, header, children }) => {
           {header}
         </Typography>
       </Grid>
-      <Grid item xs={12} className={classes.item}>
+      <Grid container item xs={12} className={classes.item}>
         {children}
       </Grid>
     </Grid>
