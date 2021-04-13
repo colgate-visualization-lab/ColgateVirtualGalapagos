@@ -15,7 +15,7 @@ const DrawAreaMenu = ({
       {id === "19" && (
         <PhyloTreeMenuButton
           handleClick={handleLoadSlide12Data}
-          label="Load Saved Phylo Tree"
+          label="Load Saved Tree"
         />
       )}
       <PhyloTreeMenuButton

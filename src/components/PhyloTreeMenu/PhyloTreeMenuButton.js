@@ -5,10 +5,12 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    padding: theme.spacing(1, 2),
+    padding: theme.spacing(0.5, 1),
     margin: theme.spacing(0, 1),
     fontSize: "0.7rem",
     fontWeight: "bold",
+    borderRadius: 5,
+    textTransform: "none",
     backgroundColor: "rgb(249,249,249)",
     color: "#000",
     "&:hover": {
