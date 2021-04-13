@@ -62,6 +62,11 @@ const AudioPlayer = ({ src }) => {
   const [rate, setRate] = useState(1.0);
 
   useEffect(() => {
+    console.log(seek);
+    // console.log(player.current.howler._sounds);
+  });
+
+  useEffect(() => {
     raf.current = requestAnimationFrame(renderSeekPos);
     return () => cancelAnimationFrame(raf.current);
   }, []);
@@ -73,28 +78,50 @@ const AudioPlayer = ({ src }) => {
     setDuration(player.current.duration());
   };
 
+  const handleOnPlay = () => {
+    console.log("here in handleOnPlay");
+    setPlaying(true);
+    renderSeekPos();
+  };
+
   const handleOnEnd = () => {
     setPlaying(false);
     cancelAnimationFrame(raf.current);
   };
 
-  const handlePlay = () => {
-    setPlaying((playing) => !playing);
-    renderSeekPos();
+  const handleToggle = () => {
+    // console.log(playing);
+    setPlaying(!playing);
   };
 
-  const handleSeek = (_, value) => {
+  const handleSeekingChange = (_, value) => {
+    console.log(parseFloat(value));
     setSeek(parseFloat(value));
-    player.current.seek(parseFloat(value));
+  };
+
+  const handleSeekingStart = () => {
+    setIsSeeking(true);
+    // setPlaying(false);
+  };
+  const handleSeekingEnd = () => {
+    setIsSeeking(false);
+    // setPlaying(true);
+    // console.log(seek);
+    player.current.seek(seek);
   };
 
   const handleSeekFive = (value) => {
-    handleSeek(null, seek + value);
+    handleSeekingChange(null, seek + value);
   };
 
-  const renderSeekPos = () => {
-    setSeek(player.current.seek());
-    raf.current = requestAnimationFrame(renderSeekPos);
+  const renderSeekPos = (startedPlaying = false) => {
+    if (!isSeeking) {
+      setSeek(player.current.seek());
+    }
+    if (startedPlaying || playing) {
+      console.log("here in raf");
+      // raf.current = requestAnimationFrame(renderSeekPos);
+    }
   };
 
   const handleMute = () => {
@@ -120,10 +147,17 @@ const AudioPlayer = ({ src }) => {
         volume={volume}
         onLoad={handleOnLoad}
         onEnd={handleOnEnd}
+        onPlay={handleOnPlay}
       />
 
       <Grid container item xs={12}>
-        <ProgressBar duration={duration} seek={seek} handleSeek={handleSeek} />
+        <ProgressBar
+          duration={duration}
+          seek={seek}
+          handleSeekingChange={handleSeekingChange}
+          handleSeekingStart={handleSeekingStart}
+          handleSeekingEnd={handleSeekingEnd}
+        />
       </Grid>
 
       <Grid item xs={12}>
@@ -131,7 +165,7 @@ const AudioPlayer = ({ src }) => {
           <div className={clsx(classes.controlsLeft, classes.controls)}>
             <MainControls
               playing={playing}
-              handlePlay={handlePlay}
+              handleToggle={handleToggle}
               handleSeekFive={handleSeekFive}
             />
             <TimeDisplay
