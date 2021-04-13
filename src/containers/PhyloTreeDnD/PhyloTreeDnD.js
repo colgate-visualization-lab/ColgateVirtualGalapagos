@@ -1,4 +1,5 @@
 import React, { useReducer } from "react";
+import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -192,31 +193,37 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className={classes.root}>
-        <PhyloTreeHeader
-          tabIndex={tabIndex}
-          handleTabChange={handleTabChange}
-          header="Create a phylogenetic tree by dragging the cards below to their correct positions"
-        />
-        <div className={classes.positioning}>
+      <Grid container spacing={2} id="phylo-tree-dnd-root">
+        <Grid item xs={12}>
+          <PhyloTreeHeader
+            tabIndex={tabIndex}
+            handleTabChange={handleTabChange}
+            header="Create a phylogenetic tree by dragging the cards below to their correct positions"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6} md>
           <IguanaDragSource
             undraggedNames={undraggedNames}
             completedTreeVisible={completedTreeVisible}
           />
+        </Grid>
+        <Grid item xs={12} sm={6} md>
           <PhyloTreeDnDMenu
             handleCheckTree={handleCheckTree}
             handleResetTree={handleResetTree}
             handleShowTree={handleShowTree}
             completedTreeVisible={completedTreeVisible}
           />
-        </div>
-        <IguanaDropTarget
-          content={content}
-          draggedNames={draggedNames}
-          correctnessIndicatorVisible={correctnessIndicatorVisible}
-          handleDrop={handleDrop}
-        />
-      </div>
+        </Grid>
+        <Grid item xs={12}>
+          <IguanaDropTarget
+            content={content}
+            draggedNames={draggedNames}
+            correctnessIndicatorVisible={correctnessIndicatorVisible}
+            handleDrop={handleDrop}
+          />
+        </Grid>
+      </Grid>
     </DndProvider>
   );
 };
