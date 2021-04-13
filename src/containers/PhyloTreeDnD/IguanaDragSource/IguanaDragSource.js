@@ -1,32 +1,37 @@
 import React from "react";
 import Grow from "@material-ui/core/Grow";
+import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 
 import IguanaBox from "./IguanaBox";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   iguanaBoxes: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-start",
     position: "relative",
-    // width: "100%",
-    // height: "2.7rem",
-    maxWidth: "960px",
-    minWidth: "600px",
+    justifySelf: "center",
+
+    display: "flex",
+    justifyItems: "center",
+    alignItems: "space-between",
+
+    backgroundColor: "#FFF",
+    borderRadius: "5px",
+
+    // margin: theme.spacing(1),
+    padding: theme.spacing(1),
   },
 }));
 
 const IguanaDragSource = ({ undraggedNames, completedTreeVisible }) => {
   const classes = useStyles();
   return (
-    <div className={classes.iguanaBoxes}>
+    <Paper className={classes.iguanaBoxes}>
       {undraggedNames.map((iguanaName, index) => (
         <Grow in={!completedTreeVisible} key={index}>
           <IguanaBox name={iguanaName} />
         </Grow>
       ))}
-    </div>
+    </Paper>
   );
 };
 
