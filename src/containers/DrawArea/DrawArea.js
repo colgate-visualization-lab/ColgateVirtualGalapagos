@@ -22,7 +22,7 @@ const useStyles = makeStyles(() => ({
     position: "relative",
     height: "50vh",
     width: "100%",
-    backgroundColor: "white",
+    backgroundColor: "transparent",
     zIndex: 300,
   },
 }));
@@ -393,7 +393,7 @@ const DrawArea = ({ id, tabIndex, handleTabChange }) => {
   };
 
   return (
-    <Grid container spacing={1} className={classes.root}>
+    <Grid container className={classes.root} id="draw-area-root">
       <Grid item xs={12}>
         <PhyloTreeHeader
           tabIndex={tabIndex}
@@ -401,17 +401,21 @@ const DrawArea = ({ id, tabIndex, handleTabChange }) => {
           header="Draw a phylogenetic tree on the canvas"
         />
       </Grid>
-      <Grid container justify="space-between" item xs={12}>
-        <DrawAreaToolbar
-          handleToolChange={handleToolChange}
-          selected={selectedTool}
-        />
-        <DrawAreaMenu
-          id={id}
-          handleClearCanvas={handleClearCanvas}
-          handleLoadSlide12Data={handleLoadSlide12Data}
-          handleDone={handleDone}
-        />
+      <Grid container spacing={2} justify="space-around" item xs={12}>
+        <Grid item xs>
+          <DrawAreaToolbar
+            handleToolChange={handleToolChange}
+            selected={selectedTool}
+          />
+        </Grid>
+        <Grid item xs>
+          <DrawAreaMenu
+            id={id}
+            handleClearCanvas={handleClearCanvas}
+            handleLoadSlide12Data={handleLoadSlide12Data}
+            handleDone={handleDone}
+          />
+        </Grid>
       </Grid>
       <Grid item xs={12}>
         <div
