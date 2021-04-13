@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 100,
     padding: theme.spacing(1),
     backgroundColor: "#FFF",
+    // minWidth: "25em",
   },
   container: {
     marginLeft: theme.spacing(2),
