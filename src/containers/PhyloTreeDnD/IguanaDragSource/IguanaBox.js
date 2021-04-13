@@ -1,21 +1,28 @@
 import React, { useContext } from "react";
 import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDrag } from "react-dnd";
 
 const useStyles = makeStyles((theme) => ({
   box: {
-    background: "transparent",
     cursor: "pointer",
-    padding: theme.spacing(0, 2, 0, 0),
+
+    padding: theme.spacing(1, 2),
+    margin: theme.spacing(0, 1),
+
+    fontSize: "0.7rem",
+    fontWeight: "bold",
+
+    backgroundColor: "rgb(249,249,249)",
+    borderRadius: "0.3rem",
   },
   dragSrc: {
     padding: "0.1rem 0.2rem",
     [theme.breakpoints.up("sm")]: {
       padding: "0.1rem 0.4rem",
     },
-    backgroundColor: "rgba(255, 255, 255, 1)",
-    borderRadius: "0.3rem",
+    // backgroundColor: "rgba(255, 255, 255, 1)",
   },
   srcName: {
     fontSize: "0.7rem",
@@ -33,13 +40,13 @@ const IguanaBox = ({ name }) => {
   });
 
   return (
-    <div ref={drag} className={classes.box}>
+    <Paper ref={drag} className={classes.box}>
       <div className={classes.dragSrc}>
         <Typography variant="subtitle1" className={classes.srcName}>
           {name}
         </Typography>
       </div>
-    </div>
+    </Paper>
   );
 };
 

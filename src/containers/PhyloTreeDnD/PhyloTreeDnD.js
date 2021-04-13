@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyItems: "center",
     height: "100%",
     width: "100%",
   },
@@ -29,7 +29,8 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     display: "flex",
     justifyContent: "space-between",
-    margin: theme.spacing(1, 2),
+    // margin: theme.spacing(1, 2),
+    // padding:
   },
 }));
 
