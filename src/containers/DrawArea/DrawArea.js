@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef, useReducer } from "react";
 import Grid from "@material-ui/core/Grid";
 import { List, Map } from "immutable";
 import transit from "transit-immutable-js";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useDispatch, useSelector } from "react-redux";
 
 import Drawing from "./Drawing";
@@ -285,6 +286,8 @@ const useDrawArea = (id) => {
 
 const DrawArea = ({ id, tabIndex, handleTabChange }) => {
   const classes = useStyles();
+  // const theme  = useTheme()
+  // const matchesSM = useMediaQuery(theme.breakpoints.up("sm"))
 
   // created custom hook to handle most state changes in this component
   let [state, dispatch, drawAreaRef] = useDrawArea(id);
@@ -409,7 +412,7 @@ const DrawArea = ({ id, tabIndex, handleTabChange }) => {
           header="Draw a phylogenetic tree on the canvas"
         />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12} sm={6} md>
         <DrawAreaMenu
           id={id}
           handleClearCanvas={handleClearCanvas}
@@ -417,13 +420,12 @@ const DrawArea = ({ id, tabIndex, handleTabChange }) => {
           handleDone={handleDone}
         />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12} sm={6} md>
         <DrawAreaToolbar
           handleToolChange={handleToolChange}
           selected={selectedTool}
         />
       </Grid>
-      <Grid item xs={4}></Grid>
       <Grid item xs={12}>
         <div
           ref={drawAreaRef}

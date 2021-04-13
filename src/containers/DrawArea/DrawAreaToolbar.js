@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 const DrawAreaToolbar = ({ handleToolChange, selected }) => {
   const classes = useStyles();
   return (
-    <Grid container justify="center" className={classes.container}>
+    <Grid container justify="flex-start" className={classes.container}>
       <Paper className={classes.root}>
         <Grid container spacing={2} justify="space-evenly" alignItems="stretch">
           {toolbarIcons.map(({ name, component }) => (
