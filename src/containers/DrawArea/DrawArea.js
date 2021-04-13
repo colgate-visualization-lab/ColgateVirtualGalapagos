@@ -17,13 +17,21 @@ import { clearSelectedState, clearFocusedState, getElementAtPosition,
          resizeElement, duplicateElement, isFocusedTextbox } 
         from "./utils";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   drawArea: {
     position: "relative",
     height: "50vh",
     width: "100%",
     backgroundColor: "transparent",
     zIndex: 300,
+  },
+  menu: {
+    width: "100%",
+    height: "4rem",
+    display: "flex",
+    justifyItems: "space-between",
+    position: "relative",
+    marginTop: theme.spacing(1),
   },
 }));
 
@@ -393,7 +401,7 @@ const DrawArea = ({ id, tabIndex, handleTabChange }) => {
   };
 
   return (
-    <Grid container className={classes.root} id="draw-area-root">
+    <Grid container spacing={2} id="draw-area-root">
       <Grid item xs={12}>
         <PhyloTreeHeader
           tabIndex={tabIndex}
@@ -401,22 +409,21 @@ const DrawArea = ({ id, tabIndex, handleTabChange }) => {
           header="Draw a phylogenetic tree on the canvas"
         />
       </Grid>
-      <Grid container spacing={2} justify="space-around" item xs={12}>
-        <Grid item xs>
-          <DrawAreaToolbar
-            handleToolChange={handleToolChange}
-            selected={selectedTool}
-          />
-        </Grid>
-        <Grid item xs>
-          <DrawAreaMenu
-            id={id}
-            handleClearCanvas={handleClearCanvas}
-            handleLoadSlide12Data={handleLoadSlide12Data}
-            handleDone={handleDone}
-          />
-        </Grid>
+      <Grid item xs={4}>
+        <DrawAreaMenu
+          id={id}
+          handleClearCanvas={handleClearCanvas}
+          handleLoadSlide12Data={handleLoadSlide12Data}
+          handleDone={handleDone}
+        />
       </Grid>
+      <Grid item xs={4}>
+        <DrawAreaToolbar
+          handleToolChange={handleToolChange}
+          selected={selectedTool}
+        />
+      </Grid>
+      <Grid item xs={4}></Grid>
       <Grid item xs={12}>
         <div
           ref={drawAreaRef}
