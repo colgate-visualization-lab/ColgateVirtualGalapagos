@@ -36,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
   },
   menu: {
     background: "white",
+    border: "1px rgb(220,220,220)",
+    padding: theme.spacing(2, 1),
+    // minWidth: "240px",
   },
 }));
 
@@ -197,7 +200,7 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <Grid container spacing={2} justify="center" id="phylo-tree-dnd-root">
+      <Grid container justify="center" id="phylo-tree-dnd-root">
         <Grid item xs={12}>
           <PhyloTreeHeader
             tabIndex={tabIndex}
@@ -205,15 +208,15 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
             header="Create a phylogenetic tree by dragging the cards below to their correct positions"
           />
         </Grid>
-        <Grid item xs={2} className={classes.menu} style={{ marginLeft: 10 }}>
-          <Grid container spacing={2} justify="center">
-            <Grid item xs={12}>
+        <Grid item xs={4} sm={3} md={2} className={classes.menu}>
+          <Grid container direction="column" spacing={2} justify="center">
+            <Grid item>
               <IguanaDragSource
                 undraggedNames={undraggedNames}
                 completedTreeVisible={completedTreeVisible}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item>
               <PhyloTreeDnDMenu
                 handleCheckTree={handleCheckTree}
                 handleResetTree={handleResetTree}
@@ -223,21 +226,7 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
             </Grid>
           </Grid>
         </Grid>
-        {/* <Grid item xs={12} sm={6} md>
-          <PhyloTreeDnDMenu
-            handleCheckTree={handleCheckTree}
-            handleResetTree={handleResetTree}
-            handleShowTree={handleShowTree}
-            completedTreeVisible={completedTreeVisible}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6} md>
-          <IguanaDragSource
-            undraggedNames={undraggedNames}
-            completedTreeVisible={completedTreeVisible}
-          />
-        </Grid> */}
-        <Grid item xs={10} container spacing={0} justify="center">
+        <Grid item xs container spacing={0} justify="center">
           <IguanaDropTarget
             content={content}
             draggedNames={draggedNames}
