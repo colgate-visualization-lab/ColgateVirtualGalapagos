@@ -5,31 +5,23 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useDrag } from "react-dnd";
 
 const useStyles = makeStyles((theme) => ({
-  box: {
+  root: {
     cursor: "pointer",
 
-    padding: theme.spacing(1, 2),
-    margin: theme.spacing(0, 1),
-
-    fontSize: "0.7rem",
-    fontWeight: "bold",
-
-    backgroundColor: "rgb(249,249,249)",
-    borderRadius: "0.3rem",
-  },
-  dragSrc: {
-    padding: "0.1rem 0.2rem",
-    [theme.breakpoints.up("sm")]: {
-      padding: "0.1rem 0.4rem",
+    padding: theme.spacing(0.5, 1),
+    // margin: theme.spacing(0, 1),
+    backgroundColor: "rgb(239,239,239)",
+    color: "#000",
+    "&:hover": {
+      backgroundColor: "rgb(220,220,220)",
     },
-    // backgroundColor: "rgba(255, 255, 255, 1)",
+
+    borderRadius: 5,
   },
+
   srcName: {
-    fontSize: "0.7rem",
-    color: "black",
-    [theme.breakpoints.up(720)]: {
-      fontSize: "0.8rem",
-    },
+    fontWeight: "bold",
+    fontSize: "0.8rem",
   },
 }));
 
@@ -40,9 +32,9 @@ const IguanaBox = ({ name }) => {
   });
 
   return (
-    <Paper ref={drag} className={classes.box}>
+    <Paper ref={drag} elevation={0} className={classes.root}>
       <div className={classes.dragSrc}>
-        <Typography variant="subtitle1" className={classes.srcName}>
+        <Typography align="center" className={classes.srcName}>
           {name}
         </Typography>
       </div>

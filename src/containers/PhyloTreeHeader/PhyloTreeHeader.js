@@ -26,11 +26,11 @@ const PhyloTreeHeader = ({ tabIndex, handleTabChange, header, children }) => {
       <Grid item xs={12} className={classes.item}>
         <PlainTabs tabIndex={tabIndex} handleTabChange={handleTabChange} />
       </Grid>
-      <Grid item xs={12} className={classes.item}>
+      {/* <Grid item xs={12} className={classes.item}>
         <Typography variant="subtitle2" className={classes.header}>
           {header}
         </Typography>
-      </Grid>
+      </Grid> */}
       <Grid container item xs={12} className={classes.item}>
         {children}
       </Grid>
