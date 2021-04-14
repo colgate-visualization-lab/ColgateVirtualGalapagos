@@ -1,8 +1,8 @@
 import { slide3Data } from "./slide3Data";
 import { slide15Data } from "./slide15Data";
 import { slide17Data } from "./slide17Data";
-import { slide12DrawAreaData, slide12PhyloTreeData } from "./slide12Data";
-import { slide20DrawAreaData, slide20PhyloTreeData } from "./slide20Data";
+import { slide11DrawAreaData, slide11PhyloTreeData } from "./slide11Data";
+import { slide19DrawAreaData, slide19PhyloTreeData } from "./slide19Data";
 
 const iguanaData = [
   {
@@ -118,9 +118,9 @@ const iguanaData = [
         "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide12_2.m4a",
     },
     backgroundUrl:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide12DnDBackgroundSquare.png",
-    phyloTreeData: slide12PhyloTreeData,
-    drawAreaData: slide12DrawAreaData,
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide11DnDBackgroundSquare.png",
+    phyloTreeData: slide11PhyloTreeData,
+    drawAreaData: slide11DrawAreaData,
   },
   {
     id: "12",
@@ -190,9 +190,9 @@ const iguanaData = [
     audioSrc:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide20.wav",
     backgroundUrl:
-      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide20DnDBackgroundWithText.png",
-    phyloTreeData: slide20PhyloTreeData,
-    drawAreaData: slide20DrawAreaData,
+      "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide19DnDBackgroundWithText.png",
+    phyloTreeData: slide19PhyloTreeData,
+    drawAreaData: slide19DrawAreaData,
   },
   {
     id: "20",

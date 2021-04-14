@@ -1,6 +1,6 @@
-export const slide20DrawAreaData = {};
+export const slide19DrawAreaData = {};
 
-export const slide20PhyloTreeData = {
+export const slide19PhyloTreeData = {
   iguanaNames: ["Pink Iguana"],
   iguanaNamesPlacement: [[""], ["Pink Iguana"]],
   imgDimensions: {
