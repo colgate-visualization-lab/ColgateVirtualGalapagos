@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -18,12 +17,10 @@ const useStyles = makeStyles((theme) => ({
 
 const PhyloTreeSlide = ({ content }) => {
   const classes = useStyles();
-  const [tabIndex, setTabIndex] = useState(1);
+  const [tabIndex, setTabIndex] = useState(0);
 
   return (
     <Paper className={classes.root} id="phylo-tree-root">
-      {/* <Grid container spacing={0}>
-        <Grid item xs={12}> */}
       {tabIndex === 0 ? (
         <DrawArea
           id={content.id}
@@ -37,8 +34,6 @@ const PhyloTreeSlide = ({ content }) => {
           handleTabChange={(index) => setTabIndex(index)}
         />
       )}
-      {/* </Grid>
-      </Grid> */}
     </Paper>
   );
 };

@@ -9,7 +9,6 @@ import IguanaDropTarget from "./IguanaDropTarget";
 import IguanaDragSource from "./IguanaDragSource";
 import PhyloTreeHeader from "../PhyloTreeHeader";
 import PhyloTreeDnDMenu from "./PhyloTreeDnDMenu";
-import PhyloTreeSidebar from "../../components/PhyloTreeSidebar";
 import { Box, delay, getBranchNames } from "./utils";
 
 const useStyles = makeStyles((theme) => ({
@@ -205,7 +204,6 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
           <PhyloTreeHeader
             tabIndex={tabIndex}
             handleTabChange={handleTabChange}
-            header="Create a phylogenetic tree by dragging the cards below to their correct positions"
           />
         </Grid>
         <Grid item xs={4} sm={3} md={2} className={classes.menu}>

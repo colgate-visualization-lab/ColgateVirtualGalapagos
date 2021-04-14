@@ -19,18 +19,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PhyloTreeHeader = ({ tabIndex, handleTabChange, header, children }) => {
+const PhyloTreeHeader = ({ tabIndex, handleTabChange, children }) => {
   const classes = useStyles();
   return (
     <Grid container className={classes.root}>
       <Grid item xs={12} className={classes.item}>
         <PlainTabs tabIndex={tabIndex} handleTabChange={handleTabChange} />
       </Grid>
-      {/* <Grid item xs={12} className={classes.item}>
-        <Typography variant="subtitle2" className={classes.header}>
-          {header}
-        </Typography>
-      </Grid> */}
       <Grid container item xs={12} className={classes.item}>
         {children}
       </Grid>
