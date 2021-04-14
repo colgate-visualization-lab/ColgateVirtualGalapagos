@@ -26,13 +26,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "transparent",
     zIndex: 300,
   },
+
   menu: {
-    width: "100%",
-    height: "4rem",
-    display: "flex",
-    justifyItems: "space-between",
-    position: "relative",
-    marginTop: theme.spacing(1),
+    background: "white",
+    border: "1px rgb(220,220,220)",
+    padding: theme.spacing(2, 1),
+    // minWidth: "240px",
   },
 }));
 
@@ -404,46 +403,58 @@ const DrawArea = ({ id, tabIndex, handleTabChange }) => {
   };
 
   return (
-    <Grid container spacing={2} id="draw-area-root">
-      <Grid item xs={12}>
-        <PhyloTreeHeader
-          tabIndex={tabIndex}
-          handleTabChange={handleTabChange}
-          header="Draw a phylogenetic tree on the canvas"
-        />
-      </Grid>
-      <Grid item xs={12} sm={6} md>
-        <DrawAreaMenu
-          id={id}
-          handleClearCanvas={handleClearCanvas}
-          handleLoadSlide12Data={handleLoadSlide12Data}
-          handleDone={handleDone}
-        />
-      </Grid>
-      <Grid item xs={12} sm={6} md>
-        <DrawAreaToolbar
-          handleToolChange={handleToolChange}
-          selected={selectedTool}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <div
-          ref={drawAreaRef}
-          className={classes.drawArea}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-        >
-          <Options
-            element={selectedElement}
-            handleOptionsChange={handleOptionsChange}
-            handleAction={handleAction}
+    <>
+      <Grid container spacing={1} id="draw-area-root">
+        <Grid item xs={12}>
+          <PhyloTreeHeader
+            tabIndex={tabIndex}
+            handleTabChange={handleTabChange}
           />
+        </Grid>
+        <Grid item xs={4} sm={3} md={2} className={classes.menu}>
+          <Grid container direction="column" spacing={2} justify="center">
+            <Grid item>
+              <DrawAreaMenu
+                id={id}
+                handleClearCanvas={handleClearCanvas}
+                handleLoadSlide12Data={handleLoadSlide12Data}
+                handleDone={handleDone}
+              />
+            </Grid>
+            <Grid item>
+              <Options
+                element={selectedElement}
+                handleOptionsChange={handleOptionsChange}
+                handleAction={handleAction}
+              />
+            </Grid>
+          </Grid>
+        </Grid>
 
-          <Drawing elements={elements} handleTextChange={handleTextChange} />
-        </div>
+        <Grid item xs>
+          <Grid container justify="center">
+            <Grid item xs={12}>
+              <DrawAreaToolbar
+                handleToolChange={handleToolChange}
+                selected={selectedTool}
+              />
+            </Grid>
+            <div
+              ref={drawAreaRef}
+              className={classes.drawArea}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+            >
+              <Drawing
+                elements={elements}
+                handleTextChange={handleTextChange}
+              />
+            </div>
+          </Grid>
+        </Grid>
       </Grid>
-    </Grid>
+    </>
   );
 };
 
