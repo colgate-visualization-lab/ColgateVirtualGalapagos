@@ -34,25 +34,26 @@ const useStyles = makeStyles((theme) => ({
 const IguanaDragSource = ({ undraggedNames, completedTreeVisible }) => {
   const classes = useStyles();
   return (
-    <Grid container justify="center" spacing={1}>
+    <Grid container direction="column" justify="center" spacing={1}>
       {/* <Paper className={classes.iguanaBoxes}> */}
-      <Grid item xs={12}>
+      <Grid item>
         <Typography className={classes.dragTitle}>Iguana Species</Typography>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item>
         <Typography className={classes.dragInstruction}>
           Fill out the tree by dragging the iguana species names onto it
         </Typography>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item>
         <Grid
           container
+          direction="column"
           spacing={1}
           justify="center"
           // className={classes.container}
         >
           {undraggedNames.map((iguanaName, index) => (
-            <Grid item xs={12} key={index}>
+            <Grid item key={index}>
               <Grow in={!completedTreeVisible}>
                 <IguanaBox name={iguanaName} />
               </Grow>
