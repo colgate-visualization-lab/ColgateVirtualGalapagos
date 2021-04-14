@@ -33,9 +33,11 @@ const useStyles = makeStyles((theme) => ({
     // margin: theme.spacing(1, 2),
     // padding:
   },
+
   menu: {
     background: "white",
-    border: "1px rgb(220,220,220)",
+    border: " 1px rgb(245,245,245)",
+    borderRadius: `0 0 0 ${theme.shape.borderRadius}px`,
     padding: theme.spacing(2, 1),
     // minWidth: "240px",
   },
@@ -206,31 +208,35 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
             handleTabChange={handleTabChange}
           />
         </Grid>
-        <Grid item xs={4} sm={3} md={2} className={classes.menu}>
-          <Grid container direction="column" spacing={2} justify="center">
-            <Grid item>
-              <IguanaDragSource
-                undraggedNames={undraggedNames}
-                completedTreeVisible={completedTreeVisible}
-              />
+        <Grid item xs={12}>
+          <Grid container spacing={0}>
+            <Grid item xs={4} sm={3} md={2} className={classes.menu}>
+              <Grid container direction="column" spacing={2} justify="center">
+                <Grid item>
+                  <IguanaDragSource
+                    undraggedNames={undraggedNames}
+                    completedTreeVisible={completedTreeVisible}
+                  />
+                </Grid>
+                <Grid item>
+                  <PhyloTreeDnDMenu
+                    handleCheckTree={handleCheckTree}
+                    handleResetTree={handleResetTree}
+                    handleShowTree={handleShowTree}
+                    completedTreeVisible={completedTreeVisible}
+                  />
+                </Grid>
+              </Grid>
             </Grid>
-            <Grid item>
-              <PhyloTreeDnDMenu
-                handleCheckTree={handleCheckTree}
-                handleResetTree={handleResetTree}
-                handleShowTree={handleShowTree}
-                completedTreeVisible={completedTreeVisible}
+            <Grid item xs container spacing={0} justify="center">
+              <IguanaDropTarget
+                content={content}
+                draggedNames={draggedNames}
+                correctnessIndicatorVisible={correctnessIndicatorVisible}
+                handleDrop={handleDrop}
               />
             </Grid>
           </Grid>
-        </Grid>
-        <Grid item xs container spacing={0} justify="center">
-          <IguanaDropTarget
-            content={content}
-            draggedNames={draggedNames}
-            correctnessIndicatorVisible={correctnessIndicatorVisible}
-            handleDrop={handleDrop}
-          />
         </Grid>
       </Grid>
     </DndProvider>
