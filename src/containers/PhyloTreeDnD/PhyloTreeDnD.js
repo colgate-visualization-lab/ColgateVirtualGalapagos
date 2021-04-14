@@ -206,14 +206,21 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
           />
         </Grid>
         <Grid item xs={2} className={classes.menu} style={{ marginLeft: 10 }}>
-          <Grid container justify="center">
+          <Grid container spacing={2} justify="center">
             <Grid item xs={12}>
               <IguanaDragSource
                 undraggedNames={undraggedNames}
                 completedTreeVisible={completedTreeVisible}
               />
             </Grid>
-            <Grid item xs={12}></Grid>
+            <Grid item xs={12}>
+              <PhyloTreeDnDMenu
+                handleCheckTree={handleCheckTree}
+                handleResetTree={handleResetTree}
+                handleShowTree={handleShowTree}
+                completedTreeVisible={completedTreeVisible}
+              />
+            </Grid>
           </Grid>
         </Grid>
         {/* <Grid item xs={12} sm={6} md>
