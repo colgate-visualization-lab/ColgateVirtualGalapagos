@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import PhyloTreeMenuButton from "../../components/PhyloTreeMenu/PhyloTreeMenuButton";
 import PhyloTreeMenu from "../../components/PhyloTreeMenu";
+import DrawAreaCorrectTreeModal from "../DrawAreaCorrectTreeModal";
 
 const DrawAreaMenu = ({
   id,
@@ -22,7 +23,8 @@ const DrawAreaMenu = ({
         handleClick={handleClearCanvas}
         label="Clear Canvas"
       />
-      <PhyloTreeMenuButton handleClick={handleDone} label="Done" />
+      {/* <PhyloTreeMenuButton handleClick={handleDone} label="Done" /> */}
+      <DrawAreaCorrectTreeModal />
     </PhyloTreeMenu>
   );
 };

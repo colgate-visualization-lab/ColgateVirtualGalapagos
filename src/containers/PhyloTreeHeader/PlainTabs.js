@@ -8,7 +8,8 @@ const useStyles = makeStyles((theme) => ({
     "&:not(:first-of-type)": {
       marginLeft: -1,
     },
-    background: "#f7f7f7",
+    // background: "#f7f7f7",
+    background: "rgba(228, 228, 228, 1)",
     opacity: 1,
     padding: 0,
     margin: theme.spacing(0, 2, 0, 0),

@@ -274,6 +274,9 @@ const useDrawArea = (id) => {
           elements: state.elements.concat(slide12Elements),
         };
       }
+
+      // action type for handling Done
+
       default: {
         return state;
       }
@@ -285,8 +288,6 @@ const useDrawArea = (id) => {
 
 const DrawArea = ({ id, tabIndex, handleTabChange }) => {
   const classes = useStyles();
-  // const theme  = useTheme()
-  // const matchesSM = useMediaQuery(theme.breakpoints.up("sm"))
 
   // created custom hook to handle most state changes in this component
   let [state, dispatch, drawAreaRef] = useDrawArea(id);
@@ -398,9 +399,7 @@ const DrawArea = ({ id, tabIndex, handleTabChange }) => {
   };
 
   // callback to save tree and play next audio when user is done
-  const handleDone = () => {
-    // TODO
-  };
+  const handleDone = () => {};
 
   return (
     <>

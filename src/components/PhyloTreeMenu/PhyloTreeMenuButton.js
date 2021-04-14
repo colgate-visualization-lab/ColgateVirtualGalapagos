@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PhyloTreeMenuButton = ({ handleClick, label }) => {
+const PhyloTreeMenuButton = ({ handleClick, label, children }) => {
   const classes = useStyles();
   return (
     <Grid item xs={12}>
@@ -33,6 +33,7 @@ const PhyloTreeMenuButton = ({ handleClick, label }) => {
       >
         {label}
       </Button>
+      {children}
     </Grid>
   );
 };
