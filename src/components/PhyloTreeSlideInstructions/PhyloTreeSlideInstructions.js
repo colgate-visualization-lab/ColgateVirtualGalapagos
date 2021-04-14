@@ -6,10 +6,10 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(() => ({
   title: {
     fontWeight: "bold",
-    fontSize: "0.9rem",
+    fontSize: "0.85rem",
   },
   instructions: {
-    fontSize: "0.9rem",
+    fontSize: "0.8rem",
   },
 }));
 
