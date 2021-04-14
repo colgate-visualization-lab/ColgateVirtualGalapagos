@@ -37,7 +37,7 @@ const IguanaDragSource = ({ undraggedNames, completedTreeVisible }) => {
     <Grid container direction="column" justify="center" spacing={1}>
       {/* <Paper className={classes.iguanaBoxes}> */}
       <Grid item>
-        <Typography className={classes.dragTitle}>Iguana Species</Typography>
+        <Typography className={classes.dragTitle}>Instructions</Typography>
       </Grid>
       <Grid item>
         <Typography className={classes.dragInstruction}>

@@ -10,6 +10,7 @@ import Drawing from "./Drawing";
 import DrawAreaToolbar from "./DrawAreaToolbar";
 import Options from "../../components/DrawAreaOptions";
 import PhyloTreeHeader from "../PhyloTreeHeader";
+import PhyloTreeSlideInstructions from "../../components/PhyloTreeSlideInstructions";
 import DrawAreaMenu from "./DrawAreaMenu";
 import { selectSlideData, saveSlideData } from "../../slices/slideSlice";
 //prettier-ignore
@@ -412,6 +413,10 @@ const DrawArea = ({ id, tabIndex, handleTabChange }) => {
         </Grid>
         <Grid item xs={4} sm={3} md={2} className={classes.menu}>
           <Grid container direction="column" spacing={2} justify="center">
+            <Grid item>
+              <PhyloTreeSlideInstructions instructions="Draw a phylogenetic tree on the canvas using the tools provided. Once finished, click 'Done' below to continue  " />
+            </Grid>
+
             <Grid item>
               <DrawAreaMenu
                 id={id}
