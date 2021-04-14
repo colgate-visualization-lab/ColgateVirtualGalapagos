@@ -9,7 +9,6 @@ import IguanaDropTarget from "./IguanaDropTarget";
 import IguanaDragSource from "./IguanaDragSource";
 import PhyloTreeHeader from "../PhyloTreeHeader";
 import PhyloTreeDnDMenu from "./PhyloTreeDnDMenu";
-import PhyloTreeSidebar from "../../components/PhyloTreeSidebar";
 import { Box, delay, getBranchNames } from "./utils";
 
 const useStyles = makeStyles((theme) => ({
@@ -33,9 +32,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     // margin: theme.spacing(1, 2),
     // padding:
-  },
-  menu: {
-    background: "white",
   },
 }));
 
@@ -205,18 +201,7 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
             header="Create a phylogenetic tree by dragging the cards below to their correct positions"
           />
         </Grid>
-        <Grid item xs={2} className={classes.menu} style={{ marginLeft: 10 }}>
-          <Grid container justify="center">
-            <Grid item xs={12}>
-              <IguanaDragSource
-                undraggedNames={undraggedNames}
-                completedTreeVisible={completedTreeVisible}
-              />
-            </Grid>
-            <Grid item xs={12}></Grid>
-          </Grid>
-        </Grid>
-        {/* <Grid item xs={12} sm={6} md>
+        <Grid item xs={12} sm={6} md>
           <PhyloTreeDnDMenu
             handleCheckTree={handleCheckTree}
             handleResetTree={handleResetTree}
@@ -229,8 +214,8 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
             undraggedNames={undraggedNames}
             completedTreeVisible={completedTreeVisible}
           />
-        </Grid> */}
-        <Grid item xs={10} container spacing={0} justify="center">
+        </Grid>
+        <Grid item xs={12} container spacing={0} justify="center">
           <IguanaDropTarget
             content={content}
             draggedNames={draggedNames}
