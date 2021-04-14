@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import Dialog from "@material-ui/core/Dialog";
+import Popover from "@material-ui/core/Popover";
 import Paper from "@material-ui/core/Paper";
+import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 import Draggable from "react-draggable";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -51,6 +53,9 @@ const DrawAreaCorrectTreeModal = () => {
         onClose={handleClose}
         PaperComponent={PaperComponent}
         aria-labelledby="draggable-correct-tree-image"
+        BackdropProps={{
+          invisible: true,
+        }}
       >
         <div className={classes.title} id="draggable-correct-tree-image">
           Your tree should look like the one below, or with the marine and land
