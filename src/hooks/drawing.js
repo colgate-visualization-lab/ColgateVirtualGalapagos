@@ -123,6 +123,7 @@ const useDrawing = (id) => {
           elements,
         };
       }
+
       case "MOVE_ELEMENT": {
         const element = moveElement(action.event, state.selectedElement, ref);
         const elements = state.elements.set(
@@ -136,6 +137,7 @@ const useDrawing = (id) => {
           elements,
         };
       }
+
       case "RESIZE_ELEMENT": {
         const element = resizeElement(action.event, state.selectedElement, ref);
         const elements = state.elements.set(
@@ -233,8 +235,8 @@ const useDrawing = (id) => {
         return { ...state, selectedElement: false, elements: List() };
       }
 
-      // action type for loading slide 12 data from slide 19
-      case "LOAD_SLIDE_12_TREE": {
+      // action type for loading slide 11 data from slide 19
+      case "LOAD_SAVED_TREE": {
         return {
           ...state,
           elements: state.elements.concat(slide11Elements),
