@@ -62,7 +62,7 @@ const AudioPlayer = ({ src }) => {
   const [rate, setRate] = useState(1.0);
 
   useEffect(() => {
-    console.log(seek);
+    // console.log(seek);
     // console.log(player.current.howler._sounds);
   });
 
@@ -79,7 +79,7 @@ const AudioPlayer = ({ src }) => {
   };
 
   const handleOnPlay = () => {
-    console.log("here in handleOnPlay");
+    // console.log("here in handleOnPlay");
     setPlaying(true);
     renderSeekPos();
   };
@@ -95,7 +95,7 @@ const AudioPlayer = ({ src }) => {
   };
 
   const handleSeekingChange = (_, value) => {
-    console.log(parseFloat(value));
+    // console.log(parseFloat(value));
     setSeek(parseFloat(value));
   };
 
@@ -119,7 +119,7 @@ const AudioPlayer = ({ src }) => {
       setSeek(player.current.seek());
     }
     if (startedPlaying || playing) {
-      console.log("here in raf");
+      // console.log("here in raf");
       // raf.current = requestAnimationFrame(renderSeekPos);
     }
   };

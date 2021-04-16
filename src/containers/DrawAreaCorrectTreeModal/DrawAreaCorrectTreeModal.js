@@ -7,7 +7,7 @@ import Draggable from "react-draggable";
 import { makeStyles } from "@material-ui/core/styles";
 
 import PhyloTreeMenuButton from "../../components/PhyloTreeMenu/PhyloTreeMenuButton";
-import { Slide11Context } from "../../contexts/SlideContexts";
+import { Slide11Context } from "../../contexts";
 
 const useStyles = makeStyles((theme) => ({
   title: {

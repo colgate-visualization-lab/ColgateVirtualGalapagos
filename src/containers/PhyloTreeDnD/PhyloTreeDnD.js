@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useContext } from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import { DndProvider } from "react-dnd";
@@ -7,8 +7,11 @@ import update from "immutability-helper";
 
 import IguanaDropTarget from "./IguanaDropTarget";
 import IguanaDragSource from "./IguanaDragSource";
-import PhyloTreeHeader from "../PhyloTreeHeader";
 import PhyloTreeDnDMenu from "./PhyloTreeDnDMenu";
+import { MainActivityArea } from "../../components/PhyloTree";
+import PhyloTreeSidebar from "../../components/PhyloTreeSidebar";
+import { Slide11Context } from "../../contexts";
+
 import { Box, delay, getBranchNames } from "./utils";
 
 const useStyles = makeStyles((theme) => ({
@@ -151,7 +154,8 @@ const useTreeDnD = (iguanaNames, iguanaNamesPlacement) => {
   return [state, dispatch];
 };
 
-const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
+const PhyloTreeDnD = () => {
+  const content = useContext(Slide11Context);
   // prettier-ignore
   const { iguanaNames, iguanaNamesPlacement
   } = content.phyloTreeData;
@@ -201,42 +205,32 @@ const PhyloTreeDnD = ({ content, tabIndex, handleTabChange }) => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <Grid container justify="center" id="phylo-tree-dnd-root">
-        <Grid item xs={12}>
-          <PhyloTreeHeader
-            tabIndex={tabIndex}
-            handleTabChange={handleTabChange}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <Grid container spacing={0}>
-            <Grid item xs={4} sm={3} md={2} className={classes.menu}>
-              <Grid container direction="column" spacing={2} justify="center">
-                <Grid item>
-                  <IguanaDragSource
-                    undraggedNames={undraggedNames}
-                    completedTreeVisible={completedTreeVisible}
-                  />
-                </Grid>
-                <Grid item>
-                  <PhyloTreeDnDMenu
-                    handleCheckTree={handleCheckTree}
-                    handleResetTree={handleResetTree}
-                    handleShowTree={handleShowTree}
-                    completedTreeVisible={completedTreeVisible}
-                  />
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs container spacing={0} justify="center">
-              <IguanaDropTarget
-                content={content}
-                draggedNames={draggedNames}
-                correctnessIndicatorVisible={correctnessIndicatorVisible}
-                handleDrop={handleDrop}
+      <Grid item xs={12}>
+        <Grid container spacing={0}>
+          <PhyloTreeSidebar>
+            <Grid item>
+              <IguanaDragSource
+                undraggedNames={undraggedNames}
+                completedTreeVisible={completedTreeVisible}
               />
             </Grid>
-          </Grid>
+            <Grid item>
+              <PhyloTreeDnDMenu
+                handleCheckTree={handleCheckTree}
+                handleResetTree={handleResetTree}
+                handleShowTree={handleShowTree}
+                completedTreeVisible={completedTreeVisible}
+              />
+            </Grid>
+          </PhyloTreeSidebar>
+          <MainActivityArea>
+            <IguanaDropTarget
+              content={content}
+              draggedNames={draggedNames}
+              correctnessIndicatorVisible={correctnessIndicatorVisible}
+              handleDrop={handleDrop}
+            />
+          </MainActivityArea>
         </Grid>
       </Grid>
     </DndProvider>
