@@ -138,9 +138,9 @@ const DrawArea = () => {
   };
 
   // callback to load slide 12 data in slide 19
-  const handleLoadSlide12Data = () => {
+  const handleLoadSavedData = () => {
     handleClearCanvas();
-    dispatch({ type: "LOAD_SLIDE_12_TREE" });
+    dispatch({ type: "LOAD_SAVED_TREE" });
   };
 
   // callback to save tree and play next audio when user is done
@@ -153,7 +153,7 @@ const DrawArea = () => {
   //   handleAction,
   //   handleClearCanvas,
   //   handleDone,
-  //   handleLoadSlide12Data,
+  //   handleLoadSavedData,
   // };
 
   return (
@@ -168,7 +168,7 @@ const DrawArea = () => {
           <DrawAreaMenu
             id={id}
             handleClearCanvas={handleClearCanvas}
-            handleLoadSlide12Data={handleLoadSlide12Data}
+            handleLoadSavedData={handleLoadSavedData}
             handleDone={handleDone}
           />
         </Grid>
