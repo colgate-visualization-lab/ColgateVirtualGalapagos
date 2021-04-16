@@ -358,6 +358,23 @@ export const getCursorAtPosition = (element, selectedTool) => {
   return cursor;
 };
 
-export const isFocusedTextbox = (element) => {
-  return element.get("type") === "textbox" && element.get("focused") === true;
+export const currentlyEditingTextbox = (element) => {
+  return (
+    element &&
+    element.get("type") === "textbox" &&
+    element.get("focused") === true
+  );
+};
+
+export const pressedCtrlD = (event) => event.ctrlKey && event.key === "d";
+
+export const pressedDelete = (event) =>
+  event.key === "Backspace" || event.key === "Delete";
+
+export const mouseOverElement = (selectedTool) =>
+  selectedTool === "select" || selectedTool === "textbox";
+
+export const updateMouseCursor = (event, ref, elements, selectedTool) => {
+  const element = getElementAtPosition(event, ref, elements);
+  event.target.style.cursor = getCursorAtPosition(element, selectedTool);
 };

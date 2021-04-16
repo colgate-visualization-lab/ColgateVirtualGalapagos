@@ -1,10 +1,12 @@
 import React, { useState, createContext } from "react";
 import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 
 import DrawArea from "../DrawArea";
 import PhyloTreeDnD from "../PhyloTreeDnD";
-import { Slide11Context } from "../../contexts/SlideContexts";
+import PhyloTreeHeader from "../PhyloTreeHeader";
+import { Slide11Context } from "../../contexts";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,28 +16,35 @@ const useStyles = makeStyles((theme) => ({
   item: {
     padding: 0,
   },
+  menu: {
+    // border: "1px rgb(220,220,220)",
+    background: "white",
+    border: " 1px rgb(245,245,245)",
+    borderRadius: `0 0 0 ${theme.shape.borderRadius}px`,
+    padding: theme.spacing(2, 1),
+  },
 }));
 
 const PhyloTreeSlide = ({ content }) => {
   const classes = useStyles();
   const [tabIndex, setTabIndex] = useState(0);
 
+  const handleTabChange = (index) => setTabIndex(index);
+
   return (
     <Slide11Context.Provider value={content}>
       <Paper className={classes.root} id="phylo-tree-root">
-        {tabIndex === 0 ? (
-          <DrawArea
-            id={content.id}
-            tabIndex={tabIndex}
-            handleTabChange={(index) => setTabIndex(index)}
-          />
-        ) : (
-          <PhyloTreeDnD
-            content={content}
-            tabIndex={tabIndex}
-            handleTabChange={(index) => setTabIndex(index)}
-          />
-        )}
+        <Grid container spacing={0}>
+          <Grid item xs={12}>
+            <PhyloTreeHeader
+              tabIndex={tabIndex}
+              handleTabChange={handleTabChange}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            {tabIndex === 0 ? <DrawArea /> : <PhyloTreeDnD />}
+          </Grid>
+        </Grid>
       </Paper>
     </Slide11Context.Provider>
   );
