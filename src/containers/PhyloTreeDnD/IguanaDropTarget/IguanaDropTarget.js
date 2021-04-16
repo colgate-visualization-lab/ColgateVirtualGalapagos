@@ -8,8 +8,14 @@ import DropTargetBox from "./DropTargetBox";
 const useStyles = makeStyles((theme) => ({
   dropTargetContainer: {
     position: "relative",
-    maxWidth: "960px",
-    maxHeight: "600px",
+
+    maxWidth: "720px",
+    maxHeight: "450px",
+
+    [theme.breakpoints.up("md")]: {
+      maxWidth: "832px",
+      maxHeight: "520px",
+    },
     margin: theme.spacing(2),
   },
   dropTargetDiv: {
