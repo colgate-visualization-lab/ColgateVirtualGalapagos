@@ -8,14 +8,14 @@ import DrawAreaCorrectTreeModal from "../DrawAreaCorrectTreeModal";
 const DrawAreaMenu = ({
   id,
   handleClearCanvas,
-  handleLoadSlide12Data,
+  handleLoadSavedData,
   handleDone,
 }) => {
   return (
     <PhyloTreeMenu>
       {id === "19" && (
         <PhyloTreeMenuButton
-          handleClick={handleLoadSlide12Data}
+          handleClick={handleLoadSavedData}
           label="Load Saved Tree"
         />
       )}
@@ -32,7 +32,7 @@ const DrawAreaMenu = ({
 DrawAreaMenu.propTypes = {
   id: PropTypes.string.isRequired,
   handleClearCanvas: PropTypes.func.isRequired,
-  handleLoadSlide12Data: PropTypes.func.isRequired,
+  handleLoadSavedData: PropTypes.func.isRequired,
   handleDone: PropTypes.func.isRequired,
 };
 
