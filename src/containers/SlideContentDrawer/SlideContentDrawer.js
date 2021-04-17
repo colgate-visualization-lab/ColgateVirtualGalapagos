@@ -13,7 +13,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Link } from "react-router-dom";
 
-import { DrawerIcon, DrawerContent } from "../SlideDrawer";
+import { DrawerIcon, DrawerContent, DrawerHeader } from "../SlideDrawer";
 
 const drawerWidth = 240;
 
@@ -97,16 +97,11 @@ export default function SlideContentDrawer({
           contentDrawerOpen={contentDrawerOpen}
           anchor="left"
         >
-          <div className={classes.drawerHeader}>
-            <Typography className={classes.drawerTitle}>Slides</Typography>
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === "ltr" ? (
-                <ChevronLeftIcon />
-              ) : (
-                <ChevronRightIcon />
-              )}
-            </IconButton>
-          </div>
+          <DrawerHeader
+            title="Slides"
+            anchor="left"
+            handleDrawerClose={handleDrawerClose}
+          />
           <Divider />
           <List>
             {slideData.map((data, index) => (
