@@ -1,9 +1,7 @@
-import React, { useReducer, useContext } from "react";
+import React, { useContext } from "react";
 import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import update from "immutability-helper";
 
 import IguanaDropTarget from "./IguanaDropTarget";
 import IguanaDragSource from "./IguanaDragSource";
@@ -11,148 +9,9 @@ import PhyloTreeDnDMenu from "./PhyloTreeDnDMenu";
 import { MainActivityArea } from "../../components/PhyloTree";
 import PhyloTreeSidebar from "../../components/PhyloTreeSidebar";
 import { Slide11Context } from "../../contexts";
+import useTreeDnD from "../../hooks/useTreeDnD";
 
-import { Box, delay, getBranchNames } from "./utils";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyItems: "center",
-    height: "100%",
-    width: "100%",
-  },
-
-  header: {
-    fontSize: "1.5rem",
-  },
-
-  positioning: {
-    position: "relative",
-    width: "100%",
-    display: "flex",
-    justifyContent: "space-between",
-    // margin: theme.spacing(1, 2),
-    // padding:
-  },
-
-  menu: {
-    background: "white",
-    border: " 1px rgb(245,245,245)",
-    borderRadius: `0 0 0 ${theme.shape.borderRadius}px`,
-    padding: theme.spacing(2, 1),
-    // minWidth: "240px",
-  },
-}));
-
-const useTreeDnD = (iguanaNames, iguanaNamesPlacement) => {
-  let initialState = {
-    undraggedNames: iguanaNames,
-    draggedNames: iguanaNamesPlacement.map((box) => new Box(box)),
-    correctnessIndicatorVisible: false,
-    completedTreeVisible: false,
-  };
-
-  let [state, dispatch] = useReducer((state, action) => {
-    switch (action.type) {
-      case "UPDATE_UNDRAGGED_NAMES": {
-        let { droppedName, currentBox } = action;
-        let newlyUndragged = state.undraggedNames.filter(
-          (name) => droppedName !== name
-        );
-        // prettier-ignore
-        if (currentBox.placedName !== null && currentBox.placedName !== droppedName) {
-          newlyUndragged = update(newlyUndragged, {
-            $push: [currentBox.placedName],
-          });
-        }
-        return {
-          ...state,
-          undraggedNames: newlyUndragged,
-        };
-      }
-      case "UPDATE_DRAGGED_NAMES": {
-        let { droppedName, currentBox, index } = action;
-        let newDraggedNames = state.draggedNames.map((box) => {
-          let newBox = new Box(box.validNames);
-          newBox.placedName =
-            droppedName === box.placedName ? null : box.placedName;
-          return newBox;
-        });
-        newDraggedNames = update(newDraggedNames, {
-          [index]: { $set: new Box(currentBox.validNames, droppedName) },
-        });
-        return {
-          ...state,
-          draggedNames: newDraggedNames,
-        };
-      }
-      case "SET_UNDRAGGED_NAMES": {
-        return {
-          ...state,
-          undraggedNames: action.names,
-        };
-      }
-      case "SET_DRAGGED_NAMES": {
-        return {
-          ...state,
-          draggedNames: action.names,
-        };
-      }
-      case "SET_TREE_CORRECTNESS_INDICATOR": {
-        return {
-          ...state,
-          correctnessIndicatorVisible: action.value,
-        };
-      }
-      case "SET_COMPLETE_TREE_STATUS": {
-        return {
-          ...state,
-          completedTreeVisible: action.value,
-        };
-      }
-      case "SHOW_COMPLETED_TREE": {
-        let newDraggedNames = [];
-        if (action.id === "11") {
-          const branchNames = getBranchNames(
-            state.draggedNames[1].placedName,
-            state.draggedNames[2].placedName
-          );
-
-          newDraggedNames = [
-            new Box(["Green Iguana"], "Green Iguana"),
-            new Box(
-              ["Marine Iguana", "Land Iguana"],
-              branchNames.topRightBranch
-            ),
-            new Box(
-              ["Marine Iguana", "Land Iguana"],
-              branchNames.bottomRightBranch
-            ),
-          ];
-        } else {
-          newDraggedNames = [
-            new Box([""], ""),
-            new Box(["Pink Iguana"], "Pink Iguana"),
-          ];
-        }
-
-        return {
-          ...state,
-          correctnessIndicatorVisible: false,
-          completedTreeVisible: true,
-          draggedNames: newDraggedNames,
-        };
-      }
-      default: {
-        return state;
-      }
-    }
-  }, initialState);
-
-  return [state, dispatch];
-};
+import { Box, delay } from "./utils";
 
 const PhyloTreeDnD = () => {
   const content = useContext(Slide11Context);
@@ -165,9 +24,6 @@ const PhyloTreeDnD = () => {
   // prettier-ignore
   let { draggedNames, undraggedNames, correctnessIndicatorVisible, completedTreeVisible,
   } = state;
-
-  const props = { backgroundUrl: `url('${content.backgroundUrl}')` };
-  const classes = useStyles(props);
 
   const handleDrop = (droppedName, index) => {
     const currentBox = draggedNames[index];

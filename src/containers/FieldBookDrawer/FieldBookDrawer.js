@@ -14,6 +14,8 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import TextField from "@material-ui/core/TextField";
 
+import { DrawerIcon } from "../SlideDrawer";
+
 const drawerWidth = 400;
 
 const useStyles = makeStyles((theme) => ({
@@ -22,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
   },
 
   menuButton: {
-    // zIndex: 100,
     position: "absolute",
     top: 10,
     right: 5,
@@ -112,15 +113,14 @@ export default function SlideContentDrawer({
 
   return (
     <div className={classes.root}>
-      <IconButton
-        color="inherit"
-        aria-label="open drawer"
-        onClick={handleDrawerOpen}
-        edge="start"
-        className={clsx(classes.menuButton, contentDrawerOpen && classes.hide)}
+      <DrawerIcon
+        handleDrawerOpen={handleDrawerOpen}
+        contentDrawerOpen={contentDrawerOpen}
+        edge="end"
       >
         <NotesIcon />
-      </IconButton>
+      </DrawerIcon>
+
       <Drawer
         className={classes.drawer}
         variant="persistent"
