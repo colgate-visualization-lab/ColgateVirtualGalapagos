@@ -13,7 +13,8 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Link } from "react-router-dom";
 
-import { DrawerIcon } from "../SlideDrawer";
+import DrawerIcon from "./DrawerIcon";
+import DrawerHeader from "./DrawerHeader";
 
 const drawerWidth = 240;
 
@@ -65,13 +66,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SlideContentDrawer({
+export default function SlideDrawer({
   contentDrawerOpen,
   handleContentDrawerToggle,
   handleSlideChange,
   slideData,
+  styleProps,
+  drawerIconClasses,
 }) {
-  const classes = useStyles();
+  const classes = useStyles(styleProps);
   const theme = useTheme();
 
   const handleDrawerOpen = () => {
@@ -84,56 +87,51 @@ export default function SlideContentDrawer({
 
   return (
     <div className={classes.root}>
-      <>
-        <DrawerIcon
-          handleDrawerOpen={handleDrawerOpen}
-          contentDrawerOpen={contentDrawerOpen}
-          edge="start"
-        >
-          <MenuIcon />
-        </DrawerIcon>
-        <Drawer
-          className={classes.drawer}
-          variant="persistent"
-          anchor="left"
-          open={contentDrawerOpen}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
-          <div className={classes.drawerHeader}>
-            <Typography className={classes.drawerTitle}>Slides</Typography>
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === "ltr" ? (
-                <ChevronLeftIcon />
-              ) : (
-                <ChevronRightIcon />
-              )}
-            </IconButton>
-          </div>
-          <Divider />
-          <List>
-            {slideData.map((data, index) => (
-              <ListItem
-                button
-                key={index}
-                component={Link}
-                to={data.id}
-                className={classes.cleanLink}
-              >
-                <ListItemText
-                  primaryTypographyProps={{
-                    className: classes.slideTitle,
-                  }}
-                  // className={classes.slideTitle}
-                  primary={data.title}
-                />
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-        </Drawer>
-      </>
+      <DrawerIcon
+        handleDrawerOpen={handleDrawerOpen}
+        classes={drawerIconClasses}
+      />
+      <Drawer
+        className={classes.drawer}
+        variant="persistent"
+        anchor="left"
+        open={contentDrawerOpen}
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+      >
+        <div className={classes.drawerHeader}>
+          <Typography className={classes.drawerTitle}>Slides</Typography>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === "ltr" ? (
+              <ChevronLeftIcon />
+            ) : (
+              <ChevronRightIcon />
+            )}
+          </IconButton>
+        </div>
+        <Divider />
+        <List>
+          {slideData.map((data, index) => (
+            <ListItem
+              button
+              key={index}
+              component={Link}
+              to={data.id}
+              className={classes.cleanLink}
+            >
+              <ListItemText
+                primaryTypographyProps={{
+                  className: classes.slideTitle,
+                }}
+                // className={classes.slideTitle}
+                primary={data.title}
+              />
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+      </Drawer>
     </div>
   );
 }
