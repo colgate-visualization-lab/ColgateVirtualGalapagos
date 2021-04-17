@@ -1,63 +1,25 @@
 import React, { useState } from "react";
-import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import NotesIcon from "@material-ui/icons/Notes";
-import IconButton from "@material-ui/core/IconButton";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import TextField from "@material-ui/core/TextField";
 
-import { DrawerIcon, DrawerContent, DrawerHeader } from "../SlideDrawer";
+import {
+  DrawerIcon,
+  DrawerContent,
+  DrawerHeader,
+} from "../../components/Drawer";
 
 const drawerWidth = 400;
 
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "relative",
-  },
-
-  menuButton: {
-    position: "absolute",
-    top: 10,
-    right: 5,
-  },
-
-  hide: {
-    display: "none",
-  },
-
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-
-  drawerPaper: {
-    width: drawerWidth,
-  },
-
-  drawerHeader: {
-    display: "flex",
-    alignItems: "center",
-    padding: theme.spacing(0, 1),
-    marginTop: theme.typography.pxToRem(60),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: "flex-end",
-  },
-
-  drawerTitle: {
-    justifySelf: "flex-start",
-    marginRight: "auto",
-    marginLeft: theme.spacing(1),
-    fontSize: "1.5rem",
-    fontWeight: "bold",
   },
   notesClass: {
     fontSize: "1rem",
