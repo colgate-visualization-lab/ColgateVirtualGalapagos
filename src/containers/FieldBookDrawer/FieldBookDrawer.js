@@ -14,7 +14,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import TextField from "@material-ui/core/TextField";
 
-import { DrawerIcon } from "../SlideDrawer";
+import { DrawerIcon, DrawerContent } from "../SlideDrawer";
 
 const drawerWidth = 400;
 
@@ -120,15 +120,10 @@ export default function SlideContentDrawer({
       >
         <NotesIcon />
       </DrawerIcon>
-
-      <Drawer
-        className={classes.drawer}
-        variant="persistent"
+      <DrawerContent
+        drawerWidth={drawerWidth}
+        contentDrawerOpen={contentDrawerOpen}
         anchor="right"
-        open={contentDrawerOpen}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
       >
         <div className={classes.drawerHeader}>
           <Typography className={classes.drawerTitle} variant="h6">
@@ -180,7 +175,7 @@ export default function SlideContentDrawer({
         >
           <Typography className={classes.saveButtonText}>Save Note</Typography>
         </Button>
-      </Drawer>
+      </DrawerContent>
     </div>
   );
 }

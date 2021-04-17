@@ -13,7 +13,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Link } from "react-router-dom";
 
-import { DrawerIcon } from "../SlideDrawer";
+import { DrawerIcon, DrawerContent } from "../SlideDrawer";
 
 const drawerWidth = 240;
 
@@ -92,14 +92,10 @@ export default function SlideContentDrawer({
         >
           <MenuIcon />
         </DrawerIcon>
-        <Drawer
-          className={classes.drawer}
-          variant="persistent"
+        <DrawerContent
+          drawerWidth={drawerWidth}
+          contentDrawerOpen={contentDrawerOpen}
           anchor="left"
-          open={contentDrawerOpen}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
         >
           <div className={classes.drawerHeader}>
             <Typography className={classes.drawerTitle}>Slides</Typography>
@@ -132,7 +128,7 @@ export default function SlideContentDrawer({
             ))}
           </List>
           <Divider />
-        </Drawer>
+        </DrawerContent>
       </>
     </div>
   );
