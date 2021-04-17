@@ -13,7 +13,7 @@ import DrawAreaMenu from "./DrawAreaMenu";
 import {  getElementAtPosition, currentlyEditingTextbox, 
           pressedCtrlD, pressedDelete, mouseOverElement, updateMouseCursor } from "./utils";
 import { Slide11Context, Slide11DrawingContext } from "../../contexts";
-import useDrawing from "../../hooks/drawing";
+import useDrawing from "../../hooks/useDrawing";
 
 const useStyles = makeStyles((theme) => ({
   drawArea: {
