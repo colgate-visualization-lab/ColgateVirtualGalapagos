@@ -5,6 +5,7 @@ import { slide17Data } from "../../assets/IguanaData/slide17Data";
 const iguanaData = [
   {
     id: "1",
+    noPrev: true,
     title: "Intro Video",
     videoSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoModuleIntro.mp4", 
@@ -51,6 +52,8 @@ const iguanaData = [
   },
   {
     id: "7",
+    hasOptional: true,
+    nextSlideId: "9",
     title: "Magnifying",
     audioSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap02.mp3",
@@ -61,6 +64,7 @@ const iguanaData = [
   },
   { //Optional slide
     id: "8",
+    noNext: true,
     title: "Magnifying",
     audioSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap02.mp3",
@@ -71,6 +75,8 @@ const iguanaData = [
   },
   {
     id: "9",
+    followingOptional: true,
+    prevSlideId: "7",
     title: "360 Compare",
     audioSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Compare360.mp3",
@@ -81,6 +87,8 @@ const iguanaData = [
   },
   {
     id: "10",
+    hasOptional: true,
+    nextSlideId: "13",
     title: "Terrain Map 3",
     audioSrc: 
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap03.mp3",
@@ -89,7 +97,7 @@ const iguanaData = [
   },
   {
     id: "11",
-    title: "Terrain Map 3",
+    title: "Ferd",
     audioSrc: 
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap03.mp3",
     imageSrc: 
@@ -97,15 +105,17 @@ const iguanaData = [
   },
   {
     id: "12",
-    title: "Terrain Map 3",
+    noNext: true,
+    title: "Santa Cruz",
     audioSrc: 
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap03.mp3",
     imageSrc: 
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/TerrainMap-Labelled.png",
   },
-  //Two optional slides
   {
     id: "13",
+    followingOptional: true,
+    prevSlideId: "10",
     title: "Terrain Map 4",
     audioSrc: 
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap04.mp3",
@@ -228,6 +238,7 @@ const iguanaData = [
   },
   {
     id: "29",
+    noNext: true,
     title: "Summary Video",
     videoSrc: 
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoSummary.mp4",

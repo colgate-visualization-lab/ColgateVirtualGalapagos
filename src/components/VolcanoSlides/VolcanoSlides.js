@@ -139,8 +139,11 @@ export default function VolcanoSlides(props) {
                 <Fragment>
                     {/* <audio className={classes.audioPlayer} src={terrainMap2} autoPlay controls controlsList="nodownload"/> */}
                     <img className={MUIclasses.img} src={props.data.imageSrc1}/>
-                    <div className={classes.hypothesis}>Click on the magnifying glass!</div>
-                    <img className={classes.magnifying} onClick={() => props.setSlideChange("./6optional")} src={props.data.imageSrc2}/>
+              
+                        <div className={classes.hypothesis} >Click on the magnifying glass!</div>
+                    <Link to={"/volcano/8"}>
+                        <img className={classes.magnifying} src={props.data.imageSrc2}/>
+                    </Link>
                 </Fragment>
         )
     }
@@ -172,13 +175,14 @@ export default function VolcanoSlides(props) {
             <div className={classes.imgContainer}>
                 <img className={classes.imgFill} src={props.data.imageSrc}/>
                 <div className={classes.hypothesis}>
+                    <Link to={"/volcano/11"}>
                     <Button 
                         style={button}
                         variant="contained" 
                         color="secondary"
-                        onClick={() => props.setSlideChange("./8optional1")}
                         > 
                         Compare Observations</Button>
+                        </Link>
                 </div>
             </div>
             </div>
