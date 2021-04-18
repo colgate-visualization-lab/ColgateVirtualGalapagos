@@ -134,12 +134,6 @@ function ModuleContainer(props) {
     heightOffset: "audioSrc" in content ? 150 : 60,
   };
   const classes = useStyles(styleProps);
-  // // const prevSlide = `/iguana/${slideId === 1 ? 1 : slideId - 1}`;
-  // // const nextSlide = `/iguana/${
-  // //   slideId + 1 > data.length ? slideId : slideId + 1
-  // // }`;
-
-
 
   //I guess these are used for opening it and stuff
   const handleContentDrawerToggle = (open) => {
@@ -152,10 +146,17 @@ function ModuleContainer(props) {
   const handleSlideChange = (slideId) => {};
   // ControlButtons component props
   const controlButtonProps = {
-    hasPrev: slideId !== 1,
-    hasNext: slideId < data.length,
+    hasPrev: `${content.noPrev? false : true}`,
+    hasNext: `${content.noNext? false : true}`,
+    nextSlide: `${content.hasOptional? content.nextSlideId : nextSlide}`,
+    prevSlide: `${content.followingOptional? content.prevSlideId : prevSlide}`,
+  };
+  const moduleProps = {
     nextSlide: nextSlide,
     prevSlide: prevSlide,
+    slideId: slideId,
+    content: content,
+    module: props.module
   };
 
   return (
@@ -173,7 +174,7 @@ function ModuleContainer(props) {
         })}
       > 
       <SlideContainer className={classes.slideContainer}>
-        <ModuleSelector content={content} module={props.module} slideId={slideId} />
+        <ModuleSelector {...moduleProps} />
         <ControlButtons {...controlButtonProps} />
       </SlideContainer>
       </GridContainer>

@@ -47,7 +47,7 @@ export default function ControlButtons(props) {
           <Link to={props.prevSlide}>
             <Button variant="outlined" size="medium" className={classes.button}>
               <Typography color="secondary" className={classes.buttonText}>
-                PREVIOUS
+                PREVIOUS 
               </Typography>
             </Button>
           </Link>
