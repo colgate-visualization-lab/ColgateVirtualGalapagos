@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 
 const PhyloTreeSlide = ({ content }) => {
   const classes = useStyles();
-  const [tabIndex, setTabIndex] = useState(0);
+  const [tabIndex, setTabIndex] = useState(1);
 
   const handleTabChange = (index) => setTabIndex(index);
 
