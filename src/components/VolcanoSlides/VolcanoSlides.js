@@ -144,17 +144,18 @@ export default function VolcanoSlides(props) {
                 </Fragment>
         )
     }
-    // else if (props.data.id == "Slide7_optional1") {
-    //     return ( //Width of this needs to get fixed eventually
-    //         <div>
-    //         <audio className={classes.audioPlayer} src={volcanoSlider1} autoPlay controls controlsList="nodownload"/>
-    //         <div className={classes.sliderDiv}>
-    //             <ImageSlider image1={santaCruz} image2={Ferd} leftLabelText="Fernandina" rightLabelText="Santa Cruz"/>
-    //         </div>
-    //         </div>
-    //     )
-    // }
     else if (props.data.id == 8) {
+        return ( //Width of this needs to get fixed eventually
+            <div>
+            {/* <audio className={classes.audioPlayer} src={volcanoSlider1} autoPlay controls controlsList="nodownload"/>
+            <div className={classes.sliderDiv}>
+                <ImageSlider image1={santaCruz} image2={Ferd} leftLabelText="Fernandina" rightLabelText="Santa Cruz"/>
+            </div> */}
+            testing
+            </div>
+        )
+    }
+    else if (props.data.id == 9) {
         return (
             <div>
                 <audio className={classes.audioPlayer} src={volcanoCompare360} autoPlay controls controlsList="nodownload"/>
@@ -163,7 +164,7 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == 9) {
+    else if (props.data.id == 10) {
         const button = {position: "absolute", zIndex: "1", top: "55%", left: "7%",}
         return (
             <div>
@@ -183,7 +184,7 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == "8optional1") {
+    else if (props.data.id == 11) {
         return (
             <div>
             <audio className={classes.audioPlayer} src={fernandina1} autoPlay controls controlsList="nodownload"/>
@@ -211,7 +212,7 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == "8optional2") {
+    else if (props.data.id == 12) {
         return (
             <div>
             <audio className={classes.audioPlayer} src={santaCruz1} autoPlay controls controlsList="nodownload"/>
@@ -239,7 +240,7 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == 10) {
+    else if (props.data.id == 13) {
         return (
             <div>
             <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
@@ -263,7 +264,7 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == 11) {
+    else if (props.data.id == 14) {
         return (
             <div>
             <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
@@ -274,7 +275,7 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == 12) {
+    else if (props.data.id == 15) {
         return (
             <div>
                 <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
@@ -284,7 +285,7 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == 13) {
+    else if (props.data.id == 16) {
         return (
             <div>
             <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
@@ -342,12 +343,12 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == 14) {
+    else if (props.data.id == 17) {
         return (
             <video className={classes.center} src={plateTectonics} autoPlay controls controlsList="nodownload"  type="video/mp4"/> 
         )
     }
-    else if (props.data.id == 15) {
+    else if (props.data.id == 18) {
         return (
             <div>
                 <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
@@ -355,14 +356,14 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == 16) {
+    else if (props.data.id == 19) {
         return (
             <div>
                 This slide is not completed yet! You can listen to the audio tho :D
             </div>
         )
     }
-    else if (props.data.id == 17) {
+    else if (props.data.id == 20) {
         return (
                 <div>
                 <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
@@ -370,12 +371,12 @@ export default function VolcanoSlides(props) {
                 </div>
         )
     }
-    else if (props.data.id == 18) {
+    else if (props.data.id == 21) {
         return (
             <video className={classes.center} src={props.data.videoSrc} autoPlay controls controlsList="nodownload"  type="video/mp4"/> 
         )
     }
-    else if (props.data.id == 19) {
+    else if (props.data.id == 22) {
         return (
             <div>
             <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
@@ -385,7 +386,7 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == 20) {
+    else if (props.data.id == 23) {
         const button = {position: "absolute", zIndex: "1", top: "55%", left: "7%",}
         return (
             <div>
@@ -403,7 +404,7 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == 21) {
+    else if (props.data.id == 24) {
         return (
             <div>
                 <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
@@ -413,7 +414,7 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == 22) {
+    else if (props.data.id == 25) {
         return (
             <div>
                 <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
@@ -425,7 +426,7 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == "21wrong") {
+    else if (props.data.id == 26) {
         const button = {flexGrow: "1"}
         return (
             <div>
@@ -450,7 +451,7 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == 23) {
+    else if (props.data.id == 27) {
         return (
             <div>
             <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> 
@@ -460,7 +461,7 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == 24) {
+    else if (props.data.id == 28) {
         return (
             <div>
             <audio className={classes.audioPlayer} src={whereNext1} autoPlay controls controlsList="nodownload"/> 
@@ -471,20 +472,15 @@ export default function VolcanoSlides(props) {
             </div>
         )
     }
-    else if (props.data.id == 25) {
+    else if (props.data.id == 29) {
         return (
             <video className={classes.test} src={props.data.videoSrc} autoPlay controls controlsList="nodownload"  type="video/mp4" />
-        )
-    }
-    else if (props.data.id == 100) {
-        return (
-            <div>you adfljasdf</div>
         )
     }
     else {
         return ( 
         <div>
-            Oopsie Woopsie there's been an error! ;)
+            Error IDK what happened.
         </div>
         )
     }

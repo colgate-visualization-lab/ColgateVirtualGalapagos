@@ -127,7 +127,6 @@ function ModuleContainer(props) {
   //I guess this state is used for sidebars and fieldbook
   const [contentDrawerOpen, setContentDrawerOpen] = useState(false);
   const [fieldBookDrawerOpen, setFieldBookDrawerOpen] = useState(false);
-  // So "content" is giving you the specific array associated with the URL you are on. so, for example, on volcano/1, slideId = 0,
   // so content is the very virst {} in the data array. This is what connects the data with the URL.
   const content = props.data[slideId - 1];
   //Styling? Also if we declare content after styleProps this doesn't work. Order matters kids.
