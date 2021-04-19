@@ -1,6 +1,6 @@
-import React from "react";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
+import React from "react"
+import Button from "@material-ui/core/Button"
+import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles((theme) => ({
   buttons: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "0.7rem",
     fontWeight: "bold",
   },
-}));
+}))
 
 const PhyloTreeDnDButtons = ({
   handleCheckTree,
@@ -26,7 +26,7 @@ const PhyloTreeDnDButtons = ({
   handleShowTree,
   completedTreeVisible,
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <div className={classes.buttons}>
@@ -58,7 +58,7 @@ const PhyloTreeDnDButtons = ({
         </Button>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default PhyloTreeDnDButtons;
+export default PhyloTreeDnDButtons
