@@ -21,7 +21,7 @@
     "no-mixed-spaces-and-tabs": 0,
     "indent": ["error", "tab"],
     "quotes": ["error", "double"],
-    "semi": ["error", "never"],
+    "semi": ["error", "always"],
     "no-unused-vars": [
       2,
       { "args": "all", "vars": "all", "varsIgnorePattern": "React" }
