@@ -1,6 +1,9 @@
-export const slide20DrawAreaData = {};
+export const slide19DrawAreaData = {
+  correctTree:
+    "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide19Correct.png",
+};
 
-export const slide20PhyloTreeData = {
+export const slide19PhyloTreeData = {
   iguanaNames: ["Pink Iguana"],
   iguanaNamesPlacement: [[""], ["Pink Iguana"]],
   imgDimensions: {

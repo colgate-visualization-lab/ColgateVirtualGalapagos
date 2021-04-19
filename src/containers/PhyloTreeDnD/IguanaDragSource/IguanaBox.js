@@ -1,45 +1,78 @@
-import React, { useContext } from "react"
+import React, { useState } from "react"
 import Typography from "@material-ui/core/Typography"
+import Paper from "@material-ui/core/Paper"
+import DragIndicatorIcon from "@material-ui/icons/DragIndicator"
 import { makeStyles } from "@material-ui/core/styles"
 import { useDrag } from "react-dnd"
 
 const useStyles = makeStyles((theme) => ({
-  box: {
-    background: "transparent",
-    cursor: "pointer",
-    padding: theme.spacing(0, 2, 0, 0),
+  root: {
+    cursor: ({ cursor }) => cursor,
+    padding: theme.spacing(0.5, 1),
+    // margin: theme.spacing(0, 1),
+    backgroundColor: "rgb(239,239,239)",
+    color: "#000",
+    "&:hover": {
+      backgroundColor: "rgb(220,220,220)",
+      // cursor: "grab",
+    },
+
+    borderRadius: 5,
   },
+
   dragSrc: {
-    padding: "0.1rem 0.2rem",
-    [theme.breakpoints.up("sm")]: {
-      padding: "0.1rem 0.4rem",
-    },
-    backgroundColor: "rgba(255, 255, 255, 1)",
-    borderRadius: "0.3rem",
+    display: "flex",
+    alignItems: "center",
   },
+  dragIndicator: {
+    fontSize: "1.7rem",
+    textTransform: "none",
+  },
+
   srcName: {
-    fontSize: "0.7rem",
-    color: "black",
-    [theme.breakpoints.up(720)]: {
-      fontSize: "0.8rem",
-    },
+    fontWeight: "bold",
+    fontSize: "0.8rem",
+    padding: theme.spacing(1),
   },
 }))
 
 const IguanaBox = ({ name }) => {
-  const classes = useStyles()
-  const [, drag] = useDrag({
+  const [cursor, setCursor] = useState("grab")
+
+  const [{ dragCursor }, drag] = useDrag({
     item: { name, type: "iguana" },
+    collect: (monitor) => ({
+      dragCursor: monitor.isDragging() ? "grabbing" : null,
+    }),
   })
 
+  const styleProps = { cursor: dragCursor || cursor }
+  const classes = useStyles(styleProps)
+
+  const handleMouseOver = () => {
+    setCursor("grab")
+  }
+  const handleMouseDown = () => {
+    setCursor("grabbing")
+  }
+  const handleMouseUp = () => {
+    setCursor("grab")
+  }
+
   return (
-    <div ref={drag} className={classes.box}>
+    <Paper
+      ref={drag}
+      elevation={0}
+      className={classes.root}
+      onMouseOver={handleMouseOver}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+    >
       <div className={classes.dragSrc}>
-        <Typography variant="subtitle1" className={classes.srcName}>
-          {name}
-        </Typography>
+        <DragIndicatorIcon className={classes.dragIndicator} />
+        <Typography className={classes.srcName}>{name}</Typography>
       </div>
-    </div>
+    </Paper>
   )
 }
 
