@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import { useDrag } from "react-dnd";
+import React, { useContext } from "react"
+import Typography from "@material-ui/core/Typography"
+import { makeStyles } from "@material-ui/core/styles"
+import { useDrag } from "react-dnd"
 
 const useStyles = makeStyles((theme) => ({
   box: {
@@ -24,13 +24,13 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "0.8rem",
     },
   },
-}));
+}))
 
 const IguanaBox = ({ name }) => {
-  const classes = useStyles();
+  const classes = useStyles()
   const [, drag] = useDrag({
     item: { name, type: "iguana" },
-  });
+  })
 
   return (
     <div ref={drag} className={classes.box}>
@@ -40,7 +40,7 @@ const IguanaBox = ({ name }) => {
         </Typography>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default IguanaBox;
+export default IguanaBox
