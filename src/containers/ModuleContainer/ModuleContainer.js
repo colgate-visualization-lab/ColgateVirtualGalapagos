@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/styles";
 import clsx from "clsx";
 import { useParams } from "react-router-dom";
 
-import iguanaData from "../../assets/IguanaData/IguanaData.js";
+import iguanaData from "../../assets/IguanaData";
 import volcanoData from "../../components/VolcanoData/VolcanoData.js";
 import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 import ControlButtons from "../ControlButtons/ControlButtons";
@@ -176,72 +176,3 @@ function ModuleContainer(props) {
 ModuleContainer.propTypes = {};
 
 export default ModuleContainer;
-
-// useEffect(() => {
-//   if (status === "idle") {
-//     dispatch(getModuleData("iguana"));
-//   }
-//   if (status === "moduleDataLoaded") {
-//     dispatch(getSlideData(slideId));
-//   }
-// });
-
-// const content = data[slideId - 1];
-// const styleProps = {
-//   heightOffset: "audioSrc" in content ? 150 : 60,
-// };
-// const classes = useStyles(styleProps);
-// const prevSlide = `/iguana/${slideId === 1 ? 1 : slideId - 1}`;
-// const nextSlide = `/iguana/${
-//   slideId + 1 > data.length ? slideId : slideId + 1
-// }`;
-//   const [contentDrawerOpen, setContentDrawerOpen] = useState(false);
-//   const [fieldBookDrawerOpen, setFieldBookDrawerOpen] = useState(false);
-
-//   const handleContentDrawerToggle = (open) => {
-//     setContentDrawerOpen(open);
-//   };
-//   const handleFieldBookDrawerToggle = (open) => {
-//     setFieldBookDrawerOpen(open);
-//   };
-
-//   const handleSlideChange = (slideId) => {};
-
-//   // ControlButtons component
-//   const controlButtonProps = {
-//     hasPrev: slideId !== 1,
-//     hasNext: slideId < data.length,
-//     nextSlide: nextSlide,
-//     prevSlide: prevSlide,
-//   };
-//   return (
-//     <div className={classes.root}>
-//       <SlideContentDrawer
-//         slideData={data}
-//         contentDrawerOpen={contentDrawerOpen}
-//         handleSlideChange={handleSlideChange}
-//         handleContentDrawerToggle={handleContentDrawerToggle}
-//       />
-//       <GridContainer
-//         className={clsx(classes.container, classes.content, {
-//           [classes.contentShiftLeft]: contentDrawerOpen,
-//           [classes.contentShiftRight]: fieldBookDrawerOpen,
-//         })}
-//       >
-//         <SlideContainer className={classes.slideContainer}>
-//           <MainContent content={content} />
-//           <ControlButtons {...controlButtonProps} />
-//         </SlideContainer>
-//       </GridContainer>
-//       <FieldBookDrawer
-//         slideData={data}
-//         contentDrawerOpen={fieldBookDrawerOpen}
-//         handleSlideChange={handleSlideChange}
-//         handleContentDrawerToggle={handleFieldBookDrawerToggle}
-//       />
-//     </div>
-//   );
-// }
-// ModuleContainer.propTypes = {};
-
-// export default ModuleContainer;

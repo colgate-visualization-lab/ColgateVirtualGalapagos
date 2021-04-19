@@ -7,7 +7,6 @@ import { IguanaBox } from "../IguanaDragSource";
 
 const useStyles = makeStyles(() => ({
   dropTarget: {
-    background: "rgba(240,24,100,0.5)",
     position: "absolute",
     top: ({ top }) => top,
     left: ({ left }) => left,

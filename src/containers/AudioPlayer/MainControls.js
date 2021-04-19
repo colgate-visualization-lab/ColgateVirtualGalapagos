@@ -5,7 +5,7 @@ import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 import Forward5Icon from "@material-ui/icons/Forward5";
 import Replay5Icon from "@material-ui/icons/Replay5";
 
-const MainControls = ({ playing, handlePlay, handleSeekFive }) => {
+const MainControls = ({ playing, handleToggle, handleSeekFive }) => {
   return (
     <>
       <div>
@@ -14,7 +14,7 @@ const MainControls = ({ playing, handlePlay, handleSeekFive }) => {
         </IconButton>
       </div>
       <div>
-        <IconButton color="primary" onClick={handlePlay}>
+        <IconButton color="primary" onClick={handleToggle}>
           {playing ? <PauseCircleOutlineIcon /> : <PlayCircleOutlineIcon />}
         </IconButton>
       </div>
