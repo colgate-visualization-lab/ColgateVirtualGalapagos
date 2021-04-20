@@ -1,5 +1,5 @@
 import { slide3Data } from "../../assets/IguanaData/slide3Data";
-import { slide15Data } from "../../assets/IguanaData/slide15Data";
+import { slide14Data } from "../../assets/IguanaData/slide14Data";
 import { slide17Data } from "../../assets/IguanaData/slide17Data";
 
 const iguanaData = [
@@ -8,7 +8,7 @@ const iguanaData = [
     title: "Intro Video",
     type: "video",
     url:
-      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoModuleIntro.mp4", 
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoModuleIntro.mp4",
   },
   {
     id: "2",
