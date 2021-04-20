@@ -39,11 +39,11 @@ const IguanaSlide15 = ({ content }) => {
     let ratio = 1219 / (window.innerHeight - 200);
     setWidth(1600 / ratio);
   };
-
+  console.log(content.data);
   return (
     <>
       {/* <AudioPlayerHandler src={audioSrc} playing={audioIsPlaying}/> */}
-      <AudioPlayer
+      {/* <AudioPlayer
         src={audioSrc}
         onEnded={() => {
           setAudioIsDone(true);
@@ -55,7 +55,7 @@ const IguanaSlide15 = ({ content }) => {
           setAudioIsPlaying(!audioIsPlaying);
         }}
         playing={audioIsPlaying}
-      />
+      /> */}
       <ImageMapper
         width={width}
         imgWidth={1600}
