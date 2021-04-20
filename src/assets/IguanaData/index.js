@@ -1,5 +1,5 @@
 import { slide3Data } from "./slide3Data";
-import { slide15Data } from "./slide15Data";
+import { slide14Data } from "./slide14Data";
 import { slide17Data } from "./slide17Data";
 import { slide11DrawAreaData, slide11PhyloTreeData } from "./slide11Data";
 import { slide19DrawAreaData, slide19PhyloTreeData } from "./slide19Data";
@@ -146,7 +146,7 @@ const iguanaData = [
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/MarineGreenIguanaComparison.jpg",
     audioSrc:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide15_initial.mp3",
-    data: slide15Data,
+    data: slide14Data,
   },
   {
     id: "15",

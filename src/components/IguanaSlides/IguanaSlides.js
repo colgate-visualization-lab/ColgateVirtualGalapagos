@@ -6,7 +6,8 @@ import { makeStyles } from "@material-ui/styles";
 import IguanaSlide3 from "../../containers/IguanaSlide3";
 import IguanaSlide8 from "../IguanaSlide8";
 import PhyloTreeSlide from "../../containers/PhyloTreeSlide";
-import IguanaSlide15 from "../../containers/IguanaSlide15/IguanaSlide15";
+// import IguanaSlide15 from "../../containers/IguanaSlide15";
+import IguanaSlide14 from "../../containers/IguanaSlide14";
 import IguanaSlide17 from "../../containers/IguanaSlide17";
 import AudioPlayer from "../../containers/AudioPlayer";
 
@@ -52,7 +53,8 @@ function IguanaSlides({ content }) {
       </>
     );
   } else if (content.type === "interactive_image") {
-    return <IguanaSlide15 classes={classes} content={content} />;
+    // return <IguanaSlide15 classes={classes} content={content} />;
+    return <IguanaSlide14 classes={classes} content={content} />;
   } else if (content.type === "image_comparison") {
     return (
       <>
