@@ -8,8 +8,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100%",
     alignItems: "center",
-    // backgroundColor: "white",
-    // justifyItems: "center",
   },
   img: {
     width: "100%",
@@ -17,11 +15,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CenteredImage = ({ id, imgProps, containerProps }) => {
+const CenteredImage = ({ id, imgProps }) => {
   const classes = useStyles();
 
   return (
-    <div id={id} className={classes.imgContainer} {...containerProps}>
+    <div id={id} className={classes.imgContainer}>
       <img className={classes.img} {...imgProps} />
     </div>
   );
@@ -33,11 +31,6 @@ CenteredImage.propTypes = {
     alt: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
   }),
-  containerProps: PropTypes.object,
-};
-
-CenteredImage.defaultProps = {
-  containerProps: {},
 };
 
 export default CenteredImage;
