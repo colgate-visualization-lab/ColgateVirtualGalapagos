@@ -142,6 +142,12 @@ const iguanaData = [
     id: "14",
     title: "Iguana_Evolution03",
     type: "interactive_image",
+    imgSrc: {
+      src1:
+        "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide14GreenIguana.png",
+      src2:
+        "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Images/IguanaSlide14MarineIguana.png",
+    },
     url:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/MarineGreenIguanaComparison.jpg",
     audioSrc:
