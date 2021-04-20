@@ -128,7 +128,7 @@ const iguanaData = [
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/MarineGreenIguanaComparison.jpg",
     audioSrc:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide15_initial.mp3",
-    data: slide15Data,
+    data: slide14Data,
   },
   {
     id: "16",
