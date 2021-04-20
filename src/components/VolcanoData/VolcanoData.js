@@ -5,7 +5,7 @@ import { slide17Data } from "../../assets/IguanaData/slide17Data";
 const iguanaData = [
   {
     id: "1",
-    noPrev: true,
+    hasPrev: false,
     title: "Intro Video",
     videoSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoModuleIntro.mp4", 
@@ -64,8 +64,8 @@ const iguanaData = [
   },
   { //Optional slide
     id: "8",
-    noNext: true,
-    title: "Magnifying",
+    title: "Slider Comparison",
+    hasNext: false,
     audioSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap02.mp3",
     imageSrc1:
@@ -105,8 +105,8 @@ const iguanaData = [
   },
   {
     id: "12",
-    noNext: true,
     title: "Santa Cruz",
+    hasNext: false,
     audioSrc: 
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap03.mp3",
     imageSrc: 
@@ -191,6 +191,7 @@ const iguanaData = [
   {
     id: "23",
     title: "Terrain Map 6",
+    hasNext: false,
     audioSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap06.mp3",
     imageSrc: 
@@ -207,6 +208,7 @@ const iguanaData = [
   {
     id: "25",
     title: "Plume Placement",
+    hasNext: false,
     audioSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_PlumePlacement01.mp3",
     imageSrc: 
@@ -215,6 +217,7 @@ const iguanaData = [
   {
     id: "26",
     title: "Plume No",
+    hasNext: false,
     audioSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_PlumeYes01Fix.mp3",
     imageSrc: 
@@ -238,8 +241,8 @@ const iguanaData = [
   },
   {
     id: "29",
-    noNext: true,
     title: "Summary Video",
+    hasNext: false,
     videoSrc: 
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoSummary.mp4",
   },

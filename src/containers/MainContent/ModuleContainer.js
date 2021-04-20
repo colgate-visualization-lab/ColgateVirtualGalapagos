@@ -146,8 +146,8 @@ function ModuleContainer(props) {
   const handleSlideChange = (slideId) => {};
   // ControlButtons component props
   const controlButtonProps = {
-    hasPrev: `${content.noPrev? false : true}`,
-    hasNext: `${content.noNext? false : true}`,
+    hasPrev: content.hasPrev,
+    hasNext: content.hasNext,
     nextSlide: `${content.hasOptional? content.nextSlideId : nextSlide}`,
     prevSlide: `${content.followingOptional? content.prevSlideId : prevSlide}`,
   };
