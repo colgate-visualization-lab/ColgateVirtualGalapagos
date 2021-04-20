@@ -3,7 +3,7 @@ import { loadState } from "./localStorage";
 
 const preLoadedState = loadState();
 
-let initialState = preLoadedState
+let initialState = preLoadedState.slide
   ? preLoadedState.slide
   : {
       slideData: {
@@ -11,6 +11,8 @@ let initialState = preLoadedState
         // allIds: [],
       },
     };
+
+console.log(preLoadedState);
 
 const slice = createSlice({
   name: "slide",
