@@ -11,7 +11,7 @@ import AudioPlayerHandler from "../../../components/AudioPlayer/AudioPlayerHandl
 import ControlButtons from "../../../containers/ControlButtons/ControlButtons";
 import SlideContentDrawer from "../../../containers/SlideContentDrawer";
 import FieldBookDrawer from "../../../containers/FieldBookDrawer";
-import ModuleSelector from "../../../containers/ModuleSelector/ModuleSelector";
+import ModuleSelector from "../ModuleSelector/ModuleSelector";
 import AudioPlayer from "../../../containers/AudioPlayer";
 
 const moduleData = {
