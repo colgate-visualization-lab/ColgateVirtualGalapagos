@@ -160,13 +160,16 @@ export default function VolcanoSlides(props) {
     }
     else if (props.data.id == 8) {
         return ( 
-            <div>
-            {/* <audio className={classes.audioPlayer} src={volcanoSlider1} autoPlay controls controlsList="nodownload"/>
-            <div className={classes.sliderDiv}>
-                <ImageSlider image1={santaCruz} image2={Ferd} leftLabelText="Fernandina" rightLabelText="Santa Cruz"/>
-            </div> */}
-            testing
-            </div>
+            // <Fragment>
+                <div className={classes.divContainer}>
+                    <img className={classes.img} src={TerrainOvalCorrect}/>
+                    <div className={classes.hypothesis} >Click on the magnifying glass!</div>
+                        <Link to={"/volcano/8"}>
+                            <img className={classes.magnifying} src={props.data.imageSrc2}/>
+                        </Link>
+                </div>
+                // <AudioPlayer src={props.data.audioSrc} /> 
+            // </Fragment> 
         )
     }
     else if (props.data.id == 9) {
@@ -362,10 +365,10 @@ export default function VolcanoSlides(props) {
     }
     else if (props.data.id == 18) {
         return (
-            <Fragment>
+            // <Fragment>
                 <img className={classes.center} src={props.data.imageSrc}/>
-                <AudioPlayer src={props.data.audioSrc} />
-            </Fragment>
+            //     <AudioPlayer src={props.data.audioSrc} />
+            // </Fragment>
         )
     }
     else if (props.data.id == 19) {
@@ -378,10 +381,10 @@ export default function VolcanoSlides(props) {
     }
     else if (props.data.id == 20) {
         return (
-            <Fragment>
-                <img className={classes.center} src={props.data.imageSrc}/>
+            <div className={classes.divContainer}>
+                <img className={classes.img} src={props.data.imageSrc}/>
                 <AudioPlayer src={props.data.audioSrc} />
-            </Fragment>
+            </div> 
         )
     }
     else if (props.data.id == 21) {
@@ -391,12 +394,12 @@ export default function VolcanoSlides(props) {
     }
     else if (props.data.id == 22) {
         return (
-            <Fragment>
-                <div className={classes.imgContainer}>
-                    <img className={classes.imgFill} src={props.data.imageSrc}/>
-                </div>
-            <AudioPlayer src={props.data.audioSrc} />
-            </Fragment>
+            // <Fragment>
+            //     <div className={classes.imgContainer}>
+                    <img className={classes.img} src={props.data.imageSrc}/>
+            //     </div>
+            // <AudioPlayer src={props.data.audioSrc} />
+            // </Fragment>
         )
     }
     else if (props.data.id == 23) {
