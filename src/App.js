@@ -14,7 +14,7 @@ import {
 } from "./assets/Homepage";
 import Homepage from "./pages/LandingPage";
 import SplashScreen from "./components/SplashScreen/SplashScreen";
-import Gallery from "./containers/Gallery/Gallery";
+import Gallery from "./pages/Gallery";
 // import ModuleNav from "./components/ModuleNav/ModuleNav";
 import ModuleNav from "./components/ModuleNavAlternate";
 import VolcanoLayout from "./containers/VolcanoLayout/VolcanoLayout";
