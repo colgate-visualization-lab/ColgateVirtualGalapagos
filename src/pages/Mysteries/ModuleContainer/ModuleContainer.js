@@ -6,13 +6,13 @@ import clsx from "clsx";
 import { useParams } from "react-router-dom";
 
 import iguanaData from "../../../assets/IguanaData";
-import volcanoData from "../../../components/VolcanoData/VolcanoData.js";
-import AudioPlayerHandler from "../../../components/AudioPlayer/AudioPlayerHandler";
+import volcanoData from "../../../assets/VolcanoData/VolcanoData.js";
+// import AudioPlayerHandler from "../../../components/AudioPlayer/AudioPlayerHandler";
 import ControlButtons from "../../../containers/ControlButtons/ControlButtons";
 import SlideContentDrawer from "../../../containers/SlideContentDrawer";
 import FieldBookDrawer from "../../../containers/FieldBookDrawer";
 import ModuleSelector from "../ModuleSelector/ModuleSelector";
-import AudioPlayer from "../../../containers/AudioPlayer";
+import AudioPlayer from "../../../components/AudioPlayer";
 
 const moduleData = {
   iguana: iguanaData,

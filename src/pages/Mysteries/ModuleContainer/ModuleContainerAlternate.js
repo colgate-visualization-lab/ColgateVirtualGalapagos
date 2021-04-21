@@ -6,13 +6,13 @@ import clsx from "clsx";
 import { useSelector, useDispatch } from "react-redux";
 
 import data from "../../assets/IguanaData/IguanaData.js";
-import volcanodata from "../../../components/VolcanoData/VolcanoData.js";
-import AudioPlayerHandler from "../../../components/AudioPlayer/AudioPlayerHandler";
+import volcanodata from "../../../assets/VolcanoData/VolcanoData.js";
+// import AudioPlayerHandler from "../../../components/AudioPlayer/AudioPlayerHandler";
 import ControlButtons from "../../../containers/ControlButtons/ControlButtons";
 import SlideContentDrawer from "../../../containers/SlideContentDrawer";
 import FieldBookDrawer from "../../../containers/FieldBookDrawer";
 import ModuleSelector from "../ModuleSelector/ModuleSelector";
-import AudioPlayer from "../../../containers/AudioPlayer";
+import AudioPlayer from "../../../components/AudioPlayer";
 import {
   getModuleData,
   getSlideData,

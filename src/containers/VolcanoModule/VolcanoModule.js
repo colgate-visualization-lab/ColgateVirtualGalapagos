@@ -19,7 +19,7 @@ import DndDraggables from "../../components/DndDraggables/DndDraggables";
 import DndDroppables from "../../components/DndDroppables/DndDroppables";
 import ResizePanel from "react-resize-panel";
 import VolcanoeIframe from "../../components/IframeCompoment/IframeComponent";
-import AudioPlayer from "../../components/AudioPlayer/AudioPlayer";
+import AudioPlayer from "../../components/AudioPlayerOld/AudioPlayer";
 import MapComponent from "../../components/MapComponent/MapComponent";
 import Popup from "reactjs-popup";
 import ImageSlider from "react-image-comparison-slider";
@@ -410,8 +410,17 @@ class VolcanoeModule extends Component {
             className={classes.imgNext}
             onClick={() => this.nextSlide()}
           />
-          <div className={this.state.progressIndex == 1? classes.instructions : {visibility: "hidden"}}>
-              <h1 className={classes.instructions2}>Click the play button and to load the 360 video. Hover over the hotspots to interact with them!</h1>
+          <div
+            className={
+              this.state.progressIndex == 1
+                ? classes.instructions
+                : { visibility: "hidden" }
+            }
+          >
+            <h1 className={classes.instructions2}>
+              Click the play button and to load the 360 video. Hover over the
+              hotspots to interact with them!
+            </h1>
           </div>
           <h1
             style={{
@@ -634,7 +643,9 @@ class VolcanoeModule extends Component {
             </h1>
           </div>
           <div className={classes.mainDiv}>
-          <h1 className={audioIsDone? classes.slide6thingy : classes.hidden}>click on the magnifying glass to compare Fernandina and Santa Cruz</h1>
+            <h1 className={audioIsDone ? classes.slide6thingy : classes.hidden}>
+              click on the magnifying glass to compare Fernandina and Santa Cruz
+            </h1>
             <img src={TerrainMap} className={classes.mainContent} />
             <img
               style={audioIsDone ? {} : buttonStyle}
@@ -715,7 +726,7 @@ class VolcanoeModule extends Component {
             className={classes.mainDiv}
             // style={{ width: "80%", height: "100%" }}
           >
-               <div className={classes.SliderInstruction}>
+            <div className={classes.SliderInstruction}>
               Move slider to compare Fernandina and Santa Cruz
             </div>
             <ImageSlider
@@ -856,7 +867,13 @@ class VolcanoeModule extends Component {
       return (
         <Fragment>
           <div className={classes.leftDiv}>
-          <div className={audioIsDone? classes.hotspotinstruction : classes.hidden}>Click on the hotspots to intereact with them</div>
+            <div
+              className={
+                audioIsDone ? classes.hotspotinstruction : classes.hidden
+              }
+            >
+              Click on the hotspots to intereact with them
+            </div>
             <AudioPlayer
               src={fernandina1}
               onEnded={() => {
@@ -2008,7 +2025,9 @@ class VolcanoeModule extends Component {
             </h1>
           </div>
           <div className={classes.mainDiv} ref={this.headerRef}>
-            <div className={audioIsDone? classes.choosewhich : classes.hidden}>Choose which side you think the mantle plume is located.</div>
+            <div className={audioIsDone ? classes.choosewhich : classes.hidden}>
+              Choose which side you think the mantle plume is located.
+            </div>
             <img
               className={classes.mainContent}
               src={TerrainMap}
@@ -2158,7 +2177,6 @@ class VolcanoeModule extends Component {
             </h1>
           </div>
           <div className={classes.mainDiv}>
-         
             <img src={TerrainMap} className={classes.mainContent} />
           </div>
           <div className={classes.rightDiv}>
