@@ -1,0 +1,8 @@
+export const module = {
+    GENERAL: "GENERAL",
+    VOLCANO: "VOLCANO", 
+    IGUANA: "IGUANA", 
+    CURRENTS: "CURRENTS",
+    ERUPTION: "ERUPTION", 
+    ISLANDLIFECYCLE: "ISLAND LIFE CYCLE",
+}

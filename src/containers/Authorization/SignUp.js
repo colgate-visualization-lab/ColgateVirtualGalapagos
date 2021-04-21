@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
+import CssBaseline from "@material-ui/core/CssBaseline"
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -73,6 +74,7 @@ const SignUp = () => {
 
   return (
     <Container component="main" maxWidth="xs">
+      <CssBaseline/>
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -84,7 +86,6 @@ const SignUp = () => {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                className={classes.textField}
                 autoComplete="fname"
                 name="userName"
                 variant="outlined"
@@ -99,7 +100,6 @@ const SignUp = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                className={classes.textField}
                 variant="outlined"
                 required
                 fullWidth
@@ -113,7 +113,6 @@ const SignUp = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                className={classes.textField}
                 variant="outlined"
                 required
                 fullWidth
@@ -128,7 +127,7 @@ const SignUp = () => {
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" checked={allowedExtraEmail} className={classes.checkbox} onClick={handleClick}/>}
+                control={<Checkbox value="allowExtraEmails" checked={allowedExtraEmail} color="primary" onClick={handleClick}/>}
                 label="I want to receive inspiration, marketing promotions and updates via email."
               />
             </Grid>
@@ -182,14 +181,9 @@ const useStyles = makeStyles((theme) => ({
     submit: {
       margin: theme.spacing(3, 0, 2),
     },
-    textField: {
-		  backgroundColor: "rgba(255, 255, 255, 0.2)",
-	  },
     link: {
       fontSize: "small",
-    },
-    checkbox: {
-      color: "white",
+      color: theme.palette.primary.main,
     },
 }))
 
