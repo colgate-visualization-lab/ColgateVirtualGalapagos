@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import VideoPlayer from "../../containers/VideoPlayer/VideoPlayer";
 import classes from "../../components/ModuleNav/ModuleNav.css";
 import ModuleNavItem from "../../components/ModuleNav/ModuleNavItem/ModuleNavItem";
-import { backgroundimage } from "../../assets/Homepage";
+import { backgroundimage } from "../../assets/homepage";
 
 class ExtraSelect extends React.Component {
   constructor() {

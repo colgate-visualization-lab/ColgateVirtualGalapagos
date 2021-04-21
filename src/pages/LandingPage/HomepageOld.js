@@ -3,7 +3,7 @@ import classes from "./Homepage.css";
 import ImageMapper from "react-image-mapper";
 import MAP from "./imageMap";
 import { Redirect } from "react-router";
-import { MapPinzon } from "../../assets/Homepage";
+import { MapPinzon } from "../../assets/homepage";
 //import BackgroundVideo from "../../components/BackgroundVideo/BackgroundVideo.js"
 
 class Homepage extends Component {

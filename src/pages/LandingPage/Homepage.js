@@ -3,7 +3,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import ImageMapper from "react-image-mapper";
 import imageMap from "./imageMap";
 import { Redirect } from "react-router";
-import { MapPinzon } from "../../assets/Homepage";
+import { MapPinzon } from "../../assets/homepage";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({

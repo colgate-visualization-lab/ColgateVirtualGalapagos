@@ -1,9 +1,15 @@
 import React, { Component, Suspense, lazy } from "react";
 import { Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/styles";
-import Layout from "./containers/Layout/Layout";
+
 import SignIn from "./pages/Authorization/SignIn";
 import SignUp from "./pages/Authorization/SignUp";
+import Homepage from "./pages/LandingPage";
+import Gallery from "./pages/Gallery";
+import ExtraSelect from "./pages/Extras";
+import Settings from "./pages/Settings";
+
+import Layout from "./containers/Layout/Layout";
 import LoadingScreen from "./containers/LoadingScreen/LoadingScreen";
 import {
   MapFernandina,
@@ -11,20 +17,16 @@ import {
   MapPinzon,
   MapFloreana,
   MapEspanola,
-} from "./assets/Homepage";
-import Homepage from "./pages/LandingPage";
+} from "./assets/homepage";
 import SplashScreen from "./components/SplashScreen/SplashScreen";
-import Gallery from "./pages/Gallery";
 // import ModuleNav from "./components/ModuleNav/ModuleNav";
 import ModuleNav from "./components/ModuleNavAlternate";
 import VolcanoLayout from "./containers/VolcanoLayout/VolcanoLayout";
-import ExtraSelect from "./pages/Extras";
 import VolcanoSlides from "./components/VolcanoSlides/VolcanoSlides";
 import theme from "./utils/theme";
 import Test from "./containers/Test/Test";
 import NewNote from "./containers/Backpack/Fieldbook/Note/NewNote";
 import Fieldbook from "./containers/Backpack/Fieldbook/Fieldbook";
-import Settings from "./pages/Settings";
 import ModuleContainer from "./containers/ModuleContainer";
 
 const VolcanoModule = lazy(() =>
