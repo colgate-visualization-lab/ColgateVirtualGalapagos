@@ -147,11 +147,13 @@ export default function VolcanoSlides(props) {
     else if (props.data.id == 7) {
         return (
             <Fragment>
-                <img className={MUIclasses.img} src={props.data.imageSrc1}/>
-                <div className={classes.hypothesis} >Click on the magnifying glass!</div>
-                <Link to={"/volcano/8"}>
-                    <img className={classes.magnifying} src={props.data.imageSrc2}/>
-                </Link>
+                <div className={classes.divContainer}>
+                    <img className={classes.img} src={props.data.imageSrc1}/>
+                    <div className={classes.hypothesis} >Click on the magnifying glass!</div>
+                        <Link to={"/volcano/8"}>
+                            <img className={classes.magnifying} src={props.data.imageSrc2}/>
+                        </Link>
+                </div>
                 <AudioPlayer src={props.data.audioSrc} />
             </Fragment>
         )
