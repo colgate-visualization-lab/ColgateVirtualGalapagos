@@ -1,5 +1,5 @@
 import React from "react";
-import VolcanoSlides from "../../../components/VolcanoSlides/VolcanoSlides";
+import VolcanoSlides from "@components/VolcanoSlides/VolcanoSlides";
 import IguanaSlides from "../Iguana";
 
 export default function ModuleSelector(props) {

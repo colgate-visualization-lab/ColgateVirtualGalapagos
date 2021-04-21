@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from "react";
-import VideoPlayer from "../../containers/VideoPlayer/VideoPlayer";
+import React from "react";
 import classes from "../../components/ModuleNav/ModuleNav.css";
 import ModuleNavItem from "../../components/ModuleNav/ModuleNavItem/ModuleNavItem";
 import { backgroundimage } from "../../assets/homepage";

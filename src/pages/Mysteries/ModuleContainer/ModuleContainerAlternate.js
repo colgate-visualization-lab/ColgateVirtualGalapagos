@@ -5,20 +5,20 @@ import { makeStyles } from "@material-ui/styles";
 import clsx from "clsx";
 import { useSelector, useDispatch } from "react-redux";
 
-import data from "../../assets/IguanaData/IguanaData.js";
-import volcanodata from "../../../assets/VolcanoData/VolcanoData.js";
-// import AudioPlayerHandler from "../../../components/AudioPlayer/AudioPlayerHandler";
-import ControlButtons from "../../../components/ControlButtons/ControlButtons";
+import data from "@assets/IguanaData/IguanaData.js";
+import volcanodata from "@assets/VolcanoData/VolcanoData.js";
+// import AudioPlayerHandler from "@components/AudioPlayer/AudioPlayerHandler";
+import ControlButtons from "@components/ControlButtons/ControlButtons";
 import SlideContentDrawer from "./SlideContentDrawer";
-import FieldBookDrawer from "../../../containers/FieldBookDrawer";
+import FieldBookDrawer from "@containers/FieldBookDrawer";
 import ModuleSelector from "../ModuleSelector/ModuleSelector";
-import AudioPlayer from "../../../components/AudioPlayer";
+import AudioPlayer from "@components/AudioPlayer";
 import {
   getModuleData,
   getSlideData,
   selectSlide,
   selectStatus,
-} from "../../../slices/modulesSlice";
+} from "@slices/modulesSlice";
 
 //Needed for something lol
 const contentDrawerWidth = 240;

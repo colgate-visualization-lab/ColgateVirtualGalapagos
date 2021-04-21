@@ -7,11 +7,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Link } from "react-router-dom";
 
-import {
-  DrawerIcon,
-  DrawerContent,
-  DrawerHeader,
-} from "../../../../components/Drawer";
+import { DrawerIcon, DrawerContent, DrawerHeader } from "@components/Drawer";
 
 const drawerWidth = 240;
 

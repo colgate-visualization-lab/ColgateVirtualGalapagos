@@ -9,7 +9,7 @@ import PhyloTreeSlide from "./PhyloTreeSlide";
 // import IguanaSlide15 from "../../containers/IguanaSlide15";
 import IguanaSlide14 from "./IguanaSlide14";
 import IguanaSlide16 from "./IguanaSlide16";
-import AudioPlayer from "../../../components/AudioPlayer";
+import AudioPlayer from "@components/AudioPlayer";
 
 const useStyles = makeStyles((theme) => ({
   // VIDEO STYLING

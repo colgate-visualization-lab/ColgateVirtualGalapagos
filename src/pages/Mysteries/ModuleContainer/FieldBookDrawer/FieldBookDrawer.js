@@ -9,11 +9,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import TextField from "@material-ui/core/TextField";
 
-import {
-  DrawerIcon,
-  DrawerContent,
-  DrawerHeader,
-} from "../../components/Drawer";
+import { DrawerIcon, DrawerContent, DrawerHeader } from "@components/Drawer";
 
 const drawerWidth = 400;
 

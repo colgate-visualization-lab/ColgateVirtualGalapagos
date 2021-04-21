@@ -14,6 +14,16 @@ module.exports = {
   resolve: {
     alias: {
       Assets: path.resolve(__dirname, "./src/assets/"),
+      "@components": path.resolve(__dirname, "./src/components/"),
+      "@pages": path.resolve(__dirname, "./src/pages/"),
+      "@utils": path.resolve(__dirname, "./src/utils/"),
+      "@containers": path.resolve(__dirname, "./src/containers/"),
+      "@slices": path.resolve(__dirname, "./src/slices/"),
+      "@assets": path.resolve(__dirname, "./src/assets/"),
+      "@utils": path.resolve(__dirname, "./src/utils/"),
+      "@hooks": path.resolve(__dirname, "./src/hooks/"),
+      "@api": path.resolve(__dirname, "./src/api/"),
+      "@contexts": path.resolve(__dirname, "./src/contexts/"),
     },
   },
   module: {

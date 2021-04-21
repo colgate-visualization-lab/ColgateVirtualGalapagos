@@ -2,7 +2,6 @@ import React from "react";
 import classes from "./ModuleNav.css";
 import ModuleNavItem from "./ModuleNavItem/ModuleNavItem";
 import { MapPinzon } from "../../assets/homepage";
-import IntroVideo from "../ModalVideo/ModalVideo";
 import { Fragment } from "react";
 // import mysteryIntro from "https://virtualgalapagos.colgate.edu/assets/misc/MysteryIntro.mp4"
 

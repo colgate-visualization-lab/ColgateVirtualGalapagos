@@ -5,9 +5,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Drawing from "./Drawing";
 import Toolbar from "./Toolbar";
 import StyleOptions from "./StyleOptions";
-import PhyloTreeSlideInstructions from "../../../../../components/PhyloTreeSlideInstructions";
-import PhyloTreeSidebar from "../../../../../components/PhyloTreeSidebar";
-import { MainActivityArea } from "../../../../../components/PhyloTree";
+import PhyloTreeSlideInstructions from "@components/PhyloTreeSlideInstructions";
+import PhyloTreeSidebar from "@components/PhyloTreeSidebar";
+import { MainActivityArea } from "@components/PhyloTree";
 import DrawAreaMenu from "./DrawAreaMenu";
 //prettier-ignore
 import {  getElementAtPosition, currentlyEditingTextbox, 

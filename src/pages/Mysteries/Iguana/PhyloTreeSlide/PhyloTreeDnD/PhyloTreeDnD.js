@@ -7,8 +7,8 @@ import DragSourcePanel from "./DragSourcePanel";
 import IguanaDropTarget from "./IguanaDropTarget";
 import IguanaDragSource from "./IguanaDragSource";
 import PhyloTreeDnDMenu from "./PhyloTreeDnDMenu";
-import { MainActivityArea } from "../../../../../components/PhyloTree";
-import PhyloTreeSidebar from "../../../../../components/PhyloTreeSidebar";
+import { MainActivityArea } from "@components/PhyloTree";
+import PhyloTreeSidebar from "@components/PhyloTreeSidebar";
 import { Slide11Context } from "../contexts";
 import useTreeDnD from "../hooks/useTreeDnD";
 

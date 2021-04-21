@@ -14,7 +14,7 @@ const customStyles = {
   },
 };
 
-function IntroVideo(props) {
+function ModalVideo(props) {
   var subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
@@ -53,8 +53,8 @@ function IntroVideo(props) {
   );
 }
 
-IntroVideo.propTypes = {
+ModalVideo.propTypes = {
   src: PropTypes.string.isRequired,
 };
 
-export default IntroVideo;
+export default ModalVideo;
