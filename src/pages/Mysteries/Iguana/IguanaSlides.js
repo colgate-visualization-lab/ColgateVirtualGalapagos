@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/styles";
 
 import IguanaSlide3 from "./IguanaSlide3";
-import IguanaSlide8 from "../../../components/IguanaSlide8";
+import IguanaSlide8 from "./IguanaSlide8";
 import PhyloTreeSlide from "../../../containers/PhyloTreeSlide";
 // import IguanaSlide15 from "../../containers/IguanaSlide15";
 import IguanaSlide14 from "../../../containers/IguanaSlide14";

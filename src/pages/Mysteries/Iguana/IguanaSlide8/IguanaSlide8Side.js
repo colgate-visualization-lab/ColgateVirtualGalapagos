@@ -6,7 +6,7 @@ import {
 } from "react-compare-slider";
 import { makeStyles } from "@material-ui/styles";
 
-import Popup from "../Popup/Popup";
+import Popup from "../../../../components/Popup/Popup";
 
 const useStyles = makeStyles((theme) => ({
   sliderContainer: {
