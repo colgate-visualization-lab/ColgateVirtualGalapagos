@@ -5,14 +5,14 @@ import { makeStyles } from "@material-ui/styles";
 import clsx from "clsx";
 import { useParams } from "react-router-dom";
 
-import iguanaData from "../../assets/IguanaData";
-import volcanoData from "../../components/VolcanoData/VolcanoData.js";
-import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
-import ControlButtons from "../ControlButtons/ControlButtons";
-import SlideContentDrawer from "../SlideContentDrawer";
-import FieldBookDrawer from "../FieldBookDrawer";
-import ModuleSelector from "../ModuleSelector/ModuleSelector";
-import AudioPlayer from "../AudioPlayer";
+import iguanaData from "../../../assets/IguanaData";
+import volcanoData from "../../../components/VolcanoData/VolcanoData.js";
+import AudioPlayerHandler from "../../../components/AudioPlayer/AudioPlayerHandler";
+import ControlButtons from "../../../containers/ControlButtons/ControlButtons";
+import SlideContentDrawer from "../../../containers/SlideContentDrawer";
+import FieldBookDrawer from "../../../containers/FieldBookDrawer";
+import ModuleSelector from "../../../containers/ModuleSelector/ModuleSelector";
+import AudioPlayer from "../../../containers/AudioPlayer";
 
 const moduleData = {
   iguana: iguanaData,

@@ -26,7 +26,7 @@ import VolcanoSlides from "./components/VolcanoSlides/VolcanoSlides";
 import Test from "./containers/Test/Test";
 import NewNote from "./containers/Backpack/Fieldbook/Note/NewNote";
 import Fieldbook from "./containers/Backpack/Fieldbook/Fieldbook";
-import ModuleContainer from "./containers/ModuleContainer";
+import ModuleContainer from "./pages/Mysteries/ModuleContainer";
 
 import theme from "./utils/theme";
 
