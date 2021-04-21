@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -13,6 +13,9 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import TextField from "@material-ui/core/TextField";
+import ClearIcon from '@material-ui/icons/Clear';
+import LocalStorage from "../../utils/localStorage";
+import axios from 'axios';
 
 const drawerWidth = 400;
 
@@ -79,27 +82,74 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SlideContentDrawer({
+  moduleName, 
+  slideId,
   contentDrawerOpen,
   handleContentDrawerToggle,
 }) {
   const classes = useStyles();
   const theme = useTheme();
   const [currentNote, setCurrentNote] = useState("");
-  const [notes, setNotes] = useState([
-    "This is a test note.",
-    "I'm really enjoying this module",
-    "Best module, like, ever!",
-    "My brain is still in recovery mode from all these high level important ideas",
-    "Interesting",
-  ]);
+  const [notes, setNotes] = useState([]);
+
+  const fetchNotes = async () => {
+		const token = LocalStorage.getToken()
+		if (token == null) {
+			return 
+		}
+    const path = '/notes/' + moduleName + '/' + slideId
+		const response = await axios.get(path, {
+			headers: {
+				'Authorization': 'Bearer ' + token
+			}
+		})
+		setNotes(response.data)
+	}
+
+  const saveNote = (note) => {
+		const token = LocalStorage.getToken()
+		if (token == null) {
+			return 
+		}
+    const data = {
+      content: note, 
+      moduleName: moduleName, 
+      slide: slideId
+    }
+    const response = axios.post('/notes', data, {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    })
+  }
+
+  const deleteNote = (index, note) => {
+    const newNotes = [...notes]
+    newNotes.splice(index, 1)
+    setNotes(newNotes)
+		const token = LocalStorage.getToken()
+		if (token == null) {
+			return 
+		}
+    axios.delete('/notes/'+ note._id, {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    })
+  }
+
+	useEffect(() => {
+		fetchNotes()
+	}, [slideId])
 
   const handleNoteChange = (e) => {
     setCurrentNote(e.target.value);
   };
 
   const handleSaveNote = (e) => {
-    setNotes([...notes, currentNote]);
     setCurrentNote("");
+    saveNote(currentNote)
+    fetchNotes()
   };
 
   const handleDrawerOpen = () => {
@@ -153,8 +203,9 @@ export default function SlideContentDrawer({
                   primaryTypographyProps={{
                     className: classes.notesClass,
                   }}
-                  primary={note}
+                  primary={note.content}
                 />
+                <ClearIcon onClick={() => deleteNote(index, note)}/>
               </ListItem>
               <Divider variant="middle" />
             </div>
