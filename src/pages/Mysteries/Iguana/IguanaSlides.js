@@ -7,7 +7,7 @@ import IguanaSlide3 from "./IguanaSlide3";
 import IguanaSlide8 from "./IguanaSlide8";
 import PhyloTreeSlide from "../../../containers/PhyloTreeSlide";
 // import IguanaSlide15 from "../../containers/IguanaSlide15";
-import IguanaSlide14 from "../../../containers/IguanaSlide14";
+import IguanaSlide14 from "./IguanaSlide14";
 import IguanaSlide17 from "../../../containers/IguanaSlide17";
 import AudioPlayer from "../../../containers/AudioPlayer";
 
