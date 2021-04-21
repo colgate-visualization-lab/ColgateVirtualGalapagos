@@ -25,6 +25,7 @@ import { SettingsEthernet } from '@material-ui/icons';
 import { Divider } from '@material-ui/core';
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/styles";
+import AudioPlayer from "../../containers/AudioPlayer";
 
 export default function VolcanoSlides(props) {
 
@@ -101,54 +102,62 @@ export default function VolcanoSlides(props) {
     if (props.data.id == 1) {
         return (
                 <video className={classes.test} src={props.data.videoSrc} autoPlay controls controlsList="nodownload" type="video/mp4"/> 
-                // <div style={{backgroundColor: "pink", position: "absolute", height: "100%", width: "100%"}}>hello</div>
         )
     }
     else if (props.data.id == 2) {
         return (
-                // {/* <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> */}
+            <Fragment>
                 <IframeCompoment class={classes.test} src={props.data.videoSrc}/>
+                <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 3) {
         return (
-                // {/* <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> */}
+            <Fragment>
                 <IframeCompoment class={classes.test} src={props.data.videoSrc}/>
+                <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 4) {
         return (
-                // {/* <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> */}
+            <Fragment>
                 <IframeCompoment class={classes.test} src={props.data.videoSrc}/>
+                <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 5) {
         return (
-                // {/* <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> */}
+            <Fragment>
                 <IframeCompoment class={classes.test} src={props.data.videoSrc}/>
+                <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 6) {
         return (
-                // {/* <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> */}
+            <Fragment>
                 <IframeCompoment class={classes.test} src={props.data.videoSrc}/>
+                <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 7) {
         return (
-                <Fragment>
-                    {/* <audio className={classes.audioPlayer} src={terrainMap2} autoPlay controls controlsList="nodownload"/> */}
-                    <img className={MUIclasses.img} src={props.data.imageSrc1}/>
-              
-                        <div className={classes.hypothesis} >Click on the magnifying glass!</div>
-                    <Link to={"/volcano/8"}>
-                        <img className={classes.magnifying} src={props.data.imageSrc2}/>
-                    </Link>
-                </Fragment>
+            <Fragment>
+                <img className={MUIclasses.img} src={props.data.imageSrc1}/>
+                <div className={classes.hypothesis} >Click on the magnifying glass!</div>
+                <Link to={"/volcano/8"}>
+                    <img className={classes.magnifying} src={props.data.imageSrc2}/>
+                </Link>
+                <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 8) {
-        return ( //Width of this needs to get fixed eventually
+        return ( 
             <div>
             {/* <audio className={classes.audioPlayer} src={volcanoSlider1} autoPlay controls controlsList="nodownload"/>
             <div className={classes.sliderDiv}>
@@ -160,38 +169,34 @@ export default function VolcanoSlides(props) {
     }
     else if (props.data.id == 9) {
         return (
-            <div>
-                <audio className={classes.audioPlayer} src={volcanoCompare360} autoPlay controls controlsList="nodownload"/>
+            <Fragment>
                 <IframeCompoment class={classes.leftVista} src={props.data.videoSrc1} />
                 <IframeCompoment class={classes.rightVista} src={props.data.videoSrc2} />
-            </div>
+                <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 10) {
         const button = {position: "absolute", zIndex: "1", top: "55%", left: "7%",}
         return (
-            <div>
-            <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
-            <div className={classes.imgContainer}>
-                <img className={classes.imgFill} src={props.data.imageSrc}/>
+            <Fragment>
+                <img className={MUIclasses.img} src={props.data.imageSrc}/>
                 <div className={classes.hypothesis}>
                     <Link to={"/volcano/11"}>
-                    <Button 
-                        style={button}
-                        variant="contained" 
-                        color="secondary"
-                        > 
-                        Compare Observations</Button>
-                        </Link>
+                        <Button 
+                            style={button}
+                            variant="contained" 
+                            color="secondary"
+                            >Compare Observations</Button>
+                    </Link>
                 </div>
-            </div>
-            </div>
+            <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 11) {
         return (
-            <div>
-            <audio className={classes.audioPlayer} src={fernandina1} autoPlay controls controlsList="nodownload"/>
+            <Fragment>
             <div className={classes.imgContainer}>
                 <img className={classes.imgFill} src={Ferd}/>
                 <Popup trigger={<button className={`${classes.dot} ${classes.dot4}`}></button>} 
@@ -213,13 +218,13 @@ export default function VolcanoSlides(props) {
                     </div>
                 </Popup>
             </div>
-            </div>
+            <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 12) {
         return (
-            <div>
-            <audio className={classes.audioPlayer} src={santaCruz1} autoPlay controls controlsList="nodownload"/>
+            <Fragment>
             <div className={classes.imgContainer}>
                 <img className={classes.imgFill} src={santaCruz}/>
                 <Popup trigger={<button className={`${classes.dot} ${classes.dot7}`}></button>}
@@ -241,13 +246,13 @@ export default function VolcanoSlides(props) {
                     </div>
                 </Popup>
             </div>
-            </div>
+            <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 13) {
         return (
-            <div>
-            <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
+            <Fragment>
             <div className={classes.imgContainer}>
                 <img className={classes.imgFill} src={props.data.imageSrc}/>
                 <div className={classes.hypothesis}>What's a hypothesis? (click the circle) </div>
@@ -265,34 +270,34 @@ export default function VolcanoSlides(props) {
                     </div>
                 </Popup>
             </div>
-            </div>
+            <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 14) {
         return (
-            <div>
-            <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
+            <Fragment>
             <div className={classes.imgContainer}>
                 <img className={classes.imgFill} src={props.data.imageSrc} />
                 <DndLayout volcano10={true} />
             </div>
-            </div>
+            <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 15) {
         return (
-            <div>
-                <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
-            <div className={classes.imgContainer}>
-                <img className={classes.imgFill} src={props.data.imageSrc}/>
-            </div>
-            </div>
+            <Fragment>
+                <div className={classes.imgContainer}>
+                    <img className={classes.imgFill} src={props.data.imageSrc}/>
+                </div>
+            <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 16) {
         return (
-            <div>
-            <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
+            <Fragment>
             <div className={classes.imgContainer}>
                     <img className={classes.imgFill} src={props.data.imageSrc}/>
                     <Popup trigger={<button className={`${classes.dot} ${classes.dot10}`}></button>}
@@ -343,8 +348,9 @@ export default function VolcanoSlides(props) {
                             along the coast volcanoes erupt regularly!
                         </div>
                     </Popup>
-            </div>
-            </div>
+                </div>
+            <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 17) {
@@ -354,25 +360,26 @@ export default function VolcanoSlides(props) {
     }
     else if (props.data.id == 18) {
         return (
-            <div>
-                <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
+            <Fragment>
                 <img className={classes.center} src={props.data.imageSrc}/>
-            </div>
+                <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 19) {
         return (
             <div>
                 This slide is not completed yet! You can listen to the audio tho :D
+                I lied no audio for now sorry!
             </div>
         )
     }
     else if (props.data.id == 20) {
         return (
-                <div>
-                <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
+            <Fragment>
                 <img className={classes.center} src={props.data.imageSrc}/>
-                </div>
+                <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 21) {
@@ -382,59 +389,55 @@ export default function VolcanoSlides(props) {
     }
     else if (props.data.id == 22) {
         return (
-            <div>
-            <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
-            <div className={classes.imgContainer}>
-                <img className={classes.imgFill} src={props.data.imageSrc}/>
-            </div>
-            </div>
+            <Fragment>
+                <div className={classes.imgContainer}>
+                    <img className={classes.imgFill} src={props.data.imageSrc}/>
+                </div>
+            <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 23) {
         const button = {position: "absolute", zIndex: "1", top: "55%", left: "7%",}
         return (
-            <div>
-                <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
-            <div className={classes.imgContainer}>
-                <img className={classes.imgFill} src={props.data.imageSrc}/>
-                <Button 
-                    style={button}
-                    variant="contained" 
-                    color="secondary"
-                    onClick={() => props.setSlideChange(20)}
-                    > 
-                    Eruption Dates</Button>
-            </div>
-            </div>
+            <Fragment>
+                <div className={classes.imgContainer}>
+                    <img className={classes.imgFill} src={props.data.imageSrc}/>
+                    <Button 
+                        style={button}
+                        variant="contained" 
+                        color="secondary"
+                        onClick={() => props.setSlideChange(20)}
+                        >Eruption Dates</Button>
+                </div>
+            <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 24) {
         return (
-            <div>
-                <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
-            <div className={classes.imgContainer}>
-                <img className={classes.imgFill} src={props.data.imageSrc}/>
-            </div>
-            </div>
+            <Fragment>
+                    <img className={MUIclasses.img} src={props.data.imageSrc}/>
+                <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 25) {
         return (
-            <div>
-                <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/>
+            <Fragment>
                 <img ref={slide21ref} src={props.data.imageSrc} className={classes.center} style={{visibility: "hidden"}} />
                 <div className={classes.imageMapper}>   
                     <ImageMapper src={props.data.imageSrc} width={slide21state + 15} imgWidth={2117} map={MAP} fillColor={"rgba(0, 246, 255, 0.33)"} 
                     onClick={(area) => slide21Handler(area)}/>
                 </div>
-            </div>
+                <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 26) {
         const button = {flexGrow: "1"}
         return (
-            <div>
-            <audio className={classes.audioPlayer} src={plumeNo1} autoPlay controls controlsList="nodownload"/>
+            <Fragment>
             <div className={classes.imgContainer}>
                 <div style={{display: "flex", position: "absolute", left: "0", bottom: "20px", height: "20%", flexDirection: "column"}}>
                     <Button 
@@ -452,28 +455,29 @@ export default function VolcanoSlides(props) {
                 </div>
                 <img className={classes.imgFill} src={TerrainOvalWrong}/>
             </div>
-            </div>
+            <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 27) {
         return (
-            <div>
-            <audio className={classes.audioPlayer} src={props.data.audioSrc} autoPlay controls controlsList="nodownload"/> 
-            <div className={classes.imgContainer}>
-                <img className={classes.imgFill} src={props.data.imageSrc}/>
-            </div>
-            </div>
+            <Fragment>
+                <div className={classes.imgContainer}>
+                    <img className={classes.imgFill} src={props.data.imageSrc}/>
+                </div>
+                <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 28) {
         return (
-            <div>
-            <audio className={classes.audioPlayer} src={whereNext1} autoPlay controls controlsList="nodownload"/> 
-            <div className={classes.imgContainer}>
-                This is the end!
-                <img className={classes.imgFill} src={TerrainMap}/>
-            </div>
-            </div>
+            <Fragment>
+                <div className={classes.imgContainer}>
+                    This is the end!
+                    <img className={classes.imgFill} src={TerrainMap}/>
+                </div>
+            <AudioPlayer src={props.data.audioSrc} />
+            </Fragment>
         )
     }
     else if (props.data.id == 29) {
@@ -484,7 +488,7 @@ export default function VolcanoSlides(props) {
     else {
         return ( 
         <div>
-            Error IDK what happened.
+            Error. Actually nah this an Easter egg :)
         </div>
         )
     }
