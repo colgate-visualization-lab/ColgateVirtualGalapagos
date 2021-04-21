@@ -12,7 +12,7 @@ import {
   MapFloreana,
   MapEspanola,
 } from "./assets/Homepage";
-import Homepage from "./containers/Homepage";
+import Homepage from "./pages/LandingPage";
 import SplashScreen from "./components/SplashScreen/SplashScreen";
 import Gallery from "./containers/Gallery/Gallery";
 // import ModuleNav from "./components/ModuleNav/ModuleNav";
