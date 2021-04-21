@@ -8,7 +8,7 @@ import IguanaSlide8 from "./IguanaSlide8";
 import PhyloTreeSlide from "../../../containers/PhyloTreeSlide";
 // import IguanaSlide15 from "../../containers/IguanaSlide15";
 import IguanaSlide14 from "./IguanaSlide14";
-import IguanaSlide17 from "../../../containers/IguanaSlide17";
+import IguanaSlide16 from "./IguanaSlide16";
 import AudioPlayer from "../../../containers/AudioPlayer";
 
 const useStyles = makeStyles((theme) => ({
@@ -79,7 +79,7 @@ function IguanaSlides({ content }) {
   } else if (content.type === "dnaInteractiveActivity") {
     return (
       <>
-        <IguanaSlide17 content={content} />
+        <IguanaSlide16 content={content} />
         <AudioPlayer src={content.audioSrc} />
       </>
     );
