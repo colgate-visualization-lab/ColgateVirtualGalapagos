@@ -18,7 +18,7 @@ import Gallery from "./pages/Gallery";
 // import ModuleNav from "./components/ModuleNav/ModuleNav";
 import ModuleNav from "./components/ModuleNavAlternate";
 import VolcanoLayout from "./containers/VolcanoLayout/VolcanoLayout";
-import ExtraSelect from "./components/ExtraSelect/ExtraSelect";
+import ExtraSelect from "./pages/Extras";
 import VolcanoSlides from "./components/VolcanoSlides/VolcanoSlides";
 import theme from "./utils/theme";
 import Test from "./containers/Test/Test";
