@@ -3,13 +3,13 @@ import Iframe from "react-iframe";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/styles";
 
-import IguanaSlide3 from "../../containers/IguanaSlide3";
-import IguanaSlide8 from "../IguanaSlide8";
-import PhyloTreeSlide from "../../containers/PhyloTreeSlide";
+import IguanaSlide3 from "./IguanaSlide3";
+import IguanaSlide8 from "../../../components/IguanaSlide8";
+import PhyloTreeSlide from "../../../containers/PhyloTreeSlide";
 // import IguanaSlide15 from "../../containers/IguanaSlide15";
-import IguanaSlide14 from "../../containers/IguanaSlide14";
-import IguanaSlide17 from "../../containers/IguanaSlide17";
-import AudioPlayer from "../../containers/AudioPlayer";
+import IguanaSlide14 from "../../../containers/IguanaSlide14";
+import IguanaSlide17 from "../../../containers/IguanaSlide17";
+import AudioPlayer from "../../../containers/AudioPlayer";
 
 const useStyles = makeStyles((theme) => ({
   // VIDEO STYLING
