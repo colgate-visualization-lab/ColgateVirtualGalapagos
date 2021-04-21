@@ -4,13 +4,10 @@ import { ThemeProvider } from "@material-ui/styles";
 
 import SignIn from "./pages/Authorization/SignIn";
 import SignUp from "./pages/Authorization/SignUp";
-import Homepage from "./pages/LandingPage";
+import Homepage from "./pages/IslandHomepage";
 import Gallery from "./pages/Gallery";
 import ExtraSelect from "./pages/Extras";
 import Settings from "./pages/Settings";
-
-import Layout from "./containers/Layout/Layout";
-import LoadingScreen from "./containers/LoadingScreen/LoadingScreen";
 import {
   MapFernandina,
   MapIsabela,
@@ -18,16 +15,20 @@ import {
   MapFloreana,
   MapEspanola,
 } from "./assets/homepage";
-import SplashScreen from "./components/SplashScreen/SplashScreen";
+import SplashScreen from "./pages/SplashScreen";
+
+import Layout from "./containers/Layout/Layout";
+import LoadingScreen from "./containers/LoadingScreen/LoadingScreen";
 // import ModuleNav from "./components/ModuleNav/ModuleNav";
 import ModuleNav from "./components/ModuleNavAlternate";
 import VolcanoLayout from "./containers/VolcanoLayout/VolcanoLayout";
 import VolcanoSlides from "./components/VolcanoSlides/VolcanoSlides";
-import theme from "./utils/theme";
 import Test from "./containers/Test/Test";
 import NewNote from "./containers/Backpack/Fieldbook/Note/NewNote";
 import Fieldbook from "./containers/Backpack/Fieldbook/Fieldbook";
 import ModuleContainer from "./containers/ModuleContainer";
+
+import theme from "./utils/theme";
 
 const VolcanoModule = lazy(() =>
   import("./containers/VolcanoModule/VolcanoModule")
