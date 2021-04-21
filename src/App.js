@@ -2,8 +2,8 @@ import React, { Component, Suspense, lazy } from "react";
 import { Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/styles";
 import Layout from "./containers/Layout/Layout";
-import SignIn from "./containers/Authorization/SignIn";
-import SignUp from "./containers/Authorization/SignUp";
+import SignIn from "./pages/Authorization/SignIn";
+import SignUp from "./pages/Authorization/SignUp";
 import LoadingScreen from "./containers/LoadingScreen/LoadingScreen";
 import {
   MapFernandina,
