@@ -9,7 +9,7 @@ import data from "../../assets/IguanaData/IguanaData.js";
 import volcanodata from "../../../assets/VolcanoData/VolcanoData.js";
 // import AudioPlayerHandler from "../../../components/AudioPlayer/AudioPlayerHandler";
 import ControlButtons from "../../../components/ControlButtons/ControlButtons";
-import SlideContentDrawer from "../../../containers/SlideContentDrawer";
+import SlideContentDrawer from "./SlideContentDrawer";
 import FieldBookDrawer from "../../../containers/FieldBookDrawer";
 import ModuleSelector from "../ModuleSelector/ModuleSelector";
 import AudioPlayer from "../../../components/AudioPlayer";
