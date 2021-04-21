@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import iguanaData from "../../../assets/IguanaData";
 import volcanoData from "../../../assets/VolcanoData/VolcanoData.js";
 // import AudioPlayerHandler from "../../../components/AudioPlayer/AudioPlayerHandler";
-import ControlButtons from "../../../containers/ControlButtons/ControlButtons";
+import ControlButtons from "../../../components/ControlButtons/ControlButtons";
 import SlideContentDrawer from "../../../containers/SlideContentDrawer";
 import FieldBookDrawer from "../../../containers/FieldBookDrawer";
 import ModuleSelector from "../ModuleSelector/ModuleSelector";
