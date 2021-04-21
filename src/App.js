@@ -24,7 +24,7 @@ import theme from "./utils/theme";
 import Test from "./containers/Test/Test";
 import NewNote from "./containers/Backpack/Fieldbook/Note/NewNote";
 import Fieldbook from "./containers/Backpack/Fieldbook/Fieldbook";
-import Settings from "./components/Settings/Settings";
+import Settings from "./pages/Settings";
 import ModuleContainer from "./containers/ModuleContainer";
 
 const VolcanoModule = lazy(() =>
@@ -80,32 +80,6 @@ class App extends Component {
                 exact
                 render={(props) => <ModuleContainer {...props} />}
               />
-              {/* <Route
-                path="/iguana/:slide_id"
-                exact
-                render={(props) => (
-                  <ModuleContainer {...props} module={"iguana"} data={data} />
-                )}
-              />
-              <Route
-                path="/iguana/:slide_id"
-                exact
-                render={(props) => (
-                  <ModuleContainer {...props} module={"iguana"} data={data} />
-                )}
-              />
-              <Route
-                path="/volcano/:slide_id"
-                exact
-                render={(props) => (
-                  <ModuleContainer
-                    {...props}
-                    module={"volcano"}
-                    data={volcanodata}
-                  />
-                )}
-              /> */}
-              {/* path="/iguana/:slide_id" component={ModuleContainer} /> */}
               <Route path="/fieldbook" component={Fieldbook} />
               <Route path="/settings" component={Settings} />
               <Route path="/authorization" component={SignIn} />
