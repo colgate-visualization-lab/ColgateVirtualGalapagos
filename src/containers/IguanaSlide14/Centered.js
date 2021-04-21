@@ -6,6 +6,7 @@ const Centered = ({ children, containerStyle }) => {
     <div
       style={{
         zIndex: 0,
+        padding: "20px",
         position: "relative",
         height: "100%",
         width: "100%",
