@@ -1,8 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
-import Line from "./Line";
-import Textbox from "./Textbox";
+import { Line, Textbox } from "./Tools";
 
 const useStyles = makeStyles(() => ({
   drawing: {

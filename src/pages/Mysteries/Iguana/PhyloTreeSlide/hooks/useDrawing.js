@@ -3,12 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { List, Map } from "immutable";
 import transit from "transit-immutable-js";
 
-import { selectSlideData, saveSlideData } from "../slices/slideSlice";
+import {
+  selectSlideData,
+  saveSlideData,
+} from "../../../../../slices/slideSlice";
 //prettier-ignore
 import { clearSelectedState, clearFocusedState, getElementAtPosition, 
          createElement, getCursorAtPosition, updateElement, moveElement, 
          resizeElement, duplicateElement, isFocusedTextbox } 
-        from "../containers/DrawArea/utils";
+        from "../DrawArea/utils";
 
 // call this when elements changes to store it in local storage
 const saveDataToLocalStorage = (dispatch, elements, id) => {

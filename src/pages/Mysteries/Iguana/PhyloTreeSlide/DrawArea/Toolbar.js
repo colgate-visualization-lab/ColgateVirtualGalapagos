@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 
-import toolbarIcons from "../../components/DrawAreaIcons";
+import toolbarIcons from "./toolbarIcons";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DrawAreaToolbar = ({ handleToolChange, selected }) => {
+const Toolbar = ({ handleToolChange, selected }) => {
   const classes = useStyles();
   return (
     <Grid container justify="center" className={classes.container}>
@@ -52,4 +52,4 @@ const DrawAreaToolbar = ({ handleToolChange, selected }) => {
   );
 };
 
-export default DrawAreaToolbar;
+export default Toolbar;

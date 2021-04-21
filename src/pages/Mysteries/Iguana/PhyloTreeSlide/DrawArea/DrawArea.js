@@ -3,17 +3,17 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Drawing from "./Drawing";
-import DrawAreaToolbar from "./DrawAreaToolbar";
-import Options from "../../components/DrawAreaOptions";
-import PhyloTreeSlideInstructions from "../../components/PhyloTreeSlideInstructions";
-import PhyloTreeSidebar from "../../components/PhyloTreeSidebar";
-import { MainActivityArea } from "../../components/PhyloTree";
+import Toolbar from "./Toolbar";
+import StyleOptions from "./StyleOptions";
+import PhyloTreeSlideInstructions from "../../../../../components/PhyloTreeSlideInstructions";
+import PhyloTreeSidebar from "../../../../../components/PhyloTreeSidebar";
+import { MainActivityArea } from "../../../../../components/PhyloTree";
 import DrawAreaMenu from "./DrawAreaMenu";
 //prettier-ignore
 import {  getElementAtPosition, currentlyEditingTextbox, 
           pressedCtrlD, pressedDelete, mouseOverElement, updateMouseCursor } from "./utils";
-import { Slide11Context, Slide11DrawingContext } from "../../contexts";
-import useDrawing from "../../hooks/useDrawing";
+import { Slide11Context, Slide11DrawingContext } from "../contexts";
+import useDrawing from "../hooks/useDrawing";
 
 const useStyles = makeStyles((theme) => ({
   drawArea: {
@@ -173,7 +173,7 @@ const DrawArea = () => {
           />
         </Grid>
         <Grid item>
-          <Options
+          <StyleOptions
             element={selectedElement}
             handleOptionsChange={handleOptionsChange}
             handleAction={handleAction}
@@ -182,7 +182,7 @@ const DrawArea = () => {
       </PhyloTreeSidebar>
       <MainActivityArea>
         <Grid item xs={12}>
-          <DrawAreaToolbar
+          <Toolbar
             handleToolChange={handleToolChange}
             selected={selectedTool}
           />

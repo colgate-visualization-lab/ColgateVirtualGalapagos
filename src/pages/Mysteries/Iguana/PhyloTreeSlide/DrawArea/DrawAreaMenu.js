@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import PhyloTreeMenuButton from "../../components/PhyloTreeMenu/PhyloTreeMenuButton";
-import PhyloTreeMenu from "../../components/PhyloTreeMenu";
-import DrawAreaCorrectTreeModal from "../DrawAreaCorrectTreeModal";
+import PhyloTreeMenuButton from "../../../../../components/PhyloTreeMenu/PhyloTreeMenuButton";
+import PhyloTreeMenu from "../../../../../components/PhyloTreeMenu";
+import CorrectTreeModal from "./CorrectTreeModal";
 
 const DrawAreaMenu = ({
   id,
@@ -24,7 +24,7 @@ const DrawAreaMenu = ({
         label="Clear Canvas"
       />
       {/* <PhyloTreeMenuButton handleClick={handleDone} label="Done" /> */}
-      <DrawAreaCorrectTreeModal />
+      <CorrectTreeModal />
     </PhyloTreeMenu>
   );
 };

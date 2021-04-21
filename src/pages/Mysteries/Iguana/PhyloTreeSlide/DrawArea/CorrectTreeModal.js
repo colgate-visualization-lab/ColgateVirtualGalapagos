@@ -6,8 +6,8 @@ import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 import Draggable from "react-draggable";
 import { makeStyles } from "@material-ui/core/styles";
 
-import PhyloTreeMenuButton from "../../components/PhyloTreeMenu/PhyloTreeMenuButton";
-import { Slide11Context } from "../../contexts";
+import PhyloTreeMenuButton from "../../../../../components/PhyloTreeMenu/PhyloTreeMenuButton";
+import { Slide11Context } from "../contexts";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -33,7 +33,7 @@ function PaperComponent(props) {
     </Draggable>
   );
 }
-const DrawAreaCorrectTreeModal = () => {
+const CorrectTreeModal = () => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const { drawAreaData } = useContext(Slide11Context);
@@ -68,4 +68,4 @@ const DrawAreaCorrectTreeModal = () => {
   );
 };
 
-export default DrawAreaCorrectTreeModal;
+export default CorrectTreeModal;

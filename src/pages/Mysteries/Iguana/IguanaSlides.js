@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/styles";
 
 import IguanaSlide3 from "./IguanaSlide3";
 import IguanaSlide8 from "./IguanaSlide8";
-import PhyloTreeSlide from "../../../containers/PhyloTreeSlide";
+import PhyloTreeSlide from "./PhyloTreeSlide";
 // import IguanaSlide15 from "../../containers/IguanaSlide15";
 import IguanaSlide14 from "./IguanaSlide14";
 import IguanaSlide16 from "./IguanaSlide16";

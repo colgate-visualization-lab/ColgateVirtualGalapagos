@@ -3,10 +3,10 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 
-import DrawArea from "../DrawArea";
-import PhyloTreeDnD from "../PhyloTreeDnD";
-import PhyloTreeHeader from "../PhyloTreeHeader";
-import { Slide11Context } from "../../contexts";
+import DrawArea from "./DrawArea";
+import PhyloTreeDnD from "./PhyloTreeDnD";
+import PhyloTreeHeader from "./PhyloTreeHeader";
+import { Slide11Context } from "./contexts";
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -7,10 +7,10 @@ import DragSourcePanel from "./DragSourcePanel";
 import IguanaDropTarget from "./IguanaDropTarget";
 import IguanaDragSource from "./IguanaDragSource";
 import PhyloTreeDnDMenu from "./PhyloTreeDnDMenu";
-import { MainActivityArea } from "../../components/PhyloTree";
-import PhyloTreeSidebar from "../../components/PhyloTreeSidebar";
-import { Slide11Context } from "../../contexts";
-import useTreeDnD from "../../hooks/useTreeDnD";
+import { MainActivityArea } from "../../../../../components/PhyloTree";
+import PhyloTreeSidebar from "../../../../../components/PhyloTreeSidebar";
+import { Slide11Context } from "../contexts";
+import useTreeDnD from "../hooks/useTreeDnD";
 
 import { Box, delay } from "./utils";
 
@@ -66,27 +66,27 @@ const PhyloTreeDnD = () => {
         <Grid container spacing={0}>
           <PhyloTreeSidebar>
             <Grid item>
-              <DragSourcePanel
+              <IguanaDragSource
                 undraggedNames={undraggedNames}
                 completedTreeVisible={completedTreeVisible}
               />
             </Grid>
-            {/* <Grid item>
+            <Grid item>
               <PhyloTreeDnDMenu
                 handleCheckTree={handleCheckTree}
                 handleResetTree={handleResetTree}
                 handleShowTree={handleShowTree}
                 completedTreeVisible={completedTreeVisible}
               />
-            </Grid> */}
+            </Grid>
           </PhyloTreeSidebar>
           <MainActivityArea>
-            {/* <IguanaDropTarget
+            <IguanaDropTarget
               content={content}
               draggedNames={draggedNames}
               correctnessIndicatorVisible={correctnessIndicatorVisible}
               handleDrop={handleDrop}
-            /> */}
+            />
           </MainActivityArea>
         </Grid>
       </Grid>
