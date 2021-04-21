@@ -20,7 +20,7 @@ import ModuleNav from "./components/ModuleNavAlternate";
 import VolcanoLayout from "./containers/VolcanoLayout/VolcanoLayout";
 import ExtraSelect from "./components/ExtraSelect/ExtraSelect";
 import VolcanoSlides from "./components/VolcanoSlides/VolcanoSlides";
-import theme from "./theme/Theme";
+import theme from "./utils/theme";
 import Test from "./containers/Test/Test";
 import NewNote from "./containers/Backpack/Fieldbook/Note/NewNote";
 import Fieldbook from "./containers/Backpack/Fieldbook/Fieldbook";
