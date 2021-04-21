@@ -1,29 +1,24 @@
 import React, { useState, useEffect } from "react";
-import Iframe from "react-iframe";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/styles";
 import clsx from "clsx";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import {useParams} from "react-router"
-
+import { CSSTransition } from 'react-transition-group';
 // import classes from "./MainContent.css";
 import data from "../../assets/IguanaData/IguanaData.js";
-import volcanodata from "../../components/VolcanoData/VolcanoData.js"
-import AudioPlayerHandler from "../../components/AudioPlayer/AudioPlayerHandler";
 import ControlButtons from "../ControlButtons/ControlButtons";
 import SlideContentDrawer from "../SlideContentDrawer";
 import FieldBookDrawer from "../FieldBookDrawer";
-import MainContent from "./MainContent";
-import VolcanoSlides from "../../components/VolcanoSlides/VolcanoSlides"
 import ModuleSelector from "../ModuleSelector/ModuleSelector"
-import AudioPlayer from "../AudioPlayer";
 import {
   getModuleData,
   getSlideData,
   selectSlide,
   selectStatus,
 } from "../../slices/modulesSlice";
+import { useHistory } from "react-router-dom";
+import cssclasses from "./ModuleContainer.css"
 
 //Needed for something lol
 const contentDrawerWidth = 240;
@@ -39,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     justifyContent: "space-between",
   },
-
   container: {
     position: "relative",
     height: "100%",
@@ -69,7 +63,6 @@ const useStyles = makeStyles((theme) => ({
     height: ({ heightOffset }) =>
       `calc(100%  -  ${theme.typography.pxToRem(heightOffset)})`,
   },
-
   contentShiftLeft: {
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.easeOut,
@@ -77,7 +70,6 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: baseContentMargin,
   },
-
   contentShiftRight: {
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.easeOut,
@@ -90,7 +82,6 @@ const useStyles = makeStyles((theme) => ({
 const GridContainer = (props) => (
   <Grid {...props} container spacing={1} direction="row" justify="center" />
 );
-
 // Slide Content Container Component - holds slide-specific content
 // the videos, images, 360s, and any other content
 const SlideContainer = (props) => (
@@ -106,35 +97,28 @@ const SlideContainer = (props) => (
 
 // Actual function being exported
 function ModuleContainer(props) {
+
   const dispatch = useDispatch();
+  const history = useHistory(); 
   let moduleData = useSelector(selectSlide);
   let status = useSelector(selectStatus);
-
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(getModuleData("iguana"));
-    }
-    if (status === "moduleDataLoaded") {
-      dispatch(getSlideData(slideId));
-    }
-  });
-
+  let id = useParams(); //This is kind of the same thing as slideId, uhh but that wasn't working for me in useeffect so I used this
   // we get current slide id from and use that to find the next and prev slide ids
-  // let {slideId} = useParams();
   const slideId = parseInt(props.match.params.slide_id || 1);
   const prevSlide = `/${props.module}/${slideId === 1 ? 1 : slideId - 1}`;
   const nextSlide = `/${props.module}/${slideId + 1 > data.length ? slideId : slideId + 1}`;
-  //I guess this state is used for sidebars and fieldbook
-  const [contentDrawerOpen, setContentDrawerOpen] = useState(false);
-  const [fieldBookDrawerOpen, setFieldBookDrawerOpen] = useState(false);
   // so content is the very virst {} in the data array. This is what connects the data with the URL.
   const content = props.data[slideId - 1];
+
+  //State
+  const [contentDrawerOpen, setContentDrawerOpen] = useState(false);
+  const [fieldBookDrawerOpen, setFieldBookDrawerOpen] = useState(false);
+  const [animationState, setAnimationState] = useState(false) //Used for CSSTransitions component
   //Styling? Also if we declare content after styleProps this doesn't work. Order matters kids.
   const styleProps = {
     heightOffset: "audioSrc" in content ? 150 : 60,
   };
   const classes = useStyles(styleProps);
-
   //I guess these are used for opening it and stuff
   const handleContentDrawerToggle = (open) => {
     setContentDrawerOpen(open);
@@ -144,19 +128,56 @@ function ModuleContainer(props) {
   };
   //IDK what this is
   const handleSlideChange = (slideId) => {};
+  //Functions passed to control buttons to handle slide change. Also passed to the module.
+  const changeSlide = (x, y) => {
+    if (x == "prev") {
+    setAnimationState(false);
+    setTimeout(() => history.push(y), 500)
+    }
+    else if (x == "next") {
+      setAnimationState(false);
+      console.log(slideId);
+      console.log(data.length);
+      setTimeout(() => history.push(y), 500)
+    }
+  };
+
+  //Lifecycles
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(getModuleData("iguana"));
+    }
+     if (status === "moduleDataLoaded") {
+      dispatch(getSlideData(slideId));
+    }
+    });
+  useEffect(() => {
+    setAnimationState(true) //Triggers fade in at the same time as changing the route.
+  }, [id]);
+  //Fires once, at mount.
+  useEffect(() => {
+      setTimeout(() => setAnimationState(true), 500)
+      return () => {
+          // cleaning up the listeners here, none right now
+      }
+  }, []);
+
   // ControlButtons component props
   const controlButtonProps = {
     hasPrev: content.hasPrev,
     hasNext: content.hasNext,
     nextSlide: `${content.hasOptional? content.nextSlideId : nextSlide}`,
     prevSlide: `${content.followingOptional? content.prevSlideId : prevSlide}`,
+    changeSlide: changeSlide
   };
+  // Module Props
   const moduleProps = {
     nextSlide: nextSlide,
     prevSlide: prevSlide,
     slideId: slideId,
     content: content,
-    module: props.module
+    module: props.module,
+    changeSlide: changeSlide
   };
 
   return (
@@ -174,7 +195,18 @@ function ModuleContainer(props) {
         })}
       > 
       <SlideContainer className={classes.slideContainer}>
-        <ModuleSelector {...moduleProps} />
+        <CSSTransition
+          in={animationState}
+          timeout={500}
+          classNames={{
+            enter: `${cssclasses.testenter}`,
+            enterActive: `${cssclasses.testenteractive}`,
+            exit: `${cssclasses.testexit}`,
+            exitActive: `${cssclasses.testexitactive}`,
+              }}
+          unmountOnExit> 
+            <ModuleSelector {...moduleProps} /> 
+          </CSSTransition>
         <ControlButtons {...controlButtonProps} />
       </SlideContainer>
       </GridContainer>
