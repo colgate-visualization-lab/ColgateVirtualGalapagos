@@ -71,10 +71,10 @@
 }
 .leftVista {
   position: absolute;
-  height: 80%;
-  width: 35%;
-  top: 10%;
-  left: 15%;
+  height: 100%;
+  width: 50%;
+  top: 0%;
+  left: 0;
   border: 2px solid darkgoldenrod;
 }
 .leftVista:focus {
@@ -82,9 +82,9 @@
 }
 .rightVista {
   position: absolute;
-  height: 80%;
-  width: 35%;
-  top: 10%;
+  height: 100%;
+  width: 50%;
+  top: 0;
   left: 50%;
   border: 2px solid darkgoldenrod;
 }
@@ -317,11 +317,14 @@
   transform: translate(-50%, 0);
   border: 2px solid darkgoldenrod;
 }
-/* New shit */
+/* New stuff */
 .test {
   /* position: absolute; */
   justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
+}
+.test:focus {
+  outline: 0;
 }
