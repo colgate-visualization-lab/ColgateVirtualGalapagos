@@ -44,7 +44,7 @@ export default function ControlButtons(props) {
     >
       <Grid item>
         {props.hasPrev && (
-            <Button variant="outlined" size="medium" className={classes.button} onClick={() => props.changeSlide("prev", props.prevSlide)}>
+            <Button variant="outlined" size="medium" className={classes.button} onClick={() => props.changeSlide(props.prevSlide)}>
               <Typography color="secondary" className={classes.buttonText}>
                 PREVIOUS 
               </Typography>
@@ -53,7 +53,7 @@ export default function ControlButtons(props) {
       </Grid>
       <Grid item>
         {props.hasNext && (
-            <Button variant="outlined" size="medium" className={classes.button} onClick={() => props.changeSlide("next", props.nextSlide)}>
+            <Button variant="outlined" size="medium" className={classes.button} onClick={() => props.changeSlide(props.nextSlide)}>
               <Typography color="secondary" className={classes.buttonText}>
                 NEXT
               </Typography>
