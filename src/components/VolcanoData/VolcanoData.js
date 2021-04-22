@@ -67,11 +67,11 @@ const iguanaData = [
     title: "Slider Comparison",
     hasNext: false,
     audioSrc:
-      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap02.mp3",
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Slider01.mp3",
     imageSrc1:
-      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/TerrainMap-Labelled.png",
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/SantaCruz_Color.png",
     imageSrc2:
-      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/magnifying-glass-1010537_1920.png",
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/ferd.png",
   },
   {
     id: "9",
@@ -99,18 +99,18 @@ const iguanaData = [
     id: "11",
     title: "Ferd",
     audioSrc: 
-      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap03.mp3",
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Fernandina01.mp3",
     imageSrc: 
-      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/TerrainMap-Labelled.png",
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/ferd.png",
   },
   {
     id: "12",
     title: "Santa Cruz",
     hasNext: false,
     audioSrc: 
-      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMap03.mp3",
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_SantaCruz01.mp3",
     imageSrc: 
-      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/TerrainMap-Labelled.png",
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/SantaCruz_Color.png",
   },
   {
     id: "13",
