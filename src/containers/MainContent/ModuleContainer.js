@@ -105,8 +105,8 @@ function ModuleContainer(props) {
   let id = useParams(); //This is kind of the same thing as slideId, uhh but that wasn't working for me in useeffect so I used this
   // we get current slide id from and use that to find the next and prev slide ids
   const slideId = parseInt(props.match.params.slide_id || 1);
-  const prevSlide = `/${props.module}/${slideId === 1 ? 1 : slideId - 1}`;
-  const nextSlide = `/${props.module}/${slideId + 1 > data.length ? slideId : slideId + 1}`;
+  const prevSlide = `/${props.module}/${slideId - 1}`;
+  const nextSlide = `/${props.module}/${slideId + 1}`;
   // so content is the very virst {} in the data array. This is what connects the data with the URL.
   const content = props.data[slideId - 1];
 
@@ -129,19 +129,10 @@ function ModuleContainer(props) {
   //IDK what this is
   const handleSlideChange = (slideId) => {};
   //Functions passed to control buttons to handle slide change. Also passed to the module.
-  const changeSlide = (x, y) => {
-    if (x == "prev") {
+  const changeSlide = (x) => {
     setAnimationState(false);
-    setTimeout(() => history.push(y), 500)
-    }
-    else if (x == "next") {
-      setAnimationState(false);
-      console.log(slideId);
-      console.log(data.length);
-      setTimeout(() => history.push(y), 500)
-    }
+    setTimeout(() => history.push(x), 500)
   };
-
   //Lifecycles
   useEffect(() => {
     if (status === "idle") {
@@ -179,15 +170,18 @@ function ModuleContainer(props) {
     module: props.module,
     changeSlide: changeSlide
   };
+  // SlideContentDrawer props
+  const SlideContentDrawerProps = {
+    slideData: props.data,
+    contentDrawerOpen: contentDrawerOpen,
+    handSlideChange: handleSlideChange,
+    handleContentDrawerToggle: handleContentDrawerToggle,
+    changeSlide: changeSlide
+  }
 
   return (
     <div className={classes.root}>
-      <SlideContentDrawer
-        slideData={props.data}
-        contentDrawerOpen={contentDrawerOpen}
-        handleSlideChange={handleSlideChange}
-        handleContentDrawerToggle={handleContentDrawerToggle}
-      />
+      <SlideContentDrawer {...SlideContentDrawerProps} />
       <GridContainer
         className={clsx(classes.container, classes.content, {
           [classes.contentShiftLeft]: contentDrawerOpen,

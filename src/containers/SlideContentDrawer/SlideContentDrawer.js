@@ -68,6 +68,7 @@ export default function SlideContentDrawer({
   handleContentDrawerToggle,
   handleSlideChange,
   slideData,
+  changeSlide
 }) {
   const classes = useStyles();
   const theme = useTheme();
@@ -120,8 +121,9 @@ export default function SlideContentDrawer({
               <ListItem
                 button
                 key={index}
-                component={Link}
-                to={data.id}
+                // component={Link}
+                // to={data.id}
+                onClick={() => changeSlide(data.id)}
                 className={classes.cleanLink}
               >
                 <ListItemText
