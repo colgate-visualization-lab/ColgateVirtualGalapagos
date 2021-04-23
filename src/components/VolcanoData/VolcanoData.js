@@ -186,7 +186,7 @@ const iguanaData = [
     audioSrc: 
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_SouthAmerica01Fix.mp3",
     imageSrc: 
-      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_SouthAmerica01Fix.mp3",
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/GalapagosSAmerica.png",
   },
   {
     id: "23",
@@ -221,11 +221,13 @@ const iguanaData = [
     audioSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_PlumeYes01Fix.mp3",
     imageSrc: 
-      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/TerrainMapRightOval.png",
+      "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/TerrainMapWrongOval.png",
   },
   {
     id: "27",
     title: "Plume Yes",
+    followingOptional: true,
+    prevSlideId: "25",
     audioSrc:
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_PlumeYes01Fix.mp3",
     imageSrc: 
