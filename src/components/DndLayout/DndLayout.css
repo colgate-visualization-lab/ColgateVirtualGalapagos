@@ -15,13 +15,14 @@
   top: 10px;
   width: 21%;
   text-align: center;
+  color: white;
 }
 .drag {
   flex-grow: 1;
   height: 33.33%;
   max-width: 50%;
   flex-grow: 1;
-  background-color: rgb(32, 32, 34);
+  background-color: rgb(255, 255, 255);
   border: 2px solid darkgoldenrod;
   text-align: center;
   font-size: 14px;
