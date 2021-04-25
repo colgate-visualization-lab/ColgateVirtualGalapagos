@@ -19,6 +19,7 @@ import {
   selectSlide,
   selectStatus,
 } from "../../slices/modulesSlice";
+import {module} from '../../utils/const'
 
 //Needed for something lol
 const contentDrawerWidth = 240;
@@ -176,7 +177,8 @@ function ModuleContainer(props) {
         </SlideContainer>
       </GridContainer>
       <FieldBookDrawer
-        slideData={data}
+        moduleName= {module.IGUANA}
+        slideId={slideId}
         contentDrawerOpen={fieldBookDrawerOpen}
         handleSlideChange={handleSlideChange}
         handleContentDrawerToggle={handleFieldBookDrawerToggle}
