@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline"
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -75,6 +76,7 @@ const SignIn = () => {
 
   return (
 	<Container component="main" maxWidth="xs">
+      <CssBaseline/>
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -91,7 +93,6 @@ const SignIn = () => {
             label="Email Address"
             name="email"
             autoComplete="email"
-            className={classes.textField}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -104,7 +105,6 @@ const SignIn = () => {
             label="Password"
             type="password"
             autoComplete="current-password"
-            className={classes.textField}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -113,8 +113,8 @@ const SignIn = () => {
               <Checkbox
                 value="remember"
                 checked={isRemembered}
-                className={classes.checkbox}
                 onClick={handleClick}
+                color="primary"
               />
             }
             label="Remember me"
@@ -124,18 +124,19 @@ const SignIn = () => {
             fullWidth
             variant="contained"
             className={classes.submit}
-			disabled={loggedIn}
+			      disabled={loggedIn}
+            color="primary"
           >
             Sign In
           </Button>
-		  <Snackbar 
-		  	  open={error} 
-			  autoHideDuration={6000} 
-			  onClose={handleClose} 
-			  anchorOrigin={{vertical: "top", horizontal: "center"}}
-		  >
-			  <Alert onClose={handleClose} severity="error">Cannot log in. Try again!</Alert>
-		  </Snackbar>
+          <Snackbar 
+            open={error} 
+            autoHideDuration={6000} 
+            onClose={handleClose} 
+            anchorOrigin={{vertical: "top", horizontal: "center"}}
+          >
+            <Alert onClose={handleClose} severity="error">Cannot log in. Try again!</Alert>
+		      </Snackbar>
           <Grid container>
             <Grid item xs>
               <Link to="/" className={classes.link}>
@@ -172,6 +173,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
   },
   form: {
     width: "100%",
@@ -180,14 +182,9 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-  textField: {
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
-  },
   link: {
     fontSize: "small",
-  },
-  checkbox: {
-    color: "white",
+    color: theme.palette.primary.main,
   },
 }));
 
