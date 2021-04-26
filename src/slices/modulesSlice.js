@@ -4,7 +4,7 @@ import { loadState } from "./localStorage";
 
 const preLoadedState = loadState();
 
-const initialState = preLoadedState
+const initialState = preLoadedState.module
   ? preLoadedState.module
   : {
       status: "idle", // could be loading,
