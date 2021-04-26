@@ -66,10 +66,10 @@ const PhyloTreeDnD = () => {
         <Grid container spacing={0}>
           <PhyloTreeSidebar>
             <Grid item>
-              <DragSourcePanel
+              {/* <DragSourcePanel
                 undraggedNames={undraggedNames}
                 completedTreeVisible={completedTreeVisible}
-              />
+              /> */}
             </Grid>
             {/* <Grid item>
               <PhyloTreeDnDMenu

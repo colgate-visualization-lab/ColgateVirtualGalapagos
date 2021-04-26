@@ -93,6 +93,7 @@ function ModuleContainer(props) {
 
   let id = useParams(); //This is kind of the same thing as slideId, uhh but that wasn't working for me in useeffect so I used this
   // we get current slide id from and use that to find the next and prev slide ids
+
   const slideId = parseInt(props.match.params.slide_id || 1);
 
   const prevSlide = `/${props.module}/${slideId === 1 ? 1 : slideId - 1}`;
@@ -124,7 +125,8 @@ function ModuleContainer(props) {
   //Functions passed to control buttons to handle slide change. Also passed to the module.
   const changeSlide = (x) => {
     setAnimationState(false);
-    setTimeout(() => history.push(x), 500);
+    history.push(x);
+    // setTimeout(() => history.push(x), 500);
   };
   //Lifecycles
   useEffect(() => {
@@ -146,6 +148,7 @@ function ModuleContainer(props) {
     prevSlide: `${content.followingOptional ? content.prevSlideId : prevSlide}`,
     changeSlide: changeSlide,
   };
+
   // Module Props
   const moduleProps = {
     nextSlide: nextSlide,

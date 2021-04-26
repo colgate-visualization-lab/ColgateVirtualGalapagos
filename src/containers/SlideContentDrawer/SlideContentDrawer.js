@@ -34,9 +34,8 @@ const useStyles = makeStyles((theme) => ({
 export default function SlideContentDrawer({
   contentDrawerOpen,
   handleContentDrawerToggle,
-  handleSlideChange,
   slideData,
-  changeSlide
+  changeSlide,
 }) {
   const classes = useStyles();
   const theme = useTheme();
