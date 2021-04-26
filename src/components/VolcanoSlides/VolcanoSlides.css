@@ -18,7 +18,7 @@
 }
 .imgContainer {
   position: absolute;
-  height: 80%;
+  height: 100%;
   max-width: 85vw;
   top: 10%;
   left: 50%;
@@ -70,23 +70,25 @@
     outline: 0;
 }
 .leftVista {
-  position: absolute;
-  height: 80%;
-  width: 35%;
-  top: 10%;
-  left: 15%;
+  width: 50%;
   border: 2px solid darkgoldenrod;
+  height: 100%;
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 360px;
 }
 .leftVista:focus {
   outline: 0;
 }
 .rightVista {
-  position: absolute;
-  height: 80%;
-  width: 35%;
-  top: 10%;
-  left: 50%;
+  width: 50%;
   border: 2px solid darkgoldenrod;
+  position: relative;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 360px;
 }
 .rightVista:focus {
   outline: 0;
@@ -316,4 +318,27 @@
   left: 50%;
   transform: translate(-50%, 0);
   border: 2px solid darkgoldenrod;
+}
+/* New stuff */
+.test {
+  /* position: absolute; */
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.test:focus {
+  outline: 0;
+}
+.divContainer {
+  position: relative;
+  height: 100%;
+}
+.img {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 360px;
 }
