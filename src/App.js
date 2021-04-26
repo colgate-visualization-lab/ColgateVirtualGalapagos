@@ -26,6 +26,8 @@ import NewNote from "./containers/Backpack/Fieldbook/Note/NewNote";
 import Fieldbook from "./containers/Backpack/Fieldbook/Fieldbook";
 import Settings from "./components/Settings/Settings";
 import ModuleContainer from "./containers/ModuleContainer";
+import iguanadata from "./assets/IguanaData/";
+import volcanodata from "./components/VolcanoData/VolcanoData.js";
 
 const VolcanoModule = lazy(() =>
   import("./containers/VolcanoModule/VolcanoModule")
@@ -75,25 +77,33 @@ class App extends Component {
                 exact
                 render={(props) => <Test {...props} />}
               />
-              <Route
+              {/* <Route
                 path="/:moduleName/:slideId"
                 exact
                 render={(props) => <ModuleContainer {...props} />}
+              /> */}
+              <Route
+                path="/iguana/:slide_id"
+                exact
+                render={(props) => (
+                  <ModuleContainer
+                    {...props}
+                    module={"iguana"}
+                    data={iguanadata}
+                  />
+                )}
               />
               {/* <Route
                 path="/iguana/:slide_id"
                 exact
                 render={(props) => (
-                  <ModuleContainer {...props} module={"iguana"} data={data} />
+                  <ModuleContainer
+                    {...props}
+                    module={"iguana"}
+                    data={volcanodata}
+                  />
                 )}
-              />
-              <Route
-                path="/iguana/:slide_id"
-                exact
-                render={(props) => (
-                  <ModuleContainer {...props} module={"iguana"} data={data} />
-                )}
-              />
+              /> */}
               <Route
                 path="/volcano/:slide_id"
                 exact
@@ -104,7 +114,7 @@ class App extends Component {
                     data={volcanodata}
                   />
                 )}
-              /> */}
+              />
               {/* path="/iguana/:slide_id" component={ModuleContainer} /> */}
               <Route path="/fieldbook" component={Fieldbook} />
               <Route path="/settings" component={Settings} />
