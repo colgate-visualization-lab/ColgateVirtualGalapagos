@@ -116,20 +116,24 @@ const NavBar = () => {
             keepMounted
             open={Boolean(anchorEl)}
             onClose={handleClose}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "center",
-            }}
+            // anchorOrigin={{
+            //   vertical: "bottom",
+            //   horizontal: "center",
+            // }}
             transformOrigin={{
               vertical: "top",
               horizontal: "center",
             }}
           >
-            <MenuItem className={classes.menuItem} onClick={handleClose} >
-              <Link className={classes.link} to="/fieldbook">Fieldbook</Link>
+            <MenuItem className={classes.menuItem} onClick={handleClose}>
+              <Link className={classes.link} to="/fieldbook">
+                Fieldbook
+              </Link>
             </MenuItem>
             <MenuItem className={classes.menuItem} onClick={handleClose}>
-            <Link className={classes.link} to="/settings">Settings</Link>
+              <Link className={classes.link} to="/settings">
+                Settings
+              </Link>
             </MenuItem>
           </Menu>
         </Toolbar>
