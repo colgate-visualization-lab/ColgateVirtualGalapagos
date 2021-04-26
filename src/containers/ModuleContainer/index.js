@@ -1,4 +1,4 @@
 // import ModuleContainer from "./ModuleContainer";
-import ModuleContainer from "./ModuleContainerAlternate";
+import ModuleContainer from "./ModuleContainer";
 
 export default ModuleContainer;
