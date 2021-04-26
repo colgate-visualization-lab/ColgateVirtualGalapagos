@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
 // changed ControlButtons to use Links instead of button - they also
 //  conditionally render - back button won't render on first slide
 export default function ControlButtons(props) {
+  console.log(props);
   const classes = useStyles();
   return (
     <Grid
@@ -44,20 +45,30 @@ export default function ControlButtons(props) {
     >
       <Grid item>
         {props.hasPrev && (
-            <Button variant="outlined" size="medium" className={classes.button} onClick={() => props.changeSlide(props.prevSlide)}>
-              <Typography color="secondary" className={classes.buttonText}>
-                PREVIOUS 
-              </Typography>
-            </Button>
+          <Button
+            variant="outlined"
+            size="medium"
+            className={classes.button}
+            onClick={() => props.changeSlide(props.prevSlide)}
+          >
+            <Typography color="secondary" className={classes.buttonText}>
+              PREVIOUS
+            </Typography>
+          </Button>
         )}
       </Grid>
       <Grid item>
         {props.hasNext && (
-            <Button variant="outlined" size="medium" className={classes.button} onClick={() => props.changeSlide(props.nextSlide)}>
-              <Typography color="secondary" className={classes.buttonText}>
-                NEXT
-              </Typography>
-            </Button>
+          <Button
+            variant="outlined"
+            size="medium"
+            className={classes.button}
+            onClick={() => props.changeSlide(props.nextSlide)}
+          >
+            <Typography color="secondary" className={classes.buttonText}>
+              NEXT
+            </Typography>
+          </Button>
         )}
       </Grid>
     </Grid>

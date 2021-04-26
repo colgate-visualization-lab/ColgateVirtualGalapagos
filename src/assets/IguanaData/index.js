@@ -7,6 +7,7 @@ import { slide19DrawAreaData, slide19PhyloTreeData } from "./slide19Data";
 const iguanaData = [
   {
     id: "1",
+    hasPrev: false,
     title: "Iguana_Endemic01",
     type: "video",
     url:
@@ -202,6 +203,7 @@ const iguanaData = [
   },
   {
     id: "20",
+    hasNext: false,
     title: "Iguana_PinkIggy01",
     type: "video",
     url:
