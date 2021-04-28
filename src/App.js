@@ -2,9 +2,9 @@ import React, { Component, Suspense, lazy } from "react";
 import { Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/styles";
 import Layout from "./containers/Layout/Layout";
-import SignIn from "./containers/Authorization/SignIn";
-import SignUp from "./containers/Authorization/SignUp";
-import LoadingScreen from "./containers/LoadingScreen/LoadingScreen";
+import SignIn from "./pages/Authorization/SignIn";
+import SignUp from "./pages/Authorization/SignUp";
+import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
 import {
   MapFernandina,
   MapIsabela,
@@ -12,20 +12,19 @@ import {
   MapFloreana,
   MapEspanola,
 } from "./assets/Homepage";
-import Homepage from "./containers/Homepage";
-import SplashScreen from "./components/SplashScreen/SplashScreen";
-import Gallery from "./containers/Gallery/Gallery";
+import Homepage from "./pages/Homepage";
+import SplashScreen from "./pages/SplashScreen/SplashScreen";
+import Gallery from "./pages/Gallery/Gallery";
 // import ModuleNav from "./components/ModuleNav/ModuleNav";
-import ModuleNav from "./components/ModuleNavAlternate";
-import VolcanoLayout from "./containers/VolcanoLayout/VolcanoLayout";
-import ExtraSelect from "./components/ExtraSelect/ExtraSelect";
+import ModuleNav from "./pages/ModuleNavAlternate";
+import ExtraSelect from "./pages/ExtraSelect/ExtraSelect";
 import VolcanoSlides from "./components/VolcanoSlides/VolcanoSlides";
 import theme from "./theme/Theme";
 import Test from "./containers/Test/Test";
-import NewNote from "./containers/Backpack/Fieldbook/Note/NewNote";
-import Fieldbook from "./containers/Backpack/Fieldbook/Fieldbook";
-import Settings from "./components/Settings/Settings";
-import ModuleContainer from "./containers/ModuleContainer";
+import NewNote from "./pages/Backpack/Fieldbook/Note/NewNote";
+import Fieldbook from "./pages/Backpack/Fieldbook/Fieldbook";
+import Settings from "./pages/Backpack/Settings";
+import ModuleContainer from "./components/ModuleContainer";
 import iguanadata from "./assets/IguanaData/";
 import volcanodata from "./components/VolcanoData/VolcanoData.js";
 
@@ -68,7 +67,7 @@ class App extends Component {
               <Route path="/isabella" exact component={ModuleNav} />
               <Route path="/volcanomod" exact component={VolcanoModule} />
               <Route path="/gallery" exact component={Gallery} />
-              <Route path="/volcanolayout" exact component={VolcanoLayout} />
+
               {/* <Route path="/iguana" exact component={IguanaModule} /> */}
               <Route path="/extras" exact component={ExtraSelect} />
               {/* route for iguana module slides */}
