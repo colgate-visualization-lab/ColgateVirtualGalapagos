@@ -13,7 +13,15 @@ module.exports = {
   devtool: "cheap-module-eval-source-map",
   resolve: {
     alias: {
-      Assets: path.resolve(__dirname, "./src/assets/"),
+      assets: path.resolve(__dirname, "./src/assets/"),
+      components: path.resolve(__dirname, "./src/components/"),
+      api: path.resolve(__dirname, "./src/api/"),
+      contexts: path.resolve(__dirname, "./src/contexts/"),
+      hooks: path.resolve(__dirname, "./src/hooks/"),
+      pages: path.resolve(__dirname, "./src/pages/"),
+      slices: path.resolve(__dirname, "./src/slices/"),
+      theme: path.resolve(__dirname, "./src/theme/"),
+      utils: path.resolve(__dirname, "./src/utils/"),
     },
   },
   module: {
