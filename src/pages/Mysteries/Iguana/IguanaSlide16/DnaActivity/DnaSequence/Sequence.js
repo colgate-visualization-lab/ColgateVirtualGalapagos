@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-import GroupOfFiveBasePairs from "./GroupOfFiveBasePairs";
+import FivePairGroup from "./FivePairGroup";
 
-const BasePairs = ({ classes, numGroups, basePairs }) => {
+const Sequence = ({ classes, numGroups, basePairs }) => {
   // 22.09
 
   const basePairTranslateDist = [];
@@ -14,14 +14,10 @@ const BasePairs = ({ classes, numGroups, basePairs }) => {
   };
   createBasePairTranslationDistances();
 
-  // useEffect(() => {
-  //   console.log(basePairs);
-  // });
-
   return (
     <g id="basePairs">
       {basePairTranslateDist.map((distance, index) => (
-        <GroupOfFiveBasePairs
+        <FivePairGroup
           basePairs={basePairs}
           group={index}
           classes={classes}
@@ -33,4 +29,4 @@ const BasePairs = ({ classes, numGroups, basePairs }) => {
   );
 };
 
-export default BasePairs;
+export default Sequence;

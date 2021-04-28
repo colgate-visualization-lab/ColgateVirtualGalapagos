@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 
-import { BasePairClickContext } from "../../containers/IguanaSlide17";
+import DnaContext from "../../context";
 
 const useStyles = makeStyles((theme) => ({
   geneName: {
@@ -70,7 +70,7 @@ const SingeBasePair = ({ basePair, geneIndex }) => {
     handleEnterBasePair,
     handleLeaveBasePair,
     foundIndices,
-  } = useContext(BasePairClickContext);
+  } = useContext(DnaContext);
 
   const styleProps = {
     overlayOpacity: foundIndices.has(geneIndex) ? 0.3 : 0,

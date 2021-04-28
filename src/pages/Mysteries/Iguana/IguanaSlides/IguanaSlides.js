@@ -3,13 +3,12 @@ import Iframe from "react-iframe";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/styles";
 
-import IguanaSlide3 from "../../containers/IguanaSlide3";
+import IguanaSlide3 from "../IguanaSlide3";
 import IguanaSlide8 from "../IguanaSlide8";
-import PhyloTreeSlide from "../../containers/PhyloTreeSlide";
-// import IguanaSlide15 from "../../containers/IguanaSlide15";
-import IguanaSlide14 from "../../containers/IguanaSlide14";
-import IguanaSlide17 from "../../containers/IguanaSlide17";
-import AudioPlayer from "../../containers/AudioPlayer";
+import PhyloTreeSlide from "../PhyloTreeSlide";
+import IguanaSlide14 from "../IguanaSlide14";
+import IguanaSlide16 from "../IguanaSlide16";
+import AudioPlayer from "components/AudioPlayer";
 
 const useStyles = makeStyles((theme) => ({
   // VIDEO STYLING
@@ -79,7 +78,7 @@ function IguanaSlides({ content }) {
   } else if (content.type === "dnaInteractiveActivity") {
     return (
       <>
-        <IguanaSlide17 content={content} />
+        <IguanaSlide16 content={content} />
         <AudioPlayer src={content.audioSrc} />
       </>
     );

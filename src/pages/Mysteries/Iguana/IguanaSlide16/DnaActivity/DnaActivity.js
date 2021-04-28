@@ -3,8 +3,8 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
-import DnaBackbone from "../../components/DnaBackbone";
-import DnaSequence from "../../components/DnaSequence";
+import DoubleHelix from "./DoubleHelix";
+import Sequence from "./DnaSequence";
 
 const useStyles = makeStyles((theme) => ({
   dnaContainer: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Dna = ({ label, basePairs }) => {
+const DnaActivity = ({ label, basePairs }) => {
   const classes = useStyles();
   const numGroups = 6;
 
@@ -41,8 +41,8 @@ const Dna = ({ label, basePairs }) => {
             id="dna"
             // transform={`translate(0,${yTranslateDistance})`}
           >
-            <DnaBackbone numGroups={numGroups + 1} />
-            <DnaSequence
+            <DoubleHelix numGroups={numGroups + 1} />
+            <Sequence
               classes={classes}
               numGroups={numGroups}
               basePairs={basePairs}
@@ -54,4 +54,4 @@ const Dna = ({ label, basePairs }) => {
   );
 };
 
-export default Dna;
+export default DnaActivity;

@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import SingleBasePair from "./SingleBasePair";
-import { OnBaseClickContext } from "../../containers/IguanaSlide17";
 
-const GroupOfFiveBasePairs = ({ xTranslateDistance, basePairs, group }) => {
+const FivePairGroup = ({ xTranslateDistance, basePairs, group }) => {
   const startIndex = group * 5;
   //prettier-ignore
   const basePairProperties = [
@@ -47,4 +46,4 @@ const GroupOfFiveBasePairs = ({ xTranslateDistance, basePairs, group }) => {
   );
 };
 
-export default GroupOfFiveBasePairs;
+export default FivePairGroup;
