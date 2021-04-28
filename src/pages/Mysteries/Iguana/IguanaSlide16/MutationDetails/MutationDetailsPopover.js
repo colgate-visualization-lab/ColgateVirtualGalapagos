@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Grow from "@material-ui/core/Grow";
 import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DnaMutationPopover = ({ show, coords, details }) => {
+const MutationDetailsPopover = ({ show, coords, details }) => {
   const classes = useStyles();
   return (
     <Grow in={show} className={classes.root}>
@@ -45,4 +45,4 @@ const DnaMutationPopover = ({ show, coords, details }) => {
   );
 };
 
-export default DnaMutationPopover;
+export default MutationDetailsPopover;
