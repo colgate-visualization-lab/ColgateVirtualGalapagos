@@ -4,10 +4,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import update from "immutability-helper";
 
-import Header from "../../components/Slide17Header";
-import Dna from "../Dna";
-import DnaMutationPopover from "../../components/DnaMutationPopover";
-import { BasePairClickContext } from "./";
+import Header from "./Header";
+import DnaActivity from "./DnaActivity";
+import MutationDetailsPopover from "./MutationDetails";
+import DnaContext from "./context";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const IguanaSlide17 = ({ content }) => {
+const IguanaSlide16 = ({ content }) => {
   const classes = useStyles();
 
   const [foundMutations, setFoundMutations] = useState({});
@@ -91,7 +91,7 @@ export const IguanaSlide17 = ({ content }) => {
         </Grid>
         <Grid item xs={12}>
           <Paper variant="outlined" elevation={2} className={classes.paper}>
-            <BasePairClickContext.Provider
+            <DnaContext.Provider
               value={{
                 handleOnBaseClick,
                 handleEnterBasePair,
@@ -99,10 +99,16 @@ export const IguanaSlide17 = ({ content }) => {
                 foundIndices,
               }}
             >
-              <Dna label="Green Iguana" basePairs={greenIguanaSequence} />
-              <Dna label="Marine Iguana" basePairs={marineIguanaSequence} />
-            </BasePairClickContext.Provider>
-            <DnaMutationPopover
+              <DnaActivity
+                label="Green Iguana"
+                basePairs={greenIguanaSequence}
+              />
+              <DnaActivity
+                label="Marine Iguana"
+                basePairs={marineIguanaSequence}
+              />
+            </DnaContext.Provider>
+            <MutationDetailsPopover
               show={showPopover}
               coords={popoverCoords}
               details={popoverDetails}
@@ -113,3 +119,5 @@ export const IguanaSlide17 = ({ content }) => {
     </Grid>
   );
 };
+
+export default IguanaSlide16;

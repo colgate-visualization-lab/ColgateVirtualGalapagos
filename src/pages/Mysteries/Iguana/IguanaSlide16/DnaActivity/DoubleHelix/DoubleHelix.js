@@ -1,8 +1,8 @@
 import React from "react";
 
-import DnaBackbonePiece from "./DnaBackbonePiece";
+import HelixPiece from "./HelixPiece";
 
-const DnaBackbone = ({ numGroups }) => {
+const DoubleHelix = ({ numGroups }) => {
   let xTranslateDistances = [];
 
   const createTransformDistances = () => {
@@ -15,9 +15,9 @@ const DnaBackbone = ({ numGroups }) => {
   return (
     <g id="dnaBackbone">
       {xTranslateDistances.map((distance, index) => (
-        <DnaBackbonePiece key={index} xTranslateDistance={distance} />
+        <HelixPiece key={index} xTranslateDistance={distance} />
       ))}
     </g>
   );
 };
-export default DnaBackbone;
+export default DoubleHelix;

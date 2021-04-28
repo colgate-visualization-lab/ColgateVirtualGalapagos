@@ -4,7 +4,6 @@ import Typography from "@material-ui/core/Typography";
 import Collapse from "@material-ui/core/Collapse";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
-import { getThemeProps } from "@material-ui/styles";
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -31,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Slide17Header = ({ handleShowMutations, numFound, numMutations }) => {
+const Header = ({ handleShowMutations, numFound, numMutations }) => {
   const classes = useStyles();
   const [showHint, setShowHint] = useState(false);
 
@@ -84,4 +83,4 @@ const Slide17Header = ({ handleShowMutations, numFound, numMutations }) => {
   );
 };
 
-export default Slide17Header;
+export default Header;

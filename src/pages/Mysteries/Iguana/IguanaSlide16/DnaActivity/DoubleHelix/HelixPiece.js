@@ -1,6 +1,6 @@
 import React from "react";
 
-const DnaBackbonePiece = ({ xTranslateDistance }) => {
+const HelixPiece = ({ xTranslateDistance }) => {
   const dnaBackboneClass = {
     fill: "#333",
   };
@@ -35,4 +35,4 @@ const DnaBackbonePiece = ({ xTranslateDistance }) => {
   );
 };
 
-export default DnaBackbonePiece;
+export default HelixPiece;
