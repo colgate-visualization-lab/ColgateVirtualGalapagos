@@ -1,5 +1,5 @@
 import React from "react";
-import { ItemTypes } from "../../utils/items";
+import { ItemTypes } from "utils/items";
 import { useDrag } from "react-dnd";
 
 const DndDraggables = (props) => {
