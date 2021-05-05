@@ -1,8 +1,9 @@
-import { makeStyles } from "@material-ui/core";
 import React, { Fragment, useEffect, useState } from "react";
-import { Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 import axios from "axios";
-import LocalStorage from "../../../utils/localStorage";
+
+import LocalStorage from "utils/localStorage";
 
 const Settings = () => {
   const classes = useStyles();
