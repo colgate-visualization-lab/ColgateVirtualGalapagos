@@ -23,9 +23,9 @@ import * as maps from "./assets/homepage";
 import iguanadata from "./assets/iguana-data";
 import theme from "./theme/Theme";
 
-const VolcanoModule = lazy(() =>
-  import("./containers/VolcanoModule/VolcanoModule")
-);
+// const VolcanoModule = lazy(() =>
+//   import("./containers/VolcanoModule/VolcanoModule")
+// );
 
 const mapImages = [
   maps.MapIsabela,
@@ -60,7 +60,7 @@ class App extends Component {
               ))}
               {/* Each "home" unlocks new mystery */}
               <Route path="/isabella" exact component={ModuleNav} />
-              <Route path="/volcanomod" exact component={VolcanoModule} />
+              {/* <Route path="/volcanomod" exact component={VolcanoModule} /> */}
               <Route path="/gallery" exact component={Gallery} />
 
               {/* <Route path="/iguana" exact component={IguanaModule} /> */}

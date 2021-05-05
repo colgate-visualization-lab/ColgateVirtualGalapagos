@@ -7,13 +7,13 @@ import DrawAreaToolbar from "./DrawArea/DrawAreaToolbar";
 import StyleOptions from "./StyleOptions";
 import PhyloTreeSlideInstructions from "../components/PhyloTreeSlideInstructions";
 import PhyloTreeSidebar from "../components/PhyloTreeSidebar";
-import { MainActivityArea } from "./components/PhyloTree";
+import { MainActivityArea } from "../components/PhyloTree";
 import DrawAreaMenu from "./DrawArea/DrawAreaMenu";
 //prettier-ignore
 import {  getElementAtPosition, currentlyEditingTextbox, 
-          pressedCtrlD, pressedDelete, mouseOverElement, updateMouseCursor } from "./DrawArea/utils";
+          pressedCtrlD, pressedDelete, mouseOverElement, updateMouseCursor } from "./utils";
 import { PhyloTreeContext } from "../contexts";
-import useDrawing from "../../hooks/useDrawing";
+import useDrawing from "../hooks/useDrawing";
 
 const useStyles = makeStyles((theme) => ({
   drawArea: {

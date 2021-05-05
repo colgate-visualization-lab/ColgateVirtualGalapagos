@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 import update from "immutability-helper";
-import { Box, getBranchNames } from "../containers/PhyloTreeDnD/utils";
+import { Box, getBranchNames } from "../DragAndDropActivity/utils";
 
 const useTreeDnD = (iguanaNames, iguanaNamesPlacement) => {
   let initialState = {
