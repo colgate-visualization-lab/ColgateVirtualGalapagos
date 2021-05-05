@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core";
 import { ReactCompareSlider } from "react-compare-slider";
 
+import AudioPlayer from "components/AudioPlayer";
 import MappedImage from "./MappedImage";
 
 const useStyles = makeStyles((theme) => ({
@@ -13,12 +14,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const IguanaSlide14 = ({ content }) => {
+  const [src, setSrc] = useState(content.audioSrc);
+
+  const {
+    data: { audioSources },
+  } = content;
+  console.log(content);
+
   const marine = {
     alt: "Marine Iguana",
     src: content.imgSrc.src2,
     width: 4029,
     height: 1716,
   };
+
   const green = {
     alt: "Green Iguana",
     src: content.imgSrc.src1,
@@ -30,26 +39,35 @@ const IguanaSlide14 = ({ content }) => {
     backgroundColor: "white",
   };
 
+  const handleClick = (area) => {
+    setSrc(area.audioSrc);
+  };
+
   const classes = useStyles();
   return (
-    <ReactCompareSlider
-      onlyHandleDraggable={true}
-      itemOne={
-        <MappedImage
-          img={green}
-          map={content.data.greenIguanaMap}
-          containerStyle={containerStyle}
-        />
-      }
-      itemTwo={
-        <MappedImage
-          img={marine}
-          map={content.data.marineIguanaMap}
-          containerStyle={containerStyle}
-        />
-      }
-      className={classes.root}
-    />
+    <>
+      <ReactCompareSlider
+        onlyHandleDraggable={true}
+        itemOne={
+          <MappedImage
+            img={green}
+            map={content.data.greenIguanaMap}
+            containerStyle={containerStyle}
+            handleClick={handleClick}
+          />
+        }
+        itemTwo={
+          <MappedImage
+            img={marine}
+            map={content.data.marineIguanaMap}
+            containerStyle={containerStyle}
+            handleClick={handleClick}
+          />
+        }
+        className={classes.root}
+      />
+      <AudioPlayer src={src} />
+    </>
   );
 };
 
