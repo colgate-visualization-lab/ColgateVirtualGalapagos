@@ -1,10 +1,8 @@
-import React from "react";
-import classes from "./ModuleNav.css";
-import ModuleNavItem from "./ModuleNavItem/ModuleNavItem";
+import React, { Fragment } from "react";
+
+import ModuleNavItem from "./ModuleNavItem";
 import { MapPinzon } from "assets/homepage";
-import IntroVideo from "../ModalVideo/ModalVideo";
-import { Fragment } from "react";
-// import mysteryIntro from "https://virtualgalapagos.colgate.edu/assets/misc/MysteryIntro.mp4"
+import classes from "./ModuleNav.css";
 
 const moduleNav = () => {
   const test = 0;
