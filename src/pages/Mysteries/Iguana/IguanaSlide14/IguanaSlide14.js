@@ -19,7 +19,6 @@ const IguanaSlide14 = ({ content }) => {
   const {
     data: { audioSources },
   } = content;
-  console.log(content);
 
   const marine = {
     alt: "Marine Iguana",

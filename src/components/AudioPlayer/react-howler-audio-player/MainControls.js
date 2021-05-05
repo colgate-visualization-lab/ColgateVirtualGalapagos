@@ -8,21 +8,21 @@ import Replay5Icon from "@material-ui/icons/Replay5";
 const MainControls = ({ playing, handleToggle, handleSeekFive }) => {
   return (
     <>
-      <div>
+      {/* <div>
         <IconButton onClick={() => handleSeekFive(-5)} color="primary">
           <Replay5Icon />
-        </IconButton>
-      </div>
+        </IconButton> 
+      </div> */}
       <div>
         <IconButton color="primary" onClick={handleToggle}>
           {playing ? <PauseCircleOutlineIcon /> : <PlayCircleOutlineIcon />}
         </IconButton>
       </div>
-      <div>
+      {/* <div>
         <IconButton onClick={() => handleSeekFive(5)} color="primary">
           <Forward5Icon />
         </IconButton>
-      </div>
+      </div> */}
     </>
   );
 };
