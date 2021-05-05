@@ -3,10 +3,13 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 
+import DrawingActivity from "./DrawingActivity";
+import DragAndDropActivity from "./DragAndDropActivity";
+
 import DrawArea from "../DrawArea";
-import PhyloTreeDnD from "../PhyloTreeDnD";
-import PhyloTreeHeader from "../PhyloTreeHeader";
-import { Slide11Context } from "../../contexts";
+import PhyloTreeDnD from "./PhyloTreeDnD";
+import Header from "./Header";
+import { PhyloTreeContext } from "./contexts";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,21 +35,18 @@ const PhyloTreeSlide = ({ content }) => {
   const handleTabChange = (index) => setTabIndex(index);
 
   return (
-    <Slide11Context.Provider value={content}>
+    <PhyloTreeContext.Provider value={content}>
       <Paper className={classes.root} id="phylo-tree-root">
         <Grid container spacing={0}>
           <Grid item xs={12}>
-            <PhyloTreeHeader
-              tabIndex={tabIndex}
-              handleTabChange={handleTabChange}
-            />
+            <Header tabIndex={tabIndex} handleTabChange={handleTabChange} />
           </Grid>
           <Grid item xs={12}>
             {tabIndex === 0 ? <DrawArea /> : <PhyloTreeDnD />}
           </Grid>
         </Grid>
       </Paper>
-    </Slide11Context.Provider>
+    </PhyloTreeContext.Provider>
   );
 };
 

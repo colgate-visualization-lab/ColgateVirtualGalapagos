@@ -1,8 +1,8 @@
-import { slide3Data } from "../../assets/IguanaData/slide3Data";
-import { slide14Data } from "../../assets/IguanaData/slide14Data";
-import { slide17Data } from "../../assets/IguanaData/slide17Data";
+// import { slide3Data } from "../../assets/IguanaData/slide3Data";
+// import { slide14Data } from "../../assets/IguanaData/slide14Data";
+// import { slide17Data } from "../../assets/IguanaData/slide17Data";
 
-const iguanaData = [
+const volcanoData = [
   {
     id: "1",
     hasPrev: false,
@@ -166,7 +166,7 @@ const iguanaData = [
     title: "DND 2",
     audioSrc:
       "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/IguanaMystery_Slide17.wav",
-    data: slide17Data,
+    // data: slide17Data,
   },
   {
     id: "20",
@@ -251,4 +251,4 @@ const iguanaData = [
       "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoSummary.mp4",
   },
 ];
-export default iguanaData;
+export default volcanoData;
