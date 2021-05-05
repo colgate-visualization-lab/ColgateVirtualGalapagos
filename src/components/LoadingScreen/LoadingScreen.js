@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import classes from "./LoadingScreen.css";
-import { logo } from "../../assets/misc";
+import { logo } from "assets/misc";
 import { timers } from "jquery";
 
 class LoadingScreen extends Component {
