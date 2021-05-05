@@ -1,6 +1,6 @@
 import React from "react";
-import PhyloTreeMenuButton from "../../components/PhyloTreeMenu/PhyloTreeMenuButton";
-import PhyloTreeMenu from "../../components/PhyloTreeMenu";
+import PhyloTreeMenuButton from "../components/PhyloTreeMenu/PhyloTreeMenuButton";
+import PhyloTreeMenu from "../components/PhyloTreeMenu";
 
 const PhyloTreeDnDButtons = ({
   handleCheckTree,

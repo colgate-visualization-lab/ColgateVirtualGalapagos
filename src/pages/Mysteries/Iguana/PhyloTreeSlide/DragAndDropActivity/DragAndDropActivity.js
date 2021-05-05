@@ -7,10 +7,10 @@ import DragSourcePanel from "./DragSourcePanel";
 import IguanaDropTarget from "./IguanaDropTarget";
 import IguanaDragSource from "./IguanaDragSource";
 import PhyloTreeDnDMenu from "./PhyloTreeDnDMenu";
-import { MainActivityArea } from "../../components/PhyloTree";
-import PhyloTreeSidebar from "../../components/PhyloTreeSidebar";
+import { MainActivityArea } from "../components/PhyloTree";
+import PhyloTreeSidebar from "../components/PhyloTreeSidebar";
 import { PhyloTreeContext } from "../contexts";
-import useTreeDnD from "../../hooks/useTreeDnD";
+import useTreeDnD from "../hooks/useTreeDnD";
 
 import { Box, delay } from "./utils";
 

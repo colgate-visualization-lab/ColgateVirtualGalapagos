@@ -1,6 +1,5 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -9,7 +8,7 @@ import FontSizeOption from "./FontSizeOption";
 import TextAlignOption from "./TextAlignOption";
 import StrokeWidthOption from "./StrokeWidthOption";
 import ElementActions from "./ElementActions";
-import { unpackElementDetails } from "../../containers/DrawArea/utils";
+import { unpackElementDetails } from "../utils";
 
 const useStyles = makeStyles((theme) => ({
   optionHeader: {
