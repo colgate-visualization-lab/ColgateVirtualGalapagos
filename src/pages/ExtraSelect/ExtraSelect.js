@@ -1,7 +1,8 @@
 import React from "react";
+
 import classes from "../ModuleNav/ModuleNav.css";
-import ModuleNavItem from "../ModuleNav/ModuleNavItem/ModuleNavItem";
-import { backgroundimage } from "../../assets/homepage";
+import ModuleNavItem from "../ModuleNav/ModuleNavItem";
+import { backgroundimage } from "assets/homepage";
 
 class ExtraSelect extends React.Component {
   constructor() {
