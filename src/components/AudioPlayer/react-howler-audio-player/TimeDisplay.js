@@ -1,7 +1,9 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 
-const TimeDisplay = ({ seek, duration, formatTime }) => {
+import { formatTime } from "utils";
+
+const TimeDisplay = ({ seek, duration }) => {
   return (
     <div>
       <Typography>

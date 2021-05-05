@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     display: "flex",
     flexDirection: "row",
-    margin: theme.spacing(0, 2),
+    marginLeft: theme.spacing(2),
   },
 }));
 
