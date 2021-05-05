@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PhyloTreeHeader = ({ tabIndex, handleTabChange }) => {
+const Header = ({ tabIndex, handleTabChange }) => {
   const classes = useStyles();
   return (
     <Grid container className={classes.root}>
@@ -25,4 +25,4 @@ const PhyloTreeHeader = ({ tabIndex, handleTabChange }) => {
   );
 };
 
-export default PhyloTreeHeader;
+export default Header;
