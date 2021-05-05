@@ -1,4 +1,4 @@
-// import AudioPlayer from "./H5Player";
-import AudioPlayer from "./AudioPlayer";
+import AudioPlayer from "./react-howler-audio-player/AudioPlayer";
+// import AudioPlayer from "./hook-based-audio-player/AudioPlayer";
 
 export default AudioPlayer;
