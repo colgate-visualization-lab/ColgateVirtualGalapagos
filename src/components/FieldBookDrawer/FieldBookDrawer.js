@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -10,14 +9,10 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import TextField from "@material-ui/core/TextField";
 import ClearIcon from "@material-ui/icons/Clear";
-import LocalStorage from "../../utils/localStorage";
 import axios from "axios";
 
-import {
-  DrawerIcon,
-  DrawerContent,
-  DrawerHeader,
-} from "../../components/Drawer";
+import LocalStorage from "utils/localStorage";
+import { DrawerIcon, DrawerContent, DrawerHeader } from "components/Drawer";
 
 const drawerWidth = 400;
 

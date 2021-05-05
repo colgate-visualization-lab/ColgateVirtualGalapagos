@@ -1,7 +1,6 @@
 import React from "react";
-// import MainContent from "../MainContent/MainContent";
-import VolcanoSlides from "../../components/VolcanoSlides/VolcanoSlides";
-import IguanaSlides from "../../components/IguanaSlides";
+import VolcanoSlides from "pages/Mysteries/Volcano/VolcanoSlides";
+import IguanaSlides from "pages/Mysteries/Iguana/IguanaSlides";
 
 export default function ModuleSelector(props) {
   if (props.module == "volcano")
