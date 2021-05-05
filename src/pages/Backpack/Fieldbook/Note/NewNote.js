@@ -1,40 +1,35 @@
-import React, {useState} from "react"
-import { makeStyles } from "@material-ui/core"
-import { Typography, TextField, Button } from "@material-ui/core"
-import axios from 'axios'
-import {useHistory} from 'react-router-dom'
-import LocalStorage from "../../../../utils/localStorage"
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core";
+import { Typography, TextField, Button } from "@material-ui/core";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+import LocalStorage from "utils/localStorage";
 
 const NewNote = () => {
-  const classes = useStyles()
-  const history = useHistory()
-  const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
+  const classes = useStyles();
+  const history = useHistory();
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
 
   const addNote = async () => {
     try {
-      const data = {title, content}
-      const token = LocalStorage.getToken()
-      const result = await axios.post('/notes', data, {
+      const data = { title, content };
+      const token = LocalStorage.getToken();
+      const result = await axios.post("/notes", data, {
         headers: {
-          'Authorization': 'Bearer ' + token
-        }
-      })
-      history.push('/fieldbook')
-    } 
-    catch (e) {
-      console.log(e)
+          Authorization: "Bearer " + token,
+        },
+      });
+      history.push("/fieldbook");
+    } catch (e) {
+      console.log(e);
     }
-  }
+  };
 
   return (
     <div>
-      <Typography 
-        variant="h5" 
-        color="primary" 
-        gutterBottom
-        >
-          Add a new Note
+      <Typography variant="h5" color="primary" gutterBottom>
+        Add a new Note
       </Typography>
       <div className={classes.container}>
         <form>
@@ -56,7 +51,7 @@ const NewNote = () => {
             className={classes.textField}
             margin="normal"
             variant="outlined"
-            onChange={e => setContent(e.target.value)}
+            onChange={(e) => setContent(e.target.value)}
             rows={10}
             fullWidth
             value={content}
@@ -71,8 +66,8 @@ const NewNote = () => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -80,8 +75,8 @@ const useStyles = makeStyles((theme) => ({
   },
   textField: {
     marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1), 
+    marginRight: theme.spacing(1),
     backgroundColor: "white",
   },
-}))
-export default NewNote
+}));
+export default NewNote;

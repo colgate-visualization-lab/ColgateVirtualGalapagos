@@ -4,12 +4,13 @@ import { makeStyles } from "@material-ui/styles";
 import clsx from "clsx";
 import { useParams } from "react-router";
 import { CSSTransition } from "react-transition-group";
-import ControlButtons from "../ControlButtons/ControlButtons";
+import { useHistory } from "react-router-dom";
+
+import ControlButtons from "../ControlButtons";
 import SlideContentDrawer from "../SlideContentDrawer";
 import FieldBookDrawer from "../FieldBookDrawer";
-import ModuleSelector from "../ModuleSelector/ModuleSelector";
-import { module } from "../../utils/const";
-import { useHistory } from "react-router-dom";
+import ModuleSelector from "../ModuleSelector";
+import { module } from "utils/const";
 import cssclasses from "./ModuleContainer.css";
 
 //Needed for something lol
