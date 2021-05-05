@@ -3,10 +3,16 @@ import ImageMapper from "react-image-mapper";
 import PropTypes from "prop-types";
 import Centered from "./Centered";
 
-const MappedImage = ({ img, map, containerStyle }) => {
+const MappedImage = ({ img, map, containerStyle, handleClick }) => {
   return (
     <Centered containerStyle={containerStyle}>
-      <ImageMapper imgWidth={img.width} width={1000} src={img.src} map={map} />
+      <ImageMapper
+        onClick={handleClick}
+        imgWidth={img.width}
+        width={1000}
+        src={img.src}
+        map={map}
+      />
     </Centered>
   );
 };

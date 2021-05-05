@@ -52,7 +52,6 @@ function IguanaSlides({ content }) {
       </>
     );
   } else if (content.type === "interactive_image") {
-    // return <IguanaSlide15 content={content} />;
     return <IguanaSlide14 content={content} />;
   } else if (content.type === "image_comparison") {
     return (
