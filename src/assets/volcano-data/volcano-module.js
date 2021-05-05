@@ -92,8 +92,8 @@ export const Exploration04 =
   "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration04.mp3";
 export const Exploration05 =
   "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_Exploration05.mp3";
-export const eruptionAudio = 
-  "http://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMapEruptionDatesFix.mp3"
+export const eruptionAudio =
+  "http://virtualgalapagos.colgate.edu/assets/VolcanoModule/Volcano_TerrainMapEruptionDatesFix.mp3";
 // Videos
 export const introVideo =
   "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/VolcanoModuleIntro.mp4";
@@ -109,8 +109,16 @@ export const Vista =
 export const Vista2 =
   "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Caldara_Shotfive/index.htm";
 export const Vista3 =
-  "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Stillwater/index.htm"
+  "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Stillwater/index.htm";
 export const Vista4 =
-  "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Cactus_Final/index.htm"
+  "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/Cactus_Final/index.htm";
 export const Vista5 =
-  "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/PlazaCliff/index.htm"
+  "https://virtualgalapagos.colgate.edu/assets/VolcanoModule/360Videos/PlazaCliff/index.htm";
+
+export const imageMap = {
+  name: "THIS IS MY MAP",
+  areas: [
+    { id: "2", shape: "rect", coords: [15, 15, 900, 1178] },
+    { id: "1", shape: "rect", coords: [918, 1180, 2104, 15] },
+  ],
+};
