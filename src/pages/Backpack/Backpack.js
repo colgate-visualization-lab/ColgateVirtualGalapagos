@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { fieldbook } from "../../assets/misc";
-import classes from "./Backpack.css";
 import { Link } from "react-router-dom";
+
+import classes from "./Backpack.css";
+import { fieldbook } from "assets/misc";
 
 class Backpack extends Component {
   render() {
