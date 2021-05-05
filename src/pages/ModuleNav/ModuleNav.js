@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./ModuleNav.css";
 import ModuleNavItem from "./ModuleNavItem/ModuleNavItem";
-import { MapPinzon } from "../../assets/Homepage";
+import { MapPinzon } from "assets/homepage";
 import IntroVideo from "../ModalVideo/ModalVideo";
 import { Fragment } from "react";
 // import mysteryIntro from "https://virtualgalapagos.colgate.edu/assets/misc/MysteryIntro.mp4"
@@ -28,12 +28,15 @@ const moduleNav = () => {
       link: "/extras",
     },
 
-		{"title": "Iguana",
-			"description": "Carlos and Adriana need to learn about iguanas if they want to find the ones in their mystery. Help them learn about the different types of iguanas in the Galapagos and how they got there in the first place.",
-			"background": "url(https://virtualgalapagos.colgate.edu/assets/misc/Iguana.png)", 
-			"animation": " animated slideInDown slower",
-			"link": "/iguana/1"
-		}, 
+    {
+      title: "Iguana",
+      description:
+        "Carlos and Adriana need to learn about iguanas if they want to find the ones in their mystery. Help them learn about the different types of iguanas in the Galapagos and how they got there in the first place.",
+      background:
+        "url(https://virtualgalapagos.colgate.edu/assets/misc/Iguana.png)",
+      animation: " animated slideInDown slower",
+      link: "/iguana/1",
+    },
 
     {
       title: "Currents",

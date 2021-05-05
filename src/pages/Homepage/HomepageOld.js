@@ -1,10 +1,10 @@
 import React, { Fragment, Component } from "react";
-import classes from "./Homepage.css";
 import ImageMapper from "react-image-mapper";
-import MAP from "./imageMap";
 import { Redirect } from "react-router";
-import { MapPinzon } from "../../assets/homepage";
-//import BackgroundVideo from "../../components/BackgroundVideo/BackgroundVideo.js"
+
+import classes from "./Homepage.css";
+import MAP from "./imageMap";
+import { MapPinzon } from "assets/homepage";
 
 class Homepage extends Component {
   constructor(props) {
