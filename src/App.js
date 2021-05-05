@@ -1,43 +1,38 @@
 import React, { Component, Suspense, lazy } from "react";
 import { Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/styles";
-import Layout from "./containers/Layout/Layout";
+
+import Layout from "./components/Layout";
 import SignIn from "./pages/Authorization/SignIn";
 import SignUp from "./pages/Authorization/SignUp";
-import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
-import {
-  MapFernandina,
-  MapIsabela,
-  MapPinzon,
-  MapFloreana,
-  MapEspanola,
-} from "./assets/Homepage";
+import LoadingScreen from "./components/LoadingScreen";
 import Homepage from "./pages/Homepage";
-import SplashScreen from "./pages/SplashScreen/SplashScreen";
-import Gallery from "./pages/Gallery/Gallery";
+import SplashScreen from "./pages/SplashScreen";
+import Gallery from "./pages/Gallery";
 // import ModuleNav from "./components/ModuleNav/ModuleNav";
 import ModuleNav from "./pages/ModuleNavAlternate";
-import ExtraSelect from "./pages/ExtraSelect/ExtraSelect";
-import VolcanoSlides from "./components/VolcanoSlides/VolcanoSlides";
-import theme from "./theme/Theme";
-import Test from "./containers/Test/Test";
+import ExtraSelect from "./pages/ExtraSelect";
+// import VolcanoSlides from "./pages/Mysteries/Volcano/VolcanoSlides";
+import Test from "./pages/Mysteries/Volcano/Test";
 import NewNote from "./pages/Backpack/Fieldbook/Note/NewNote";
 import Fieldbook from "./pages/Backpack/Fieldbook/Fieldbook";
 import Settings from "./pages/Backpack/Settings";
 import ModuleContainer from "./components/ModuleContainer";
-import iguanadata from "./assets/IguanaData/";
-import volcanodata from "./components/VolcanoData/VolcanoData.js";
+import volcanodata from "./assets/volcano-data";
+import * as maps from "./assets/homepage";
+import iguanadata from "./assets/iguana-data";
+import theme from "./theme/Theme";
 
 const VolcanoModule = lazy(() =>
   import("./containers/VolcanoModule/VolcanoModule")
 );
 
 const mapImages = [
-  MapIsabela,
-  MapFernandina,
-  MapFloreana,
-  MapEspanola,
-  MapPinzon,
+  maps.MapIsabela,
+  maps.MapFernandina,
+  maps.MapFloreana,
+  maps.MapEspanola,
+  maps.MapPinzon,
 ];
 
 class App extends Component {

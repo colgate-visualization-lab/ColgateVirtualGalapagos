@@ -9,13 +9,13 @@ import IguanaDragSource from "./IguanaDragSource";
 import PhyloTreeDnDMenu from "./PhyloTreeDnDMenu";
 import { MainActivityArea } from "../../components/PhyloTree";
 import PhyloTreeSidebar from "../../components/PhyloTreeSidebar";
-import { Slide11Context } from "../../contexts";
+import { PhyloTreeContext } from "../contexts";
 import useTreeDnD from "../../hooks/useTreeDnD";
 
 import { Box, delay } from "./utils";
 
-const PhyloTreeDnD = () => {
-  const content = useContext(Slide11Context);
+const DragAndDropActivity = () => {
+  const content = useContext(PhyloTreeContext);
   // prettier-ignore
   const { iguanaNames, iguanaNamesPlacement
 	} = content.phyloTreeData
@@ -94,4 +94,4 @@ const PhyloTreeDnD = () => {
   );
 };
 
-export default PhyloTreeDnD;
+export default DragAndDropActivity;

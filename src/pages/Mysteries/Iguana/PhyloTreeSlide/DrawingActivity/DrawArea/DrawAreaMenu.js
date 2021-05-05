@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import PhyloTreeMenuButton from "../../components/PhyloTreeMenu/PhyloTreeMenuButton";
 import PhyloTreeMenu from "../../components/PhyloTreeMenu";
-import DrawAreaCorrectTreeModal from "../DrawAreaCorrectTreeModal";
+import DrawAreaCorrectTreeModal from "../CorrectTreeModal";
 
 const DrawAreaMenu = ({
   id,

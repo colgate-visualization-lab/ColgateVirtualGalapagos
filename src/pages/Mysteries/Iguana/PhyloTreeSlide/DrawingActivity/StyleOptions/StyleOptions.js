@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Options = ({ element, handleOptionsChange, handleAction }) => {
+const StyleOptions = ({ element, handleOptionsChange, handleAction }) => {
   let options = [];
   let type = undefined;
   if (element) {
@@ -91,4 +91,4 @@ const Options = ({ element, handleOptionsChange, handleAction }) => {
   );
 };
 
-export default Options;
+export default StyleOptions;
