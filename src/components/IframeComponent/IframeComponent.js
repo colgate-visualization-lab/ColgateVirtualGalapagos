@@ -1,6 +1,6 @@
 import React from "react";
 import Iframe from "react-iframe";
-import classes from "./IframeCompoment.css";
+import classes from "./IframeComponent.css";
 
 function IframeComponent(props) {
   return (

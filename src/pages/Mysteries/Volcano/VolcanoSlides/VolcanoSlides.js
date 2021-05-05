@@ -1,15 +1,14 @@
 import React, { Fragment } from "react";
-import classes from "./VolcanoSlides.css";
 import Popup from "reactjs-popup";
 import ImageSlider from "react-image-comparison-slider";
-import DndLayout from "../../components/DndLayout/DndLayout.js";
-import IframeCompoment from "../../components/IframeComponent/IframeComponent";
-import "./VolcanoSlides.css";
 import ImageMapper from "react-image-mapper";
-import MAP from "../../containers/VolcanoModule/ImageMap.js";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/styles";
-import AudioPlayer from "../../containers/AudioPlayer";
+import { imageMap } from "assets/volcano-data/volcano-module";
+import AudioPlayer from "components/AudioPlayer";
+import DndLayout from "components/DndLayout";
+import IframeCompoment from "components/IframeComponent";
+import classes from "./VolcanoSlides.css";
 
 const useStyles = makeStyles((theme) => ({
   //  CONTENT CONTAINER STYLING  - container that surrounds
@@ -537,7 +536,7 @@ export default function VolcanoSlides(props) {
             src={props.data.imageSrc}
             width={1075}
             imgWidth={2117}
-            map={MAP}
+            map={imageMap}
             fillColor={"rgba(0, 246, 255, 0.33)"}
             onClick={(area) => slide25Handler(area)}
           />

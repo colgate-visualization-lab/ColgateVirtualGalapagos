@@ -6,9 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import DrawingActivity from "./DrawingActivity";
 import DragAndDropActivity from "./DragAndDropActivity";
 
-import DrawArea from "../DrawArea";
-import PhyloTreeDnD from "./PhyloTreeDnD";
-import Header from "./Header";
+import Header from "./components/PhyloTreeHeader";
 import { PhyloTreeContext } from "./contexts";
 
 const useStyles = makeStyles((theme) => ({
@@ -42,7 +40,7 @@ const PhyloTreeSlide = ({ content }) => {
             <Header tabIndex={tabIndex} handleTabChange={handleTabChange} />
           </Grid>
           <Grid item xs={12}>
-            {tabIndex === 0 ? <DrawArea /> : <PhyloTreeDnD />}
+            {tabIndex === 0 ? <DrawingActivity /> : <DragAndDropActivity />}
           </Grid>
         </Grid>
       </Paper>
