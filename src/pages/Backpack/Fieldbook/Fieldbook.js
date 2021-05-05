@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from "react";
+// prettier-ignore
 import {
-  List,
-  ListItem,
-  ListItemAvatar,
-  Avatar,
-  ListItemText,
-  makeStyles,
-  Typography,
+  List, ListItem, ListItemAvatar, Avatar, ListItemText, makeStyles,
+  Typography, Grid, TextField, InputAdornment, Snackbar,
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import { Grid, TextField, InputAdornment } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-import Note from "./Note/Note";
 import axios from "axios";
-import LocalStorage from "../../../utils/localStorage";
-import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import FolderIcon from "@material-ui/icons/Folder";
-import {module} from "../../../utils/const"
+
+import Note from "./Note/Note";
+import LocalStorage from "utils/localStorage";
+import { module } from "utils/const";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -50,16 +44,16 @@ const Fieldbook = () => {
   }, [notes]);
 
   const deleteNote = (i) => {
-	const token = LocalStorage.getToken();
+    const token = LocalStorage.getToken();
     const id = notes[i]._id;
     const newNotes = notes;
     newNotes.splice(i, 1);
     setNotes(newNotes);
     axios.delete("/notes/" + id, {
-		headers: {
-		  Authorization: "Bearer " + token,
-		},
-	});
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
   };
 
   return (
@@ -73,71 +67,71 @@ const Fieldbook = () => {
           <Alert severity="error">Please log in to see notes</Alert>
         </Snackbar>
       ) : null}
-	  <Grid container spacing={3} direction="row" className={classes.content}>
-		  <Grid item xs={2}>
-			<Typography
-			variant="h5"
-			align="center"
-			color="primary"
-			gutterBottom
-			noWrap
-			>
-			Modules
-			</Typography>
-			<div>
-			<List dense={false}>
-				{Object.values(module).map((item, i) => (
-					<ListItem key={i}>
-					<ListItemAvatar>
-						<Avatar>
-						<FolderIcon />
-						</Avatar>
-					</ListItemAvatar>
-					<ListItemText primary={item}/>
-					</ListItem>
-				))}
-			</List>
-			</div>
-		  </Grid>
-		  <Grid item xs={8}>
-			  <Grid container spacing={3} direction="column">
-				  <Grid item>
-					<TextField
-						value={searchText}
-						id="outlined-textarea"
-						label="search"
-						placeholder="search note"
-						className={classes.searchField}
-						margin="normal"
-						variant="outlined"
-						onChange={() => {}}
-						InputProps={{
-						endAdornment: (
-							<InputAdornment position="end">
-							<SearchIcon />
-							</InputAdornment>
-						),
-						}}
-				  	/>
-				  </Grid>
-				  <Grid item>
-					  <Grid container spacing={3} direction="row">
-						  {notes.length > 0
-							? notes.map((item, i) => (
-								<Grid item key={i}>
-									<Note
-									title={item.title}
-									content={item.content}
-									handleDelete={() => deleteNote(i)}
-									/>
-								</Grid>
-								))
-							: null}
-						</Grid>
-				  </Grid>
-			  </Grid>
-		  </Grid>
-	  </Grid>
+      <Grid container spacing={3} direction="row" className={classes.content}>
+        <Grid item xs={2}>
+          <Typography
+            variant="h5"
+            align="center"
+            color="primary"
+            gutterBottom
+            noWrap
+          >
+            Modules
+          </Typography>
+          <div>
+            <List dense={false}>
+              {Object.values(module).map((item, i) => (
+                <ListItem key={i}>
+                  <ListItemAvatar>
+                    <Avatar>
+                      <FolderIcon />
+                    </Avatar>
+                  </ListItemAvatar>
+                  <ListItemText primary={item} />
+                </ListItem>
+              ))}
+            </List>
+          </div>
+        </Grid>
+        <Grid item xs={8}>
+          <Grid container spacing={3} direction="column">
+            <Grid item>
+              <TextField
+                value={searchText}
+                id="outlined-textarea"
+                label="search"
+                placeholder="search note"
+                className={classes.searchField}
+                margin="normal"
+                variant="outlined"
+                onChange={() => {}}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <SearchIcon />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item>
+              <Grid container spacing={3} direction="row">
+                {notes.length > 0
+                  ? notes.map((item, i) => (
+                      <Grid item key={i}>
+                        <Note
+                          title={item.title}
+                          content={item.content}
+                          handleDelete={() => deleteNote(i)}
+                        />
+                      </Grid>
+                    ))
+                  : null}
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
     </div>
   );
 };
@@ -150,7 +144,7 @@ const useStyles = makeStyles((theme) => ({
     width: "50vw",
   },
   content: {
-	  margin: theme.spacing(5),
+    margin: theme.spacing(5),
   },
 }));
 
