@@ -4,12 +4,12 @@ import { makeStyles } from "@material-ui/styles";
 import clsx from "clsx";
 import { useParams } from "react-router-dom";
 
-import iguanaData from "../../assets/IguanaData";
-import volcanoData from "../../components/VolcanoData/VolcanoData.js";
-import ControlButtons from "../ControlButtons/ControlButtons";
+import iguanaData from "assets/IguanaData";
+import volcanoData from "components/VolcanoData/VolcanoData.js";
+import ControlButtons from "../ControlButtons";
 import SlideContentDrawer from "../SlideContentDrawer";
 import FieldBookDrawer from "../FieldBookDrawer";
-import ModuleSelector from "../ModuleSelector/ModuleSelector";
+import ModuleSelector from "../ModuleSelector";
 
 const moduleData = {
   iguana: iguanaData,
