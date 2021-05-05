@@ -12,8 +12,6 @@ let initialState = preLoadedState.slide
       },
     };
 
-console.log(preLoadedState);
-
 const slice = createSlice({
   name: "slide",
   initialState,

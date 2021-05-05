@@ -32,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
 // changed ControlButtons to use Links instead of button - they also
 //  conditionally render - back button won't render on first slide
 export default function ControlButtons(props) {
-  console.log(props);
   const classes = useStyles();
   return (
     <Grid
