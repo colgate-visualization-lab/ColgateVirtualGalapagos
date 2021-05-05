@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline"
+import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -11,15 +11,15 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Snackbar from "@material-ui/core/Snackbar";
-import MuiAlert from "@material-ui/lab/Alert"
+import MuiAlert from "@material-ui/lab/Alert";
 import axios from "axios";
-import LocalStorage from "../../utils/localStorage";
 import { Link, useHistory } from "react-router-dom";
 
+import LocalStorage from "utils/localStorage";
+
 function Alert(props) {
-	return <MuiAlert elevation={6} variant="filled" {...props} />;
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
-  
 
 const SignIn = () => {
   const classes = useStyles();
@@ -27,46 +27,46 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const [isRemembered, setRemember] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [error, setError] = useState(false)
-  const history = useHistory()
+  const [error, setError] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
-	const userInfo = LocalStorage.getUser()
-	const token = LocalStorage.getToken()
-	if (userInfo.email != null && token != null) {
-		setLoggedIn(true)
-		setEmail(userInfo.email)
-	}
-  }, [])
+    const userInfo = LocalStorage.getUser();
+    const token = LocalStorage.getToken();
+    if (userInfo.email != null && token != null) {
+      setLoggedIn(true);
+      setEmail(userInfo.email);
+    }
+  }, []);
 
   const handleClose = (e, reason) => {
-	  if (reason === 'clickaway') {
-		  return 
-	  }
-	  setError(false)
-  }
+    if (reason === "clickaway") {
+      return;
+    }
+    setError(false);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-	if (loggedIn) {
-		return
-	}
+    if (loggedIn) {
+      return;
+    }
     try {
-	  if (email === '' || password === '') {
-		setError(true)
-		return
-	  }
+      if (email === "" || password === "") {
+        setError(true);
+        return;
+      }
       const data = { email, password };
-      const result = await axios.post("/users/login", data)
+      const result = await axios.post("/users/login", data);
       if (result.status == 200) {
-        setLoggedIn(true)
-      } 
+        setLoggedIn(true);
+      }
       const userData = result.data;
-      LocalStorage.setUser(userData.user)
-      LocalStorage.setToken(userData.token)
-	  history.push('/home') 
+      LocalStorage.setUser(userData.user);
+      LocalStorage.setToken(userData.token);
+      history.push("/home");
     } catch (e) {
-      setError(true)
+      setError(true);
     }
   };
 
@@ -75,8 +75,8 @@ const SignIn = () => {
   };
 
   return (
-	<Container component="main" maxWidth="xs">
-      <CssBaseline/>
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -124,19 +124,21 @@ const SignIn = () => {
             fullWidth
             variant="contained"
             className={classes.submit}
-			      disabled={loggedIn}
+            disabled={loggedIn}
             color="primary"
           >
             Sign In
           </Button>
-          <Snackbar 
-            open={error} 
-            autoHideDuration={6000} 
-            onClose={handleClose} 
-            anchorOrigin={{vertical: "top", horizontal: "center"}}
+          <Snackbar
+            open={error}
+            autoHideDuration={6000}
+            onClose={handleClose}
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
           >
-            <Alert onClose={handleClose} severity="error">Cannot log in. Try again!</Alert>
-		      </Snackbar>
+            <Alert onClose={handleClose} severity="error">
+              Cannot log in. Try again!
+            </Alert>
+          </Snackbar>
           <Grid container>
             <Grid item xs>
               <Link to="/" className={classes.link}>
@@ -150,18 +152,20 @@ const SignIn = () => {
             </Grid>
           </Grid>
         </form>
-		{loggedIn ? 
-		<Snackbar 
-			open={true} 
-			autoHideDuration={6000}  
-			anchorOrigin={{vertical: "top", horizontal: "center"}}
-		>
-			<Alert severity="success">You are logged in! Please log out before trying to log in again
-			</Alert>
-		</Snackbar> : null}
+        {loggedIn ? (
+          <Snackbar
+            open={true}
+            autoHideDuration={6000}
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          >
+            <Alert severity="success">
+              You are logged in! Please log out before trying to log in again
+            </Alert>
+          </Snackbar>
+        ) : null}
       </div>
     </Container>
-)
+  );
 };
 
 const useStyles = makeStyles((theme) => ({
