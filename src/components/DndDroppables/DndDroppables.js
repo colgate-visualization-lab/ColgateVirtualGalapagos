@@ -1,6 +1,6 @@
 import React, { useContext, Fragment } from "react";
 import { useDrop } from "react-dnd";
-import { ItemTypes } from "../../utils/items";
+import { ItemTypes } from "utils/items";
 
 const DndDroppables = (props) => {
   const [{ isOver }, drop] = useDrop({
