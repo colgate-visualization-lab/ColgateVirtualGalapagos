@@ -7,6 +7,7 @@ const MappedImage = ({ img, map, containerStyle, handleClick }) => {
   return (
     <Centered containerStyle={containerStyle}>
       <ImageMapper
+        fillColor="rgb(200,0,0,0.2)"
         onClick={handleClick}
         imgWidth={img.width}
         width={1000}
