@@ -16,10 +16,6 @@ const useStyles = makeStyles((theme) => ({
 const IguanaSlide14 = ({ content }) => {
   const [src, setSrc] = useState(content.audioSrc);
 
-  const {
-    data: { audioSources },
-  } = content;
-
   const marine = {
     alt: "Marine Iguana",
     src: content.imgSrc.src2,
