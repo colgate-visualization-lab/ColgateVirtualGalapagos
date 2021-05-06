@@ -60,7 +60,7 @@ const AudioPlayer = ({ src }) => {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.paper}>
+    <Paper className={classes.paper} variant="outlined" elevation={0}>
       <Grid
         container
         justify="center"

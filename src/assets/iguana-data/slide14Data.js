@@ -122,14 +122,6 @@ const greenIguanaMap = {
 
 //prettier-ignore
 export const slide14Data = {
-    audioSources: {
-      top_of_head:   "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide15_head.mp3",
-      face: "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide15_face.mp3",
-      tail: "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide15_tail.mp3",
-      back_spikes: "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide15_backSpikes.mp3",
-      stomach_general:  "http://virtualgalapagos.colgate.edu/assets/IguanaModule/Audio/Slide15_stomach.mp3"
-
-    },
     greenIguanaMap,
     marineIguanaMap
   }
