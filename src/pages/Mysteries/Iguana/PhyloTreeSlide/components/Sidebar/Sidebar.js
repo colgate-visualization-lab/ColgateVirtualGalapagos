@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PhyloTreeSidebar = ({ children }) => {
+const Sidebar = ({ children }) => {
   const classes = useStyles();
   return (
     <Grid item xs={4} sm={3} md={2} className={classes.menu}>
@@ -21,4 +21,4 @@ const PhyloTreeSidebar = ({ children }) => {
   );
 };
 
-export default PhyloTreeSidebar;
+export default Sidebar;

@@ -4,10 +4,10 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 
 import DrawingActivity from "./DrawingActivity";
-import DragAndDropActivity from "./DragAndDropActivity";
+import DnDActivity from "./DnDActivity";
 
-import Header from "./components/PhyloTreeHeader";
-import { PhyloTreeContext } from "./contexts";
+import Header from "./components/Header";
+import { PhyloTreeContextProvider } from "./contexts/PhyloTreeContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,20 +31,19 @@ const PhyloTreeSlide = ({ content }) => {
   const [tabIndex, setTabIndex] = useState(1);
 
   const handleTabChange = (index) => setTabIndex(index);
-
   return (
-    <PhyloTreeContext.Provider value={content}>
+    <PhyloTreeContextProvider content={content}>
       <Paper className={classes.root} id="phylo-tree-root">
         <Grid container spacing={0}>
           <Grid item xs={12}>
             <Header tabIndex={tabIndex} handleTabChange={handleTabChange} />
           </Grid>
           <Grid item xs={12}>
-            {tabIndex === 0 ? <DrawingActivity /> : <DragAndDropActivity />}
+            {tabIndex === 0 ? <DrawingActivity /> : <DnDActivity />}
           </Grid>
         </Grid>
       </Paper>
-    </PhyloTreeContext.Provider>
+    </PhyloTreeContextProvider>
   );
 };
 

@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const PhyloTreeSlideInstructions = ({ instructions }) => {
+const Instructions = ({ children }) => {
   const classes = useStyles();
   return (
     <>
@@ -21,10 +21,10 @@ const PhyloTreeSlideInstructions = ({ instructions }) => {
         <Typography className={classes.title}>Instructions</Typography>
       </Grid>
       <Grid item>
-        <Typography className={classes.instructions}>{instructions}</Typography>
+        <Typography className={classes.instructions}>{children}</Typography>
       </Grid>
     </>
   );
 };
 
-export default PhyloTreeSlideInstructions;
+export default Instructions;

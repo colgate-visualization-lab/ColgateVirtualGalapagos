@@ -5,7 +5,7 @@ import store from "./store";
 import { Provider } from "react-redux";
 
 import App from "./App";
-import "./index.css";
+// import "./index.css";
 import axios from "axios";
 
 axios.defaults.baseURL = "http://virtualgalapagos.colgate.edu:9000";

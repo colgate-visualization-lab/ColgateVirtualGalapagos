@@ -7,7 +7,7 @@ import Draggable from "react-draggable";
 import { makeStyles } from "@material-ui/core/styles";
 
 import PhyloTreeMenuButton from "../../components/PhyloTreeMenu/PhyloTreeMenuButton";
-import { PhyloTreeContext } from "../../contexts";
+import { usePhyloTree } from "../../contexts/PhyloTreeContext";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -36,7 +36,7 @@ function PaperComponent(props) {
 const DrawAreaCorrectTreeModal = () => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const { drawAreaData } = useContext(PhyloTreeContext);
+  const { drawAreaData } = usePhyloTree();
 
   const imgSrc = drawAreaData.correctTree;
   const handleClickDone = () => {

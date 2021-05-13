@@ -1,5 +1,5 @@
 const path = require("path");
-const autoprefixer = require("autoprefixer");
+// const autoprefixer = require("autoprefixer");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
@@ -10,7 +10,7 @@ module.exports = {
     filename: "bundle.js",
     publicPath: "/",
   },
-  devtool: "cheap-module-eval-source-map",
+  devtool: "eval-cheap-module-source-map",
   resolve: {
     alias: {
       assets: path.resolve(__dirname, "./src/assets/"),
@@ -27,9 +27,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        loader: "babel-loader",
+        test: /\.m?js$/,
         exclude: /node_modules/,
+        loader: "babel-loader",
+        resolve: {
+          fullySpecified: false,
+        },
       },
       {
         test: /\.css$/i,
@@ -48,19 +51,23 @@ module.exports = {
           {
             loader: "postcss-loader",
             options: {
-              indent: "postcss",
-              plugins: () => [autoprefixer()],
+              postcssOptions: {
+                // indent: "postcss",
+                plugins: ["autoprefixer"],
+              },
             },
           },
         ],
       },
       {
         test: /\.(png|jpe?g|gif)$/,
-        loader: "url-loader?name=images/[name].[ext]",
+        type: "asset/inline",
+        // loader: "url-loader?name=images/[name].[ext]",
       },
       {
         test: /\.(mp4|mp3)$/,
-        loader: "file-loader?name=videos/[name].[ext]",
+        type: "asset/resource",
+        // loader: "file-loader?name=videos/[name].[ext]",
       },
     ],
   },

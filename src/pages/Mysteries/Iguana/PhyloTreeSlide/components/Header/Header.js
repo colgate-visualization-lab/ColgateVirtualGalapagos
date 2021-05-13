@@ -7,6 +7,7 @@ import PlainTabs from "./PlainTabs";
 const useStyles = makeStyles((theme) => ({
   root: {
     background: "rgba(228, 228, 228, 1)",
+    width: "100%",
   },
 
   header: {
@@ -15,13 +16,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Header = ({ tabIndex, handleTabChange }) => {
+  const tabLabels = ["Draw My Own Tree", "Use A Tree Template"];
   const classes = useStyles();
   return (
-    <Grid container className={classes.root}>
-      <Grid item xs={12}>
-        <PlainTabs tabIndex={tabIndex} handleTabChange={handleTabChange} />
-      </Grid>
-    </Grid>
+    <div className={classes.root}>
+      <PlainTabs
+        tabIndex={tabIndex}
+        handleTabChange={handleTabChange}
+        tabLabels={tabLabels}
+      />
+    </div>
   );
 };
 

@@ -8,7 +8,7 @@ import IguanaDropTarget from "./IguanaDropTarget";
 import IguanaDragSource from "./IguanaDragSource";
 import PhyloTreeDnDMenu from "./PhyloTreeDnDMenu";
 import { MainActivityArea } from "../components/PhyloTree";
-import PhyloTreeSidebar from "../components/PhyloTreeSidebar";
+import Sidebar from "../components/Sidebar";
 import { PhyloTreeContext } from "../contexts";
 import useTreeDnD from "../hooks/useTreeDnD";
 
@@ -64,7 +64,7 @@ const DragAndDropActivity = () => {
     <DndProvider backend={HTML5Backend}>
       <Grid item xs={12}>
         <Grid container spacing={0}>
-          <PhyloTreeSidebar>
+          <Sidebar>
             <Grid item>
               {/* <DragSourcePanel
                 undraggedNames={undraggedNames}
@@ -79,7 +79,7 @@ const DragAndDropActivity = () => {
                 completedTreeVisible={completedTreeVisible}
               />
             </Grid> */}
-          </PhyloTreeSidebar>
+          </Sidebar>
           <MainActivityArea>
             {/* <IguanaDropTarget
               content={content}

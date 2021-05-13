@@ -5,14 +5,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import Drawing from "./DrawArea/Drawing";
 import DrawAreaToolbar from "./DrawArea/DrawAreaToolbar";
 import StyleOptions from "./StyleOptions";
-import PhyloTreeSlideInstructions from "../components/PhyloTreeSlideInstructions";
-import PhyloTreeSidebar from "../components/PhyloTreeSidebar";
+import Instructions from "../components/Instructions";
+import Sidebar from "../components/Sidebar";
 import { MainActivityArea } from "../components/PhyloTree";
 import DrawAreaMenu from "./DrawArea/DrawAreaMenu";
 //prettier-ignore
 import {  getElementAtPosition, currentlyEditingTextbox, 
           pressedCtrlD, pressedDelete, mouseOverElement, updateMouseCursor } from "./utils";
-import { PhyloTreeContext } from "../contexts";
+import { usePhyloTree } from "../contexts/PhyloTreeContext";
 import useDrawing from "../hooks/useDrawing";
 
 const useStyles = makeStyles((theme) => ({
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const DrawArea = () => {
-  const { id } = useContext(PhyloTreeContext);
+  const { id } = usePhyloTree();
   // created custom hook to handle most state changes in this component
   let [state, dispatch, ref] = useDrawing(id);
   // prettier-ignore
@@ -160,9 +160,12 @@ const DrawArea = () => {
     // <Slide11DrawingContext.Provider>
 
     <Grid container spacing={0}>
-      <PhyloTreeSidebar>
+      <Sidebar>
         <Grid item>
-          <PhyloTreeSlideInstructions instructions="Draw a phylogenetic tree on the canvas using the tools provided. Once finished, click 'Done' below to continue  " />
+          <Instructions>
+            Draw a phylogenetic tree on the canvas using the tools provided.
+            Once finished, click 'Done' below to continue
+          </Instructions>
         </Grid>
         <Grid item>
           <DrawAreaMenu
@@ -179,7 +182,7 @@ const DrawArea = () => {
             handleAction={handleAction}
           />
         </Grid>
-      </PhyloTreeSidebar>
+      </Sidebar>
       <MainActivityArea>
         <Grid item xs={12}>
           <DrawAreaToolbar
