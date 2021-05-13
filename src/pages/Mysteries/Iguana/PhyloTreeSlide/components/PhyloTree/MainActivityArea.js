@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 
 const MainActivityArea = ({ children }) => {
   return (
-    <Grid item xs container spacing={0} justify="center">
+    <Grid item xs>
       {children}
     </Grid>
   );

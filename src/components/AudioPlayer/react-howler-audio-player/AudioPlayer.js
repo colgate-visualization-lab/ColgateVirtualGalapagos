@@ -14,11 +14,11 @@ import useAudioControls from "../hooks/useAudioControls";
 const useStyles = makeStyles((theme) => ({
   paper: {
     width: "100%",
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(2),
     padding: theme.spacing(0, 2),
   },
   root: {
-    height: "90px",
+    // height: "90px",
     zIndex: 300,
   },
 

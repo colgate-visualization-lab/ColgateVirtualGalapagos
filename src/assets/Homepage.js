@@ -12,3 +12,5 @@ export const homepage =
   "http://virtualgalapagos.colgate.edu/assets/homepage/homepage.png";
 export const backgroundimage =
   "http://virtualgalapagos.colgate.edu/assets/homepage/P3153499.png";
+export const backgroundVideo =
+  "https://virtualgalapagos.colgate.edu/assets/homepage/backgroundvideo.mp4";

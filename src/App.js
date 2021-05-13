@@ -21,7 +21,7 @@ import ModuleContainer from "./components/ModuleContainer";
 import volcanodata from "./assets/volcano-data";
 import * as maps from "./assets/homepage";
 import iguanadata from "./assets/iguana-data";
-import theme from "./theme/Theme";
+import theme from "./theme";
 
 // const VolcanoModule = lazy(() =>
 //   import("./containers/VolcanoModule/VolcanoModule")

@@ -1,11 +1,11 @@
 import React from "react";
-import video from "https://virtualgalapagos.colgate.edu/assets/homepage/backgroundvideo.mp4";
+import { backgroundVideo } from "assets/Homepage";
 import classes from "./BackgroundVideo.css";
 
 function BackgroundVideo() {
   return (
     <video autoPlay loop muted className={classes.bgvid}>
-      <source src={video} />
+      <source src={backgroundVideo} />
     </video>
   );
 }

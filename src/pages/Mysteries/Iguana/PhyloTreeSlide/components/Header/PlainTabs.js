@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PlainTabs = ({ tabIndex, handleTabChange }) => {
+const PlainTabs = ({ tabIndex, handleTabChange, tabLabels }) => {
   const classes = useStyles();
   const tabItemClasses = {
     root: classes.root,
@@ -47,8 +47,9 @@ const PlainTabs = ({ tabIndex, handleTabChange }) => {
       onChange={(e, index) => handleTabChange(index)}
       textColor="inherit"
     >
-      <Tab classes={tabItemClasses} label={"Draw My Own Tree"} />
-      <Tab classes={tabItemClasses} label={"Use A Tree Template"} />
+      {tabLabels.map((label, index) => (
+        <Tab key={`${label}-${index}`} classes={tabItemClasses} label={label} />
+      ))}
     </Tabs>
   );
 };
