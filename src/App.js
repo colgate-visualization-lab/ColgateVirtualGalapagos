@@ -61,7 +61,7 @@ class App extends Component {
                 />
               ))}
               {/* Each "home" unlocks new mystery */}
-              <Route path="/isabella" exact component={ModuleNav} />
+              <Route path="/isabela" exact component={ModuleNav} />
               {/* <Route path="/volcanomod" exact component={VolcanoModule} /> */}
               <Route path="/gallery" exact component={Gallery} />
 

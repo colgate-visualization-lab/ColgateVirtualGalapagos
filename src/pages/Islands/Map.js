@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { useTheme } from "@material-ui/core";
+import { useHistory, Link } from "react-router-dom";
+import { Transition } from "react-transition-group";
 
 import { islands, islandNames } from "./map-and-name-details";
 
 const Map = () => {
   const theme = useTheme();
   const [highlighted, setHighlighted] = useState();
-  const [mapStyles, setMapStyles] = useState({
+
+  const mapStyles = {
     fill: theme.palette.grey[300],
     stroke: theme.palette.grey[500],
     strokeMiterlimit: "10",
-  });
+  };
 
   const islandNameStyles = {
     fontSize: 30,
@@ -18,8 +21,7 @@ const Map = () => {
     fontStyle: "italic",
   };
 
-  const handleMouseEnter = (index) => {
-    const { name } = islands[index];
+  const handleMouseEnter = (name, index) => {
     setHighlighted({
       name,
       index,
@@ -30,7 +32,7 @@ const Map = () => {
     });
   };
 
-  const handleMouseLeave = (index) => {
+  const handleMouseLeave = () => {
     setHighlighted(null);
   };
 
@@ -45,8 +47,8 @@ const Map = () => {
       id="Layer_1"
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
-      width="100%"
-      height="100%"
+      width="960px"
+      height="540px"
       viewBox="0 0 1646.89 1024.37"
     >
       <title>homepage</title>
@@ -57,15 +59,15 @@ const Map = () => {
             highlighted && highlighted.name === island.name
               ? highlighted.style
               : mapStyles;
-          console.log(style);
           return (
-            <path
-              onMouseEnter={() => handleMouseEnter(index)}
-              onMouseLeave={() => handleMouseLeave(index)}
-              key={island.id}
-              {...island}
-              {...style}
-            />
+            <Link key={island.id} to={`/${island.name}`}>
+              <path
+                onMouseEnter={() => handleMouseEnter(island.name, index)}
+                onMouseLeave={() => handleMouseLeave(index)}
+                {...island}
+                {...style}
+              />
+            </Link>
           );
         })}
       </g>
