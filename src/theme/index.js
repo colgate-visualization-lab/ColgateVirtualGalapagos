@@ -27,8 +27,6 @@ const theme = createMuiTheme({
   },
 });
 
-// print(theme.typography);
-
 theme.dragSource = {
   neutral: {
     backgroundColor: "#fff",
