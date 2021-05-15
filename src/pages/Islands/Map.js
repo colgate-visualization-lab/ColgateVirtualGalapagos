@@ -2,10 +2,18 @@ import React, { useState } from "react";
 import { useTheme } from "@material-ui/core";
 import { useHistory, Link } from "react-router-dom";
 import { Transition } from "react-transition-group";
+import { makeStyles } from "@material-ui/core/styles";
 
 import { islands, islandNames } from "./map-and-name-details";
 
+const useStyles = makeStyles((theme) => ({
+  map: {
+    maxWidth: "1000px",
+  },
+}));
+
 const Map = () => {
+  const classes = useStyles();
   const theme = useTheme();
   const [highlighted, setHighlighted] = useState();
 
@@ -44,11 +52,12 @@ const Map = () => {
 
   return (
     <svg
+      className={classes.map}
       id="Layer_1"
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
-      width="960px"
-      height="540px"
+      width="100%"
+      height="100%"
       viewBox="0 0 1646.89 1024.37"
     >
       <title>homepage</title>
