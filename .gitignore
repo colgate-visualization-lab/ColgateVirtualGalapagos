@@ -1,8 +1,5 @@
 /node_modules
 /dist
-/src/assets/images/
-/src/assets/videos/
-/src/assets/VolcanoModule/
 /ColgateVirtualGalapagosAssets
 /stats.json
 /.vscode
