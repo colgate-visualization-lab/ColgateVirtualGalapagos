@@ -4,7 +4,7 @@ import { Redirect } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
 
 import imageMap from "./imageMap";
-import { MapPinzon } from "assets/homepage";
+import { MapPinzon, homepageGrey } from "assets/homepage";
 
 const useStyles = makeStyles((theme) => ({
   mapheader: {
@@ -106,7 +106,7 @@ const HomePage2 = ({ mapImage, lockValue }) => {
     <Redirect to={link} />
   ) : (
     <Fragment>
-      <img src={MapPinzon} className={classes.videoSubstitute} alt="" />
+      <img src={homepageGrey} className={classes.videoSubstitute} alt="" />
       <div className={`${animation} ${classes.containerFix}`}>
         <ImageMapper
           src={mapImage}

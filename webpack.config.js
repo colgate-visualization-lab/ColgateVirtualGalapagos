@@ -1,5 +1,5 @@
 const path = require("path");
-// const autoprefixer = require("autoprefixer");
+const autoprefixer = require("autoprefixer");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {

@@ -4,7 +4,7 @@ import { Redirect } from "react-router";
 
 import classes from "./Homepage.css";
 import MAP from "./imageMap";
-import { MapPinzon } from "assets/homepage";
+import { MapPinzon, homepageGrey } from "assets/homepage";
 
 class Homepage extends Component {
   constructor(props) {
@@ -82,11 +82,11 @@ class Homepage extends Component {
     }
     return (
       <Fragment>
-        <img src={MapPinzon} className={classes.videoSubstitute} alt="" />{" "}
+        <img src={homepageGrey} className={classes.videoSubstitute} alt="" />{" "}
         {/*Background Image for Mobile Devices */}
         <div className={`${animation} ${classes.containerFix}`}>
           <ImageMapper
-            src={mapImage}
+            src={homepageGrey}
             width={width}
             imgWidth={1920}
             map={MAP}

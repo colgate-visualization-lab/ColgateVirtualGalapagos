@@ -78,7 +78,7 @@ const NavBar = () => {
               value={0}
               className={classes.tab}
               component={Link}
-              to="/home"
+              to="/islands"
               label="Mysteries"
             />
             <Tab

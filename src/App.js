@@ -7,6 +7,7 @@ import SignIn from "./pages/Authorization/SignIn";
 import SignUp from "./pages/Authorization/SignUp";
 import LoadingScreen from "./components/LoadingScreen";
 import Homepage from "./pages/Homepage";
+import Islands from "./pages/Islands";
 import SplashScreen from "./pages/SplashScreen";
 import Gallery from "./pages/Gallery";
 // import ModuleNav from "./components/ModuleNav/ModuleNav";
@@ -45,6 +46,7 @@ class App extends Component {
             <Route path="/authorization" component={SignIn} />
             <Layout>
               {/*Layout sets up navbar and the main tag that takes up the rest of the screen */}
+              <Route path="/islands" component={Islands} />
               {mapImages.map((mapImage, index) => (
                 <Route
                   key={index}

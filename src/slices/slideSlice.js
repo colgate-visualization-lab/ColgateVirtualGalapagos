@@ -1,17 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { loadState } from "./localStorage";
 
-const preLoadedState = loadState();
-
-let initialState = preLoadedState.slide
-  ? preLoadedState.slide
-  : {
-      slideData: {
-        byId: {},
-        // allIds: [],
-      },
-    };
-
+// const preLoadedState = loadState();
+// console.log(preloadedState);
+// let initialState =
+//   preLoadedState && preLoadedState.slide
+//     ? preLoadedState.slide
+//     : {
+//         slideData: {
+//           byId: {},
+//           // allIds: [],
+//         },
+//       };
+let initialState = {
+  slideData: {
+    byId: {},
+    // allIds: [],
+  },
+};
 const slice = createSlice({
   name: "slide",
   initialState,
