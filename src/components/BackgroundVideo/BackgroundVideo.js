@@ -1,5 +1,5 @@
 import React from "react";
-import { backgroundVideo } from "assets/Homepage";
+import { backgroundVideo } from "assets/homepage-assets";
 import classes from "./BackgroundVideo.css";
 
 function BackgroundVideo() {

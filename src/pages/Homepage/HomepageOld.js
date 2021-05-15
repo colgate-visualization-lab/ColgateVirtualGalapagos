@@ -4,7 +4,7 @@ import { Redirect } from "react-router";
 
 import classes from "./Homepage.css";
 import MAP from "./imageMap";
-import { MapPinzon, homepageGrey } from "assets/homepage";
+import { MapPinzon, homepageGrey } from "assets/homepage-assets";
 
 class Homepage extends Component {
   constructor(props) {

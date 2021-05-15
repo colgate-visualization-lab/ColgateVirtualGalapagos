@@ -20,7 +20,7 @@ import Fieldbook from "./pages/Backpack/Fieldbook/Fieldbook";
 import Settings from "./pages/Backpack/Settings";
 import ModuleContainer from "./components/ModuleContainer";
 import volcanodata from "./assets/volcano-data";
-import * as maps from "./assets/homepage";
+import * as maps from "./assets/homepage-assets";
 import iguanadata from "./assets/iguana-data";
 import theme from "./theme";
 

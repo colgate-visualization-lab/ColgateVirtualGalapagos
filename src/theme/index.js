@@ -4,7 +4,7 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       // main: "#212121",
-      main: "#0056A2",
+      main: "#3F51B5",
     },
     secondary: {
       // main: "#3949ab",
@@ -27,7 +27,7 @@ const theme = createMuiTheme({
   },
 });
 
-print(theme.typography);
+// print(theme.typography);
 
 theme.dragSource = {
   neutral: {

@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
 import ModuleNavItem from "./ModuleNavItem";
-import { MapPinzon } from "assets/homepage";
+import { MapPinzon } from "assets/homepage-assets";
 import classes from "./ModuleNav.css";
 
 const moduleNav = () => {

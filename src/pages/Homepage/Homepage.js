@@ -4,7 +4,7 @@ import { Redirect } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
 
 import imageMap from "./imageMap";
-import { MapPinzon, homepageGrey } from "assets/homepage";
+import { MapPinzon, homepageGrey } from "assets/homepage-assets";
 
 const useStyles = makeStyles((theme) => ({
   mapheader: {
