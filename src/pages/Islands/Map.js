@@ -6,9 +6,18 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import { islands, islandNames } from "./map-and-name-details";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   map: {
     maxWidth: "1000px",
+  },
+  island: {
+    transition: `transform 300ms ease-in-out`,
+    transformOrigin: "100% 100%",
+
+    "&:hover": {
+      transform: "scale(1.04)",
+      transformOrigin: "100% 100%",
+    },
   },
 }));
 
@@ -16,12 +25,37 @@ const Map = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [highlighted, setHighlighted] = useState();
+  const duration = 200;
 
   const mapStyles = {
     fill: theme.palette.grey[300],
     stroke: theme.palette.grey[500],
     strokeMiterlimit: "10",
+    transform: "translate(-59.46 -25.63)",
   };
+
+  // const defaultStyles = {
+  //   transition: `transform ${duration}ms ease-in-out`,
+  // };
+
+  // const transitionStyles = {
+  //   entering: {
+  //     transform: "translate(-59.46 -25.63) scale(1.02)",
+  //     transformOrigin: "center center",
+  //   },
+  //   entered: {
+  //     transform: "translate(-59.46 -25.63) scale(1.02)",
+  //     transformOrigin: "center center",
+  //   },
+  //   exiting: {
+  //     transform: "translate(-59.46 -25.63)",
+  //     transformOrigin: "center center",
+  //   },
+  //   exited: {
+  //     transform: "translate(-59.46 -25.63)",
+  //     transformOrigin: "center center",
+  //   },
+  // };
 
   const islandNameStyles = {
     fontSize: 30,
@@ -64,18 +98,28 @@ const Map = () => {
       <path d="M 0, 0, v 170 h 265 v -170 z" {...zoomRegionStyle} />
       <g id="Islands">
         {islands.map((island, index) => {
-          const style =
-            highlighted && highlighted.name === island.name
-              ? highlighted.style
-              : mapStyles;
+          const mouseOver = highlighted && highlighted.name === island.name;
+          const style = mouseOver ? highlighted.style : mapStyles;
+          if (mouseOver) {
+            console.log(mouseOver);
+          }
           return (
             <Link key={island.id} to={`/${island.name}`}>
+              {/* <Transition in={mouseOver} timeout={duration}>
+                {(state) => ( */}
               <path
+                className={classes.island}
                 onMouseEnter={() => handleMouseEnter(island.name, index)}
                 onMouseLeave={() => handleMouseLeave(index)}
                 {...island}
                 {...style}
+                // style={{
+                //   ...defaultStyles,
+                //   ...transitionStyles[state],
+                // }}
               />
+              {/* )}
+              </Transition> */}
             </Link>
           );
         })}

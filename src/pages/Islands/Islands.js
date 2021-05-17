@@ -20,6 +20,22 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     background: theme.palette.grey[50],
   },
+  explore: {
+    marginTop: theme.spacing(5),
+    position: "relative",
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      height: "0.5rem",
+      bottom: "-0.5rem",
+
+      backgroundColor: theme.palette.secondary.light,
+      margin: "0 auto",
+      left: 0,
+      right: 0,
+      width: "98%",
+    },
+  },
 }));
 
 const Islands = () => {
@@ -27,11 +43,11 @@ const Islands = () => {
 
   return (
     <div className={classes.root}>
-      <Paper elevation={1} square className={classes.title}>
-        <Typography variant="h3" align="center">
-          CLICK ON AN ISLAND TO EXPLORE ITS MYSTERIES!
-        </Typography>
-      </Paper>
+      {/* <Paper elevation={1} square className={classes.title}> */}
+      <Typography variant="h3" align="center" className={classes.explore}>
+        CLICK ON AN ISLAND TO EXPLORE ITS MYSTERIES!
+      </Typography>
+      {/* </Paper> */}
       <Map />
     </div>
   );
