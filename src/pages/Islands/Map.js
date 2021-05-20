@@ -5,6 +5,7 @@ import { Transition } from "react-transition-group";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { islands, islandNames } from "./map-and-name-details";
+import SingleIsland from "./SingleIsland";
 
 const useStyles = makeStyles(() => ({
   map: {
@@ -24,58 +25,11 @@ const useStyles = makeStyles(() => ({
 const Map = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const [highlighted, setHighlighted] = useState();
-  const duration = 200;
-
-  const mapStyles = {
-    fill: theme.palette.grey[300],
-    stroke: theme.palette.grey[500],
-    strokeMiterlimit: "10",
-    transform: "translate(-59.46 -25.63)",
-  };
-
-  // const defaultStyles = {
-  //   transition: `transform ${duration}ms ease-in-out`,
-  // };
-
-  // const transitionStyles = {
-  //   entering: {
-  //     transform: "translate(-59.46 -25.63) scale(1.02)",
-  //     transformOrigin: "center center",
-  //   },
-  //   entered: {
-  //     transform: "translate(-59.46 -25.63) scale(1.02)",
-  //     transformOrigin: "center center",
-  //   },
-  //   exiting: {
-  //     transform: "translate(-59.46 -25.63)",
-  //     transformOrigin: "center center",
-  //   },
-  //   exited: {
-  //     transform: "translate(-59.46 -25.63)",
-  //     transformOrigin: "center center",
-  //   },
-  // };
 
   const islandNameStyles = {
     fontSize: 30,
     fontFamily: theme.typography.fontFamily,
     fontStyle: "italic",
-  };
-
-  const handleMouseEnter = (name, index) => {
-    setHighlighted({
-      name,
-      index,
-      style: {
-        ...mapStyles,
-        fill: theme.palette.secondary.light,
-      },
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setHighlighted(null);
   };
 
   const zoomRegionStyle = {
@@ -96,33 +50,11 @@ const Map = () => {
     >
       <title>homepage</title>
       <path d="M 0, 0, v 170 h 265 v -170 z" {...zoomRegionStyle} />
-      <g id="Islands">
-        {islands.map((island, index) => {
-          const mouseOver = highlighted && highlighted.name === island.name;
-          const style = mouseOver ? highlighted.style : mapStyles;
-          if (mouseOver) {
-            console.log(mouseOver);
-          }
-          return (
-            <Link key={island.id} to={`/${island.name}`}>
-              {/* <Transition in={mouseOver} timeout={duration}>
-                {(state) => ( */}
-              <path
-                className={classes.island}
-                onMouseEnter={() => handleMouseEnter(island.name, index)}
-                onMouseLeave={() => handleMouseLeave(index)}
-                {...island}
-                {...style}
-                // style={{
-                //   ...defaultStyles,
-                //   ...transitionStyles[state],
-                // }}
-              />
-              {/* )}
-              </Transition> */}
-            </Link>
-          );
-        })}
+
+      <g id="Islands" transform="translate(-59.46 -25.63)">
+        {islands.map((island) => (
+          <SingleIsland key={island.id} island={island} />
+        ))}
       </g>
       <g id="IslandNames">
         {islandNames.map(({ transform, name }, index) => (
