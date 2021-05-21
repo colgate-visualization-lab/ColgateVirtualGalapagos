@@ -1,7 +1,3 @@
-// import { slide3Data } from "../../assets/IguanaData/slide3Data";
-// import { slide14Data } from "../../assets/IguanaData/slide14Data";
-// import { slide17Data } from "../../assets/IguanaData/slide17Data";
-
 const volcanoData = [
   {
     id: "1",

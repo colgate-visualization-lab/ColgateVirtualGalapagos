@@ -10,12 +10,12 @@ import useScaleFromShapeCenter from "./hooks/useScaleFromShapeCenter";
 const useStyles = makeStyles(() => ({
   island: {
     transform: ({ hovered, transform }) => (hovered ? transform : ""),
+    // transition: "transform 200ms ease-in-out",
+  },
+  "island-onhover": {
+    transform: ({ transform }) => transform,
     transition: "transform 200ms ease-in-out",
   },
-  //   "island-onhover": {
-  //     transform: ({ transform }) => transform,
-  //     transition: "transform 200ms ease-in-out",
-  //   },
 }));
 
 const SingleIsland = ({ island }) => {
@@ -23,7 +23,6 @@ const SingleIsland = ({ island }) => {
   const theme = useTheme();
   const scaleFactor = 1.2;
   const transform = useScaleFromShapeCenter(islandRef, scaleFactor);
-  console.log(transform);
   const [hovered, setHovered] = useState(false);
   const classes = useStyles({ transform, hovered });
 
@@ -38,7 +37,6 @@ const SingleIsland = ({ island }) => {
     setStyle({
       ...style,
       fill: theme.palette.secondary.light,
-      //   transform,
     });
   };
 
@@ -48,7 +46,6 @@ const SingleIsland = ({ island }) => {
     setStyle({
       ...style,
       fill: theme.palette.grey[300],
-      //   transform: "",
     });
   };
 

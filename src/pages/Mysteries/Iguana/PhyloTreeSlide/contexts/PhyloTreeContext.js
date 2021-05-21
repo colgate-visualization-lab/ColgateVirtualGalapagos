@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from "react";
 
-export const PhyloTreeContext = createContext();
+const PhyloTreeContext = createContext();
 
 const usePhyloTree = () => {
   const context = useContext(PhyloTreeContext);
