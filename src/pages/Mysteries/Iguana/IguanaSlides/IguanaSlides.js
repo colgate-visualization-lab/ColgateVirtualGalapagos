@@ -9,6 +9,7 @@ import PhyloTreeSlide from "../PhyloTreeSlide";
 import IguanaSlide14 from "../IguanaSlide14";
 import IguanaSlide16 from "../IguanaSlide16";
 import AudioPlayer from "components/AudioPlayer";
+import VideoPlayer from "components/VideoPlayer";
 
 const useStyles = makeStyles((theme) => ({
   // VIDEO STYLING
@@ -43,7 +44,8 @@ function IguanaSlides({ content }) {
   if (content.type === "image") {
     return <img src={content.url} className={`iguana ${classes.img}`} />;
   } else if (content.type === "video") {
-    return <video src={content.url} className={classes.video} controls />;
+    // return <VideoPlayer src={content.url} className={classes.video} controls />;
+    return <VideoPlayer content={content} />;
   } else if (content.type === "video360") {
     return (
       <>

@@ -1,4 +1,4 @@
-import { useEffect, useContext, createContext } from "react";
+import React, { useEffect, useContext, createContext } from "react";
 import throttle from "lodash/throttle";
 import produce from "immer";
 
@@ -69,13 +69,14 @@ const updateProgressData = produce((draft, currentModule, currentSlide) => {
   draft.modules[currentModule].lastSeenSlide = currentSlide;
 });
 
-const loadProgressData = () => {
-  const progressData = loadStateFromLocalStorage();
+const loadProgressData = (currentModule, currentSlide) => {
+  let progressData = loadStateFromLocalStorage();
+  // console.log(progressData);
   if (progressData === undefined) {
     progressData = initialProgressData;
-    saveStateToLocalStorage(progressData);
   }
-  progressData = updateProgressData(progressData);
+  progressData = updateProgressData(progressData, currentModule, currentSlide);
+  saveStateToLocalStorage(progressData);
   return progressData;
 };
 
@@ -85,18 +86,30 @@ const useSaveProgress = (progress) => {
   if (context === undefined) {
     throw new Error("useProgress must be used within a ProgressContext");
   }
-
-  progress = { ...context.progress, ...progress };
+  // console.log("-------------");
+  // console.log(progress);
+  // console.log(context.progressData);
+  // console.log("-------------");
   useEffect(() => {
-    saveStateToLocalStorage(progress);
+    const { progressData } = context;
+    let newProgressData = produce(progressData, (draft) => {
+      const { currentModule, currentSlide } = draft;
+      draft.modules[currentModule].progress[currentSlide] = {
+        ...draft.modules[currentModule].progress[currentSlide],
+        ...progress,
+      };
+    });
+    // console.log(newProgressData);
+    saveStateToLocalStorage(newProgressData);
   }, [progress]);
 };
 
 const ProgressContextProvider = ({ children, currentModule, currentSlide }) => {
-  const progressData = loadProgressData();
-  const progress = progressData[currentModule][currentSlide];
+  const progressData = loadProgressData(currentModule, currentSlide);
+  const progress = progressData.modules[currentModule].progress[currentSlide];
 
   const value = {
+    progressData,
     progress,
   };
 

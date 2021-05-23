@@ -12,6 +12,7 @@ import FieldBookDrawer from "../FieldBookDrawer";
 import ModuleSelector from "../ModuleSelector";
 import { module } from "utils/const";
 import cssclasses from "./ModuleContainer.css";
+import { ProgressContextProvider } from "contexts/ProgressContext";
 
 //Needed for something lol
 const contentDrawerWidth = 240;
@@ -169,39 +170,44 @@ function ModuleContainer(props) {
   };
 
   return (
-    <div className={classes.root}>
-      <SlideContentDrawer {...SlideContentDrawerProps} />
-      <GridContainer
-        className={clsx(classes.container, classes.content, {
-          [classes.contentShiftLeft]: contentDrawerOpen,
-          [classes.contentShiftRight]: fieldBookDrawerOpen,
-        })}
-      >
-        <SlideContainer className={classes.slideContainer}>
-          <CSSTransition
-            in={animationState}
-            timeout={500}
-            classNames={{
-              enter: `${cssclasses.testenter}`,
-              enterActive: `${cssclasses.testenteractive}`,
-              exit: `${cssclasses.testexit}`,
-              exitActive: `${cssclasses.testexitactive}`,
-            }}
-            unmountOnExit
-          >
-            <ModuleSelector {...moduleProps} />
-          </CSSTransition>
-          <ControlButtons {...controlButtonProps} />
-        </SlideContainer>
-      </GridContainer>
-      <FieldBookDrawer
-        moduleName={module.IGUANA}
-        slideId={slideId}
-        contentDrawerOpen={fieldBookDrawerOpen}
-        handleSlideChange={handleSlideChange}
-        handleContentDrawerToggle={handleFieldBookDrawerToggle}
-      />
-    </div>
+    <ProgressContextProvider
+      currentModule={props.module}
+      currentSlide={slideId}
+    >
+      <div className={classes.root}>
+        <SlideContentDrawer {...SlideContentDrawerProps} />
+        <GridContainer
+          className={clsx(classes.container, classes.content, {
+            [classes.contentShiftLeft]: contentDrawerOpen,
+            [classes.contentShiftRight]: fieldBookDrawerOpen,
+          })}
+        >
+          <SlideContainer className={classes.slideContainer}>
+            <CSSTransition
+              in={animationState}
+              timeout={500}
+              classNames={{
+                enter: `${cssclasses.testenter}`,
+                enterActive: `${cssclasses.testenteractive}`,
+                exit: `${cssclasses.testexit}`,
+                exitActive: `${cssclasses.testexitactive}`,
+              }}
+              unmountOnExit
+            >
+              <ModuleSelector {...moduleProps} />
+            </CSSTransition>
+            <ControlButtons {...controlButtonProps} />
+          </SlideContainer>
+        </GridContainer>
+        <FieldBookDrawer
+          moduleName={module.IGUANA}
+          slideId={slideId}
+          contentDrawerOpen={fieldBookDrawerOpen}
+          handleSlideChange={handleSlideChange}
+          handleContentDrawerToggle={handleFieldBookDrawerToggle}
+        />
+      </div>
+    </ProgressContextProvider>
   );
 }
 ModuleContainer.propTypes = {};
