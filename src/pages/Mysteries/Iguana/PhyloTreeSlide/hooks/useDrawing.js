@@ -2,43 +2,59 @@ import React, { useRef, useReducer } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { List, Map } from "immutable";
 import transit from "transit-immutable-js";
+import isEmpty from "lodash/isEmpty";
 
-import { selectSlideData, saveSlideData } from "slices/slideSlice";
 //prettier-ignore
 import { clearSelectedState, clearFocusedState, getElementAtPosition, 
          createElement, getCursorAtPosition, updateElement, moveElement, 
          resizeElement, duplicateElement, isFocusedTextbox } 
         from "../DrawingActivity/utils";
+import { useProgress, useSaveProgress } from "contexts/ProgressContext";
 
-// call this when elements changes to store it in local storage
-const saveDataToLocalStorage = (dispatch, elements, id) => {
-  const statelessElements = clearSelectedState(clearFocusedState(elements));
-  const serializedElements = transit.toJSON(statelessElements);
-  dispatch(saveSlideData({ id, data: serializedElements }));
+const clearSelectAndFocus = (elements) => {
+  return clearSelectedState(clearFocusedState(elements));
 };
 
-const loadSlideData = (id) => {
-  let elements = useSelector(selectSlideData(id));
-  elements = elements ? transit.fromJSON(elements) : List();
-  return elements;
+const convertImmutableToTransitable = (data) => {
+  return transit.toJSON(data);
+};
+
+const convertTransitableToImmutable = (data) => {
+  const converted = transit.fromJSON(data);
+  return converted ? converted : List();
+};
+
+const loadInitialState = (progress) => {
+  let initialState = {};
+  if (!isEmpty(progress.state)) {
+    initialState = {
+      ...progress.state,
+      selectedElement: convertTransitableToImmutable(
+        progress.state.selectedElement
+      ),
+      elements: convertTransitableToImmutable(progress.state.elements),
+    };
+  } else {
+    initialState = {
+      elements: List(),
+      selectedTool: "select",
+      selectedElement: null,
+      elementInFocus: false,
+      action: "idle",
+    };
+  }
+  return initialState;
 };
 
 const useDrawing = (id) => {
+  const { progress, loadSavedProgress } = useProgress();
+
   // ref pased to canvas
   const ref = useRef();
 
   // retrieve data from localstorage
   const storeDispatch = useDispatch();
-  let elements = loadSlideData(id);
-  let slide11Elements = loadSlideData("11"); // used in slide 19
-
-  let initialState = {
-    elements: elements,
-    selectedTool: "select",
-    selectedElement: null,
-    elementInFocus: false,
-    action: "idle",
-  };
+  let initialState = loadInitialState(progress);
 
   let [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
@@ -58,7 +74,7 @@ const useDrawing = (id) => {
         let elements = clearSelectedState(state.elements);
         elements = elements.push(element);
         let elementInFocus = state.selectedTool === "textbox";
-        saveDataToLocalStorage(storeDispatch, elements, id);
+
         return {
           ...state,
           selectedElement: element,
@@ -89,7 +105,6 @@ const useDrawing = (id) => {
         element = element.set("focused", true);
         let index = element.get("index");
         let elements = state.elements.set(index, element);
-        saveDataToLocalStorage(storeDispatch, elements, id);
 
         return {
           ...state,
@@ -116,7 +131,7 @@ const useDrawing = (id) => {
         //prettier-ignore
         const element = updateElement(action.event, currentElement, ref);
         const elements = state.elements.set(index, element);
-        saveDataToLocalStorage(storeDispatch, elements, id);
+
         return {
           ...state,
           selectedElement: element,
@@ -130,7 +145,7 @@ const useDrawing = (id) => {
           state.selectedElement.get("index"),
           element
         );
-        saveDataToLocalStorage(storeDispatch, elements, id);
+
         return {
           ...state,
           selectedElement: element,
@@ -144,7 +159,7 @@ const useDrawing = (id) => {
           state.selectedElement.get("index"),
           element
         );
-        saveDataToLocalStorage(storeDispatch, elements, id);
+
         return {
           ...state,
           selectedElement: element,
@@ -169,9 +184,8 @@ const useDrawing = (id) => {
           );
         }
         let index = state.selectedElement.get("index");
-
         let elements = state.elements.set(index, element);
-        saveDataToLocalStorage(storeDispatch, elements, id);
+
         return {
           ...state,
           selectedElement: element,
@@ -185,7 +199,7 @@ const useDrawing = (id) => {
         if (state.selectedElement) {
           elements = state.elements.delete(state.selectedElement.get("index"));
         }
-        saveDataToLocalStorage(storeDispatch, elements, id);
+
         return {
           ...state,
           selectedElement: null,
@@ -209,7 +223,7 @@ const useDrawing = (id) => {
           state.selectedElement
         );
         elements = elements.push(element);
-        saveDataToLocalStorage(storeDispatch, elements, id);
+
         return {
           ...state,
           selectedElement: element,
@@ -221,7 +235,7 @@ const useDrawing = (id) => {
         let index = state.selectedElement.get("index");
         let elements = state.elements.setIn([index, "text"], action.value);
         let element = elements.get(index);
-        saveDataToLocalStorage(storeDispatch, elements, id);
+
         return {
           ...state,
           selectedElement: element,
@@ -231,7 +245,6 @@ const useDrawing = (id) => {
       }
 
       case "CLEAR_CANVAS": {
-        saveDataToLocalStorage(storeDispatch, List(), id);
         return { ...state, selectedElement: false, elements: List() };
       }
 
@@ -248,6 +261,16 @@ const useDrawing = (id) => {
       }
     }
   }, initialState);
+
+  useSaveProgress({
+    state: {
+      ...state,
+      elements: convertImmutableToTransitable(
+        clearSelectAndFocus(state.elements)
+      ),
+      selectedElement: convertImmutableToTransitable(state.selectedElement),
+    },
+  });
 
   return [state, dispatch, ref];
 };

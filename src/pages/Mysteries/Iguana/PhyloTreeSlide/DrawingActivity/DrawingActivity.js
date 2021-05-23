@@ -34,10 +34,12 @@ const useStyles = makeStyles((theme) => ({
 
 const DrawArea = () => {
   const { id } = usePhyloTree();
+
   // created custom hook to handle most state changes in this component
   let [state, dispatch, ref] = useDrawing(id);
+
   // prettier-ignore
-  let { elements, elementInFocus, selectedElement, action, selectedTool } = state;
+  let { elements, elementInFocus, selectedElement, action, selectedTool, } = state;
 
   const classes = useStyles();
 
