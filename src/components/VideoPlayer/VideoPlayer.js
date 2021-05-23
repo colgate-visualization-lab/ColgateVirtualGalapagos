@@ -33,7 +33,6 @@ const VideoPlayer = ({ content }) => {
   });
 
   useEffect(() => {
-    console.log("setting current time");
     ref.current.currentTime = currentTime;
   }, []);
 

@@ -71,7 +71,7 @@ const updateProgressData = produce((draft, currentModule, currentSlide) => {
 
 const loadProgressData = (currentModule, currentSlide) => {
   let progressData = loadStateFromLocalStorage();
-  // console.log(progressData);
+
   if (progressData === undefined) {
     progressData = initialProgressData;
   }
@@ -86,10 +86,6 @@ const useSaveProgress = (progress) => {
   if (context === undefined) {
     throw new Error("useProgress must be used within a ProgressContext");
   }
-  // console.log("-------------");
-  // console.log(progress);
-  // console.log(context.progressData);
-  // console.log("-------------");
   useEffect(() => {
     const { progressData } = context;
     let newProgressData = produce(progressData, (draft) => {
@@ -99,18 +95,30 @@ const useSaveProgress = (progress) => {
         ...progress,
       };
     });
-    // console.log(newProgressData);
     saveStateToLocalStorage(newProgressData);
   }, [progress]);
+};
+
+const loadSavedProgress = (id, progressData, currentModule, currentSlide) => {
+  if (id) {
+    console.log(id);
+    id = parseInt(id, 10);
+    return progressData.modules[currentModule].progress[id];
+  } else {
+    return progressData.modules[currentModule].progress[currentSlide];
+  }
 };
 
 const ProgressContextProvider = ({ children, currentModule, currentSlide }) => {
   const progressData = loadProgressData(currentModule, currentSlide);
   const progress = progressData.modules[currentModule].progress[currentSlide];
+  // const
 
   const value = {
     progressData,
     progress,
+    loadSavedProgress: (id) =>
+      loadSavedProgress(id, progressData, currentModule, currentSlide),
   };
 
   return (
