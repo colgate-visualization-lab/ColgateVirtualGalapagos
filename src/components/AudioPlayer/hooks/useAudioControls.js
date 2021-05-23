@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import raf from "raf"; // requestAnimationFrame polyfill
 
-const useAudioControls = () => {
+const useAudioControls = (initialSeek) => {
   const player = useRef(null);
   const [soundId, setSoundId] = useState(null);
   const _raf = useRef();
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
   const [loaded, setLoaded] = useState(false);
-  const [seek, setSeek] = useState(0.0);
+  const [seek, setSeek] = useState(initialSeek ? initialSeek : 0.0);
   const [isSeeking, setIsSeeking] = useState(false);
   const [duration, setDuration] = useState(0.0);
   const [muted, setMuted] = useState(false);
@@ -15,7 +15,6 @@ const useAudioControls = () => {
   const [rate, setRate] = useState(1.0);
 
   useEffect(() => {
-    // console.log(player.current);
     _raf.current = raf(renderSeekPos);
     return () => clearRAF();
   }, [playing]);
@@ -42,7 +41,7 @@ const useAudioControls = () => {
     setPlaying(!playing);
   };
 
-  const handleSeekingChange = (_, value) => {
+  const handleSeekingChange = (value) => {
     setSeek(parseFloat(value));
     player.current.howler.seek(value, soundId);
   };
@@ -58,7 +57,7 @@ const useAudioControls = () => {
   };
 
   const handleSeekFive = (value) => {
-    handleSeekingChange(null, seek + value);
+    handleSeekingChange(seek + value);
   };
 
   const renderSeekPos = () => {
@@ -89,6 +88,7 @@ const useAudioControls = () => {
     handleSeekingChange,
     handleSeekingStart,
     handleSeekingEnd,
+    handleSeekFive,
     handleToggle,
     handleMute,
     handleVolumeChange,

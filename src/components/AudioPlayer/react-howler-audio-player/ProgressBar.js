@@ -31,7 +31,7 @@ const ProgressBar = ({
         max={duration}
         step={0.01}
         value={seek}
-        onChange={handleSeekingChange}
+        onChange={(_, value) => handleSeekingChange(value)}
         onMouseDown={handleSeekingStart}
         onMouseUp={handleSeekingEnd}
         aria-labelledby="progress bar"

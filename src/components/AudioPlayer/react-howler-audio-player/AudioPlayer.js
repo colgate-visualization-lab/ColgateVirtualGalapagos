@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import clsx from "clsx";
@@ -10,6 +10,7 @@ import ProgressBar from "./ProgressBar";
 import MainControls from "./MainControls";
 import TimeDisplay from "./TimeDisplay";
 import useAudioControls from "../hooks/useAudioControls";
+import { useProgress, useSaveProgress } from "contexts/ProgressContext";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -47,15 +48,26 @@ const useStyles = makeStyles((theme) => ({
   AudioPlayer - src
 */
 const AudioPlayer = ({ src }) => {
-  const {
-    handlers,
-    player,
-    playing,
-    muted,
-    volume,
-    duration,
-    seek,
-  } = useAudioControls();
+  // const { progress } = useProgress();
+  const { handlers, player, playing, muted, volume, duration, seek } =
+    useAudioControls(0);
+
+  // useSaveProgress({
+  //   state: {
+  //     seek,
+  //   },
+  // });
+
+  // set initial seek
+  // useEffect(() => {
+  //   console.log("initial seek happens");
+  //   player.current.howler.stop();
+  //   player.current.howler.seek(seek);
+  // }, []);
+
+  // useEffect(() => {
+  //   console.log(player.current.howler.onend);
+  // });
 
   const classes = useStyles();
 
