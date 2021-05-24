@@ -44,8 +44,6 @@ const VideoPlayer = ({ content }) => {
   return (
     <video
       ref={ref}
-      muted
-      autoPlay
       src={content.url}
       onProgress={handleProgress}
       className={classes.video}
