@@ -88,7 +88,7 @@ const useAudioControls = () => {
     setMuted((muted) => !muted);
   };
 
-  const handleVolumeChange = (event, value) => {
+  const handleVolumeChange = (_, value) => {
     setVolume(parseFloat(value));
   };
 
