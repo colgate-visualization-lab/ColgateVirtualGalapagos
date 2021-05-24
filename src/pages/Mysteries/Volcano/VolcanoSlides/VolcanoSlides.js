@@ -3,11 +3,13 @@ import Popup from "reactjs-popup";
 import ImageSlider from "react-image-comparison-slider";
 import ImageMapper from "react-image-mapper";
 import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/styles";
+
 import { imageMap } from "assets/volcano-data/volcano-module";
 import AudioPlayer from "components/AudioPlayer";
 import DndLayout from "components/DndLayout";
-import IframeCompoment from "components/IframeComponent";
+import IframeComponent from "components/IframeComponent";
 import classes from "./VolcanoSlides.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -84,7 +86,7 @@ export default function VolcanoSlides(props) {
   } else if (props.data.id == 2) {
     return (
       <Fragment>
-        <IframeCompoment
+        <IframeComponent
           class={MUIclasses.iframe360}
           src={props.data.videoSrc}
         />
@@ -94,7 +96,7 @@ export default function VolcanoSlides(props) {
   } else if (props.data.id == 3) {
     return (
       <Fragment>
-        <IframeCompoment
+        <IframeComponent
           class={MUIclasses.iframe360}
           src={props.data.videoSrc}
         />
@@ -104,7 +106,7 @@ export default function VolcanoSlides(props) {
   } else if (props.data.id == 4) {
     return (
       <Fragment>
-        <IframeCompoment
+        <IframeComponent
           class={MUIclasses.iframe360}
           src={props.data.videoSrc}
         />
@@ -114,7 +116,7 @@ export default function VolcanoSlides(props) {
   } else if (props.data.id == 5) {
     return (
       <Fragment>
-        <IframeCompoment
+        <IframeComponent
           class={MUIclasses.iframe360}
           src={props.data.videoSrc}
         />
@@ -124,7 +126,7 @@ export default function VolcanoSlides(props) {
   } else if (props.data.id == 6) {
     return (
       <Fragment>
-        <IframeCompoment
+        <IframeComponent
           class={MUIclasses.iframe360}
           src={props.data.videoSrc}
         />
@@ -163,11 +165,17 @@ export default function VolcanoSlides(props) {
   } else if (props.data.id == 9) {
     return (
       <Fragment>
-        <IframeCompoment class={classes.leftVista} src={props.data.videoSrc1} />
+        <Grid item xs={6} style={{ height: "100%" }}>
+          <IframeComponent src={props.data.videoSrc1} />
+        </Grid>
+        <Grid item xs={6} style={{ height: "100%" }}>
+          <IframeComponent src={props.data.videoSrc2} />
+        </Grid>
+        {/* <IframeCompoment class={classes.leftVista} src={props.data.videoSrc1} />
         <IframeCompoment
           class={classes.rightVista}
           src={props.data.videoSrc2}
-        />
+        /> */}
         <AudioPlayer src={props.data.audioSrc} />
       </Fragment>
     );

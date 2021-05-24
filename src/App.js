@@ -81,17 +81,6 @@ class App extends Component {
                   />
                 )}
               />
-              {/* <Route
-                path="/iguana/:slide_id"
-                exact
-                render={(props) => (
-                  <ModuleContainer
-                    {...props}
-                    module={"iguana"}
-                    data={volcanodata}
-                  />
-                )}
-              /> */}
               <Route
                 path="/volcano/:slide_id"
                 exact
