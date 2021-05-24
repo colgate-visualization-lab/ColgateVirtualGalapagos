@@ -26,13 +26,13 @@ const convertTransitableToImmutable = (data) => {
 
 const loadInitialState = (progress) => {
   let initialState = {};
-  if (!isEmpty(progress.state)) {
+  if (!isEmpty(progress.state.drawing)) {
     initialState = {
-      ...progress.state,
+      ...progress.state.drawing,
       selectedElement: convertTransitableToImmutable(
-        progress.state.selectedElement
+        progress.state.drawing.selectedElement
       ),
-      elements: convertTransitableToImmutable(progress.state.elements),
+      elements: convertTransitableToImmutable(progress.state.drawing.elements),
     };
   } else {
     initialState = {
@@ -47,13 +47,12 @@ const loadInitialState = (progress) => {
 };
 
 const useDrawing = (id) => {
-  const { progress, loadSavedProgress } = useProgress();
+  // retrieve data from localstorage
+  const { progress } = useProgress();
 
   // ref pased to canvas
   const ref = useRef();
 
-  // retrieve data from localstorage
-  const storeDispatch = useDispatch();
   let initialState = loadInitialState(progress);
 
   let [state, dispatch] = useReducer((state, action) => {
@@ -264,11 +263,14 @@ const useDrawing = (id) => {
 
   useSaveProgress({
     state: {
-      ...state,
-      elements: convertImmutableToTransitable(
-        clearSelectAndFocus(state.elements)
-      ),
-      selectedElement: convertImmutableToTransitable(state.selectedElement),
+      ...progress.state,
+      drawing: {
+        ...state,
+        elements: convertImmutableToTransitable(
+          clearSelectAndFocus(state.elements)
+        ),
+        selectedElement: convertImmutableToTransitable(state.selectedElement),
+      },
     },
   });
 

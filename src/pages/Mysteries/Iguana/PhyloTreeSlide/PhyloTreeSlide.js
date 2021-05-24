@@ -5,9 +5,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import DrawingActivity from "./DrawingActivity";
 import DnDActivity from "./DnDActivity";
-
 import Header from "./components/Header";
 import { PhyloTreeContextProvider } from "./contexts/PhyloTreeContext";
+import { useProgress, useSaveProgress } from "contexts/ProgressContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +28,18 @@ const useStyles = makeStyles((theme) => ({
 
 const PhyloTreeSlide = ({ content }) => {
   const classes = useStyles();
-  const [tabIndex, setTabIndex] = useState(1);
+  const { progress } = useProgress();
+
+  const [tabIndex, setTabIndex] = useState(
+    progress.state?.tabIndex ? progress.state.tabIndex : 0
+  );
+
+  useSaveProgress({
+    state: {
+      ...progress.state,
+      tabIndex,
+    },
+  });
 
   const handleTabChange = (index) => setTabIndex(index);
   return (

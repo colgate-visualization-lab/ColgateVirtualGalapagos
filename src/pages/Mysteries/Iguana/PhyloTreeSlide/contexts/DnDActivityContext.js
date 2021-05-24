@@ -1,9 +1,11 @@
 import React, { useReducer, useContext, createContext } from "react";
 import produce from "immer";
+import isEmpty from "lodash/isEmpty";
 
 import * as utils from "../utils/dnd-activity";
 import { usePhyloTree } from "./PhyloTreeContext";
 import actions from "../constants/actions";
+import { useProgress, useSaveProgress } from "contexts/ProgressContext";
 
 const DnDActivityContext = createContext();
 
@@ -21,6 +23,17 @@ const DnDActivityContextProvider = ({ children }) => {
   const {
     phyloTreeData: { iguanaNames, dropTargets },
   } = usePhyloTree();
+
+  const { progress } = useProgress();
+  const initialState = isEmpty(progress.state.dnd)
+    ? {
+        undraggedIguanas: iguanaNames,
+        draggedIguanas: dropTargets,
+        treeCorrectnessMarkers: null,
+        allowTransition: false,
+      }
+    : progress.state.dnd;
+
   const [state, dispatch] = useReducer(
     produce((draft, action) => {
       switch (action.type) {
@@ -86,13 +99,15 @@ const DnDActivityContextProvider = ({ children }) => {
         }
       }
     }),
-    {
-      undraggedIguanas: iguanaNames,
-      draggedIguanas: dropTargets,
-      treeCorrectnessMarkers: null,
-      allowTransition: false,
-    }
+    initialState
   );
+
+  useSaveProgress({
+    state: {
+      ...progress.state,
+      dnd: state,
+    },
+  });
 
   const value = [state, dispatch];
 
