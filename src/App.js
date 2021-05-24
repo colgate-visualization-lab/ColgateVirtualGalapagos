@@ -43,11 +43,11 @@ class App extends Component {
         <Switch>
           <Suspense fallback={<LoadingScreen />}>
             <Route path="/" exact component={SplashScreen} />
-            <Route path="/authorization" component={SignIn} />
             <Layout>
               {/*Layout sets up navbar and the main tag that takes up the rest of the screen */}
               <Route path="/islands" component={Islands} />
-              {mapImages.map((mapImage, index) => (
+              <Route path="/home" exact component={SplashScreen} />
+              {/* {mapImages.map((mapImage, index) => (
                 <Route
                   key={index}
                   path={`/home${index > 0 ? index + 1 : ""}`}
@@ -59,13 +59,10 @@ class App extends Component {
                     />
                   )}
                 />
-              ))}
+              ))} */}
               {/* Each "home" unlocks new mystery */}
               <Route path="/isabela" exact component={ModuleNav} />
-              {/* <Route path="/volcanomod" exact component={VolcanoModule} /> */}
               <Route path="/gallery" exact component={Gallery} />
-
-              {/* <Route path="/iguana" exact component={IguanaModule} /> */}
               <Route path="/extras" exact component={ExtraSelect} />
               {/* route for iguana module slides */}
               <Route
@@ -73,11 +70,6 @@ class App extends Component {
                 exact
                 render={(props) => <Test {...props} />}
               />
-              {/* <Route
-                path="/:moduleName/:slideId"
-                exact
-                render={(props) => <ModuleContainer {...props} />}
-              /> */}
               <Route
                 path="/iguana/:slide_id"
                 exact
