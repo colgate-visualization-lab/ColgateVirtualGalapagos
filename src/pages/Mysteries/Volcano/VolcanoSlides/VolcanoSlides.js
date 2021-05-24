@@ -171,11 +171,6 @@ export default function VolcanoSlides(props) {
         <Grid item xs={6} style={{ height: "100%" }}>
           <IframeComponent src={props.data.videoSrc2} />
         </Grid>
-        {/* <IframeCompoment class={classes.leftVista} src={props.data.videoSrc1} />
-        <IframeCompoment
-          class={classes.rightVista}
-          src={props.data.videoSrc2}
-        /> */}
         <AudioPlayer src={props.data.audioSrc} />
       </Fragment>
     );
