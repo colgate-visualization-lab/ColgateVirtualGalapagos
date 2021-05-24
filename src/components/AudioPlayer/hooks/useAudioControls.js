@@ -1,18 +1,29 @@
 import { useState, useEffect, useRef } from "react";
 import raf from "raf"; // requestAnimationFrame polyfill
 
-const useAudioControls = (initialSeek) => {
+// import { useProgress, useSaveProgress } from "contexts/ProgressContext";
+
+const useAudioControls = () => {
+  // const { progress } = useProgress();
+
   const player = useRef(null);
   const [soundId, setSoundId] = useState(null);
   const _raf = useRef();
-  const [playing, setPlaying] = useState(true);
+  const [playing, setPlaying] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const [seek, setSeek] = useState(initialSeek ? initialSeek : 0.0);
+  const [seek, setSeek] = useState(0.0);
   const [isSeeking, setIsSeeking] = useState(false);
   const [duration, setDuration] = useState(0.0);
   const [muted, setMuted] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [rate, setRate] = useState(1.0);
+  // const [isInitialSeek, setIsInitialSeek] = useState(true);
+
+  // useSaveProgress({
+  //   state: {
+  //     seek,
+  //   },
+  // });
 
   useEffect(() => {
     _raf.current = raf(renderSeekPos);
@@ -26,6 +37,7 @@ const useAudioControls = (initialSeek) => {
 
   const handleOnPlay = (id) => {
     if (!soundId) {
+      // player.current.howler.seek(seek, id);
       setSoundId(id);
     }
     setPlaying(true);
@@ -61,6 +73,9 @@ const useAudioControls = (initialSeek) => {
   };
 
   const renderSeekPos = () => {
+    // if (isInitialSeek) {
+    //   setIsInitialSeek(false);
+    // }
     if (!isSeeking) {
       setSeek(player.current.seek());
     }
