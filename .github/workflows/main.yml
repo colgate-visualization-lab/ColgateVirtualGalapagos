@@ -28,11 +28,13 @@ jobs:
           curl -OL https://cdn-33.anonfiles.com/vb1669y0uf/5d228553-1622314116/GlobalProtect_deb-5.2.4.0-14.deb
           echo "Installing globalprotect..."
           sudo dpkg -i GlobalProtect_deb-5.2.4.0-14.deb
+          echo "Enabling GPD service..."
+          sudo systemctl enable gpd.service
           echo "Connecting to VPN..."
           globalprotect connect -portal ${{ secrets.COLGATE_VPN_PORTAL }} --username ${{ secrets.SANDESH_COLGATE_USERNAME }} --password ${{ secrets.SANDESH_COLGATE_PASSWORD }} < /dev/null > .globalprotect.log &
-          systemctl status gpd > .test
           sleep 10
           echo "##### GPD SERVICE STATUS ######"
+          systemctl status gpd > .test
           cat .test
           echo "##### GP OUTPUT #######"
           cat .globalprotect.log
