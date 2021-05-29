@@ -1,0 +1,25 @@
+name: CD
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  CD:
+    name: Continuous Delivery
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH into production server
+        uses: appleboy/ssh-action@master
+        with:
+          host: virtualgalapagos.colgate.edu
+          username: schapagain1
+          key: ${{secrets.SHH_KEY}}
+          port: 22
+          script: |
+            cd ../../var/www/html
+            mkdir -p new-website
+            
