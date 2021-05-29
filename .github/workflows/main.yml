@@ -1,9 +1,9 @@
 name: CD
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
   workflow_dispatch:
 
@@ -19,7 +19,4 @@ jobs:
           username: schapagain1
           key: ${{secrets.SHH_KEY}}
           port: 22
-          script: |
-            cd ../../var/www/html
-            mkdir -p new-website
-            
+          script: whoami
