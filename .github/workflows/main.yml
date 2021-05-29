@@ -31,13 +31,10 @@ jobs:
           echo "Enabling GPD service..."
           sudo systemctl enable gpd.service
           echo "Connecting to VPN..."
-          globalprotect connect -portal ${{ secrets.COLGATE_VPN_PORTAL }} --username ${{ secrets.SANDESH_COLGATE_USERNAME }} --password ${{ secrets.SANDESH_COLGATE_PASSWORD }} < /dev/null > .globalprotect.log &
-          sleep 10
+          globalprotect connect -portal ${{ secrets.COLGATE_VPN_PORTAL }} --username ${{ secrets.SANDESH_COLGATE_USERNAME }} --password ${{ secrets.SANDESH_COLGATE_PASSWORD }} < /dev/null
           echo "##### GPD SERVICE STATUS ######"
           systemctl status gpd > .test
           cat .test
-          echo "##### GP OUTPUT #######"
-          cat .globalprotect.log
       # - name: SSH into the server and do stuff
       #   uses: easingthemes/ssh-deploy@main
       #   env:
