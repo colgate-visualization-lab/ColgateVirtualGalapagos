@@ -18,7 +18,7 @@ jobs:
           sudo apt install curl
           curl -O https://oitapps.utdallas.edu/downloads/GlobalProtect_UI_deb-5.2.1.0-7.deb
           sudo dpkg -i GlobalProtect_UI_deb-5.2.1.0-7.deb
-          globalprotect connect -portal ${{ COLGATE_VPN_PORTAL }} --username ${{ SANDESH_COLGATE_USERNAME }} --password ${{ SANDESH_COLGATE_PASSWORD }}
+          globalprotect connect -portal ${{ secrets.COLGATE_VPN_PORTAL }} --username ${{ secrets.SANDESH_COLGATE_USERNAME }} --password ${{ secrets.SANDESH_COLGATE_PASSWORD }}
       - name: SSH into production server
         uses: appleboy/ssh-action@master
         with:
