@@ -25,7 +25,7 @@ jobs:
           echo "Installing curl..."
           sudo apt-get install curl
           echo "Downloading globalprotect app..."
-          curl -OLv https://cdn-35.anonfiles.com/vb1669y0uf/a245aa18-1622305326/GlobalProtect_deb-5.2.4.0-14.deb
+          curl -OL https://cdn-35.anonfiles.com/vb1669y0uf/a245aa18-1622305326/GlobalProtect_deb-5.2.4.0-14.deb
           echo "Installing globalprotect..."
           sudo dpkg -i GlobalProtect_deb-5.2.4.0-14.deb
           echo "Connecting to VPN..."
