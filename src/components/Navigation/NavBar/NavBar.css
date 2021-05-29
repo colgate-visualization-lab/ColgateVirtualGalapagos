@@ -1,0 +1,68 @@
+.navBar {
+  padding: 0.1rem;
+  /* background-color: darkblue; */
+}
+
+.navLink {
+  /* width: 20%; */
+  /* background-color: darkcyan; */
+}
+
+.navBrand {
+  padding: 0;
+  margin: 0;
+  width: 60%;
+}
+
+.backpack {
+  width: 70px;
+  margin-left: 20px;
+  margin: auto;
+}
+
+.logo {
+  width: 12%;
+}
+
+.navItem {
+  display: inline-block;
+  margin: 0 1rem;
+  width: 100%;
+  font-size: 0.4rem;
+}
+
+.dropdown {
+  background-color: inherit;
+  border-color: black;
+  padding: 0;
+  /* width: 3rem; */
+}
+
+.dropdown:focus {
+  background-color: rgb(36, 36, 36);
+  border-color: none;
+  box-shadow: none;
+}
+
+.dropdown:hover {
+  background-color: rgb(0, 0, 0);
+  border-color: none;
+  box-shadow: 1px;
+}
+
+.dropdownList {
+  background-color: black;
+}
+
+.dropdownItem:hover {
+  background-color: rgb(90, 83, 69);
+}
+
+.text {
+  color: white;
+  font-size: 8px;
+}
+
+.container {
+  background-color: black;
+}

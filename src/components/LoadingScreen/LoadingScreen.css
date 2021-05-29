@@ -1,0 +1,67 @@
+.zero {
+    position: absolute;
+    width: 50%;
+    top: 30%;
+    left: 25%;
+}
+.one {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    position: absolute;
+    width: 50%;
+    top: 30%;
+    left: 25%;
+}
+.two {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+    position: absolute;
+    width: 50%;
+    top: 30%;
+    left: 25%;
+}
+.three {
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+    position: absolute;
+    width: 50%;
+    top: 30%;
+    left: 25%;
+}
+.a {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 10%;
+    color: red;
+}
+.b {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 10%;
+    color: blue;
+}
+.c {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 10%;
+    color: green;
+}
+.d {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 10%;
+    color: orange;
+}

@@ -1,8 +1,49 @@
-@tailwind base;
-@tailwind utilities;
-@tailwind components;
+* {
+  box-sizing: border-box;
+}
 
-@font-face {
-  font-family: "Carta Marina Bold";
-  src: url("./assets/fonts/carta_marina_bold.otf");
+html {
+  scroll-behavior: smooth;
+  overflow: "visible";
+  /* -ms-overflow-style: none; */
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  /* font-size: 14px; */
+}
+
+/* @media screen and (min-width: 400px) {
+  html {
+    font-size: calc(16px + (22 - 16) * (100vw - 400px) / (800 - 400));
+  }
+}
+
+@media screen and (min-width: 800px) {
+  html {
+    font-size: 1.5em;
+  }
+} */
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /* font-family: "Open Sans", sans-serif; */
+  background-color: white;
+  color: black;
+  height: 100%;
+  width: 100%;
+}
+:global a {
+  text-decoration: none;
+  color: white;
+  /* font-family: "Montserrat"; */
+}
+
+:global a:hover {
+  text-decoration: none;
+  color: moccasin;
 }

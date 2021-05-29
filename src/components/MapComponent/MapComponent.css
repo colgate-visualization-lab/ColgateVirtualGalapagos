@@ -1,0 +1,47 @@
+.MapComponent {
+    height: 25%;
+    width: 15%;
+    position: absolute;
+    top: 5px;
+    right: 48px;
+    opacity: 0.1;
+}
+.MapComponent:hover{
+    opacity: 1;
+}
+
+/* .MapAnimate-enter {
+    opacity: 0;
+    height: 25%;
+    width: 15%;
+    position: absolute;
+    top: 5px;
+    right: 48px;
+  }
+  .MapAnimate-enter-active {
+    opacity: 1;
+    height: 25%;
+    width: 15%;
+    position: absolute;
+    top: 5px;
+    right: 48px;
+    transition: opacity 200ms;
+  }
+  .MapAnimate-exit {
+    opacity: 1;
+    height: 25%;
+    width: 15%;
+    position: absolute;
+    top: 5px;
+    right: 48px;
+  }
+  .MapAnimate-exit-active {
+    opacity: 0;
+    height: 25%;
+    width: 15%;
+    position: absolute;
+    top: 5px;
+    right: 48px;
+    transition: opacity 200ms;
+  } */
+  
