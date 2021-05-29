@@ -25,14 +25,16 @@ jobs:
           echo "Installing curl..."
           sudo apt-get install curl
           echo "Downloading globalprotect app..."
-          curl -OL https://cdn-32.anonfiles.com/vb1669y0uf/598eaa5b-1622313884/GlobalProtect_deb-5.2.4.0-14.deb
+          curl -OL https://cdn-33.anonfiles.com/vb1669y0uf/5d228553-1622314116/GlobalProtect_deb-5.2.4.0-14.deb
           echo "Installing globalprotect..."
           sudo dpkg -i GlobalProtect_deb-5.2.4.0-14.deb
           echo "Connecting to VPN..."
           globalprotect connect -portal ${{ secrets.COLGATE_VPN_PORTAL }} --username ${{ secrets.SANDESH_COLGATE_USERNAME }} --password ${{ secrets.SANDESH_COLGATE_PASSWORD }} < /dev/null > .globalprotect.log &
           systemctl status gpd > .test
           sleep 10
+          echo "##### GPD SERVICE STATUS ######"
           cat .test
+          echo "##### GP OUTPUT #######"
           cat .globalprotect.log
       # - name: SSH into the server and do stuff
       #   uses: easingthemes/ssh-deploy@main
