@@ -21,6 +21,7 @@ jobs:
           cd PanGPLinux-5.2.4-c14
           sudo dpkg -i GlobalProtect_deb-5.2.4.0-14.deb
           globalprotect connect -portal ${{ COLGATE_VPN_PORTAL }} --username ${{ SANDESH_COLGATE_USERNAME }} --password ${{ SANDESH_COLGATE_PASSWORD }}
+          
       - name: Continuous Delivery
       steps:
         - name: SSH into production server
