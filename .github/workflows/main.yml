@@ -16,11 +16,9 @@ jobs:
       - name: Download GlobalProtect CLI
         run: |
           sudo apt install curl
-          sudo curl -O https://itsforms.wsu.edu/VPN/20210106/PanGPLinux-5.2.4-c14.tgz
-          sudo tar -xvzf PanGPLinux-5.2.4-c14.tgz
-          cd PanGPLinux-5.2.4-c14
-          sudo dpkg -i GlobalProtect_deb-5.2.4.0-14.deb
-          globalprotect connect -portal ${{ secrets.COLGATE_VPN_PORTAL }} --username ${{ secrets.SANDESH_COLGATE_USERNAME }} --password ${{ secrets.SANDESH_COLGATE_PASSWORD }}
+          curl -O https://oitapps.utdallas.edu/downloads/GlobalProtect_UI_deb-5.2.1.0-7.deb
+          sudo dpkg -i GlobalProtect_UI_deb-5.2.1.0-7.deb
+          globalprotect connect -portal ${{ COLGATE_VPN_PORTAL }} --username ${{ SANDESH_COLGATE_USERNAME }} --password ${{ SANDESH_COLGATE_PASSWORD }}
       - name: SSH into production server
         uses: appleboy/ssh-action@master
         with:
