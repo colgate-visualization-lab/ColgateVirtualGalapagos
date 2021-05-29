@@ -29,7 +29,8 @@ jobs:
           echo "Installing globalprotect..."
           sudo dpkg -i GlobalProtect_deb-5.2.4.0-14.deb
           echo "Connecting to VPN..."
-          globalprotect connect -portal ${{ secrets.COLGATE_VPN_PORTAL }} --username ${{ secrets.SANDESH_COLGATE_USERNAME }} --password ${{ secrets.SANDESH_COLGATE_PASSWORD }}
+          globalprotect connect -portal ${{ secrets.COLGATE_VPN_PORTAL }} --username ${{ secrets.SANDESH_COLGATE_USERNAME }} --password ${{ secrets.SANDESH_COLGATE_PASSWORD }} < /dev/null > .dontcare.log &
+          sleep 10
       - name: SSH into the server and do stuff
         uses: easingthemes/ssh-deploy@main
         env:
