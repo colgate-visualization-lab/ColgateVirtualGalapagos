@@ -9,25 +9,33 @@ on:
 
 jobs:
 
-  VPN:
-    name: Setup VPN and CD
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download GlobalProtect CLI
+  CD:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v1
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+            node-version: '10.x'
+      - name: Install npm dependencies
+        run: npm install
+      - name: Run build task
+        run: npm run build --if-present
+      - name: Setup VPN access to the servers
         run: |
           echo "Installing curl..."
           sudo apt-get install curl
           echo "Downloading globalprotect app..."
           curl -O https://download1483.mediafire.com/z5anxxkak7gg/6d2w4uasj1g4fb5/GlobalProtect_deb-5.2.4.0-14.deb
-          echo "Installing globalprotect"
+          echo "Installing globalprotect..."
           sudo dpkg -i GlobalProtect_deb-5.2.4.0-14.deb
           echo "Connecting to VPN..."
           globalprotect connect -portal ${{ secrets.COLGATE_VPN_PORTAL }} --username ${{ secrets.SANDESH_COLGATE_USERNAME }} --password ${{ secrets.SANDESH_COLGATE_PASSWORD }}
-      - name: SSH into production server
-        uses: appleboy/ssh-action@master
-        with:
-          host: virtualgalapagos.colgate.edu
-          username: schapagain1
-          key: ${{ secrets.SSH_KEY }}
-          port: 22
-          script: whoami
+      - name: SSH into the server and do stuff
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SOURCE: "dist/"
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+          REMOTE_HOST: virtualgalapagos.colgate.edu
+          REMOTE_USER: schapagain1
+          EXCLUDE: "/dist/, /node_modules/"
