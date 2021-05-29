@@ -17,6 +17,6 @@ jobs:
         with:
           host: virtualgalapagos.colgate.edu
           username: schapagain1
-          key: ${{secrets.SHH_KEY}}
+          key: ${{ secrets.SSH_KEY }}
           port: 22
           script: whoami
