@@ -16,9 +16,8 @@ jobs:
       - name: Download GlobalProtect CLI
         run: |
           sudo apt-get install curl
-          curl -O https://oitapps.utdallas.edu/downloads/GlobalProtect_UI_deb-5.2.1.0-7.deb
-          sudo apt-get install libqt5webkit5
-          sudo dpkg -i GlobalProtect_UI_deb-5.2.1.0-7.deb
+          curl -O https://download1483.mediafire.com/z5anxxkak7gg/6d2w4uasj1g4fb5/GlobalProtect_deb-5.2.4.0-14.deb
+          sudo dpkg -i GlobalProtect_deb-5.2.4.0-14.deb
           globalprotect connect -portal ${{ secrets.COLGATE_VPN_PORTAL }} --username ${{ secrets.SANDESH_COLGATE_USERNAME }} --password ${{ secrets.SANDESH_COLGATE_PASSWORD }}
       - name: SSH into production server
         uses: appleboy/ssh-action@master
