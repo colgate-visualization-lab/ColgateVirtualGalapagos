@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.tsx",
   "scripts": {
-    "dev": "webpack --mode development",
+    "dev": "webpack --mode development --progress",
     "start": "webpack serve --open",
-    "build": "NODE_ENV=production webpack --mode production --progress",
+    "build": "NODE_ENV=production webpack --mode production",
     "watch": "webpack --watch"
   },
   "repository": {
