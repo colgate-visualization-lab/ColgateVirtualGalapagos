@@ -15,11 +15,11 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: "10.x"
+          node-version: "14.x"
       - name: Install npm dependencies
         run: npm install
-      - name: Run build task
-        run: npm run build --if-present
+      - name: Build Application
+        run: npm run build
       - name: Setup VPN access to the servers
         run: |
           echo "Installing curl..."
