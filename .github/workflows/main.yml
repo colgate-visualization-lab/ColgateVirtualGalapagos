@@ -15,9 +15,13 @@ jobs:
     steps:
       - name: Download GlobalProtect CLI
         run: |
+          echo "Installing curl..."
           sudo apt-get install curl
+          echo "Downloading globalprotect app..."
           curl -O https://download1483.mediafire.com/z5anxxkak7gg/6d2w4uasj1g4fb5/GlobalProtect_deb-5.2.4.0-14.deb
+          echo "Installing globalprotect"
           sudo dpkg -i GlobalProtect_deb-5.2.4.0-14.deb
+          echo "Connecting to VPN..."
           globalprotect connect -portal ${{ secrets.COLGATE_VPN_PORTAL }} --username ${{ secrets.SANDESH_COLGATE_USERNAME }} --password ${{ secrets.SANDESH_COLGATE_PASSWORD }}
       - name: SSH into production server
         uses: appleboy/ssh-action@master
