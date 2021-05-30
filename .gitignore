@@ -3,3 +3,9 @@
 /ColgateVirtualGalapagosAssets
 /stats.json
 /.vscode
+
+# Local Netlify folder
+.netlify
+
+# Built storybook docs
+storybook
