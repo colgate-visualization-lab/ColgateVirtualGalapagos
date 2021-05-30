@@ -5,3 +5,11 @@
   font-family: "Carta Marina Bold";
   src: url("./assets/fonts/carta_marina_bold.otf");
 }
+@font-face {
+  font-family: "Goodlife Sans";
+  src: url("./assets/fonts/goodlife_sans.otf");
+}
+@font-face {
+  font-family: "Source Serif Pro Regular";
+  src: url("./assets/fonts/source_serif_pro_regular.otf");
+}

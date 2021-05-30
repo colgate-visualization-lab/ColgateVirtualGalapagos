@@ -25,7 +25,9 @@ module.exports = {
         dark: "#3E332E",
       },
       fontFamily: {
-        title: ["Carta Marina Bold", "Arial"],
+        title: ["Carta Marina Bold", "Arial", "sans-serif"],
+        heading: ["Goodlife Sans", "Poppins", "sans-serif"],
+        body: ["Source Serif Pro Regular", "Arial", "sans-serif"],
       },
     },
     screens: {
