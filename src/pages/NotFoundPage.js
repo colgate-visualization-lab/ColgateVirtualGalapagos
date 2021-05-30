@@ -10,7 +10,12 @@ export default function NotFoundPage() {
       <div className="w-40 lg:w-50">
         <Image src={penguinImage} alt="penguin" />
       </div>
-      <Text type="title" size="lg" value="under construction" />
+      <Text
+        type="title"
+        size="lg"
+        value="under construction"
+        color="text-dark"
+      />
     </Page>
   );
 }

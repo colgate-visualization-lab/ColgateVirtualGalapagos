@@ -1,26 +1,31 @@
 import React from "react";
-import PropTypes from "prop-types";
 import classNames from "classnames";
+import { ValidTextColors } from "../../../types";
 
-Text.propTypes = {
-  type: PropTypes.oneOf(["title", "subtitle", "body"]),
-  size: PropTypes.oneOf(["sm", "md", "lg"]),
-  value: PropTypes.string,
-  color: PropTypes.string,
-};
+export type ValidTypes = "title" | "subtitle" | "body";
+export type ValidSizes = "sm" | "md" | "lg";
+
+export interface TextProps {
+  type: ValidTypes;
+  size: ValidSizes;
+  value: string;
+  color?: ValidTextColors;
+}
 
 Text.defaultProps = {
-  color: "black",
+  color: "text-primary",
+  size: "md",
+  type: "body",
+  value: "this is text",
 };
 
-export default function Text({ value, color, type, size = "md" }) {
-  const colorIsClass = color && /text/.test(color);
+export function Text({ value, color, type, size }: TextProps) {
   const [isTitle, isSubtitle, isBody] = [
     type === "title",
     type === "subtitle",
     type === "body",
   ];
-  const classes = classNames(`${colorIsClass ? color : ""}`, {
+  const classes = classNames(`${color || ""}`, {
     "font-title": isTitle,
     "font-subtitle": isSubtitle,
     "font-body": isBody,
@@ -40,9 +45,7 @@ export default function Text({ value, color, type, size = "md" }) {
       ? "text-md md:text-lg"
       : "text-sm md:text-md"]: size === "sm",
   });
-  return (
-    <p style={colorIsClass ? {} : { color }} className={classes}>
-      {value}
-    </p>
-  );
+  return <p className={classes}>{value}</p>;
 }
+
+export default Text;
