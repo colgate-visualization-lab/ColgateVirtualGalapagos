@@ -20,19 +20,7 @@ module.exports = {
       {
         test: /\.css$/i,
         exclude: /node_modules/,
-        use: [
-          "style-loader",
-          "css-loader",
-
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [require("tailwindcss"), require("autoprefixer")],
-              },
-            },
-          },
-        ],
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
         test: /\.(png|jpe?g|gif|otf)$/,

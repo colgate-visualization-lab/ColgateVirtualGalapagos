@@ -7,7 +7,9 @@
     "dev": "webpack --mode development --progress",
     "start": "webpack serve --open",
     "build": "NODE_ENV=production webpack --mode production",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -35,12 +37,21 @@
   "devDependencies": {
     "@babel/core": "^7.14.3",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-proposal-export-default-from": "^7.12.13",
     "@babel/preset-env": "^7.14.4",
     "@babel/preset-react": "^7.13.13",
+    "@storybook/addon-actions": "^6.3.0-beta.4",
+    "@storybook/addon-essentials": "^6.3.0-beta.4",
+    "@storybook/addon-links": "^6.3.0-beta.4",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/builder-webpack5": "^6.3.0-beta.4",
+    "@storybook/manager-webpack5": "^6.3.0-beta.4",
+    "@storybook/react": "^6.3.0-beta.4",
     "autoprefixer": "^10.2.6",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.6",
     "html-webpack-plugin": "^5.3.1",
+    "postcss": "^8.3.0",
     "postcss-loader": "^5.3.0",
     "style-loader": "^2.0.0",
     "tailwindcss": "^2.1.2",

@@ -8,7 +8,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "theme-blue": "#69C4D4",
+        "dark dark": "#000000",
+        primary: "#69C4D4",
+        "primary-light": "#A2DAE2",
+        "primary-dark": "#22B9F1",
+        "accent-secondary": "#5DA38B",
+        "accent-primary": "#E9B07B",
+        secondary: "#A3998E",
+        "secondary-dark": "#736B5C",
+        "secondary-light": "#D2C9BE",
+        dark: "#3E332E",
       },
       fontFamily: {
         title: ["Carta Marina Bold", "Arial"],
@@ -172,9 +181,12 @@ module.exports = {
       sm: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
       DEFAULT:
         "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
-      md: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
-      lg: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-      xl: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+      md:
+        "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+      lg:
+        "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+      xl:
+        "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
       "2xl": "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
       inner: "inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)",
       none: "none",

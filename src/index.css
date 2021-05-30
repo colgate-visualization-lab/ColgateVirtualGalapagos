@@ -1,7 +1,6 @@
-@tailwind base;
-@tailwind utilities;
-@tailwind components;
-
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 @font-face {
   font-family: "Carta Marina Bold";
   src: url("./assets/fonts/carta_marina_bold.otf");
