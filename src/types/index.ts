@@ -1,4 +1,5 @@
 export type ValidBgColors =
+  | "bg-white"
   | "bg-primary"
   | "bg-secondary"
   | "bg-primary-light"
@@ -8,9 +9,10 @@ export type ValidBgColors =
   | "bg-accent-primary"
   | "bg-accent-secondary"
   | "bg-dark"
-  | "bg-dark-dark";
+  | "bg-black";
 
 export type ValidTextColors =
+  | "text-white"
   | "text-primary"
   | "text-secondary"
   | "text-primary-light"
@@ -20,4 +22,4 @@ export type ValidTextColors =
   | "text-accent-primary"
   | "text-accent-secondary"
   | "text-dark"
-  | "text-dark-dark";
+  | "text-black";
