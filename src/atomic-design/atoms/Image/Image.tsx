@@ -1,9 +1,9 @@
 import React from "react";
 
 export interface ImageProps {
-  className: string;
+  className?: string;
   src: string;
-  alt: string;
+  alt?: string;
 }
 
 Image.defaultProps = {

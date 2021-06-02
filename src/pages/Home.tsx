@@ -1,10 +1,10 @@
 import React from "react";
-import AnimationVideo from "../atomic-design/atoms/AnimationVideo";
+import AnimationVideo from "../atomic-design/atoms/AnimationVideo/AnimationVideo";
 import Page from "../atomic-design/templates/Page";
 
 export default function Home() {
   return (
-    <Page color="black">
+    <Page color="bg-black">
       <AnimationVideo
         autoPlay
         loop
