@@ -9,7 +9,7 @@ export interface PageProps {
 
 export function Page({ children, color }: PageProps) {
   const classes = classNames(
-    "h-screen w-screen relative flex flex-col items-center justify-center",
+    "h-screen w-screen overflow-hidden relative flex flex-col items-center justify-center",
     `${color || ""}`,
     {}
   );

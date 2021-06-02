@@ -23,3 +23,5 @@ export type ValidTextColors =
   | "text-accent-secondary"
   | "text-dark"
   | "text-black";
+
+export type ValidAnimations = "animate-left-right";

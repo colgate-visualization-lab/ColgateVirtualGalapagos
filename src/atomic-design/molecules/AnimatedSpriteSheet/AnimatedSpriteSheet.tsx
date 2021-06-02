@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { ValidAnimations } from "../../../types";
 
 import { Sprite } from "../../atoms";
+import { SpriteProps } from "../../atoms/Sprite/Sprite";
 
 interface AnimatedSpriteSheetProps {
   filename: string;
@@ -18,6 +20,9 @@ interface AnimatedSpriteSheetProps {
   isPlaying?: boolean;
   loop?: boolean;
   speed?: number;
+  direction?: "down" | "right";
+  scale?: SpriteProps["scale"];
+  animation?: ValidAnimations | { name: ValidAnimations; offset: number };
 }
 
 AnimatedSpriteSheet.defaultProps = {
@@ -45,9 +50,12 @@ export function AnimatedSpriteSheet({
   isPlaying,
   loop,
   speed,
+  direction = "right",
+  scale,
+  animation,
 }: AnimatedSpriteSheetProps) {
   const [currentFrame, setCurrentFrame] = useState(initialFrame || 0);
-
+  const [sheet, setSheet] = useState<HTMLImageElement>();
   const maxFramesWidth =
     (bounds && frame && (bounds.width - bounds.x) / frame.width) || 1;
   const maxFramesHeight =
@@ -72,14 +80,53 @@ export function AnimatedSpriteSheet({
   }, [currentFrame, isPlaying]);
 
   const spriteData = {
-    filename,
+    scale,
     width: frame?.width,
     height: frame?.height,
-    x: frame && frame?.width * Math.floor(currentFrame / maxFramesHeight),
-    y: frame && frame?.height * (currentFrame % maxFramesHeight),
+    x:
+      frame &&
+      frame?.width *
+        (direction === "down"
+          ? Math.floor(currentFrame / maxFramesHeight)
+          : currentFrame % maxFramesWidth),
+    y:
+      frame &&
+      frame?.height *
+        (direction === "down"
+          ? currentFrame % maxFramesHeight
+          : Math.floor(currentFrame / maxFramesWidth)),
   };
 
-  return <Sprite {...spriteData} />;
+  useEffect(() => {
+    if (filename) {
+      const img = new Image();
+      img.src = filename;
+      img.onload = () => setSheet(img);
+    }
+  }, [filename]);
+
+  return sheet ? (
+    <Sprite
+      style={
+        ((typeof animation === "string" && animation) || animation?.name) ===
+        "animate-left-right"
+          ? {
+              position: "absolute",
+              transform: "translateX(-50%)",
+              left: `${
+                (((currentFrame + 1) / maxFrames) * 100 +
+                  ((typeof animation !== "string" && animation?.offset) || 0)) %
+                101
+              }%`,
+            }
+          : {}
+      }
+      img={sheet}
+      {...spriteData}
+    />
+  ) : (
+    <div>"Loading..."</div>
+  );
 }
 
 export default AnimatedSpriteSheet;

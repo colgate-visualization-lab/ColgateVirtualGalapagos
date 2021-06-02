@@ -24,6 +24,7 @@
   "browserslist": "> 1%, last 2 versions",
   "homepage": "https://github.com/colgate-visualization-lab/ColgateVirtualGalapagos#readme",
   "dependencies": {
+    "@types/three": "^0.129.0",
     "axios": "^0.21.1",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
@@ -34,6 +35,7 @@
     "react-icons": "^4.2.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
+    "three": "^0.129.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

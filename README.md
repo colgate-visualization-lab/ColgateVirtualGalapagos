@@ -6,34 +6,40 @@ Colgate Virtual Galapagos is an interactive digital learning module in developme
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. The live version of Colgate Virtual Galapagos is available [here](http://virtualgalapagos.colgate.edu).
 
-## Installing 
+> Note: Components prefixed with `Three` are experimental, and only shall be used later if we need a better graphics rendering platform.
 
-Download or clone the repository 
+## Installing
+
+Download or clone the repository
 
 ```bash
 git clone https://github.com/colgate-visualization-lab/ColgateVirtualGalapagos.git
 ```
 
-Run 
+Run
+
 ```bash
 npm install
 ```
 
-## Running the project 
+## Running the project
 
-Run 
+Run
+
 ```bash
 npm start
-``` 
-to start the dev server. Project will be running at http://localhost:9000/
-To change the port, go to webpack.config.js file 
+```
 
-Run 
+to start the dev server. Project will be running at http://localhost:9000/
+To change the port, go to webpack.config.js file
+
+Run
+
 ```bash
 npm run build
-``` 
-to run the production version of the website. 
+```
 
+to run the production version of the website.
 
 ## Contributing
 
@@ -41,16 +47,15 @@ Feel free to send in any pull requests.
 
 ## Authors
 
-* **Tam Nguyen** - [tmnguyen1307](https://github.com/tmnguyen1307)
-* **Daniel Gathogo** - [dgathogo](https://github.com/dgathogo)
-* **Caio Brighenti** - [CaioBrighenti](https://github.com/CaioBrighenti)
+- **Tam Nguyen** - [tmnguyen1307](https://github.com/tmnguyen1307)
+- **Daniel Gathogo** - [dgathogo](https://github.com/dgathogo)
+- **Caio Brighenti** - [CaioBrighenti](https://github.com/CaioBrighenti)
 
 ## Acknowledgments
 
 This project could not happen without the funding and/or support from the following organizations.
 
-* Colgate University Geology Department
-* NASC
-* McGill University's Lab Without Borders
-* All the scientists whose materials and/or interviews were used with their permissions
-
+- Colgate University Geology Department
+- NASC
+- McGill University's Lab Without Borders
+- All the scientists whose materials and/or interviews were used with their permissions

@@ -1,27 +1,75 @@
-import React from "react";
+import React, { CSSProperties, useEffect, useRef, useState } from "react";
 
 export interface SpriteProps {
-  filename: string;
+  img: HTMLImageElement;
   x: number;
   y: number;
   width: number;
   height: number;
+  scale?: number | { x: number; y: number };
+  style: CSSProperties;
 }
 
-export const Sprite = ({ filename, x, y, width, height }: SpriteProps) => {
-  if (!filename) {
+export const Sprite = ({
+  img,
+  x,
+  y,
+  width,
+  height,
+  scale = 1,
+  ...rest
+}: SpriteProps) => {
+  if (!img) {
     return null;
   }
-
-  const style = {
-    backgroundImage: `url(${filename})`,
-    backgroundPosition: `${x * -1}px ${y * -1}px`,
-    backgroundRepeat: "no-repeat",
-    width,
-    height,
+  const [context, setContext] = useState<CanvasRenderingContext2D>();
+  const canvas = useRef<HTMLCanvasElement>();
+  const canvasMountCb = (node: HTMLCanvasElement) => {
+    if (node) {
+      canvas.current = node;
+      const ctx = node.getContext("2d");
+      if (ctx) {
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = "high";
+        setContext(ctx);
+      }
+    }
   };
 
-  return <div style={style} />;
+  const scaledHeight =
+    typeof scale === "number" ? scale * height : scale.y * height;
+  const scaledWidth =
+    typeof scale === "number" ? scale * width : scale.x * width;
+
+  useEffect(() => {
+    if (img && context) {
+      context.clearRect(
+        0,
+        0,
+        canvas.current?.width || 0,
+        canvas.current?.height || 0
+      );
+      context.drawImage(
+        img,
+        x,
+        y,
+        width,
+        height,
+        (canvas.current?.width || scaledWidth) / 2 - scaledWidth / 2,
+        (canvas.current?.height || scaledHeight) / 2 - scaledHeight / 2,
+        scaledWidth,
+        scaledHeight
+      );
+    }
+  }, [context, img, x, y]);
+
+  return (
+    <canvas
+      onMouseEnter={() => console.log("mouse entered")}
+      {...rest}
+      ref={canvasMountCb}
+    ></canvas>
+  );
 };
 
 Sprite.defaultProps = {
