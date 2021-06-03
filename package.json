@@ -5,7 +5,7 @@
   "main": "index.tsx",
   "scripts": {
     "dev": "webpack --mode development --progress",
-    "start": "webpack serve --open",
+    "start": "webpack serve --mode development --progress",
     "build": "NODE_ENV=production webpack --mode production",
     "watch": "webpack --watch",
     "storybook": "start-storybook -p 6006",
@@ -21,7 +21,6 @@
   "bugs": {
     "url": "https://github.com/colgate-visualization-lab/ColgateVirtualGalapagos/issues"
   },
-  "browserslist": "> 1%, last 2 versions",
   "homepage": "https://github.com/colgate-visualization-lab/ColgateVirtualGalapagos#readme",
   "dependencies": {
     "@types/three": "^0.129.0",

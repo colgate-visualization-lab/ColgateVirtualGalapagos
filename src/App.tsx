@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import NotFoundPage from "./pages/NotFoundPage";
-import TestingGround from "./pages/TestingGround";
+import TestingGround from "./test/TestingGround";
 
 export default function App() {
   return (

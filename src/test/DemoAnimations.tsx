@@ -1,29 +1,14 @@
 import React, { useState } from "react";
 import AnimatedSpriteSheet from "../atomic-design/molecules/AnimatedSpriteSheet/AnimatedSpriteSheet";
-import Page from "../atomic-design/templates/Page";
 import characterSheet from "../assets/sprites/attacking_soldier.png";
 import birdSheet from "../assets/sprites/bird.png";
 import blueBirdSheet from "../assets/sprites/blue_bird.png";
 
-/*
-
-function name () {
-
-}
-
-const name = () => {
-
-}
-
-*/
-
-export default function TestingGround() {
+export default function DemoAnimations() {
   let [isAnimating, setAnimating] = useState(true);
-  // useState(false) => const[isAnimating,setAnimating] = [something,something]
   const buttonClasses = "text-xl mt-5 focus:outline-none";
-  console.log("component rendered...");
   return (
-    <Page color="bg-primary">
+    <>
       <div className="flex flex-col items-center justify-center">
         <AnimatedSpriteSheet
           filename={characterSheet}
@@ -39,7 +24,7 @@ export default function TestingGround() {
           {isAnimating ? "Freeze!" : "Unfreeze!"}
         </button>
       </div>
-      {/* <div className="absolute top-0 left-0 w-full">
+      <div className="absolute top-0 left-0 w-full">
         <div className="relative top-5 w-full">
           <AnimatedSpriteSheet
             filename={birdSheet}
@@ -112,7 +97,7 @@ export default function TestingGround() {
             animation={{ name: "animate-left-right", offset: 30 }}
           />
         </div>
-      </div> */}
-    </Page>
+      </div>
+    </>
   );
 }

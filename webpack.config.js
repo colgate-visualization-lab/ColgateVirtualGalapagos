@@ -10,6 +10,19 @@ module.exports = {
     filename: "bundle.js",
     publicPath: "/",
   },
+  devServer: {
+    publicPath: "/",
+    contentBase: "dist",
+    hot: true,
+    watchOptions: {
+      ignored: /node_modules/,
+      poll: 1000,
+    },
+    port: 9000,
+    host: "0.0.0.0",
+    historyApiFallback: true,
+    disableHostCheck: true,
+  },
   module: {
     rules: [
       {
@@ -47,11 +60,4 @@ module.exports = {
       inject: "body",
     }),
   ],
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    compress: true,
-    port: 9900,
-    historyApiFallback: true,
-    hot: true,
-  },
 };
