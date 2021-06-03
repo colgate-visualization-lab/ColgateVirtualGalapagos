@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
+import useCanvas from "./useCanvas";
 
 function drawSpeechBubble(ctx: CanvasRenderingContext2D) {
   ctx.beginPath();
@@ -13,38 +14,25 @@ function drawSpeechBubble(ctx: CanvasRenderingContext2D) {
 }
 
 export const Canvas = () => {
-  const [ctx, setContext] = useState<CanvasRenderingContext2D>();
-  const canvas = useRef<HTMLCanvasElement>();
-  const canvasMountCb = (node: HTMLCanvasElement) => {
-    if (node) {
-      canvas.current = node;
-      const ctx = node.getContext("2d");
-      if (ctx) {
-        ctx.imageSmoothingQuality = "high";
-        setContext(ctx);
-      } else {
-        alert(
-          "Your browser doesn't support the html canvas context. We're sorry but that might significantly hamper your experience."
-        );
-      }
-    }
+  const draw = (ctx: CanvasRenderingContext2D, frameCount: number) => {
+    console.log(frameCount);
+    if (frameCount === 1) applyBackgroundColor(ctx);
+    drawSpeechBubble(ctx);
   };
+  const canvasRef = useCanvas(draw);
 
   function applyBackgroundColor(ctx: CanvasRenderingContext2D) {
-    if (canvas.current) {
-      ctx.fillStyle = "rgba(0,0,200,0.05)";
-      ctx.fillRect(0, 0, canvas.current?.width, canvas.current?.height);
-    }
+    ctx.save();
+    ctx.fillStyle = "rgba(0,0,200,0.05)";
+    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    ctx.restore();
   }
 
-  useEffect(() => {
-    if (ctx && canvas.current) {
-      applyBackgroundColor(ctx);
-      drawSpeechBubble(ctx);
-    }
-  }, [ctx]);
-
-  return <canvas ref={canvasMountCb}></canvas>;
+  return (
+    <canvas className="w-full h-full" ref={canvasRef}>
+      Your browser doesn't support HTML canvas
+    </canvas>
+  );
 };
 
 export default Canvas;
