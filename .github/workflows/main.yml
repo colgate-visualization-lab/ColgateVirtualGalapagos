@@ -28,11 +28,11 @@ jobs:
           echo "Connecting to VPN..."
           echo -e "${{ secrets.SANDESH_COLGATE_USERNAME }}\n${{ secrets.SANDESH_COLGATE_PASSWORD }}\nFullTunnel" | sudo openconnect --protocol=gp ${{ secrets.COLGATE_VPN_PORTAL }} -b
           echo "##### DONE ######"
-      # - name: SSH into the server and do stuff
-      #   uses: easingthemes/ssh-deploy@main
-      #   env:
-      #     SOURCE: "dist/"
-      #     SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
-      #     REMOTE_HOST: virtualgalapagos.colgate.edu
-      #     REMOTE_USER: schapagain1
-      #     EXCLUDE: "/dist/, /node_modules/"
+      - name: SSH into the server and do stuff
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SOURCE: "dist/"
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+          REMOTE_HOST: virtualgalapagos.colgate.edu
+          REMOTE_USER: schapagain1
+          EXCLUDE: "/dist/, /node_modules/"
