@@ -6,13 +6,13 @@ module.exports = {
   mode: "development",
   entry: "./src/index.tsx",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "public"),
     filename: "bundle.js",
     publicPath: "/",
   },
   devServer: {
     publicPath: "/",
-    contentBase: "dist",
+    contentBase: "public",
     hot: true,
     watchOptions: {
       ignored: /node_modules/,
