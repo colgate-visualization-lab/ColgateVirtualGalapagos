@@ -17,7 +17,7 @@ export default function NotFoundPage() {
             initialFrame={0}
             bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
             frame={{ width: 343, height: 301 }}
-            speed={300}
+            speed={200}
             scale={{ x: 0.8, y: 0.55 }}
             animation={{ name: "animate-left-right", offset: 0 }}
           />
@@ -28,7 +28,7 @@ export default function NotFoundPage() {
             initialFrame={3}
             bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
             frame={{ width: 343, height: 301 }}
-            speed={300}
+            speed={200}
             scale={{ x: 0.8, y: 0.55 }}
             animation={{ name: "animate-left-right", offset: 40 }}
           />
@@ -39,7 +39,7 @@ export default function NotFoundPage() {
             filename={blueBirdSheet}
             bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
             frame={{ width: 343, height: 301 }}
-            speed={200}
+            speed={250}
             scale={{ x: 0.8, y: 0.55 }}
             animation={{ name: "animate-left-right", offset: 15 }}
           />
@@ -50,7 +50,7 @@ export default function NotFoundPage() {
             filename={blueBirdSheet}
             bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
             frame={{ width: 343, height: 301 }}
-            speed={200}
+            speed={250}
             scale={{ x: 0.8, y: 0.55 }}
             animation={{ name: "animate-left-right", offset: 5 }}
           />
