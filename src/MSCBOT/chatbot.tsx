@@ -33,7 +33,7 @@ function chatbot() {
                 <div className="chat-container">
                     {/* Messages */}
                     <div id="chatbox">
-                        <div id="chat-timestamp">{getTime()}</div>
+                        <div>{getTime()}</div>
                         <p id="botStarterMessage" className="botText">
                             <span>Welcome to Virtual Galapagos! What is your name?</span>
                         </p>
