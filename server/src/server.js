@@ -1,25 +1,36 @@
 const path = require("path");
 const express = require("express");
-// require("./db/mongoose");
+const http = require("http");
+const https = require("https");
 const cors = require("cors");
-const userRouter = require("./routers/user");
-const noteRouter = require("./routers/note");
+const fs = require("fs");
+
+const sslOptions =
+  process.env.NODE_ENV === "production"
+    ? {
+        key: fs.readFileSync(
+          "/var/www/html/VGK/virtualgalapagos.colgate.edu.key"
+        ),
+        cert: fs.readFileSync(
+          "/var/www/html/VGK/virtualgalapagos.colgate.edu.cer"
+        ),
+      }
+    : {};
 
 const app = express();
 const port = process.env.PORT || 5000;
-
+const server =
+  process.env.NODE_ENV === "production"
+    ? https.createServer(sslOptions, app)
+    : http.createServer(app);
 app.use(cors());
 app.use(express.json());
-app.use(express.static(__dirname + "/public"));
-
-app.get("/staging/*", function (req, res) {
-  res.sendFile(path.join(__dirname + "/public/staging/index.html"));
-});
+app.use(express.static("dist"));
 
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname + "/public/index.html"));
+  res.sendFile(path.join(__dirname, "../dist/index.html"));
 });
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log("Server is up on port " + port);
 });
