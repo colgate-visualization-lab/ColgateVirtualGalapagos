@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/colgate-visualization-lab/ColgateVirtualGalapagos#readme",
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "@types/three": "^0.129.0",
     "axios": "^0.21.1",
     "classnames": "^2.3.1",
