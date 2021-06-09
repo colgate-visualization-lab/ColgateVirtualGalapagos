@@ -25,8 +25,8 @@ jobs:
         with:
           key: ${{ secrets.SSH_KEY }}
           known_hosts: 'placeholder'
-        - name: Adding Known Hosts
-          run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+      - name: Adding Known Hosts
+        run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
       - name: "Copy new version to the server"
           run: |
             pwd
