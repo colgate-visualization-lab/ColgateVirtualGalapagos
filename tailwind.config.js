@@ -12,6 +12,16 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      animation: {
+        "fade-in-slow": "fade-in 2s",
+        "fade-in": "fade-in 1s",
+      },
+      keyframes: {
+        "fade-in": {
+          to: { opacity: "100%" },
+          from: { opacity: "0%" },
+        },
+      },
       colors: {
         white: "#ffffff",
         black: "#000000",

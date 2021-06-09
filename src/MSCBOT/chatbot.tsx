@@ -18,6 +18,7 @@ function chatbot() {
     }    
 
     return (
+    <>
     <Page color="bg-primary-light">
         <div className="absolute bottom-0 left-10">
         <div className="w-50 lg:w-60">
@@ -44,10 +45,6 @@ function chatbot() {
                             <p></p>
                         </div>
                         <div className="chat-bar-icons">
-                    {/* <i id="chat-icon" style={{color: 'crimson'}} className="fa fa-fw fa-heart"
-                    onclick="heartButton()"></i>
-                    <i id="chat-icon" style={{color: 'darkgray'}} className="fa fa-fw fa-send"
-                    onclick="sendButton()"></i> */}
                             <button id="heart-icon"><FontAwesomeIcon icon={faHeart} color='red' /></button>
                             <button id="chat-icon"><FontAwesomeIcon icon={faPaperPlane} color='darkgray' /></button>
                         </div>
@@ -61,7 +58,7 @@ function chatbot() {
         </div>
         
     </Page>
-        
+      </>  
     );
 }
 
