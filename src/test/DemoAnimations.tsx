@@ -9,7 +9,7 @@ export default function DemoAnimations() {
   const buttonClasses = "text-xl mt-5 focus:outline-none";
   return (
     <>
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col fixed z-30 items-center justify-center">
         <AnimatedSpriteSheet
           filename={characterSheet}
           bounds={{ x: 0, y: 0, width: 516, height: 306 }}
@@ -24,7 +24,7 @@ export default function DemoAnimations() {
           {isAnimating ? "Freeze!" : "Unfreeze!"}
         </button>
       </div>
-      <div className="absolute top-0 left-0 w-full">
+      {/* <div className="absolute top-0 left-0 w-full">
         <div className="relative top-5 w-full">
           <AnimatedSpriteSheet
             filename={birdSheet}
@@ -96,8 +96,8 @@ export default function DemoAnimations() {
             scale={{ x: 0.8, y: 0.55 }}
             animation={{ name: "animate-left-right", offset: 30 }}
           />
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
     </>
   );
 }

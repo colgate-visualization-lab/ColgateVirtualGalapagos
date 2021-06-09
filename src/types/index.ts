@@ -25,3 +25,5 @@ export type ValidTextColors =
   | "text-black";
 
 export type ValidAnimations = "animate-left-right";
+
+export type ValidTransitions = "animate-fade-in" | "none";
