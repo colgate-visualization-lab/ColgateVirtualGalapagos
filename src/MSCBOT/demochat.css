@@ -1,0 +1,224 @@
+/* .chat-bar-collapsible {
+    position: fixed;
+    bottom: 0;
+    right: 50px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/*.collapsible {
+    background-color: rgb(82, 151, 255);
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 350px;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    border-radius: 10px 10px 0px 0px;
+    border: 3px solid white;
+    border-bottom: none;
+}
+
+.full-chat-block {
+    width: 700px;
+    background: white;
+    text-align: center;
+    overflow: auto;
+    scrollbar-width: none;
+    height: max-content;
+    transition: max-height 0.2s ease-out;
+} */
+
+.turtle-img{
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+}
+
+.outer-container {
+    position: relative;
+    min-height: 700px;
+    max-width: 1000px;
+    bottom: 0px;
+    left: 23%;
+}
+
+.chat-container {
+    max-height: 100%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    scroll-behavior: smooth;
+    hyphens: auto;
+}
+
+.chat-container::-webkit-scrollbar {
+    display: none;
+}
+
+.chat-bar-input-block {
+    display: flex;
+    float: right;
+    box-sizing: border-box;
+    justify-content: space-between;
+    width: 75%;
+    align-items: center;
+    background-color: transparent;
+    border-radius: 10px 10px 0px 10px;
+    padding: 10px 10px 10px 10px;
+}
+
+.chat-bar-icons {
+    display: flex;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    width: 25%;
+    float: right;
+    font-size: 20px;
+}
+
+#chat-icon:hover {
+    opacity: .7;
+}
+
+/* Chat bubbles */
+
+#userInput {
+    width: 75%;
+}
+
+.input-box {
+    float: right;
+    border: none;
+    box-sizing: border-box;
+    width: 75%;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    font-family: cursive;
+    color: #000;
+    background-color: transparent;
+    border-bottom: 1px solid;
+    outline: none
+}
+
+.userText {
+    color: #000;
+    font-family: cursive;
+    font-size: 20px;
+    font-weight: normal;
+    text-align: right;
+    clear: both;
+}
+
+.userText span {
+    line-height: 1.5em;
+    display: inline-block;
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    border-bottom-right-radius: 2px;
+    max-width: 80%;
+    margin-right: 10px;
+    animation: floatup .5s forwards
+}
+
+/* .botText {
+    color: #000;
+    font-family: Helvetica;
+    font-weight: normal;
+    font-size: 16px;
+    text-align: left;
+}
+
+.botText span {
+    line-height: 1.5em;
+    display: inline-block;
+    background: #e0e0e0;
+    padding: 10px;
+    border-radius: 8px;
+    border-bottom-left-radius: 2px;
+    max-width: 80%;
+    margin-left: 10px;
+    animation: floatup .5s forwards
+} */
+
+@keyframes floatup {
+    from {
+        transform: translateY(14px);
+        opacity: .0;
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+/* @media screen and (max-width:600px) {
+    .full-chat-block {
+        width: 100%;
+        border-radius: 0px;
+    }
+    .chat-bar-collapsible {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+    }
+    .collapsible {
+        width: 100%;
+        border: 0px;
+        border-top: 3px solid white;
+        border-radius: 0px;
+    }
+} */
+
+.thought {
+    color: #000;
+    font-family: cursive;
+    font-weight: normal;
+    font-size: 20px;
+    display:flex;
+    background-color:#fff;
+    padding:5px;
+    border-radius:30px;
+    /* min-width:40px; */
+    max-width:300px;
+    min-height:40px;
+    /* max-height: 40px; */
+    margin:20px;
+    position:relative;
+    right: 0px;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    animation: floatup .5s forwards
+  }
+  .thought:before,
+  .thought:after {
+    content:"";
+    background-color:#fff;
+    border-radius:50%;
+    display:block;
+    position:absolute;
+    z-index:-1;
+  }
+  .thought:before {
+    width:44px;
+    height:44px;
+    top:-12px;
+    left:28px;
+    box-shadow:-50px 30px 0 -12px #fff;
+  }
+  .thought:after {
+    bottom:-10px;
+    right:26px;
+    width:30px;
+    height:30px;
+    box-shadow:40px -34px 0 0 #fff,
+               -128px -6px 0 -2px #fff,
+               -134px 17px 0 -6px #fff,
+               -155px 25px 0 -10px #fff;
+    
+  }

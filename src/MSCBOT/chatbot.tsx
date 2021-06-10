@@ -6,17 +6,11 @@ import turtleImage from "../assets/images/turtle.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { getTime } from './chat';
+
+const time = getTime();
 
 function chatbot() {
-
-    function getTime(){
-        var today = new Date();
-        var hours = today.getHours();
-        var minutes = today.getMinutes();
-        var n = hours + ":" + minutes;
-        return n;
-    }    
-
     return (
     <>
     <Page color="bg-primary-light">
@@ -33,7 +27,7 @@ function chatbot() {
                 <div className="chat-container">
                     {/* Messages */}
                     <div id="chatbox">
-                        <div>{getTime()}</div>
+                        <div>{time}</div>
                         <p id="botStarterMessage" className="botText">
                             <span>Welcome to Virtual Galapagos! What is your name?</span>
                         </p>
