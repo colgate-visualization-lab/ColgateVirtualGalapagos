@@ -1,6 +1,7 @@
 const path = require("path");
 // const autoprefixer = require("autoprefixer");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -41,12 +42,8 @@ module.exports = {
         use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
-        test: /\.(png|jpe?g|gif|otf)$/,
+        test: /\.otf$/,
         type: "asset/inline",
-      },
-      {
-        test: /\.(mp4|mp3)$/,
-        type: "asset/resource",
       },
     ],
   },
@@ -58,6 +55,9 @@ module.exports = {
       template: __dirname + "/src/index.html",
       filename: "index.html",
       inject: "body",
+    }),
+    new CopyWebpackPlugin({
+      patterns: [{ from: path.join(__dirname, "src", "assets") }],
     }),
   ],
 };

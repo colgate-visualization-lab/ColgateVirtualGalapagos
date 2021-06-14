@@ -33,13 +33,25 @@ export const Sprite = ({
         ctx.imageSmoothingQuality = "high";
         setContext(ctx);
       }
+      fitToContainer(node);
     }
   };
 
-  const scaledHeight =
-    typeof scale === "number" ? scale * height : scale.y * height;
-  const scaledWidth =
-    typeof scale === "number" ? scale * width : scale.x * width;
+  function fitToContainer(canvas: HTMLCanvasElement) {
+    canvas.style.width = "100%";
+    canvas.style.height = "100%";
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  const scaledHeight = Math.min(
+    typeof scale === "number" ? scale * height : scale.y * height,
+    canvas.current?.offsetHeight || 0
+  );
+  const scaledWidth = Math.min(
+    typeof scale === "number" ? scale * width : scale.x * width,
+    canvas.current?.offsetWidth || 0
+  );
 
   useEffect(() => {
     if (img && context) {
@@ -63,13 +75,7 @@ export const Sprite = ({
     }
   }, [context, img, x, y]);
 
-  return (
-    <canvas
-      onMouseEnter={() => console.log("mouse entered")}
-      {...rest}
-      ref={canvasMountCb}
-    ></canvas>
-  );
+  return <canvas {...rest} ref={canvasMountCb}></canvas>;
 };
 
 Sprite.defaultProps = {

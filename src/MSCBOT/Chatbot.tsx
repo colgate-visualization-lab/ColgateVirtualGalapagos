@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./chat.css";
 import Page from "../atomic-design/templates/Page";
 import Image from "../atomic-design/atoms/Image/Image";
-import turtleImage from "../assets/images/turtle.png";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { BiPaperPlane } from "react-icons/bi";
 import { getTime } from "./chat";
@@ -43,7 +42,7 @@ function Chatbot({ onSend }: { onSend: Function }) {
       <Page color="bg-primary-light">
         <div className="absolute bottom-0 left-10">
           <div className="w-50 lg:w-60">
-            <Image src={turtleImage} alt="turtle" />
+            <Image src="/images/turtle.png" alt="turtle" />
           </div>
         </div>
 

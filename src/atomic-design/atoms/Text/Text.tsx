@@ -8,7 +8,7 @@ export type ValidSizes = "sm" | "md" | "lg";
 export interface TextProps {
   type: ValidTypes;
   size: ValidSizes;
-  value: string;
+  text: string;
   color?: ValidTextColors;
 }
 
@@ -16,10 +16,10 @@ Text.defaultProps = {
   color: "text-primary",
   size: "md",
   type: "body",
-  value: "this is text",
+  text: "this is text",
 };
 
-export function Text({ value, color, type, size }: TextProps) {
+export function Text({ text, color, type, size }: TextProps) {
   const [isTitle, isHeading, isBody] = [
     type === "title",
     type === "heading",
@@ -30,7 +30,7 @@ export function Text({ value, color, type, size }: TextProps) {
     "font-heading": isHeading,
     "font-body": isBody,
     [isTitle
-      ? "text-4xl md:text-6xl"
+      ? "text-3xl md:text-6xl"
       : isHeading
       ? "text-3xl md:text-5xl"
       : "text-2xl md:text-4xl"]: size === "lg",
@@ -38,14 +38,14 @@ export function Text({ value, color, type, size }: TextProps) {
       ? "text-2xl md:text-4xl"
       : isHeading
       ? "text-xl md:text-3xl"
-      : "text-lg md:text-2xl"]: size === "md",
+      : "text-md md:text-2xl"]: size === "md",
     [isTitle
       ? "text-lg md:text-xl"
       : isHeading
       ? "text-md md:text-lg"
       : "text-sm md:text-md"]: size === "sm",
   });
-  return <p className={classes}>{value}</p>;
+  return <p className={classes}>{text}</p>;
 }
 
 export default Text;

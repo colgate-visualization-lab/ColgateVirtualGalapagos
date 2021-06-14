@@ -4,7 +4,7 @@ import { ValidAnimations } from "../../../types";
 import { Sprite } from "../../atoms";
 import { SpriteProps } from "../../atoms/Sprite/Sprite";
 
-interface AnimatedSpriteSheetProps {
+export interface AnimatedSpriteSheetProps {
   filename: string;
   initialFrame?: number;
   frame?: {
