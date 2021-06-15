@@ -5,10 +5,9 @@ const underwaterImage = "/images/character_select_background.png";
 const waterBubbleImage = "/images/water_bubble.png";
 import Carousel from "../atomic-design/molecules/Carousel/Carousel";
 const characterSheet = "/sprites/attacking_soldier.png";
-import AnimatedSpriteSheet, {
-  AnimatedSpriteSheetProps,
-} from "../atomic-design/molecules/AnimatedSpriteSheet/AnimatedSpriteSheet";
 import { Text } from "../atomic-design/atoms";
+import { Character } from "../atomic-design/organisms";
+
 const birdSheet = "/sprites/bird.png";
 const blueBirdSheet = "/sprites/blue_bird.png";
 
@@ -197,18 +196,5 @@ export const Canvas = () => {
     </Page>
   );
 };
-
-interface CharacterProps extends AnimatedSpriteSheetProps {
-  title?: string;
-}
-
-function Character({ title, ...rest }: CharacterProps) {
-  return (
-    <div className="flex flex-col items-center">
-      <AnimatedSpriteSheet {...rest} />
-      <Text text={title} color="text-dark" size="sm" />
-    </div>
-  );
-}
 
 export default Canvas;

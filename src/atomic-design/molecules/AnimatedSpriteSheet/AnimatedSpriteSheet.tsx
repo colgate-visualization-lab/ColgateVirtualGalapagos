@@ -23,6 +23,7 @@ export interface AnimatedSpriteSheetProps {
   direction?: "down" | "right";
   scale?: SpriteProps["scale"];
   animation?: ValidAnimations | { name: ValidAnimations; offset: number };
+  className?: string;
 }
 
 AnimatedSpriteSheet.defaultProps = {
@@ -43,6 +44,7 @@ AnimatedSpriteSheet.defaultProps = {
 };
 
 export function AnimatedSpriteSheet({
+  className,
   filename,
   initialFrame,
   frame,
@@ -121,6 +123,7 @@ export function AnimatedSpriteSheet({
             }
           : {}
       }
+      className={className}
       img={sheet}
       {...spriteData}
     />

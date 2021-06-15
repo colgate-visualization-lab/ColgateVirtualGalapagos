@@ -8,6 +8,7 @@ export interface SpriteProps {
   height: number;
   scale?: number | { x: number; y: number };
   style: CSSProperties;
+  className?: string;
 }
 
 export const Sprite = ({
@@ -17,6 +18,7 @@ export const Sprite = ({
   width,
   height,
   scale = 1,
+  className,
   ...rest
 }: SpriteProps) => {
   if (!img) {
@@ -75,7 +77,7 @@ export const Sprite = ({
     }
   }, [context, img, x, y]);
 
-  return <canvas {...rest} ref={canvasMountCb}></canvas>;
+  return <canvas className={className} {...rest} ref={canvasMountCb}></canvas>;
 };
 
 Sprite.defaultProps = {

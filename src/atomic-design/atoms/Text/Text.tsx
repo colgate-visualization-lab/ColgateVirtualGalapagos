@@ -6,9 +6,9 @@ export type ValidTypes = "title" | "heading" | "body";
 export type ValidSizes = "sm" | "md" | "lg";
 
 export interface TextProps {
-  type: ValidTypes;
-  size: ValidSizes;
-  text: string;
+  type?: ValidTypes;
+  size?: ValidSizes;
+  text?: string;
   color?: ValidTextColors;
 }
 
@@ -16,7 +16,6 @@ Text.defaultProps = {
   color: "text-primary",
   size: "md",
   type: "body",
-  text: "this is text",
 };
 
 export function Text({ text, color, type, size }: TextProps) {
