@@ -92,6 +92,7 @@ function Chatbot({ onSend }: { onSend: Function }) {
                   Welcome to Virtual Galapagos! What is your name?
                   </span>
                 </p>
+
                 
                 {userMessages.map((msg) => (
                   <UserMessage msg={msg} />
