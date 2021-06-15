@@ -17,7 +17,7 @@ Small.args = {
   color: "text-primary",
   type: "title",
   size: "sm",
-  value: "Davy Jones' Locker",
+  text: "Davy Jones' Locker",
 };
 
 export const Medium = Template.bind({});
@@ -25,7 +25,7 @@ Medium.args = {
   color: "text-primary",
   type: "title",
   size: "md",
-  value: "Davy Jones' Locker",
+  text: "Davy Jones' Locker",
 };
 
 export const Large = Template.bind({});
@@ -33,5 +33,5 @@ Large.args = {
   color: "text-primary",
   type: "title",
   size: "lg",
-  value: "Davy Jones' Locker",
+  text: "Davy Jones' Locker",
 };

@@ -12,9 +12,13 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      backgroundImage: {
+        "ocean-texture": "url('./assets/images/ocean_texture.jpg')",
+      },
       animation: {
         "fade-in-slow": "fade-in 2s",
         "fade-in": "fade-in 1s",
+        "fade-out": "fade-in 1s reverse",
       },
       keyframes: {
         "fade-in": {
@@ -39,6 +43,9 @@ module.exports = {
         title: ["Carta Marina Bold", "Arial", "sans-serif"],
         heading: ["Goodlife Sans", "Poppins", "sans-serif"],
         body: ["Source Serif Pro Regular", "Arial", "sans-serif"],
+      },
+      spacing: {
+        18: "4.45rem",
       },
     },
     screens: {
@@ -476,6 +483,17 @@ module.exports = {
       "3/6": "50%",
       "4/6": "66.666667%",
       "5/6": "83.333333%",
+      "1/12": "8.333333%",
+      "2/12": "16.666667%",
+      "3/12": "25%",
+      "4/12": "33.333333%",
+      "5/12": "41.666667%",
+      "6/12": "50%",
+      "7/12": "58.333333%",
+      "8/12": "66.666667%",
+      "9/12": "75%",
+      "10/12": "83.333333%",
+      "11/12": "91.666667%",
       full: "100%",
       screen: "100vh",
     }),
@@ -706,6 +724,7 @@ module.exports = {
       90: ".9",
       95: ".95",
       100: "1",
+      "-100": "-1",
       105: "1.05",
       110: "1.1",
       125: "1.25",
@@ -778,7 +797,7 @@ module.exports = {
       none: "none",
       all: "all",
       DEFAULT:
-        "background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter",
+        "background-color, left,top,right,bottom, border-color, color, fill, stroke, stroke-width, opacity, box-shadow, transform, filter, backdrop-filter",
       colors: "background-color, border-color, color, fill, stroke",
       opacity: "opacity",
       shadow: "box-shadow",
@@ -851,6 +870,11 @@ module.exports = {
       30: "30",
       40: "40",
       50: "50",
+      "-10": "-10",
+      "-20": "-20",
+      "-30": "-30",
+      "-40": "-40",
+      "-50": "-50",
     },
   },
   variantOrder: [
@@ -874,7 +898,7 @@ module.exports = {
     alignContent: ["responsive"],
     alignItems: ["responsive"],
     alignSelf: ["responsive"],
-    animation: ["responsive"],
+    animation: ["responsive", "hover"],
     appearance: ["responsive"],
     backdropBlur: ["responsive"],
     backdropBrightness: ["responsive"],
@@ -1017,8 +1041,8 @@ module.exports = {
     sepia: ["responsive"],
     skew: ["responsive", "hover", "focus"],
     space: ["responsive"],
-    stroke: ["responsive"],
-    strokeWidth: ["responsive"],
+    stroke: ["responsive", "hover"],
+    strokeWidth: ["responsive", "hover"],
     tableLayout: ["responsive"],
     textAlign: ["responsive"],
     textColor: [

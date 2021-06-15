@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React from "react";
 
-export interface ButtonProps {
+export interface ButtonProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   className?: string;
   label?: string;
@@ -19,12 +19,13 @@ const Button = ({
 }: ButtonProps) => {
   const classes = classNames(
     className,
-    "rounded-md text-center items-center justify-center hover:text-white p-2 transition-fast",
+    "rounded-md hover:bg-opacity-80 text-center items-center z-20 justify-center relative hover:text-white transition-fast",
     {
-      "bg-gray-300 hover:bg-primary-dark": variant === "primary",
-      "bg-gray-300 hover:bg-secondary-dark": variant === "secondary",
-      "w-32 text-md": size === "md",
-      "w-26 text-sm": size === "sm",
+      "bg-accent-primary border-4 border-white text-white":
+        variant === "primary",
+      "w-32 text-md p-2": size === "md",
+      "w-26 text-sm p-1": size === "sm",
+      "w-56 text-sm px-2 py-2 md:py-4": size === "lg",
     }
   );
 

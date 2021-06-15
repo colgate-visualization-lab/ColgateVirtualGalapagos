@@ -1,9 +1,15 @@
 import React from "react";
 import Page from "../atomic-design/templates/Page";
 import useCanvas from "../test/useCanvas";
-import underwaterImage from "../assets/images/underwater.jpg";
-import waterBubbleImage from "../assets/images/water_bubble.png";
-import DemoAnimations from "../test/DemoAnimations";
+const underwaterImage = "/images/character_select_background.png";
+const waterBubbleImage = "/images/water_bubble.png";
+import Carousel from "../atomic-design/molecules/Carousel/Carousel";
+const characterSheet = "/sprites/attacking_soldier.png";
+import { Text } from "../atomic-design/atoms";
+import { Character } from "../atomic-design/organisms";
+
+const birdSheet = "/sprites/bird.png";
+const blueBirdSheet = "/sprites/blue_bird.png";
 
 function drawFillImage(img: HTMLImageElement, ctx: CanvasRenderingContext2D) {
   const canvas = ctx.canvas;
@@ -80,9 +86,10 @@ function drawWaterBubbles(
   ctx: CanvasRenderingContext2D,
   config?: WaterBubbleConfig
 ) {
+  if (bubbles.length) return;
   const numberOfBubbles = config?.number || 5;
   //   applyBackgroundColor(ctx);
-  const bubbleImage = new Image();
+  const bubbleImage = new window.Image();
   bubbleImage.src = waterBubbleImage;
 
   bubbleImage.onload = () => {
@@ -111,7 +118,7 @@ export const Canvas = () => {
     ctx: CanvasRenderingContext2D,
     frameCount: number
   ) => {
-    const backgroundImage = new Image();
+    const backgroundImage = new window.Image();
     backgroundImage.src = underwaterImage;
     backgroundImage.onload = () => {
       drawFillImage(backgroundImage, ctx);
@@ -133,16 +140,59 @@ export const Canvas = () => {
     isFullScreen: true,
     animate: true,
   });
+
+  const handleCharacterSelect = (name: string) => {};
+
   return (
     <Page>
-      <h1 className="text-xl fixed z-20 top-1/3">Select Your Character</h1>
+      <div className="fixed z-20 top-1/3">
+        <Text
+          text="Select Your Character"
+          color="text-dark"
+          type="heading"
+          size="lg"
+        />
+      </div>
       <canvas className="w-full h-full fixed z-10" ref={backgroundRef}>
         Your browser doesn't support HTML canvas
       </canvas>
       <canvas className="w-full h-full fixed z-20" ref={interactiveRef}>
         Your browser doesn't support HTML canvas
       </canvas>
-      <DemoAnimations />
+      <Carousel className="fixed z-20" onSelect={() => handleCharacterSelect}>
+        <Character
+          title="Cool Character 1"
+          filename={characterSheet}
+          bounds={{ x: 0, y: 0, width: 516, height: 306 }}
+          frame={{ width: 172, height: 153 }}
+          speed={200}
+        />
+        <Character
+          title="Birdie"
+          filename={birdSheet}
+          initialFrame={0}
+          bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
+          frame={{ width: 343, height: 301 }}
+          speed={200}
+          scale={{ x: 0.8, y: 0.55 }}
+        />
+        <Character
+          title="Cool Character 2"
+          filename={characterSheet}
+          bounds={{ x: 0, y: 0, width: 516, height: 306 }}
+          frame={{ width: 172, height: 153 }}
+          speed={200}
+        />
+        <Character
+          title="Blue Birdie"
+          initialFrame={0}
+          filename={blueBirdSheet}
+          bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
+          frame={{ width: 343, height: 301 }}
+          speed={250}
+          scale={{ x: 0.8, y: 0.55 }}
+        />
+      </Carousel>
     </Page>
   );
 };

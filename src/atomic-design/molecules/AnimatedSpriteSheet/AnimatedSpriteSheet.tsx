@@ -4,7 +4,7 @@ import { ValidAnimations } from "../../../types";
 import { Sprite } from "../../atoms";
 import { SpriteProps } from "../../atoms/Sprite/Sprite";
 
-interface AnimatedSpriteSheetProps {
+export interface AnimatedSpriteSheetProps {
   filename: string;
   initialFrame?: number;
   frame?: {
@@ -23,6 +23,7 @@ interface AnimatedSpriteSheetProps {
   direction?: "down" | "right";
   scale?: SpriteProps["scale"];
   animation?: ValidAnimations | { name: ValidAnimations; offset: number };
+  className?: string;
 }
 
 AnimatedSpriteSheet.defaultProps = {
@@ -43,6 +44,7 @@ AnimatedSpriteSheet.defaultProps = {
 };
 
 export function AnimatedSpriteSheet({
+  className,
   filename,
   initialFrame,
   frame,
@@ -121,6 +123,7 @@ export function AnimatedSpriteSheet({
             }
           : {}
       }
+      className={className}
       img={sheet}
       {...spriteData}
     />

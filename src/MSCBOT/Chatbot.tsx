@@ -83,7 +83,7 @@ function Chatbot({ onSend }: { onSend: Function }) {
               <div id="chatbox">
                 <div style={{fontFamily:'cursive'}}>{time}</div>
                 <p id="botStarterMessage" style={{backgroundColor: "#e0e0e0", padding:10, borderRadius:8, 
-                borderBottomLeftRadius:2, marginRight:300, textAlign:"left",maxWidth:'80%', lineHeight:'1.5em'
+                borderBottomLeftRadius:2, marginRight:300, textAlign:"left",maxWidth:'80%', lineHeight:'1.5em',
                 
                 }}>
 

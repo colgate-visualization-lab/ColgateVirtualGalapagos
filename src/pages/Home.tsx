@@ -10,7 +10,7 @@ export default function Home() {
   useEffect(() => {
     setTimeout(() => {
       history.replace("/menu");
-    }, 4000);
+    }, 500);
   }, []);
 
   return (

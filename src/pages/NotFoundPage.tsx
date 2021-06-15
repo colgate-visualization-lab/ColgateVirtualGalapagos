@@ -1,11 +1,11 @@
 import React from "react";
 import Page from "../atomic-design/templates/Page";
 import Image from "../atomic-design/atoms/Image/Image";
-import penguinImage from "../assets/images/penguin.png";
+const penguinImage = "/images/penguin.png";
 import { Text } from "../atomic-design/atoms";
 import AnimatedSpriteSheet from "../atomic-design/molecules/AnimatedSpriteSheet/AnimatedSpriteSheet";
-import birdSheet from "../assets/sprites/bird.png";
-import blueBirdSheet from "../assets/sprites/blue_bird.png";
+const birdSheet = "/sprites/bird.png";
+const blueBirdSheet = "/sprites/blue_bird.png";
 
 export default function NotFoundPage() {
   return (
@@ -63,7 +63,7 @@ export default function NotFoundPage() {
         <Text
           type="title"
           size="lg"
-          value="under construction"
+          text="under construction"
           color="text-dark"
         />
       </div>
