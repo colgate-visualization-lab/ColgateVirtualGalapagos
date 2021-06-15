@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import chatbot from "./MSCBOT/chatbot";
+import chatbot from "./MSCBOT/Chatbot";
 import CharacterSelect from "./pages/CharacterSelect";
 import Home from "./pages/Home";
 import Introduction from "./pages/Introduction";
