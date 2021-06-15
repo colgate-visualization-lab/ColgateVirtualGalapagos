@@ -64,17 +64,7 @@ function Chatbot({ onSend }: { onSend: Function }) {
   return (
     <>
       <Page color="bg-primary-light">
-        <div className="absolute bottom-10 left-20">
-            <AnimatedSpriteSheet
-              filename={talkingTurtle}
-              bounds={{ x: 0, y: 0, width: 516, height: 306 }}
-              frame={{ width: 172, height: 153 }}
-              speed={400}
-              isPlaying={isAnimating}
-          
-            />
-          
-          </div>
+        
 
         <div className="absolute bottom-0 right-20"> 
           <div className="max-w-screen-xl bottom-10 left-30 relative">
@@ -127,9 +117,6 @@ function Chatbot({ onSend }: { onSend: Function }) {
                 </div>
               </div>
 
-              {/* <div id="chat-bar-bottom" >
-                <p></p>
-              </div> */}
             </div>
           </div>
         </div>
@@ -161,8 +148,19 @@ function Chatbot({ onSend }: { onSend: Function }) {
             animation={{ name: "animate-left-right", offset: 5 }}
           />
         </div>
-        </div>
+      </div>
 
+        <div className="absolute bottom-10 left-20">
+            <AnimatedSpriteSheet
+              filename={talkingTurtle}
+              bounds={{ x: 0, y: 0, width: 516, height: 306 }}
+              frame={{ width: 172, height: 153 }}
+              speed={400}
+              isPlaying={isAnimating}
+          
+            />
+          
+          </div>
 
 
 
