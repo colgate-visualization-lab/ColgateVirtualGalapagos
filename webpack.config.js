@@ -42,7 +42,7 @@ module.exports = {
         use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
-        test: /\.otf$/,
+        test: /\.(otf|jpg|png)$/,
         type: "asset/inline",
       },
     ],
