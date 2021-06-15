@@ -5,7 +5,7 @@ import { Route, Switch, useHistory } from "react-router-dom";
 import { AnimationVideo } from "./atomic-design/atoms";
 import Loading from "./pages/Loading";
 
-const Chatbot = lazy(() => import("./MSCBOT/Chatbot"));
+const Chatbot = lazy(() => import("./pages/Chatbot"));
 const CharacterSelect = lazy(() => import("./pages/CharacterSelect"));
 const Home = lazy(() => import("./pages/Home"));
 const Introduction = lazy(() => import("./pages/Introduction"));
