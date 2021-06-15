@@ -12,6 +12,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      backgroundImage: {
+        "ocean-texture": "url('./assets/images/ocean_texture.jpg')",
+      },
       animation: {
         "fade-in-slow": "fade-in 2s",
         "fade-in": "fade-in 1s",
@@ -721,6 +724,7 @@ module.exports = {
       90: ".9",
       95: ".95",
       100: "1",
+      "-100": "-1",
       105: "1.05",
       110: "1.1",
       125: "1.25",
