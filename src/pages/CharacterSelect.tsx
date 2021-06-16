@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo, useEffect, useMemo } from "react";
 import Page from "../atomic-design/templates/Page";
 import useCanvas from "../test/useCanvas";
-const underwaterImage = "/images/character_select_background.png";
+const underwaterImage = "/images/underwater.jpg";
 const waterBubbleImage = "/images/water_bubble.png";
 import Carousel from "../atomic-design/molecules/Carousel/Carousel";
 const characterSheet = "/sprites/attacking_soldier.png";
@@ -113,7 +113,7 @@ function applyBackgroundColor(ctx: CanvasRenderingContext2D) {
   ctx.restore();
 }
 
-export const Canvas = () => {
+export const Canvas = memo(() => {
   const drawBackground = (
     ctx: CanvasRenderingContext2D,
     frameCount: number
@@ -141,13 +141,17 @@ export const Canvas = () => {
     animate: true,
   });
 
+  useEffect(() => {
+    console.log("canvas rendered");
+  });
+
   const handleCharacterSelect = (name: string) => {};
 
   return (
     <Page>
       <div className="fixed z-20 top-1/3">
         <Text
-          text="Select Your Character"
+          text="Select Your Buddy"
           color="text-dark"
           type="heading"
           size="lg"
@@ -161,6 +165,7 @@ export const Canvas = () => {
       </canvas>
       <Carousel className="fixed z-20" onSelect={() => handleCharacterSelect}>
         <Character
+          info="I will fight for you!"
           title="Cool Character 1"
           filename={characterSheet}
           bounds={{ x: 0, y: 0, width: 516, height: 306 }}
@@ -168,6 +173,7 @@ export const Canvas = () => {
           speed={200}
         />
         <Character
+          info="Hi, I am birdy bird that shall fly around and assist you with stuff"
           title="Birdie"
           filename={birdSheet}
           initialFrame={0}
@@ -195,6 +201,6 @@ export const Canvas = () => {
       </Carousel>
     </Page>
   );
-};
+});
 
 export default Canvas;

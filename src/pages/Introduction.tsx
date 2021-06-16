@@ -25,10 +25,10 @@ export default function Introduction() {
         </div>
         <div className="absolute right-0 transform translate-x-1/2">
           <Character
-            audio="/audio/so_cool.mp3"
+            // audio="/audio/so_cool.mp3"
             className="transform -scale-x-100"
             speechPosition="left"
-            speech="This is so cool!"
+            speech="Thank you green birdie"
             filename={blueBirdSheet}
             initialFrame={0}
             bounds={{ x: 0, y: 0, width: 1029, height: 903 }}

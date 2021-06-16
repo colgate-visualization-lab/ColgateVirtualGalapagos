@@ -13,7 +13,7 @@ const Slide = ({
 }) => {
   const classes = classNames(
     className,
-    "h-full transition-normal absolute overflow-hidden items-center justify-center flex object-cover"
+    "h-full transition-normal absolute items-center justify-center flex object-cover"
   );
   return (
     <div onClick={onClick} className={classes}>
@@ -33,7 +33,7 @@ export default function Carousel({
 }) {
   const classes = classNames(
     className,
-    "w-full h-44 max-w-2xl select-none flex relative",
+    "w-full h-40 max-w-2xl select-none flex relative",
     {}
   );
 
@@ -61,7 +61,7 @@ export default function Carousel({
 
   const leftClasses = "left-0 w-1/6 opacity-30 transform scale-75";
   const centerClasses =
-    "left-1/2 top-20 transform -translate-x-1/2 w-4/6 scale-110 cursor-pointer";
+    "left-1/2 transform -translate-x-1/2 w-4/6 scale-110 cursor-pointer";
   const rightClasses = "right-0 w-1/6 opacity-30 transform scale-75";
 
   return (

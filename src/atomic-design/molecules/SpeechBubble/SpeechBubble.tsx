@@ -6,7 +6,7 @@ import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
 
 export interface SpeechBubbleProps extends TextProps {
   className?: string;
-  position?: "left" | "right";
+  position?: "left" | "right" | "top";
   audio?: string;
 }
 
@@ -16,10 +16,15 @@ export default function SpeechBubble({
   audio,
   ...rest
 }: SpeechBubbleProps) {
-  const classes = classNames(className, "p-5 bg-primary-dark rounded-lg", {
-    "absolute right-0 transform translate-x-full": position === "right",
-    "absolute left-0 transform -translate-x-full": position === "left",
-  });
+  const classes = classNames(
+    className,
+    "absolute p-5 z-40 transform bg-primary-dark rounded-lg",
+    {
+      "right-0 translate-x-full": position === "right",
+      "left-0 -translate-x-full": position === "left",
+      "top-0 -translate-y-full": position === "top",
+    }
+  );
   const [playAudio, setAudio] = useState(false);
   return (
     <div className={classes}>
@@ -36,14 +41,14 @@ export default function SpeechBubble({
               role="button"
               aria-label="pause audio"
               onClick={() => setAudio(false)}
-              className="text-white"
+              className="text-white text-xl"
             />
           ) : (
             <AiFillPlayCircle
               role="button"
               aria-label="play audio"
               onClick={() => setAudio(true)}
-              className="text-white"
+              className="text-white text-xl"
             />
           )}
         </>

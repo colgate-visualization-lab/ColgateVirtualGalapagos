@@ -66,6 +66,9 @@ export function AnimatedSpriteSheet({
   const maxFrames = maxFramesWidth * maxFramesHeight - 1;
 
   useEffect(() => {
+    console.log("sheet rendered");
+  });
+  useEffect(() => {
     if (isPlaying) {
       const timerId = (function (fr) {
         return setInterval(() => {
