@@ -9,6 +9,7 @@ import AnimatedSpriteSheet from "../atomic-design/molecules/AnimatedSpriteSheet/
 import fishSheet from "../assets/sprites/fish_one.png";
 import fishTwoSheet from "../assets/sprites/fish_two.png"
 import talkingTurtle from "../assets/sprites/speaking_turtle.png"
+import ChatBubble from "../atomic-design/templates/ChatBubble";
 
 // import { getTime } from "./chat";
 
@@ -63,18 +64,29 @@ function Chatbot({ onSend }: { onSend: Function }) {
 
   return (
     <Page color="bg-primary-light">
-
-        
-        
+   
+      <AnimatedSpriteSheet
+            initialFrame={0}
+            filename={fishSheet}
+            bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
+            frame={{ width: 343, height: 301 }}
+            speed={250}
+            scale={{ x: 0.5, y: 0.3 }}
+            animation={{ name: "animate-left-right", offset: 15 }}
+          />
+          
 
       <div className="absolute bottom-10 right-20 w-2/3 h-auto flex flex-col justify-center"> 
-        <div style={{fontFamily:'cursive'}}>{time}</div>
+        <div style={{fontFamily:'body'}}>{time}</div>
         <div className="rounded-full px-8 py-8 w-1/2 bg-gray-200 rotate-30 transform origin-top-right">
-          <span style={{fontFamily:'cursive',fontSize:23}}>
+          <span style={{fontFamily:'body',fontSize:23}}>
             Welcome to Virtual Galapagos! What is your name?
           </span>
         </div>
         <div className="rounded-full h-12 w-12 bg-gray-200 rotate-45 transform origin-top-right"></div>
+
+        {/* <ChatBubble color="bg-primary"></ChatBubble> */}
+
           {userMessages.map((msg) => (
           <UserMessage msg={msg} />
           ))}
@@ -87,7 +99,7 @@ function Chatbot({ onSend }: { onSend: Function }) {
               value={tempMessage}
               className="input-box"
               style={{float:"right",boxSizing:"border-box",borderRadius:10, padding:10,fontSize:23,
-              fontFamily:"cursive", backgroundColor: 'transparent',borderBottom:'1px solid'}}
+              fontFamily:"body", backgroundColor: 'transparent',borderBottom:'1px solid'}}
               type="text"
               placeholder="Tap 'Enter' to send a message"
               />
@@ -107,8 +119,8 @@ function Chatbot({ onSend }: { onSend: Function }) {
         </div>
       </div>
 
-      <div className="absolute top-0 left-0 w-full">
-        <div className="relative top-1 w-full" style={{animation:"animate-left-right"}}>
+      {/* <div className="absolute top-0 left-0 w-full"> */}
+        {/* <div className="relative top-1 w-full" style={{animation:"animate-left-right"}}>
          
           <AnimatedSpriteSheet
             initialFrame={0}
@@ -132,8 +144,8 @@ function Chatbot({ onSend }: { onSend: Function }) {
             scale={{ x: 0.8, y: 0.55 }}
             animation={{ name: "animate-left-right", offset: 5 }}
           />
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
 
         <div className="absolute bottom-10 left-20">
             <AnimatedSpriteSheet
