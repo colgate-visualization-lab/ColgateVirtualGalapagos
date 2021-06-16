@@ -1,6 +1,7 @@
 import React, { useEffect, Suspense, lazy, useState } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import { AnimationVideo } from "./atomic-design/atoms";
+import { useTransitionContext } from "./contexts/TransitionContext";
 import Loading from "./pages/Loading";
 
 const Chatbot = lazy(() => import("./MSCBOT/Chatbot"));
@@ -18,42 +19,46 @@ const SignUp = lazy(() => import("./pages/SignUp"));
 const boobyAnimation = "/booby_transition.mp4";
 
 export default function App() {
-  const [showAnimation, setShowAnimation] = useState<string>();
+  const { isTransitioning, to, stopTransition } = useTransitionContext();
+  const [transitionClasses, setTransitionClasses] = useState([
+    "fixed",
+    "z-50",
+    "left-0",
+    "top-0",
+  ]);
   const [nextPath, setNextPath] = useState<string>();
   const history = useHistory();
-  const transitionTo = (path: string) => {
-    setShowAnimation(path);
-  };
 
   useEffect(() => {
     if (nextPath) {
       history.push(nextPath);
     }
   }, [nextPath]);
-
+  console.log(isTransitioning, to);
   return (
     <Suspense fallback={<Loading />}>
-      {showAnimation && (
+      {isTransitioning && (
         <AnimationVideo
-          onPlay={() => setNextPath(showAnimation)}
+          onPlay={() => setNextPath(to)}
           onEnded={() => {
-            setShowAnimation(undefined);
-            setNextPath(undefined);
+            setTransitionClasses((c) => [...c, "animate-fade-out"]);
           }}
-          className="fixed z-50 left-0 top-0 opacity-90 transform scale-150"
+          onAnimationEnd={() => {
+            stopTransition();
+            setNextPath(undefined);
+            setTransitionClasses((c) => c.slice(0, c.length - 1));
+          }}
+          className={transitionClasses.join(" ")}
           autoPlay
           muted
-          playbackRate={3}
+          playbackRate={4}
           src={boobyAnimation}
         />
       )}
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route
-          path="/menu"
-          exact
-          render={() => <WelcomeMenu transitionTo={transitionTo} />}
-        />
+        <Route path="/menu" component={WelcomeMenu} />
+
         <Route path="/main_menu" exact component={MainMenu} />
         <Route path="/login" exact component={Login} />
         <Route path="/sign_up" exact component={SignUp} />
