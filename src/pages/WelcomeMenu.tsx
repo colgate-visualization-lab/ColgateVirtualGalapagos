@@ -4,8 +4,10 @@ import { StaticAnimal, Text } from "../atomic-design/atoms";
 import Button from "../atomic-design/atoms/Button/Button";
 import { LavaButton, PenguinButton } from "../atomic-design/molecules";
 import Page from "../atomic-design/templates/Page";
+import { useTransitionContext } from "../contexts/TransitionContext";
 
-export default function MainMenu({ transitionTo }: { transitionTo: Function }) {
+export default function MainMenu() {
+  const { startTransition } = useTransitionContext();
   const history = useHistory();
   return (
     <Page transition="animate-fade-in" color="bg-primary">
@@ -34,7 +36,7 @@ export default function MainMenu({ transitionTo }: { transitionTo: Function }) {
           <LavaButton
             className="my-5 xl:my-8"
             size="lg"
-            onClick={() => transitionTo(`/continue_as_guest`)}
+            onClick={() => startTransition(`/introduction`)}
           >
             <Text text="Continue As Guest" color="text-white" />
           </LavaButton>
