@@ -12,3 +12,14 @@ export function toTitleCase(
     .map((w) => capitalize(w))
     .join(toDelimiter || delimiter);
 }
+
+export function saveToLocalStorage(obj: any) {
+  Object.keys(obj).forEach((key) =>
+    localStorage.setItem(key, JSON.stringify(obj[key]))
+  );
+}
+
+export function getFromLocalStorage(key: string) {
+  const val = localStorage.getItem(key);
+  return val && JSON.parse(val);
+}
