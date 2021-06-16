@@ -62,68 +62,53 @@ function Chatbot({ onSend }: { onSend: Function }) {
   // setUserMessages([...userMessages,'hello'])
 
   return (
-    <>
-      <Page color="bg-primary-light">
+    <Page color="bg-primary-light">
+
+        
         
 
-        <div className="absolute bottom-0 right-20"> 
-          <div className="max-w-screen-xl bottom-10 left-30 relative">
-            <div className="h-full flex flex-col justify-center">
+      <div className="absolute bottom-10 right-20 w-2/3 h-auto flex flex-col justify-center"> 
+        <div style={{fontFamily:'cursive'}}>{time}</div>
+        <div className="rounded-full px-8 py-8 w-1/2 bg-gray-200 rotate-30 transform origin-top-right">
+          <span style={{fontFamily:'cursive',fontSize:23}}>
+            Welcome to Virtual Galapagos! What is your name?
+          </span>
+        </div>
+        <div className="rounded-full h-12 w-12 bg-gray-200 rotate-45 transform origin-top-right"></div>
+          {userMessages.map((msg) => (
+          <UserMessage msg={msg} />
+          ))}
 
-              <div id="chatbox">
-                <div style={{fontFamily:'cursive'}}>{time}</div>
-                <p id="botStarterMessage" style={{backgroundColor: "#e0e0e0", padding:10, borderRadius:8, 
-                borderBottomLeftRadius:2, marginRight:300, textAlign:"left",maxWidth:'80%', lineHeight:'1.5em',
+        <div style={{display:"flex",float:"right",boxSizing:"border-box", justifyContent:"space-between",
+        alignItems:"center",backgroundColor:"transparent",borderRadius:10, padding:10}}>
+          <div id="userInput" style={{width:"75%"}}>
+            <input
+              onChange={(event) => setTempMessage(event.target.value)}
+              value={tempMessage}
+              className="input-box"
+              style={{float:"right",boxSizing:"border-box",borderRadius:10, padding:10,fontSize:23,
+              fontFamily:"cursive", backgroundColor: 'transparent',borderBottom:'1px solid'}}
+              type="text"
+              placeholder="Tap 'Enter' to send a message"
+              />
+              <p></p>
+          </div>
                 
-                }}>
-
-
-                  <span style={{fontFamily:'cursive',fontSize:23}}>
-                  Welcome to Virtual Galapagos! What is your name?
-                  </span>
-                </p>
-
-                
-                {userMessages.map((msg) => (
-                  <UserMessage msg={msg} />
-                ))}
-
-              </div>
-
-              <div style={{display:"flex",float:"right",boxSizing:"border-box", justifyContent:"space-between",
-              alignItems:"center",backgroundColor:"transparent",borderRadius:10, padding:10}}>
-                <div id="userInput" style={{width:"75%"}}>
-                  <input
-                    onChange={(event) => setTempMessage(event.target.value)}
-                    value={tempMessage}
-                    className="input-box"
-                    style={{float:"right",boxSizing:"border-box",borderRadius:10, padding:10,fontSize:23,
-                    fontFamily:"cursive", backgroundColor: 'transparent',borderBottom:'1px solid'}}
-                    type="text"
-                    placeholder="Tap 'Enter' to send a message"
-                  />
-                  <p></p>
-                </div>
-                
-                <div style={{display:"flex",justifyContent:"space-evenly",
-                boxSizing:"border-box",width:"25%",float:"right", fontSize:23, 
-                }}>
-                  <button onClick={handleHeartClick} id="heart-icon" >
-                    <AiFillHeart className="text-red-500"/>
-                  </button>
-                  <button onClick={handleSend} id="chat-icon" >
-                    <BiPaperPlane className="text-gray-500"/>
-                  </button>
-                </div>
-              </div>
-
-            </div>
+          <div style={{display:"flex",justifyContent:"space-evenly",
+          boxSizing:"border-box",width:"25%",float:"right", fontSize:23, 
+          }}>
+            <button onClick={handleHeartClick} id="heart-icon" >
+            <AiFillHeart className="text-red-500"/>
+            </button>
+            <button onClick={handleSend} id="chat-icon" >
+            <BiPaperPlane className="text-gray-500"/>
+            </button>
           </div>
         </div>
+      </div>
 
-        <div className="absolute top-0 left-0 w-full">
+      <div className="absolute top-0 left-0 w-full">
         <div className="relative top-1 w-full" style={{animation:"animate-left-right"}}>
-          {/* <Image src={birdSheet} alt="bird" /> */}
          
           <AnimatedSpriteSheet
             initialFrame={0}
@@ -165,7 +150,7 @@ function Chatbot({ onSend }: { onSend: Function }) {
 
 
       </Page>
-    </>
+  
   );
 }
 
