@@ -1,22 +1,15 @@
 import classNames from "classnames";
 import React from "react";
-import { ValidBgColors } from "../../types";
 
 export interface PageProps {
-  color?: ValidBgColors;
   children?: React.ReactNode;
   className?: string;
 }
 
-export function GameBar({
-  children,
-  color = "bg-primary",
-  className,
-}: PageProps) {
+export function GameBar({ children, className }: PageProps) {
   const classes = classNames(
     className,
-    "w-screen overflow-hidden fixed flex bottom-0 left-0 z-40",
-    `${color || ""}`
+    "w-screen fixed flex bottom-0 left-0 z-40"
   );
   return (
     <div className={classes}>
