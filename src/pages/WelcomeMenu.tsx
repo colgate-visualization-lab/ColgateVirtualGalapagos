@@ -4,14 +4,12 @@ import { StaticAnimal, Text } from "../atomic-design/atoms";
 import Button from "../atomic-design/atoms/Button/Button";
 import { LavaButton, PenguinButton } from "../atomic-design/molecules";
 import Page from "../atomic-design/templates/Page";
-import { useTransitionContext } from "../contexts/TransitionContext";
 import useCanvas from "../test/useCanvas";
 import { drawCanvasBackgroundImage } from "../utils";
 
 // [TODO] gotta refactor the canvas animation and background if we plan to use
 // the same cartoony island anywhere else
 export default function WelcomeMenu() {
-  const { startTransition } = useTransitionContext();
   const history = useHistory();
 
   const backgroundRef = useCanvas(
@@ -85,6 +83,7 @@ export default function WelcomeMenu() {
           <PenguinButton
             className="my-5 xl:my-8"
             size="lg"
+            label="login"
             onClick={() => history.push(`/login`)}
           >
             <Text text="Login" color="text-white" />
@@ -92,6 +91,7 @@ export default function WelcomeMenu() {
           <Button
             className="my-5 xl:my-8"
             size="lg"
+            label="sign up"
             onClick={() => history.push(`/sign_up`)}
           >
             <Text text="Sign Up" color="text-white" />
@@ -99,7 +99,8 @@ export default function WelcomeMenu() {
           <LavaButton
             className="my-5 xl:my-8"
             size="lg"
-            onClick={() => startTransition(`/introduction`)}
+            label="continue as guest"
+            onClick={() => history.push("/main_menu")}
           >
             <Text text="Continue As Guest" color="text-white" />
           </LavaButton>
