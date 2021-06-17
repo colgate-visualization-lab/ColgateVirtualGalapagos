@@ -1,23 +1,15 @@
 import React, { memo, useEffect, useMemo } from "react";
 import Page from "../atomic-design/templates/Page";
 import useCanvas from "../test/useCanvas";
-const underwaterImage = "/images/underwater.jpg";
 const waterBubbleImage = "/images/water_bubble.png";
 import Carousel from "../atomic-design/molecules/Carousel/Carousel";
 const characterSheet = "/sprites/attacking_soldier.png";
 import { Text } from "../atomic-design/atoms";
 import { Character } from "../atomic-design/organisms";
+import { drawCanvasBackgroundImage, drawFillImageToCanvas } from "../utils";
 
 const birdSheet = "/sprites/bird.png";
 const blueBirdSheet = "/sprites/blue_bird.png";
-
-function drawFillImage(img: HTMLImageElement, ctx: CanvasRenderingContext2D) {
-  const canvas = ctx.canvas;
-  var scale = Math.max(canvas.width / img.width, canvas.height / img.height);
-  var x = canvas.width / 2 - (img.width / 2) * scale;
-  var y = canvas.height / 2 - (img.height / 2) * scale;
-  ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
-}
 
 function getRandomInt(max: number) {
   return Math.floor(Math.random() * max + 1);
@@ -114,17 +106,6 @@ function applyBackgroundColor(ctx: CanvasRenderingContext2D) {
 }
 
 export const Canvas = memo(() => {
-  const drawBackground = (
-    ctx: CanvasRenderingContext2D,
-    frameCount: number
-  ) => {
-    const backgroundImage = new window.Image();
-    backgroundImage.src = underwaterImage;
-    backgroundImage.onload = () => {
-      drawFillImage(backgroundImage, ctx);
-    };
-  };
-
   const drawInteractive = (
     ctx: CanvasRenderingContext2D,
     frameCount: number
@@ -132,10 +113,13 @@ export const Canvas = memo(() => {
     if (frameCount === 1) {
       drawWaterBubbles(ctx, { number: 50 });
     }
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     bubbles.forEach((bubble) => bubble.render(ctx));
   };
 
-  const backgroundRef = useCanvas(drawBackground);
+  const backgroundRef = useCanvas((ctx: CanvasRenderingContext2D) => {
+    drawCanvasBackgroundImage(ctx, "/images/underwater.jpg");
+  });
   const interactiveRef = useCanvas(drawInteractive, {
     isFullScreen: true,
     animate: true,

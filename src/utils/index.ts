@@ -23,3 +23,27 @@ export function getFromLocalStorage(key: string) {
   const val = localStorage.getItem(key);
   return val && JSON.parse(val);
 }
+
+export function drawFillImageToCanvas(
+  img: HTMLImageElement,
+  ctx: CanvasRenderingContext2D
+) {
+  const canvas = ctx.canvas;
+  var scale = Math.max(canvas.width / img.width, canvas.height / img.height);
+  var x = canvas.width / 2 - (img.width / 2) * scale;
+  var y = canvas.height / 2 - (img.height / 2) * scale;
+  ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+}
+
+export function drawCanvasBackgroundImage(
+  ctx: CanvasRenderingContext2D,
+  imgSrc: string
+) {
+  ctx.imageSmoothingEnabled = false;
+  const backgroundImage = new window.Image();
+  backgroundImage.src = imgSrc;
+  backgroundImage.onload = () => {
+    drawFillImageToCanvas(backgroundImage, ctx);
+  };
+  // ctx.imageSmoothingEnabled = true;
+}
