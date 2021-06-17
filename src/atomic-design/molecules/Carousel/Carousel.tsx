@@ -61,7 +61,7 @@ export default function Carousel({
 
   const leftClasses = "left-0 w-1/6 opacity-30 transform scale-75";
   const centerClasses =
-    "left-1/2 transform -translate-x-1/2 w-4/6 scale-110 cursor-pointer";
+    "left-1/2 transform z-40 -translate-x-1/2 w-4/6 scale-110 cursor-pointer";
   const rightClasses = "right-0 w-1/6 opacity-30 transform scale-75";
 
   return (
@@ -70,13 +70,13 @@ export default function Carousel({
 
       <Slide className={centerClasses} onClick={onSelect}>
         <Arrow
-          className="transform absolute z-30 left-0 translate-x-full w-12"
+          className="transform absolute z-40 left-0 translate-x-full w-12"
           onClick={handleLeftClick}
           variant="left"
         />
         {slides[0]}
         <Arrow
-          className="right-0 absolute transform -translate-x-full z-30 w-12"
+          className="right-0 absolute transform -translate-x-full z-40 w-12"
           onClick={handleRightClick}
           variant="right"
         />
