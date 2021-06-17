@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React from "react";
 
-export interface ButtonProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
   className?: string;
   label?: string;
@@ -31,9 +31,9 @@ const Button = ({
   );
 
   return (
-    <div role="button" aria-label={label} className={classes} {...rest}>
+    <button aria-label={label} className={classes} {...rest}>
       {children}
-    </div>
+    </button>
   );
 };
 
