@@ -29,7 +29,7 @@ export function Text({ text, color, type, size }: TextProps) {
     "font-heading": isHeading,
     "font-body": isBody,
     [isTitle
-      ? "text-3xl md:text-6xl"
+      ? "text-3xl md:text-6xl lg:text-8xl"
       : isHeading
       ? "text-3xl md:text-5xl"
       : "text-2xl md:text-4xl"]: size === "lg",
