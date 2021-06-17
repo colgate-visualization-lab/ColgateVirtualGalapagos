@@ -66,9 +66,6 @@ export function AnimatedSpriteSheet({
   const maxFrames = maxFramesWidth * maxFramesHeight - 1;
 
   useEffect(() => {
-    console.log("sheet rendered");
-  });
-  useEffect(() => {
     if (isPlaying) {
       const timerId = (function (fr) {
         return setInterval(() => {
@@ -116,6 +113,8 @@ export function AnimatedSpriteSheet({
         ((typeof animation === "string" && animation) || animation?.name) ===
         "animate-left-right"
           ? {
+              height: frame?.height,
+              width: frame?.width,
               position: "absolute",
               transform: "translateX(-50%)",
               left: `${
@@ -124,14 +123,14 @@ export function AnimatedSpriteSheet({
                 101
               }%`,
             }
-          : {}
+          : { height: frame?.height, width: frame?.width }
       }
       className={className}
       img={sheet}
       {...spriteData}
     />
   ) : (
-    <div>"Loading..."</div>
+    <></>
   );
 }
 
