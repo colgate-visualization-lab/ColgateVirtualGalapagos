@@ -6,7 +6,13 @@ import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
 
 export interface SpeechBubbleProps extends TextProps {
   className?: string;
-  position?: "left" | "right" | "top" | "custom";
+  position?:
+    | "left"
+    | "right"
+    | "top"
+    | "custom"
+    | "bottom left"
+    | "bottom right";
   audio?: string;
 }
 
@@ -18,41 +24,60 @@ export default function SpeechBubble({
 }: SpeechBubbleProps) {
   const classes = classNames(
     className,
-    "absolute p-5 z-40 transform bg-primary-dark rounded-lg animate-fade-in",
+    "absolute rounded-full z-40 min-w-80 transform bg-secondary animate-fade-in",
     {
-      "right-0 translate-x-full": position === "right",
-      "left-0 top-1/2 -translate-y-1/2 -translate-x-full": position === "left",
+      "right-0 translate-x-full top-0 -translate-y-full": position === "right",
+      "-translate-y-full": position === "left",
+      "translate-y-3/4":
+        position === "bottom left" || position === "bottom right",
+      "left-0 top-0 -translate-x-full":
+        position === "left" || position === "bottom left",
       "top-0 -translate-y-full": position === "top",
     }
   );
+  const bubbleClasses = classNames("absolute transform flex flex-col", {
+    "left-0 bottom-0 rotate-45 translate-y-full -translate-x-full":
+      position === "right",
+    "right-0 bottom-0 -rotate-45 translate-y-full translate-x-full":
+      position === "left",
+    "right-0 top-0 -translate-y-full flex-col-reverse rotate-45":
+      position === "bottom left",
+  });
   const [playAudio, setAudio] = useState(false);
   return (
     <div className={classes}>
-      <Text {...rest} color="text-white" />
-      {audio && (
-        <>
-          <Howler
-            src={audio}
-            onEnd={() => setAudio(false)}
-            playing={playAudio}
-          />
-          {playAudio ? (
-            <AiFillPauseCircle
-              role="button"
-              aria-label="pause audio"
-              onClick={() => setAudio(false)}
-              className="text-white text-xl"
+      <div className="relative py-3 px-10">
+        <Text {...rest} color="text-white" />
+        {audio && (
+          <>
+            <Howler
+              src={audio}
+              onEnd={() => setAudio(false)}
+              playing={playAudio}
             />
-          ) : (
-            <AiFillPlayCircle
-              role="button"
-              aria-label="play audio"
-              onClick={() => setAudio(true)}
-              className="text-white text-xl"
-            />
-          )}
-        </>
-      )}
+            {playAudio ? (
+              <AiFillPauseCircle
+                role="button"
+                aria-label="pause audio"
+                onClick={() => setAudio(false)}
+                className="text-white text-xl"
+              />
+            ) : (
+              <AiFillPlayCircle
+                role="button"
+                aria-label="play audio"
+                onClick={() => setAudio(true)}
+                className="text-white text-xl"
+              />
+            )}
+          </>
+        )}
+
+        <div className={bubbleClasses}>
+          <div className="rounded-full h-10 w-10 bg-secondary"></div>
+          <div className="rounded-full h-7 w-7 bg-secondary"></div>
+        </div>
+      </div>
     </div>
   );
 }
