@@ -12,18 +12,29 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      rotate: {
+        30: "30deg",
+        "-30": "-30deg",
+      },
       backgroundImage: {
         "ocean-texture": "url('./assets/images/ocean_texture.jpg')",
+        "cartoon-island": "url('./assets/images/island_cartoon.jpg')",
+        wood: "url('./assets/images/wood.png')",
       },
       animation: {
         "fade-in-slow": "fade-in 2s",
         "fade-in": "fade-in 1s",
         "fade-out": "fade-in 1s reverse",
+        "slide-right": "slide-right 30s linear alternate infinite",
       },
       keyframes: {
         "fade-in": {
           to: { opacity: "100%" },
           from: { opacity: "0%" },
+        },
+        "slide-right": {
+          to: { left: "100%" },
+          from: { left: "0%" },
         },
       },
       colors: {
