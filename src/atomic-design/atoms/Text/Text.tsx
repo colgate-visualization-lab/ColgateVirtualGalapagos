@@ -37,7 +37,7 @@ export function Text({ text, color, type, size }: TextProps) {
       ? "text-2xl md:text-4xl"
       : isHeading
       ? "text-xl md:text-3xl"
-      : "text-md md:text-2xl"]: size === "md",
+      : "text-md md:text-xl"]: size === "md",
     [isTitle
       ? "text-lg md:text-xl"
       : isHeading
