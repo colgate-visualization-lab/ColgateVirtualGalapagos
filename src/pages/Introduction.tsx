@@ -13,7 +13,7 @@ export default function Introduction() {
   const { startTransition } = useTransitionContext();
 
   return (
-    <Page className="bg-ocean-texture">
+    <Page>
       <div className="fixed top-2 right-2 z-40">
         <Button
           size="lg"

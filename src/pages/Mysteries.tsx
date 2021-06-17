@@ -12,7 +12,7 @@ export default function Mysteries() {
   const [info, setInfo] = useState<string>();
 
   return (
-    <Page className="bg-ocean-texture">
+    <Page>
       <Islands
         className="h-9/12 xl:h-10/12 w-full max-w-screen-xl mx-auto mb-auto p-5"
         onMouseEnter={(island: Island) => setInfo((i) => island.info)}
@@ -50,11 +50,9 @@ function InfoBox({ info, className }: { info: string; className?: string }) {
         className="h-auto w-40 transform translate-x-1/2 -rotate-30 -scale-x-100"
       />
       {showInfo && (
-        <SpeechBubble
-          text={info}
-          position="custom"
-          className="right-20 top-20 bg-accent-primary"
-        />
+        <div className="fixed right-20 top-20">
+          <SpeechBubble text={info} position="bottom left" />
+        </div>
       )}
     </div>
   );
