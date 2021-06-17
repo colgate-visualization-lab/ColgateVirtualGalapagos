@@ -60,7 +60,7 @@ export default function App() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/menu" component={WelcomeMenu} />
-
+          <Route path="test" component={TestingGround}/>
         <Route path="/main_menu" exact component={MainMenu} />
         <Route path="/login" exact component={Login} />
         <Route path="/sign_up" exact component={SignUp} />

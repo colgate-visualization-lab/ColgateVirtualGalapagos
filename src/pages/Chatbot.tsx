@@ -10,13 +10,12 @@ import fishSheet from "../assets/sprites/fish_one.png";
 import fishTwoSheet from "../assets/sprites/fish_two.png"
 import talkingTurtle from "../assets/sprites/speaking_turtle.png"
 import ChatBubble from "../atomic-design/templates/ChatBubble";
+import GameBar from "../atomic-design/templates/GameBar"
 
 // import { getTime } from "./chat";
 
 //message input from user
-const UserMessage = ({ msg }: { msg: string }) => <p className="" 
-  style={{backgroundColor: "#e0e0e0", padding:10, borderRadius:8, borderBottomRightRadius:2, 
-  marginTop: 20, marginLeft:'80%',right:0, textAlign:"left",maxWidth:'80%', fontFamily:'cursive',fontSize:23}}>{msg}</p>;
+const UserMessage = ({ msg }: { msg: string }) => <ChatBubble color="bg-primary"><span style={{fontFamily:'body',fontSize:23}}>{msg}</span></ChatBubble>;
 
 //time
 const getTime = () => {
@@ -63,6 +62,7 @@ function Chatbot({ onSend }: { onSend: Function }) {
   // setUserMessages([...userMessages,'hello'])
 
   return (
+    
     <Page color="bg-primary-light">
    
       <AnimatedSpriteSheet
@@ -78,18 +78,16 @@ function Chatbot({ onSend }: { onSend: Function }) {
 
       <div className="absolute bottom-10 right-20 w-2/3 h-auto flex flex-col justify-center"> 
         <div style={{fontFamily:'body'}}>{time}</div>
-        <div className="rounded-full px-8 py-8 w-1/2 bg-gray-200 rotate-30 transform origin-top-right">
-          <span style={{fontFamily:'body',fontSize:23}}>
+        <ChatBubble color="bg-primary"><span style={{fontFamily:'body',fontSize:23}}>
             Welcome to Virtual Galapagos! What is your name?
-          </span>
-        </div>
-        <div className="rounded-full h-12 w-12 bg-gray-200 rotate-45 transform origin-top-right"></div>
+          </span></ChatBubble>
 
-        {/* <ChatBubble color="bg-primary"></ChatBubble> */}
-
-          {userMessages.map((msg) => (
-          <UserMessage msg={msg} />
-          ))}
+          <div className="float-right place-self-end">
+            {userMessages.map((msg) => (
+            <UserMessage msg={msg} />
+            ))}
+          </div>
+          {/* </div> */}
 
         <div style={{display:"flex",float:"right",boxSizing:"border-box", justifyContent:"space-between",
         alignItems:"center",backgroundColor:"transparent",borderRadius:10, padding:10}}>
