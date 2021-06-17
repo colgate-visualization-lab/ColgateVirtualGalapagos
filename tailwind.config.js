@@ -12,6 +12,18 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      strokeWidth: {
+        3: "3",
+        4: "4",
+        5: "5",
+      },
+      scale: {
+        101: "1.01",
+        102: "1.02",
+
+        103: "1.03",
+        104: "1.04",
+      },
       rotate: {
         30: "30deg",
         "-30": "-30deg",
@@ -23,9 +35,10 @@ module.exports = {
       },
       animation: {
         "fade-in-slow": "fade-in 2s",
-        "fade-in": "fade-in 1s",
+        "fade-in": "fade-in 200ms",
         "fade-out": "fade-in 1s reverse",
         "slide-right": "slide-right 30s linear alternate infinite",
+        "slide-in-left": "slide-in-left 300ms",
       },
       keyframes: {
         "fade-in": {
@@ -35,6 +48,10 @@ module.exports = {
         "slide-right": {
           to: { left: "100%" },
           from: { left: "0%" },
+        },
+        "slide-in-left": {
+          from: { transform: "translateX(100%)" },
+          to: { transform: "translateX(0%)" },
         },
       },
       colors: {
