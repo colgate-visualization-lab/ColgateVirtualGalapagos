@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { ValidAnimations } from "../../../types";
 
 import { Sprite } from "../../atoms";
 import { SpriteProps } from "../../atoms/Sprite/Sprite";
 
 export interface AnimatedSpriteSheetProps {
-  filename: string;
+  fileName: string;
   initialFrame?: number;
   frame?: {
     height: number;
@@ -24,6 +24,7 @@ export interface AnimatedSpriteSheetProps {
   scale?: SpriteProps["scale"];
   animation?: ValidAnimations | { name: ValidAnimations; offset: number };
   className?: string;
+  onClick?: React.MouseEventHandler;
 }
 
 AnimatedSpriteSheet.defaultProps = {
@@ -43,9 +44,9 @@ AnimatedSpriteSheet.defaultProps = {
   speed: 300,
 };
 
-export function AnimatedSpriteSheet({
+function AnimatedSpriteSheet({
   className,
-  filename,
+  fileName,
   initialFrame,
   frame,
   bounds,
@@ -55,6 +56,7 @@ export function AnimatedSpriteSheet({
   direction = "right",
   scale,
   animation,
+  onClick,
 }: AnimatedSpriteSheetProps) {
   const [currentFrame, setCurrentFrame] = useState(initialFrame || 0);
   const [sheet, setSheet] = useState<HTMLImageElement>();
@@ -100,15 +102,16 @@ export function AnimatedSpriteSheet({
   };
 
   useEffect(() => {
-    if (filename) {
+    if (fileName) {
       const img = new Image();
-      img.src = filename;
+      img.src = fileName;
       img.onload = () => setSheet(img);
     }
-  }, [filename]);
+  }, [fileName]);
 
   return sheet ? (
     <Sprite
+      onClick={onClick}
       style={
         ((typeof animation === "string" && animation) || animation?.name) ===
         "animate-left-right"
@@ -134,4 +137,5 @@ export function AnimatedSpriteSheet({
   );
 }
 
-export default AnimatedSpriteSheet;
+const Memoized = memo(AnimatedSpriteSheet);
+export default Memoized;

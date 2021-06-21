@@ -5,31 +5,23 @@ import Arrow from "./Arrow";
 const Slide = ({
   className,
   children,
-  onClick,
 }: {
   className?: string;
   children: React.ReactNode;
-  onClick?: React.MouseEventHandler;
 }) => {
   const classes = classNames(
     className,
     "h-full transition-normal absolute items-center justify-center flex object-cover"
   );
-  return (
-    <div onClick={onClick} className={classes}>
-      {children}
-    </div>
-  );
+  return <div className={classes}>{children}</div>;
 };
 
 export default function Carousel({
   className,
   children,
-  onSelect,
 }: {
   className: string;
   children?: React.ReactNode;
-  onSelect?: React.MouseEventHandler;
 }) {
   const classes = classNames(
     className,
@@ -59,16 +51,18 @@ export default function Carousel({
     );
   };
 
-  const leftClasses = "left-0 w-1/6 opacity-30 transform scale-75";
+  const leftClasses =
+    "left-0 w-1/6 opacity-30 transform pointer-events-none scale-75";
   const centerClasses =
-    "left-1/2 transform z-40 -translate-x-1/2 w-4/6 scale-110 cursor-pointer";
-  const rightClasses = "right-0 w-1/6 opacity-30 transform scale-75";
+    "left-1/2 transform z-40 top-20 -translate-x-1/2 w-4/6 scale-110 cursor-pointer";
+  const rightClasses =
+    "right-0 w-1/6 opacity-30 pointer-events-none transform scale-75";
 
   return (
     <div className={classes}>
       <Slide className={leftClasses}>{slides[1]}</Slide>
 
-      <Slide className={centerClasses} onClick={onSelect}>
+      <Slide className={centerClasses}>
         <Arrow
           className="transform absolute z-40 left-0 translate-x-full w-12"
           onClick={handleLeftClick}

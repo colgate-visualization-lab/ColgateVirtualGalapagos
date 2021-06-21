@@ -34,7 +34,6 @@ export default function App() {
       history.push(nextPath);
     }
   }, [nextPath]);
-  console.log(isTransitioning, to);
   return (
     <Suspense fallback={<Loading />}>
       {isTransitioning && (

@@ -28,9 +28,10 @@ export default function Introduction() {
       <GameBar className="h-2/6">
         <div className="absolute left-0 transform -translate-x-1/2">
           <Character
+            name="random"
             audio="/audio/welcome.mp3"
             speech="Welcome to the Galapagos"
-            filename={birdSheet}
+            fileName={birdSheet}
             initialFrame={0}
             bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
             frame={{ width: 343, height: 301 }}
@@ -40,11 +41,12 @@ export default function Introduction() {
         </div>
         <div className="absolute right-0 transform translate-x-1/2">
           <Character
+            name="random"
             // audio="/audio/so_cool.mp3"
             className="transform -scale-x-100"
             speechPosition="left"
             speech="Thank you green birdie"
-            filename={blueBirdSheet}
+            fileName={blueBirdSheet}
             initialFrame={0}
             bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
             frame={{ width: 343, height: 301 }}
