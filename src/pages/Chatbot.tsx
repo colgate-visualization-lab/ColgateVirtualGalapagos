@@ -7,15 +7,19 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { BiPaperPlane } from "react-icons/bi";
 import AnimatedSpriteSheet from "../atomic-design/molecules/AnimatedSpriteSheet/AnimatedSpriteSheet";
 import fishSheet from "../assets/sprites/fish_one.png";
-import fishTwoSheet from "../assets/sprites/fish_two.png"
-import talkingTurtle from "../assets/sprites/speaking_turtle.png"
+import fishTwoSheet from "../assets/sprites/fish_two.png";
+import talkingTurtle from "../assets/sprites/speaking_turtle.png";
 import ChatBubble from "../atomic-design/templates/ChatBubble";
 import useCanvas from "../test/useCanvas";
 
 // import { getTime } from "./chat";
 
 //message input from user
-const UserMessage = ({ msg }: { msg: string }) => <ChatBubble color="bg-primary"><span style={{fontFamily:'body',fontSize:23}}>{msg}</span></ChatBubble>;
+const UserMessage = ({ msg }: { msg: string }) => (
+  <ChatBubble color="bg-primary">
+    <span style={{ fontFamily: "body", fontSize: 23 }}>{msg}</span>
+  </ChatBubble>
+);
 
 //time
 const getTime = () => {
@@ -23,11 +27,8 @@ const getTime = () => {
   var hours = today.getHours();
   var minutes = today.getMinutes();
   var n = hours + ":" + minutes;
-  return (
-      n
-  )
-}
-
+  return n;
+};
 
 //???
 function Wrapper() {
@@ -40,7 +41,6 @@ function Wrapper() {
 
 //MAIN FUNCTION
 function Chatbot({ onSend }: { onSend: Function }) {
-
   const time = getTime();
   const [tempMessage, setTempMessage] = useState<string>("");
   const [userMessages, setUserMessages] = useState<any[]>([]);
@@ -72,8 +72,7 @@ function Chatbot({ onSend }: { onSend: Function }) {
       if (fishImage.complete && fishImage.naturalHeight !== 0) {
         ctx.drawImage(
           fishImage,
-          (frameCount % (ctx.canvas.width + fishImage.width)) -
-            fishImage.width,
+          (frameCount % (ctx.canvas.width + fishImage.width)) - fishImage.width,
           10
         );
         ctx.drawImage(
@@ -102,69 +101,97 @@ function Chatbot({ onSend }: { onSend: Function }) {
       }
     },
     { isFullScreen: true, animate: true }
-  )
+  );
   return (
-    
     <Page color="bg-primary-light">
-      <canvas ref={fishRef} className="fixed w-full h-auto left-0 top-10 z-20" />
-   
+      <canvas
+        ref={fishRef}
+        className="fixed w-full h-auto left-0 top-10 z-20"
+      />
+
       {/* <AnimatedSpriteSheet
             initialFrame={0}
-            filename={fishSheet}
+            fileName={fishSheet}
             bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
             frame={{ width: 343, height: 301 }}
             speed={250}
             scale={{ x: 0.5, y: 0.3 }}
             animation={{ name: "animate-left-right", offset: 15 }}
           /> */}
-          
 
-      <div className="absolute bottom-10 right-20 w-2/3 h-auto flex flex-col justify-center"> 
-        <div style={{fontFamily:'body'}}>{time}</div>
-        <ChatBubble color="bg-primary"><span style={{fontFamily:'body',fontSize:23}}>
+      <div className="absolute bottom-10 right-20 w-2/3 h-auto flex flex-col justify-center">
+        <div style={{ fontFamily: "body" }}>{time}</div>
+        <ChatBubble color="bg-primary">
+          <span style={{ fontFamily: "body", fontSize: 23 }}>
             Welcome to Virtual Galapagos! What is your name?
-          </span></ChatBubble>
+          </span>
+        </ChatBubble>
 
-          <div className="float-right place-self-end">
-            {userMessages.map((msg) => (
+        <div className="float-right place-self-end">
+          {userMessages.map((msg) => (
             <UserMessage msg={msg} />
-            ))}
-          </div>
+          ))}
+        </div>
 
-        <div style={{display:"flex",float:"right",boxSizing:"border-box", justifyContent:"space-between",
-        alignItems:"center",backgroundColor:"transparent",borderRadius:10, padding:10}}>
-          <div id="userInput" style={{width:"75%"}}>
+        <div
+          style={{
+            display: "flex",
+            float: "right",
+            boxSizing: "border-box",
+            justifyContent: "space-between",
+            alignItems: "center",
+            backgroundColor: "transparent",
+            borderRadius: 10,
+            padding: 10,
+          }}
+        >
+          <div id="userInput" style={{ width: "75%" }}>
             <input
               onChange={(event) => setTempMessage(event.target.value)}
               value={tempMessage}
               className="input-box"
-              style={{float:"right",boxSizing:"border-box",borderRadius:10, padding:10,fontSize:23,
-              fontFamily:"body", backgroundColor: 'transparent',borderBottom:'1px solid'}}
+              style={{
+                float: "right",
+                boxSizing: "border-box",
+                borderRadius: 10,
+                padding: 10,
+                fontSize: 23,
+                fontFamily: "body",
+                backgroundColor: "transparent",
+                borderBottom: "1px solid",
+              }}
               type="text"
               placeholder="Tap 'Enter' to send a message"
-              />
-              <p></p>
+            />
+            <p></p>
           </div>
-                
-          <div style={{display:"flex",justifyContent:"space-evenly",
-          boxSizing:"border-box",width:"25%",float:"right", fontSize:23, 
-          }}>
-            <button onClick={handleHeartClick} id="heart-icon" >
-            <AiFillHeart className="text-red-500"/>
+
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-evenly",
+              boxSizing: "border-box",
+              width: "25%",
+              float: "right",
+              fontSize: 23,
+            }}
+          >
+            <button onClick={handleHeartClick} id="heart-icon">
+              <AiFillHeart className="text-red-500" />
             </button>
-            <button onClick={handleSend} id="chat-icon" >
-            <BiPaperPlane className="text-gray-500"/>
+            <button onClick={handleSend} id="chat-icon">
+              <BiPaperPlane className="text-gray-500" />
             </button>
           </div>
         </div>
       </div>
 
       {/* <div className="absolute top-0 left-0 w-full"> */}
-        {/* <div className="relative top-1 w-full" style={{animation:"animate-left-right"}}>
+      {/* <div className="relative top-1 w-full" style={{animation:"animate-left-right"}}>
          
           <AnimatedSpriteSheet
             initialFrame={0}
-            filename={fishSheet}
+            fileName={fishSheet}
             bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
             frame={{ width: 343, height: 301 }}
             speed={250}
@@ -177,7 +204,7 @@ function Chatbot({ onSend }: { onSend: Function }) {
         <div className="relative top-40 w-full">
           <AnimatedSpriteSheet
             initialFrame={0}
-            filename={fishTwoSheet}
+            fileName={fishTwoSheet}
             bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
             frame={{ width: 343, height: 301 }}
             speed={300}
@@ -187,22 +214,16 @@ function Chatbot({ onSend }: { onSend: Function }) {
         </div> */}
       {/* </div> */}
 
-        <div className="absolute bottom-10 left-20">
-            <AnimatedSpriteSheet
-              filename={talkingTurtle}
-              bounds={{ x: 0, y: 0, width: 516, height: 306 }}
-              frame={{ width: 172, height: 153 }}
-              speed={400}
-              isPlaying={isAnimating}
-          
-            />
-          
-          </div>
-
-
-          
-      </Page>
-  
+      <div className="absolute bottom-10 left-20">
+        <AnimatedSpriteSheet
+          fileName={talkingTurtle}
+          bounds={{ x: 0, y: 0, width: 516, height: 306 }}
+          frame={{ width: 172, height: 153 }}
+          speed={400}
+          isPlaying={isAnimating}
+        />
+      </div>
+    </Page>
   );
 }
 

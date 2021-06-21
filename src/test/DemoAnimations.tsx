@@ -9,7 +9,7 @@ export default function DemoAnimations() {
     <>
       <div className="flex flex-col fixed z-30 items-center justify-center">
         <AnimatedSpriteSheet
-          filename={characterSheet}
+          fileName={characterSheet}
           bounds={{ x: 0, y: 0, width: 516, height: 306 }}
           frame={{ width: 172, height: 153 }}
           speed={200}
@@ -25,7 +25,7 @@ export default function DemoAnimations() {
       {/* <div className="absolute top-0 left-0 w-full">
         <div className="relative top-5 w-full">
           <AnimatedSpriteSheet
-            filename={birdSheet}
+            fileName={birdSheet}
             initialFrame={0}
             bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
             frame={{ width: 343, height: 301 }}
@@ -37,7 +37,7 @@ export default function DemoAnimations() {
         </div>
         <div className="relative top-0 w-full">
           <AnimatedSpriteSheet
-            filename={birdSheet}
+            fileName={birdSheet}
             initialFrame={2}
             bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
             frame={{ width: 343, height: 301 }}
@@ -49,7 +49,7 @@ export default function DemoAnimations() {
         </div>
         <div className="relative top-1 w-full">
           <AnimatedSpriteSheet
-            filename={birdSheet}
+            fileName={birdSheet}
             initialFrame={3}
             bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
             frame={{ width: 343, height: 301 }}
@@ -62,7 +62,7 @@ export default function DemoAnimations() {
         <div className="relative top-3 w-full">
           <AnimatedSpriteSheet
             initialFrame={0}
-            filename={blueBirdSheet}
+            fileName={blueBirdSheet}
             bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
             frame={{ width: 343, height: 301 }}
             speed={200}
@@ -74,7 +74,7 @@ export default function DemoAnimations() {
         <div className="relative top-10 w-full">
           <AnimatedSpriteSheet
             initialFrame={1}
-            filename={blueBirdSheet}
+            fileName={blueBirdSheet}
             bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
             frame={{ width: 343, height: 301 }}
             speed={200}
@@ -86,7 +86,7 @@ export default function DemoAnimations() {
         <div className="relative top-6 w-full">
           <AnimatedSpriteSheet
             initialFrame={2}
-            filename={blueBirdSheet}
+            fileName={blueBirdSheet}
             bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
             frame={{ width: 343, height: 301 }}
             speed={200}

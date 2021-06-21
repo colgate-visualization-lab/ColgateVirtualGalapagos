@@ -13,6 +13,7 @@ export default function MainMenu() {
       <div className="flex flex-col h-52 justify-between">
         {menuOptions.map((option) => (
           <Button
+            key={option}
             variant="primary"
             size="lg"
             label={option}

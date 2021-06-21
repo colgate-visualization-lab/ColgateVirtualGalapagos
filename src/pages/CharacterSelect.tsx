@@ -1,19 +1,15 @@
-import React, { memo, useEffect, useMemo } from "react";
+import React, { memo, ReactElement, useState } from "react";
 import Page from "../atomic-design/templates/Page";
 import useCanvas from "../test/useCanvas";
 const waterBubbleImage = "/images/water_bubble.png";
 import Carousel from "../atomic-design/molecules/Carousel/Carousel";
-const characterSheet = "/sprites/attacking_soldier.png";
 import { Text } from "../atomic-design/atoms";
 import { Character } from "../atomic-design/organisms";
-import { drawCanvasBackgroundImage, drawFillImageToCanvas } from "../utils";
-
-const birdSheet = "/sprites/bird.png";
-const blueBirdSheet = "/sprites/blue_bird.png";
-
-function getRandomInt(max: number) {
-  return Math.floor(Math.random() * max + 1);
-}
+import { drawCanvasBackgroundImage } from "../utils";
+import characterList from "../utils/characterList";
+import { CharacterType, useGameContext } from "../contexts/GameContext";
+import Button from "../atomic-design/atoms/Button/Button";
+import { useTransitionContext } from "../contexts/TransitionContext";
 
 function getRandomFloat(max: number) {
   return Math.random() * max + 1;
@@ -97,14 +93,6 @@ function drawWaterBubbles(
   };
 }
 
-function applyBackgroundColor(ctx: CanvasRenderingContext2D) {
-  console.log("applying", ctx.canvas.width, ctx.canvas.height);
-  ctx.save();
-  ctx.fillStyle = "rgba(255,0,200,1)";
-  ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-  ctx.restore();
-}
-
 export const Canvas = memo(() => {
   const drawInteractive = (
     ctx: CanvasRenderingContext2D,
@@ -117,6 +105,10 @@ export const Canvas = memo(() => {
     bubbles.forEach((bubble) => bubble.render(ctx));
   };
 
+  const [character, setCharacter] = useState<CharacterType>();
+  const { characters, addCharacter } = useGameContext();
+  const { startTransition } = useTransitionContext();
+
   const backgroundRef = useCanvas((ctx: CanvasRenderingContext2D) => {
     drawCanvasBackgroundImage(ctx, "/images/underwater.jpg");
   });
@@ -125,64 +117,65 @@ export const Canvas = memo(() => {
     animate: true,
   });
 
-  useEffect(() => {
-    console.log("canvas rendered");
-  });
-
-  const handleCharacterSelect = (name: string) => {};
+  const handleCharacterSelect = (name: string) => {
+    const selectedCharacter = characterList.find(
+      (character: CharacterType) => character.name === name
+    );
+    if (selectedCharacter) {
+      addCharacter(selectedCharacter);
+      setCharacter(selectedCharacter);
+    }
+  };
 
   return (
     <Page>
-      <div className="fixed z-20 top-1/3">
-        <Text
-          text="Select Your Buddy"
-          color="text-dark"
-          type="heading"
-          size="lg"
-        />
-      </div>
       <canvas className="w-full h-full fixed z-10" ref={backgroundRef}>
         Your browser doesn't support HTML canvas
       </canvas>
-      <canvas className="w-full h-full fixed z-20" ref={interactiveRef}>
+      <canvas
+        className="w-full h-full opacity-30 fixed z-20"
+        ref={interactiveRef}
+      >
         Your browser doesn't support HTML canvas
       </canvas>
-      <Carousel className="fixed z-20" onSelect={() => handleCharacterSelect}>
-        <Character
-          info="I will fight for you!"
-          title="Cool Character 1"
-          filename={characterSheet}
-          bounds={{ x: 0, y: 0, width: 516, height: 306 }}
-          frame={{ width: 172, height: 153 }}
-          speed={200}
-        />
-        <Character
-          info="Hi, I am birdy bird that shall fly around and assist you with stuff"
-          title="Birdie"
-          filename={birdSheet}
-          initialFrame={0}
-          bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
-          frame={{ width: 343, height: 301 }}
-          speed={200}
-          scale={{ x: 0.8, y: 0.55 }}
-        />
-        <Character
-          title="Cool Character 2"
-          filename={characterSheet}
-          bounds={{ x: 0, y: 0, width: 516, height: 306 }}
-          frame={{ width: 172, height: 153 }}
-          speed={200}
-        />
-        <Character
-          title="Blue Birdie"
-          initialFrame={0}
-          filename={blueBirdSheet}
-          bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
-          frame={{ width: 343, height: 301 }}
-          speed={250}
-          scale={{ x: 0.8, y: 0.55 }}
-        />
-      </Carousel>
+      {character ? (
+        <div className="z-20 h-60 animate-fade-in">
+          <Character
+            name={character.name}
+            speech={character.quotes && character.quotes[0]}
+            {...character.spriteConfig}
+          />
+          <Button
+            size="lg"
+            variant="wooden"
+            onClick={() => startTransition("/mysteries")}
+          >
+            <Text text="Onwards!" color="text-dark" />
+          </Button>
+        </div>
+      ) : (
+        <>
+          <div className="fixed z-20 top-1/3">
+            <Text
+              text="Select Your Buddy"
+              color="text-dark"
+              type="heading"
+              size="lg"
+            />
+          </div>
+          <Carousel className="fixed z-20">
+            {characterList.map((character: CharacterType) => (
+              <Character
+                onClick={handleCharacterSelect}
+                key={character.name}
+                name={character.name}
+                info={character.quotes && character.quotes[0]}
+                {...character.spriteConfig}
+              />
+            ))}
+          </Carousel>
+        </>
+      )}
     </Page>
   );
 });

@@ -1,17 +1,23 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router";
 import { StaticAnimal, Text } from "../atomic-design/atoms";
 import SpeechBubble from "../atomic-design/molecules/SpeechBubble/SpeechBubble";
 import { Character } from "../atomic-design/organisms";
 import GameBar from "../atomic-design/templates/GameBar";
 import Page from "../atomic-design/templates/Page";
+import { useGameContext } from "../contexts/GameContext";
 import Islands from "../test/Islands";
 import { Island } from "../test/islandsInfo";
 const birdSheet = "/sprites/bird.png";
 
 export default function Mysteries() {
   const [info, setInfo] = useState<string>();
+  const { characters } = useGameContext();
 
-  return (
+  const currentCharacter = characters[characters.length - 1];
+  return !currentCharacter ? (
+    <Redirect to="/character_select" />
+  ) : (
     <Page>
       <Islands
         className="h-9/12 xl:h-10/12 w-full max-w-screen-xl mx-auto mb-auto p-5"
@@ -19,15 +25,11 @@ export default function Mysteries() {
         onMouseLeave={() => setInfo(undefined)}
       />
       <GameBar className="h-3/12 xl:h-2/12">
-        <div className="absolute left-0 transform -translate-x-1/2">
+        <div className="absolute left-0 transform -translate-x-1/3">
           <Character
+            name={currentCharacter.name}
             speech="Click on the islands to dive into one of many mysteries hidden in the Galapagos."
-            filename={birdSheet}
-            initialFrame={0}
-            bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
-            frame={{ width: 343, height: 301 }}
-            speed={200}
-            scale={{ x: 0.8, y: 0.55 }}
+            {...currentCharacter.spriteConfig}
           />
         </div>
       </GameBar>

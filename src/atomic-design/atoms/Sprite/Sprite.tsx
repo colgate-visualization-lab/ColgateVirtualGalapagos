@@ -9,6 +9,7 @@ export interface SpriteProps {
   scale?: number | { x: number; y: number };
   style: CSSProperties;
   className?: string;
+  onClick?: React.MouseEventHandler;
 }
 
 export const Sprite = ({

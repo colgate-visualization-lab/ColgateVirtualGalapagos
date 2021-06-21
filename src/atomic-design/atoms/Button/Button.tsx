@@ -5,7 +5,7 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
   className?: string;
   label?: string;
-  variant?: "primary" | "secondary" | "wooden";
+  variant?: "primary" | "secondary" | "wooden" | "map";
   size?: "sm" | "md" | "lg";
 }
 

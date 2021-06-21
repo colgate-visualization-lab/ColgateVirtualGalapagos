@@ -13,7 +13,7 @@ export default function NotFoundPage() {
       <div className="absolute top-0 left-0 w-full">
         <div className="relative top-5 w-full">
           <AnimatedSpriteSheet
-            filename={birdSheet}
+            fileName={birdSheet}
             initialFrame={0}
             bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
             frame={{ width: 343, height: 301 }}
@@ -24,7 +24,7 @@ export default function NotFoundPage() {
         </div>
         <div className="relative top-1 w-full">
           <AnimatedSpriteSheet
-            filename={birdSheet}
+            fileName={birdSheet}
             initialFrame={3}
             bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
             frame={{ width: 343, height: 301 }}
@@ -36,7 +36,7 @@ export default function NotFoundPage() {
         <div className="relative top-3 w-full">
           <AnimatedSpriteSheet
             initialFrame={0}
-            filename={blueBirdSheet}
+            fileName={blueBirdSheet}
             bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
             frame={{ width: 343, height: 301 }}
             speed={250}
@@ -47,7 +47,7 @@ export default function NotFoundPage() {
         <div className="relative top-10 w-full">
           <AnimatedSpriteSheet
             initialFrame={1}
-            filename={blueBirdSheet}
+            fileName={blueBirdSheet}
             bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
             frame={{ width: 343, height: 301 }}
             speed={250}

@@ -174,7 +174,8 @@ export const Arrow = ({
   onClick: React.EventHandler<any>;
   variant: "left" | "right";
 }) => {
-  const classes = className + " hover:scale-110 transform cursor-pointer";
+  const classes =
+    className + " hover:scale-110 transform transition-normal cursor-pointer";
 
   return variant === "left" ? (
     <ArrowLeft {...rest} className={classes} />
