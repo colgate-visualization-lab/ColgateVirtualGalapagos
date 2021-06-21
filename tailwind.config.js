@@ -1,7 +1,7 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  plugins: [],
+  mode: "jit",
   purge: [
     "./src/**/*.html",
     "./src/**/*.js",
@@ -12,21 +12,23 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      height: {
+        "1/12": "8.333333%",
+        "2/12": "16.666667%",
+        "3/12": "25%",
+        "4/12": "33.333333%",
+        "5/12": "41.666667%",
+        "6/12": "50%",
+        "7/12": "58.333333%",
+        "8/12": "66.666667%",
+        "9/12": "75%",
+        "10/12": "83.333333%",
+        "11/12": "91.666667%",
+      },
       strokeWidth: {
         3: "3",
         4: "4",
         5: "5",
-      },
-      scale: {
-        101: "1.01",
-        102: "1.02",
-
-        103: "1.03",
-        104: "1.04",
-      },
-      rotate: {
-        30: "30deg",
-        "-30": "-30deg",
       },
       backgroundImage: {
         "ocean-texture": "url('./assets/images/ocean_texture.jpg')",
@@ -186,6 +188,7 @@ module.exports = {
     },
     blur: {
       0: "0",
+      none: "0",
       sm: "4px",
       DEFAULT: "8px",
       md: "12px",
@@ -244,6 +247,7 @@ module.exports = {
       inner: "inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)",
       none: "none",
     },
+    caretColor: (theme) => theme("colors"),
     contrast: {
       0: "0",
       50: ".5",
@@ -254,6 +258,9 @@ module.exports = {
       200: "2",
     },
     container: {},
+    content: {
+      none: "none",
+    },
     cursor: {
       auto: "auto",
       default: "default",
@@ -511,17 +518,6 @@ module.exports = {
       "3/6": "50%",
       "4/6": "66.666667%",
       "5/6": "83.333333%",
-      "1/12": "8.333333%",
-      "2/12": "16.666667%",
-      "3/12": "25%",
-      "4/12": "33.333333%",
-      "5/12": "41.666667%",
-      "6/12": "50%",
-      "7/12": "58.333333%",
-      "8/12": "66.666667%",
-      "9/12": "75%",
-      "10/12": "83.333333%",
-      "11/12": "91.666667%",
       full: "100%",
       screen: "100vh",
     }),
@@ -737,6 +733,8 @@ module.exports = {
       12: "12deg",
       45: "45deg",
       90: "90deg",
+      30: "30deg",
+      "-30": "-30deg",
       180: "180deg",
     },
     saturate: {
@@ -826,7 +824,7 @@ module.exports = {
       none: "none",
       all: "all",
       DEFAULT:
-        "background-color, left,top,right,bottom, border-color, color, fill, stroke, stroke-width, opacity, box-shadow, transform, filter, backdrop-filter",
+        "background-color, left, top, right, bottom, border-color, color, fill, stroke, stroke-width, opacity, box-shadow, transform, filter, backdrop-filter",
       colors: "background-color, border-color, color, fill, stroke",
       opacity: "opacity",
       shadow: "box-shadow",
@@ -913,6 +911,8 @@ module.exports = {
     "even",
     "visited",
     "checked",
+    "empty",
+    "read-only",
     "group-hover",
     "group-focus",
     "focus-within",
@@ -962,6 +962,7 @@ module.exports = {
     backgroundPosition: ["responsive"],
     backgroundRepeat: ["responsive"],
     backgroundSize: ["responsive"],
+    backgroundOrigin: ["responsive"],
     blur: ["responsive"],
     borderCollapse: ["responsive"],
     borderColor: [
@@ -1114,4 +1115,5 @@ module.exports = {
     wordBreak: ["responsive"],
     zIndex: ["responsive", "focus-within", "focus"],
   },
+  plugins: [],
 };
