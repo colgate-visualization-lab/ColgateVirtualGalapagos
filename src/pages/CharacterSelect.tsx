@@ -1,4 +1,4 @@
-import React, { memo, ReactElement, useState } from "react";
+import React, { memo, useCallback, useState } from "react";
 import Page from "../atomic-design/templates/Page";
 import useCanvas from "../test/useCanvas";
 const waterBubbleImage = "/images/water_bubble.png";
@@ -94,6 +94,92 @@ function drawWaterBubbles(
 }
 
 export const Canvas = memo(() => {
+  const [character, setCharacter] = useState<CharacterType>(characterList[0]);
+  const { characters, addCharacter } = useGameContext();
+  const { startTransition } = useTransitionContext();
+  const [confirmed, setConfirmed] = useState(false);
+
+  //[TODO] There might be a potential race condition here?
+  // What if Mysteries page mounts before character is set into state?
+  const confirmSelection = () => {
+    addCharacter(character);
+    startTransition("/mysteries");
+  };
+
+  const updateCurrentCharacter = useCallback(
+    (idx: number) => setCharacter(characterList[idx]),
+    [characterList]
+  );
+
+  return (
+    <Page>
+      <Background />
+      {confirmed ? (
+        <div className="z-20 h-60 animate-fade-in">
+          <Character
+            className="-scale-x-100"
+            name={character.name}
+            speech={
+              (character.situationalQuotes?.pick &&
+                character.situationalQuotes?.pick[0]) ||
+              (character.quotes && character.quotes[0])
+            }
+            speechPosition="top"
+            {...character.spriteConfig}
+          />
+          <Button
+            size="lg"
+            variant="wooden"
+            className="opacity-80"
+            onClick={() => setConfirmed(false)}
+          >
+            <Text text="Pick Again" color="text-dark" />
+          </Button>
+          <Button size="lg" variant="wooden" onClick={confirmSelection}>
+            <Text text="Onwards!" color="text-dark" />
+          </Button>
+        </div>
+      ) : (
+        <>
+          <div className="relative z-20 -translate-y-32">
+            <Text
+              text="Select Your Buddy"
+              color="text-dark"
+              type="heading"
+              size="lg"
+            />
+          </div>
+          <Carousel
+            onChange={updateCurrentCharacter}
+            className="relative z-20 animate-fade-in"
+          >
+            {characterList.map((character: CharacterType) => (
+              <Character
+                key={character.name}
+                name={character.name}
+                info={character.quotes && character.quotes[0]}
+                {...character.spriteConfig}
+              />
+            ))}
+          </Carousel>
+          <Button
+            className="translate-y-28"
+            size="lg"
+            variant="wooden"
+            onClick={() => setConfirmed(true)}
+          >
+            <Text
+              text={"Pick " + character.displayName || character.name}
+              color="text-dark"
+            />
+          </Button>
+        </>
+      )}
+    </Page>
+  );
+});
+
+const Background = memo(() => {
   const drawInteractive = (
     ctx: CanvasRenderingContext2D,
     frameCount: number
@@ -105,30 +191,19 @@ export const Canvas = memo(() => {
     bubbles.forEach((bubble) => bubble.render(ctx));
   };
 
-  const [character, setCharacter] = useState<CharacterType>();
-  const { characters, addCharacter } = useGameContext();
-  const { startTransition } = useTransitionContext();
-
-  const backgroundRef = useCanvas((ctx: CanvasRenderingContext2D) => {
-    drawCanvasBackgroundImage(ctx, "/images/underwater.jpg");
-  });
+  const backgroundRef = useCanvas(
+    (ctx: CanvasRenderingContext2D) => {
+      drawCanvasBackgroundImage(ctx, "/images/underwater.jpg");
+    },
+    { isFullScreen: true }
+  );
   const interactiveRef = useCanvas(drawInteractive, {
     isFullScreen: true,
     animate: true,
   });
 
-  const handleCharacterSelect = (name: string) => {
-    const selectedCharacter = characterList.find(
-      (character: CharacterType) => character.name === name
-    );
-    if (selectedCharacter) {
-      addCharacter(selectedCharacter);
-      setCharacter(selectedCharacter);
-    }
-  };
-
   return (
-    <Page>
+    <>
       <canvas className="w-full h-full fixed z-10" ref={backgroundRef}>
         Your browser doesn't support HTML canvas
       </canvas>
@@ -138,45 +213,7 @@ export const Canvas = memo(() => {
       >
         Your browser doesn't support HTML canvas
       </canvas>
-      {character ? (
-        <div className="z-20 h-60 animate-fade-in">
-          <Character
-            name={character.name}
-            speech={character.quotes && character.quotes[0]}
-            {...character.spriteConfig}
-          />
-          <Button
-            size="lg"
-            variant="wooden"
-            onClick={() => startTransition("/mysteries")}
-          >
-            <Text text="Onwards!" color="text-dark" />
-          </Button>
-        </div>
-      ) : (
-        <>
-          <div className="fixed z-20 top-1/3">
-            <Text
-              text="Select Your Buddy"
-              color="text-dark"
-              type="heading"
-              size="lg"
-            />
-          </div>
-          <Carousel className="fixed z-20">
-            {characterList.map((character: CharacterType) => (
-              <Character
-                onClick={handleCharacterSelect}
-                key={character.name}
-                name={character.name}
-                info={character.quotes && character.quotes[0]}
-                {...character.spriteConfig}
-              />
-            ))}
-          </Carousel>
-        </>
-      )}
-    </Page>
+    </>
   );
 });
 
