@@ -10,7 +10,7 @@ import fishSheet from "../assets/sprites/fish_one.png";
 import fishTwoSheet from "../assets/sprites/fish_two.png";
 import talkingTurtle from "../assets/sprites/speaking_turtle.png";
 import ChatBubble from "../atomic-design/templates/ChatBubble";
-import GameBar from "../atomic-design/templates/GameBar";
+import useCanvas from "../test/useCanvas";
 
 // import { getTime } from "./chat";
 
@@ -60,18 +60,64 @@ function Chatbot({ onSend }: { onSend: Function }) {
   }
 
   // setUserMessages([...userMessages,'hello'])
+  const fishImage = new window.Image();
+  fishImage.src = "/images/fish.png";
 
+  const fishImage2 = new window.Image();
+  fishImage2.src = "/images/fish1.png";
+  const fishRef = useCanvas(
+    (ctx: CanvasRenderingContext2D, frameCount: number) => {
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+      if (fishImage.complete && fishImage.naturalHeight !== 0) {
+        ctx.drawImage(
+          fishImage,
+          (frameCount % (ctx.canvas.width + fishImage.width)) - fishImage.width,
+          10
+        );
+        ctx.drawImage(
+          fishImage,
+          (((frameCount % ctx.canvas.width) + 0.9 * ctx.canvas.width) %
+            (ctx.canvas.width + fishImage.width)) -
+            fishImage.width,
+          100
+        );
+      }
+      if (fishImage2.complete && fishImage2.naturalHeight !== 0) {
+        ctx.drawImage(
+          fishImage2,
+          (((frameCount % ctx.canvas.width) + 0.3 * ctx.canvas.width) %
+            (ctx.canvas.width + fishImage2.width)) -
+            fishImage2.width,
+          50
+        );
+        ctx.drawImage(
+          fishImage2,
+          (((frameCount % ctx.canvas.width) + 0.7 * ctx.canvas.width) %
+            (ctx.canvas.width + fishImage2.width)) -
+            fishImage2.width,
+          50
+        );
+      }
+    },
+    { isFullScreen: true, animate: true }
+  );
   return (
     <Page color="bg-primary-light">
-      <AnimatedSpriteSheet
-        initialFrame={0}
-        fileName={fishSheet}
-        bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
-        frame={{ width: 343, height: 301 }}
-        speed={250}
-        scale={{ x: 0.5, y: 0.3 }}
-        animation={{ name: "animate-left-right", offset: 15 }}
+      <canvas
+        ref={fishRef}
+        className="fixed w-full h-auto left-0 top-10 z-20"
       />
+
+      {/* <AnimatedSpriteSheet
+            initialFrame={0}
+            fileName={fishSheet}
+            bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
+            frame={{ width: 343, height: 301 }}
+            speed={250}
+            scale={{ x: 0.5, y: 0.3 }}
+            animation={{ name: "animate-left-right", offset: 15 }}
+          /> */}
 
       <div className="absolute bottom-10 right-20 w-2/3 h-auto flex flex-col justify-center">
         <div style={{ fontFamily: "body" }}>{time}</div>
@@ -86,7 +132,6 @@ function Chatbot({ onSend }: { onSend: Function }) {
             <UserMessage msg={msg} />
           ))}
         </div>
-        {/* </div> */}
 
         <div
           style={{
