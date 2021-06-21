@@ -14,17 +14,19 @@ export interface SpeechBubbleProps extends TextProps {
     | "bottom left"
     | "bottom right";
   audio?: string;
+  inputTest?: string;
 }
 
 export default function SpeechBubble({
   className,
   position = "right",
   audio,
+  inputTest,
   ...rest
 }: SpeechBubbleProps) {
   const classes = classNames(
     className,
-    "absolute rounded-full z-40 min-w-80 transform bg-secondary animate-fade-in",
+    "absolute rounded-full z-40 min-w-80 transform bg-primary-light animate-fade-in",
     {
       "right-0 translate-x-full top-0 -translate-y-full": position === "right",
       "-translate-y-full": position === "left",
@@ -47,7 +49,11 @@ export default function SpeechBubble({
   return (
     <div className={classes}>
       <div className="relative py-3 px-10">
-        <Text {...rest} color="text-white" />
+        <Text {...rest} color="text-dark" />
+        {inputTest &&(
+          <input className="py-20 border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
+     
+        )}
         {audio && (
           <>
             <Howler
@@ -72,10 +78,10 @@ export default function SpeechBubble({
             )}
           </>
         )}
-
+   
         <div className={bubbleClasses}>
-          <div className="rounded-full h-10 w-10 bg-secondary"></div>
-          <div className="rounded-full h-7 w-7 bg-secondary"></div>
+          <div className="rounded-full h-10 w-10 bg-primary-light"></div>
+          <div className="rounded-full h-7 w-7 bg-primary-light"></div>
         </div>
       </div>
     </div>
