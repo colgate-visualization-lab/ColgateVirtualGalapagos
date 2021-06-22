@@ -9,7 +9,6 @@ import AnimatedSpriteSheet from "../atomic-design/molecules/AnimatedSpriteSheet/
 import fishSheet from "../assets/sprites/fish_one.png";
 import fishTwoSheet from "../assets/sprites/fish_two.png";
 import talkingTurtle from "../assets/sprites/speaking_turtle.png";
-import ChatBubble from "../atomic-design/templates/ChatBubble";
 import useCanvas from "../test/useCanvas";
 import SpeechBubble from "../atomic-design/molecules/SpeechBubble/SpeechBubble";
 import GameBar from "../atomic-design/templates/GameBar";
@@ -17,11 +16,11 @@ import GameBar from "../atomic-design/templates/GameBar";
 // import { getTime } from "./chat";
 
 //message input from user
-const UserMessage = ({ msg }: { msg: string }) => (
-  <ChatBubble color="bg-primary">
-    <span style={{ fontFamily: "body", fontSize: 23 }}>{msg}</span>
-  </ChatBubble>
-);
+// const UserMessage = ({ msg }: { msg: string }) => (
+//   <ChatBubble color="bg-primary">
+//     <span style={{ fontFamily: "body", fontSize: 23 }}>{msg}</span>
+//   </ChatBubble>
+// );
 
 //time
 const getTime = () => {
@@ -132,11 +131,11 @@ function Chatbot({ onSend }: { onSend: Function }) {
           </span>
         </ChatBubble> */}
 
-        <div className="float-right place-self-end">
+        {/* <div className="float-right place-self-end">
           {userMessages.map((msg) => (
             <UserMessage msg={msg} />
           ))}
-        </div>
+        </div> */}
 
         <div
           style={{
