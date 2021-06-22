@@ -60,6 +60,5 @@ export default function Login() {
       </div>
        
     </GameBar>
-    {/* </div> */}
   </Page>;
 }
