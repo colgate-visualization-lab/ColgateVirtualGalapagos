@@ -10,7 +10,6 @@ export const MapButton = (props: ButtonProps) => {
             <Button
             size = "lg"
             variant = "map"
-            onClick = {() => openMap()}
             />
             
         </div>

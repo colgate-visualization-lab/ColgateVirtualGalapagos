@@ -16,6 +16,7 @@ const TestingGround = lazy(() => import("./test/TestingGround"));
 const WelcomeMenu = lazy(() => import("./pages/WelcomeMenu"));
 const Login = lazy(() => import("./pages/Login"));
 const SignUp = lazy(() => import("./pages/SignUp"));
+const BackpackTesting = lazy(() => import("./pages/BackpackTesting"));
 const boobyAnimation = "/booby_transition.mp4";
 
 export default function App() {
@@ -67,6 +68,7 @@ export default function App() {
         <Route path="/tutorial" component={Tutorial} />
         <Route path="/mysteries" component={Mysteries} />
         <Route path="/introduction" component={Introduction} />
+        <Route path="/backpacktesting" component={BackpackTesting}/>
         <Route component={NotFoundPage} />
       </Switch>
     </Suspense>
