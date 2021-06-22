@@ -11,36 +11,34 @@ import { Island } from "../test/islandsInfo";
 
 export default function TestingGround() {
   const [info, setInfo] = useState<string>();
+  const [showInfo, setShowInfo] = useState(false);
   return (
     <Page>
       <Islands
-        className="h-9/12 xl:h-10/12 w-full max-w-screen-xl mx-auto mb-auto p-5"
-        onMouseEnter={(island: Island) => setInfo((i) => island.info)}
-        onMouseLeave={() => setInfo(undefined)}
+        // {/* className="h-9/12 xl:h-10/12 w-full max-w-screen-xl mx-auto mb-auto p-5" */}
+        // onMouseEnter={(island: Island) => setInfo((i) => island.info)}
+        // onMouseLeave={() => setInfo(undefined)}
+        // onClick={(island: Island) => setInfo((i) => island.info)}
       />
-      {info && <InfoBox info={info} />}
-    </Page>
-  )
-}
-
-function InfoBox({ info, className }: { info: string; className?: string }) {
-  const [showInfo, setShowInfo] = useState(false);
-  return (
-    <div
+      {/* {info && <InfoBox info={info} />} */}
+      <div
       onAnimationEnd={() => setShowInfo(true)}
       className={
-        "fixed right-0 animate-slide-in-left top-0 h-1/2 z-40 " + className
+        "fixed left-0 bottom-0 translate-y-1/4 animate-slide-up "
       }
     >
       <StaticAnimal
         species="turtle"
-        className="h-auto w-40 transform translate-x-1/2 -rotate-30 -scale-x-100"
+        className="h-auto w-full -translate-y-1/4"
       />
       {showInfo && (
         <div className="fixed right-20 top-20">
-          <SpeechBubble text={info} position="bottom left" />
+          <SpeechBubble text={info} position="right" />
         </div>
       )}
     </div>
-  );
+    </Page>
+  )
 }
+
+
