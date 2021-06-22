@@ -5,6 +5,7 @@ import Image from "../atomic-design/atoms/Image/Image";
 import AnimatedSpriteSheet from "../atomic-design/molecules/AnimatedSpriteSheet/AnimatedSpriteSheet";
 import useCanvas from "../test/useCanvas";
 import SpeechBubble from "../atomic-design/molecules/SpeechBubble/SpeechBubble";
+import { Character } from "../atomic-design/organisms";
 import Button from "../atomic-design/atoms/Button/Button";
 import GameBar from "../atomic-design/templates/GameBar";
 import turtleImage from "../assets/images/turtle.png";
@@ -66,8 +67,12 @@ function SignUp({ onSend }: { onSend: Function }) {
       />
     </div>
     <div className="flex mt-32 w-full md:w-4/5 p-5 xl:w-3/5 2xl:w-2/5 items-center justify-center">
-      <div className="fixed left-0 bottom-0 transform translate-y-1/3">
-        <Image className=" -scale-x-100" src={turtleImage} alt="turtle" />
+      <div className="fixed left-0 bottom-0 translate-y-1/4">
+        {/* <Image className=" -scale-x-100" src={turtleImage} alt="turtle" /> */}
+        <StaticAnimal
+          species="turtle"
+          className="h-auto w-full -translate-y-1/4"
+        />
         {botMessages.map((msg) => (
         <BotMessage msg={msg} />
         ))}
