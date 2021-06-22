@@ -51,7 +51,7 @@ export default function SpeechBubble({
       <div className="relative py-3 px-10">
         <Text {...rest} color="text-dark" />
         {inputTest &&(
-          <input className="py-20 border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
+          <input className="border border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"/>
      
         )}
         {audio && (

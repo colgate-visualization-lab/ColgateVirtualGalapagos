@@ -6,7 +6,14 @@ export const useGameContext = makeContextHook("useGameContext", GameContext);
 
 export type CharacterType = {
   name: string;
+  displayName?: string;
   quotes?: string[];
+  getRandomQuote?: Function;
+  situationalQuotes?: {
+    pick?: string[];
+    click?: string[];
+    hover?: string[];
+  };
   spriteConfig: {
     fileName: AnimatedSpriteSheetProps["fileName"];
     bounds?: AnimatedSpriteSheetProps["bounds"];

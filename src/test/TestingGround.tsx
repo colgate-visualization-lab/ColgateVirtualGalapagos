@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Page from "../atomic-design/templates/Page";
 import Canvas from "./Canvas";
 import Islands from "./Islands";
-import ChatBubble from "../atomic-design/templates/ChatBubble";
 import { Text } from "../atomic-design/atoms";
 import GameBar from "../atomic-design/templates/GameBar";
 import { Character } from "../atomic-design/organisms";

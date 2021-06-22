@@ -14,3 +14,5 @@ export const Map = (props: ButtonProps) => {
         </div>
     )
 }
+
+export default Map
