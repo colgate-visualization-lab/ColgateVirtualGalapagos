@@ -19,9 +19,11 @@ const Slide = ({
 export default function Carousel({
   className,
   children,
+  onChange,
 }: {
   className: string;
   children?: React.ReactNode;
+  onChange?: Function;
 }) {
   const classes = classNames(
     className,
@@ -37,6 +39,7 @@ export default function Carousel({
     const leftIndex = centerIndex === 0 ? c.length - 1 : centerIndex - 1;
     const rightIndex = centerIndex === c.length - 1 ? 0 : centerIndex + 1;
     setSlides([c[centerIndex], c[leftIndex], c[rightIndex]]);
+    onChange && onChange(centerIndex);
   }, [centerIndex]);
 
   const handleLeftClick = () => {
