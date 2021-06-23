@@ -1,7 +1,8 @@
 import classNames from "classnames";
-import React from "react";
-
+import React, { useState } from "react";
 import { Island, islands } from "./islandsInfo";
+import { gsap } from "gsap";
+import { ValidModuleNames } from "../types";
 
 export default function Islands({
   className,
@@ -13,39 +14,107 @@ export default function Islands({
   onMouseLeave?: Function;
 }) {
   const commonClasses = classNames(
-    "hover:stroke-5 hover:text-accent-primary stroke-0 stroke-current"
+    "hover:stroke-2 hover:text-accent-primary stroke-0 stroke-current"
   );
 
+  const [selected, setSelected] = useState<Island>();
+
+  const handleIslandClick = (
+    event: React.MouseEvent<SVGPathElement>,
+    island: Island
+  ) => {
+    const selectedIsland = event.target as SVGPathElement;
+    let viewBox = "0 0 1648 1024";
+    if (selected === island) {
+      setSelected(undefined);
+    } else {
+      setSelected(island);
+      let { x, y, width, height } = selectedIsland.getBBox();
+      const zoomWidth = width + 150;
+      const zoomHeight = height + 150;
+
+      let centerX = x + width / 2;
+      let centerY = y + height / 2;
+
+      viewBox = [
+        zoomWidth / 2 + (centerX - zoomWidth),
+        zoomHeight / 2 + (centerY - zoomHeight),
+        zoomWidth,
+        zoomHeight,
+      ].join(" ");
+    }
+    gsap.to("#islands", {
+      duration: 0.6,
+      attr: { viewBox },
+    });
+  };
   return (
     <svg
+      width="1647"
+      height="1024"
       id="islands"
+      viewBox="0 0 1648 1024"
       data-name="galapagos_islands"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 1646.89 1024.37"
       className={"cursor-pointer " + className}
     >
       <defs>
         <pattern
           id="island_texture"
           patternUnits="userSpaceOnUse"
-          width="100"
-          height="100"
+          width="220"
+          height="200"
         >
           <image href="/images/island_texture.png" x="0" y="0" />
         </pattern>
       </defs>
       <g fill="url(#island_texture)" id="Islands">
         {islands.map((island: Island) => (
-          <path
-            key={island.id}
-            d={island.d}
-            name={island.name}
-            className={commonClasses}
-            onMouseEnter={() => onMouseEnter && onMouseEnter(island)}
-            onMouseLeave={() => onMouseLeave && onMouseLeave(island)}
-          />
+          <g key={island.name}>
+            <path
+              onClick={(e) => handleIslandClick(e, island)}
+              key={island.id}
+              d={island.d}
+              name={island.name}
+              className={
+                commonClasses +
+                (selected === island ? " stroke-2 text-accent-primary" : "")
+              }
+              onMouseEnter={() => onMouseEnter && onMouseEnter(island)}
+              onMouseLeave={() => onMouseLeave && onMouseLeave(island)}
+            />
+            {selected &&
+              selected.name === island.name &&
+              island.modules &&
+              island.modules.map((module) => {
+                const Component = module.icon;
+                const commonClasses = classNames(
+                  "filter drop-shadow-lg animate-fade-in-slow"
+                );
+                return (
+                  <Component
+                    key={module.name}
+                    onMouseEnter={() => onMouseEnter && onMouseEnter(module)}
+                    onMouseLeave={() => onMouseLeave && onMouseLeave(module)}
+                    {...getModuleCoordinates(module.name)}
+                    className={commonClasses}
+                  />
+                );
+              })}
+          </g>
         ))}
       </g>
     </svg>
   );
+}
+
+function getModuleCoordinates(name: ValidModuleNames) {
+  const mapping = {
+    volcano: { x: "490", y: "310" },
+    iguana: { x: "550", y: "450" },
+    currents: { x: "590", y: "635" },
+    lifecycle: { x: "700", y: "760" },
+    eruption: { x: "480", y: "790" },
+  };
+  return mapping[name] || {};
 }
