@@ -27,3 +27,10 @@ export type ValidTextColors =
 export type ValidAnimations = "animate-left-right";
 
 export type ValidTransitions = "animate-fade-in" | "none";
+
+export type ValidModuleNames =
+  | "volcano"
+  | "iguana"
+  | "currents"
+  | "lifecycle"
+  | "eruption";
