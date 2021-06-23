@@ -41,6 +41,7 @@ module.exports = {
         "fade-out": "fade-in 1s reverse",
         "slide-right": "slide-right 30s linear alternate infinite",
         "slide-in-left": "slide-in-left 300ms",
+        "slide-up": "slide-up 300ms",
       },
       keyframes: {
         "fade-in": {
@@ -54,6 +55,10 @@ module.exports = {
         "slide-in-left": {
           from: { transform: "translateX(100%)" },
           to: { transform: "translateX(0%)" },
+        },
+        "slide-up": {
+          from: { transform: "translateY(100%)" },
+          to: { transform: "translateY(0%)" },
         },
       },
       colors: {

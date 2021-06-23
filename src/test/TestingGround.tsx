@@ -1,31 +1,44 @@
 import React, { useState } from "react";
 import Page from "../atomic-design/templates/Page";
 import Canvas from "./Canvas";
-import Islands from "./Islands";
-import ChatBubble from "../atomic-design/templates/ChatBubble";
-import { Text } from "../atomic-design/atoms";
 import GameBar from "../atomic-design/templates/GameBar";
 import { Character } from "../atomic-design/organisms";
 import birdSheet from "../assets/sprites/bird.png";
+import { StaticAnimal, Text } from "../atomic-design/atoms";
+import SpeechBubble from "../atomic-design/molecules/SpeechBubble/SpeechBubble";
+import Islands from "../test/Islands";
+import { Island } from "../test/islandsInfo";
 
 export default function TestingGround() {
-  let [isAnimating, setAnimating] = useState(true);
+  const [info, setInfo] = useState<string>();
+  const [showInfo, setShowInfo] = useState(false);
   return (
-    <Page color="bg-primary">
-      {/* <GameBar className="h-3/12 xl:h-2/12"> */}
-      <div className="absolute transform -translate-x-1/2">
-        <Character
-          name="blueBirdie"
-          speech="Click on the islands to dive into one of many mysteries hidden in the Galapagos."
-          fileName={birdSheet}
-          initialFrame={0}
-          bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
-          frame={{ width: 343, height: 301 }}
-          speed={200}
-          scale={{ x: 0.8, y: 0.55 }}
-        />
-      </div>
-      {/* </GameBar> */}
+    <Page>
+      <Islands
+        // {/* className="h-9/12 xl:h-10/12 w-full max-w-screen-xl mx-auto mb-auto p-5" */}
+        // onMouseEnter={(island: Island) => setInfo((i) => island.info)}
+        // onMouseLeave={() => setInfo(undefined)}
+        // onClick={(island: Island) => setInfo((i) => island.info)}
+      />
+      {/* {info && <InfoBox info={info} />} */}
+      <div
+      onAnimationEnd={() => setShowInfo(true)}
+      className={
+        "fixed left-0 bottom-0 translate-y-1/4 animate-slide-up "
+      }
+    >
+      <StaticAnimal
+        species="turtle"
+        className="h-auto w-full -translate-y-1/4"
+      />
+      {showInfo && (
+        <div className="fixed right-20 top-20">
+          <SpeechBubble text={info} position="right" />
+        </div>
+      )}
+    </div>
     </Page>
-  );
+  )
 }
+
+

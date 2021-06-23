@@ -9,17 +9,18 @@ import AnimatedSpriteSheet from "../atomic-design/molecules/AnimatedSpriteSheet/
 import fishSheet from "../assets/sprites/fish_one.png";
 import fishTwoSheet from "../assets/sprites/fish_two.png";
 import talkingTurtle from "../assets/sprites/speaking_turtle.png";
-import ChatBubble from "../atomic-design/templates/ChatBubble";
 import useCanvas from "../test/useCanvas";
+import SpeechBubble from "../atomic-design/molecules/SpeechBubble/SpeechBubble";
+import GameBar from "../atomic-design/templates/GameBar";
 
 // import { getTime } from "./chat";
 
 //message input from user
-const UserMessage = ({ msg }: { msg: string }) => (
-  <ChatBubble color="bg-primary">
-    <span style={{ fontFamily: "body", fontSize: 23 }}>{msg}</span>
-  </ChatBubble>
-);
+// const UserMessage = ({ msg }: { msg: string }) => (
+//   <ChatBubble color="bg-primary">
+//     <span style={{ fontFamily: "body", fontSize: 23 }}>{msg}</span>
+//   </ChatBubble>
+// );
 
 //time
 const getTime = () => {
@@ -103,35 +104,38 @@ function Chatbot({ onSend }: { onSend: Function }) {
     { isFullScreen: true, animate: true }
   );
   return (
-    <Page color="bg-primary-light">
+    <Page color="bg-primary">
       <canvas
         ref={fishRef}
         className="fixed w-full h-auto left-0 top-10 z-20"
       />
+      
+      <div className="absolute left-0 transform translate-y-1/3 bottom-0 -scale-x-100 ">
+        <Image className="h-1/2 bottom-0" src={turtleImage} alt="turtle" />
+      </div>
 
-      {/* <AnimatedSpriteSheet
-            initialFrame={0}
-            fileName={fishSheet}
-            bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
-            frame={{ width: 343, height: 301 }}
-            speed={250}
-            scale={{ x: 0.5, y: 0.3 }}
-            animation={{ name: "animate-left-right", offset: 15 }}
-          /> */}
+      {/* <div className="absolute bottom-10 right-10 w-2/3 h-auto flex flex-col justify-center"> */}
+      <GameBar className="w-100vw">
 
-      <div className="absolute bottom-10 right-20 w-2/3 h-auto flex flex-col justify-center">
-        <div style={{ fontFamily: "body" }}>{time}</div>
-        <ChatBubble color="bg-primary">
+        <div className="absolute left-0 bottom-0 ">
+        {/* <div style={{ fontFamily: "body" }}>{time}</div> */}
+        <SpeechBubble text="Welcome to VG! What is your name?" 
+          color="text-dark" size="md" 
+          position="right"
+          />
+        </div>
+        
+        {/* <ChatBubble color="bg-primary">
           <span style={{ fontFamily: "body", fontSize: 23 }}>
             Welcome to Virtual Galapagos! What is your name?
           </span>
-        </ChatBubble>
+        </ChatBubble> */}
 
-        <div className="float-right place-self-end">
+        {/* <div className="float-right place-self-end">
           {userMessages.map((msg) => (
             <UserMessage msg={msg} />
           ))}
-        </div>
+        </div> */}
 
         <div
           style={{
@@ -184,36 +188,10 @@ function Chatbot({ onSend }: { onSend: Function }) {
             </button>
           </div>
         </div>
-      </div>
-
-      {/* <div className="absolute top-0 left-0 w-full"> */}
-      {/* <div className="relative top-1 w-full" style={{animation:"animate-left-right"}}>
-         
-          <AnimatedSpriteSheet
-            initialFrame={0}
-            fileName={fishSheet}
-            bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
-            frame={{ width: 343, height: 301 }}
-            speed={250}
-            scale={{ x: 0.5, y: 0.3 }}
-            animation={{ name: "animate-left-right", offset: 15 }}
-          />
-        
-        </div>
-
-        <div className="relative top-40 w-full">
-          <AnimatedSpriteSheet
-            initialFrame={0}
-            fileName={fishTwoSheet}
-            bounds={{ x: 0, y: 0, width: 1029, height: 903 }}
-            frame={{ width: 343, height: 301 }}
-            speed={300}
-            scale={{ x: 0.8, y: 0.55 }}
-            animation={{ name: "animate-left-right", offset: 5 }}
-          />
-        </div> */}
       {/* </div> */}
 
+      
+{/* 
       <div className="absolute bottom-10 left-20">
         <AnimatedSpriteSheet
           fileName={talkingTurtle}
@@ -222,7 +200,8 @@ function Chatbot({ onSend }: { onSend: Function }) {
           speed={400}
           isPlaying={isAnimating}
         />
-      </div>
+      </div> */}
+      </GameBar>
     </Page>
   );
 }

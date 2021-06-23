@@ -15,7 +15,16 @@ const turtleImage = "/images/turtle.png";
 
 export default function Login() {
   return <Page transition="animate-fade-in" color="bg-primary">
-    <GameBar className="h-screen w-screen">
+    <GameBar className="w-100vw">
+      <div className="fixed z-20 top-10">
+        <Text
+          text="Sign In for Adventure!"
+          color="text-dark"
+          type="heading"
+         size="lg"
+        />
+       </div>
+       
     <div className="absolute left-0 bottom-0">
         <SpeechBubble text="Hello there! Welcome to the Galapagos Islands! Please answer some questions so we can continue our adventure!" 
           color="text-dark" size="md" 
@@ -29,6 +38,7 @@ export default function Login() {
           position="top"
           className="right-0 "
           inputTest="placeholder"
+         
           />
         <Image className="h-1/2 bottom-0" src={lavaImage} alt="lavalizard" />
       </div>
@@ -50,6 +60,5 @@ export default function Login() {
       </div>
        
     </GameBar>
-    {/* </div> */}
   </Page>;
 }
