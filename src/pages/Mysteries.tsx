@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router";
-import { StaticAnimal, Text } from "../atomic-design/atoms";
+import { StaticAnimal } from "../atomic-design/atoms";
 import SpeechBubble from "../atomic-design/molecules/SpeechBubble/SpeechBubble";
 import { Character } from "../atomic-design/organisms";
 import GameBar from "../atomic-design/templates/GameBar";
 import Page from "../atomic-design/templates/Page";
 import { useGameContext } from "../contexts/GameContext";
 import Islands from "../test/Islands";
-import { Island } from "../test/islandsInfo";
-const birdSheet = "/sprites/bird.png";
+import { Island, ModuleType } from "../test/islandsInfo";
 
 export default function Mysteries() {
   const [info, setInfo] = useState<string>();
@@ -20,8 +19,10 @@ export default function Mysteries() {
   ) : (
     <Page>
       <Islands
-        className="h-9/12 xl:h-10/12 w-full max-w-screen-xl mx-auto mb-auto p-5"
-        onMouseEnter={(island: Island) => setInfo((i) => island.info)}
+        className="h-9/12 xl:h-10/12 w-full max-w-screen-3xl mx-auto mb-auto p-5"
+        onMouseEnter={(island: Island | ModuleType) =>
+          setInfo((i) => island.info)
+        }
         onMouseLeave={() => setInfo(undefined)}
       />
       <GameBar className="h-3/12 xl:h-2/12">
