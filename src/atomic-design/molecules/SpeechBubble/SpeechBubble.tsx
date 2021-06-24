@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Howler from "react-howler";
 import Text, { TextProps } from "../../atoms/Text/Text";
 import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
+import { ValidBgColors } from "../../../types/index";
 
 export interface SpeechBubbleProps extends TextProps {
   className?: string;
@@ -15,6 +16,7 @@ export interface SpeechBubbleProps extends TextProps {
     | "bottom right";
   audio?: string;
   inputTest?: string;
+  bgcolor?: ValidBgColors;
 }
 
 export default function SpeechBubble({
@@ -22,11 +24,13 @@ export default function SpeechBubble({
   position = "right",
   audio,
   inputTest,
+  bgcolor = "bg-primary-light",
   ...rest
 }: SpeechBubbleProps) {
   const classes = classNames(
     className,
-    "absolute rounded-full z-40 min-w-80 transform bg-primary-light animate-fade-in",
+    "absolute rounded-full z-40 min-w-80 transform animate-fade-in",
+    `${bgcolor || ""}`,
     {
       "right-0 translate-x-full top-0 -translate-y-full": position === "right",
       "-translate-y-full": position === "left",
@@ -37,14 +41,18 @@ export default function SpeechBubble({
       "top-0 -translate-y-full": position === "top",
     }
   );
-  const bubbleClasses = classNames("absolute transform flex flex-col", {
+  const bubbleClasses = classNames("absolute transform flex flex-col", 
+    {
     "left-0 bottom-0 rotate-45 translate-y-full -translate-x-full":
       position === "right",
     "right-0 bottom-0 -rotate-45 translate-y-full translate-x-full":
       position === "left",
     "right-0 top-0 -translate-y-full flex-col-reverse rotate-45":
       position === "bottom left",
-  });
+    }
+  );
+  const medbubbleClasses = classNames("rounded-full h-10 w-10 bg-white",`${bgcolor || ""}`);
+  const minibubbleClasses = classNames("rounded-full h-7 w-7 bg-white",`${bgcolor || ""}`);
   const [playAudio, setAudio] = useState(false);
   return (
     <div className={classes}>
@@ -52,7 +60,7 @@ export default function SpeechBubble({
         <Text {...rest} color="text-dark" />
         {inputTest &&(
           <input className="border border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"/>
-     
+      
         )}
         {audio && (
           <>
@@ -80,8 +88,10 @@ export default function SpeechBubble({
         )}
    
         <div className={bubbleClasses}>
-          <div className="rounded-full h-10 w-10 bg-primary-light"></div>
-          <div className="rounded-full h-7 w-7 bg-primary-light"></div>
+          {/* <div className="rounded-full h-10 w-10 bg-white"> </div>
+          <div className="rounded-full h-7 w-7 bg-primary"></div> */}
+          <div className={medbubbleClasses}></div>
+          <div className={minibubbleClasses}></div>
         </div>
       </div>
     </div>
