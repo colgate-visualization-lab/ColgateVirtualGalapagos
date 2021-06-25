@@ -1,5 +1,7 @@
 import Page from "../atomic-design/templates/Page";
 import React, { useState } from "react";
+import Button from "../atomic-design/atoms/Button/Button";
+import { useTransitionContext } from "../contexts/TransitionContext";
 import { StaticAnimal, Text } from "../atomic-design/atoms";
 import SpeechBubble from "../atomic-design/molecules/SpeechBubble/SpeechBubble";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
@@ -21,6 +23,7 @@ function SignUp({ onSend }: { onSend: Function }) {
   const [userMessages, setUserMessages] = useState<any[]>([]);
   // let [isAnimating, setAnimating] = useState(true);
   const [showInfo, setShowInfo] = useState(false);
+  const { startTransition } = useTransitionContext();
 
   const UserMessage = ({ msg }: { msg: string }) => (
     <Character name="carlos" speech={msg} speechPosition="left" />
@@ -82,6 +85,19 @@ function SignUp({ onSend }: { onSend: Function }) {
               onInputChange={handleInputChange}
             />
           </div>
+        </div>
+        <div className="w-3/4 grid justify-items-stretch">
+          <button
+            className="justify-self-end focus:ring-2"
+            onClick={() => startTransition("/login")}
+          >
+            <Text
+              text="Already have an account?"
+              type="body"
+              color="text-dark"
+              size="sm"
+            />
+          </button>
         </div>
       </div>
     </Page>

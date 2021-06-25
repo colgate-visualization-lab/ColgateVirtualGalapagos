@@ -68,6 +68,7 @@ export default function SpeechBubble({
     "right-0 top-0 -translate-y-full flex-col-reverse rotate-45":
       position === "bottom left",
   });
+
   const [playAudio, setAudio] = useState(false);
   let chunkedText: Array<FieldType | string> = text?.split("<<>>") || [];
   if (inputFields && inputFields.length) {

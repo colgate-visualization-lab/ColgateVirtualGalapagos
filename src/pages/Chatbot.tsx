@@ -109,22 +109,22 @@ function Chatbot({ onSend }: { onSend: Function }) {
         ref={fishRef}
         className="fixed w-full h-auto left-0 top-10 z-20"
       />
-      
+
       <div className="absolute left-0 transform translate-y-1/3 bottom-0 -scale-x-100 ">
         <Image className="h-1/2 bottom-0" src={turtleImage} alt="turtle" />
       </div>
 
       {/* <div className="absolute bottom-10 right-10 w-2/3 h-auto flex flex-col justify-center"> */}
       <GameBar className="w-100vw">
-
         <div className="absolute left-0 bottom-0 ">
-        {/* <div style={{ fontFamily: "body" }}>{time}</div> */}
-        <SpeechBubble text="Welcome to VG! What is your name?" 
-          color="text-dark" size="md" 
-          position="right"
+          {/* <div style={{ fontFamily: "body" }}>{time}</div> */}
+          <SpeechBubble
+            text="Welcome to VG! What is your name?"
+            size="md"
+            position="right"
           />
         </div>
-        
+
         {/* <ChatBubble color="bg-primary">
           <span style={{ fontFamily: "body", fontSize: 23 }}>
             Welcome to Virtual Galapagos! What is your name?
@@ -188,10 +188,9 @@ function Chatbot({ onSend }: { onSend: Function }) {
             </button>
           </div>
         </div>
-      {/* </div> */}
+        {/* </div> */}
 
-      
-{/* 
+        {/* 
       <div className="absolute bottom-10 left-20">
         <AnimatedSpriteSheet
           fileName={talkingTurtle}
