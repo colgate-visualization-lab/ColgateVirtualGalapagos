@@ -43,6 +43,10 @@ function SignUp({ onSend }: { onSend: Function }) {
     onSend(tempMessage);
   }
 
+  function handleInputChange(keyValuePair: any) {
+    console.log(keyValuePair);
+  }
+
   return (
     <Page transition="animate-fade-in" color="bg-primary">
       <div className="fixed z-20 top-10">
@@ -60,34 +64,23 @@ function SignUp({ onSend }: { onSend: Function }) {
         >
           {showInfo && (
             <div className="fixed left-1/4 bottom-1/4 translate-y-1/4">
-              <Character speech={signupQuestion} name="alberto" />
+              <Character
+                speech={signupQuestion}
+                name="alberto"
+                speechPosition="left"
+              />
             </div>
           )}
         </div>
         <div className="fixed right-0 bottom-1/4 w-md">
           <div className="w-full h-full p-2 lg:p-10 flex flex-col h-full justify-between">
             <Character
-              speech="My email is <<email>>, and password can be <<password>>"
+              speech="My email is <<>>, and password can be <<>>"
               name="carlos"
               speechPosition="left"
+              speechFields={["email:text", "password:password"]}
+              onInputChange={handleInputChange}
             />
-          </div>
-        </div>
-        <div className="fixed right-0 top-3/4 h-1/12 w-6/12">
-          <div className="w-full h-full p-2 flex flex-row justify-evenly">
-            <input
-              className="w-2/3 pl-5 rounded-full bg-transparent outline-none border-b-2 border-primary-light hover:border-opacity-70"
-              onChange={(event) => setTempMessage(event.target.value)}
-              value={tempMessage}
-              type="text"
-              placeholder="Type your message"
-            />
-            <button onClick={handleHeartClick} id="heart-icon">
-              <AiFillHeart className="text-red-500 hover:text-opacity-70" />
-            </button>
-            <button onClick={handleSend} id="chat-icon">
-              <BiPaperPlane className="text-gray-500 hover:text-opacity-70" />
-            </button>
           </div>
         </div>
       </div>
