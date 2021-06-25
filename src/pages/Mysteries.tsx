@@ -30,7 +30,6 @@ export default function Mysteries() {
           <Character
             name={currentCharacter.name}
             speech="Click on the islands to dive into one of many mysteries hidden in the Galapagos."
-            {...currentCharacter.spriteConfig}
           />
         </div>
       </GameBar>
