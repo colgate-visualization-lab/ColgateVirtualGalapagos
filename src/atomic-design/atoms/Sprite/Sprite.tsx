@@ -1,4 +1,10 @@
-import React, { CSSProperties, useEffect, useRef, useState } from "react";
+import React, {
+  CSSProperties,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 export interface SpriteProps {
   img: HTMLImageElement;
@@ -27,7 +33,7 @@ export const Sprite = ({
   }
   const [context, setContext] = useState<CanvasRenderingContext2D>();
   const canvas = useRef<HTMLCanvasElement>();
-  const canvasMountCb = (node: HTMLCanvasElement) => {
+  const canvasMountCb = useCallback((node: HTMLCanvasElement) => {
     if (node) {
       canvas.current = node;
       const ctx = node.getContext("2d");
@@ -38,7 +44,7 @@ export const Sprite = ({
       }
       fitToContainer(node);
     }
-  };
+  }, []);
 
   function fitToContainer(canvas: HTMLCanvasElement) {
     canvas.style.width = "100%";
