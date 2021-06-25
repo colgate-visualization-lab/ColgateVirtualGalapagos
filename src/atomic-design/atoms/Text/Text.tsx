@@ -24,7 +24,7 @@ export function Text({ text, color, type, size }: TextProps) {
     type === "heading",
     type === "body",
   ];
-  const classes = classNames(`${color || ""}`, {
+  const classes = classNames(color, "whitespace-pre-line", {
     "font-title": isTitle,
     "font-heading": isHeading,
     "font-body": isBody,
