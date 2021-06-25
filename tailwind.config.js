@@ -1,7 +1,6 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  mode: "jit",
   purge: [
     "./src/**/*.html",
     "./src/**/*.js",
@@ -929,6 +928,10 @@ module.exports = {
     "disabled",
   ],
   variants: {
+    extend: {
+      scale: ["last"],
+      transform: ["last"],
+    },
     accessibility: ["responsive", "focus-within", "focus"],
     alignContent: ["responsive"],
     alignItems: ["responsive"],
