@@ -1,11 +1,12 @@
 import React, { createContext, useState } from "react";
 import { AnimatedSpriteSheetProps } from "../atomic-design/molecules";
+import { ValidCharacterNames } from "../types";
 import { makeContextHook } from "./utils";
 export const GameContext = createContext({});
 export const useGameContext = makeContextHook("useGameContext", GameContext);
 
 export type CharacterType = {
-  name: string;
+  name: ValidCharacterNames;
   displayName?: string;
   quotes?: string[];
   getRandomQuote?: Function;
