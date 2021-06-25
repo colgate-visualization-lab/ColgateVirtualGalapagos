@@ -75,6 +75,17 @@ function SignUp({ onSend }: { onSend: Function }) {
             </div>
           )}
         </div>
+        {/* 
+        Use <<>> where you want an input field, and pass all fields as 'speechFields' array. 
+        Each string in speechFields has to be of the form variableName:inputType
+        as shown below. 
+        For e.g. "email:text" means you'll have a text field with name="email"
+
+        The name matters because on any changes in the input field handleInputChange
+        will be called, and the argument passed in (keyValuePair above in declaration)
+        will be of the form { email: s@s.com }
+        */}
+
         <div className="fixed right-0 bottom-1/4 w-md">
           <div className="w-full h-full p-2 lg:p-10 flex flex-col h-full justify-between">
             <Character
