@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Island, islands } from "./islandsInfo";
 import { gsap } from "gsap";
 import { ValidModuleNames } from "../types";
@@ -8,28 +8,31 @@ export default function Islands({
   className,
   onMouseEnter,
   onMouseLeave,
+  selectedIsland,
 }: {
   className?: string;
   onMouseEnter?: Function;
   onMouseLeave?: Function;
+  selectedIsland?: Island["name"];
 }) {
   const commonClasses = classNames(
     "hover:stroke-2 hover:text-accent-primary stroke-0 stroke-current"
   );
 
   const [selected, setSelected] = useState<Island>();
+  const selectedRef = useRef<SVGPathElement | null>(null);
 
-  const handleIslandClick = (
-    event: React.MouseEvent<SVGPathElement>,
-    island: Island
-  ) => {
-    const selectedIsland = event.target as SVGPathElement;
+  useEffect(() => {
+    console.log("effect on selected island::", selectedIsland);
+    setSelected(islands.find((island) => island.name === selectedIsland));
+  }, [selectedIsland]);
+
+  useEffect(() => {
+    const selectedPath = selectedRef.current;
     let viewBox = "0 0 1648 1024";
-    if (selected === island) {
-      setSelected(undefined);
-    } else {
-      setSelected(island);
-      let { x, y, width, height } = selectedIsland.getBBox();
+
+    if (selected && selectedPath) {
+      let { x, y, width, height } = selectedPath.getBBox();
       const zoomWidth = width + 150;
       const zoomHeight = height + 150;
 
@@ -43,10 +46,22 @@ export default function Islands({
         zoomHeight,
       ].join(" ");
     }
+
     gsap.to("#islands", {
       duration: 0.6,
       attr: { viewBox },
     });
+  }, [selected]);
+
+  const handleIslandClick = (
+    event: React.MouseEvent<SVGPathElement>,
+    island: Island
+  ) => {
+    if (selected === island) {
+      setSelected(undefined);
+    } else {
+      setSelected(island);
+    }
   };
   return (
     <svg
@@ -56,7 +71,7 @@ export default function Islands({
       viewBox="0 0 1648 1024"
       data-name="galapagos_islands"
       xmlns="http://www.w3.org/2000/svg"
-      className={"cursor-pointer " + className}
+      className={"cursor-pointer max-w-screen-lg " + className}
     >
       <defs>
         <pattern
@@ -72,6 +87,7 @@ export default function Islands({
         {islands.map((island: Island) => (
           <g key={island.name}>
             <path
+              ref={island.name === selected?.name ? selectedRef : null}
               onClick={(e) => handleIslandClick(e, island)}
               key={island.id}
               d={island.d}
