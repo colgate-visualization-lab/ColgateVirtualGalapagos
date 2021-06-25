@@ -125,7 +125,6 @@ export const Canvas = memo(() => {
               (character.quotes && character.quotes[0])
             }
             speechPosition="top"
-            {...character.spriteConfig}
           />
           <Button
             size="lg"
