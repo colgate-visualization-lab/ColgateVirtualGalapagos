@@ -5,11 +5,18 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
   className?: string;
   label?: string;
-  variant?: "primary" | "secondary" | "wooden" | "backpack" | "backpack_open" | "map";
+  variant?:
+    | "primary"
+    | "secondary"
+    | "wooden"
+    | "backpack"
+    | "backpack_open"
+    | "map"
+    | "icon";
   size?: "sm" | "md" | "lg";
 }
 
-const Button = ({
+export const Button = ({
   children,
   className,
   label,
@@ -26,10 +33,14 @@ const Button = ({
       "bg-wood bg-cover transform hover:scale-110": variant === "wooden",
       "bg-map bg-cover transform hover:scale-110": variant === "map",
       "bg-backpack bg-cover transform hover:scale-110": variant === "backpack",
-      "bg-backpack_open bg-cover transform hover:scale-110": variant === "backpack_open",
-      "w-32 text-md p-2": size === "md",
-      "w-26 text-sm p-1": size === "sm",
-      "w-56 text-sm px-2 py-2 md:py-4": size === "lg",
+      "bg-backpack_open bg-cover transform hover:scale-110":
+        variant === "backpack_open",
+      "text-md p-2": size === "md",
+      "text-sm p-1": size === "sm",
+      "text-sm px-2 py-2 md:py-4": size === "lg",
+      "w-32": size === "md" && variant !== "icon",
+      "w-26": size === "sm" && variant !== "icon",
+      "w-56": size === "lg" && variant !== "icon",
     }
   );
 
