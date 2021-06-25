@@ -5,19 +5,22 @@ import App from "./App";
 import AuthContextProvider from "./contexts/AuthContext";
 import GameContextProvider from "./contexts/GameContext";
 import NotificationContextProvider from "./contexts/NotificationContext";
+import SettingsContextProvider from "./contexts/SettingsContext";
 import TransitionContextProvider from "./contexts/TransitionContext";
 import "./index.css";
 
 const app = (
   <BrowserRouter>
     <AuthContextProvider>
-      <NotificationContextProvider>
-        <TransitionContextProvider>
-          <GameContextProvider>
-            <App />
-          </GameContextProvider>
-        </TransitionContextProvider>
-      </NotificationContextProvider>
+      <SettingsContextProvider>
+        <NotificationContextProvider>
+          <TransitionContextProvider>
+            <GameContextProvider>
+              <App />
+            </GameContextProvider>
+          </TransitionContextProvider>
+        </NotificationContextProvider>
+      </SettingsContextProvider>
     </AuthContextProvider>
   </BrowserRouter>
 );
