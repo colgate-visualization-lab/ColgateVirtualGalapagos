@@ -34,3 +34,23 @@ export type ValidModuleNames =
   | "currents"
   | "lifecycle"
   | "eruption";
+
+export type ValidIslandNames =
+  | "isabela"
+  | "fernandina"
+  | "wolf"
+  | "santa-cruz"
+  | "darwin"
+  | "san-cristobal"
+  | "pinta"
+  | "marchena"
+  | "genovesa"
+  | "santiago"
+  | "pinzon"
+  | "seymour"
+  | "baltra"
+  | "santa-fe"
+  | "espanola"
+  | "floreana";
+
+export type ValidCharacterNames = "carlos" | "adriana" | "alberto";
