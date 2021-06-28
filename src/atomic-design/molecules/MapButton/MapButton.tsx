@@ -7,12 +7,9 @@ export const MapButton = (props: ButtonProps) => {
     
     return (
         <div className="relative">
-            <Button
-            size = "lg"
-            variant = "map"
-            
-            />
-            
+            <Button>
+                <img src="./images/map.png" />
+            </Button>
         </div>
     )
 }
