@@ -11,6 +11,8 @@ import {
   AiFillStepBackward,
 } from "react-icons/ai";
 
+import { BsPlayFill, BsPauseFill } from "react-icons/bs";
+
 export interface LineType extends Omit<CharacterProps, "name"> {
   speaker: ValidCharacterNames;
   directedTo?: ValidCharacterNames;
@@ -79,20 +81,25 @@ export default function Conversation({
   const previousLine =
     currentLineIndex === 0 ? undefined : script[currentLineIndex - 1];
   return (
-    <div className="h-full relative flex w-full">
-      <div className="w-11/12 flex justify-center">
+    <div className="h-full relative flex flex-col w-full">
+      <div
+        className={"flex " + (characters.length > 1 ? "justify-center" : "")}
+      >
         {characters.map((characterName) => (
           <div className="w-40" key={characterName}>
             <Character
               className={
+                characters.length > 1 &&
                 characterName === characters[characters.length - 1]
                   ? "transform -scale-x-100"
                   : ""
               }
               speechPosition={
-                characterName === characters[characters.length - 1]
-                  ? "right"
-                  : "left"
+                characters.length > 1
+                  ? characterName === characters[characters.length - 1]
+                    ? "right"
+                    : "left"
+                  : "right"
               }
               speechColor={
                 characterName === currentLine.speaker
@@ -111,33 +118,48 @@ export default function Conversation({
         ))}
       </div>
 
-      <div className="flex flex-col w-1/12 justify-center items-center">
-        {isPlaying ? (
-          <Button
-            onClick={() => setPlaying(false)}
-            variant="icon"
-            className="text-2xl"
-          >
-            <AiFillPauseCircle />
-          </Button>
-        ) : (
-          <>
-            <Button onClick={rewindScript} variant="icon" className="text-2xl">
-              <AiFillStepBackward />
-            </Button>
+      {script.length > 1 && (
+        <div className="flex flex-col justify-center items-center">
+          <div className="bg-wood text-dark pointer-events-auto bg-cover w-48 px-3 justify-between flex p-2">
             <Button
-              onClick={() => setPlaying(true)}
+              aria-label="step backwards"
+              onClick={rewindScript}
               variant="icon"
               className="text-2xl"
             >
-              <AiFillPlayCircle />
+              <AiFillStepBackward />
             </Button>
-            <Button onClick={advanceScript} variant="icon" className="text-2xl">
+            {isPlaying ? (
+              <Button
+                onClick={() => setPlaying(false)}
+                variant="icon"
+                className="text-2xl"
+                aria-label="pause conversation"
+              >
+                <BsPauseFill />
+              </Button>
+            ) : (
+              <Button
+                onClick={() => setPlaying(true)}
+                variant="icon"
+                className="text-2xl"
+                aria-label="resume conversation"
+              >
+                <BsPlayFill />
+              </Button>
+            )}
+
+            <Button
+              aria-label="step forward"
+              onClick={advanceScript}
+              variant="icon"
+              className="text-2xl"
+            >
               <AiFillStepForward />
             </Button>
-          </>
-        )}
-      </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
