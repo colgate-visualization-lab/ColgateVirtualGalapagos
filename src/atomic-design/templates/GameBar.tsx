@@ -9,7 +9,7 @@ export interface PageProps {
 export function GameBar({ children, className }: PageProps) {
   const classes = classNames(
     className,
-    "w-screen fixed flex bottom-0 left-0 z-40"
+    "w-screen pointer-events-none fixed flex bottom-0 left-0 z-40 mb-5"
   );
   return (
     <div className={classes}>
