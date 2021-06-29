@@ -126,17 +126,24 @@ export const Canvas = memo(() => {
             }
             speechPosition="top"
           />
-          <Button
-            size="lg"
-            variant="wooden"
-            className="opacity-80"
-            onClick={() => setConfirmed(false)}
-          >
-            <Text text="Pick Again" color="text-dark" />
-          </Button>
-          <Button size="lg" variant="wooden" onClick={confirmSelection}>
-            <Text text="Onwards!" color="text-dark" />
-          </Button>
+          <div className="flex">
+            <Button
+              size="lg"
+              variant="wooden"
+              className="opacity-80"
+              onClick={() => setConfirmed(false)}
+            >
+              <Text text="Pick Again" color="text-dark" />
+            </Button>
+            <Button
+              size="lg"
+              className="ml-2"
+              variant="wooden"
+              onClick={confirmSelection}
+            >
+              <Text text="Onwards!" color="text-dark" />
+            </Button>
+          </div>
         </div>
       ) : (
         <>
