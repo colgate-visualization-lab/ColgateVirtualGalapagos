@@ -5,7 +5,9 @@ import Compass from "../atomic-design/atoms/Compass/Compass";
 export default function Loading() {
   return (
     <Page>
-      <Compass />
+      <div className="w-40 h-40">
+        <Compass />
+      </div>
     </Page>
   );
 }
