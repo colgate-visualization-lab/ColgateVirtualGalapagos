@@ -2,109 +2,74 @@ import Page from "../atomic-design/templates/Page";
 import React, { useState } from "react";
 import Button from "../atomic-design/atoms/Button/Button";
 import { useTransitionContext } from "../contexts/TransitionContext";
-import { StaticAnimal, Text } from "../atomic-design/atoms";
-import SpeechBubble from "../atomic-design/molecules/SpeechBubble/SpeechBubble";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { BiPaperPlane } from "react-icons/bi";
+import { Text } from "../atomic-design/atoms";
+import { Character } from "../atomic-design/organisms";
 
-// function Wrapper() {
-//   function handleSubmit(userMessage: string) {
-//     //handle send logic
-//   }
-//   return <SignUp onSend={handleSubmit} />;
-// }
+const signupQuestion =
+  "Let's continue where we left off...";
 
-function SignUp({ onSend }: { onSend: Function }) {
-  const [tempMessage, setTempMessage] = useState<string>("");
-  const [userMessages, setUserMessages] = useState<any[]>([]);
-  const [botMessages, setBotMessage] = useState<any[]>([
-    "What's your Username/Email?",
-  ]);
-  // let [isAnimating, setAnimating] = useState(true);
-  const [showInfo, setShowInfo] = useState(false);
+function Login({ onSend }: { onSend: Function }) {
   const { startTransition } = useTransitionContext();
 
-  const UserMessage = ({ msg }: { msg: string }) => (
-    <SpeechBubble text={msg} size="md" position="left" color="bg-white" />
-  );
-
-  const BotMessage = ({ msg }: { msg: string }) => (
-    <SpeechBubble text={msg} size="md" position="right" color="bg-white" />
-  );
-
-  function handleHeartClick(event: any) {
-    setUserMessages([
-      ...userMessages,
-      <AiFillHeart className="text-red-500" />,
-    ]);
-  }
-
-  function handleSend(event: any) {
-    setUserMessages([...userMessages, tempMessage]);
-    setBotMessage([...botMessages, "What is your password?"]);
-    setTempMessage("");
-    onSend(tempMessage);
-    onSend(botMessages);
+  function handleInputChange(keyValuePair: any) {
+    console.log(keyValuePair);
   }
 
   return (
     <Page
       transition="animate-fade-in"
-      specialcolor="bg-gradient-to-b from-sky-500 to-cyan-200"
+      specialcolor="bg-gradient-to-b from-sky-500 via-cyan-400 to-cyan-200"
     >
-      <div className="fixed z-20 top-10">
+      <div className="fixed top-10">
         <Text
-          text="Welcome back! Sign in to continue"
+          text="Welcome back! Remember your account??"
           color="text-dark"
           type="heading"
           size="lg"
         />
       </div>
-
       <div className="flex mt-32 w-full md:w-4/5 p-5 xl:w-3/5 2xl:w-2/5 items-center justify-center">
-        <div
-          className={"fixed left-0 bottom-0 animate-slide-up"}
-          onAnimationEnd={() => setShowInfo(true)}
-        >
-          <StaticAnimal
-            species="turtle"
-            className="h-auto w-full translate-y-1/4"
-          />
-          {showInfo && (
-            <div className="fixed left-1/4 bottom-1/4 translate-y-1/4">
-              {botMessages.map((msg) => (
-                <BotMessage msg={msg} />
-              ))}
-            </div>
-          )}
-        </div>
-        <div className="fixed right-0 bottom-1/4 w-md">
-          <div className="w-full h-full p-2 lg:p-10 flex flex-row h-full justify-between">
-            {userMessages.map((msg) => (
-              <UserMessage msg={msg} />
-            ))}
-          </div>
-        </div>
-        <div className="fixed right-0 top-3/4 h-1/12 w-6/12">
-          <div className="w-full h-full p-2 flex flex-row justify-evenly">
-            <input
-              className="w-2/3 pl-5 rounded-full bg-transparent outline-none border-b border-dark hover:border-opacity-70"
-              onChange={(event) => setTempMessage(event.target.value)}
-              value={tempMessage}
-              type="text"
-              placeholder="Type your message"
+        <div className="fixed left-0 bottom-1/3">
+            <Character
+              speech={signupQuestion}
+              name="alberto"
+              speechPosition="right"
+              speechColor="bg-white"
+                
             />
-            <button onClick={handleHeartClick} id="heart-icon">
-              <AiFillHeart className="text-red-500 hover:text-opacity-70" />
-            </button>
-            <button onClick={handleSend} id="chat-icon">
-              <BiPaperPlane className="text-gray-500 hover:text-opacity-70" />
-            </button>
-          </div>
-          <div className="w-3/4 grid justify-items-stretch">
-            <button
-              className="justify-self-end focus:ring-2"
+        </div>
+        {/* 
+        Use <<>> where you want an input field, and pass all fields as 'speechFields' array. 
+        Each string in speechFields has to be of the form variableName:inputType
+        as shown below. 
+        For e.g. "email:text" means you'll have a text field with name="email"
+
+        The name matters because on any changes in the input field handleInputChange
+        will be called, and the argument passed in (keyValuePair above in declaration)
+        will be of the form { email: s@s.com }
+        */}
+
+        <div className="fixed right-0 bottom-0">
+          <div className="w-full h-full p-2 lg:p-10 flex flex-col justify-between items-center text-center  ">
+            <Character
+              speech="My email is <<>> My password is <<>>"
+              name="adriana"
+              speechPosition="left"
+              speechColor="bg-white"
+              speechFields={["email:text", "password:password"]}
+              onInputChange={handleInputChange}
+            />
+            <Button
+              size="lg"
+              variant="wooden"
+              onClick={() => startTransition("/Introduction")}
+            >
+              <Text text="Log In" color="text-dark" />
+            </Button>
+            <Button
               onClick={() => startTransition("/sign_up")}
+              variant="secondary"
+              size="sm"
             >
               <Text
                 text="Don't have an account?"
@@ -112,7 +77,7 @@ function SignUp({ onSend }: { onSend: Function }) {
                 color="text-dark"
                 size="sm"
               />
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -120,12 +85,4 @@ function SignUp({ onSend }: { onSend: Function }) {
   );
 }
 
-export default SignUp;
-
-{
-  /* <div className="float-right place-self-end">
-          {userMessages.map((msg) => (
-            <UserMessage msg={msg} />
-          ))}
-        </div> */
-}
+export default Login;

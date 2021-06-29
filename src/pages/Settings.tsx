@@ -4,6 +4,7 @@ import { Checkbox, Text } from "../atomic-design/atoms";
 import Button from "../atomic-design/atoms/Button/Button";
 import Page from "../atomic-design/templates/Page";
 import { useSettingsContext } from "../contexts/SettingsContext";
+import Slider from "../atomic-design/atoms/Slider/Slider"
 
 export default function Settings() {
   const { settings, setSettings } = useSettingsContext();
@@ -26,6 +27,15 @@ export default function Settings() {
         }
       />
       <Checkbox
+        label="Auto Play Audio"
+        value={settings.autoPlayAudio}
+        onChange={() =>
+          setSettings({
+            autoPlayAudio: !settings.autoPlayAudio,
+          })
+        }
+      />
+      <Slider
         label="Auto Play Audio"
         value={settings.autoPlayAudio}
         onChange={() =>
