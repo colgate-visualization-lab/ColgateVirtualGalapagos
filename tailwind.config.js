@@ -35,12 +35,14 @@ module.exports = {
         wood: "url('./assets/images/wood.png')",
       },
       animation: {
+        "spin-once": "spin 0.5s ease-in-out",
         "fade-in-slow": "fade-in 2s",
         "fade-in": "fade-in 200ms",
         "fade-out": "fade-in 1s reverse",
         "slide-right": "slide-right 30s linear alternate infinite",
         "slide-in-left": "slide-in-left 300ms",
         "slide-up": "slide-up 300ms",
+        wiggle: "wiggle 1s ease-in-out infinite",
       },
       keyframes: {
         "fade-in": {
@@ -58,6 +60,10 @@ module.exports = {
         "slide-up": {
           from: { transform: "translateY(100%)" },
           to: { transform: "translateY(0%)" },
+        },
+        wiggle: {
+          "0%, 20%, 40%, 100%": { transform: "rotate(-3deg)" },
+          "10%, 30%": { transform: "rotate(3deg)" },
         },
       },
       colors: {
