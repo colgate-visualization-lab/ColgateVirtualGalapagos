@@ -8,6 +8,7 @@ import Conversation, {
 import GameBar from "../atomic-design/templates/GameBar";
 import Page from "../atomic-design/templates/Page";
 import { useTransitionContext } from "../contexts/TransitionContext";
+import IslandBackgound from "../test/IslandBackgound";
 import Islands from "../test/Islands";
 import { Island } from "../test/islandsInfo";
 const birdSheet = "/sprites/bird.png";
@@ -19,20 +20,20 @@ export default function Introduction() {
   const [selectedIsland, setSelectedIsland] = useState<Island["name"]>();
 
   return (
-    <Page>
-      <div className="fixed top-2 right-2 z-40">
+    <Page className="bg-gradient-to-t from-primary to-primary-dark">
+      <div className="fixed top-5 right-5 z-40">
         <Button
-          size="lg"
           variant="wooden"
           onClick={() => startTransition("/character_select")}
         >
           <Text text="Skip Intro" color="text-dark" />
         </Button>
       </div>
+      <IslandBackgound className="h-9/12 w-full fixed top-0 left-1/2 transform -translate-x-1/2 p-10" />
 
       <Islands
         selectedIsland={selectedIsland}
-        className="h-9/12 w-full fixed top-0 left-1/2 transform -translate-x-1/2 p-10"
+        className="h-9/12 w-screen fixed top-0 left-1/2 transform -translate-x-1/2 p-10"
       />
       <GameBar className="h-3/12">
         <Conversation

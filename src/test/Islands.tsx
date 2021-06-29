@@ -33,6 +33,7 @@ export default function Islands({
 
     if (selected && selectedPath) {
       let { x, y, width, height } = selectedPath.getBBox();
+
       const zoomWidth = width + 150;
       const zoomHeight = height + 150;
 
@@ -47,7 +48,7 @@ export default function Islands({
       ].join(" ");
     }
 
-    gsap.to("#islands", {
+    gsap.to(["#islands", "#islands_background"], {
       duration: 0.6,
       attr: { viewBox },
     });
@@ -63,6 +64,7 @@ export default function Islands({
       setSelected(island);
     }
   };
+
   return (
     <svg
       width="1647"
@@ -71,7 +73,7 @@ export default function Islands({
       viewBox="0 0 1648 1024"
       data-name="galapagos_islands"
       xmlns="http://www.w3.org/2000/svg"
-      className={"cursor-pointer max-w-screen-lg " + className}
+      className={"cursor-pointer overflow-visible " + className}
     >
       <defs>
         <pattern
@@ -83,7 +85,7 @@ export default function Islands({
           <image href="/images/island_texture.png" x="0" y="0" />
         </pattern>
       </defs>
-      <g fill="url(#island_texture)" id="Islands">
+      <g fill="url(#island_texture)" id="Islands" className="w-full">
         {islands.map((island: Island) => (
           <g key={island.name}>
             <path
