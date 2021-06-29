@@ -2,78 +2,41 @@ import Page from "../atomic-design/templates/Page";
 import React, { useState } from "react";
 import Button from "../atomic-design/atoms/Button/Button";
 import { useTransitionContext } from "../contexts/TransitionContext";
-import { StaticAnimal, Text } from "../atomic-design/atoms";
-import SpeechBubble from "../atomic-design/molecules/SpeechBubble/SpeechBubble";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { BiPaperPlane } from "react-icons/bi";
+import { Text } from "../atomic-design/atoms";
 import { Character } from "../atomic-design/organisms";
 
-// function Wrapper() {
-//   function handleSubmit(userMessage: string) {
-//     //handle send logic
-//   }
-//   return <SignUp onSend={handleSubmit} />;
-// }
-
 const signupQuestion =
-  "I'll need your email and\npassword to remember who you are";
+  "Hello there! Let's keep track of our future progress. First, fill in the blank...";
 
 function SignUp({ onSend }: { onSend: Function }) {
-  const [tempMessage, setTempMessage] = useState<string>("");
-  const [userMessages, setUserMessages] = useState<any[]>([]);
-  // let [isAnimating, setAnimating] = useState(true);
-  const [showInfo, setShowInfo] = useState(false);
   const { startTransition } = useTransitionContext();
-
-  const UserMessage = ({ msg }: { msg: string }) => (
-    <Character name="carlos" speech={msg} speechPosition="left" />
-  );
-
-  const BotMessage = ({ msg }: { msg: string }) => (
-    <Character name="alberto" speech={msg} speechPosition="right" />
-  );
-
-  function handleHeartClick(event: any) {
-    setUserMessages([
-      ...userMessages,
-      <AiFillHeart className="text-red-500" />,
-    ]);
-  }
-
-  function handleSend(event: any) {
-    setUserMessages([...userMessages, tempMessage]);
-    setTempMessage("");
-    onSend(tempMessage);
-  }
 
   function handleInputChange(keyValuePair: any) {
     console.log(keyValuePair);
   }
 
   return (
-    <Page transition="animate-fade-in" color="bg-primary">
-      <div className="fixed z-20 top-10">
+    <Page
+      transition="animate-fade-in"
+      specialcolor="bg-gradient-to-b from-sky-500 via-cyan-400 to-cyan-200"
+    >
+      <div className="fixed top-10">
         <Text
-          text="Sign Up for Adventure!"
+          text="Sign Up for the Adventure!"
           color="text-dark"
           type="heading"
           size="lg"
         />
       </div>
       <div className="flex mt-32 w-full md:w-4/5 p-5 xl:w-3/5 2xl:w-2/5 items-center justify-center">
-        <div
-          className={"fixed left-0 bottom-0 animate-slide-up"}
-          onAnimationEnd={() => setShowInfo(true)}
-        >
-          {showInfo && (
-            <div className="fixed left-1/4 bottom-1/4 translate-y-1/4">
-              <Character
-                speech={signupQuestion}
-                name="alberto"
-                speechPosition="left"
-              />
-            </div>
-          )}
+        <div className="fixed left-0 bottom-1/3">
+            <Character
+              speech={signupQuestion}
+              name="alberto"
+              speechPosition="right"
+              speechColor="bg-white"
+                
+            />
         </div>
         {/* 
         Use <<>> where you want an input field, and pass all fields as 'speechFields' array. 
@@ -86,29 +49,36 @@ function SignUp({ onSend }: { onSend: Function }) {
         will be of the form { email: s@s.com }
         */}
 
-        <div className="fixed right-0 bottom-1/4 w-md">
-          <div className="w-full h-full p-2 lg:p-10 flex flex-col h-full justify-between">
+        <div className="fixed right-0 bottom-0">
+          <div className="w-full h-full p-2 lg:p-10 flex flex-col justify-between items-center text-center  ">
             <Character
-              speech="My email is <<>>, and password can be <<>>"
-              name="carlos"
+              speech="My first name is <<>> My last name is <<>> My email is <<>> My password will be <<>>"
+              name="adriana"
               speechPosition="left"
-              speechFields={["email:text", "password:password"]}
+              speechColor="bg-white"
+              speechFields={["first:text","last:text","email:text", "password:password"]}
               onInputChange={handleInputChange}
             />
-          </div>
-        </div>
-        <div className="w-3/4 grid justify-items-stretch">
-          <button
-            className="justify-self-end focus:ring-2"
-            onClick={() => startTransition("/login")}
-          >
-            <Text
-              text="Already have an account?"
-              type="body"
-              color="text-dark"
+            <Button
+              size="lg"
+              variant="wooden"
+              onClick={() => startTransition("/Introduction")}
+            >
+              <Text text="Create Account" color="text-dark" />
+            </Button>
+            <Button
+              onClick={() => startTransition("/login")}
+              variant="secondary"
               size="sm"
-            />
-          </button>
+            >
+              <Text
+                text="Already have an account?"
+                type="body"
+                color="text-dark"
+                size="sm"
+              />
+            </Button>
+          </div>
         </div>
       </div>
     </Page>
