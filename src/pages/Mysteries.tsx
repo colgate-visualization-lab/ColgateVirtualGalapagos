@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router";
 import { StaticAnimal } from "../atomic-design/atoms";
+import Compass from "../atomic-design/atoms/Compass/Compass";
 import SpeechBubble from "../atomic-design/molecules/SpeechBubble/SpeechBubble";
-import { Character } from "../atomic-design/organisms";
+import Conversation from "../atomic-design/templates/Conversation";
 import GameBar from "../atomic-design/templates/GameBar";
 import Page from "../atomic-design/templates/Page";
 import { useGameContext } from "../contexts/GameContext";
+import IslandBackgound from "../test/IslandBackgound";
 import Islands from "../test/Islands";
 import { Island, ModuleType } from "../test/islandsInfo";
 
@@ -17,21 +19,31 @@ export default function Mysteries() {
   return !currentCharacter ? (
     <Redirect to="/character_select" />
   ) : (
-    <Page>
+    <Page className="bg-gradient-to-t from-primary to-primary-dark">
+      <div className="fixed w-20 h-20 z-40 top-5 left-5">
+        <Compass isAnimating={false} />
+      </div>
+      <IslandBackgound className="h-9/12 2xl:h-10/12 w-full fixed top-0 left-1/2 transform -translate-x-1/2 p-10" />
+
       <Islands
-        className="h-9/12 xl:h-10/12 w-full max-w-screen-3xl mx-auto mb-auto p-5"
+        className="h-9/12 2xl:h-10/12 w-full fixed top-0 left-1/2 transform -translate-x-1/2 p-10"
         onMouseEnter={(island: Island | ModuleType) =>
           setInfo((i) => island.info)
         }
         onMouseLeave={() => setInfo(undefined)}
       />
-      <GameBar className="h-3/12 xl:h-2/12">
-        <div className="absolute left-0 transform -translate-x-1/3">
-          <Character
-            name={currentCharacter.name}
-            speech="Click on the islands to dive into one of many mysteries hidden in the Galapagos."
-          />
-        </div>
+      <GameBar className="h-3/12 2xl:h-2/12">
+        <Conversation
+          characters={[currentCharacter.name]}
+          script={[
+            {
+              speaker: currentCharacter.name,
+              speech:
+                "Click on the islands to dive into one of many mysteries hidden in the Galapagos.",
+              audio: "/audio/welcome.mp3",
+            },
+          ]}
+        />
       </GameBar>
       {info && <InfoBox info={info} />}
     </Page>
