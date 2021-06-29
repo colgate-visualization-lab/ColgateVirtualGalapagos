@@ -5,6 +5,7 @@ import Text, { TextProps } from "../../atoms/Text/Text";
 import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
 import { ValidBgColors, ValidTextColors } from "../../../types";
 import TextBox from "../../atoms/TextBox/TextBox";
+import Button from "../../atoms/Button/Button";
 
 const validInputs = ["text", "dropdown", "password"] as const;
 
@@ -27,7 +28,6 @@ export interface SpeechBubbleProps extends Omit<TextProps, "color"> {
     | "bottom left"
     | "bottom right";
   audio?: string;
-  inputTest?: string;
   color?: ValidBgColors;
   textColor?: ValidTextColors;
   inputFields?: FieldType[];
@@ -38,7 +38,6 @@ export default function SpeechBubble({
   className,
   position = "right",
   audio,
-  inputTest,
   color = "bg-primary-light",
   textColor = "text-dark",
   text,
@@ -49,7 +48,7 @@ export default function SpeechBubble({
   const classes = classNames(
     className,
     color,
-    "absolute rounded-full z-40 min-w-80 transform scale-100 animate-fade-in transition-normal",
+    "absolute pointer-events-auto rounded-full z-40 min-w-80 transform scale-100 animate-fade-in transition-normal",
     {
       "right-0 translate-x-full top-0 -translate-y-full": position === "right",
       "-translate-y-full": position === "left",
@@ -114,9 +113,6 @@ export default function SpeechBubble({
           }
         })}
 
-        {inputTest && (
-          <input className="border border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
-        )}
         {audio && (
           <>
             <Howler
@@ -124,21 +120,27 @@ export default function SpeechBubble({
               onEnd={() => setAudio(false)}
               playing={playAudio}
             />
-            {playAudio ? (
-              <AiFillPauseCircle
-                role="button"
-                aria-label="pause audio"
-                onClick={() => setAudio(false)}
-                className="text-white text-xl"
-              />
-            ) : (
-              <AiFillPlayCircle
-                role="button"
-                aria-label="play audio"
-                onClick={() => setAudio(true)}
-                className="text-white text-xl"
-              />
-            )}
+            <div className="absolute top-1/2 transform right-0 -translate-y-1/2">
+              {playAudio ? (
+                <Button
+                  onClick={() => setAudio(false)}
+                  variant="icon"
+                  aria-label="pause audio"
+                  className={"text-2xl " + textColor}
+                >
+                  <AiFillPauseCircle />
+                </Button>
+              ) : (
+                <Button
+                  onClick={() => setAudio(true)}
+                  variant="icon"
+                  aria-label="play audio"
+                  className={"text-2xl " + textColor}
+                >
+                  <AiFillPlayCircle />
+                </Button>
+              )}
+            </div>
           </>
         )}
 
