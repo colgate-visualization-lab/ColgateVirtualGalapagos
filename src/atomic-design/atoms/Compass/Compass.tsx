@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function Compass() {
+export default function Compass({ isAnimating = true }) {
+  const [className, setClassName] = useState("");
   return (
     <svg
-      width="196"
-      height="256"
+      className="w-full"
       viewBox="0 0 196 256"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      onClick={() => setClassName("animate-spin-once")}
     >
       <g id="Group 120">
         <g id="Group 119">
@@ -94,7 +95,10 @@ export default function Compass() {
           style={{
             transformBox: "fill-box",
           }}
-          className="origin-center animate-spin"
+          onAnimationEnd={() => setClassName("")}
+          className={
+            "origin-center " + (isAnimating ? "animate-spin" : className + "")
+          }
         >
           <g id="Vector 240">
             <mask id="path-15-inside-3" fill="white">
