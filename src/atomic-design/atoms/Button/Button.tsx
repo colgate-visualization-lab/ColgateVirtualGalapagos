@@ -19,14 +19,13 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 export const Button = ({
   children,
   className,
-  label,
   variant = "primary",
   size = "md",
   ...rest
 }: ButtonProps) => {
   const classes = classNames(
     className,
-    "rounded-md hover:bg-opacity-80 text-center items-center z-20 justify-center relative hover:text-white transition-fast",
+    "rounded-md hover:bg-opacity-80 text-center flex items-center z-20 justify-center relative hover:text-white transition-fast",
     {
       "bg-accent-primary border-4 border-white text-white":
         variant === "primary",
@@ -45,7 +44,7 @@ export const Button = ({
   );
 
   return (
-    <button aria-label={label} className={classes} {...rest}>
+    <button className={classes} {...rest}>
       {children}
     </button>
   );
