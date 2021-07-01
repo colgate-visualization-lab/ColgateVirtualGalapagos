@@ -8,11 +8,13 @@ export default function Islands({
   className,
   onMouseEnter,
   onMouseLeave,
+  onSelect,
   selectedIsland,
 }: {
   className?: string;
   onMouseEnter?: Function;
   onMouseLeave?: Function;
+  onSelect?: Function;
   selectedIsland?: Island["name"];
 }) {
   const commonClasses = classNames(
@@ -28,6 +30,7 @@ export default function Islands({
   }, [selectedIsland]);
 
   useEffect(() => {
+    onSelect && onSelect(selected);
     const selectedPath = selectedRef.current;
     let viewBox = "0 0 1648 1024";
 
