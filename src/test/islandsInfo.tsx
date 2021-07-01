@@ -1,5 +1,9 @@
 import React from "react";
-import { ValidIslandNames, ValidModuleNames } from "../types";
+import {
+  ValidCharacterNames,
+  ValidIslandNames,
+  ValidModuleNames,
+} from "../types";
 
 export type ModuleType = {
   name: ValidModuleNames;
@@ -12,6 +16,7 @@ export type Island = {
   name: ValidIslandNames;
   d: string;
   info?: string;
+  scientists?: ValidCharacterNames[];
   modules?: ModuleType[];
 };
 export const islands: Island[] = [
@@ -125,6 +130,7 @@ export const islands: Island[] = [
     id: "Isabela",
     name: "isabela",
     info: "This is the information regarding mystery in Isabela",
+    scientists: ["wade", "dan"],
     modules: [
       {
         name: "volcano",
