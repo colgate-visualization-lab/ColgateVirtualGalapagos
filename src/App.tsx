@@ -1,6 +1,8 @@
 import React, { useEffect, Suspense, lazy, useState } from "react";
+import ReactHowler from "react-howler";
 import { Route, Switch, useHistory } from "react-router-dom";
 import { AnimationVideo } from "./atomic-design/atoms";
+import { useSettingsContext } from "./contexts/SettingsContext";
 import { useTransitionContext } from "./contexts/TransitionContext";
 import Loading from "./pages/Loading";
 import Settings from "./pages/Settings";
@@ -22,6 +24,7 @@ const boobyAnimation = "/booby_transition.mp4";
 
 export default function App() {
   const { isTransitioning, to, stopTransition } = useTransitionContext();
+  const { settings } = useSettingsContext();
   const [transitionClasses, setTransitionClasses] = useState([
     "fixed",
     "z-50",
@@ -36,6 +39,7 @@ export default function App() {
       history.push(nextPath);
     }
   }, [nextPath]);
+
   return (
     <Suspense fallback={<Loading />}>
       {isTransitioning && (
@@ -54,6 +58,14 @@ export default function App() {
           muted
           playbackRate={4}
           src={boobyAnimation}
+        />
+      )}
+      {settings.themeMusic && (
+        <ReactHowler
+          src={settings.themeMusic}
+          playing={true}
+          volume={settings.themeVolume || settings.volume}
+          loop={true}
         />
       )}
       <Switch>
