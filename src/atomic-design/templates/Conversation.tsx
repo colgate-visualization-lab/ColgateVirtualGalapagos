@@ -1,17 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import { useSettingsContext } from "../../contexts/SettingsContext";
 import { ValidCharacterNames } from "../../types";
 import Button from "../atoms/Button/Button";
 import { Character } from "../organisms";
 import { CharacterProps } from "../organisms/Character/Character";
-import {
-  AiFillPlayCircle,
-  AiFillPauseCircle,
-  AiFillStepForward,
-  AiFillStepBackward,
-} from "react-icons/ai";
+import { AiFillStepForward, AiFillStepBackward } from "react-icons/ai";
 
 import { BsPlayFill, BsPauseFill } from "react-icons/bs";
+import classNames from "classnames";
 
 export interface LineType extends Omit<CharacterProps, "name"> {
   speaker: ValidCharacterNames;
@@ -19,26 +15,53 @@ export interface LineType extends Omit<CharacterProps, "name"> {
   isCheckpoint?: boolean;
 }
 
+export interface ScriptType {
+  id: string;
+  lines: LineType[];
+}
+
 export interface ConversationProps {
-  characters: ValidCharacterNames[];
-  script: LineType[];
+  script: ScriptType;
   autoContinue?: boolean;
   autoPlayAudio?: boolean;
   onFinish?: Function;
   onCheckPoint?: Function;
 }
 
-export default function Conversation({
-  characters,
+const Conversation = ({
   script,
   onFinish,
   onCheckPoint,
-}: ConversationProps) {
+}: ConversationProps) => {
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
 
+  const [characters, setCharacters] = useState<ValidCharacterNames[]>([]);
+
   useEffect(() => {
-    if (currentLineIndex && currentLineIndex === script.length - 1) {
-      onFinish && onFinish();
+    if (script) {
+      const newCharacters: ValidCharacterNames[] = [];
+      script.lines.forEach((line) => {
+        if (!newCharacters.includes(line.speaker)) {
+          newCharacters.push(line.speaker);
+        }
+        if (line.directedTo && !newCharacters.includes(line.directedTo)) {
+          newCharacters.push(line.directedTo);
+        }
+      });
+      let charactersChanged =
+        newCharacters.length !== characters.length ||
+        newCharacters.filter((chr) => !characters.includes(chr)).length > 0;
+      if (charactersChanged) {
+        setCharacters(newCharacters);
+      }
+      setCurrentLineIndex(0);
+    }
+  }, [script]);
+
+  useEffect(() => {
+    if (currentLineIndex && currentLineIndex === script.lines.length - 1) {
+      onFinish && onFinish(script.id);
+      console.log("script is done");
       setPlaying(false);
     }
   }, [currentLineIndex]);
@@ -66,27 +89,36 @@ export default function Conversation({
       );
       return () => clearTimeout(timeoutId);
     }
-  }, [isPlaying, currentLineIndex]);
+  }, [isPlaying, currentLineIndex, characters]);
 
   function advanceScript() {
     checkpointActive.current = false;
-    setCurrentLineIndex((l) => (l === script.length - 1 ? 0 : l + 1));
+    setCurrentLineIndex((l) => (l === script.lines.length - 1 ? 0 : l + 1));
   }
 
   function rewindScript() {
     checkpointActive.current = false;
-    setCurrentLineIndex((l) => (l === 0 ? script.length - 1 : l - 1));
+    setCurrentLineIndex((l) => (l === 0 ? script.lines.length - 1 : l - 1));
   }
-  const currentLine = script[currentLineIndex];
+  const currentLine = script.lines[currentLineIndex] || {};
   const previousLine =
-    currentLineIndex === 0 ? undefined : script[currentLineIndex - 1];
+    currentLineIndex === 0
+      ? undefined
+      : script.lines[currentLineIndex - 1] || {};
+
+  function makeCharacterClasses(idx: number) {
+    return classNames("w-28 xl:w-40", {
+      "animate-slide-in-left": idx === characters.length - 1,
+      "animate-slide-in-right": idx === 0,
+      "animate-slide-up": idx > 0 && idx < characters.length - 1,
+    });
+  }
+
   return (
-    <div className="h-full relative flex flex-col w-full">
-      <div
-        className={"flex " + (characters.length > 1 ? "justify-center" : "")}
-      >
-        {characters.map((characterName) => (
-          <div className="w-40" key={characterName}>
+    <div className="h-auto relative mt-auto flex flex-col w-full">
+      <div className="flex justify-between">
+        {characters.map((characterName, idx) => (
+          <div className={makeCharacterClasses(idx)} key={characterName}>
             <Character
               className={
                 characters.length > 1 &&
@@ -97,8 +129,8 @@ export default function Conversation({
               speechPosition={
                 characters.length > 1
                   ? characterName === characters[characters.length - 1]
-                    ? "right"
-                    : "left"
+                    ? "left"
+                    : "right"
                   : "right"
               }
               speechColor={
@@ -118,7 +150,7 @@ export default function Conversation({
         ))}
       </div>
 
-      {script.length > 1 && (
+      {script.lines.length > 1 && (
         <div className="flex flex-col justify-center items-center">
           <div className="bg-wood text-dark pointer-events-auto bg-cover w-48 px-3 justify-between flex p-2">
             <Button
@@ -162,4 +194,6 @@ export default function Conversation({
       )}
     </div>
   );
-}
+};
+
+export default memo(Conversation);
