@@ -53,4 +53,11 @@ export type ValidIslandNames =
   | "espanola"
   | "floreana";
 
-export type ValidCharacterNames = "carlos" | "adriana" | "alberto";
+export type ValidCharacterNames =
+  | "carlos"
+  | "adriana"
+  | "alberto"
+  | "sula"
+  | "jade"
+  | "dan"
+  | "wade";
