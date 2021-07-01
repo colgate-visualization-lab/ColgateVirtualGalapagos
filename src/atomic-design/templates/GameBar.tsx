@@ -13,7 +13,7 @@ export function GameBar({ children, className }: PageProps) {
   );
   return (
     <div className={classes}>
-      <div className="flex items-center justify-center relative w-full h-full">
+      <div className="flex justify-items-end content-end items-end  w-full h-full">
         {children}
       </div>
     </div>
