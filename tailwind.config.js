@@ -41,6 +41,7 @@ module.exports = {
         "fade-out": "fade-in 1s reverse",
         "slide-right": "slide-right 30s linear alternate infinite",
         "slide-in-left": "slide-in-left 300ms",
+        "slide-in-right": "slide-in-right 300ms",
         "slide-up": "slide-up 300ms",
         wiggle: "wiggle 1s ease-in-out infinite",
       },
@@ -55,6 +56,10 @@ module.exports = {
         },
         "slide-in-left": {
           from: { transform: "translateX(100%)" },
+          to: { transform: "translateX(0%)" },
+        },
+        "slide-in-right": {
+          from: { transform: "translateX(-100%)" },
           to: { transform: "translateX(0%)" },
         },
         "slide-up": {
