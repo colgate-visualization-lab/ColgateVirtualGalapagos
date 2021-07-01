@@ -36,11 +36,11 @@ export default function Settings() {
         }
       />
       <Slider
-        label="Auto Play Audio"
-        value={settings.autoPlayAudio}
+        label="Volume"
+        value={settings.volume}
         onChange={() =>
           setSettings({
-            autoPlayAudio: !settings.autoPlayAudio,
+            volume: !settings.volume,
           })
         }
       />
