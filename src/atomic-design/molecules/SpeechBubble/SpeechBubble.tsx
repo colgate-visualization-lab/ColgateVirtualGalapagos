@@ -1,11 +1,11 @@
 import classNames from "classnames";
 import React, { useState } from "react";
-import Howler from "react-howler";
 import Text, { TextProps } from "../../atoms/Text/Text";
 import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
 import { ValidBgColors, ValidTextColors } from "../../../types";
 import TextBox from "../../atoms/TextBox/TextBox";
 import Button from "../../atoms/Button/Button";
+import ReactHowler from "react-howler";
 
 const validInputs = ["text", "dropdown", "password"] as const;
 
@@ -48,7 +48,7 @@ export default function SpeechBubble({
   const classes = classNames(
     className,
     color,
-    "absolute pointer-events-auto rounded-full z-40 min-w-80 transform scale-100 animate-fade-in transition-normal",
+    "absolute pointer-events-auto rounded-2xl z-40 min-w-80 transform scale-100 animate-fade-in transition-normal",
     {
       "right-0 translate-x-full top-0 -translate-y-full": position === "right",
       "-translate-y-full": position === "left",
@@ -83,7 +83,7 @@ export default function SpeechBubble({
 
   return (
     <div className={classes}>
-      <div className="relative py-3 px-10">
+      <div className="relative py-3 pl-3 pr-7">
         {chunkedText?.map((txt: FieldType | string) => {
           if (isField(txt)) {
             const [varName, inputType] = txt.split(":");
@@ -115,7 +115,7 @@ export default function SpeechBubble({
 
         {audio && (
           <>
-            <Howler
+            <ReactHowler
               src={audio}
               onEnd={() => setAudio(false)}
               playing={playAudio}
