@@ -25,7 +25,7 @@ export const Button = ({
 }: ButtonProps) => {
   const classes = classNames(
     className,
-    "rounded-md hover:bg-opacity-80 text-center flex items-center z-20 justify-center relative hover:text-white transition-fast",
+    " hover:bg-opacity-80 text-center flex items-center z-20 justify-center relative hover:text-white transition-fast",
     {
       "bg-accent-primary border-4 border-white text-white":
         variant === "primary",
@@ -37,9 +37,9 @@ export const Button = ({
       "text-md p-2": size === "md",
       "text-sm p-1": size === "sm",
       "text-sm px-2 py-2 md:py-4": size === "lg",
-      "w-32": size === "md" && variant !== "icon",
-      "w-26": size === "sm" && variant !== "icon",
-      "w-56": size === "lg" && variant !== "icon",
+      "w-32 rounded-md": size === "md" && variant !== "icon",
+      "w-26 rounded-md": size === "sm" && variant !== "icon",
+      "w-56 rounded-md": size === "lg" && variant !== "icon",
     }
   );
 
