@@ -12,14 +12,14 @@ interface SettingsValues {
   setSettings: Function;
 }
 
-type Volume = 0.1 | 0.2 | 0.3 | 0.4 | 0.5 | 0.6 | 0.7 | 0.8 | 0.9 | 1.0 | 1;
-
 type Settings = {
   autoPlayAudio?: boolean;
   autoContinueConversation?: boolean;
   conversationSpeed?: 0.5 | 1 | 2 | 3 | 4;
-  volume?: Volume;
-  themeVolume?: Volume;
+  volume?: number;
+  minVolume: 0;
+  maxVolume: 1;
+  themeVolume?: number;
   themeMusic?: string;
 };
 
@@ -32,7 +32,9 @@ export default function SettingsContextProvider({
     autoPlayAudio: false,
     autoContinueConversation: false,
     conversationSpeed: 1,
-    volume: 0.5,
+    volume: 0,
+    minVolume: 0,
+    maxVolume: 1,
     themeMusic: "/audio/theme_song.mp3",
   });
 
