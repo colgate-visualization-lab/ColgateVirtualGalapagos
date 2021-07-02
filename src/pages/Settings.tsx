@@ -35,15 +35,17 @@ export default function Settings() {
           })
         }
       />
-      <Slider
-        label="Volume"
-        value={settings.volume}
-        onChange={() =>
-          setSettings({
-            volume: !settings.volume,
-          })
-        }
-      />
+      <div className="flex cursor-pointer"> Volume
+        <input
+          className="relative mx-2"
+          type="range"
+          min={settings.minVolume}
+          max={settings.maxVolume}
+          step={0.1}
+          value={settings.volume}
+          onChange={(e)=> setSettings({volume: e.target.value})}
+        />
+      </div>
     </Page>
   );
 }
