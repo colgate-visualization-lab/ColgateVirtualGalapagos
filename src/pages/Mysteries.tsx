@@ -58,7 +58,7 @@ export default function Mysteries() {
         id: "first",
         lines: [
           {
-            speaker: currentCharacter.name,
+            speaker: currentCharacter?.name,
             speech: "So many islands! Which one do you wanna go to?",
             audio: "/audio/welcome.mp3",
           },
