@@ -6,6 +6,7 @@ import { useSettingsContext } from "./contexts/SettingsContext";
 import { useTransitionContext } from "./contexts/TransitionContext";
 import Loading from "./pages/Loading";
 import Settings from "./pages/Settings";
+import DrawingPanel from "./test/DrawingPanel";
 
 const Chatbot = lazy(() => import("./pages/Chatbot"));
 const CharacterSelect = lazy(() => import("./pages/CharacterSelect"));
@@ -82,6 +83,7 @@ export default function App() {
         <Route path="/mysteries" component={Mysteries} />
         <Route path="/introduction" component={Introduction} />
         <Route path="/backpacktesting" component={BackpackTesting} />
+        <Route path="/drawing" component={DrawingPanel} />
         <Route path="/settings" component={Settings} />
         <Route component={NotFoundPage} />
       </Switch>
