@@ -1,11 +1,12 @@
 import classNames from "classnames";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Text, { TextProps } from "../../atoms/Text/Text";
 import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
 import { ValidBgColors, ValidTextColors } from "../../../types";
 import TextBox from "../../atoms/TextBox/TextBox";
 import Button from "../../atoms/Button/Button";
 import ReactHowler from "react-howler";
+import { useSettingsContext } from "../../../contexts/SettingsContext";
 
 const validInputs = ["text", "dropdown", "password"] as const;
 
@@ -69,6 +70,15 @@ export default function SpeechBubble({
   });
 
   const [playAudio, setAudio] = useState(false);
+
+  const { settings } = useSettingsContext();
+
+  useEffect(() => {
+    if (settings.autoPlayAudio) {
+      setAudio(true);
+    }
+  }, [settings, text]);
+
   let chunkedText: Array<FieldType | string> = text?.split("<<>>") || [];
   if (inputFields && inputFields.length) {
     chunkedText = chunkedText.reduce(
