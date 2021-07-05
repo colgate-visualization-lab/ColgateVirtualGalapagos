@@ -35,7 +35,8 @@ export default function Settings() {
           })
         }
       />
-      <div className="flex cursor-pointer"> Volume
+      <div className="flex cursor-pointer"> 
+        Volume
         <input
           className="relative mx-2"
           type="range"
@@ -45,6 +46,29 @@ export default function Settings() {
           value={settings.volume}
           onChange={(e)=> setSettings({volume: e.target.value})}
         />
+      </div>
+      <div className="flex cursor-pointer">
+        Conversation Speed
+        <div className="relative mx-2 inline-flex items-center">
+          <input type="radio" id="0.5" name="speed" value={0.5} onChange={(e)=> setSettings({conversationSpeed: e.target.value})}/>
+          <label className="ml-2">0.5</label>
+        </div>
+        <div className="relative mx-2 inline-flex items-center">
+          <input type="radio" id="1" name="speed" value={1} onChange={(e)=> setSettings({conversationSpeed: e.target.value})}/>
+          <label className="ml-2">1</label>
+        </div>
+        <div className="relative mx-2 inline-flex items-center">
+          <input type="radio" id="2" name="speed" value={2} onChange={(e)=> setSettings({conversationSpeed: e.target.value})}/>
+          <label className="ml-2">2</label>
+        </div>
+        <div className="relative mx-2 inline-flex items-center">
+          <input type="radio" id="3" name="speed" value={3} onChange={(e)=> setSettings({conversationSpeed: e.target.value})}/>
+          <label className="ml-2">3</label>
+        </div>
+        <div className="relative mx-2 inline-flex items-center">
+          <input type="radio" id="4" name="speed" value={4} onChange={(e)=> setSettings({conversationSpeed: e.target.value})}/>
+          <label className="ml-2">4</label>
+        </div>
       </div>
     </Page>
   );
