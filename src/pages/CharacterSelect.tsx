@@ -94,7 +94,10 @@ function drawWaterBubbles(
 }
 
 export const Canvas = memo(() => {
-  const [character, setCharacter] = useState<CharacterType>(characterList[0]);
+  const [allCharacters] = useState(() =>
+    characterList.filter((ch: CharacterType) => ch.role === "buddy")
+  );
+  const [character, setCharacter] = useState<CharacterType>(allCharacters[0]);
   const { characters, addCharacter } = useGameContext();
   const { startTransition } = useTransitionContext();
   const [confirmed, setConfirmed] = useState(false);
@@ -107,10 +110,9 @@ export const Canvas = memo(() => {
   };
 
   const updateCurrentCharacter = useCallback(
-    (idx: number) => setCharacter(characterList[idx]),
-    [characterList]
+    (idx: number) => setCharacter(allCharacters[idx]),
+    [allCharacters]
   );
-
   return (
     <Page>
       <Background />
@@ -159,7 +161,7 @@ export const Canvas = memo(() => {
             onChange={updateCurrentCharacter}
             className="relative z-20 animate-fade-in"
           >
-            {characterList.map((character: CharacterType) => (
+            {allCharacters.map((character: CharacterType) => (
               <Character
                 key={character.name}
                 name={character.name}

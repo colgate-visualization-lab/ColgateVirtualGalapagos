@@ -4,6 +4,7 @@ const characterList: CharacterType[] = [
   {
     name: "sula",
     displayName: "Sula",
+    role: "guide",
     quotes: ["I am Sula, the diety Booby"],
     spriteConfig: {
       fileName: "/sprites/bird.png",
@@ -15,6 +16,7 @@ const characterList: CharacterType[] = [
   },
   {
     name: "carlos",
+    role: "buddy",
     displayName: "Carlos",
     quotes: ["I will fight for you!"],
     situationalQuotes: {
@@ -31,6 +33,7 @@ const characterList: CharacterType[] = [
   },
   {
     name: "dan",
+    role: "scientist",
     displayName: "Dan",
     quotes: ["I Dr. Dan, and I am a biologist"],
     situationalQuotes: {},
@@ -44,6 +47,7 @@ const characterList: CharacterType[] = [
   },
   {
     name: "wade",
+    role: "scientist",
     displayName: "Wade",
     quotes: ["I Dr. Wade, and I am a oeacnographer"],
     situationalQuotes: {},
@@ -57,6 +61,7 @@ const characterList: CharacterType[] = [
   },
   {
     name: "jade",
+    role: "scientist",
     displayName: "Jade",
     quotes: ["I Dr. Dan, and I am a geologist"],
     situationalQuotes: {},
@@ -69,23 +74,8 @@ const characterList: CharacterType[] = [
     },
   },
   {
-    name: "carlos",
-    displayName: "Carlos",
-    quotes: ["I will fight for you!"],
-    situationalQuotes: {
-      pick: [
-        "Hi, I am Carlos. Thanks for picking me as your buddy! I'd be glad to show you around.",
-      ],
-    },
-    spriteConfig: {
-      fileName: "/sprites/attacking_soldier.png",
-      bounds: { x: 0, y: 0, width: 516, height: 306 },
-      frame: { width: 172, height: 153 },
-      speed: 200,
-    },
-  },
-  {
     name: "adriana",
+    role: "buddy",
     displayName: "Adriana",
     quotes: ["I am blue, and I will assist you."],
 
@@ -102,6 +92,7 @@ const characterList: CharacterType[] = [
   },
   {
     name: "alberto",
+    role: "buddy",
     displayName: "Alberto",
     quotes: ["I am green and I fly."],
     situationalQuotes: {
