@@ -1,6 +1,8 @@
 import React, { createContext, useState } from "react";
 import { makeContextHook } from "./utils";
 
+const transitions = ["booby", "galaxy"] as const;
+
 export const TransitionContext = createContext({});
 export const useTransitionContext = makeContextHook(
   "useTransitionContext",
@@ -9,7 +11,7 @@ export const useTransitionContext = makeContextHook(
 
 type TransitionProps = {
   isTransitioning: boolean;
-  type?: "booby" | "arch";
+  src?: string;
   to?: string;
 };
 
@@ -20,14 +22,14 @@ export default function TransitionContextProvider({
 }) {
   const [state, setState] = useState<TransitionProps>({
     isTransitioning: false,
-    type: undefined,
+    src: undefined,
     to: undefined,
   });
 
-  const startTransition = (to: string, type?: TransitionProps["type"]) => {
+  const startTransition = (to: string, type?: typeof transitions[number]) => {
     setState({
       isTransitioning: true,
-      type,
+      src: type ? `/transitions/${type}.mp4` : `/transitions/booby.mp4`,
       to,
     });
   };
