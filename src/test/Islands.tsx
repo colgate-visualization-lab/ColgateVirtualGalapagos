@@ -61,6 +61,7 @@ export default function Islands({
     event: React.MouseEvent<SVGPathElement>,
     island: Island
   ) => {
+    if (!onSelect) return;
     if (selected === island) {
       setSelected(undefined);
     } else {
