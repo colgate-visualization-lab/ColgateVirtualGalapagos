@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 import { Text } from "../atomic-design/atoms";
 import Button from "../atomic-design/atoms/Button/Button";
-import { Character } from "../atomic-design/organisms";
+import Compass from "../atomic-design/atoms/Compass/Compass";
 import Conversation, {
   LineType,
   ScriptType,
@@ -99,9 +100,14 @@ export default function Introduction() {
       },
     ],
   });
-
+  const history = useHistory();
   return (
     <Page className="bg-gradient-to-t from-primary to-primary-dark">
+      <div className="fixed w-20 h-20 z-40 top-5 left-5">
+        <Button variant="icon" onClick={() => history.push("/main_menu")}>
+          <Compass isAnimating={false} />
+        </Button>
+      </div>
       <div className="fixed top-5 right-5 z-40">
         <Button
           variant="wooden"
@@ -114,7 +120,7 @@ export default function Introduction() {
 
       <Islands
         selectedIsland={selectedIsland}
-        className="h-9/12 w-screen fixed top-0 left-1/2 transform -translate-x-1/2 p-10"
+        className="h-9/12 pointer-events-none w-screen fixed top-0 left-1/2 transform -translate-x-1/2 p-10"
       />
       <GameBar className="h-3/12">
         <Conversation
