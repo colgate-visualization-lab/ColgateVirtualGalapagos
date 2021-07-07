@@ -14,6 +14,7 @@ import { useGameContext } from "../contexts/GameContext";
 import IslandBackgound from "../test/IslandBackgound";
 import Islands from "../test/Islands";
 import { Island, ModuleType } from "../test/islandsInfo";
+import BackpackTesting from "../pages/BackpackTesting";
 
 export default function Mysteries() {
   const [info, setInfo] = useState<string>();
@@ -142,6 +143,7 @@ export default function Mysteries() {
         )}
       </GameBar>
       {info && !selectedIsland && <InfoBox info={info} />}
+      <BackpackTesting/>
     </Page>
   );
 }

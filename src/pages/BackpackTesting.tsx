@@ -17,22 +17,19 @@ export default function BackpackTesting(){
 
     if(!backpackOpen) {
     return (
-        <Page transition="none">
             <div className="fixed top-2 right-2 z-40">
                 <img onClick={toggleBackpack} 
                 src={'./images/' + (!backpackOpen ? 'backpack' : 'backpack_open') + '.png'} 
                 height={100} width={100}/>    
             </div>
-        </Page> 
             );
     }
     return (
-        <Page transition="none">
         <div className="fixed top-2 right-2 z-40">
             <img onClick={toggleBackpack} 
             src={'./images/' + (!backpackOpen ? 'backpack' : 'backpack_open') + '.png'} 
             height={100} width={100}/>    
-                    <div className="absolute inest-5 space-y-7 h-180 w-15 bg-yellow-200 border-2 border-black">
+                    <div className="absolute right-7 space-y-7 h-180 w-15 bg-yellow-200 border-2 border-black">
                         <span className= "block">
                             <img src="./images/travel_log.png" height={50} width={50} />
                         </span>
@@ -42,8 +39,10 @@ export default function BackpackTesting(){
                         <span className="block">
                             <img src="./images/map.png" height={50} width={50} />
                         </span>
+                        <span className="block">
+                            <img src="./images/coin_purse.png" height={50} width={50} />
+                        </span>
                     </div>      
              </div>
-         </Page> 
             );
     }

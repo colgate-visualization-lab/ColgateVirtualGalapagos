@@ -8,12 +8,10 @@ interface Props{
     setOpen: boolean;
 }
 
-const Backpack = ({open, setOpen}) => {
+const Backpack = () => {
     return (
         <div>
             <img src="./images/backpack.png" 
-            open = {open}
-            onClick{ () => setOpen(!open)}
             >
                 <div />
                 <div />
