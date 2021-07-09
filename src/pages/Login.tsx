@@ -5,8 +5,7 @@ import { useTransitionContext } from "../contexts/TransitionContext";
 import { Text } from "../atomic-design/atoms";
 import { Character } from "../atomic-design/organisms";
 
-const signupQuestion =
-  "Let's continue where we left off...";
+const signupQuestion = "Let's continue where we left off...";
 
 function Login({ onSend }: { onSend: Function }) {
   const { startTransition } = useTransitionContext();
@@ -30,13 +29,12 @@ function Login({ onSend }: { onSend: Function }) {
       </div>
       <div className="flex mt-32 w-full md:w-4/5 p-5 xl:w-3/5 2xl:w-2/5 items-center justify-center">
         <div className="fixed left-0 bottom-1/3">
-            <Character
-              speech={signupQuestion}
-              name="alberto"
-              speechPosition="right"
-              speechColor="bg-white"
-                
-            />
+          <Character
+            speech={signupQuestion}
+            name="alberto"
+            speechPosition="right"
+            speechColor="bg-white"
+          />
         </div>
         {/* 
         Use <<>> where you want an input field, and pass all fields as 'speechFields' array. 
