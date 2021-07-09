@@ -1,6 +1,7 @@
 import React, { createContext, useState } from "react";
 import { AnimatedSpriteSheetProps } from "../atomic-design/molecules";
 import { ValidCharacterNames } from "../types";
+import characterList from "../utils/characterList";
 import { makeContextHook } from "./utils";
 export const GameContext = createContext({});
 export const useGameContext = makeContextHook("useGameContext", GameContext);
@@ -8,6 +9,7 @@ export const useGameContext = makeContextHook("useGameContext", GameContext);
 export type CharacterType = {
   name: ValidCharacterNames;
   displayName?: string;
+  role?: "guide" | "buddy" | "scientist";
   quotes?: string[];
   getRandomQuote?: Function;
   situationalQuotes?: {
@@ -37,7 +39,7 @@ export type Doubloon = {
 
 export type GameProps = {
   characters: CharacterType[];
-  doubloons: Doubloon[];
+  doubloons: number;
 };
 
 export default function GameContextProvider({
@@ -47,7 +49,7 @@ export default function GameContextProvider({
 }) {
   const [state, setState] = useState<GameProps>({
     characters: [],
-    doubloons: [],
+    doubloons: 0,
   });
 
   function addCharacter(character: CharacterType) {
@@ -57,10 +59,10 @@ export default function GameContextProvider({
     }));
   }
 
-  function addDoubloon(doubloon: Doubloon) {
+  function addDoubloon(doubloon: number) {
     setState((state) => ({
       ...state,
-      doubloons: [...state.doubloons, doubloon],
+      doubloons: state.doubloons + doubloon,
     }));
   }
 

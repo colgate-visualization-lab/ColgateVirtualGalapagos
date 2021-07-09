@@ -61,6 +61,7 @@ export default function Islands({
     event: React.MouseEvent<SVGPathElement>,
     island: Island
   ) => {
+    if (!onSelect) return;
     if (selected === island) {
       setSelected(undefined);
     } else {
@@ -88,6 +89,14 @@ export default function Islands({
           <image href="/images/island_texture.png" x="0" y="0" />
         </pattern>
       </defs>
+      <rect
+        fill="none"
+        className="stroke-current text-black stroke-1"
+        x="70"
+        y="20"
+        width="180"
+        height="180"
+      />
       <g fill="url(#island_texture)" id="Islands" className="w-full">
         {islands.map((island: Island) => (
           <g key={island.name}>
@@ -104,6 +113,7 @@ export default function Islands({
               onMouseEnter={() => onMouseEnter && onMouseEnter(island)}
               onMouseLeave={() => onMouseLeave && onMouseLeave(island)}
             />
+
             {selected &&
               selected.name === island.name &&
               island.modules &&

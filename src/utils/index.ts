@@ -37,13 +37,13 @@ export function drawFillImageToCanvas(
 
 export function drawCanvasBackgroundImage(
   ctx: CanvasRenderingContext2D,
-  imgSrc: string
+  imgElement: HTMLImageElement
 ) {
   ctx.imageSmoothingEnabled = false;
-  const backgroundImage = new window.Image();
-  backgroundImage.src = imgSrc;
-  backgroundImage.onload = () => {
-    drawFillImageToCanvas(backgroundImage, ctx);
+  if (imgElement.complete && imgElement.naturalHeight !== 0) {
+    drawFillImageToCanvas(imgElement, ctx);
+  }
+  imgElement.onload = () => {
+    drawFillImageToCanvas(imgElement, ctx);
   };
-  // ctx.imageSmoothingEnabled = true;
 }

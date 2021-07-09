@@ -1,68 +1,81 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Redirect, useHistory, useParams } from "react-router";
 import { StaticAnimal, Text } from "../atomic-design/atoms";
 import Button from "../atomic-design/atoms/Button/Button";
 import Compass from "../atomic-design/atoms/Compass/Compass";
 import SpeechBubble from "../atomic-design/molecules/SpeechBubble/SpeechBubble";
+import { Character } from "../atomic-design/organisms";
 import Conversation, {
   LineType,
   ScriptType,
 } from "../atomic-design/templates/Conversation";
 import GameBar from "../atomic-design/templates/GameBar";
+import Notification from "../atomic-design/templates/Notification";
 import Page from "../atomic-design/templates/Page";
 import { CharacterType, useGameContext } from "../contexts/GameContext";
+import { useNotificationContext } from "../contexts/NotificationContext";
 import { useTransitionContext } from "../contexts/TransitionContext";
 import IslandBackgound from "../test/IslandBackgound";
 import Islands from "../test/Islands";
-import { Island, ModuleType } from "../test/islandsInfo";
-import BackpackTesting from "../pages/BackpackTesting";
+import islands, { Island, ModuleType } from "../test/islandsInfo";
+import { ValidIslandNames } from "../types";
+import { makeIntroScript } from "../utils/script";
 
-export default function Mysteries() {
+export default function Modules() {
   const [info, setInfo] = useState<string>();
   const [selectedIsland, setSelectedIsland] = useState<Island>();
-
+  const [inScriptMode, setScriptMode] = useState(false);
   const { characters } = useGameContext();
   const { startTransition } = useTransitionContext();
+  const { addNotification, removeNotification } = useNotificationContext();
   const [script, setScript] = useState<ScriptType>();
   const history = useHistory();
+  const params = useParams<{ name?: ValidIslandNames }>();
 
   useEffect(() => {
-    if (selectedIsland) {
-      setScript({
-        lines: [
-          {
-            speaker: currentCharacter?.name,
-            speech: `That's ${
-              selectedIsland.displayName || selectedIsland.name
-            }! Feel free to take a look around the modules, or click on the button to explore the mystery futher.`,
-          },
-        ],
-      });
-    } else {
-      setScript({
-        id: "first",
-        lines: [
-          {
-            speaker: currentCharacter?.name,
-            speech: "So many islands! Which one do you wanna go to?",
-            audio: "/audio/welcome.mp3",
-          },
-        ],
-      });
+    if (params.name) {
+      const island = islands.find((island) => island.name === params.name);
+      if (island && currentCharacter) {
+        setScript(makeIntroScript(params.name, currentCharacter, "demoUser"));
+        setScriptMode(true);
+        setSelectedIsland(island);
+      } else history.replace("/mysteries");
     }
-  }, [selectedIsland]);
+  }, [params.name]);
+
+  const handleCheckpoints = (lineNumber: number) => {
+    if (lineNumber === 11) {
+      addNotification({
+        id: "danwade",
+        content: (
+          <div className="flex">
+            <div className="w-1/2 flex items-center flex-col">
+              <Character name="dan" />
+              <Text text="Dan" color="text-dark" />
+            </div>
+            <div className="w-1/2 flex items-center flex-col">
+              <Character name="wade" />
+              <Text text="Wade" color="text-dark" />
+            </div>
+          </div>
+        ),
+        scope: "speech",
+      });
+    } else if (lineNumber === 12 || lineNumber === 10) {
+      removeNotification("danwade");
+    }
+  };
 
   const currentCharacter = characters[characters.length - 1];
   return !currentCharacter ? (
     <Redirect to="/character_select" />
   ) : (
     <Page className="bg-gradient-to-t from-primary to-primary-dark">
-      {selectedIsland && (
+      <Notification scope="speech" />
+      {selectedIsland && !params.name && (
         <div className="fixed top-5 left-1/2 z-40 transform -translate-x-1/2">
           <Button
-            onClick={() =>
-              startTransition(`/mysteries/${selectedIsland.name}`, "galaxy")
-            }
+            onClick={() => startTransition(`/mysteries/${selectedIsland.name}`)}
             size="lg"
             variant="wooden"
           >
@@ -78,16 +91,29 @@ export default function Mysteries() {
       <IslandBackgound className="h-9/12 w-full fixed top-0 left-1/2 transform -translate-x-1/2 p-10" />
 
       <Islands
-        className="h-9/12 w-full fixed top-0 left-1/2 transform -translate-x-1/2 p-10"
+        className={
+          (inScriptMode ? "pointer-events-none" : "") +
+          " h-9/12 w-full fixed top-0 left-1/2 transform -translate-x-1/2 p-10"
+        }
         onMouseEnter={(island: Island | ModuleType) => setInfo(island.info)}
         onMouseLeave={() => setInfo(undefined)}
-        onSelect={(island: Island) => setSelectedIsland(island)}
+        onSelect={
+          params.name
+            ? undefined
+            : (island: Island) => setSelectedIsland(island)
+        }
         selectedIsland={selectedIsland?.name}
       />
       <GameBar className="h-3/12 ">
-        {script && <Conversation script={script} />}
+        {script && (
+          <Conversation
+            script={script}
+            onFinish={() => setScriptMode(false)}
+            onCheckPoint={handleCheckpoints}
+          />
+        )}
       </GameBar>
-      {info && <InfoBox info={info} />}
+      {info && !inScriptMode && <InfoBox info={info} />}
     </Page>
   );
 }
