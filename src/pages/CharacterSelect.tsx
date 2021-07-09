@@ -199,9 +199,12 @@ const Background = memo(() => {
     bubbles.forEach((bubble) => bubble.render(ctx));
   };
 
+  const underwaterImage = new window.Image();
+  underwaterImage.src = "/images/underwater.jpg";
+
   const backgroundRef = useCanvas(
     (ctx: CanvasRenderingContext2D) => {
-      drawCanvasBackgroundImage(ctx, "/images/underwater.jpg");
+      drawCanvasBackgroundImage(ctx, underwaterImage);
     },
     { isFullScreen: true }
   );
