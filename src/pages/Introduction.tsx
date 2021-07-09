@@ -13,8 +13,6 @@ import { useTransitionContext } from "../contexts/TransitionContext";
 import IslandBackgound from "../test/IslandBackgound";
 import Islands from "../test/Islands";
 import { Island } from "../test/islandsInfo";
-const birdSheet = "/sprites/bird.png";
-const blueBirdSheet = "/sprites/blue_bird.png";
 
 export default function Introduction() {
   const { startTransition } = useTransitionContext();
@@ -124,7 +122,7 @@ export default function Introduction() {
       />
       <GameBar className="h-3/12">
         <Conversation
-          onCheckPoint={(line: LineType, index: number) => {
+          onCheckPoint={(index: number) => {
             console.log(index);
             index === 2
               ? setSelectedIsland("isabela")
