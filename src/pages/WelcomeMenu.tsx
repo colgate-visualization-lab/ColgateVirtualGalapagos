@@ -7,6 +7,14 @@ import Page from "../atomic-design/templates/Page";
 import useCanvas from "../test/useCanvas";
 import { drawCanvasBackgroundImage } from "../utils";
 
+const cloudImage = new window.Image();
+cloudImage.src = "/images/cloud.png";
+
+const cloudImage2 = new window.Image();
+cloudImage2.src = "/images/cloud2.png";
+
+const backgroundImage = new window.Image();
+backgroundImage.src = "/images/island_cartoon.jpg";
 // [TODO] gotta refactor the canvas animation and background if we plan to use
 // the same cartoony island anywhere else
 export default function WelcomeMenu() {
@@ -14,14 +22,9 @@ export default function WelcomeMenu() {
 
   const backgroundRef = useCanvas(
     (ctx: CanvasRenderingContext2D) =>
-      drawCanvasBackgroundImage(ctx, "/images/island_cartoon.jpg"),
+      drawCanvasBackgroundImage(ctx, backgroundImage),
     { isFullScreen: true }
   );
-  const cloudImage = new window.Image();
-  cloudImage.src = "/images/cloud.png";
-
-  const cloudImage2 = new window.Image();
-  cloudImage2.src = "/images/cloud2.png";
 
   const skyRef = useCanvas(
     (ctx: CanvasRenderingContext2D, frameCount: number) => {
