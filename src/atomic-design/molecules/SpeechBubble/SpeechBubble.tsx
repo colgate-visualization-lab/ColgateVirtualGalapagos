@@ -110,7 +110,14 @@ export default function SpeechBubble({
                 );
               case "dropdown":
                 return (
-                  <select key={varName} name={varName}>
+                  <select
+                    key={varName}
+                    name={varName}
+                    onChange={(e) =>
+                      onInputChange &&
+                      onInputChange({ [varName]: e.target.value })
+                    }
+                  >
                     <option>Dummy Option 1</option>
                     <option>Dummy Option 2</option>
                   </select>
