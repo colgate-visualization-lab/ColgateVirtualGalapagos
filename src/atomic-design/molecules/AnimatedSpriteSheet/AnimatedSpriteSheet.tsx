@@ -116,8 +116,6 @@ function AnimatedSpriteSheet({
         ((typeof animation === "string" && animation) || animation?.name) ===
         "animate-left-right"
           ? {
-              height: frame?.height,
-              width: frame?.width,
               position: "absolute",
               transform: "translateX(-50%)",
               left: `${
@@ -126,7 +124,7 @@ function AnimatedSpriteSheet({
                 101
               }%`,
             }
-          : { height: frame?.height, width: frame?.width }
+          : {}
       }
       className={className}
       img={sheet}

@@ -13,6 +13,7 @@ export type ModuleType = {
 
 export type Island = {
   id: string;
+  displayName?: string;
   name: ValidIslandNames;
   d: string;
   info?: string;
@@ -129,6 +130,7 @@ export const islands: Island[] = [
   {
     id: "Isabela",
     name: "isabela",
+    displayName: "Isabela",
     info: "This is the information regarding mystery in Isabela",
     scientists: ["wade", "dan"],
     modules: [

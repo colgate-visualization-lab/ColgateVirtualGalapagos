@@ -14,6 +14,7 @@ const Home = lazy(() => import("./pages/Home"));
 const Introduction = lazy(() => import("./pages/Introduction"));
 const MainMenu = lazy(() => import("./pages/MainMenu"));
 const Mysteries = lazy(() => import("./pages/Mysteries"));
+const Modules = lazy(() => import("./pages/Modules"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 const Tutorial = lazy(() => import("./pages/Tutorial"));
 const TestingGround = lazy(() => import("./test/TestingGround"));
@@ -21,10 +22,9 @@ const WelcomeMenu = lazy(() => import("./pages/WelcomeMenu"));
 const Login = lazy(() => import("./pages/Login"));
 const SignUp = lazy(() => import("./pages/SignUp"));
 const BackpackTesting = lazy(() => import("./pages/BackpackTesting"));
-const boobyAnimation = "/booby_transition.mp4";
 
 export default function App() {
-  const { isTransitioning, to, stopTransition } = useTransitionContext();
+  const { isTransitioning, to, stopTransition, src } = useTransitionContext();
   const { settings } = useSettingsContext();
   const [transitionClasses, setTransitionClasses] = useState([
     "fixed",
@@ -58,7 +58,7 @@ export default function App() {
           autoPlay
           muted
           playbackRate={4}
-          src={boobyAnimation}
+          src={src}
         />
       )}
       {settings.themeMusic && (
@@ -80,6 +80,7 @@ export default function App() {
         <Route path="/chatbot" component={Chatbot} />
         <Route path="/character_select" component={CharacterSelect} />
         <Route path="/tutorial" component={Tutorial} />
+        <Route path="/mysteries/:name" component={Modules} />
         <Route path="/mysteries" component={Mysteries} />
         <Route path="/introduction" component={Introduction} />
         <Route path="/backpacktesting" component={BackpackTesting} />

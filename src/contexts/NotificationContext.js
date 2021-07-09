@@ -12,10 +12,9 @@ import { makeContextHook } from "./utils";
 notification model:
 {
   id: String // unique identifier to micro manage notifications
-  msg: String // text to display to the user
+  content: ReactNode // stuff to display to the user
   type: String, // success, warning, or failure - used as a prop to Alert
   scope: String, // login, register or other strings clarifying context of the message
-  field: String // useful in notifications regarding forms - error in specefic form field, for instance
   expiry: Number // milliseconds to expire notification in
 };
 */

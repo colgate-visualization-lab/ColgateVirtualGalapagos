@@ -16,7 +16,7 @@ export interface LineType extends Omit<CharacterProps, "name"> {
 }
 
 export interface ScriptType {
-  id: string;
+  id?: string;
   lines: LineType[];
 }
 
@@ -25,7 +25,7 @@ export interface ConversationProps {
   autoContinue?: boolean;
   autoPlayAudio?: boolean;
   onFinish?: Function;
-  onCheckPoint?: Function;
+  onCheckPoint?: (lineNumber: number, line: LineType) => any;
 }
 
 const Conversation = ({
@@ -36,7 +36,10 @@ const Conversation = ({
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
 
   const [characters, setCharacters] = useState<ValidCharacterNames[]>([]);
+  const [isPlaying, setPlaying] = useState(false);
+  const checkpointActive = useRef(false);
 
+  const { settings } = useSettingsContext();
   useEffect(() => {
     if (script) {
       const newCharacters: ValidCharacterNames[] = [];
@@ -66,15 +69,10 @@ const Conversation = ({
     }
   }, [currentLineIndex]);
 
-  const [isPlaying, setPlaying] = useState(true);
-  const checkpointActive = useRef(false);
-
-  const { settings } = useSettingsContext();
-
   useEffect(() => {
     if (currentLine.isCheckpoint && !checkpointActive?.current) {
       console.log("on checkpoint");
-      onCheckPoint && onCheckPoint(currentLine, currentLineIndex);
+      onCheckPoint && onCheckPoint(currentLineIndex, currentLine);
       setPlaying(false);
       checkpointActive.current = true;
     } else if (isPlaying) {
@@ -116,38 +114,8 @@ const Conversation = ({
 
   return (
     <div className="h-auto relative mt-auto flex flex-col w-full">
-      <div className="flex justify-between">
-        {characters.map((characterName, idx) => (
-          <div className={makeCharacterClasses(idx)} key={characterName}>
-            <Character
-              className={
-                characters.length > 1 &&
-                characterName === characters[characters.length - 1]
-                  ? "transform -scale-x-100"
-                  : ""
-              }
-              speechPosition={
-                characters.length > 1
-                  ? characterName === characters[characters.length - 1]
-                    ? "left"
-                    : "right"
-                  : "right"
-              }
-              speechColor={
-                characterName === currentLine.speaker
-                  ? "bg-accent-primary"
-                  : undefined
-              }
-              {...(characterName === currentLine.speaker
-                ? currentLine
-                : characterName === previousLine?.speaker
-                ? previousLine
-                : {})}
-              name={characterName}
-              isPlaying={characterName === currentLine.speaker}
-            />
-          </div>
-        ))}
+      <div className="flex w-28 xl:w-40">
+        <Character {...currentLine} name={currentLine.speaker} />
       </div>
 
       {script.lines.length > 1 && (
