@@ -33,6 +33,7 @@ module.exports = {
         "ocean-texture": "url('./assets/images/ocean_texture.jpg')",
         "cartoon-island": "url('./assets/images/island_cartoon.jpg')",
         wood: "url('./assets/images/wood.png')",
+        quiz: "url('./assets/images/quiz_bg.png')",
       },
       animation: {
         "spin-once": "spin 0.5s ease-in-out",
