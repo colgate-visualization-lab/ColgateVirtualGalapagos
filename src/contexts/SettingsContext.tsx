@@ -15,7 +15,9 @@ interface SettingsValues {
 type Settings = {
   autoPlayAudio?: boolean;
   autoContinueConversation?: boolean;
-  conversationSpeed?: 0.5 | 1 | 2 | 3 | 4;
+  conversationSpeed?: number;
+  minConversationSpeed: 0.5;
+  maxConversationSpeed: 2;
   volume?: number;
   minVolume: 0;
   maxVolume: 1;
@@ -32,6 +34,8 @@ export default function SettingsContextProvider({
     autoPlayAudio: false,
     autoContinueConversation: false,
     conversationSpeed: 1,
+    minConversationSpeed: 0.5,
+    maxConversationSpeed: 2,
     volume: 0,
     minVolume: 0,
     maxVolume: 1,
