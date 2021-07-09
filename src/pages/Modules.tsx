@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Redirect, useHistory, useParams } from "react-router";
 import { StaticAnimal, Text } from "../atomic-design/atoms";
 import Button from "../atomic-design/atoms/Button/Button";
 import Compass from "../atomic-design/atoms/Compass/Compass";
 import SpeechBubble from "../atomic-design/molecules/SpeechBubble/SpeechBubble";
+import { Character } from "../atomic-design/organisms";
 import Conversation, {
   LineType,
   ScriptType,
 } from "../atomic-design/templates/Conversation";
 import GameBar from "../atomic-design/templates/GameBar";
+import Notification from "../atomic-design/templates/Notification";
 import Page from "../atomic-design/templates/Page";
 import { CharacterType, useGameContext } from "../contexts/GameContext";
+import { useNotificationContext } from "../contexts/NotificationContext";
 import { useTransitionContext } from "../contexts/TransitionContext";
 import IslandBackgound from "../test/IslandBackgound";
 import Islands from "../test/Islands";
@@ -24,15 +27,15 @@ export default function Modules() {
   const [inScriptMode, setScriptMode] = useState(false);
   const { characters } = useGameContext();
   const { startTransition } = useTransitionContext();
+  const { addNotification, removeNotification } = useNotificationContext();
   const [script, setScript] = useState<ScriptType>();
   const history = useHistory();
   const params = useParams<{ name?: ValidIslandNames }>();
 
   useEffect(() => {
-    console.log("changed:::", params);
     if (params.name) {
       const island = islands.find((island) => island.name === params.name);
-      if (island) {
+      if (island && currentCharacter) {
         setScript(makeIntroScript(params.name, currentCharacter, "demoUser"));
         setScriptMode(true);
         setSelectedIsland(island);
@@ -40,11 +43,35 @@ export default function Modules() {
     }
   }, [params.name]);
 
+  const handleCheckpoints = (lineNumber: number) => {
+    if (lineNumber === 11) {
+      addNotification({
+        id: "danwade",
+        content: (
+          <div className="flex">
+            <div className="w-1/2 flex items-center flex-col">
+              <Character name="dan" />
+              <Text text="Dan" color="text-dark" />
+            </div>
+            <div className="w-1/2 flex items-center flex-col">
+              <Character name="wade" />
+              <Text text="Wade" color="text-dark" />
+            </div>
+          </div>
+        ),
+        scope: "speech",
+      });
+    } else if (lineNumber === 12 || lineNumber === 10) {
+      removeNotification("danwade");
+    }
+  };
+
   const currentCharacter = characters[characters.length - 1];
   return !currentCharacter ? (
     <Redirect to="/character_select" />
   ) : (
     <Page className="bg-gradient-to-t from-primary to-primary-dark">
+      <Notification scope="speech" />
       {selectedIsland && !params.name && (
         <div className="fixed top-5 left-1/2 z-40 transform -translate-x-1/2">
           <Button
@@ -79,7 +106,11 @@ export default function Modules() {
       />
       <GameBar className="h-3/12 ">
         {script && (
-          <Conversation script={script} onFinish={() => setScriptMode(false)} />
+          <Conversation
+            script={script}
+            onFinish={() => setScriptMode(false)}
+            onCheckPoint={handleCheckpoints}
+          />
         )}
       </GameBar>
       {info && !inScriptMode && <InfoBox info={info} />}

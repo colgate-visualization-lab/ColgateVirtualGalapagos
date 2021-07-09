@@ -61,11 +61,18 @@ export function makeIntroScript(
           {
             speaker: buddy.name,
             speech: `Nice to meet you! I'm Terry and this is my friend ${username}. We're scientists too!`,
+            isCheckpoint: true,
           },
           {
             speaker: "jade",
             speech:
               "Good to meet you both! My name is Jade and these two are Dan and Wade",
+            isCheckpoint: true,
+          },
+          {
+            speaker: buddy.name,
+            speech: "Hi Dan. Hi Wade!",
+            isCheckpoint: true,
           },
         ],
       };
