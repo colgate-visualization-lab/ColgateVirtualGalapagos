@@ -24,6 +24,12 @@ export type CharacterType = {
   };
 };
 
+export type BackpackType = {
+  name: string;
+  description: string;
+  };
+
+
 export type Doubloon = {
   imgSrc: string;
   module?: string;
