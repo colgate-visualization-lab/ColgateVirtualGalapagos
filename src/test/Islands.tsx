@@ -1,22 +1,29 @@
 import classNames from "classnames";
 import React, { useEffect, useRef, useState } from "react";
-import { Island, islands } from "./islandsInfo";
+import { Island, islands, Module } from "./islandsInfo";
 import { gsap } from "gsap";
 import { ValidModuleNames } from "../types";
+
+const MODULE_BADGE_HEIGHT = 60;
+const MODULE_BADGE_WIDTH = 60;
+
+export interface IslandsProps {
+  className?: string;
+  onMouseEnter?: Function;
+  onMouseLeave?: Function;
+  onIslandSelect?: (island?: Island) => any;
+  onModuleSelect?: (module?: Module) => any;
+  selectedIsland?: Island["name"];
+}
 
 export default function Islands({
   className,
   onMouseEnter,
   onMouseLeave,
-  onSelect,
+  onIslandSelect,
+  onModuleSelect,
   selectedIsland,
-}: {
-  className?: string;
-  onMouseEnter?: Function;
-  onMouseLeave?: Function;
-  onSelect?: Function;
-  selectedIsland?: Island["name"];
-}) {
+}: IslandsProps) {
   const commonClasses = classNames(
     "hover:stroke-2 hover:text-accent-primary stroke-0 stroke-current"
   );
@@ -30,7 +37,7 @@ export default function Islands({
   }, [selectedIsland]);
 
   useEffect(() => {
-    onSelect && onSelect(selected);
+    onIslandSelect && onIslandSelect(selected);
     const selectedPath = selectedRef.current;
     let viewBox = "0 0 1648 1024";
 
@@ -57,16 +64,17 @@ export default function Islands({
     });
   }, [selected]);
 
-  const handleIslandClick = (
-    event: React.MouseEvent<SVGPathElement>,
-    island: Island
-  ) => {
-    if (!onSelect) return;
+  const handleIslandClick = (island: Island) => {
+    if (!onIslandSelect) return;
     if (selected === island) {
       setSelected(undefined);
     } else {
       setSelected(island);
     }
+  };
+
+  const handleModuleClick = (module: Module) => {
+    onModuleSelect && onModuleSelect(module);
   };
 
   return (
@@ -102,7 +110,7 @@ export default function Islands({
           <g key={island.name}>
             <path
               ref={island.name === selected?.name ? selectedRef : null}
-              onClick={(e) => handleIslandClick(e, island)}
+              onClick={() => handleIslandClick(island)}
               key={island.id}
               d={island.d}
               name={island.name}
@@ -118,17 +126,20 @@ export default function Islands({
               selected.name === island.name &&
               island.modules &&
               island.modules.map((module) => {
-                const Component = module.icon;
+                const ModuleBadge = module.icon;
                 const commonClasses = classNames(
-                  "filter drop-shadow-lg animate-fade-in-slow"
+                  "filter transition-normal drop-shadow-xl hover:drop-shadow-3xl animate-fade-in-slow"
                 );
                 return (
-                  <Component
+                  <ModuleBadge
                     key={module.name}
                     onMouseEnter={() => onMouseEnter && onMouseEnter(module)}
                     onMouseLeave={() => onMouseLeave && onMouseLeave(module)}
                     {...getModuleCoordinates(module.name)}
+                    height={MODULE_BADGE_HEIGHT}
+                    width={MODULE_BADGE_WIDTH}
                     className={commonClasses}
+                    onClick={() => handleModuleClick(module)}
                   />
                 );
               })}
@@ -141,9 +152,9 @@ export default function Islands({
 
 function getModuleCoordinates(name: ValidModuleNames) {
   const mapping = {
-    volcano: { x: "490", y: "310" },
-    iguana: { x: "550", y: "450" },
-    currents: { x: "590", y: "635" },
+    volcano: { x: "470", y: "310" },
+    currents: { x: "520", y: "450" },
+    iguana: { x: "550", y: "620" },
     lifecycle: { x: "700", y: "760" },
     eruption: { x: "480", y: "790" },
   };
