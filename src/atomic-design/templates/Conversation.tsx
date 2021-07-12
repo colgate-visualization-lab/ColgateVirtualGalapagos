@@ -4,12 +4,18 @@ import { ValidCharacterNames } from "../../types";
 import Button from "../atoms/Button/Button";
 import { Character } from "../organisms";
 import { CharacterProps } from "../organisms/Character/Character";
-import { AiFillStepForward, AiFillStepBackward } from "react-icons/ai";
+import {
+  AiFillStepForward,
+  AiFillStepBackward,
+  AiFillForward,
+  AiOutlineRedo,
+} from "react-icons/ai";
 
 import { BsPlayFill, BsPauseFill } from "react-icons/bs";
 import classNames from "classnames";
 
 export interface LineType extends Omit<CharacterProps, "name"> {
+  id?: string;
   speaker: ValidCharacterNames;
   directedTo?: ValidCharacterNames;
   isCheckpoint?: boolean;
@@ -25,7 +31,7 @@ export interface ConversationProps {
   autoContinue?: boolean;
   autoPlayAudio?: boolean;
   onFinish?: Function;
-  onCheckPoint?: (lineNumber: number, line: LineType) => any;
+  onCheckPoint?: (line: LineType) => any;
 }
 
 const Conversation = ({
@@ -72,7 +78,7 @@ const Conversation = ({
   useEffect(() => {
     if (currentLine.isCheckpoint && !checkpointActive?.current) {
       console.log("on checkpoint");
-      onCheckPoint && onCheckPoint(currentLineIndex, currentLine);
+      onCheckPoint && onCheckPoint(currentLine);
       setPlaying(false);
       checkpointActive.current = true;
     } else if (isPlaying) {
@@ -89,14 +95,22 @@ const Conversation = ({
     }
   }, [isPlaying, currentLineIndex, characters]);
 
-  function advanceScript() {
+  function advanceScript(toIndex?: any) {
     checkpointActive.current = false;
-    setCurrentLineIndex((l) => (l === script.lines.length - 1 ? 0 : l + 1));
+    setCurrentLineIndex((l) =>
+      Number.isInteger(toIndex)
+        ? toIndex
+        : l === script.lines.length - 1
+        ? l
+        : l + 1
+    );
   }
 
-  function rewindScript() {
+  function rewindScript(toIndex?: any) {
     checkpointActive.current = false;
-    setCurrentLineIndex((l) => (l === 0 ? script.lines.length - 1 : l - 1));
+    setCurrentLineIndex((l) =>
+      Number.isInteger(toIndex) ? toIndex : l === 0 ? l : l - 1
+    );
   }
   const currentLine = script.lines[currentLineIndex] || {};
   const previousLine =
@@ -120,12 +134,22 @@ const Conversation = ({
 
       {script.lines.length > 1 && (
         <div className="flex flex-col justify-center items-center">
-          <div className="bg-wood text-dark pointer-events-auto bg-cover w-48 px-3 justify-between flex p-2">
+          <div className="bg-wood text-dark pointer-events-auto bg-cover h-16 w-56 px-3 justify-between flex p-2">
+            <Button
+              aria-label="re-play"
+              onClick={() => rewindScript(0)}
+              variant="icon"
+              className="text-2xl"
+              disabled={currentLineIndex === 0}
+            >
+              <AiOutlineRedo />
+            </Button>
             <Button
               aria-label="step backwards"
               onClick={rewindScript}
               variant="icon"
               className="text-2xl"
+              disabled={currentLineIndex === 0}
             >
               <AiFillStepBackward />
             </Button>
@@ -154,8 +178,18 @@ const Conversation = ({
               onClick={advanceScript}
               variant="icon"
               className="text-2xl"
+              disabled={currentLineIndex === script.lines.length - 1}
             >
               <AiFillStepForward />
+            </Button>
+            <Button
+              aria-label="skip to end"
+              onClick={() => rewindScript(script.lines.length - 1)}
+              variant="icon"
+              className="text-2xl"
+              disabled={currentLineIndex === script.lines.length - 1}
+            >
+              <AiFillForward />
             </Button>
           </div>
         </div>
