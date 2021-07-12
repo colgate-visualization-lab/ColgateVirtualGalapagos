@@ -11,6 +11,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      dropShadow: {
+        "3xl": "0 35px 35px rgba(0, 0, 0, 1)",
+      },
       height: {
         "1/12": "8.333333%",
         "2/12": "16.666667%",
@@ -84,6 +87,7 @@ module.exports = {
         "secondary-dark": "#736B5C",
         "secondary-light": "#D2C9BE",
         dark: "#3E332E",
+        disabled: "#9CA3AF",
       },
       fontFamily: {
         title: ["Carta Marina Bold", "Arial", "sans-serif"],
@@ -1020,7 +1024,7 @@ module.exports = {
     divideOpacity: ["responsive", "dark"],
     divideStyle: ["responsive"],
     divideWidth: ["responsive"],
-    dropShadow: ["responsive"],
+    dropShadow: ["responsive", "hover"],
     fill: ["responsive"],
     filter: ["responsive"],
     flex: ["responsive"],
