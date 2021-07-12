@@ -14,7 +14,10 @@ const Home = lazy(() => import("./pages/Home"));
 const Introduction = lazy(() => import("./pages/Introduction"));
 const MainMenu = lazy(() => import("./pages/MainMenu"));
 const Mysteries = lazy(() => import("./pages/Mysteries"));
-const Modules = lazy(() => import("./pages/Modules"));
+
+const IsabelaIntro = lazy(() => import("./pages/isabela/IsabelaIntro"));
+const IsabelaVolcano = lazy(() => import("./pages/isabela/Volcano"));
+
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 const Tutorial = lazy(() => import("./pages/Tutorial"));
 const TestingGround = lazy(() => import("./test/TestingGround"));
@@ -80,8 +83,15 @@ export default function App() {
         <Route path="/chatbot" component={Chatbot} />
         <Route path="/character_select" component={CharacterSelect} />
         <Route path="/tutorial" component={Tutorial} />
-        <Route path="/mysteries/:name" component={Modules} />
-        <Route path="/mysteries" component={Mysteries} />
+
+        <Route
+          exact
+          path="/mysteries/isabela/volcano"
+          component={IsabelaVolcano}
+        />
+        <Route exact path="/mysteries/isabela" component={IsabelaIntro} />
+        <Route exact path="/mysteries" component={Mysteries} />
+
         <Route path="/introduction" component={Introduction} />
         <Route path="/backpacktesting" component={BackpackTesting} />
         <Route path="/drawing" component={DrawingPanel} />
