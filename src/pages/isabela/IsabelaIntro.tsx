@@ -12,6 +12,7 @@ import Notification from "../../atomic-design/templates/Notification";
 import { useGameContext } from "../../contexts/GameContext";
 import { useNotificationContext } from "../../contexts/NotificationContext";
 import { useTransitionContext } from "../../contexts/TransitionContext";
+import { Module } from "../../test/islandsInfo";
 import { makeIntroScript } from "../../utils/script";
 
 export default function Modules() {
@@ -59,7 +60,9 @@ export default function Modules() {
     <MysteryIntro
       island="isabela"
       mouseDisabled={inScriptMode}
-      onModuleSelect={() => startTransition("isabela/volcano")}
+      onModuleSelect={(module?: Module) =>
+        module && startTransition(`isabela/${module.name}`)
+      }
     >
       <Notification scope="speech" />
 
