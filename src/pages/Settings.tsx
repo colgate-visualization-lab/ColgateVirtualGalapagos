@@ -4,6 +4,8 @@ import { Checkbox, Text } from "../atomic-design/atoms";
 import Button from "../atomic-design/atoms/Button/Button";
 import Page from "../atomic-design/templates/Page";
 import { useSettingsContext } from "../contexts/SettingsContext";
+import {ImVolumeDecrease, ImVolumeIncrease} from "react-icons/im";
+import {GiSnail,GiRabbit} from "react-icons/gi";
 import Slider from "../atomic-design/atoms/Slider/Slider"
 
 export default function Settings() {
@@ -37,6 +39,8 @@ export default function Settings() {
       />
       <div className="flex cursor-pointer"> 
         Volume
+        <span className="relative mx-2 items-center select-none flex">
+        <ImVolumeDecrease/>
         <input
           className="relative mx-2"
           type="range"
@@ -46,9 +50,13 @@ export default function Settings() {
           value={settings.volume}
           onChange={(e)=> setSettings({volume: e.target.value})}
         />
+        <ImVolumeIncrease/>
+        </span>
       </div>
       <div className="flex cursor-pointer"> 
         Conversation Speed
+        <span className="relative mx-2 items-center select-none flex">
+        <GiSnail/>
         <input
           className="relative mx-2"
           type="range"
@@ -58,6 +66,8 @@ export default function Settings() {
           value={settings.conversationSpeed}
           onChange={(e)=> setSettings({conversationSpeed: e.target.value})}
         />
+        <GiRabbit/>
+        </span>
       </div>
     </Page>
   );
