@@ -60,10 +60,10 @@ const characterList: CharacterType[] = [
     },
   },
   {
-    name: "jade",
+    name: "olivia",
     role: "scientist",
     displayName: "Jade",
-    quotes: ["I Dr. Dan, and I am a geologist"],
+    quotes: ["I Dr. Olivia, and I am a geologist"],
     situationalQuotes: {},
     spriteConfig: {
       fileName: "/sprites/blue_bird.png",

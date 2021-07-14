@@ -37,7 +37,6 @@ export default function Introduction() {
         speaker: "carlos",
         speech: "Hold on, lets check out these modules on Isabela first.",
         audio: "/audio/welcome.mp3",
-        isCheckpoint: true,
       },
       {
         speaker: "adriana",
@@ -121,15 +120,7 @@ export default function Introduction() {
         className="h-9/12 pointer-events-none w-screen fixed top-0 left-1/2 transform -translate-x-1/2 p-10"
       />
       <GameBar className="h-3/12">
-        <Conversation
-          onCheckPoint={(index: number) => {
-            console.log(index);
-            index === 2
-              ? setSelectedIsland("isabela")
-              : setSelectedIsland(undefined);
-          }}
-          script={script}
-        />
+        <Conversation script={script} />
       </GameBar>
     </Page>
   );

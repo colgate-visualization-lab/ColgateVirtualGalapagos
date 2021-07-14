@@ -5,17 +5,15 @@ import Button from "../atomic-design/atoms/Button/Button";
 import Compass from "../atomic-design/atoms/Compass/Compass";
 import SpeechBubble from "../atomic-design/molecules/SpeechBubble/SpeechBubble";
 import Conversation, {
-  LineType,
   ScriptType,
 } from "../atomic-design/templates/Conversation";
 import GameBar from "../atomic-design/templates/GameBar";
 import Page from "../atomic-design/templates/Page";
-import { CharacterType, useGameContext } from "../contexts/GameContext";
+import { useGameContext } from "../contexts/GameContext";
 import { useTransitionContext } from "../contexts/TransitionContext";
 import IslandBackgound from "../test/IslandBackgound";
 import Islands from "../test/Islands";
-import { Island, ModuleType } from "../test/islandsInfo";
-import BackpackTesting from "../pages/BackpackTesting";
+import { Island, Module } from "../test/islandsInfo";
 
 export default function Mysteries() {
   const [info, setInfo] = useState<string>();
@@ -79,9 +77,9 @@ export default function Mysteries() {
 
       <Islands
         className="h-9/12 w-full fixed top-0 left-1/2 transform -translate-x-1/2 p-10"
-        onMouseEnter={(island: Island | ModuleType) => setInfo(island.info)}
+        onMouseEnter={(island: Island | Module) => setInfo(island.info)}
         onMouseLeave={() => setInfo(undefined)}
-        onSelect={(island: Island) => setSelectedIsland(island)}
+        onIslandSelect={(island?: Island) => setSelectedIsland(island)}
         selectedIsland={selectedIsland?.name}
       />
       <GameBar className="h-3/12 ">

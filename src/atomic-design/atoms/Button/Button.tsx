@@ -14,6 +14,7 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
     | "map"
     | "icon";
   size?: "sm" | "md" | "lg";
+  disabled?: boolean;
 }
 
 export const Button = ({
@@ -21,6 +22,7 @@ export const Button = ({
   className,
   variant = "primary",
   size = "md",
+  disabled = false,
   ...rest
 }: ButtonProps) => {
   const classes = classNames(
@@ -40,6 +42,7 @@ export const Button = ({
       "w-32 rounded-md": size === "md" && variant !== "icon",
       "w-26 rounded-md": size === "sm" && variant !== "icon",
       "w-56 rounded-md": size === "lg" && variant !== "icon",
+      "opacity-50 pointer-events-none": disabled === true,
     }
   );
 
