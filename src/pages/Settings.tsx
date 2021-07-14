@@ -4,13 +4,15 @@ import { Checkbox, Text } from "../atomic-design/atoms";
 import Button from "../atomic-design/atoms/Button/Button";
 import Page from "../atomic-design/templates/Page";
 import { useSettingsContext } from "../contexts/SettingsContext";
+import {ImVolumeDecrease, ImVolumeIncrease} from "react-icons/im";
+import {GiSnail,GiRabbit} from "react-icons/gi";
 import Slider from "../atomic-design/atoms/Slider/Slider"
 
 export default function Settings() {
   const { settings, setSettings } = useSettingsContext();
   const history = useHistory();
   return (
-    <Page>
+    <Page    >
       <div className="fixed top-10 left-10">
         <Button size="lg" variant="wooden" onClick={() => history.goBack()}>
           <Text text="Back to Menu" color="text-dark" />
@@ -37,6 +39,8 @@ export default function Settings() {
       />
       <div className="flex cursor-pointer"> 
         Volume
+        <span className="relative mx-2 items-center select-none flex">
+        <ImVolumeDecrease/>
         <input
           className="relative mx-2"
           type="range"
@@ -46,29 +50,24 @@ export default function Settings() {
           value={settings.volume}
           onChange={(e)=> setSettings({volume: e.target.value})}
         />
+        <ImVolumeIncrease/>
+        </span>
       </div>
-      <div className="flex cursor-pointer">
+      <div className="flex cursor-pointer"> 
         Conversation Speed
-        <div className="relative mx-2 inline-flex items-center">
-          <input type="radio" id="0.5" name="speed" value={0.5} onChange={(e)=> setSettings({conversationSpeed: e.target.value})}/>
-          <label className="ml-2">0.5</label>
-        </div>
-        <div className="relative mx-2 inline-flex items-center">
-          <input type="radio" id="1" name="speed" value={1} onChange={(e)=> setSettings({conversationSpeed: e.target.value})}/>
-          <label className="ml-2">1</label>
-        </div>
-        <div className="relative mx-2 inline-flex items-center">
-          <input type="radio" id="2" name="speed" value={2} onChange={(e)=> setSettings({conversationSpeed: e.target.value})}/>
-          <label className="ml-2">2</label>
-        </div>
-        <div className="relative mx-2 inline-flex items-center">
-          <input type="radio" id="3" name="speed" value={3} onChange={(e)=> setSettings({conversationSpeed: e.target.value})}/>
-          <label className="ml-2">3</label>
-        </div>
-        <div className="relative mx-2 inline-flex items-center">
-          <input type="radio" id="4" name="speed" value={4} onChange={(e)=> setSettings({conversationSpeed: e.target.value})}/>
-          <label className="ml-2">4</label>
-        </div>
+        <span className="relative mx-2 items-center select-none flex">
+        <GiSnail/>
+        <input
+          className="relative mx-2"
+          type="range"
+          min={settings.minConversationSpeed}
+          max={settings.maxConversationSpeed}
+          step={0.1}
+          value={settings.conversationSpeed}
+          onChange={(e)=> setSettings({conversationSpeed: e.target.value})}
+        />
+        <GiRabbit/>
+        </span>
       </div>
     </Page>
   );
