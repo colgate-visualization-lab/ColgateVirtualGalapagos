@@ -58,6 +58,6 @@ export type ValidCharacterNames =
   | "adriana"
   | "alberto"
   | "sula"
-  | "jade"
+  | "olivia"
   | "dan"
   | "wade";
