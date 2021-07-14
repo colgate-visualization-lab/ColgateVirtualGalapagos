@@ -22,7 +22,7 @@ export function makeIntroScript(
           {
             speaker: "sula",
             speech:
-              "Good to see you again. Welcome to Isabela, the largest island in the Galapagos. It's home to six volcanoes, extremely rare pink iguanas, and a fascinating scientific mystery.",
+              "Good to see you again. Welcome to Isabela, the largest island in the Galápagos. It’s home to six volcanoes, extremely rare pink iguanas, and a fascinating scientific mystery. ",
           },
           {
             speaker: buddy.name,
@@ -36,18 +36,23 @@ export function makeIntroScript(
             }! How about I introduce you to some of my scientist friends to tell you about it.`,
           },
           {
-            speaker: "jade",
+            speaker: buddy.name,
+            speech: "That would be awesome! Thanks!",
+          },
+          {
+            speaker: "olivia",
             speech:
-              "I think the answer to our mystery might have to do with tectonic plates! There’s a subduction zone not so far away, you know.",
+              "I think the answer to our mystery might have to do with tectonic plates! There’s a subduction zone not so far away, you know. Or the Galápagos islands could’ve been formed similarly to another island chain like Hawaii.",
           },
           {
             speaker: "wade",
             speech:
-              "That's a good point! I think that the ocean currents are involved. Maybe a few iguanas made their way over from San Cristobal.. Marine iguanas are really great swimmers!",
+              "Those are some good points! I think that the ocean currents are involved. Maybe a few iguanas made their way over from San Cristóbal… marine iguanas are really great swimmers!",
           },
           {
             speaker: "dan",
-            speech: "They sure are. Well I think--",
+            speech:
+              "But San Cristóbal is still too young to have been where the marine iguanas underwent their evolution. Also, while the marine iguanas are good swimmers, that doesn't explain the land iguanas. What if---",
           },
           {
             speaker: "dan",
@@ -59,17 +64,24 @@ export function makeIntroScript(
               "Hey there! I want all of you to meet some friends of mine.",
           },
           {
+            id: "hide-dan-wade",
             speaker: buddy.name,
-            speech: `Nice to meet you! I'm Terry and this is my friend ${username}. We're scientists too!`,
+            speech: `Nice to meet you! I'm ${
+              buddy.name
+            }, and this is my friend${
+              username ? " " + username : ""
+            }. We're scientists too!`,
             isCheckpoint: true,
           },
           {
-            speaker: "jade",
+            id: "show-dan-wade",
+            speaker: "olivia",
             speech:
-              "Good to meet you both! My name is Jade and these two are Dan and Wade",
+              "Good to meet you both! My name is Olivia and these two are Dan and Wade",
             isCheckpoint: true,
           },
           {
+            id: "hide-dan-wade",
             speaker: buddy.name,
             speech: "Hi Dan. Hi Wade!",
             isCheckpoint: true,
