@@ -14,7 +14,7 @@ const BaseModalWrapper: React.FC<BaseModalWrapper> = ({onBackdropClick, isModalV
 
     return(<Modal onBackdropClick={onBackdropClick} >
             <DesktopModalContainer>
-                <Header>Map info</Header>
+                <Header>Doubloon information</Header>
             </DesktopModalContainer>
         </Modal>);
 }

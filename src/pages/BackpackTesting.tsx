@@ -42,13 +42,13 @@ export default function BackpackTesting({
 
     if(!backpackOpen) {
     return (
-           // <div className="fixed top-2 right-2 z-40">
-           <div>
-                {/* <img onClick={toggleBackpack} 
+           <div className="fixed top-2 right-2 z-40">
+         
+                { <img onClick={toggleBackpack} 
                 src={'./images/' + (!backpackOpen ? 'backpack' : 'backpack_open') + '.png'} 
-                height={100} width={100}/>    */}
+                height={100} width={100}/>    }
                 
-                <button onClick={toggleModal}>Show Modal</button>
+                <button onClick={toggleModal}>Modal test</button>
                 <BaseModalWrapper isModalVisible={isModalVisible} onBackdropClick={toggleModal}/>
                
             </div>
@@ -69,9 +69,12 @@ export default function BackpackTesting({
                         <span className="block">
                             <img src="./images/map.png" height={50} width={50} />
                         </span>
+                        <button onClick={toggleModal}>
                         <span className="block" onClick={openDoubloons}>
                             <img src="./images/coin_purse.png" height={50} width={50} onClick={openDoubloons}/>
+                            <BaseModalWrapper isModalVisible={isModalVisible} onBackdropClick={toggleModal}/>
                         </span>
+                        </button>
                     </div>  
              </div>
             );
