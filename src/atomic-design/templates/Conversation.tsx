@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef, useState } from "react";
+import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useSettingsContext } from "../../contexts/SettingsContext";
 import { ValidCharacterNames } from "../../types";
 import Button from "../atoms/Button/Button";
@@ -12,11 +12,14 @@ import {
 } from "react-icons/ai";
 
 import { BsPlayFill, BsPauseFill } from "react-icons/bs";
-import classNames from "classnames";
+import { useAudioContext } from "../../contexts/AudioContext";
+import Notification from "./Notification";
+import { useNotificationContext } from "../../contexts/NotificationContext";
 
 export interface LineType extends Omit<CharacterProps, "name"> {
   id?: string;
   speaker: ValidCharacterNames;
+  sceneInfo?: string;
   directedTo?: ValidCharacterNames;
   isCheckpoint?: boolean;
 }
@@ -40,12 +43,18 @@ const Conversation = ({
   onCheckPoint,
 }: ConversationProps) => {
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  const currentLine = script.lines[currentLineIndex] || {};
 
   const [characters, setCharacters] = useState<ValidCharacterNames[]>([]);
   const [isPlaying, setPlaying] = useState(false);
-  const checkpointActive = useRef(false);
+  const isCheckPointActive = useRef(false);
 
   const { settings } = useSettingsContext();
+  const { setNarrationAudio, narration } = useAudioContext();
+
+  const [narrationEnded, setNarrationEnded] = useState(false);
+  const { addNotification, removeNotification } = useNotificationContext();
+
   useEffect(() => {
     if (script) {
       const newCharacters: ValidCharacterNames[] = [];
@@ -67,73 +76,112 @@ const Conversation = ({
     }
   }, [script]);
 
+  const handleNarrationEnd = useCallback(() => {
+    setNarrationEnded(true);
+  }, [script]);
+
   useEffect(() => {
-    if (currentLineIndex && currentLineIndex === script.lines.length - 1) {
-      onFinish && onFinish(script.id);
-      console.log("script is done");
-      setPlaying(false);
+    if (currentLineIndex != null && currentLineIndex < script.lines.length) {
+      setNarrationAudio({
+        src: script.lines[currentLineIndex].audio,
+        onEnd: handleNarrationEnd,
+        isPlaying: settings.autoPlayAudio,
+      });
+      setNarrationEnded(false);
+      if (currentLine.sceneInfo)
+        addNotification({
+          id: "info",
+          content: currentLine.sceneInfo,
+          scope: "speech",
+        });
     }
+
+    if (currentLineIndex === script.lines.length - 1) {
+      onFinish && onFinish(script.id);
+    }
+
+    return () => removeNotification("info");
   }, [currentLineIndex]);
 
   useEffect(() => {
-    if (currentLine.isCheckpoint && !checkpointActive?.current) {
-      console.log("on checkpoint");
-      onCheckPoint && onCheckPoint(currentLine);
-      setPlaying(false);
-      checkpointActive.current = true;
-    } else if (isPlaying) {
-      const timeoutId = setTimeout(
-        advanceScript,
-        Math.max(
-          settings.conversationSpeed *
-            ((currentLine.speech?.length || 15) / 15) *
-            1000,
-          1200
-        )
-      );
-      return () => clearTimeout(timeoutId);
+    if (isPlaying) {
+      if (settings.autoPlayAudio) {
+        setNarrationAudio({ isPlaying: true });
+      }
+    } else {
+      setNarrationAudio({ isPlaying: false });
     }
-  }, [isPlaying, currentLineIndex, characters]);
+  }, [isPlaying]);
+
+  useEffect(() => {
+    if (currentLine.isCheckpoint && !isCheckPointActive?.current) {
+      onCheckPoint && onCheckPoint(currentLine);
+      isCheckPointActive.current = true;
+    }
+    const timeoutId: any = autoAdvanceScript();
+    if (timeoutId != null) return () => clearTimeout(timeoutId);
+  }, [isPlaying, currentLineIndex, characters, narration]);
+
+  function autoAdvanceScript() {
+    if (isPlaying) {
+      if (narration.isPlaying && !narrationEnded) {
+        return;
+      }
+
+      if (narrationEnded) {
+        return setTimeout(
+          advanceScript,
+          Math.max(settings.conversationSpeed * 1000)
+        );
+      } else {
+        return setTimeout(
+          advanceScript,
+          Math.max(
+            1000 +
+              settings.conversationSpeed * 1000 +
+              ((currentLine.speech?.length || 15) / 20) * 1000,
+            1200
+          )
+        );
+      }
+    }
+  }
 
   function advanceScript(toIndex?: any) {
-    checkpointActive.current = false;
-    setCurrentLineIndex((l) =>
-      Number.isInteger(toIndex)
-        ? toIndex
-        : l === script.lines.length - 1
-        ? l
-        : l + 1
-    );
+    isCheckPointActive.current = false;
+    if (currentLineIndex === script.lines.length - 1) {
+      setPlaying(false);
+    } else {
+      setCurrentLineIndex((l) =>
+        Number.isInteger(toIndex)
+          ? toIndex
+          : l === script.lines.length
+          ? l
+          : l + 1
+      );
+    }
   }
 
   function rewindScript(toIndex?: any) {
-    checkpointActive.current = false;
-    setCurrentLineIndex((l) =>
-      Number.isInteger(toIndex) ? toIndex : l === 0 ? l : l - 1
-    );
-  }
-  const currentLine = script.lines[currentLineIndex] || {};
-  const previousLine =
-    currentLineIndex === 0
-      ? undefined
-      : script.lines[currentLineIndex - 1] || {};
-
-  function makeCharacterClasses(idx: number) {
-    return classNames("w-28 xl:w-40", {
-      "animate-slide-in-left": idx === characters.length - 1,
-      "animate-slide-in-right": idx === 0,
-      "animate-slide-up": idx > 0 && idx < characters.length - 1,
-    });
+    isCheckPointActive.current = false;
+    if (currentLineIndex === 0) {
+      setPlaying(false);
+    } else {
+      setCurrentLineIndex((l) =>
+        Number.isInteger(toIndex) ? toIndex : l === 0 ? l : l - 1
+      );
+    }
   }
 
   return (
-    <div className="h-auto relative mt-auto flex flex-col w-full">
+    <div className="relative mt-auto flex flex-col w-full">
       <div className="flex w-28 xl:w-40">
         <Character {...currentLine} name={currentLine.speaker} />
       </div>
+      <Notification scope="speech" />
 
       {script.lines.length > 1 && (
-        <div className="flex flex-col justify-center items-center">
+        <div className="fixed z-40 bottom-5 left-1/2 transform -translate-x-1/2">
           <div className="bg-wood text-dark pointer-events-auto bg-cover h-16 w-56 px-3 justify-between flex p-2">
             <Button
               aria-label="re-play"
@@ -184,7 +232,7 @@ const Conversation = ({
             </Button>
             <Button
               aria-label="skip to end"
-              onClick={() => rewindScript(script.lines.length - 1)}
+              onClick={() => advanceScript(script.lines.length - 1)}
               variant="icon"
               className="text-2xl"
               disabled={currentLineIndex === script.lines.length - 1}
