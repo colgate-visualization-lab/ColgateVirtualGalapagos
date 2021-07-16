@@ -55,6 +55,15 @@ const Conversation = ({
   const [narrationEnded, setNarrationEnded] = useState(false);
   const { addNotification, removeNotification } = useNotificationContext();
 
+  const timeoutId = useRef<number>();
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(timeoutId.current);
+      setNarrationAudio({ isPlaying: false });
+    };
+  }, []);
+
   useEffect(() => {
     if (script) {
       const newCharacters: ValidCharacterNames[] = [];
@@ -118,8 +127,8 @@ const Conversation = ({
       onCheckPoint && onCheckPoint(currentLine);
       isCheckPointActive.current = true;
     }
-    const timeoutId: any = autoAdvanceScript();
-    if (timeoutId != null) return () => clearTimeout(timeoutId);
+    timeoutId.current = autoAdvanceScript();
+    if (timeoutId.current != null) return () => clearTimeout(timeoutId.current);
   }, [isPlaying, currentLineIndex, characters, narration]);
 
   function autoAdvanceScript() {
@@ -129,12 +138,12 @@ const Conversation = ({
       }
 
       if (narrationEnded) {
-        return setTimeout(
+        return window.setTimeout(
           advanceScript,
           Math.max(settings.conversationSpeed * 400)
         );
       } else {
-        return setTimeout(
+        return window.setTimeout(
           advanceScript,
           Math.max(
             1000 +
