@@ -61,3 +61,6 @@ export type ValidCharacterNames =
   | "olivia"
   | "dan"
   | "wade";
+
+export type ValidSoundEffects = "none" | "button-click";
+export type ValidThemeMusic = "global" | "isabela";
