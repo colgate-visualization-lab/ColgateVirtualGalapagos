@@ -22,7 +22,6 @@ type Settings = {
   maxVolume: 10;
   isThemePlaying?: boolean;
   themeVolume?: number;
-  themeMusic?: string;
 };
 
 export default function SettingsContextProvider({
@@ -39,7 +38,6 @@ export default function SettingsContextProvider({
     themeVolume: 0,
     minVolume: 0,
     maxVolume: 10,
-    themeMusic: "/audio/theme_song.mp3",
     isThemePlaying: true,
   });
 
