@@ -39,7 +39,6 @@
     "react-router-dom": "^5.2.0",
     "react-sketch-canvas": "^5.3.4",
     "react-tooltip": "^4.2.21",
-    "styled-components": "^5.3.0",
     "three": "^0.129.0",
     "uuid": "^8.3.2"
   },
