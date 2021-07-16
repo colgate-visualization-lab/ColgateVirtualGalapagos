@@ -10,6 +10,7 @@ export interface TextProps {
   size?: ValidSizes;
   text?: string;
   color?: ValidTextColors;
+  className?: string;
 }
 
 Text.defaultProps = {
@@ -18,13 +19,13 @@ Text.defaultProps = {
   type: "body",
 };
 
-export function Text({ text, color, type, size }: TextProps) {
+export function Text({ text, className, color, type, size }: TextProps) {
   const [isTitle, isHeading, isBody] = [
     type === "title",
     type === "heading",
     type === "body",
   ];
-  const classes = classNames(color, "whitespace-pre-line", {
+  const classes = classNames(className, color, "whitespace-pre-line", {
     "font-title": isTitle,
     "font-heading": isHeading,
     "font-body": isBody,
