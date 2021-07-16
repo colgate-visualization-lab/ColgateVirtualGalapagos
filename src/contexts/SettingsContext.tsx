@@ -14,13 +14,13 @@ interface SettingsValues {
 
 type Settings = {
   autoPlayAudio?: boolean;
-  autoContinueConversation?: boolean;
   conversationSpeed?: number;
-  minConversationSpeed: 0.5;
+  minConversationSpeed: 0;
   maxConversationSpeed: 2;
   volume?: number;
   minVolume: 0;
   maxVolume: 1;
+  isThemePlaying?: boolean;
   themeVolume?: number;
   themeMusic?: string;
 };
@@ -31,15 +31,16 @@ export default function SettingsContextProvider({
   children: React.ReactNode;
 }) {
   const [state, setState] = useState<Settings>({
-    autoPlayAudio: false,
-    autoContinueConversation: false,
-    conversationSpeed: 1,
-    minConversationSpeed: 0.5,
+    autoPlayAudio: true,
+    conversationSpeed: 0,
+    minConversationSpeed: 0,
     maxConversationSpeed: 2,
-    volume: 0,
+    volume: 0.5,
+    themeVolume: 0,
     minVolume: 0,
     maxVolume: 1,
     themeMusic: "/audio/theme_song.mp3",
+    isThemePlaying: true,
   });
 
   const setSettings = (options: Settings) => {
