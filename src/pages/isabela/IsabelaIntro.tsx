@@ -64,8 +64,6 @@ export default function Modules() {
         module && startTransition(`isabela/${module.name}`)
       }
     >
-      <Notification scope="speech" />
-
       <GameBar className="h-3/12 ">
         {script && (
           <Conversation
