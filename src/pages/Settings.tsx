@@ -40,7 +40,7 @@ export default function Settings() {
       <div className="flex cursor-pointer"> 
         Volume
         <span className="relative mx-2 items-center select-none flex">
-        <ImVolumeDecrease/>
+        <ImVolumeDecrease onClick={()=>setSettings({volume:settings.volume-0.1})}/>
         <input
           className="relative mx-2"
           type="range"
@@ -50,13 +50,13 @@ export default function Settings() {
           value={settings.volume}
           onChange={(e)=> setSettings({volume: e.target.value})}
         />
-        <ImVolumeIncrease/>
+        <ImVolumeIncrease onClick={()=>setSettings({volume:settings.volume+0.1})}/>
         </span>
       </div>
       <div className="flex cursor-pointer"> 
         Conversation Speed
         <span className="relative mx-2 items-center select-none flex">
-        <GiSnail/>
+        <GiSnail onClick={()=>setSettings({conversationSpeed:settings.conversationSpeed-0.1})}/>
         <input
           className="relative mx-2"
           type="range"
@@ -66,7 +66,7 @@ export default function Settings() {
           value={settings.conversationSpeed}
           onChange={(e)=> setSettings({conversationSpeed: e.target.value})}
         />
-        <GiRabbit/>
+        <GiRabbit onClick={()=>setSettings({conversationSpeed:settings.conversationSpeed+0.1})}/>
         </span>
       </div>
     </Page>
