@@ -40,7 +40,7 @@ export default function AudioContextProvider({
         <ReactHowler
           src={settings.themeMusic}
           playing={settings.isThemePlaying}
-          volume={settings.themeVolume}
+          volume={settings.themeVolume / 10}
           loop={true}
         />
       )}
@@ -48,7 +48,7 @@ export default function AudioContextProvider({
         <ReactHowler
           src={narration.src}
           playing={narration.isPlaying}
-          volume={settings.volume}
+          volume={settings.volume / 10}
           onEnd={handleNarrationEnd}
         />
       )}

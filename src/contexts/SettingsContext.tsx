@@ -16,10 +16,10 @@ type Settings = {
   autoPlayAudio?: boolean;
   conversationSpeed?: number;
   minConversationSpeed: 0;
-  maxConversationSpeed: 2;
+  maxConversationSpeed: 5;
   volume?: number;
   minVolume: 0;
-  maxVolume: 1;
+  maxVolume: 10;
   isThemePlaying?: boolean;
   themeVolume?: number;
   themeMusic?: string;
@@ -34,11 +34,11 @@ export default function SettingsContextProvider({
     autoPlayAudio: true,
     conversationSpeed: 0,
     minConversationSpeed: 0,
-    maxConversationSpeed: 2,
-    volume: 0.5,
+    maxConversationSpeed: 5,
+    volume: 5,
     themeVolume: 0,
     minVolume: 0,
-    maxVolume: 1,
+    maxVolume: 10,
     themeMusic: "/audio/theme_song.mp3",
     isThemePlaying: true,
   });

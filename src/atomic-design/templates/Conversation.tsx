@@ -131,14 +131,14 @@ const Conversation = ({
       if (narrationEnded) {
         return setTimeout(
           advanceScript,
-          Math.max(settings.conversationSpeed * 1000)
+          Math.max(settings.conversationSpeed * 400)
         );
       } else {
         return setTimeout(
           advanceScript,
           Math.max(
             1000 +
-              settings.conversationSpeed * 1000 +
+              settings.conversationSpeed * 400 +
               ((currentLine.speech?.length || 15) / 20) * 1000,
             1200
           )
