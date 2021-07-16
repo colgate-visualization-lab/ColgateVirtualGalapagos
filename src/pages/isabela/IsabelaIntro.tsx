@@ -9,6 +9,7 @@ import Conversation, {
 import GameBar from "../../atomic-design/templates/GameBar";
 import MysteryIntro from "../../atomic-design/templates/MysteryIntro";
 import Notification from "../../atomic-design/templates/Notification";
+import { useAudioContext } from "../../contexts/AudioContext";
 import { useGameContext } from "../../contexts/GameContext";
 import { useNotificationContext } from "../../contexts/NotificationContext";
 import { useTransitionContext } from "../../contexts/TransitionContext";
@@ -18,6 +19,7 @@ import { makeIntroScript } from "../../utils/script";
 export default function Modules() {
   const [inScriptMode, setScriptMode] = useState(false);
   const { characters } = useGameContext();
+  const { setThemeMusic } = useAudioContext();
   const { addNotification, removeNotification } = useNotificationContext();
   const { startTransition } = useTransitionContext();
   const [script, setScript] = useState<ScriptType>();
@@ -30,6 +32,12 @@ export default function Modules() {
       setScriptMode(true);
     } else history.replace("/mysteries");
   }, [currentCharacter]);
+
+  useEffect(() => {
+    setThemeMusic("isabela");
+
+    return () => setThemeMusic("global");
+  }, []);
 
   const handleCheckpoints = (line: LineType) => {
     if (line.id === "show-dan-wade") {
