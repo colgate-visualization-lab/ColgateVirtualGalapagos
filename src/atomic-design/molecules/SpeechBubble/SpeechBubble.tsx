@@ -121,7 +121,6 @@ export default function SpeechBubble({
             return null;
           }
         })}
-        {console.log(narration)}
 
         {narration.src && (
           <>
