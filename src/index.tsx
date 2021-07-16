@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import AudioContextProvider from "./contexts/AudioContext";
 import AuthContextProvider from "./contexts/AuthContext";
 import GameContextProvider from "./contexts/GameContext";
 import NotificationContextProvider from "./contexts/NotificationContext";
@@ -16,7 +17,9 @@ const app = (
         <NotificationContextProvider>
           <TransitionContextProvider>
             <GameContextProvider>
-              <App />
+              <AudioContextProvider>
+                <App />
+              </AudioContextProvider>
             </GameContextProvider>
           </TransitionContextProvider>
         </NotificationContextProvider>
