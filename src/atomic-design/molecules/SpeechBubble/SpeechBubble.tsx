@@ -1,12 +1,11 @@
 import classNames from "classnames";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Text, { TextProps } from "../../atoms/Text/Text";
 import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
 import { ValidBgColors, ValidTextColors } from "../../../types";
 import TextBox from "../../atoms/TextBox/TextBox";
 import Button from "../../atoms/Button/Button";
-import ReactHowler from "react-howler";
-import { useSettingsContext } from "../../../contexts/SettingsContext";
+import { useAudioContext } from "../../../contexts/AudioContext";
 
 const validInputs = ["text", "dropdown", "password"] as const;
 
@@ -29,13 +28,14 @@ export interface SpeechBubbleProps extends Omit<TextProps, "color"> {
     | "bottom left"
     | "bottom right";
   audio?: string;
+  isAudioPlaying?: boolean;
   color?: ValidBgColors;
   textColor?: ValidTextColors;
   inputFields?: FieldType[];
   onInputChange?: Function;
 }
 
-export default function SpeechBubble({
+export function SpeechBubble({
   className,
   position = "right",
   audio,
@@ -69,16 +69,6 @@ export default function SpeechBubble({
       position === "bottom left",
   });
 
-  const [playAudio, setAudio] = useState(false);
-
-  const { settings } = useSettingsContext();
-
-  useEffect(() => {
-    if (settings.autoPlayAudio) {
-      setAudio(true);
-    }
-  }, [settings, text]);
-
   let chunkedText: Array<FieldType | string> = text?.split("<<>>") || [];
   if (inputFields && inputFields.length) {
     chunkedText = chunkedText.reduce(
@@ -90,6 +80,8 @@ export default function SpeechBubble({
       []
     );
   }
+
+  const { narration, setNarrationAudio } = useAudioContext();
 
   return (
     <div className={classes}>
@@ -130,17 +122,12 @@ export default function SpeechBubble({
           }
         })}
 
-        {audio && (
+        {narration.src && (
           <>
-            <ReactHowler
-              src={audio}
-              onEnd={() => setAudio(false)}
-              playing={playAudio}
-            />
             <div className="absolute top-1/2 transform right-0 -translate-y-1/2">
-              {playAudio ? (
+              {narration.isPlaying ? (
                 <Button
-                  onClick={() => setAudio(false)}
+                  onClick={() => setNarrationAudio({ isPlaying: false })}
                   variant="icon"
                   aria-label="pause audio"
                   className={"text-2xl " + textColor}
@@ -149,7 +136,7 @@ export default function SpeechBubble({
                 </Button>
               ) : (
                 <Button
-                  onClick={() => setAudio(true)}
+                  onClick={() => setNarrationAudio({ isPlaying: true })}
                   variant="icon"
                   aria-label="play audio"
                   className={"text-2xl " + textColor}
@@ -169,3 +156,5 @@ export default function SpeechBubble({
     </div>
   );
 }
+
+export default SpeechBubble;

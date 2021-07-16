@@ -28,7 +28,6 @@ const BackpackTesting = lazy(() => import("./pages/BackpackTesting"));
 
 export default function App() {
   const { isTransitioning, to, stopTransition, src } = useTransitionContext();
-  const { settings } = useSettingsContext();
   const [transitionClasses, setTransitionClasses] = useState([
     "fixed",
     "z-50",
@@ -62,14 +61,6 @@ export default function App() {
           muted
           playbackRate={4}
           src={src}
-        />
-      )}
-      {settings.themeMusic && (
-        <ReactHowler
-          src={settings.themeMusic}
-          playing={true}
-          volume={settings.themeVolume || settings.volume}
-          loop={true}
         />
       )}
       <Switch>

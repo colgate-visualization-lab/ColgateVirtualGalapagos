@@ -59,6 +59,7 @@
     "@types/react-dom": "^17.0.5",
     "@types/react-howler": "^3.7.2",
     "@types/react-router-dom": "^5.1.7",
+    "@types/styled-components": "^5.1.11",
     "autoprefixer": "^10.2.6",
     "babel-loader": "^8.2.2",
     "copy-webpack-plugin": "^9.0.0",

@@ -2,7 +2,6 @@ const path = require("path");
 // const autoprefixer = require("autoprefixer");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "development",
@@ -40,7 +39,7 @@ module.exports = {
       {
         test: /\.css$/i,
         exclude: /node_modules/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
         test: /\.(otf|jpg|png)$/,
@@ -60,6 +59,5 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [{ from: path.join(__dirname, "src", "assets") }],
     }),
-    new MiniCssExtractPlugin(),
   ],
 };

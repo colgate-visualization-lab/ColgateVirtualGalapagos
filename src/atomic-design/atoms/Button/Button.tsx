@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import React from "react";
+import { useAudioContext } from "../../../contexts/AudioContext";
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
@@ -15,6 +16,7 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
     | "icon";
   size?: "sm" | "md" | "lg";
   disabled?: boolean;
+  hasSoundEffect?: boolean;
 }
 
 export const Button = ({
@@ -23,6 +25,8 @@ export const Button = ({
   variant = "primary",
   size = "md",
   disabled = false,
+  hasSoundEffect = false,
+  onClick,
   ...rest
 }: ButtonProps) => {
   const classes = classNames(
@@ -46,8 +50,19 @@ export const Button = ({
     }
   );
 
+  // use sfx on all primary buttons
+  hasSoundEffect =
+    hasSoundEffect || variant === "primary" || variant === "wooden";
+
+  const { setSoundEffect } = useAudioContext();
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    onClick && onClick(e);
+    hasSoundEffect && setSoundEffect("button-click");
+  };
+
   return (
-    <button className={classes} {...rest}>
+    <button className={classes} {...rest} onClick={handleClick}>
       {children}
     </button>
   );

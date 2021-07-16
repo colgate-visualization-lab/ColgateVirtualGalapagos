@@ -5,6 +5,9 @@ import Penguin from "./Penguin";
 import SeaLion from "./SeaLion";
 import Turtle from "./Turtle";
 
+export interface StaticAnimalProps{
+  species: "penguin" | "lava lizard" | "booby head" | "turtle" | "sea lion";
+}
 export function StaticAnimal({
   species,
   className,
