@@ -33,6 +33,7 @@ export interface SpeechBubbleProps extends Omit<TextProps, "color"> {
   textColor?: ValidTextColors;
   inputFields?: FieldType[];
   onInputChange?: Function;
+  children?: React.ReactNode;
 }
 
 export default function SpeechBubble({
@@ -41,7 +42,7 @@ export default function SpeechBubble({
   audio,
   color = "bg-primary-light",
   textColor = "text-dark",
-  text,
+  children,
   inputFields,
   onInputChange,
   ...rest
@@ -69,59 +70,13 @@ export default function SpeechBubble({
       position === "bottom left",
   });
 
-  let chunkedText: Array<FieldType | string> = text?.split("<<>>") || [];
-  if (inputFields && inputFields.length) {
-    chunkedText = chunkedText.reduce(
-      (acc: Array<FieldType | string>, elem, i) => [
-        ...acc,
-        elem,
-        inputFields[i] || "",
-      ],
-      []
-    );
-  }
-
   const { narration, setNarrationAudio } = useAudioContext();
 
   return (
     <div className={classes}>
-      <div className="relative py-3 pl-3 pr-7">
-        {chunkedText?.map((txt: FieldType | string) => {
-          if (isField(txt)) {
-            const [varName, inputType] = txt.split(":");
-            switch (inputType) {
-              case "text":
-              case "password":
-                return (
-                  <TextBox
-                    key={varName}
-                    type={inputType}
-                    name={varName}
-                    onChange={onInputChange}
-                  />
-                );
-              case "dropdown":
-                return (
-                  <select
-                    key={varName}
-                    name={varName}
-                    onChange={(e) =>
-                      onInputChange &&
-                      onInputChange({ [varName]: e.target.value })
-                    }
-                  >
-                    <option>Dummy Option 1</option>
-                    <option>Dummy Option 2</option>
-                  </select>
-                );
-            }
-          } else if (txt) {
-            return <Text key={txt} text={txt} color={textColor} {...rest} />;
-          } else {
-            return null;
-          }
-        })}
-
+      <div className="relative py-3 pl-3 pr-7 w-full">
+        {<Text color={textColor} {...rest} />}
+        {children}
         {narration.src && (
           <>
             <div className="absolute top-1/2 transform right-0 -translate-y-1/2">
