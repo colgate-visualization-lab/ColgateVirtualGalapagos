@@ -72,7 +72,7 @@ export default function Settings() {
                 className="relative mx-2"
                 type="range"
                 min={settings.minVolume}
-                max={settings.maxVolume / 3}
+                max={Math.ceil(settings.maxVolume / 3)}
                 step={STEP_SIZE}
                 value={settings.themeVolume}
                 onChange={(e) =>
@@ -84,7 +84,7 @@ export default function Settings() {
                   stepUp(
                     "themeVolume",
                     settings.themeVolume,
-                    settings.maxVolume / 3
+                    Math.ceil(settings.maxVolume / 3)
                   )
                 }
               />
