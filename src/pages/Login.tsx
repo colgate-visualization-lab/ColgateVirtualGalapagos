@@ -1,11 +1,27 @@
 import Page from "../atomic-design/templates/Page";
-import React, { useState } from "react";
+import React from "react";
 import Button from "../atomic-design/atoms/Button/Button";
 import { useTransitionContext } from "../contexts/TransitionContext";
 import { Text } from "../atomic-design/atoms";
 import { Character } from "../atomic-design/organisms";
+import TextBox from "../atomic-design/atoms/TextBox/TextBox";
 
-const signupQuestion = "Let's continue where we left off...";
+const Form = () => (
+  <div className="w-full">
+    <div className="flex w-full">
+      <Text className="w-1/2 text-left" color="text-dark" text="My email is:" />
+      <TextBox className="w-1/2" />
+    </div>
+    <div className="flex">
+      <Text
+        className="w-7/12 text-left"
+        color="text-dark"
+        text="My password is:"
+      />
+      <TextBox className="w-5/12" />
+    </div>
+  </div>
+);
 
 function Login({ onSend }: { onSend: Function }) {
   const { startTransition } = useTransitionContext();
@@ -28,33 +44,22 @@ function Login({ onSend }: { onSend: Function }) {
         />
       </div>
       <div className="flex mt-32 w-full md:w-4/5 p-5 xl:w-3/5 2xl:w-2/5 items-center justify-center">
-        <div className="fixed left-0 bottom-1/3">
+        <div className="fixed left-0 bottom-1/2 lg:bottom-1/3">
           <Character
-            speech={signupQuestion}
+            speech="Let's continue where we left off..."
             name="alberto"
             speechPosition="right"
             speechColor="bg-white"
           />
         </div>
-        {/* 
-        Use <<>> where you want an input field, and pass all fields as 'speechFields' array. 
-        Each string in speechFields has to be of the form variableName:inputType
-        as shown below. 
-        For e.g. "email:text" means you'll have a text field with name="email"
-
-        The name matters because on any changes in the input field handleInputChange
-        will be called, and the argument passed in (keyValuePair above in declaration)
-        will be of the form { email: s@s.com }
-        */}
 
         <div className="fixed right-0 bottom-0">
           <div className="w-full h-full p-2 lg:p-10 flex flex-col justify-between items-center text-center  ">
             <Character
-              speech="My email is <<>> My password is <<>>"
+              speech={<Form />}
               name="adriana"
               speechPosition="left"
               speechColor="bg-white"
-              speechFields={["email:text", "password:password"]}
               onInputChange={handleInputChange}
             />
             <Button
