@@ -16,7 +16,7 @@ export default function MainMenu() {
             key={option}
             variant="primary"
             size="lg"
-            label={option}
+            aria-label={option}
             onClick={() => startTransition(`/${option}`)}
           >
             {toTitleCase(option, "_", " ")}

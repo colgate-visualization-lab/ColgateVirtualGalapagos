@@ -86,7 +86,7 @@ export default function WelcomeMenu() {
           <PenguinButton
             className="my-5 xl:my-8"
             size="lg"
-            label="login"
+            aria-label="login"
             onClick={() => history.push(`/login`)}
           >
             <Text text="Login" color="text-white" />
@@ -94,7 +94,7 @@ export default function WelcomeMenu() {
           <Button
             className="my-5 xl:my-8"
             size="lg"
-            label="sign up"
+            aria-label="sign up"
             onClick={() => history.push(`/sign_up`)}
           >
             <Text text="Sign Up" color="text-white" />
@@ -102,7 +102,7 @@ export default function WelcomeMenu() {
           <LavaButton
             className="my-5 xl:my-8"
             size="lg"
-            label="continue as guest"
+            aria-label="continue as guest"
             onClick={() => history.push("/main_menu")}
           >
             <Text text="Continue As Guest" color="text-white" />
