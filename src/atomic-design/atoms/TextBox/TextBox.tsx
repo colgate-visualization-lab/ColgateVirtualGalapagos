@@ -11,11 +11,11 @@ export default function TextBox({
   onChange,
   ...rest
 }: TextBoxProps) {
-  const classes = classNames(className, "bg-transparent inline-block");
+  const classes = classNames(className, "relative");
   return (
-    <span className="relative">
+    <span className={classes}>
       <input
-        className={classes}
+        className="bg-transparent h-full w-full inline-block"
         {...rest}
         onChange={(e) =>
           onChange && onChange({ [e.target.name]: e.target.value })
