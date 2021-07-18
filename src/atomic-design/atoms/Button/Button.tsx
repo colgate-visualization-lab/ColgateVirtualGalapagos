@@ -5,7 +5,6 @@ import { useAudioContext } from "../../../contexts/AudioContext";
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
   className?: string;
-  label?: string;
   variant?:
     | "primary"
     | "secondary"
