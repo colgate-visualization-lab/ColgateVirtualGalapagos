@@ -13,7 +13,7 @@ export interface CharacterProps
   extends Omit<AnimatedSpriteSheetProps, "onClick" | "fileName"> {
   name: ValidCharacterNames;
   title?: string;
-  speech?: string | Array<string>;
+  speech?: string | React.ReactNode;
   audio?: string;
   info?: string;
   speechPosition?: SpeechBubbleProps["position"];
@@ -63,10 +63,12 @@ export function Character({
           inputFields={speechFields}
           color={speechColor}
           audio={audio}
-          text={typeof speech === "string" ? speech : speech.join("\n")}
+          text={typeof speech === "string" ? speech : undefined}
           position={speechPosition}
           onInputChange={onInputChange}
-        />
+        >
+          {typeof speech !== "string" && speech}
+        </SpeechBubble>
       )}
 
       {showInfo && <SpeechBubble text={info} position="top" size="sm" />}
