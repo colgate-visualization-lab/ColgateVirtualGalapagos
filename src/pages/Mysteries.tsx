@@ -61,6 +61,7 @@ export default function Mysteries() {
             onClick={() =>
               startTransition(`/mysteries/${selectedIsland.name}`, "galaxy")
             }
+            aria-label="Back to menu"
             size="lg"
             variant="wooden"
           >

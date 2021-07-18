@@ -28,7 +28,11 @@ export default function MysteryIntro({
   return (
     <Page className="bg-gradient-to-t from-primary to-primary-dark">
       <div className="fixed w-20 h-20 z-40 top-5 left-5">
-        <Button variant="icon" onClick={() => history.push("/main_menu")}>
+        <Button
+          variant="icon"
+          aria-label="Back to menu"
+          onClick={() => history.push("/main_menu")}
+        >
           <Compass isAnimating={false} />
         </Button>
       </div>
