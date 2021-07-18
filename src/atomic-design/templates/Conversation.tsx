@@ -22,6 +22,7 @@ export interface LineType extends Omit<CharacterProps, "name"> {
   sceneInfo?: string;
   directedTo?: ValidCharacterNames;
   isCheckpoint?: boolean;
+  vocab?: string[];
 }
 
 export interface ScriptType {
@@ -143,12 +144,18 @@ const Conversation = ({
           Math.max(settings.conversationSpeed * 400)
         );
       } else {
+        // speech can be a ReactNode in which case
+        // we assume the text is around 30 chars long
         return window.setTimeout(
           advanceScript,
           Math.max(
             1000 +
               settings.conversationSpeed * 400 +
-              ((currentLine.speech?.length || 15) / 20) * 1000,
+              ((typeof currentLine.speech === "string"
+                ? currentLine.speech.length
+                : 30 || 15) /
+                20) *
+                1000,
             1200
           )
         );
