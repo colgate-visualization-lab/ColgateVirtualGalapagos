@@ -19,7 +19,7 @@ export default function Mysteries() {
   const [info, setInfo] = useState<string>();
   const [selectedIsland, setSelectedIsland] = useState<Island>();
 
-  const { characters } = useGameContext();
+  const { buddy } = useGameContext();
   const { startTransition } = useTransitionContext();
   const [script, setScript] = useState<ScriptType>();
   const history = useHistory();
@@ -29,7 +29,7 @@ export default function Mysteries() {
       setScript({
         lines: [
           {
-            speaker: currentCharacter?.name,
+            speaker: buddy?.name,
             speech: `That's ${
               selectedIsland.displayName || selectedIsland.name
             }! Feel free to take a look around the modules, or click on the button to explore the mystery futher.`,
@@ -41,7 +41,7 @@ export default function Mysteries() {
         id: "first",
         lines: [
           {
-            speaker: currentCharacter?.name,
+            speaker: buddy?.name,
             speech: "So many islands! Which one do you wanna go to?",
             audio: "/audio/welcome.mp3",
           },
@@ -50,8 +50,7 @@ export default function Mysteries() {
     }
   }, [selectedIsland]);
 
-  const currentCharacter = characters[characters.length - 1];
-  return !currentCharacter ? (
+  return !buddy ? (
     <Redirect to="/character_select" />
   ) : (
     <Page className="bg-gradient-to-t from-primary to-primary-dark">
@@ -59,7 +58,7 @@ export default function Mysteries() {
         <div className="fixed top-5 left-1/2 z-40 transform -translate-x-1/2">
           <Button
             onClick={() =>
-              startTransition(`/mysteries/${selectedIsland.name}`, "galaxy")
+              startTransition(`/mysteries/${selectedIsland.name}`, "boat")
             }
             aria-label="Back to menu"
             size="lg"
