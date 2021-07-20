@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
 import { makeContextHook } from "./utils";
 
-const transitions = ["booby", "galaxy"] as const;
+const transitions = ["booby", "galaxy", "boat"] as const;
 
 export const TransitionContext = createContext({});
 export const useTransitionContext = makeContextHook(
