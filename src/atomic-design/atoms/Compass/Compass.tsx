@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Compass({ isAnimating = true }) {
+export function Compass({ isAnimating = true }) {
   const [className, setClassName] = useState("");
   return (
     <svg
@@ -130,3 +130,5 @@ export default function Compass({ isAnimating = true }) {
     </svg>
   );
 }
+
+export default Compass

@@ -1,6 +1,11 @@
 import React from "react";
 import ArrowLeft from "./ArrowLeft";
 
+export interface ArrowProps{
+  variant: "left" | "right",
+  className?: string,
+  onClick: React.EventHandler<any>,
+}
 export const Arrow = ({
   className,
   variant,

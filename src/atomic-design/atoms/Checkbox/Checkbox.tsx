@@ -6,7 +6,7 @@ export interface CheckboxProps {
   value: boolean;
 }
 
-export default function CheckBox({ label, onChange, value }: CheckboxProps) {
+export function CheckBox({ label, onChange, value }: CheckboxProps) {
   return (
     <label
       className="flex cursor-pointer"
@@ -29,3 +29,5 @@ export default function CheckBox({ label, onChange, value }: CheckboxProps) {
     </label>
   );
 }
+
+export default CheckBox

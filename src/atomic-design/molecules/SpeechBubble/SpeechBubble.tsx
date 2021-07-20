@@ -36,7 +36,7 @@ export interface SpeechBubbleProps extends Omit<TextProps, "color"> {
   children?: React.ReactNode;
 }
 
-export default function SpeechBubble({
+export function SpeechBubble({
   className,
   position = "right",
   audio,
@@ -111,3 +111,5 @@ export default function SpeechBubble({
     </div>
   );
 }
+
+export default SpeechBubble;

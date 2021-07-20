@@ -16,7 +16,13 @@ const Slide = ({
   return <div className={classes}>{children}</div>;
 };
 
-export default function Carousel({
+export interface CarouselProps{
+  className: string,
+  children?: React.ReactNode,
+  onChange?: Function,
+}
+
+export function Carousel({
   className,
   children,
   onChange,
@@ -82,3 +88,5 @@ export default function Carousel({
     </div>
   );
 }
+
+export default Carousel
