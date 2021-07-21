@@ -14,7 +14,7 @@ export interface TextProps {
 }
 
 Text.defaultProps = {
-  color: "text-primary",
+  color: "text-dark",
   size: "md",
   type: "body",
 };
