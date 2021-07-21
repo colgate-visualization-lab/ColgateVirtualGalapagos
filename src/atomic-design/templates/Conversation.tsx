@@ -20,6 +20,8 @@ export interface LineType extends Omit<CharacterProps, "name"> {
   id?: string;
   speaker: ValidCharacterNames;
   sceneInfo?: string;
+  image?: string;
+  video?: string;
   directedTo?: ValidCharacterNames;
   isCheckpoint?: boolean;
   vocab?: string[];
@@ -98,10 +100,12 @@ const Conversation = ({
         isPlaying: settings.autoPlayAudio,
       });
       setNarrationEnded(false);
-      if (currentLine.sceneInfo)
+      if (currentLine.sceneInfo || currentLine.image || currentLine.video)
         addNotification({
           id: "info",
-          content: currentLine.sceneInfo,
+          text: currentLine.sceneInfo,
+          image: currentLine.image,
+          video: currentLine.video,
           scope: "speech",
         });
     }
