@@ -106,34 +106,31 @@ export function makeIntroScript(
             ),
           },
           {
-            id: "hide-dan-wade",
             speaker: buddy.name,
             speech: `Nice to meet you! I'm ${
               buddy.name
             }, and this is my friend${
               username ? " " + username : ""
             }. We're scientists too!`,
-            isCheckpoint: true,
+
             audio: makeFullAudioPath(
               "/isabela_intro/IntroMysteryOne0012Buddy.m4a"
             ),
           },
           {
-            id: "show-dan-wade",
             speaker: "olivia",
             speech:
               "Good to meet you both! My name is Olivia and these two are Dan and Wade",
-            isCheckpoint: true,
+
             audio: makeFullAudioPath(
               "/isabela_intro/IntroMysteryOne0013Olivia.mp3"
             ),
           },
           {
-            id: "hide-dan-wade",
             speaker: buddy.name,
             speech:
               "What were you all just talking about? It sounded really interesting!",
-            isCheckpoint: true,
+
             audio: makeFullAudioPath(
               "/isabela_intro/IntroMysteryOne0014Buddy.m4a"
             ),
@@ -190,7 +187,8 @@ export function makeIntroScript(
             speaker: "olivia",
             speech:
               "Good question! Well, it’s important to know that the Galápagos islands haven’t always been here. The volcanoes that make up these islands had to be created some time, which is like their birthday-- so they have ages, just like we all do.",
-
+            image: "/images/isabela/volcano_diagram.jpg",
+            sceneInfo: "Diagram of a volcano",
             audio: makeFullAudioPath(
               "/isabela_intro/IntroMysteryOne0021Olivia.mp3"
             ),
@@ -264,6 +262,8 @@ export function makeIntroScript(
             speaker: "dan",
             speech:
               "Exactly. Well, there are actually two kinds of iguanas in the Galápagos. The marine iguanas are the only ocean-going reptiles in the world and are only found here in the islands; we use the word endemic when an animal or plant is found only in one place in the world. ",
+            image: "/images/isabela/iguanas.png",
+            sceneInfo: "Marine iguanas",
             audio: makeFullAudioPath(
               "/isabela_intro/IntroMysteryOne0030Dan.m4a"
             ),
