@@ -29,8 +29,7 @@ export type CharacterType = {
 export type BackpackType = {
   name: string;
   description: string;
-  };
-
+};
 
 export type Doubloon = {
   imgSrc: string;
@@ -38,7 +37,7 @@ export type Doubloon = {
 };
 
 export type GameProps = {
-  characters: CharacterType[];
+  buddy: CharacterType;
   doubloons: number;
 };
 
@@ -48,14 +47,14 @@ export default function GameContextProvider({
   children: React.ReactNode;
 }) {
   const [state, setState] = useState<GameProps>({
-    characters: [],
+    buddy: characterList[5],
     doubloons: 0,
   });
 
-  function addCharacter(character: CharacterType) {
+  function changeBuddy(buddy: CharacterType) {
     setState((state) => ({
       ...state,
-      characters: [...state.characters, character],
+      buddy,
     }));
   }
 
@@ -70,7 +69,7 @@ export default function GameContextProvider({
     <GameContext.Provider
       value={{
         ...state,
-        addCharacter,
+        changeBuddy,
         addDoubloon,
       }}
     >

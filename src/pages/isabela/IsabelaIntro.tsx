@@ -18,20 +18,19 @@ import { makeIntroScript } from "../../utils/script";
 
 export default function Modules() {
   const [inScriptMode, setScriptMode] = useState(false);
-  const { characters } = useGameContext();
+  const { buddy } = useGameContext();
   const { setThemeMusic } = useAudioContext();
-  const { addNotification, removeNotification } = useNotificationContext();
+  const { addNotification, clearNotifications } = useNotificationContext();
   const { startTransition } = useTransitionContext();
   const [script, setScript] = useState<ScriptType>();
   const history = useHistory();
-  const currentCharacter = characters[characters.length - 1];
 
   useEffect(() => {
-    if (currentCharacter) {
-      setScript(makeIntroScript("isabela", currentCharacter, "demoUser"));
+    if (buddy) {
+      setScript(makeIntroScript("isabela", buddy, "demoUser"));
       setScriptMode(true);
     } else history.replace("/mysteries");
-  }, [currentCharacter]);
+  }, [buddy]);
 
   useEffect(() => {
     setThemeMusic("isabela");
@@ -57,19 +56,19 @@ export default function Modules() {
         ),
         scope: "speech",
       });
-    } else if (line.id === "hide-dan-wade") {
-      removeNotification("danwade");
+    } else {
+      clearNotifications("speech");
     }
   };
 
-  return !currentCharacter ? (
+  return !buddy ? (
     <Redirect to="/character_select" />
   ) : (
     <MysteryIntro
       island="isabela"
       mouseDisabled={inScriptMode}
       onModuleSelect={(module?: Module) =>
-        module && startTransition(`isabela/${module.name}`)
+        module && startTransition(`isabela/${module.name}`, "boat")
       }
     >
       <GameBar className="h-3/12 ">
