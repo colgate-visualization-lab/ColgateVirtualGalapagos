@@ -59,7 +59,6 @@ export default function App() {
           className={transitionClasses.join(" ")}
           autoPlay
           muted
-          playbackRate={4}
           src={src}
         />
       )}
