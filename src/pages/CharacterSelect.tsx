@@ -98,14 +98,14 @@ export const Canvas = memo(() => {
     characterList.filter((ch: CharacterType) => ch.role === "buddy")
   );
   const [character, setCharacter] = useState<CharacterType>(allCharacters[0]);
-  const { characters, addCharacter } = useGameContext();
+  const { changeBuddy } = useGameContext();
   const { startTransition } = useTransitionContext();
   const [confirmed, setConfirmed] = useState(false);
 
   //[TODO] There might be a potential race condition here?
   // What if Mysteries page mounts before character is set into state?
   const confirmSelection = () => {
-    addCharacter(character);
+    changeBuddy(character);
     startTransition("/mysteries");
   };
 

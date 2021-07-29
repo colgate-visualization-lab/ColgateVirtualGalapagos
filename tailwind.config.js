@@ -96,6 +96,7 @@ module.exports = {
       },
       spacing: {
         18: "4.45rem",
+        100: "26rem",
       },
     },
     screens: {

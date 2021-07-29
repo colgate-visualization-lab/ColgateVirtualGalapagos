@@ -13,10 +13,12 @@ Image.defaultProps = {
   coverType: "cover",
 };
 
-export default function Image({ className, coverType, ...rest }: ImageProps) {
+export function Image({ className, coverType, ...rest }: ImageProps) {
   const classes = classNames(className, "block flex h-full w-full max-w-full", {
     "object-cover": coverType === "cover",
     "object-contain": coverType === "contain",
   });
   return <img className={classes} {...rest} />;
 }
+
+export default Image;
