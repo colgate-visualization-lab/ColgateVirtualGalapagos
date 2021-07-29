@@ -9,7 +9,7 @@ interface ModalProps {
 
 const Overlay = ({ children, onDiscard }: ModalProps) => {
   const classes = classNames(
-    "h-1/2 w-3/4 max-w-lg max-h-96",
+    "h-5/6 w-3/5 max-w-full max-h-full",
     "filter shadow-2xl bg-primary-light"
   );
 

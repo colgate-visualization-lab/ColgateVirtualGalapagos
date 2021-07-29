@@ -92,6 +92,7 @@ export default function DrawingPanel() {
   };
   return (
     <Page>
+    <div>
       <ReactTooltip />
       <div className="w-40 h-40">
         <Image src={previewImage} />
@@ -118,6 +119,7 @@ export default function DrawingPanel() {
         <Button onClick={handleSave} size="lg" variant="wooden">
           <Text text="Save Drawing" color="text-dark" />
         </Button>
+      </div>
       </div>
     </Page>
   );
