@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { StaticAnimal } from "../../atomic-design/atoms";
-import Button from "../../atomic-design/atoms/Button/Button";
-import Compass from "../../atomic-design/atoms/Compass/Compass";
 import SpeechBubble from "../../atomic-design/molecules/SpeechBubble/SpeechBubble";
-import Page from "../../atomic-design/templates/Page";
-import IslandBackgound from "../../test/IslandBackgound";
-import Islands, { IslandsProps } from "../../test/Islands";
-import { Island, Module } from "../../test/islandsInfo";
+import IslandBackgound from "../atoms/islands/IslandBackgound";
+import Islands, { IslandsProps } from "../atoms/islands/Islands";
+import { Island, Module } from "../atoms/islands/islandsInfo";
 import { ValidIslandNames } from "../../types";
+import GamePage from "./GamePage";
 
 export interface MysteryIntroProps extends IslandsProps {
   children?: React.ReactNode;
@@ -26,16 +24,7 @@ export default function MysteryIntro({
   const history = useHistory();
 
   return (
-    <Page className="bg-gradient-to-t from-primary to-primary-dark">
-      <div className="fixed w-20 h-20 z-40 top-5 left-5">
-        <Button
-          variant="icon"
-          aria-label="Back to menu"
-          onClick={() => history.push("/main_menu")}
-        >
-          <Compass isAnimating={false} />
-        </Button>
-      </div>
+    <GamePage className="bg-gradient-to-t from-primary to-primary-dark">
       <IslandBackgound className="h-9/12 w-full fixed top-0 left-1/2 transform -translate-x-1/2 p-10" />
 
       <Islands
@@ -50,7 +39,7 @@ export default function MysteryIntro({
       />
       {children}
       {info && !mouseDisabled && <InfoBox info={info} />}
-    </Page>
+    </GamePage>
   );
 }
 

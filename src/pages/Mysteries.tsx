@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Redirect, useHistory, useParams } from "react-router";
+import { Redirect, useHistory } from "react-router";
 import { StaticAnimal, Text } from "../atomic-design/atoms";
 import Button from "../atomic-design/atoms/Button/Button";
-import Compass from "../atomic-design/atoms/Compass/Compass";
 import SpeechBubble from "../atomic-design/molecules/SpeechBubble/SpeechBubble";
 import Conversation, {
   ScriptType,
 } from "../atomic-design/templates/Conversation";
 import GameBar from "../atomic-design/templates/GameBar";
-import Page from "../atomic-design/templates/Page";
 import { useGameContext } from "../contexts/GameContext";
 import { useTransitionContext } from "../contexts/TransitionContext";
-import IslandBackgound from "../test/IslandBackgound";
-import Islands from "../test/Islands";
-import { Island, Module } from "../test/islandsInfo";
+import IslandBackgound from "../atomic-design/atoms/islands/IslandBackgound";
+import Islands from "../atomic-design/atoms/islands/Islands";
+import { Island, Module } from "../atomic-design/atoms/islands/islandsInfo";
+import GamePage from "../atomic-design/templates/GamePage";
 
 export default function Mysteries() {
   const [info, setInfo] = useState<string>();
@@ -53,7 +52,7 @@ export default function Mysteries() {
   return !buddy ? (
     <Redirect to="/character_select" />
   ) : (
-    <Page className="bg-gradient-to-t from-primary to-primary-dark">
+    <GamePage className="bg-gradient-to-t from-primary to-primary-dark">
       {selectedIsland && (
         <div className="fixed top-5 left-1/2 z-40 transform -translate-x-1/2">
           <Button
@@ -68,11 +67,7 @@ export default function Mysteries() {
           </Button>
         </div>
       )}
-      <div className="fixed w-20 h-20 z-40 top-5 left-5">
-        <Button variant="icon" onClick={() => history.push("/main_menu")}>
-          <Compass isAnimating={false} />
-        </Button>
-      </div>
+
       <IslandBackgound className="h-9/12 w-full fixed top-0 left-1/2 transform -translate-x-1/2 p-10" />
 
       <Islands
@@ -86,7 +81,7 @@ export default function Mysteries() {
         {script && <Conversation script={script} />}
       </GameBar>
       {info && <InfoBox info={info} />}
-    </Page>
+    </GamePage>
   );
 }
 
