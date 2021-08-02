@@ -10,9 +10,9 @@ import Conversation, {
 import GameBar from "../atomic-design/templates/GameBar";
 import Page from "../atomic-design/templates/Page";
 import { useTransitionContext } from "../contexts/TransitionContext";
-import IslandBackgound from "../test/IslandBackgound";
-import Islands from "../test/Islands";
-import { Island } from "../test/islandsInfo";
+import IslandBackgound from "../atomic-design/atoms/islands/IslandBackgound";
+import Islands from "../atomic-design/atoms/islands/Islands";
+import { Island } from "../atomic-design/atoms/islands/islandsInfo";
 
 export default function Introduction() {
   const { startTransition } = useTransitionContext();

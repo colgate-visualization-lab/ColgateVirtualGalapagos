@@ -3,7 +3,7 @@ import {
   ValidCharacterNames,
   ValidIslandNames,
   ValidModuleNames,
-} from "../types";
+} from "../../../types";
 
 export type Module = {
   name: ValidModuleNames;

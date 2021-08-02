@@ -2,7 +2,7 @@ import classNames from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 import { Island, islands, Module } from "./islandsInfo";
 import { gsap } from "gsap";
-import { ValidModuleNames } from "../types";
+import { ValidModuleNames } from "../../../types";
 
 const MODULE_BADGE_HEIGHT = 60;
 const MODULE_BADGE_WIDTH = 60;
