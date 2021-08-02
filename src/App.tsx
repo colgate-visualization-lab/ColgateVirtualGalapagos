@@ -17,7 +17,7 @@ const Mysteries = lazy(() => import("./pages/Mysteries"));
 
 const IsabelaIntro = lazy(() => import("./pages/isabela/IsabelaIntro"));
 const IsabelaVolcano = lazy(() => import("./pages/isabela/Volcano"));
-const Laboratory = lazy(()=> import("./pages/isabela/Laboratory"))
+const Laboratory = lazy(() => import("./pages/isabela/Laboratory"));
 
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 const Tutorial = lazy(() => import("./pages/Tutorial"));
@@ -48,6 +48,7 @@ export default function App() {
     <Suspense fallback={<Loading />}>
       {isTransitioning && (
         <AnimationVideo
+          playbackRate={3}
           onPlay={() => setNextPath(to)}
           onEnded={() => {
             setTransitionClasses((c) => [...c, "animate-fade-out"]);
@@ -83,7 +84,7 @@ export default function App() {
         <Route exact path="/mysteries/isabela" component={IsabelaIntro} />
         <Route exact path="/mysteries" component={Mysteries} />
 
-        <Route path="/laboratory" component={Laboratory}        />
+        <Route path="/laboratory" component={Laboratory} />
         <Route path="/introduction" component={Introduction} />
         <Route path="/backpacktesting" component={BackpackTesting} />
         <Route path="/drawing" component={DrawingPanel} />
