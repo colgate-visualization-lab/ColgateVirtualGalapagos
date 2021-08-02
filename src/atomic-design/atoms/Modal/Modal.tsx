@@ -12,10 +12,6 @@ export interface ModalProps {
 
 const Overlay = ({ children, onDiscard, size = "md", color }: ModalProps) => {
   const classes = classNames(
-<<<<<<< HEAD
-    "h-5/6 w-3/5 max-w-full max-h-full",
-    "filter shadow-2xl bg-primary-light"
-=======
     "flex items-center justify-center",
     "h-1/2 w-3/4",
     color,
@@ -24,7 +20,6 @@ const Overlay = ({ children, onDiscard, size = "md", color }: ModalProps) => {
       "max-w-lg max-h-96": size === "md",
       "max-w-2xl max-h-104": size === "lg",
     }
->>>>>>> 03d2462e1074d11292bd9cd97e14d8cf8bd94682
   );
 
   const wrapperClasses = classNames(
