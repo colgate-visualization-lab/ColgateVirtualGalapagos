@@ -25,7 +25,6 @@ const TestingGround = lazy(() => import("./test/TestingGround"));
 const WelcomeMenu = lazy(() => import("./pages/WelcomeMenu"));
 const Login = lazy(() => import("./pages/Login"));
 const SignUp = lazy(() => import("./pages/SignUp"));
-const BackpackTesting = lazy(() => import("./pages/BackpackTesting"));
 
 export default function App() {
   const { isTransitioning, to, stopTransition, src } = useTransitionContext();
@@ -86,7 +85,6 @@ export default function App() {
 
         <Route path="/laboratory" component={Laboratory} />
         <Route path="/introduction" component={Introduction} />
-        <Route path="/backpacktesting" component={BackpackTesting} />
         <Route path="/drawing" component={DrawingPanel} />
         <Route path="/settings" component={Settings} />
         <Route component={NotFoundPage} />

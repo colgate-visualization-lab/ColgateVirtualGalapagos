@@ -8,12 +8,11 @@ import Conversation, {
 } from "../../atomic-design/templates/Conversation";
 import GameBar from "../../atomic-design/templates/GameBar";
 import MysteryIntro from "../../atomic-design/templates/MysteryIntro";
-import Notification from "../../atomic-design/templates/Notification";
 import { useAudioContext } from "../../contexts/AudioContext";
 import { useGameContext } from "../../contexts/GameContext";
 import { useNotificationContext } from "../../contexts/NotificationContext";
 import { useTransitionContext } from "../../contexts/TransitionContext";
-import { Module } from "../../test/islandsInfo";
+import { Module } from "../../atomic-design/atoms/islands/islandsInfo";
 import { makeIntroScript } from "../../utils/script";
 
 export default function Modules() {
